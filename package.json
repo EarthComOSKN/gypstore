@@ -7,6 +7,7 @@
     "concurrently": "^5.0.2"
   },
   "scripts": {
-    "dev": "concurrently --kill-others --names API,FRONTEND --prefix-colors 'bgMagenta.bold,bgBlue.bold' \"cd api && yarn dev\" \"cd frontend && yarn dev\""
+    "dev": "concurrently --kill-others --names API,FRONTEND --prefix-colors 'bgMagenta.bold,bgBlue.bold' \"cd api && yarn dev\" \"cd frontend && yarn dev\"",
+    "dep-install": "yarn && cd api && yarn && cd ../frontend && yarn"
   }
 }
