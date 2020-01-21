@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node index.ts"
+  },
+  "dependencies": {
+    "@prisma/photon": "2.0.0-preview019",
+    "apollo-server": "^2.9.16",
+    "graphql": "^14.5.8",
+    "nexus": "0.12.0-beta.14",
+    "nexus-prisma": "0.3",
+    "prisma-client-lib": "^1.34.10",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
+}

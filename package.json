@@ -1,0 +1,12 @@
+{
+  "name": "gypstore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.0.2"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others --names API,FRONTEND --prefix-colors 'bgMagenta.bold,bgBlue.bold' \"cd api && yarn dev\" \"cd frontend && yarn dev\""
+  }
+}
