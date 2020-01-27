@@ -29,6 +29,7 @@ const SubHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    color: black;
   }
 
   a:hover {
@@ -115,11 +116,11 @@ export const Navbar = () => {
   return (
     <Header>
       <SubHeader>
-        <Link href="/login">
+        <Link href="/register">
           <a>ลงทะเบียน</a>
         </Link>
         <img alt="separate-icon" src="/assets/separate-icon.png" />
-        <Link href="/register">
+        <Link href="/login">
           <a>เข้าสู่ระบบ</a>
         </Link>
       </SubHeader>
