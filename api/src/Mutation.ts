@@ -9,15 +9,12 @@ export const Mutation = prismaObjectType({
     t.prismaFields(["*"]);
 
     // Add a custom `markAsDone` mutation
-    t.field("register", {
+    t.field("register2", {
       type: "Address",
       args: { id: idArg() },
       nullable: true,
       resolve: (_, { id }, ctx) => {
-        return ctx.prisma.updateTodo({
-          where: { id },
-          data: { done: true }
-        });
+        return null;
       }
     });
   }

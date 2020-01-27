@@ -2553,6 +2553,7 @@ export interface NexusGenFieldTypes {
     deleteShipping: NexusGenRootTypes['Shipping'] | null; // Shipping
     deleteShoppingCart: NexusGenRootTypes['ShoppingCart'] | null; // ShoppingCart
     deleteUser: NexusGenRootTypes['User'] | null; // User
+    register2: NexusGenRootTypes['Address'] | null; // Address
     updateAddress: NexusGenRootTypes['Address'] | null; // Address
     updateInvoice: NexusGenRootTypes['Invoice'] | null; // Invoice
     updateManyAddresses: NexusGenRootTypes['BatchPayload']; // BatchPayload!
@@ -2877,6 +2878,9 @@ export interface NexusGenArgTypes {
     }
     deleteUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    }
+    register2: { // args
+      id?: string | null; // ID
     }
     updateAddress: { // args
       data: NexusGenInputs['AddressUpdateInput']; // AddressUpdateInput!

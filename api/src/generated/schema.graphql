@@ -701,6 +701,7 @@ type Mutation {
   deleteShipping(where: ShippingWhereUniqueInput!): Shipping
   deleteShoppingCart(where: ShoppingCartWhereUniqueInput!): ShoppingCart
   deleteUser(where: UserWhereUniqueInput!): User
+  register2(id: ID): Address
   updateAddress(data: AddressUpdateInput!, where: AddressWhereUniqueInput!): Address
   updateInvoice(data: InvoiceUpdateInput!, where: InvoiceWhereUniqueInput!): Invoice
   updateManyAddresses(data: AddressUpdateManyMutationInput!, where: AddressWhereInput): BatchPayload!

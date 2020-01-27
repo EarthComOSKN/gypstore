@@ -19,21 +19,40 @@ const Container = styled.div`
   }
 `;
 
+const Banner1 = styled.div`
+  background-image: url("/assets/banner3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+const Banner2 = styled.div`
+  background-image: url("/assets/banner2.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+const Banner3 = styled.div`
+  background-image: url("/assets/banner3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+
 export const HomeCarousel = () => (
   <Container>
     <Carousel afterChange={onChange}>
-      <div>
+      <Banner1>
         <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
+      </Banner1>
+      <Banner2>
+        <h3>1</h3>
+      </Banner2>
+      <Banner3>
+        <h3>1</h3>
+      </Banner3>
+      <Banner1>
+        <h3>1</h3>
+      </Banner1>
     </Carousel>
   </Container>
 );
