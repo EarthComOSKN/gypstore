@@ -36,7 +36,7 @@ const CardDescription = styled.div`
 
 const BuyButton = styled(Button)``;
 
-const StyledCard = styled.div`
+const Container = styled.div`
   overflow: hidden;
   position: relative;
 `;
@@ -53,12 +53,19 @@ const Tape = styled.div`
   color: rgb(255, 255, 255);
 `;
 
+const StyledCard = styled(Card)`
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  :hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  }
+`;
+
 export const ProductCardTall = () => {
   return (
-    <StyledCard>
-      <Card
+    <Container>
+      <StyledCard
         hoverable
-        style={{ width: 240 }}
+        style={{ width: 250 }}
         cover={
           <ProductImageContainer>
             <img alt="example" src="/assets/logo-without-text.png" />
@@ -72,8 +79,8 @@ export const ProductCardTall = () => {
             </CardDescription>
           }
         />
-      </Card>
+      </StyledCard>
       <Tape>สินค้าขายดี</Tape>
-    </StyledCard>
+    </Container>
   );
 };

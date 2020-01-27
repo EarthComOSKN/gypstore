@@ -13,6 +13,12 @@ const Header = styled.div`
   position: sticky;
   top: 0;
   z-index: 9999;
+  a {
+    color: black;
+  }
+  a:hover {
+    color: #fff;
+  }
 `;
 
 const SubHeader = styled.div`
@@ -135,13 +141,16 @@ export const Navbar = () => {
         )}
         <SearchContainer>
           <Search
+            style={{ width: 300 }}
             placeholder="search"
             onSearch={value => console.log(value)}
             enterButton
           />
         </SearchContainer>
         <NavigateList>
-          <div>สินค้า </div>
+          <a href="/categories">
+            <div>สินค้า </div>
+          </a>
           <div>บริการ</div>
           <div>คะแนนสะสม</div>
         </NavigateList>
