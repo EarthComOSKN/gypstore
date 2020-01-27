@@ -2,60 +2,79 @@
 ### Do not make changes to this file directly
 
 
-type AggregateUser {
-  count: Int!
-}
-
-type BatchPayload {
-  count: Long!
-}
-
-scalar Long
-
-type Mutation {
-  createUser(data: UserCreateInput!): User!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteUser(where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
-}
-
-type PageInfo {
-  endCursor: String
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-}
-
-type Query {
-  user(where: UserWhereUniqueInput!): User
-  users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
-  usersConnection(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): UserConnection!
-}
-
-type User {
+type Address {
+  Address: String!
+  createdAt: DateTime!
+  customer: User!
   id: ID!
+  invoices(after: String, before: String, first: Int, last: Int, orderBy: InvoiceOrderByInput, skip: Int, where: InvoiceWhereInput): [Invoice!]
   name: String!
+  shipping(after: String, before: String, first: Int, last: Int, orderBy: ShippingOrderByInput, skip: Int, where: ShippingWhereInput): [Shipping!]
+  updatedAt: DateTime!
 }
 
-type UserConnection {
-  aggregate: AggregateUser!
-  edges: [UserEdge!]!
+type AddressConnection {
+  aggregate: AggregateAddress!
+  edges: [AddressEdge!]!
   pageInfo: PageInfo!
 }
 
-input UserCreateInput {
+input AddressCreateInput {
+  Address: String!
+  customer: UserCreateOneWithoutAddressesInput!
   id: ID
+  invoices: InvoiceCreateManyWithoutAddressInput
+  name: String!
+  shipping: ShippingCreateManyWithoutAddressInput
+}
+
+input AddressCreateManyWithoutCustomerInput {
+  connect: [AddressWhereUniqueInput!]
+  create: [AddressCreateWithoutCustomerInput!]
+}
+
+input AddressCreateOneWithoutInvoicesInput {
+  connect: AddressWhereUniqueInput
+  create: AddressCreateWithoutInvoicesInput
+}
+
+input AddressCreateOneWithoutShippingInput {
+  connect: AddressWhereUniqueInput
+  create: AddressCreateWithoutShippingInput
+}
+
+input AddressCreateWithoutCustomerInput {
+  Address: String!
+  id: ID
+  invoices: InvoiceCreateManyWithoutAddressInput
+  name: String!
+  shipping: ShippingCreateManyWithoutAddressInput
+}
+
+input AddressCreateWithoutInvoicesInput {
+  Address: String!
+  customer: UserCreateOneWithoutAddressesInput!
+  id: ID
+  name: String!
+  shipping: ShippingCreateManyWithoutAddressInput
+}
+
+input AddressCreateWithoutShippingInput {
+  Address: String!
+  customer: UserCreateOneWithoutAddressesInput!
+  id: ID
+  invoices: InvoiceCreateManyWithoutAddressInput
   name: String!
 }
 
-type UserEdge {
+type AddressEdge {
   cursor: String!
-  node: User!
+  node: Address!
 }
 
-enum UserOrderByInput {
+enum AddressOrderByInput {
+  Address_ASC
+  Address_DESC
   createdAt_ASC
   createdAt_DESC
   id_ASC
@@ -66,16 +85,2547 @@ enum UserOrderByInput {
   updatedAt_DESC
 }
 
-input UserUpdateInput {
+input AddressScalarWhereInput {
+  Address: String
+  Address_contains: String
+  Address_ends_with: String
+  Address_gt: String
+  Address_gte: String
+  Address_in: [String!]
+  Address_lt: String
+  Address_lte: String
+  Address_not: String
+  Address_not_contains: String
+  Address_not_ends_with: String
+  Address_not_in: [String!]
+  Address_not_starts_with: String
+  Address_starts_with: String
+  AND: [AddressScalarWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
   name: String
+  name_contains: String
+  name_ends_with: String
+  name_gt: String
+  name_gte: String
+  name_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_not: String
+  name_not_contains: String
+  name_not_ends_with: String
+  name_not_in: [String!]
+  name_not_starts_with: String
+  name_starts_with: String
+  NOT: [AddressScalarWhereInput!]
+  OR: [AddressScalarWhereInput!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input AddressUpdateInput {
+  Address: String
+  customer: UserUpdateOneRequiredWithoutAddressesInput
+  invoices: InvoiceUpdateManyWithoutAddressInput
+  name: String
+  shipping: ShippingUpdateManyWithoutAddressInput
+}
+
+input AddressUpdateManyDataInput {
+  Address: String
+  name: String
+}
+
+input AddressUpdateManyMutationInput {
+  Address: String
+  name: String
+}
+
+input AddressUpdateManyWithoutCustomerInput {
+  connect: [AddressWhereUniqueInput!]
+  create: [AddressCreateWithoutCustomerInput!]
+  delete: [AddressWhereUniqueInput!]
+  deleteMany: [AddressScalarWhereInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  set: [AddressWhereUniqueInput!]
+  update: [AddressUpdateWithWhereUniqueWithoutCustomerInput!]
+  updateMany: [AddressUpdateManyWithWhereNestedInput!]
+  upsert: [AddressUpsertWithWhereUniqueWithoutCustomerInput!]
+}
+
+input AddressUpdateManyWithWhereNestedInput {
+  data: AddressUpdateManyDataInput!
+  where: AddressScalarWhereInput!
+}
+
+input AddressUpdateOneRequiredWithoutShippingInput {
+  connect: AddressWhereUniqueInput
+  create: AddressCreateWithoutShippingInput
+  update: AddressUpdateWithoutShippingDataInput
+  upsert: AddressUpsertWithoutShippingInput
+}
+
+input AddressUpdateOneWithoutInvoicesInput {
+  connect: AddressWhereUniqueInput
+  create: AddressCreateWithoutInvoicesInput
+  delete: Boolean
+  disconnect: Boolean
+  update: AddressUpdateWithoutInvoicesDataInput
+  upsert: AddressUpsertWithoutInvoicesInput
+}
+
+input AddressUpdateWithoutCustomerDataInput {
+  Address: String
+  invoices: InvoiceUpdateManyWithoutAddressInput
+  name: String
+  shipping: ShippingUpdateManyWithoutAddressInput
+}
+
+input AddressUpdateWithoutInvoicesDataInput {
+  Address: String
+  customer: UserUpdateOneRequiredWithoutAddressesInput
+  name: String
+  shipping: ShippingUpdateManyWithoutAddressInput
+}
+
+input AddressUpdateWithoutShippingDataInput {
+  Address: String
+  customer: UserUpdateOneRequiredWithoutAddressesInput
+  invoices: InvoiceUpdateManyWithoutAddressInput
+  name: String
+}
+
+input AddressUpdateWithWhereUniqueWithoutCustomerInput {
+  data: AddressUpdateWithoutCustomerDataInput!
+  where: AddressWhereUniqueInput!
+}
+
+input AddressUpsertWithoutInvoicesInput {
+  create: AddressCreateWithoutInvoicesInput!
+  update: AddressUpdateWithoutInvoicesDataInput!
+}
+
+input AddressUpsertWithoutShippingInput {
+  create: AddressCreateWithoutShippingInput!
+  update: AddressUpdateWithoutShippingDataInput!
+}
+
+input AddressUpsertWithWhereUniqueWithoutCustomerInput {
+  create: AddressCreateWithoutCustomerInput!
+  update: AddressUpdateWithoutCustomerDataInput!
+  where: AddressWhereUniqueInput!
+}
+
+input AddressWhereInput {
+  Address: String
+  Address_contains: String
+  Address_ends_with: String
+  Address_gt: String
+  Address_gte: String
+  Address_in: [String!]
+  Address_lt: String
+  Address_lte: String
+  Address_not: String
+  Address_not_contains: String
+  Address_not_ends_with: String
+  Address_not_in: [String!]
+  Address_not_starts_with: String
+  Address_starts_with: String
+  AND: [AddressWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  customer: UserWhereInput
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  invoices_every: InvoiceWhereInput
+  invoices_none: InvoiceWhereInput
+  invoices_some: InvoiceWhereInput
+  name: String
+  name_contains: String
+  name_ends_with: String
+  name_gt: String
+  name_gte: String
+  name_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_not: String
+  name_not_contains: String
+  name_not_ends_with: String
+  name_not_in: [String!]
+  name_not_starts_with: String
+  name_starts_with: String
+  NOT: [AddressWhereInput!]
+  OR: [AddressWhereInput!]
+  shipping_every: ShippingWhereInput
+  shipping_none: ShippingWhereInput
+  shipping_some: ShippingWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input AddressWhereUniqueInput {
+  id: ID
+}
+
+type AggregateAddress {
+  count: Int!
+}
+
+type AggregateInvoice {
+  count: Int!
+}
+
+type AggregatePayment {
+  count: Int!
+}
+
+type AggregateProduct {
+  count: Int!
+}
+
+type AggregateProductItem {
+  count: Int!
+}
+
+type AggregateQuotation {
+  count: Int!
+}
+
+type AggregateSaleman {
+  count: Int!
+}
+
+type AggregateShipping {
+  count: Int!
+}
+
+type AggregateShoppingCart {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+scalar DateTime
+
+type Invoice {
+  address: Address
+  createdAt: DateTime!
+  docId: String!
+  id: ID!
+  payment: Payment
+  saleman: Saleman!
+  updatedAt: DateTime!
+}
+
+type InvoiceConnection {
+  aggregate: AggregateInvoice!
+  edges: [InvoiceEdge!]!
+  pageInfo: PageInfo!
+}
+
+input InvoiceCreateInput {
+  address: AddressCreateOneWithoutInvoicesInput
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutInvoiceInput
+  saleman: SalemanCreateOneWithoutInvoicesInput!
+}
+
+input InvoiceCreateManyWithoutAddressInput {
+  connect: [InvoiceWhereUniqueInput!]
+  create: [InvoiceCreateWithoutAddressInput!]
+}
+
+input InvoiceCreateManyWithoutSalemanInput {
+  connect: [InvoiceWhereUniqueInput!]
+  create: [InvoiceCreateWithoutSalemanInput!]
+}
+
+input InvoiceCreateOneInput {
+  connect: InvoiceWhereUniqueInput
+  create: InvoiceCreateInput
+}
+
+input InvoiceCreateOneWithoutPaymentInput {
+  connect: InvoiceWhereUniqueInput
+  create: InvoiceCreateWithoutPaymentInput
+}
+
+input InvoiceCreateWithoutAddressInput {
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutInvoiceInput
+  saleman: SalemanCreateOneWithoutInvoicesInput!
+}
+
+input InvoiceCreateWithoutPaymentInput {
+  address: AddressCreateOneWithoutInvoicesInput
+  docId: String!
+  id: ID
+  saleman: SalemanCreateOneWithoutInvoicesInput!
+}
+
+input InvoiceCreateWithoutSalemanInput {
+  address: AddressCreateOneWithoutInvoicesInput
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutInvoiceInput
+}
+
+type InvoiceEdge {
+  cursor: String!
+  node: Invoice!
+}
+
+enum InvoiceOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  docId_ASC
+  docId_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input InvoiceScalarWhereInput {
+  AND: [InvoiceScalarWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [InvoiceScalarWhereInput!]
+  OR: [InvoiceScalarWhereInput!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input InvoiceUpdateDataInput {
+  address: AddressUpdateOneWithoutInvoicesInput
+  docId: String
+  payment: PaymentUpdateOneWithoutInvoiceInput
+  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+}
+
+input InvoiceUpdateInput {
+  address: AddressUpdateOneWithoutInvoicesInput
+  docId: String
+  payment: PaymentUpdateOneWithoutInvoiceInput
+  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+}
+
+input InvoiceUpdateManyDataInput {
+  docId: String
+}
+
+input InvoiceUpdateManyMutationInput {
+  docId: String
+}
+
+input InvoiceUpdateManyWithoutAddressInput {
+  connect: [InvoiceWhereUniqueInput!]
+  create: [InvoiceCreateWithoutAddressInput!]
+  delete: [InvoiceWhereUniqueInput!]
+  deleteMany: [InvoiceScalarWhereInput!]
+  disconnect: [InvoiceWhereUniqueInput!]
+  set: [InvoiceWhereUniqueInput!]
+  update: [InvoiceUpdateWithWhereUniqueWithoutAddressInput!]
+  updateMany: [InvoiceUpdateManyWithWhereNestedInput!]
+  upsert: [InvoiceUpsertWithWhereUniqueWithoutAddressInput!]
+}
+
+input InvoiceUpdateManyWithoutSalemanInput {
+  connect: [InvoiceWhereUniqueInput!]
+  create: [InvoiceCreateWithoutSalemanInput!]
+  delete: [InvoiceWhereUniqueInput!]
+  deleteMany: [InvoiceScalarWhereInput!]
+  disconnect: [InvoiceWhereUniqueInput!]
+  set: [InvoiceWhereUniqueInput!]
+  update: [InvoiceUpdateWithWhereUniqueWithoutSalemanInput!]
+  updateMany: [InvoiceUpdateManyWithWhereNestedInput!]
+  upsert: [InvoiceUpsertWithWhereUniqueWithoutSalemanInput!]
+}
+
+input InvoiceUpdateManyWithWhereNestedInput {
+  data: InvoiceUpdateManyDataInput!
+  where: InvoiceScalarWhereInput!
+}
+
+input InvoiceUpdateOneRequiredInput {
+  connect: InvoiceWhereUniqueInput
+  create: InvoiceCreateInput
+  update: InvoiceUpdateDataInput
+  upsert: InvoiceUpsertNestedInput
+}
+
+input InvoiceUpdateOneWithoutPaymentInput {
+  connect: InvoiceWhereUniqueInput
+  create: InvoiceCreateWithoutPaymentInput
+  delete: Boolean
+  disconnect: Boolean
+  update: InvoiceUpdateWithoutPaymentDataInput
+  upsert: InvoiceUpsertWithoutPaymentInput
+}
+
+input InvoiceUpdateWithoutAddressDataInput {
+  docId: String
+  payment: PaymentUpdateOneWithoutInvoiceInput
+  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+}
+
+input InvoiceUpdateWithoutPaymentDataInput {
+  address: AddressUpdateOneWithoutInvoicesInput
+  docId: String
+  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+}
+
+input InvoiceUpdateWithoutSalemanDataInput {
+  address: AddressUpdateOneWithoutInvoicesInput
+  docId: String
+  payment: PaymentUpdateOneWithoutInvoiceInput
+}
+
+input InvoiceUpdateWithWhereUniqueWithoutAddressInput {
+  data: InvoiceUpdateWithoutAddressDataInput!
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceUpdateWithWhereUniqueWithoutSalemanInput {
+  data: InvoiceUpdateWithoutSalemanDataInput!
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceUpsertNestedInput {
+  create: InvoiceCreateInput!
+  update: InvoiceUpdateDataInput!
+}
+
+input InvoiceUpsertWithoutPaymentInput {
+  create: InvoiceCreateWithoutPaymentInput!
+  update: InvoiceUpdateWithoutPaymentDataInput!
+}
+
+input InvoiceUpsertWithWhereUniqueWithoutAddressInput {
+  create: InvoiceCreateWithoutAddressInput!
+  update: InvoiceUpdateWithoutAddressDataInput!
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceUpsertWithWhereUniqueWithoutSalemanInput {
+  create: InvoiceCreateWithoutSalemanInput!
+  update: InvoiceUpdateWithoutSalemanDataInput!
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceWhereInput {
+  address: AddressWhereInput
+  AND: [InvoiceWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [InvoiceWhereInput!]
+  OR: [InvoiceWhereInput!]
+  payment: PaymentWhereInput
+  saleman: SalemanWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input InvoiceWhereUniqueInput {
+  id: ID
+}
+
+scalar Long
+
+type Mutation {
+  createAddress(data: AddressCreateInput!): Address!
+  createInvoice(data: InvoiceCreateInput!): Invoice!
+  createPayment(data: PaymentCreateInput!): Payment!
+  createProduct(data: ProductCreateInput!): Product!
+  createProductItem(data: ProductItemCreateInput!): ProductItem!
+  createQuotation(data: QuotationCreateInput!): Quotation!
+  createSaleman(data: SalemanCreateInput!): Saleman!
+  createShipping(data: ShippingCreateInput!): Shipping!
+  createShoppingCart(data: ShoppingCartCreateInput!): ShoppingCart!
+  createUser(data: UserCreateInput!): User!
+  deleteAddress(where: AddressWhereUniqueInput!): Address
+  deleteInvoice(where: InvoiceWhereUniqueInput!): Invoice
+  deleteManyAddresses(where: AddressWhereInput): BatchPayload!
+  deleteManyInvoices(where: InvoiceWhereInput): BatchPayload!
+  deleteManyPayments(where: PaymentWhereInput): BatchPayload!
+  deleteManyProductItems(where: ProductItemWhereInput): BatchPayload!
+  deleteManyProducts(where: ProductWhereInput): BatchPayload!
+  deleteManyQuotations(where: QuotationWhereInput): BatchPayload!
+  deleteManySalemen(where: SalemanWhereInput): BatchPayload!
+  deleteManyShippings(where: ShippingWhereInput): BatchPayload!
+  deleteManyShoppingCarts(where: ShoppingCartWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deletePayment(where: PaymentWhereUniqueInput!): Payment
+  deleteProduct(where: ProductWhereUniqueInput!): Product
+  deleteProductItem(where: ProductItemWhereUniqueInput!): ProductItem
+  deleteQuotation(where: QuotationWhereUniqueInput!): Quotation
+  deleteSaleman(where: SalemanWhereUniqueInput!): Saleman
+  deleteShipping(where: ShippingWhereUniqueInput!): Shipping
+  deleteShoppingCart(where: ShoppingCartWhereUniqueInput!): ShoppingCart
+  deleteUser(where: UserWhereUniqueInput!): User
+  updateAddress(data: AddressUpdateInput!, where: AddressWhereUniqueInput!): Address
+  updateInvoice(data: InvoiceUpdateInput!, where: InvoiceWhereUniqueInput!): Invoice
+  updateManyAddresses(data: AddressUpdateManyMutationInput!, where: AddressWhereInput): BatchPayload!
+  updateManyInvoices(data: InvoiceUpdateManyMutationInput!, where: InvoiceWhereInput): BatchPayload!
+  updateManyPayments(data: PaymentUpdateManyMutationInput!, where: PaymentWhereInput): BatchPayload!
+  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
+  updateManyQuotations(data: QuotationUpdateManyMutationInput!, where: QuotationWhereInput): BatchPayload!
+  updateManyShippings(data: ShippingUpdateManyMutationInput!, where: ShippingWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updatePayment(data: PaymentUpdateInput!, where: PaymentWhereUniqueInput!): Payment
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
+  updateProductItem(data: ProductItemUpdateInput!, where: ProductItemWhereUniqueInput!): ProductItem
+  updateQuotation(data: QuotationUpdateInput!, where: QuotationWhereUniqueInput!): Quotation
+  updateSaleman(data: SalemanUpdateInput!, where: SalemanWhereUniqueInput!): Saleman
+  updateShipping(data: ShippingUpdateInput!, where: ShippingWhereUniqueInput!): Shipping
+  updateShoppingCart(data: ShoppingCartUpdateInput!, where: ShoppingCartWhereUniqueInput!): ShoppingCart
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  upsertAddress(create: AddressCreateInput!, update: AddressUpdateInput!, where: AddressWhereUniqueInput!): Address!
+  upsertInvoice(create: InvoiceCreateInput!, update: InvoiceUpdateInput!, where: InvoiceWhereUniqueInput!): Invoice!
+  upsertPayment(create: PaymentCreateInput!, update: PaymentUpdateInput!, where: PaymentWhereUniqueInput!): Payment!
+  upsertProduct(create: ProductCreateInput!, update: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product!
+  upsertProductItem(create: ProductItemCreateInput!, update: ProductItemUpdateInput!, where: ProductItemWhereUniqueInput!): ProductItem!
+  upsertQuotation(create: QuotationCreateInput!, update: QuotationUpdateInput!, where: QuotationWhereUniqueInput!): Quotation!
+  upsertSaleman(create: SalemanCreateInput!, update: SalemanUpdateInput!, where: SalemanWhereUniqueInput!): Saleman!
+  upsertShipping(create: ShippingCreateInput!, update: ShippingUpdateInput!, where: ShippingWhereUniqueInput!): Shipping!
+  upsertShoppingCart(create: ShoppingCartCreateInput!, update: ShoppingCartUpdateInput!, where: ShoppingCartWhereUniqueInput!): ShoppingCart!
+  upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+type Payment {
+  createdAt: DateTime!
+  customer: User!
+  docId: String!
+  id: ID!
+  Invoice: Invoice
+  quotation: Quotation!
+  saleman: Saleman!
+  updatedAt: DateTime!
+}
+
+type PaymentConnection {
+  aggregate: AggregatePayment!
+  edges: [PaymentEdge!]!
+  pageInfo: PageInfo!
+}
+
+input PaymentCreateInput {
+  customer: UserCreateOneWithoutPaymentsInput!
+  docId: String!
+  id: ID
+  Invoice: InvoiceCreateOneWithoutPaymentInput
+  quotation: QuotationCreateOneWithoutPaymentInput!
+  saleman: SalemanCreateOneWithoutPaymentsInput!
+}
+
+input PaymentCreateManyWithoutCustomerInput {
+  connect: [PaymentWhereUniqueInput!]
+  create: [PaymentCreateWithoutCustomerInput!]
+}
+
+input PaymentCreateManyWithoutSalemanInput {
+  connect: [PaymentWhereUniqueInput!]
+  create: [PaymentCreateWithoutSalemanInput!]
+}
+
+input PaymentCreateOneWithoutInvoiceInput {
+  connect: PaymentWhereUniqueInput
+  create: PaymentCreateWithoutInvoiceInput
+}
+
+input PaymentCreateOneWithoutQuotationInput {
+  connect: PaymentWhereUniqueInput
+  create: PaymentCreateWithoutQuotationInput
+}
+
+input PaymentCreateWithoutCustomerInput {
+  docId: String!
+  id: ID
+  Invoice: InvoiceCreateOneWithoutPaymentInput
+  quotation: QuotationCreateOneWithoutPaymentInput!
+  saleman: SalemanCreateOneWithoutPaymentsInput!
+}
+
+input PaymentCreateWithoutInvoiceInput {
+  customer: UserCreateOneWithoutPaymentsInput!
+  docId: String!
+  id: ID
+  quotation: QuotationCreateOneWithoutPaymentInput!
+  saleman: SalemanCreateOneWithoutPaymentsInput!
+}
+
+input PaymentCreateWithoutQuotationInput {
+  customer: UserCreateOneWithoutPaymentsInput!
+  docId: String!
+  id: ID
+  Invoice: InvoiceCreateOneWithoutPaymentInput
+  saleman: SalemanCreateOneWithoutPaymentsInput!
+}
+
+input PaymentCreateWithoutSalemanInput {
+  customer: UserCreateOneWithoutPaymentsInput!
+  docId: String!
+  id: ID
+  Invoice: InvoiceCreateOneWithoutPaymentInput
+  quotation: QuotationCreateOneWithoutPaymentInput!
+}
+
+type PaymentEdge {
+  cursor: String!
+  node: Payment!
+}
+
+enum PaymentOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  docId_ASC
+  docId_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input PaymentScalarWhereInput {
+  AND: [PaymentScalarWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [PaymentScalarWhereInput!]
+  OR: [PaymentScalarWhereInput!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input PaymentUpdateInput {
+  customer: UserUpdateOneRequiredWithoutPaymentsInput
+  docId: String
+  Invoice: InvoiceUpdateOneWithoutPaymentInput
+  quotation: QuotationUpdateOneRequiredWithoutPaymentInput
+  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+}
+
+input PaymentUpdateManyDataInput {
+  docId: String
+}
+
+input PaymentUpdateManyMutationInput {
+  docId: String
+}
+
+input PaymentUpdateManyWithoutCustomerInput {
+  connect: [PaymentWhereUniqueInput!]
+  create: [PaymentCreateWithoutCustomerInput!]
+  delete: [PaymentWhereUniqueInput!]
+  deleteMany: [PaymentScalarWhereInput!]
+  disconnect: [PaymentWhereUniqueInput!]
+  set: [PaymentWhereUniqueInput!]
+  update: [PaymentUpdateWithWhereUniqueWithoutCustomerInput!]
+  updateMany: [PaymentUpdateManyWithWhereNestedInput!]
+  upsert: [PaymentUpsertWithWhereUniqueWithoutCustomerInput!]
+}
+
+input PaymentUpdateManyWithoutSalemanInput {
+  connect: [PaymentWhereUniqueInput!]
+  create: [PaymentCreateWithoutSalemanInput!]
+  delete: [PaymentWhereUniqueInput!]
+  deleteMany: [PaymentScalarWhereInput!]
+  disconnect: [PaymentWhereUniqueInput!]
+  set: [PaymentWhereUniqueInput!]
+  update: [PaymentUpdateWithWhereUniqueWithoutSalemanInput!]
+  updateMany: [PaymentUpdateManyWithWhereNestedInput!]
+  upsert: [PaymentUpsertWithWhereUniqueWithoutSalemanInput!]
+}
+
+input PaymentUpdateManyWithWhereNestedInput {
+  data: PaymentUpdateManyDataInput!
+  where: PaymentScalarWhereInput!
+}
+
+input PaymentUpdateOneWithoutInvoiceInput {
+  connect: PaymentWhereUniqueInput
+  create: PaymentCreateWithoutInvoiceInput
+  delete: Boolean
+  disconnect: Boolean
+  update: PaymentUpdateWithoutInvoiceDataInput
+  upsert: PaymentUpsertWithoutInvoiceInput
+}
+
+input PaymentUpdateOneWithoutQuotationInput {
+  connect: PaymentWhereUniqueInput
+  create: PaymentCreateWithoutQuotationInput
+  delete: Boolean
+  disconnect: Boolean
+  update: PaymentUpdateWithoutQuotationDataInput
+  upsert: PaymentUpsertWithoutQuotationInput
+}
+
+input PaymentUpdateWithoutCustomerDataInput {
+  docId: String
+  Invoice: InvoiceUpdateOneWithoutPaymentInput
+  quotation: QuotationUpdateOneRequiredWithoutPaymentInput
+  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+}
+
+input PaymentUpdateWithoutInvoiceDataInput {
+  customer: UserUpdateOneRequiredWithoutPaymentsInput
+  docId: String
+  quotation: QuotationUpdateOneRequiredWithoutPaymentInput
+  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+}
+
+input PaymentUpdateWithoutQuotationDataInput {
+  customer: UserUpdateOneRequiredWithoutPaymentsInput
+  docId: String
+  Invoice: InvoiceUpdateOneWithoutPaymentInput
+  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+}
+
+input PaymentUpdateWithoutSalemanDataInput {
+  customer: UserUpdateOneRequiredWithoutPaymentsInput
+  docId: String
+  Invoice: InvoiceUpdateOneWithoutPaymentInput
+  quotation: QuotationUpdateOneRequiredWithoutPaymentInput
+}
+
+input PaymentUpdateWithWhereUniqueWithoutCustomerInput {
+  data: PaymentUpdateWithoutCustomerDataInput!
+  where: PaymentWhereUniqueInput!
+}
+
+input PaymentUpdateWithWhereUniqueWithoutSalemanInput {
+  data: PaymentUpdateWithoutSalemanDataInput!
+  where: PaymentWhereUniqueInput!
+}
+
+input PaymentUpsertWithoutInvoiceInput {
+  create: PaymentCreateWithoutInvoiceInput!
+  update: PaymentUpdateWithoutInvoiceDataInput!
+}
+
+input PaymentUpsertWithoutQuotationInput {
+  create: PaymentCreateWithoutQuotationInput!
+  update: PaymentUpdateWithoutQuotationDataInput!
+}
+
+input PaymentUpsertWithWhereUniqueWithoutCustomerInput {
+  create: PaymentCreateWithoutCustomerInput!
+  update: PaymentUpdateWithoutCustomerDataInput!
+  where: PaymentWhereUniqueInput!
+}
+
+input PaymentUpsertWithWhereUniqueWithoutSalemanInput {
+  create: PaymentCreateWithoutSalemanInput!
+  update: PaymentUpdateWithoutSalemanDataInput!
+  where: PaymentWhereUniqueInput!
+}
+
+input PaymentWhereInput {
+  AND: [PaymentWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  customer: UserWhereInput
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  Invoice: InvoiceWhereInput
+  NOT: [PaymentWhereInput!]
+  OR: [PaymentWhereInput!]
+  quotation: QuotationWhereInput
+  saleman: SalemanWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input PaymentWhereUniqueInput {
+  id: ID
+}
+
+type Product {
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  price: String!
+  productItem: ProductItem!
+  updatedAt: DateTime!
+}
+
+type ProductConnection {
+  aggregate: AggregateProduct!
+  edges: [ProductEdge!]!
+  pageInfo: PageInfo!
+}
+
+input ProductCreateInput {
+  id: ID
+  name: String!
+  price: String!
+  productItem: ProductItemCreateOneWithoutProductInput!
+}
+
+input ProductCreateOneWithoutProductItemInput {
+  connect: ProductWhereUniqueInput
+  create: ProductCreateWithoutProductItemInput
+}
+
+input ProductCreateWithoutProductItemInput {
+  id: ID
+  name: String!
+  price: String!
+}
+
+type ProductEdge {
+  cursor: String!
+  node: Product!
+}
+
+type ProductItem {
+  createdAt: DateTime!
+  id: ID!
+  product: Product!
+  quotation: Quotation
+  shoppingCart: ShoppingCart!
+  updatedAt: DateTime!
+}
+
+type ProductItemConnection {
+  aggregate: AggregateProductItem!
+  edges: [ProductItemEdge!]!
+  pageInfo: PageInfo!
+}
+
+input ProductItemCreateInput {
+  id: ID
+  product: ProductCreateOneWithoutProductItemInput!
+  quotation: QuotationCreateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartCreateOneWithoutProductItemsInput!
+}
+
+input ProductItemCreateManyWithoutQuotationInput {
+  connect: [ProductItemWhereUniqueInput!]
+  create: [ProductItemCreateWithoutQuotationInput!]
+}
+
+input ProductItemCreateManyWithoutShoppingCartInput {
+  connect: [ProductItemWhereUniqueInput!]
+  create: [ProductItemCreateWithoutShoppingCartInput!]
+}
+
+input ProductItemCreateOneWithoutProductInput {
+  connect: ProductItemWhereUniqueInput
+  create: ProductItemCreateWithoutProductInput
+}
+
+input ProductItemCreateWithoutProductInput {
+  id: ID
+  quotation: QuotationCreateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartCreateOneWithoutProductItemsInput!
+}
+
+input ProductItemCreateWithoutQuotationInput {
+  id: ID
+  product: ProductCreateOneWithoutProductItemInput!
+  shoppingCart: ShoppingCartCreateOneWithoutProductItemsInput!
+}
+
+input ProductItemCreateWithoutShoppingCartInput {
+  id: ID
+  product: ProductCreateOneWithoutProductItemInput!
+  quotation: QuotationCreateOneWithoutProductItemsInput
+}
+
+type ProductItemEdge {
+  cursor: String!
+  node: ProductItem!
+}
+
+enum ProductItemOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input ProductItemScalarWhereInput {
+  AND: [ProductItemScalarWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [ProductItemScalarWhereInput!]
+  OR: [ProductItemScalarWhereInput!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input ProductItemUpdateInput {
+  product: ProductUpdateOneRequiredWithoutProductItemInput
+  quotation: QuotationUpdateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartUpdateOneRequiredWithoutProductItemsInput
+}
+
+input ProductItemUpdateManyWithoutQuotationInput {
+  connect: [ProductItemWhereUniqueInput!]
+  create: [ProductItemCreateWithoutQuotationInput!]
+  delete: [ProductItemWhereUniqueInput!]
+  deleteMany: [ProductItemScalarWhereInput!]
+  disconnect: [ProductItemWhereUniqueInput!]
+  set: [ProductItemWhereUniqueInput!]
+  update: [ProductItemUpdateWithWhereUniqueWithoutQuotationInput!]
+  upsert: [ProductItemUpsertWithWhereUniqueWithoutQuotationInput!]
+}
+
+input ProductItemUpdateManyWithoutShoppingCartInput {
+  connect: [ProductItemWhereUniqueInput!]
+  create: [ProductItemCreateWithoutShoppingCartInput!]
+  delete: [ProductItemWhereUniqueInput!]
+  deleteMany: [ProductItemScalarWhereInput!]
+  disconnect: [ProductItemWhereUniqueInput!]
+  set: [ProductItemWhereUniqueInput!]
+  update: [ProductItemUpdateWithWhereUniqueWithoutShoppingCartInput!]
+  upsert: [ProductItemUpsertWithWhereUniqueWithoutShoppingCartInput!]
+}
+
+input ProductItemUpdateOneRequiredWithoutProductInput {
+  connect: ProductItemWhereUniqueInput
+  create: ProductItemCreateWithoutProductInput
+  update: ProductItemUpdateWithoutProductDataInput
+  upsert: ProductItemUpsertWithoutProductInput
+}
+
+input ProductItemUpdateWithoutProductDataInput {
+  quotation: QuotationUpdateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartUpdateOneRequiredWithoutProductItemsInput
+}
+
+input ProductItemUpdateWithoutQuotationDataInput {
+  product: ProductUpdateOneRequiredWithoutProductItemInput
+  shoppingCart: ShoppingCartUpdateOneRequiredWithoutProductItemsInput
+}
+
+input ProductItemUpdateWithoutShoppingCartDataInput {
+  product: ProductUpdateOneRequiredWithoutProductItemInput
+  quotation: QuotationUpdateOneWithoutProductItemsInput
+}
+
+input ProductItemUpdateWithWhereUniqueWithoutQuotationInput {
+  data: ProductItemUpdateWithoutQuotationDataInput!
+  where: ProductItemWhereUniqueInput!
+}
+
+input ProductItemUpdateWithWhereUniqueWithoutShoppingCartInput {
+  data: ProductItemUpdateWithoutShoppingCartDataInput!
+  where: ProductItemWhereUniqueInput!
+}
+
+input ProductItemUpsertWithoutProductInput {
+  create: ProductItemCreateWithoutProductInput!
+  update: ProductItemUpdateWithoutProductDataInput!
+}
+
+input ProductItemUpsertWithWhereUniqueWithoutQuotationInput {
+  create: ProductItemCreateWithoutQuotationInput!
+  update: ProductItemUpdateWithoutQuotationDataInput!
+  where: ProductItemWhereUniqueInput!
+}
+
+input ProductItemUpsertWithWhereUniqueWithoutShoppingCartInput {
+  create: ProductItemCreateWithoutShoppingCartInput!
+  update: ProductItemUpdateWithoutShoppingCartDataInput!
+  where: ProductItemWhereUniqueInput!
+}
+
+input ProductItemWhereInput {
+  AND: [ProductItemWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [ProductItemWhereInput!]
+  OR: [ProductItemWhereInput!]
+  product: ProductWhereInput
+  quotation: QuotationWhereInput
+  shoppingCart: ShoppingCartWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input ProductItemWhereUniqueInput {
+  id: ID
+}
+
+enum ProductOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input ProductUpdateInput {
+  name: String
+  price: String
+  productItem: ProductItemUpdateOneRequiredWithoutProductInput
+}
+
+input ProductUpdateManyMutationInput {
+  name: String
+  price: String
+}
+
+input ProductUpdateOneRequiredWithoutProductItemInput {
+  connect: ProductWhereUniqueInput
+  create: ProductCreateWithoutProductItemInput
+  update: ProductUpdateWithoutProductItemDataInput
+  upsert: ProductUpsertWithoutProductItemInput
+}
+
+input ProductUpdateWithoutProductItemDataInput {
+  name: String
+  price: String
+}
+
+input ProductUpsertWithoutProductItemInput {
+  create: ProductCreateWithoutProductItemInput!
+  update: ProductUpdateWithoutProductItemDataInput!
+}
+
+input ProductWhereInput {
+  AND: [ProductWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  name: String
+  name_contains: String
+  name_ends_with: String
+  name_gt: String
+  name_gte: String
+  name_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_not: String
+  name_not_contains: String
+  name_not_ends_with: String
+  name_not_in: [String!]
+  name_not_starts_with: String
+  name_starts_with: String
+  NOT: [ProductWhereInput!]
+  OR: [ProductWhereInput!]
+  price: String
+  price_contains: String
+  price_ends_with: String
+  price_gt: String
+  price_gte: String
+  price_in: [String!]
+  price_lt: String
+  price_lte: String
+  price_not: String
+  price_not_contains: String
+  price_not_ends_with: String
+  price_not_in: [String!]
+  price_not_starts_with: String
+  price_starts_with: String
+  productItem: ProductItemWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input ProductWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  address(where: AddressWhereUniqueInput!): Address
+  addresses(after: String, before: String, first: Int, last: Int, orderBy: AddressOrderByInput, skip: Int, where: AddressWhereInput): [Address!]!
+  addressesConnection(after: String, before: String, first: Int, last: Int, orderBy: AddressOrderByInput, skip: Int, where: AddressWhereInput): AddressConnection!
+  invoice(where: InvoiceWhereUniqueInput!): Invoice
+  invoices(after: String, before: String, first: Int, last: Int, orderBy: InvoiceOrderByInput, skip: Int, where: InvoiceWhereInput): [Invoice!]!
+  invoicesConnection(after: String, before: String, first: Int, last: Int, orderBy: InvoiceOrderByInput, skip: Int, where: InvoiceWhereInput): InvoiceConnection!
+  payment(where: PaymentWhereUniqueInput!): Payment
+  payments(after: String, before: String, first: Int, last: Int, orderBy: PaymentOrderByInput, skip: Int, where: PaymentWhereInput): [Payment!]!
+  paymentsConnection(after: String, before: String, first: Int, last: Int, orderBy: PaymentOrderByInput, skip: Int, where: PaymentWhereInput): PaymentConnection!
+  product(where: ProductWhereUniqueInput!): Product
+  productItem(where: ProductItemWhereUniqueInput!): ProductItem
+  productItems(after: String, before: String, first: Int, last: Int, orderBy: ProductItemOrderByInput, skip: Int, where: ProductItemWhereInput): [ProductItem!]!
+  productItemsConnection(after: String, before: String, first: Int, last: Int, orderBy: ProductItemOrderByInput, skip: Int, where: ProductItemWhereInput): ProductItemConnection!
+  products(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): [Product!]!
+  productsConnection(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): ProductConnection!
+  quotation(where: QuotationWhereUniqueInput!): Quotation
+  quotations(after: String, before: String, first: Int, last: Int, orderBy: QuotationOrderByInput, skip: Int, where: QuotationWhereInput): [Quotation!]!
+  quotationsConnection(after: String, before: String, first: Int, last: Int, orderBy: QuotationOrderByInput, skip: Int, where: QuotationWhereInput): QuotationConnection!
+  saleman(where: SalemanWhereUniqueInput!): Saleman
+  salemen(after: String, before: String, first: Int, last: Int, orderBy: SalemanOrderByInput, skip: Int, where: SalemanWhereInput): [Saleman!]!
+  salemenConnection(after: String, before: String, first: Int, last: Int, orderBy: SalemanOrderByInput, skip: Int, where: SalemanWhereInput): SalemanConnection!
+  shipping(where: ShippingWhereUniqueInput!): Shipping
+  shippings(after: String, before: String, first: Int, last: Int, orderBy: ShippingOrderByInput, skip: Int, where: ShippingWhereInput): [Shipping!]!
+  shippingsConnection(after: String, before: String, first: Int, last: Int, orderBy: ShippingOrderByInput, skip: Int, where: ShippingWhereInput): ShippingConnection!
+  shoppingCart(where: ShoppingCartWhereUniqueInput!): ShoppingCart
+  shoppingCarts(after: String, before: String, first: Int, last: Int, orderBy: ShoppingCartOrderByInput, skip: Int, where: ShoppingCartWhereInput): [ShoppingCart!]!
+  shoppingCartsConnection(after: String, before: String, first: Int, last: Int, orderBy: ShoppingCartOrderByInput, skip: Int, where: ShoppingCartWhereInput): ShoppingCartConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
+  usersConnection(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): UserConnection!
+}
+
+type Quotation {
+  createdAt: DateTime!
+  customer: User!
+  docId: String!
+  id: ID!
+  payment: Payment
+  productItems(after: String, before: String, first: Int, last: Int, orderBy: ProductItemOrderByInput, skip: Int, where: ProductItemWhereInput): [ProductItem!]
+  saleman: Saleman!
+  shipping: Shipping
+  updatedAt: DateTime!
+}
+
+type QuotationConnection {
+  aggregate: AggregateQuotation!
+  edges: [QuotationEdge!]!
+  pageInfo: PageInfo!
+}
+
+input QuotationCreateInput {
+  customer: UserCreateOneWithoutQuotationsInput!
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutQuotationInput
+  productItems: ProductItemCreateManyWithoutQuotationInput
+  saleman: SalemanCreateOneWithoutQuotationsInput!
+  shipping: ShippingCreateOneWithoutQuotationInput
+}
+
+input QuotationCreateManyWithoutCustomerInput {
+  connect: [QuotationWhereUniqueInput!]
+  create: [QuotationCreateWithoutCustomerInput!]
+}
+
+input QuotationCreateManyWithoutSalemanInput {
+  connect: [QuotationWhereUniqueInput!]
+  create: [QuotationCreateWithoutSalemanInput!]
+}
+
+input QuotationCreateOneWithoutPaymentInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateWithoutPaymentInput
+}
+
+input QuotationCreateOneWithoutProductItemsInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateWithoutProductItemsInput
+}
+
+input QuotationCreateOneWithoutShippingInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateWithoutShippingInput
+}
+
+input QuotationCreateWithoutCustomerInput {
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutQuotationInput
+  productItems: ProductItemCreateManyWithoutQuotationInput
+  saleman: SalemanCreateOneWithoutQuotationsInput!
+  shipping: ShippingCreateOneWithoutQuotationInput
+}
+
+input QuotationCreateWithoutPaymentInput {
+  customer: UserCreateOneWithoutQuotationsInput!
+  docId: String!
+  id: ID
+  productItems: ProductItemCreateManyWithoutQuotationInput
+  saleman: SalemanCreateOneWithoutQuotationsInput!
+  shipping: ShippingCreateOneWithoutQuotationInput
+}
+
+input QuotationCreateWithoutProductItemsInput {
+  customer: UserCreateOneWithoutQuotationsInput!
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutQuotationInput
+  saleman: SalemanCreateOneWithoutQuotationsInput!
+  shipping: ShippingCreateOneWithoutQuotationInput
+}
+
+input QuotationCreateWithoutSalemanInput {
+  customer: UserCreateOneWithoutQuotationsInput!
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutQuotationInput
+  productItems: ProductItemCreateManyWithoutQuotationInput
+  shipping: ShippingCreateOneWithoutQuotationInput
+}
+
+input QuotationCreateWithoutShippingInput {
+  customer: UserCreateOneWithoutQuotationsInput!
+  docId: String!
+  id: ID
+  payment: PaymentCreateOneWithoutQuotationInput
+  productItems: ProductItemCreateManyWithoutQuotationInput
+  saleman: SalemanCreateOneWithoutQuotationsInput!
+}
+
+type QuotationEdge {
+  cursor: String!
+  node: Quotation!
+}
+
+enum QuotationOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  docId_ASC
+  docId_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input QuotationScalarWhereInput {
+  AND: [QuotationScalarWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [QuotationScalarWhereInput!]
+  OR: [QuotationScalarWhereInput!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input QuotationUpdateInput {
+  customer: UserUpdateOneRequiredWithoutQuotationsInput
+  docId: String
+  payment: PaymentUpdateOneWithoutQuotationInput
+  productItems: ProductItemUpdateManyWithoutQuotationInput
+  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  shipping: ShippingUpdateOneWithoutQuotationInput
+}
+
+input QuotationUpdateManyDataInput {
+  docId: String
+}
+
+input QuotationUpdateManyMutationInput {
+  docId: String
+}
+
+input QuotationUpdateManyWithoutCustomerInput {
+  connect: [QuotationWhereUniqueInput!]
+  create: [QuotationCreateWithoutCustomerInput!]
+  delete: [QuotationWhereUniqueInput!]
+  deleteMany: [QuotationScalarWhereInput!]
+  disconnect: [QuotationWhereUniqueInput!]
+  set: [QuotationWhereUniqueInput!]
+  update: [QuotationUpdateWithWhereUniqueWithoutCustomerInput!]
+  updateMany: [QuotationUpdateManyWithWhereNestedInput!]
+  upsert: [QuotationUpsertWithWhereUniqueWithoutCustomerInput!]
+}
+
+input QuotationUpdateManyWithoutSalemanInput {
+  connect: [QuotationWhereUniqueInput!]
+  create: [QuotationCreateWithoutSalemanInput!]
+  delete: [QuotationWhereUniqueInput!]
+  deleteMany: [QuotationScalarWhereInput!]
+  disconnect: [QuotationWhereUniqueInput!]
+  set: [QuotationWhereUniqueInput!]
+  update: [QuotationUpdateWithWhereUniqueWithoutSalemanInput!]
+  updateMany: [QuotationUpdateManyWithWhereNestedInput!]
+  upsert: [QuotationUpsertWithWhereUniqueWithoutSalemanInput!]
+}
+
+input QuotationUpdateManyWithWhereNestedInput {
+  data: QuotationUpdateManyDataInput!
+  where: QuotationScalarWhereInput!
+}
+
+input QuotationUpdateOneRequiredWithoutPaymentInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateWithoutPaymentInput
+  update: QuotationUpdateWithoutPaymentDataInput
+  upsert: QuotationUpsertWithoutPaymentInput
+}
+
+input QuotationUpdateOneRequiredWithoutShippingInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateWithoutShippingInput
+  update: QuotationUpdateWithoutShippingDataInput
+  upsert: QuotationUpsertWithoutShippingInput
+}
+
+input QuotationUpdateOneWithoutProductItemsInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateWithoutProductItemsInput
+  delete: Boolean
+  disconnect: Boolean
+  update: QuotationUpdateWithoutProductItemsDataInput
+  upsert: QuotationUpsertWithoutProductItemsInput
+}
+
+input QuotationUpdateWithoutCustomerDataInput {
+  docId: String
+  payment: PaymentUpdateOneWithoutQuotationInput
+  productItems: ProductItemUpdateManyWithoutQuotationInput
+  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  shipping: ShippingUpdateOneWithoutQuotationInput
+}
+
+input QuotationUpdateWithoutPaymentDataInput {
+  customer: UserUpdateOneRequiredWithoutQuotationsInput
+  docId: String
+  productItems: ProductItemUpdateManyWithoutQuotationInput
+  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  shipping: ShippingUpdateOneWithoutQuotationInput
+}
+
+input QuotationUpdateWithoutProductItemsDataInput {
+  customer: UserUpdateOneRequiredWithoutQuotationsInput
+  docId: String
+  payment: PaymentUpdateOneWithoutQuotationInput
+  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  shipping: ShippingUpdateOneWithoutQuotationInput
+}
+
+input QuotationUpdateWithoutSalemanDataInput {
+  customer: UserUpdateOneRequiredWithoutQuotationsInput
+  docId: String
+  payment: PaymentUpdateOneWithoutQuotationInput
+  productItems: ProductItemUpdateManyWithoutQuotationInput
+  shipping: ShippingUpdateOneWithoutQuotationInput
+}
+
+input QuotationUpdateWithoutShippingDataInput {
+  customer: UserUpdateOneRequiredWithoutQuotationsInput
+  docId: String
+  payment: PaymentUpdateOneWithoutQuotationInput
+  productItems: ProductItemUpdateManyWithoutQuotationInput
+  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+}
+
+input QuotationUpdateWithWhereUniqueWithoutCustomerInput {
+  data: QuotationUpdateWithoutCustomerDataInput!
+  where: QuotationWhereUniqueInput!
+}
+
+input QuotationUpdateWithWhereUniqueWithoutSalemanInput {
+  data: QuotationUpdateWithoutSalemanDataInput!
+  where: QuotationWhereUniqueInput!
+}
+
+input QuotationUpsertWithoutPaymentInput {
+  create: QuotationCreateWithoutPaymentInput!
+  update: QuotationUpdateWithoutPaymentDataInput!
+}
+
+input QuotationUpsertWithoutProductItemsInput {
+  create: QuotationCreateWithoutProductItemsInput!
+  update: QuotationUpdateWithoutProductItemsDataInput!
+}
+
+input QuotationUpsertWithoutShippingInput {
+  create: QuotationCreateWithoutShippingInput!
+  update: QuotationUpdateWithoutShippingDataInput!
+}
+
+input QuotationUpsertWithWhereUniqueWithoutCustomerInput {
+  create: QuotationCreateWithoutCustomerInput!
+  update: QuotationUpdateWithoutCustomerDataInput!
+  where: QuotationWhereUniqueInput!
+}
+
+input QuotationUpsertWithWhereUniqueWithoutSalemanInput {
+  create: QuotationCreateWithoutSalemanInput!
+  update: QuotationUpdateWithoutSalemanDataInput!
+  where: QuotationWhereUniqueInput!
+}
+
+input QuotationWhereInput {
+  AND: [QuotationWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  customer: UserWhereInput
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [QuotationWhereInput!]
+  OR: [QuotationWhereInput!]
+  payment: PaymentWhereInput
+  productItems_every: ProductItemWhereInput
+  productItems_none: ProductItemWhereInput
+  productItems_some: ProductItemWhereInput
+  saleman: SalemanWhereInput
+  shipping: ShippingWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input QuotationWhereUniqueInput {
+  id: ID
+}
+
+type Saleman {
+  createdAt: DateTime!
+  id: ID!
+  invoices(after: String, before: String, first: Int, last: Int, orderBy: InvoiceOrderByInput, skip: Int, where: InvoiceWhereInput): [Invoice!]
+  payments(after: String, before: String, first: Int, last: Int, orderBy: PaymentOrderByInput, skip: Int, where: PaymentWhereInput): [Payment!]
+  quotations(after: String, before: String, first: Int, last: Int, orderBy: QuotationOrderByInput, skip: Int, where: QuotationWhereInput): [Quotation!]
+  updatedAt: DateTime!
+}
+
+type SalemanConnection {
+  aggregate: AggregateSaleman!
+  edges: [SalemanEdge!]!
+  pageInfo: PageInfo!
+}
+
+input SalemanCreateInput {
+  id: ID
+  invoices: InvoiceCreateManyWithoutSalemanInput
+  payments: PaymentCreateManyWithoutSalemanInput
+  quotations: QuotationCreateManyWithoutSalemanInput
+}
+
+input SalemanCreateOneWithoutInvoicesInput {
+  connect: SalemanWhereUniqueInput
+  create: SalemanCreateWithoutInvoicesInput
+}
+
+input SalemanCreateOneWithoutPaymentsInput {
+  connect: SalemanWhereUniqueInput
+  create: SalemanCreateWithoutPaymentsInput
+}
+
+input SalemanCreateOneWithoutQuotationsInput {
+  connect: SalemanWhereUniqueInput
+  create: SalemanCreateWithoutQuotationsInput
+}
+
+input SalemanCreateWithoutInvoicesInput {
+  id: ID
+  payments: PaymentCreateManyWithoutSalemanInput
+  quotations: QuotationCreateManyWithoutSalemanInput
+}
+
+input SalemanCreateWithoutPaymentsInput {
+  id: ID
+  invoices: InvoiceCreateManyWithoutSalemanInput
+  quotations: QuotationCreateManyWithoutSalemanInput
+}
+
+input SalemanCreateWithoutQuotationsInput {
+  id: ID
+  invoices: InvoiceCreateManyWithoutSalemanInput
+  payments: PaymentCreateManyWithoutSalemanInput
+}
+
+type SalemanEdge {
+  cursor: String!
+  node: Saleman!
+}
+
+enum SalemanOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input SalemanUpdateInput {
+  invoices: InvoiceUpdateManyWithoutSalemanInput
+  payments: PaymentUpdateManyWithoutSalemanInput
+  quotations: QuotationUpdateManyWithoutSalemanInput
+}
+
+input SalemanUpdateOneRequiredWithoutInvoicesInput {
+  connect: SalemanWhereUniqueInput
+  create: SalemanCreateWithoutInvoicesInput
+  update: SalemanUpdateWithoutInvoicesDataInput
+  upsert: SalemanUpsertWithoutInvoicesInput
+}
+
+input SalemanUpdateOneRequiredWithoutPaymentsInput {
+  connect: SalemanWhereUniqueInput
+  create: SalemanCreateWithoutPaymentsInput
+  update: SalemanUpdateWithoutPaymentsDataInput
+  upsert: SalemanUpsertWithoutPaymentsInput
+}
+
+input SalemanUpdateOneRequiredWithoutQuotationsInput {
+  connect: SalemanWhereUniqueInput
+  create: SalemanCreateWithoutQuotationsInput
+  update: SalemanUpdateWithoutQuotationsDataInput
+  upsert: SalemanUpsertWithoutQuotationsInput
+}
+
+input SalemanUpdateWithoutInvoicesDataInput {
+  payments: PaymentUpdateManyWithoutSalemanInput
+  quotations: QuotationUpdateManyWithoutSalemanInput
+}
+
+input SalemanUpdateWithoutPaymentsDataInput {
+  invoices: InvoiceUpdateManyWithoutSalemanInput
+  quotations: QuotationUpdateManyWithoutSalemanInput
+}
+
+input SalemanUpdateWithoutQuotationsDataInput {
+  invoices: InvoiceUpdateManyWithoutSalemanInput
+  payments: PaymentUpdateManyWithoutSalemanInput
+}
+
+input SalemanUpsertWithoutInvoicesInput {
+  create: SalemanCreateWithoutInvoicesInput!
+  update: SalemanUpdateWithoutInvoicesDataInput!
+}
+
+input SalemanUpsertWithoutPaymentsInput {
+  create: SalemanCreateWithoutPaymentsInput!
+  update: SalemanUpdateWithoutPaymentsDataInput!
+}
+
+input SalemanUpsertWithoutQuotationsInput {
+  create: SalemanCreateWithoutQuotationsInput!
+  update: SalemanUpdateWithoutQuotationsDataInput!
+}
+
+input SalemanWhereInput {
+  AND: [SalemanWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  invoices_every: InvoiceWhereInput
+  invoices_none: InvoiceWhereInput
+  invoices_some: InvoiceWhereInput
+  NOT: [SalemanWhereInput!]
+  OR: [SalemanWhereInput!]
+  payments_every: PaymentWhereInput
+  payments_none: PaymentWhereInput
+  payments_some: PaymentWhereInput
+  quotations_every: QuotationWhereInput
+  quotations_none: QuotationWhereInput
+  quotations_some: QuotationWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input SalemanWhereUniqueInput {
+  id: ID
+}
+
+type Shipping {
+  address: Address!
+  createdAt: DateTime!
+  docId: String!
+  id: ID!
+  invoce: Invoice!
+  quotation: Quotation!
+  updatedAt: DateTime!
+}
+
+type ShippingConnection {
+  aggregate: AggregateShipping!
+  edges: [ShippingEdge!]!
+  pageInfo: PageInfo!
+}
+
+input ShippingCreateInput {
+  address: AddressCreateOneWithoutShippingInput!
+  docId: String!
+  id: ID
+  invoce: InvoiceCreateOneInput!
+  quotation: QuotationCreateOneWithoutShippingInput!
+}
+
+input ShippingCreateManyWithoutAddressInput {
+  connect: [ShippingWhereUniqueInput!]
+  create: [ShippingCreateWithoutAddressInput!]
+}
+
+input ShippingCreateOneWithoutQuotationInput {
+  connect: ShippingWhereUniqueInput
+  create: ShippingCreateWithoutQuotationInput
+}
+
+input ShippingCreateWithoutAddressInput {
+  docId: String!
+  id: ID
+  invoce: InvoiceCreateOneInput!
+  quotation: QuotationCreateOneWithoutShippingInput!
+}
+
+input ShippingCreateWithoutQuotationInput {
+  address: AddressCreateOneWithoutShippingInput!
+  docId: String!
+  id: ID
+  invoce: InvoiceCreateOneInput!
+}
+
+type ShippingEdge {
+  cursor: String!
+  node: Shipping!
+}
+
+enum ShippingOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  docId_ASC
+  docId_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input ShippingScalarWhereInput {
+  AND: [ShippingScalarWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [ShippingScalarWhereInput!]
+  OR: [ShippingScalarWhereInput!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input ShippingUpdateInput {
+  address: AddressUpdateOneRequiredWithoutShippingInput
+  docId: String
+  invoce: InvoiceUpdateOneRequiredInput
+  quotation: QuotationUpdateOneRequiredWithoutShippingInput
+}
+
+input ShippingUpdateManyDataInput {
+  docId: String
+}
+
+input ShippingUpdateManyMutationInput {
+  docId: String
+}
+
+input ShippingUpdateManyWithoutAddressInput {
+  connect: [ShippingWhereUniqueInput!]
+  create: [ShippingCreateWithoutAddressInput!]
+  delete: [ShippingWhereUniqueInput!]
+  deleteMany: [ShippingScalarWhereInput!]
+  disconnect: [ShippingWhereUniqueInput!]
+  set: [ShippingWhereUniqueInput!]
+  update: [ShippingUpdateWithWhereUniqueWithoutAddressInput!]
+  updateMany: [ShippingUpdateManyWithWhereNestedInput!]
+  upsert: [ShippingUpsertWithWhereUniqueWithoutAddressInput!]
+}
+
+input ShippingUpdateManyWithWhereNestedInput {
+  data: ShippingUpdateManyDataInput!
+  where: ShippingScalarWhereInput!
+}
+
+input ShippingUpdateOneWithoutQuotationInput {
+  connect: ShippingWhereUniqueInput
+  create: ShippingCreateWithoutQuotationInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ShippingUpdateWithoutQuotationDataInput
+  upsert: ShippingUpsertWithoutQuotationInput
+}
+
+input ShippingUpdateWithoutAddressDataInput {
+  docId: String
+  invoce: InvoiceUpdateOneRequiredInput
+  quotation: QuotationUpdateOneRequiredWithoutShippingInput
+}
+
+input ShippingUpdateWithoutQuotationDataInput {
+  address: AddressUpdateOneRequiredWithoutShippingInput
+  docId: String
+  invoce: InvoiceUpdateOneRequiredInput
+}
+
+input ShippingUpdateWithWhereUniqueWithoutAddressInput {
+  data: ShippingUpdateWithoutAddressDataInput!
+  where: ShippingWhereUniqueInput!
+}
+
+input ShippingUpsertWithoutQuotationInput {
+  create: ShippingCreateWithoutQuotationInput!
+  update: ShippingUpdateWithoutQuotationDataInput!
+}
+
+input ShippingUpsertWithWhereUniqueWithoutAddressInput {
+  create: ShippingCreateWithoutAddressInput!
+  update: ShippingUpdateWithoutAddressDataInput!
+  where: ShippingWhereUniqueInput!
+}
+
+input ShippingWhereInput {
+  address: AddressWhereInput
+  AND: [ShippingWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  docId: String
+  docId_contains: String
+  docId_ends_with: String
+  docId_gt: String
+  docId_gte: String
+  docId_in: [String!]
+  docId_lt: String
+  docId_lte: String
+  docId_not: String
+  docId_not_contains: String
+  docId_not_ends_with: String
+  docId_not_in: [String!]
+  docId_not_starts_with: String
+  docId_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  invoce: InvoiceWhereInput
+  NOT: [ShippingWhereInput!]
+  OR: [ShippingWhereInput!]
+  quotation: QuotationWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input ShippingWhereUniqueInput {
+  id: ID
+}
+
+type ShoppingCart {
+  createdAt: DateTime!
+  customer: User!
+  id: ID!
+  productItems(after: String, before: String, first: Int, last: Int, orderBy: ProductItemOrderByInput, skip: Int, where: ProductItemWhereInput): [ProductItem!]
+  updatedAt: DateTime!
+}
+
+type ShoppingCartConnection {
+  aggregate: AggregateShoppingCart!
+  edges: [ShoppingCartEdge!]!
+  pageInfo: PageInfo!
+}
+
+input ShoppingCartCreateInput {
+  customer: UserCreateOneWithoutShoppingCartInput!
+  id: ID
+  productItems: ProductItemCreateManyWithoutShoppingCartInput
+}
+
+input ShoppingCartCreateOneWithoutCustomerInput {
+  connect: ShoppingCartWhereUniqueInput
+  create: ShoppingCartCreateWithoutCustomerInput
+}
+
+input ShoppingCartCreateOneWithoutProductItemsInput {
+  connect: ShoppingCartWhereUniqueInput
+  create: ShoppingCartCreateWithoutProductItemsInput
+}
+
+input ShoppingCartCreateWithoutCustomerInput {
+  id: ID
+  productItems: ProductItemCreateManyWithoutShoppingCartInput
+}
+
+input ShoppingCartCreateWithoutProductItemsInput {
+  customer: UserCreateOneWithoutShoppingCartInput!
+  id: ID
+}
+
+type ShoppingCartEdge {
+  cursor: String!
+  node: ShoppingCart!
+}
+
+enum ShoppingCartOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input ShoppingCartUpdateInput {
+  customer: UserUpdateOneRequiredWithoutShoppingCartInput
+  productItems: ProductItemUpdateManyWithoutShoppingCartInput
+}
+
+input ShoppingCartUpdateOneRequiredWithoutCustomerInput {
+  connect: ShoppingCartWhereUniqueInput
+  create: ShoppingCartCreateWithoutCustomerInput
+  update: ShoppingCartUpdateWithoutCustomerDataInput
+  upsert: ShoppingCartUpsertWithoutCustomerInput
+}
+
+input ShoppingCartUpdateOneRequiredWithoutProductItemsInput {
+  connect: ShoppingCartWhereUniqueInput
+  create: ShoppingCartCreateWithoutProductItemsInput
+  update: ShoppingCartUpdateWithoutProductItemsDataInput
+  upsert: ShoppingCartUpsertWithoutProductItemsInput
+}
+
+input ShoppingCartUpdateWithoutCustomerDataInput {
+  productItems: ProductItemUpdateManyWithoutShoppingCartInput
+}
+
+input ShoppingCartUpdateWithoutProductItemsDataInput {
+  customer: UserUpdateOneRequiredWithoutShoppingCartInput
+}
+
+input ShoppingCartUpsertWithoutCustomerInput {
+  create: ShoppingCartCreateWithoutCustomerInput!
+  update: ShoppingCartUpdateWithoutCustomerDataInput!
+}
+
+input ShoppingCartUpsertWithoutProductItemsInput {
+  create: ShoppingCartCreateWithoutProductItemsInput!
+  update: ShoppingCartUpdateWithoutProductItemsDataInput!
+}
+
+input ShoppingCartWhereInput {
+  AND: [ShoppingCartWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  customer: UserWhereInput
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [ShoppingCartWhereInput!]
+  OR: [ShoppingCartWhereInput!]
+  productItems_every: ProductItemWhereInput
+  productItems_none: ProductItemWhereInput
+  productItems_some: ProductItemWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input ShoppingCartWhereUniqueInput {
+  id: ID
+}
+
+type User {
+  addresses(after: String, before: String, first: Int, last: Int, orderBy: AddressOrderByInput, skip: Int, where: AddressWhereInput): [Address!]
+  createdAt: DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  password: String!
+  payments(after: String, before: String, first: Int, last: Int, orderBy: PaymentOrderByInput, skip: Int, where: PaymentWhereInput): [Payment!]
+  quotations(after: String, before: String, first: Int, last: Int, orderBy: QuotationOrderByInput, skip: Int, where: QuotationWhereInput): [Quotation!]
+  shoppingCart: ShoppingCart!
+  updatedAt: DateTime!
+}
+
+type UserConnection {
+  aggregate: AggregateUser!
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+}
+
+input UserCreateInput {
+  addresses: AddressCreateManyWithoutCustomerInput
+  email: String!
+  id: ID
+  name: String!
+  password: String!
+  payments: PaymentCreateManyWithoutCustomerInput
+  quotations: QuotationCreateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
+}
+
+input UserCreateOneWithoutAddressesInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutAddressesInput
+}
+
+input UserCreateOneWithoutPaymentsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutPaymentsInput
+}
+
+input UserCreateOneWithoutQuotationsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutQuotationsInput
+}
+
+input UserCreateOneWithoutShoppingCartInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutShoppingCartInput
+}
+
+input UserCreateWithoutAddressesInput {
+  email: String!
+  id: ID
+  name: String!
+  password: String!
+  payments: PaymentCreateManyWithoutCustomerInput
+  quotations: QuotationCreateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
+}
+
+input UserCreateWithoutPaymentsInput {
+  addresses: AddressCreateManyWithoutCustomerInput
+  email: String!
+  id: ID
+  name: String!
+  password: String!
+  quotations: QuotationCreateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
+}
+
+input UserCreateWithoutQuotationsInput {
+  addresses: AddressCreateManyWithoutCustomerInput
+  email: String!
+  id: ID
+  name: String!
+  password: String!
+  payments: PaymentCreateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
+}
+
+input UserCreateWithoutShoppingCartInput {
+  addresses: AddressCreateManyWithoutCustomerInput
+  email: String!
+  id: ID
+  name: String!
+  password: String!
+  payments: PaymentCreateManyWithoutCustomerInput
+  quotations: QuotationCreateManyWithoutCustomerInput
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
+
+enum UserOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  email_ASC
+  email_DESC
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  password_ASC
+  password_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input UserUpdateInput {
+  addresses: AddressUpdateManyWithoutCustomerInput
+  email: String
+  name: String
+  password: String
+  payments: PaymentUpdateManyWithoutCustomerInput
+  quotations: QuotationUpdateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
 }
 
 input UserUpdateManyMutationInput {
+  email: String
   name: String
+  password: String
+}
+
+input UserUpdateOneRequiredWithoutAddressesInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutAddressesInput
+  update: UserUpdateWithoutAddressesDataInput
+  upsert: UserUpsertWithoutAddressesInput
+}
+
+input UserUpdateOneRequiredWithoutPaymentsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutPaymentsInput
+  update: UserUpdateWithoutPaymentsDataInput
+  upsert: UserUpsertWithoutPaymentsInput
+}
+
+input UserUpdateOneRequiredWithoutQuotationsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutQuotationsInput
+  update: UserUpdateWithoutQuotationsDataInput
+  upsert: UserUpsertWithoutQuotationsInput
+}
+
+input UserUpdateOneRequiredWithoutShoppingCartInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutShoppingCartInput
+  update: UserUpdateWithoutShoppingCartDataInput
+  upsert: UserUpsertWithoutShoppingCartInput
+}
+
+input UserUpdateWithoutAddressesDataInput {
+  email: String
+  name: String
+  password: String
+  payments: PaymentUpdateManyWithoutCustomerInput
+  quotations: QuotationUpdateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
+}
+
+input UserUpdateWithoutPaymentsDataInput {
+  addresses: AddressUpdateManyWithoutCustomerInput
+  email: String
+  name: String
+  password: String
+  quotations: QuotationUpdateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
+}
+
+input UserUpdateWithoutQuotationsDataInput {
+  addresses: AddressUpdateManyWithoutCustomerInput
+  email: String
+  name: String
+  password: String
+  payments: PaymentUpdateManyWithoutCustomerInput
+  shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
+}
+
+input UserUpdateWithoutShoppingCartDataInput {
+  addresses: AddressUpdateManyWithoutCustomerInput
+  email: String
+  name: String
+  password: String
+  payments: PaymentUpdateManyWithoutCustomerInput
+  quotations: QuotationUpdateManyWithoutCustomerInput
+}
+
+input UserUpsertWithoutAddressesInput {
+  create: UserCreateWithoutAddressesInput!
+  update: UserUpdateWithoutAddressesDataInput!
+}
+
+input UserUpsertWithoutPaymentsInput {
+  create: UserCreateWithoutPaymentsInput!
+  update: UserUpdateWithoutPaymentsDataInput!
+}
+
+input UserUpsertWithoutQuotationsInput {
+  create: UserCreateWithoutQuotationsInput!
+  update: UserUpdateWithoutQuotationsDataInput!
+}
+
+input UserUpsertWithoutShoppingCartInput {
+  create: UserCreateWithoutShoppingCartInput!
+  update: UserUpdateWithoutShoppingCartDataInput!
 }
 
 input UserWhereInput {
+  addresses_every: AddressWhereInput
+  addresses_none: AddressWhereInput
+  addresses_some: AddressWhereInput
   AND: [UserWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  email: String
+  email_contains: String
+  email_ends_with: String
+  email_gt: String
+  email_gte: String
+  email_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_not: String
+  email_not_contains: String
+  email_not_ends_with: String
+  email_not_in: [String!]
+  email_not_starts_with: String
+  email_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -106,6 +2656,35 @@ input UserWhereInput {
   name_starts_with: String
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
+  password: String
+  password_contains: String
+  password_ends_with: String
+  password_gt: String
+  password_gte: String
+  password_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_not: String
+  password_not_contains: String
+  password_not_ends_with: String
+  password_not_in: [String!]
+  password_not_starts_with: String
+  password_starts_with: String
+  payments_every: PaymentWhereInput
+  payments_none: PaymentWhereInput
+  payments_some: PaymentWhereInput
+  quotations_every: QuotationWhereInput
+  quotations_none: QuotationWhereInput
+  quotations_some: QuotationWhereInput
+  shoppingCart: ShoppingCartWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
 }
 
 input UserWhereUniqueInput {

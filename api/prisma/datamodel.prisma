@@ -1,4 +1,117 @@
 type User {
   id: ID! @id
   name: String!
+  email: String!
+  password: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  shoppingCart: ShoppingCart!
+  quotations: [Quotation!]
+  payments: [Payment!]
+  addresses: [Address]
+
 }
+
+type Address {
+  id: ID! @id
+  name: String!
+  Address: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  customer: User! @relation(link: INLINE)
+  invoices: [Invoice]
+  shipping: [Shipping]
+
+}
+
+type Payment {
+  id: ID! @id
+  docId: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  customer: User! @relation(link: INLINE)
+  saleman: Saleman! @relation(link: INLINE)
+  quotation: Quotation! @relation(link: INLINE)
+  Invoice: Invoice 
+
+
+}
+
+type Saleman {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  payments: [Payment]
+  invoices: [Invoice]
+  quotations: [Quotation]
+
+}
+
+type Invoice {
+  id: ID! @id
+  docId: String!
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  saleman: Saleman! @relation(link: INLINE)
+  address: Address @relation(link: INLINE)
+  payment: Payment @relation(link: INLINE)
+
+
+}
+
+type Shipping {
+  id: ID! @id
+  docId: String!
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  invoce: Invoice! @relation(link: INLINE)
+  address: Address! @relation(link: INLINE)
+  quotation: Quotation! @relation(link: INLINE)
+
+}
+
+type Product {
+  id: ID! @id
+  name: String!
+  price: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  productItem: ProductItem!
+}
+
+type ProductItem {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  product: Product! @relation(link: INLINE)
+  shoppingCart: ShoppingCart! @relation(link: INLINE)
+  quotation: Quotation @relation(link: INLINE)
+
+}
+
+type ShoppingCart {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  productItems: [ProductItem!]
+  customer: User! @relation(link: INLINE)
+
+}
+
+
+type Quotation {
+  id: ID! @id
+  docId: String!
+  productItems: [ProductItem!]
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  saleman: Saleman! @relation(link: INLINE)
+  payment: Payment 
+  shipping: Shipping 
+  customer: User! @relation(link: INLINE)
+
+
+}
+
