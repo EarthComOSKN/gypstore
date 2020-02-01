@@ -1,4 +1,3 @@
-// import { FormInput } from "../component/FormInput"
 import styled from "@emotion/styled";
 import { Button, Form, Input, Tooltip, Icon, } from "antd";
 import { useState } from "react";
@@ -18,23 +17,6 @@ const Container = styled.div`
     }
   }
 `;
-
-// const title = styled.div`
-//   margin: 10px 0;
-// `;
-
-// const [inputs, setInputs] = useState({ 
-//   displayName: '',
-//   email: '',
-//   password: '',
-//   confirmPassword: ''}
-// );
-
-// const handleChange = (event) => {
-//   const { name, value } = event.target;
-
-//   setInputs(inputs => ({ ...inputs, [name]: value}));
-// };
 
 function SignUp(props) {
   const { getFieldDecorator } = props.form;
@@ -79,44 +61,6 @@ function SignUp(props) {
   return (
     <Container>
       <h1>ลงทะเบียน</h1>
-      {/* <h2 className='title'>ฉันยังไม่เป็นสมาชิก</h2>
-      <span>สมัครสมาชิกด้วยอีเมล</span>
-      <form>
-        <FormInput
-          type='text'
-          name='displayName'
-          value={inputs.displayName}
-          onChange={this.handleChange}
-          label={'Display Name'}
-          required
-        />
-        <FormInput
-          type='email'
-          name='email'
-          value={inputs.email}
-          onChange={handleChange}
-          label={'Email'}
-          required
-        />
-        <FormInput
-          type='password'
-          name='password'
-          value={inputs.password}
-          onChange={handleChange}
-          label={'Password'}
-          required
-        />  
-        <FormInput
-          type='password'
-          name='confirmPassword'
-          value={inputs.confirmPassword}
-          onChange={handleChange}
-          label={'Confirm Password'}
-          required
-        />
-        <Button>SIGN UP</Button>
-      </form> */}
-
       <Form>
         <Form.Item
           label={

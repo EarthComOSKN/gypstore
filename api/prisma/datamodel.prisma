@@ -1,8 +1,10 @@
 type User {
   id: ID! @id
+  type: String!
   name: String!
-  email: String!
+  email: String! @unique
   password: String!
+  phone: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   shoppingCart: ShoppingCart!
@@ -27,13 +29,13 @@ type Address {
 type Payment {
   id: ID! @id
   docId: String!
+  amount: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   customer: User! @relation(link: INLINE)
   saleman: Saleman! @relation(link: INLINE)
   quotation: Quotation! @relation(link: INLINE)
   Invoice: Invoice 
-
 
 }
 
@@ -50,19 +52,23 @@ type Saleman {
 type Invoice {
   id: ID! @id
   docId: String!
+  creditTerm: String!
 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+  user: User! @relation(link: INLINE)
+  quotation: Quotation! @relation(link: INLINE)
   saleman: Saleman! @relation(link: INLINE)
   address: Address @relation(link: INLINE)
   payment: Payment @relation(link: INLINE)
-
 
 }
 
 type Shipping {
   id: ID! @id
   docId: String!
+  dueDate: DateTime!
+  status: String!
 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
@@ -72,30 +78,46 @@ type Shipping {
 
 }
 
-type Product {
+type Category {
   id: ID! @id
   name: String!
-  price: String!
+
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  productItem: ProductItem!
+  productItem: [ProductItem]
+  category: Category @relation(link: INLINE)
+
 }
 
 type ProductItem {
   id: ID! @id
+  name: String!
+  price: String!
+  salePrice: String!
+  brand: String!
+  unitType: String!
+  description: String
+  ManuDetail: String!
+  TermDetail: String!
+  amount: Int!
+  isPublished: Boolean! @default(value: true)
+
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  product: Product! @relation(link: INLINE)
-  shoppingCart: ShoppingCart! @relation(link: INLINE)
+  category: Category! @relation(link: INLINE)
+  shoppingCart: ShoppingCart @relation(link: INLINE)
   quotation: Quotation @relation(link: INLINE)
+  image: Image! @relation(link: INLINE)
+  relatedProduct: [ProductItem] @relation(Link: INLINE)
 
 }
 
 type ShoppingCart {
   id: ID! @id
+  total_cost: Float!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  productItems: [ProductItem!]
+  productItems: [ProductItem]
   customer: User! @relation(link: INLINE)
 
 }
@@ -112,6 +134,12 @@ type Quotation {
   shipping: Shipping 
   customer: User! @relation(link: INLINE)
 
+}
+
+type Image {
+  id: ID! @id
+  filename: String!
+  description: String
 
 }
 
