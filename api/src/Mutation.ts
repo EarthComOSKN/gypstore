@@ -1,5 +1,6 @@
 import { prismaObjectType, makePrismaSchema } from "nexus-prisma";
-import { registerConfig, loginConfig } from "./feature/authen/register";
+import { registerConfig } from "./feature/authen/register";
+import { loginConfig } from "./feature/authen/login";
 export const Mutation = prismaObjectType({
   name: "Mutation",
 

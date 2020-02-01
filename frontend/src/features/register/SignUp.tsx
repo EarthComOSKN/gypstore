@@ -1,7 +1,9 @@
-// import { FormInput } from "../component/FormInput"
 import styled from "@emotion/styled";
-import { Button, Form, Input, Tooltip, Icon } from "antd";
+import { Button, Form, Input, Tooltip, Icon, message } from "antd";
 import { useState } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { REGISTER } from "./gql";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
   display: flex;
@@ -21,21 +23,42 @@ const Container = styled.div`
 `;
 
 function SignUp(props) {
-  const { getFieldDecorator } = props.form;
-
+  const { getFieldDecorator, validateFields } = props.form;
+  const router = useRouter();
   const [confirmDirty, setConfirmDirty] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [register] = useMutation(REGISTER);
 
-  const tailFormItemLayout = {
-    wrapperCol: {
-      xs: {
-        span: 24,
-        offset: 0
-      },
-      sm: {
-        span: 16,
-        offset: 6
-      }
+  const createUser = async ({ nickname, email, password, phone }) => {
+    try {
+      setLoading(true);
+      const res = await register({
+        variables: {
+          name: nickname,
+          type: "Admin",
+          email,
+          password,
+          phone
+        }
+      });
+      const { token } = res?.data?.register;
+      localStorage.setItem("userToken", token);
+      router.push("/");
+      message.success("Register Completed");
+    } catch (error) {
+      message.error(`${error}`);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    await validateFields(async (err, values) => {
+      if (!err) {
+        await createUser(values);
+      } else console.log("eeeee", err);
+    });
   };
 
   const handleConfirmBlur = e => {
@@ -45,28 +68,28 @@ function SignUp(props) {
     }
   };
 
-  const validateToNextPassword = (rule, value, callback) => {
-    const { form } = this.props;
-    if (value && confirmDirty) {
-      form.validateFields([""], { force: true });
-    }
-    callback();
-  };
+  // const validateToNextPassword = (rule, value, callback) => {
+  //   const { form } = this.props;
+  //   if (value && confirmDirty) {
+  //     form.validateFields([""], { force: true });
+  //   }
+  //   callback();
+  // };
 
-  const compareToFirstPassword = (rule, value, callback) => {
-    const { form } = this.props;
-    if (value && value !== form.getFieldValue("password")) {
-      callback("กรุณากรอกรหัสผ่านให้ตรงกัน");
-    } else {
-      callback();
-    }
-  };
+  // const compareToFirstPassword = (rule, value, callback) => {
+  //   const { form } = this.props;
+  //   console.log(value);
+  //   if (value && value !== form.getFieldValue("password")) {
+  //     callback("กรุณากรอกรหัสผ่านให้ตรงกัน");
+  //   } else {
+  //     callback();
+  //   }
+  // };
 
   return (
     <Container>
       <h1>ลงทะเบียน</h1>
-
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Item
           label={
             <span>
@@ -107,9 +130,6 @@ function SignUp(props) {
               {
                 required: true,
                 message: "กรุณาระบุรหัสผ่าน"
-              },
-              {
-                validator: validateToNextPassword
               }
             ]
           })(<Input.Password />)}
@@ -120,9 +140,6 @@ function SignUp(props) {
               {
                 required: true,
                 message: "กรุณาระบุยืนยันรหัสผ่าน"
-              },
-              {
-                validator: compareToFirstPassword
               }
             ]
           })(<Input.Password onBlur={handleConfirmBlur} />)}
@@ -133,7 +150,12 @@ function SignUp(props) {
           })(<Input style={{ width: "100%" }} />)}
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button
+            disabled={loading}
+            type="primary"
+            htmlType="submit"
+            onClick={handleSubmit}
+          >
             ลงทะเบียน
           </Button>
         </Form.Item>

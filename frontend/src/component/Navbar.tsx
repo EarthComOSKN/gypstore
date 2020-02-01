@@ -12,7 +12,7 @@ const Header = styled.div`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 1;
   a {
     color: black;
   }

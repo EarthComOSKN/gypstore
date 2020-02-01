@@ -1,5 +1,8 @@
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Form, Icon, Input, Button, Checkbox, message } from "antd";
 import styled from "@emotion/styled";
+import { useMutation } from "@apollo/react-hooks";
+import { LOGIN } from "./gql";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
   display: flex;
@@ -39,12 +42,29 @@ const LoginButton = styled.div`
   }
 `;
 
-function SignIn(props) {
-  const handleSubmit = e => {
+const SignIn = props => {
+  const [login] = useMutation(LOGIN);
+  const router = useRouter();
+
+  const handleSubmit = async e => {
     e.preventDefault();
-    props.form.validateFields((err, values) => {
+    await props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
+        const { email, password } = values;
+        try {
+          const res = await login({
+            variables: {
+              email,
+              password
+            }
+          });
+          const token = res?.data?.login?.token;
+          localStorage.setItem("userToken", token);
+          message.success("Login success");
+          router.push("/");
+        } catch (error) {
+          message.error(`${error}`);
+        }
       }
     });
   };
@@ -56,7 +76,7 @@ function SignIn(props) {
       <h1>เข้าสู่ระบบ</h1>
       <Form onSubmit={handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator("username", {
+          {getFieldDecorator("email", {
             rules: [{ required: true, message: "กรุณาใส่อีเมล" }]
           })(
             <Input
@@ -93,6 +113,6 @@ function SignIn(props) {
       </Form>
     </Container>
   );
-}
+};
 
 export default Form.create()(SignIn);
