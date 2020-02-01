@@ -97,7 +97,7 @@ type ProductItem {
   brand: String!
   unitType: String!
   description: String
-  ManuDetail: String!
+  MenuDetail: String!
   TermDetail: String!
   amount: Int!
   isPublished: Boolean! @default(value: true)

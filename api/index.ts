@@ -6,9 +6,11 @@ import { prisma } from "./src/generated/prisma-client";
 import datamodelInfo from "./src/generated/nexus-prisma";
 import { Query } from "./src/Query";
 import { Mutation } from "./src/Mutation";
-console.log("tset", datamodelInfo);
+import { User } from "./src/types/User";
+import { Me } from "./src/types/Me";
+
 const schema = makePrismaSchema({
-  types: [Query, Mutation],
+  types: [Query, Mutation, User, Me],
 
   prisma: {
     client: prisma,
