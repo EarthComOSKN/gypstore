@@ -9,12 +9,12 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export const RegisterPage = () => {
+export const SignInPage = () => {
   return (
     <div>
       <Navbar />
       <Container>
-        <SignUp />
+        <SignIn />
       </Container>
     </div>
   );

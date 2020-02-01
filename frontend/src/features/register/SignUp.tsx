@@ -1,13 +1,15 @@
+// import { FormInput } from "../component/FormInput"
 import styled from "@emotion/styled";
-import { Button, Form, Input, Tooltip, Icon, } from "antd";
+import { Button, Form, Input, Tooltip, Icon } from "antd";
 import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
-  margin: 30px 50px;
-
+  width: 80%;
+  padding-top: 4rem;
+  max-width: 25rem;
+  margin: auto;
   .ant-btn-primary {
     background-color: #ff8e0a;
     border-color: #ff8e0a;
@@ -22,37 +24,39 @@ function SignUp(props) {
   const { getFieldDecorator } = props.form;
 
   const [confirmDirty, setConfirmDirty] = useState(false);
-  
+
   const tailFormItemLayout = {
     wrapperCol: {
       xs: {
         span: 24,
-        offset: 0,
+        offset: 0
       },
       sm: {
         span: 16,
-        offset: 6,
-      },
-    },
+        offset: 6
+      }
+    }
   };
 
   const handleConfirmBlur = e => {
     const { value } = e.target;
-    {setConfirmDirty(confirmDirty || !!value)};
+    {
+      setConfirmDirty(confirmDirty || !!value);
+    }
   };
 
   const validateToNextPassword = (rule, value, callback) => {
     const { form } = this.props;
     if (value && confirmDirty) {
-      form.validateFields([''], { force: true });
+      form.validateFields([""], { force: true });
     }
     callback();
   };
 
   const compareToFirstPassword = (rule, value, callback) => {
     const { form } = this.props;
-    if (value && value !== form.getFieldValue('password')) {
-      callback('กรุณากรอกรหัสผ่านให้ตรงกัน');
+    if (value && value !== form.getFieldValue("password")) {
+      callback("กรุณากรอกรหัสผ่านให้ตรงกัน");
     } else {
       callback();
     }
@@ -61,6 +65,7 @@ function SignUp(props) {
   return (
     <Container>
       <h1>ลงทะเบียน</h1>
+
       <Form>
         <Form.Item
           label={
@@ -72,56 +77,62 @@ function SignUp(props) {
             </span>
           }
         >
-          {getFieldDecorator('nickname', {
-            rules: [{ required: true, message: 'กรุณาใส่ชื่อที่แสดง', whitespace: true }],
+          {getFieldDecorator("nickname", {
+            rules: [
+              {
+                required: true,
+                message: "กรุณาใส่ชื่อที่แสดง",
+                whitespace: true
+              }
+            ]
           })(<Input />)}
         </Form.Item>
         <Form.Item label="อีเมล">
-          {getFieldDecorator('email', {
-              rules: [
-                {
-                  type: 'email',
-                  message: 'อีเมลไม่ถูกต้อง',
-                },
-                {
-                  required: true,
-                  message: 'กรุณาระบุอีเมล',
-                },
-              ],
+          {getFieldDecorator("email", {
+            rules: [
+              {
+                type: "email",
+                message: "อีเมลไม่ถูกต้อง"
+              },
+              {
+                required: true,
+                message: "กรุณาระบุอีเมล"
+              }
+            ]
           })(<Input />)}
         </Form.Item>
         <Form.Item label="รหัสผ่าน">
-          {getFieldDecorator('password', {
+          {getFieldDecorator("password", {
             rules: [
               {
                 required: true,
-                message: 'กรุณาระบุรหัสผ่าน',
+                message: "กรุณาระบุรหัสผ่าน"
               },
               {
-                validator: validateToNextPassword,
-              },
-            ],
+                validator: validateToNextPassword
+              }
+            ]
           })(<Input.Password />)}
         </Form.Item>
         <Form.Item label="ยืนยันรหัสผ่าน" hasFeedback>
-          {getFieldDecorator('confirm', {
+          {getFieldDecorator("confirm", {
             rules: [
               {
                 required: true,
-                message: 'กรุณาระบุยืนยันรหัสผ่าน',
+                message: "กรุณาระบุยืนยันรหัสผ่าน"
               },
               {
-                validator: compareToFirstPassword,
-              },
-            ],
+                validator: compareToFirstPassword
+              }
+            ]
           })(<Input.Password onBlur={handleConfirmBlur} />)}
         </Form.Item>
         <Form.Item label="เบอร์โทรศัพท์">
-          {getFieldDecorator('phone', {
-            rules: [{ required: true, message: 'กรุณาใส่เบอร์ติดต่อ' }],
-          })(<Input style={{ width: '100%' }} />)}
+          {getFieldDecorator("phone", {
+            rules: [{ required: true, message: "กรุณาใส่เบอร์ติดต่อ" }]
+          })(<Input style={{ width: "100%" }} />)}
         </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
+        <Form.Item>
           <Button type="primary" htmlType="submit">
             ลงทะเบียน
           </Button>

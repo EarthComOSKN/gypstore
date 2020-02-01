@@ -126,7 +126,7 @@ export const Navbar = () => {
           <a>ลงทะเบียน</a>
         </Link>
         <img alt="separate-icon" src="/assets/separate-icon.png" />
-        <Link href="/login">
+        <Link href="/signin">
           <a>เข้าสู่ระบบ</a>
         </Link>
       </SubHeader>

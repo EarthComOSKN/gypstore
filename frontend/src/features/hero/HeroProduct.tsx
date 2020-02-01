@@ -12,7 +12,7 @@ const ProductList = styled.div`
   height: 100%;
   display: grid;
   margin-top: 2rem;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 1rem;
   padding: 0 3rem;
 `;
@@ -21,7 +21,6 @@ export const HeroProduct = () => {
     <Container>
       <h2>สินค้าขายดี</h2>
       <ProductList>
-        <ProductCardTall />
         <ProductCardTall />
         <ProductCardTall />
         <ProductCardTall />
