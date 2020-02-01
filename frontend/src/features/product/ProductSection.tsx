@@ -18,7 +18,7 @@ const ProductContainer = styled.div`
   height: 100%;
 `;
 
-const ProductCardWide = styled.div`
+const ProductCardWide = styled.div<{ bigcard?: Boolean }>`
   padding: 2rem;
   background-color: white;
   background-image: url("/assets/logo-without-text.png");
@@ -27,19 +27,7 @@ const ProductCardWide = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
-  grid-area: bg;
-`;
-
-const ProductCardWideSM = styled.div`
-  padding: 2rem;
-
-  background-color: white;
-  background-image: url("/assets/logo-without-text.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
+  ${props => props.bigcard && "grid-area: bg;"}
 `;
 
 type Props = {
@@ -52,11 +40,11 @@ export const ProductSection = (props: Props) => {
     <Container>
       <h2>{title}</h2>
       <ProductContainer>
+        <ProductCardWide bigcard />
         <ProductCardWide />
-        <ProductCardWideSM />
-        <ProductCardWideSM />
-        <ProductCardWideSM />
-        <ProductCardWideSM />
+        <ProductCardWide />
+        <ProductCardWide />
+        <ProductCardWide />
       </ProductContainer>
     </Container>
   );

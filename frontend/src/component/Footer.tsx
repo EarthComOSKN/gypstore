@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { Icon } from "antd";
 
 const FooterContainer = styled.div`
+  bottom: 0;
+
   height: 30rem;
   background: black;
   display: grid;
