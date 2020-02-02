@@ -1,7 +1,5 @@
-import { Navbar } from "../../component/Navbar";
-
+import { Navbar } from "../navigation/Navbar";
 import styled from "@emotion/styled";
-import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 
 const Container = styled.div`

@@ -2171,6 +2171,7 @@ type Query {
   invoice(where: InvoiceWhereUniqueInput!): Invoice
   invoices(after: String, before: String, first: Int, last: Int, orderBy: InvoiceOrderByInput, skip: Int, where: InvoiceWhereInput): [Invoice!]!
   invoicesConnection(after: String, before: String, first: Int, last: Int, orderBy: InvoiceOrderByInput, skip: Int, where: InvoiceWhereInput): InvoiceConnection!
+  me: User
   payment(where: PaymentWhereUniqueInput!): Payment
   payments(after: String, before: String, first: Int, last: Int, orderBy: PaymentOrderByInput, skip: Int, where: PaymentWhereInput): [Payment!]!
   paymentsConnection(after: String, before: String, first: Int, last: Int, orderBy: PaymentOrderByInput, skip: Int, where: PaymentWhereInput): PaymentConnection!

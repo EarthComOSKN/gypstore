@@ -3560,6 +3560,7 @@ export interface NexusGenFieldTypes {
     invoice: NexusGenRootTypes['Invoice'] | null; // Invoice
     invoices: NexusGenRootTypes['Invoice'][]; // [Invoice!]!
     invoicesConnection: NexusGenRootTypes['InvoiceConnection']; // InvoiceConnection!
+    me: NexusGenRootTypes['User'] | null; // User
     payment: NexusGenRootTypes['Payment'] | null; // Payment
     payments: NexusGenRootTypes['Payment'][]; // [Payment!]!
     paymentsConnection: NexusGenRootTypes['PaymentConnection']; // PaymentConnection!

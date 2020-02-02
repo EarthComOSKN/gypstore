@@ -5,10 +5,14 @@
   "license": "MIT",
   "dependencies": {
     "concurrently": "^5.0.2",
-    "graphql-codegen": "^0.4.0"
+    "@graphql-codegen/cli": "^1.6.1",
+    "@graphql-codegen/typescript": "^1.6.1",
+    "@graphql-codegen/typescript-operations": "1.6.1",
+    "@graphql-codegen/typescript-resolvers": "^1.6.1"
   },
   "scripts": {
     "dev": "concurrently --kill-others --names API,FRONTEND --prefix-colors 'bgMagenta.bold,bgBlue.bold' \"cd api && yarn dev\" \"cd frontend && yarn dev\"",
-    "dep-install": "yarn && cd api && yarn && cd ../frontend && yarn"
+    "dep-install": "yarn && cd api && yarn && cd ../frontend && yarn",
+    "generate": "graphql-codegen --config codegen.yml"
   }
 }

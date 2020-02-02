@@ -1,4 +1,4 @@
-import { Navbar } from "../../component/Navbar";
+import { Navbar } from "../navigation/Navbar";
 import styled from "@emotion/styled";
 import { HomeCarousel } from "./HomeCarousel";
 import { useQuery } from "@apollo/react-hooks";

@@ -4,7 +4,7 @@ import {
   mutationField,
   stringArg
 } from "nexus/dist/core";
-import { Prisma } from "../../generated/prisma-client";
+import { Prisma, UserCreateInput } from "../../generated/prisma-client";
 import { JWT_SECRET } from "../../const";
 import * as jwt from "jsonwebtoken";
 
@@ -12,10 +12,11 @@ export const registerConfig: NexusOutputFieldConfig<"Mutation", "register"> = {
   type: "Me",
   args: { data: "UserCreateInput" },
   nullable: true,
-  resolve: async (_, { data }, ctx) => {
+  resolve: async (_, args, ctx) => {
+    const input = args.data as UserCreateInput;
     const prisma: Prisma = ctx.prisma;
     try {
-      const user = await prisma.createUser(data);
+      const user = await prisma.createUser(input);
 
       const { id, email } = user;
       return {

@@ -1,8 +1,11 @@
 import Link from "next/link";
-import { useResponsive } from "../hooks/useResponsive";
+import { useResponsive } from "../../hooks/useResponsive";
 import styled from "@emotion/styled";
 import { DatePicker, message, Button, Icon } from "antd";
 import Search from "antd/lib/input/Search";
+import { useQuery } from "@apollo/react-hooks";
+import { GET_ME } from "./gql";
+import { useRouter } from "next/router";
 
 const Header = styled.div`
   height: 120px;
@@ -116,19 +119,51 @@ const ButtonList = styled.div`
   }
 `;
 
+const Username = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Logout = styled.span`
+  cursor: pointer;
+  :hover {
+    color: white;
+  }
+`;
+
 export const Navbar = () => {
   const { isDesktop } = useResponsive();
+  const { data, loading } = useQuery(GET_ME, { fetchPolicy: "network-only" });
+  const router = useRouter();
+  const user = data?.me as User;
+
+  const logout = () => {
+    localStorage.removeItem("userToken");
+    router.push("/signin");
+  };
 
   return (
     <Header>
       <SubHeader>
-        <Link href="/register">
-          <a>ลงทะเบียน</a>
-        </Link>
-        <img alt="separate-icon" src="/assets/separate-icon.png" />
-        <Link href="/signin">
-          <a>เข้าสู่ระบบ</a>
-        </Link>
+        {loading ? (
+          "Loading"
+        ) : user ? (
+          <Username>
+            สวัสดี {user.name} | &nbsp;{" "}
+            <Logout onClick={() => logout()}>Logout</Logout>
+          </Username>
+        ) : (
+          <>
+            <Link href="/register">
+              <a>ลงทะเบียน</a>
+            </Link>
+            <img alt="separate-icon" src="/assets/separate-icon.png" />
+            <Link href="/signin">
+              <a>เข้าสู่ระบบ</a>
+            </Link>
+          </>
+        )}
       </SubHeader>
       <MainHeader>
         {isDesktop ? (
