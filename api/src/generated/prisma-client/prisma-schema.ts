@@ -3508,7 +3508,7 @@ type Subscription {
 
 type User {
   id: ID!
-  type: String!
+  type: String
   name: String!
   email: String!
   password: String!
@@ -3529,7 +3529,7 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  type: String!
+  type: String
   name: String!
   email: String!
   password: String!
@@ -3567,7 +3567,7 @@ input UserCreateOneWithoutShoppingCartInput {
 
 input UserCreateWithoutAddressesInput {
   id: ID
-  type: String!
+  type: String
   name: String!
   email: String!
   password: String!
@@ -3579,7 +3579,7 @@ input UserCreateWithoutAddressesInput {
 
 input UserCreateWithoutPaymentsInput {
   id: ID
-  type: String!
+  type: String
   name: String!
   email: String!
   password: String!
@@ -3591,7 +3591,7 @@ input UserCreateWithoutPaymentsInput {
 
 input UserCreateWithoutQuotationsInput {
   id: ID
-  type: String!
+  type: String
   name: String!
   email: String!
   password: String!
@@ -3603,7 +3603,7 @@ input UserCreateWithoutQuotationsInput {
 
 input UserCreateWithoutShoppingCartInput {
   id: ID
-  type: String!
+  type: String
   name: String!
   email: String!
   password: String!
@@ -3639,7 +3639,7 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  type: String!
+  type: String
   name: String!
   email: String!
   password: String!

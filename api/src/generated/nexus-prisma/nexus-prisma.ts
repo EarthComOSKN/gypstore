@@ -1228,7 +1228,7 @@ export interface UserFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   name: {
@@ -5479,7 +5479,7 @@ export interface UserPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   name: {
@@ -8606,7 +8606,7 @@ export type ImageWhereUniqueInputInputObject =
   
 export interface UserCreateInput {
   id?: string | null
-  type?: string
+  type?: string | null
   name?: string
   email?: string
   password?: string
@@ -8810,7 +8810,7 @@ export type UserCreateOneWithoutShoppingCartInputInputObject =
   
 export interface UserCreateWithoutShoppingCartInput {
   id?: string | null
-  type?: string
+  type?: string | null
   name?: string
   email?: string
   password?: string
@@ -9050,7 +9050,7 @@ export type UserCreateOneWithoutPaymentsInputInputObject =
   
 export interface UserCreateWithoutPaymentsInput {
   id?: string | null
-  type?: string
+  type?: string | null
   name?: string
   email?: string
   password?: string
@@ -9269,7 +9269,7 @@ export type UserCreateOneWithoutAddressesInputInputObject =
   
 export interface UserCreateWithoutAddressesInput {
   id?: string | null
-  type?: string
+  type?: string | null
   name?: string
   email?: string
   password?: string
@@ -9455,7 +9455,7 @@ export type UserCreateOneWithoutQuotationsInputInputObject =
   
 export interface UserCreateWithoutQuotationsInput {
   id?: string | null
-  type?: string
+  type?: string | null
   name?: string
   email?: string
   password?: string

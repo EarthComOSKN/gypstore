@@ -2491,7 +2491,7 @@ export interface NexusGenInputs {
     phone: string; // String!
     quotations?: NexusGenInputs['QuotationCreateManyWithoutCustomerInput'] | null; // QuotationCreateManyWithoutCustomerInput
     shoppingCart: NexusGenInputs['ShoppingCartCreateOneWithoutCustomerInput']; // ShoppingCartCreateOneWithoutCustomerInput!
-    type: string; // String!
+    type?: string | null; // String
   }
   UserCreateOneInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -2522,7 +2522,7 @@ export interface NexusGenInputs {
     phone: string; // String!
     quotations?: NexusGenInputs['QuotationCreateManyWithoutCustomerInput'] | null; // QuotationCreateManyWithoutCustomerInput
     shoppingCart: NexusGenInputs['ShoppingCartCreateOneWithoutCustomerInput']; // ShoppingCartCreateOneWithoutCustomerInput!
-    type: string; // String!
+    type?: string | null; // String
   }
   UserCreateWithoutPaymentsInput: { // input type
     addresses?: NexusGenInputs['AddressCreateManyWithoutCustomerInput'] | null; // AddressCreateManyWithoutCustomerInput
@@ -2533,7 +2533,7 @@ export interface NexusGenInputs {
     phone: string; // String!
     quotations?: NexusGenInputs['QuotationCreateManyWithoutCustomerInput'] | null; // QuotationCreateManyWithoutCustomerInput
     shoppingCart: NexusGenInputs['ShoppingCartCreateOneWithoutCustomerInput']; // ShoppingCartCreateOneWithoutCustomerInput!
-    type: string; // String!
+    type?: string | null; // String
   }
   UserCreateWithoutQuotationsInput: { // input type
     addresses?: NexusGenInputs['AddressCreateManyWithoutCustomerInput'] | null; // AddressCreateManyWithoutCustomerInput
@@ -2544,7 +2544,7 @@ export interface NexusGenInputs {
     payments?: NexusGenInputs['PaymentCreateManyWithoutCustomerInput'] | null; // PaymentCreateManyWithoutCustomerInput
     phone: string; // String!
     shoppingCart: NexusGenInputs['ShoppingCartCreateOneWithoutCustomerInput']; // ShoppingCartCreateOneWithoutCustomerInput!
-    type: string; // String!
+    type?: string | null; // String
   }
   UserCreateWithoutShoppingCartInput: { // input type
     addresses?: NexusGenInputs['AddressCreateManyWithoutCustomerInput'] | null; // AddressCreateManyWithoutCustomerInput
@@ -2555,7 +2555,7 @@ export interface NexusGenInputs {
     payments?: NexusGenInputs['PaymentCreateManyWithoutCustomerInput'] | null; // PaymentCreateManyWithoutCustomerInput
     phone: string; // String!
     quotations?: NexusGenInputs['QuotationCreateManyWithoutCustomerInput'] | null; // QuotationCreateManyWithoutCustomerInput
-    type: string; // String!
+    type?: string | null; // String
   }
   UserUpdateDataInput: { // input type
     addresses?: NexusGenInputs['AddressUpdateManyWithoutCustomerInput'] | null; // AddressUpdateManyWithoutCustomerInput
@@ -3019,7 +3019,7 @@ export interface NexusGenRootTypes {
     name: string; // String!
     password: string; // String!
     phone: string; // String!
-    type: string; // String!
+    type?: string | null; // String
     updatedAt: any; // DateTime!
   }
   UserConnection: { // root type
@@ -3667,7 +3667,7 @@ export interface NexusGenFieldTypes {
     phone: string; // String!
     quotations: NexusGenRootTypes['Quotation'][] | null; // [Quotation!]
     shoppingCart: NexusGenRootTypes['ShoppingCart']; // ShoppingCart!
-    type: string; // String!
+    type: string | null; // String
     updatedAt: any; // DateTime!
   }
   UserConnection: { // field return type

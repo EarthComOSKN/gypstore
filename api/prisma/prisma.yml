@@ -1,4 +1,4 @@
-endpoint: http://localhost:4466
+endpoint: http://34.87.61.160:4466/gypstore/dev
 datamodel: datamodel.prisma
 
 # Specifies the language and directory for the generated Prisma client.

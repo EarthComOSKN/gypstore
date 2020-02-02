@@ -3241,7 +3241,7 @@ type User {
   phone: String!
   quotations(after: String, before: String, first: Int, last: Int, orderBy: QuotationOrderByInput, skip: Int, where: QuotationWhereInput): [Quotation!]
   shoppingCart: ShoppingCart!
-  type: String!
+  type: String
   updatedAt: DateTime!
 }
 
@@ -3261,7 +3261,7 @@ input UserCreateInput {
   phone: String!
   quotations: QuotationCreateManyWithoutCustomerInput
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
-  type: String!
+  type: String
 }
 
 input UserCreateOneInput {
@@ -3298,7 +3298,7 @@ input UserCreateWithoutAddressesInput {
   phone: String!
   quotations: QuotationCreateManyWithoutCustomerInput
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
-  type: String!
+  type: String
 }
 
 input UserCreateWithoutPaymentsInput {
@@ -3310,7 +3310,7 @@ input UserCreateWithoutPaymentsInput {
   phone: String!
   quotations: QuotationCreateManyWithoutCustomerInput
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
-  type: String!
+  type: String
 }
 
 input UserCreateWithoutQuotationsInput {
@@ -3322,7 +3322,7 @@ input UserCreateWithoutQuotationsInput {
   payments: PaymentCreateManyWithoutCustomerInput
   phone: String!
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
-  type: String!
+  type: String
 }
 
 input UserCreateWithoutShoppingCartInput {
@@ -3334,7 +3334,7 @@ input UserCreateWithoutShoppingCartInput {
   payments: PaymentCreateManyWithoutCustomerInput
   phone: String!
   quotations: QuotationCreateManyWithoutCustomerInput
-  type: String!
+  type: String
 }
 
 type UserEdge {

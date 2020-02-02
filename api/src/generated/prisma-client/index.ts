@@ -1518,7 +1518,7 @@ export interface UserCreateOneWithoutAddressesInput {
 
 export interface UserCreateWithoutAddressesInput {
   id?: Maybe<ID_Input>;
-  type: String;
+  type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
@@ -1632,7 +1632,7 @@ export interface UserCreateOneWithoutShoppingCartInput {
 
 export interface UserCreateWithoutShoppingCartInput {
   id?: Maybe<ID_Input>;
-  type: String;
+  type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
@@ -1767,7 +1767,7 @@ export interface UserCreateOneWithoutPaymentsInput {
 
 export interface UserCreateWithoutPaymentsInput {
   id?: Maybe<ID_Input>;
-  type: String;
+  type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
@@ -1816,7 +1816,7 @@ export interface UserCreateOneInput {
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
-  type: String;
+  type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
@@ -2022,7 +2022,7 @@ export interface UserCreateOneWithoutQuotationsInput {
 
 export interface UserCreateWithoutQuotationsInput {
   id?: Maybe<ID_Input>;
-  type: String;
+  type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
@@ -4100,7 +4100,7 @@ export interface AddressNullablePromise
 
 export interface User {
   id: ID_Output;
-  type: String;
+  type?: String;
   name: String;
   email: String;
   password: String;
@@ -6025,7 +6025,7 @@ export interface UserSubscriptionPayloadSubscription
 
 export interface UserPreviousValues {
   id: ID_Output;
-  type: String;
+  type?: String;
   name: String;
   email: String;
   password: String;
@@ -6156,6 +6156,6 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `http://localhost:4466`
+  endpoint: `http://34.87.61.160:4466/gypstore/dev`
 });
 export const prisma = new Prisma();
