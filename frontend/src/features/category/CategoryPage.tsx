@@ -1,10 +1,10 @@
 import { useRouter } from "next/dist/client/router";
-import { Navbar } from "../../component/Navbar";
 import { Footer } from "../../component/Footer";
 import styled from "@emotion/styled";
 import { CategoryFilter } from "./CategoryFilter";
 import { CategoryList } from "./CategoryList";
 import { Card } from "antd";
+import { Navbar } from "../navigation/Navbar";
 
 const Container = styled.div`
   display: flex;

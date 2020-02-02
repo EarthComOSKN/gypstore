@@ -12,7 +12,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"]
+    },
     "jsx": "preserve",
     "experimentalDecorators": true
   },
