@@ -1,0 +1,67 @@
+{
+  "modules": {
+    "byIdentifier": {
+      "multi private-next-pages/_app.tsx": 0,
+      "multi private-next-pages/categories.tsx": 1,
+      "multi private-next-pages/category/[cid].tsx": 2,
+      "multi private-next-pages/category/[cid]/sub-category/[scid].tsx": 3,
+      "multi private-next-pages/index.tsx": 4,
+      "multi private-next-pages/product/[pid].tsx": 5,
+      "multi private-next-pages/quotation-list.tsx": 6,
+      "multi private-next-pages/register.tsx": 7,
+      "multi private-next-pages/shopping-cart.tsx": 8,
+      "multi private-next-pages/signin.tsx": 9,
+      "multi next/dist/pages/_error": 10,
+      "multi next/dist/pages/_document": 11
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11
+    }
+  },
+  "chunks": {
+    "byName": {
+      "init-server.js": 0,
+      "on-error-server.js": 1,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/_app.js": 2,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/_document.js": 3,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/_error.js": 4,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/categories.js": 5,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/category/[cid].js": 6,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/category/[cid]/sub-category/[scid].js": 7,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/index.js": 8,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/product/[pid].js": 9,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/quotation-list.js": 10,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/register.js": 11,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/shopping-cart.js": 12,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/signin.js": 13
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+}

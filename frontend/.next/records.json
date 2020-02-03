@@ -1,0 +1,113 @@
+{
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!App.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/antd/dist/antd.min.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "css node_modules/css-loader/index.js??ref--5-1!App.css 0": 0,
+      "css node_modules/css-loader/index.js??ref--5-1!../node_modules/react-image-gallery/styles/css/image-gallery.css 0": 1,
+      "css node_modules/css-loader/index.js??ref--5-1!App.css 1": 2,
+      "css node_modules/css-loader/index.js??ref--5-1!node_modules/antd/dist/antd.min.css 0": 3
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3
+    }
+  },
+  "chunks": {
+    "byName": {
+      "commons": 0,
+      "static/runtime/webpack.js": 1,
+      "framework": 2,
+      "42854442895dfef1d43a50ef95722fd47f179e9c": 3,
+      "07e1f82404fefb6a09a40a62b6e523b9095fe979": 4,
+      "aec7d165": 5,
+      "3a09ab9873e3001888eb85f91cd600c44a33c00f": 6,
+      "aa025ba7dc0138f82f71d0ac7c41b278cf8f6568": 7,
+      "b054f3ad0a1762c6bd03494ae8037cfafc20856d": 8,
+      "d547947a522a2245f001f4fd6a4cf2fe4071ed80": 9,
+      "29deb2be2d63a41b43991a4e5724736b4c86e472": 10,
+      "edae694ade89961df8b6a31fe5cdc9b5ee117399": 11,
+      "8ef314e3cbc491354cb8630da0e2c890232ab8fb": 12,
+      "9b783424": 13,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/_app.js": 14,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/_error.js": 15,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/categories.js": 16,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/category/[cid].js": 17,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/category/[cid]/sub-category/[scid].js": 18,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/index.js": 19,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/product/[pid].js": 20,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/quotation-list.js": 21,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/register.js": 22,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/shopping-cart.js": 23,
+      "static/h90K_bZZ30Xh9cZvGRAxf/pages/signin.js": 24,
+      "static/runtime/main.js": 25,
+      "static/runtime/polyfills.js": 26,
+      "styles": 27
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      2,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+}
