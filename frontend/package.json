@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 80"
   },
   "name": "gypstore",
   "version": "1.0.0",
