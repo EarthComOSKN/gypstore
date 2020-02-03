@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -148,6 +148,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-symbols */ "core-js/library/fn/object/get-own-property-symbols");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js ***!
@@ -200,6 +211,107 @@ module.exports = __webpack_require__(/*! core-js/library/fn/symbol/iterator */ "
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/weak-map */ "core-js/library/fn/weak-map");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _extends; });
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
+
+function _extends() {
+  _extends = _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default.a || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectWithoutProperties; });
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = Object(_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(source, excluded);
+  var key, i;
+
+  if (_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0___default.a) {
+    var sourceSymbolKeys = _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_0___default()(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectWithoutPropertiesLoose; });
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+
+  var sourceKeys = _core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(source);
+
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
 
 /***/ }),
 
@@ -2408,66 +2520,69 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
-  height: 30rem;
   width: 100%;
   padding: 3rem;
   margin-bottom: 5rem;
 `;
+const StyledProductCardTall = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default()(_product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__["ProductCardTall"])`
+  width: 250px;
+  margin-top: 1rem;
+`;
 const ProductList = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
-  height: 100%;
   display: grid;
   margin-top: 2rem;
-  grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 1rem;
+  display: flex;
+  justify-content: space-between;
   padding: 0 3rem;
+  flex-wrap: wrap;
 `;
 const HeroProduct = () => {
   return __jsx(Container, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 25
     },
     __self: undefined
   }, __jsx("h2", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 26
     },
     __self: undefined
   }, "\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32\u0E02\u0E32\u0E22\u0E14\u0E35"), __jsx(ProductList, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: undefined
-  }, __jsx(_product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__["ProductCardTall"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24
-    },
-    __self: undefined
-  }), __jsx(_product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__["ProductCardTall"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: undefined
-  }), __jsx(_product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__["ProductCardTall"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: undefined
-  }), __jsx(_product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__["ProductCardTall"], {
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 27
     },
     __self: undefined
-  }), __jsx(_product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__["ProductCardTall"], {
+  }, __jsx(StyledProductCardTall, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
+    },
+    __self: undefined
+  }), __jsx(StyledProductCardTall, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: undefined
+  }), __jsx(StyledProductCardTall, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  }), __jsx(StyledProductCardTall, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: undefined
+  }), __jsx(StyledProductCardTall, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
     },
     __self: undefined
   })));
@@ -3112,28 +3227,32 @@ const GET_ME = apollo_boost__WEBPACK_IMPORTED_MODULE_0__["gql"]`
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductCardTall", function() { return ProductCardTall; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
-/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_4__);
+
+
 var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/product/ProductCardTall.tsx";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 const {
   Meta
-} = antd__WEBPACK_IMPORTED_MODULE_2__["Card"];
-const ProductImageContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+} = antd__WEBPACK_IMPORTED_MODULE_4__["Card"];
+const ProductImageContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   padding: 2rem;
   width: 100%;
   > img {
     width: 100%;
   }
 `;
-const CardDescription = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+const CardDescription = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   display: flex;
   justify-content: center;
   height: 4rem;
@@ -3154,16 +3273,15 @@ const CardDescription = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.d
     }
   }
 `;
-const BuyButton = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_2__["Button"])``;
-const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+const BuyButton = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default()(antd__WEBPACK_IMPORTED_MODULE_4__["Button"])``;
+const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   overflow: hidden;
   position: relative;
-
   & .ant-card-body {
     ${props => props.onlyImage && 'display:none;'}
   }
 `;
-const Tape = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+const Tape = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   top: 21px;
   position: absolute;
   background-color: rgb(241, 146, 56);
@@ -3174,7 +3292,7 @@ const Tape = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   left: -30px;
   color: rgb(255, 255, 255);
 `;
-const StyledCard = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_2__["Card"])`
+const StyledCard = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default()(antd__WEBPACK_IMPORTED_MODULE_4__["Card"])`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
   :hover {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
@@ -3185,19 +3303,22 @@ const ProductCardTall = props => {
     isHotProduct,
     buyable = true,
     onlyImage = false
-  } = props;
-  return __jsx(Container, {
-    onlyImage: onlyImage,
+  } = props,
+        restProps = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["isHotProduct", "buyable", "onlyImage"]);
+
+  return __jsx(Container, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    onlyImage: onlyImage
+  }, restProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 80
     },
     __self: undefined
-  }, __jsx("a", {
+  }), __jsx("a", {
     href: "/product/test",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 81
     },
     __self: undefined
   }, __jsx(StyledCard, {
@@ -3205,7 +3326,7 @@ const ProductCardTall = props => {
     cover: __jsx(ProductImageContainer, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 81
+        lineNumber: 85
       },
       __self: undefined
     }, __jsx("img", {
@@ -3213,39 +3334,39 @@ const ProductCardTall = props => {
       src: "/assets/logo-without-text.png",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82
+        lineNumber: 86
       },
       __self: undefined
     })),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 82
     },
     __self: undefined
   }, buyable && __jsx(Meta, {
     description: __jsx(CardDescription, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 93
       },
       __self: undefined
     }, __jsx(BuyButton, {
       size: "large",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90
+        lineNumber: 94
       },
       __self: undefined
     }, "\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E14\u0E39\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32")),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 91
     },
     __self: undefined
   }))), isHotProduct && __jsx(Tape, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 101
     },
     __self: undefined
   }, "\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32\u0E02\u0E32\u0E22\u0E14\u0E35"));
@@ -3390,7 +3511,7 @@ const useResponsive = () => {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/
@@ -3509,6 +3630,17 @@ module.exports = require("core-js/library/fn/object/define-property");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
+
+/***/ }),
+
+/***/ "core-js/library/fn/object/get-own-property-symbols":
+/*!*********************************************************************!*\
+  !*** external "core-js/library/fn/object/get-own-property-symbols" ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 
 /***/ }),
 

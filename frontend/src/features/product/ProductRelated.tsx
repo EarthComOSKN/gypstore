@@ -15,15 +15,19 @@ const ProductContainer = styled.div`
     margin-left: 1rem;
   }
 `
+const StyledProductCardTall = styled(ProductCardTall)`
+  width: 250px;
+  margin-top: 1rem;
+`
 
 export const ProductRelated = () => {
   return (
     <Container>
       <h2>สินค้าที่เกี่ยวข้อง</h2>
       <ProductContainer>
-        <ProductCardTall />
-        <ProductCardTall />
-        <ProductCardTall />
+        <StyledProductCardTall />
+        <StyledProductCardTall />
+        <StyledProductCardTall />
       </ProductContainer>
     </Container>
   )

@@ -1,7 +1,7 @@
 import { Button, Icon } from 'antd'
 import styled from '@emotion/styled'
-import { ProductAmountInput } from './ProductAmountInput'
 import { useState } from 'react'
+import { AmountInput } from '../../component/AmountInput'
 
 const Container = styled.div`
   font-size: 16px;
@@ -13,6 +13,10 @@ const Container = styled.div`
 const AddCartButton = styled(Button)`
   background-color: #ff8e0a;
   width: 100%;
+`
+
+const StyledAmountInput = styled(AmountInput)`
+  width: 15rem;
 `
 
 export const ProductInformation = () => {
@@ -30,7 +34,7 @@ export const ProductInformation = () => {
       </ul>
       <p>จัดส่งได้ภายใน 1-3 วันทำการ</p>
       <p>จำนวนที่ต้องการ (แผ่น)</p>
-      <ProductAmountInput amount={amount} onChange={setAmount} />
+      <StyledAmountInput amount={amount} onChange={setAmount} />
       <AddCartButton>
         <Icon type="shopping-cart" />
         เพิ่มไปยังรถเข็น

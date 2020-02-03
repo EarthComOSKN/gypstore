@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { ProductCardTall } from '../product/ProductCardTall'
-import { ProductAmountInput } from '../product/ProductAmountInput'
+import { AmountInput } from '../../component/AmountInput'
 import { Button } from 'antd'
 
 const Container = styled.div`
@@ -69,7 +69,7 @@ export const ShoppingCart = () => {
             </Product>
             <Price>130 บาท / แผ่น</Price>
             <Amount>
-              <ProductAmountInput onChange={e => null} amount={100} />
+              <AmountInput onChange={e => null} amount={100} />
             </Amount>
             <Price>13,000 บาท</Price>
           </CartRow>

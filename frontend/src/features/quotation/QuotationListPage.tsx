@@ -21,7 +21,7 @@ export const QuotationListPage = () => {
     {
       link: '/',
 
-      text: 'ตะกร้าสินค้า',
+      text: 'ใบเสนอราคา',
     },
   ]
 

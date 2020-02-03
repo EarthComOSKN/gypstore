@@ -39,7 +39,6 @@ const BuyButton = styled(Button)``
 const Container = styled.div<{ onlyImage: boolean }>`
   overflow: hidden;
   position: relative;
-
   & .ant-card-body {
     ${props => props.onlyImage && 'display:none;'}
   }
@@ -71,9 +70,14 @@ type Props = {
 }
 
 export const ProductCardTall = (props: Props) => {
-  const { isHotProduct, buyable = true, onlyImage = false } = props
+  const {
+    isHotProduct,
+    buyable = true,
+    onlyImage = false,
+    ...restProps
+  } = props
   return (
-    <Container onlyImage={onlyImage}>
+    <Container onlyImage={onlyImage} {...restProps}>
       <a href="/product/test">
         <StyledCard
           hoverable
