@@ -195,7 +195,9 @@ export const Navbar = () => {
         </NavigateList>
 
         <ButtonList>
-          <Icon type="file-text" />
+          <a href="/quotation-list">
+            <Icon type="file-text" />
+          </a>
           <a href="/shopping-cart">
             <Icon type="shopping-cart" />
           </a>
