@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-import { Card, Button } from "antd";
+import { Card, Button } from 'antd'
 
-const { Meta } = Card;
+const { Meta } = Card
 
 const ProductImageContainer = styled.div`
   padding: 2rem;
@@ -10,7 +10,7 @@ const ProductImageContainer = styled.div`
   > img {
     width: 100%;
   }
-`;
+`
 
 const CardDescription = styled.div`
   display: flex;
@@ -32,14 +32,18 @@ const CardDescription = styled.div`
       color: white;
     }
   }
-`;
+`
 
-const BuyButton = styled(Button)``;
+const BuyButton = styled(Button)``
 
-const Container = styled.div`
+const Container = styled.div<{ onlyImage: boolean }>`
   overflow: hidden;
   position: relative;
-`;
+
+  & .ant-card-body {
+    ${props => props.onlyImage && 'display:none;'}
+  }
+`
 
 const Tape = styled.div`
   top: 21px;
@@ -51,36 +55,46 @@ const Tape = styled.div`
   justify-content: center;
   left: -30px;
   color: rgb(255, 255, 255);
-`;
+`
 
 const StyledCard = styled(Card)`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
   :hover {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   }
-`;
+`
 
-export const ProductCardTall = () => {
+type Props = {
+  isHotProduct?: boolean
+  buyable?: boolean
+  onlyImage?: boolean
+}
+
+export const ProductCardTall = (props: Props) => {
+  const { isHotProduct, buyable = true, onlyImage = false } = props
   return (
-    <Container>
-      <StyledCard
-        hoverable
-        style={{ width: 250 }}
-        cover={
-          <ProductImageContainer>
-            <img alt="example" src="/assets/logo-without-text.png" />
-          </ProductImageContainer>
-        }
-      >
-        <Meta
-          description={
-            <CardDescription>
-              <BuyButton size="large">เลือกดูสินค้า</BuyButton>
-            </CardDescription>
+    <Container onlyImage={onlyImage}>
+      <a href="/product/test">
+        <StyledCard
+          hoverable
+          cover={
+            <ProductImageContainer>
+              <img alt="example" src="/assets/logo-without-text.png" />
+            </ProductImageContainer>
           }
-        />
-      </StyledCard>
-      <Tape>สินค้าขายดี</Tape>
+        >
+          {buyable && (
+            <Meta
+              description={
+                <CardDescription>
+                  <BuyButton size="large">เลือกดูสินค้า</BuyButton>
+                </CardDescription>
+              }
+            />
+          )}
+        </StyledCard>
+      </a>
+      {isHotProduct && <Tape>สินค้าขายดี</Tape>}
     </Container>
-  );
-};
+  )
+}

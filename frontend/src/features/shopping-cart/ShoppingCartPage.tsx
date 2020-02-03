@@ -1,9 +1,8 @@
-import styled from '@emotion/styled'
-import { Footer } from '../../component/Footer'
 import { Navbar } from '../navigation/Navbar'
 import { NavBreadcrumb } from '../navigation/NavBreadcrumb'
-import { ProductDetail } from './ProductDetail'
-import { ProductRelated } from './ProductRelated'
+import styled from '@emotion/styled'
+import { Footer } from '../../component/Footer'
+import { ShoppingCart } from './ShoppingCart'
 
 const Container = styled.div`
   padding: 3rem 0rem;
@@ -12,7 +11,7 @@ const Container = styled.div`
   background-color: #ececec;
 `
 
-export const ProductDetailPage = () => {
+export const ShoppingCartPage = () => {
   const nav = [
     {
       link: '/',
@@ -22,20 +21,16 @@ export const ProductDetailPage = () => {
     {
       link: '/',
 
-      text: 'ฝ้าผนัง',
-    },
-    {
-      link: '/',
-      text: 'กระดานชนวน',
+      text: 'ตะกร้าสินค้า',
     },
   ]
+
   return (
     <>
       <Navbar />
       <Container>
         <NavBreadcrumb nav={nav} />
-        <ProductDetail />
-        <ProductRelated />
+        <ShoppingCart />
       </Container>
       <Footer />
     </>

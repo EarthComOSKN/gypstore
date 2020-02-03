@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { useResponsive } from "../../hooks/useResponsive";
-import styled from "@emotion/styled";
-import { DatePicker, message, Button, Icon } from "antd";
-import Search from "antd/lib/input/Search";
-import { useQuery } from "@apollo/react-hooks";
-import { GET_ME } from "./gql";
-import { useRouter } from "next/router";
+import Link from 'next/link'
+import { useResponsive } from '../../hooks/useResponsive'
+import styled from '@emotion/styled'
+import { DatePicker, message, Button, Icon } from 'antd'
+import Search from 'antd/lib/input/Search'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_ME } from './gql'
+import { useRouter } from 'next/router'
 
 const Header = styled.div`
   height: 120px;
@@ -22,7 +22,7 @@ const Header = styled.div`
   a:hover {
     color: #fff;
   }
-`;
+`
 
 const SubHeader = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ const SubHeader = styled.div`
     align-items: center;
     justify-content: flex-end;
   }
-`;
+`
 
 const MainHeader = styled.div`
   display: flex;
@@ -69,7 +69,7 @@ const MainHeader = styled.div`
     max-height: 50px;
     align-items: center;
   }
-`;
+`
 
 const SearchContainer = styled.div`
   flex: 1;
@@ -88,7 +88,7 @@ const SearchContainer = styled.div`
       border-color: rgba(241, 146, 56, 0.8);
     }
   }
-`;
+`
 
 const NavigateList = styled.div`
   width: 15rem;
@@ -102,7 +102,7 @@ const NavigateList = styled.div`
       color: rgb(100, 100, 100);
     }
   }
-`;
+`
 
 const ButtonList = styled.div`
   font-size: 1.5rem;
@@ -117,40 +117,40 @@ const ButtonList = styled.div`
       color: rgb(100, 100, 100);
     }
   }
-`;
+`
 
 const Username = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const Logout = styled.span`
   cursor: pointer;
   :hover {
     color: white;
   }
-`;
+`
 
 export const Navbar = () => {
-  const { isDesktop } = useResponsive();
-  const { data, loading } = useQuery(GET_ME, { fetchPolicy: "network-only" });
-  const router = useRouter();
-  const user = data?.me as User;
+  const { isDesktop } = useResponsive()
+  const { data, loading } = useQuery(GET_ME, { fetchPolicy: 'network-only' })
+  const router = useRouter()
+  const user = data?.me as User
 
   const logout = () => {
-    localStorage.removeItem("userToken");
-    router.push("/signin");
-  };
+    localStorage.removeItem('userToken')
+    router.push('/signin')
+  }
 
   return (
     <Header>
       <SubHeader>
         {loading ? (
-          "Loading"
+          'Loading'
         ) : user ? (
           <Username>
-            สวัสดี {user.name} | &nbsp;{" "}
+            สวัสดี {user.name} | &nbsp;{' '}
             <Logout onClick={() => logout()}>Logout</Logout>
           </Username>
         ) : (
@@ -166,15 +166,18 @@ export const Navbar = () => {
         )}
       </SubHeader>
       <MainHeader>
-        {isDesktop ? (
-          <img className="logo" alt="gypstore-logo" src="/assets/logo.png" />
-        ) : (
-          <img
-            className="logo"
-            alt="gypstore-logo"
-            src="/assets/logo-without-text.png"
-          />
-        )}
+        <a href="/">
+          {' '}
+          {isDesktop ? (
+            <img className="logo" alt="gypstore-logo" src="/assets/logo.png" />
+          ) : (
+            <img
+              className="logo"
+              alt="gypstore-logo"
+              src="/assets/logo-without-text.png"
+            />
+          )}
+        </a>
         <SearchContainer>
           <Search
             style={{ width: 300 }}
@@ -193,9 +196,11 @@ export const Navbar = () => {
 
         <ButtonList>
           <Icon type="file-text" />
-          <Icon type="shopping-cart" />
+          <a href="/shopping-cart">
+            <Icon type="shopping-cart" />
+          </a>
         </ButtonList>
       </MainHeader>
     </Header>
-  );
-};
+  )
+}

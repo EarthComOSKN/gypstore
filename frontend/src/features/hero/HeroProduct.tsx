@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
-import { ProductCardTall } from "../product/ProductCardTall";
+import styled from '@emotion/styled'
+import { ProductCardTall } from '../product/ProductCardTall'
 
 const Container = styled.div`
   height: 30rem;
   width: 100%;
   padding: 3rem;
   margin-bottom: 5rem;
-`;
+`
 
 const ProductList = styled.div`
   height: 100%;
@@ -15,7 +15,7 @@ const ProductList = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 1rem;
   padding: 0 3rem;
-`;
+`
 export const HeroProduct = () => {
   return (
     <Container>
@@ -28,5 +28,5 @@ export const HeroProduct = () => {
         <ProductCardTall />
       </ProductList>
     </Container>
-  );
-};
+  )
+}
