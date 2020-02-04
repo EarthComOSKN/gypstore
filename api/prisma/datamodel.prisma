@@ -11,7 +11,6 @@ type User {
   quotations: [Quotation!]
   payments: [Payment!]
   addresses: [Address]
-
 }
 
 type Address {
@@ -140,6 +139,5 @@ type Image {
   id: ID! @id
   filename: String!
   description: String
-
 }
 
