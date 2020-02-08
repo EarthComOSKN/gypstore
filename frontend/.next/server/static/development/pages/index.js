@@ -2264,7 +2264,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _src_features_home_HomePage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/features/home/HomePage */ "./src/features/home/HomePage.tsx");
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/pages/index.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/pages/index.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2294,16 +2294,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/component/Footer.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/component/Footer.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const FooterContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  display: flex;
+  flex-direction: column;
+  background: black;
+  padding: 1rem 7rem;
+`;
+const MainFooter = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   bottom: 0;
 
   height: 30rem;
-  background: black;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
@@ -2315,10 +2320,19 @@ const FooterContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.d
   color: white !important;
 
   & > div {
-    padding-left: 2.5rem;
     padding-top: 2.5rem;
     display: flex;
     flex-direction: column;
+  }
+`;
+const SubFooter = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  display: flex;
+  justify-content: space-between;
+  border-top: .05rem solid white;
+  p {
+    padding-top: .5rem;
+    color: white;
+    font-size: 10px;
   }
 `;
 const ContactUs = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div``;
@@ -2343,25 +2357,31 @@ const Footer = () => {
   return __jsx(FooterContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 67
+    },
+    __self: undefined
+  }, __jsx(MainFooter, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68
     },
     __self: undefined
   }, __jsx(ContactUs, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 69
     },
     __self: undefined
   }, __jsx("h2", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 70
     },
     __self: undefined
   }, "\u0E15\u0E34\u0E14\u0E15\u0E48\u0E2D\u0E40\u0E23\u0E32"), __jsx(ContactLogoList, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 71
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -2369,7 +2389,7 @@ const Footer = () => {
     theme: "filled",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 72
     },
     __self: undefined
   }), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -2377,7 +2397,7 @@ const Footer = () => {
     theme: "filled",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 73
     },
     __self: undefined
   }), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -2385,7 +2405,7 @@ const Footer = () => {
     theme: "filled",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 74
     },
     __self: undefined
   })), __jsx(LineQR, {
@@ -2393,79 +2413,79 @@ const Footer = () => {
     alt: "line-qr",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 76
     },
     __self: undefined
   }), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 77
     },
     __self: undefined
   }, "@gypstore"), __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 79
     },
     __self: undefined
   }, "\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C - \u0E28\u0E38\u0E01\u0E23\u0E4C 8.00-17.00 \u0E19.", __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 81
     },
     __self: undefined
   }), "\u0E40\u0E2A\u0E32\u0E23\u0E4C 08.00-12.00 \u0E19.")), __jsx(Service, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 85
     },
     __self: undefined
   }, __jsx("h2", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 86
     },
     __self: undefined
   }, "\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23"), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 87
     },
     __self: undefined
   }, "\u0E15\u0E34\u0E14\u0E15\u0E48\u0E2D\u0E40\u0E23\u0E32"), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 89
     },
     __self: undefined
   }, "\u0E27\u0E34\u0E18\u0E35\u0E01\u0E32\u0E23\u0E2A\u0E31\u0E48\u0E07\u0E0B\u0E37\u0E49\u0E2D\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32"), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 91
     },
     __self: undefined
   }, "\u0E27\u0E34\u0E18\u0E35\u0E01\u0E32\u0E23\u0E0A\u0E33\u0E23\u0E30\u0E40\u0E07\u0E34\u0E19"), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 93
     },
     __self: undefined
   }, "\u0E01\u0E32\u0E23\u0E08\u0E31\u0E14\u0E2A\u0E48\u0E07\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32"), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 95
     },
     __self: undefined
   }, "\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E04\u0E30\u0E41\u0E19\u0E19\u0E2A\u0E30\u0E2A\u0E21")), __jsx(Payment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 97
     },
     __self: undefined
   }, __jsx("h2", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 98
     },
     __self: undefined
   }, "\u0E01\u0E32\u0E23\u0E0A\u0E33\u0E23\u0E30\u0E40\u0E07\u0E34\u0E19"), __jsx(PaymentMethod, {
@@ -2473,10 +2493,28 @@ const Footer = () => {
     alt: "payment",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 99
     },
     __self: undefined
-  })));
+  }))), __jsx(SubFooter, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 102
+    },
+    __self: undefined
+  }, __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 103
+    },
+    __self: undefined
+  }, "Copyright @ 2020  Gypstore Co., Ltd.  All Right Reserved."), __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 104
+    },
+    __self: undefined
+  }, "\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17 \u0E22\u0E34\u0E1B\u0E2A\u0E42\u0E15\u0E23\u0E4C \u0E08\u0E33\u0E01\u0E31\u0E14 \u0E40\u0E25\u0E02\u0E17\u0E35\u0E48 14/12 \u0E15\u0E33\u0E1A\u0E25\u0E1A\u0E36\u0E07\u0E04\u0E33\u0E1E\u0E23\u0E49\u0E2D\u0E22 \u0E2D\u0E33\u0E40\u0E20\u0E2D\u0E25\u0E33\u0E25\u0E39\u0E01\u0E01\u0E32 \u0E1B\u0E17\u0E38\u0E21\u0E18\u0E32\u0E19\u0E35 12150")));
 };
 
 /***/ }),
@@ -2514,7 +2552,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../product/ProductCardTall */ "./src/features/product/ProductCardTall.tsx");
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/hero/HeroProduct.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/hero/HeroProduct.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2606,7 +2644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/home/HomeCarousel.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/home/HomeCarousel.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2734,7 +2772,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hero_HeroProduct__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hero/HeroProduct */ "./src/features/hero/HeroProduct.tsx");
 /* harmony import */ var _component_Footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../component/Footer */ "./src/component/Footer.tsx");
 /* harmony import */ var _product_ProductSection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../product/ProductSection */ "./src/features/product/ProductSection.tsx");
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/home/HomePage.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/home/HomePage.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2867,7 +2905,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gql__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./gql */ "./src/features/navigation/gql.ts");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/navigation/Navbar.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/navigation/Navbar.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2969,6 +3007,9 @@ const NavigateList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
       color: rgb(100, 100, 100);
     }
   }
+  a:hover {
+    color: rgb(100, 100, 100);
+  }
 `;
 const ButtonList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   font-size: 1.5rem;
@@ -2982,6 +3023,9 @@ const ButtonList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
     :hover {
       color: rgb(100, 100, 100);
     }
+  }
+  a:hover {
+    color: rgb(100, 100, 100);
   }
 `;
 const Username = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
@@ -3013,42 +3057,115 @@ const Navbar = () => {
     router.push('/signin');
   };
 
+  const {
+    SubMenu
+  } = antd__WEBPACK_IMPORTED_MODULE_4__["Menu"];
+
+  const menu = __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 154
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 155
+    },
+    __self: undefined
+  }, "\u0E41\u0E1C\u0E48\u0E19\u0E22\u0E34\u0E1B\u0E0B\u0E31\u0E21"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 156
+    },
+    __self: undefined
+  }, "\u0E41\u0E1C\u0E48\u0E19\u0E14\u0E39\u0E14\u0E0B\u0E31\u0E1A\u0E40\u0E2A\u0E35\u0E22\u0E07"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 157
+    },
+    __self: undefined
+  }, "\u0E42\u0E04\u0E23\u0E07\u0E04\u0E23\u0E48\u0E32\u0E27\u0E1D\u0E49\u0E32\u0E40\u0E1E\u0E14\u0E32\u0E19\u0E41\u0E25\u0E30\u0E1C\u0E19\u0E31\u0E07\u0E22\u0E34\u0E1B\u0E0B\u0E31\u0E21"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 158
+    },
+    __self: undefined
+  }, "\u0E42\u0E04\u0E23\u0E07\u0E04\u0E23\u0E48\u0E32\u0E27\u0E41\u0E25\u0E30\u0E41\u0E1C\u0E48\u0E19\u0E1D\u0E49\u0E32\u0E40\u0E1E\u0E14\u0E32\u0E19\u0E17\u0E35\u0E1A\u0E32\u0E23\u0E4C"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 159
+    },
+    __self: undefined
+  }, "\u0E1B\u0E39\u0E19\u0E09\u0E32\u0E1A\u0E22\u0E34\u0E1B\u0E0B\u0E31\u0E21"), __jsx(SubMenu, {
+    title: "\u0E0A\u0E34\u0E49\u0E19\u0E07\u0E32\u0E19\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E23\u0E39\u0E1B",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 160
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161
+    },
+    __self: undefined
+  }, "\u0E0A\u0E48\u0E2D\u0E07\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E23\u0E39\u0E1B"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 162
+    },
+    __self: undefined
+  }, "\u0E2A\u0E40\u0E15\u0E1B\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E23\u0E39\u0E1B")), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 164
+    },
+    __self: undefined
+  }, "\u0E2D\u0E38\u0E1B\u0E01\u0E23\u0E13\u0E4C\u0E40\u0E2A\u0E23\u0E34\u0E21"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165
+    },
+    __self: undefined
+  }, "\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E21\u0E37\u0E2D\u0E0A\u0E48\u0E32\u0E07"));
+
   return __jsx(Header, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147
+      lineNumber: 170
     },
     __self: undefined
   }, __jsx(SubHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148
+      lineNumber: 171
     },
     __self: undefined
   }, loading ? 'Loading' : user ? __jsx(Username, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 152
+      lineNumber: 175
     },
     __self: undefined
   }, "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35 ", user.name, " | \xA0", ' ', __jsx(Logout, {
     onClick: () => logout(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154
+      lineNumber: 177
     },
     __self: undefined
   }, "Logout")) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/register",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158
+      lineNumber: 181
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 159
+      lineNumber: 182
     },
     __self: undefined
   }, "\u0E25\u0E07\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19")), __jsx("img", {
@@ -3056,33 +3173,33 @@ const Navbar = () => {
     src: "/assets/separate-icon.png",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161
+      lineNumber: 184
     },
     __self: undefined
   }), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/signin",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162
+      lineNumber: 185
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 163
+      lineNumber: 186
     },
     __self: undefined
   }, "\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A")))), __jsx(MainHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 168
+      lineNumber: 191
     },
     __self: undefined
   }, __jsx("a", {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169
+      lineNumber: 192
     },
     __self: undefined
   }, ' ', isDesktop ? __jsx("img", {
@@ -3091,7 +3208,7 @@ const Navbar = () => {
     src: "/assets/logo.png",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 172
+      lineNumber: 195
     },
     __self: undefined
   }) : __jsx("img", {
@@ -3100,13 +3217,13 @@ const Navbar = () => {
     src: "/assets/logo-without-text.png",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 174
+      lineNumber: 197
     },
     __self: undefined
   })), __jsx(SearchContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 181
+      lineNumber: 204
     },
     __self: undefined
   }, __jsx(antd_lib_input_Search__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -3118,72 +3235,81 @@ const Navbar = () => {
     enterButton: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 182
+      lineNumber: 205
     },
     __self: undefined
   })), __jsx(NavigateList, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 189
+      lineNumber: 212
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Dropdown"], {
+    overlay: menu,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 213
     },
     __self: undefined
   }, __jsx("a", {
+    className: "ant-dropdown-link",
     href: "/categories",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 190
+      lineNumber: 214
     },
     __self: undefined
-  }, __jsx("div", {
+  }, "\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32 ", __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
+    type: "down",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191
+      lineNumber: 215
     },
     __self: undefined
-  }, "\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32 ")), __jsx("div", {
+  }))), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 193
+      lineNumber: 218
     },
     __self: undefined
   }, "\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23"), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 194
+      lineNumber: 219
     },
     __self: undefined
   }, "\u0E04\u0E30\u0E41\u0E19\u0E19\u0E2A\u0E30\u0E2A\u0E21")), __jsx(ButtonList, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 197
+      lineNumber: 222
     },
     __self: undefined
   }, __jsx("a", {
     href: "/quotation-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 198
+      lineNumber: 223
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "file-text",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 199
+      lineNumber: 224
     },
     __self: undefined
   })), __jsx("a", {
     href: "/shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 201
+      lineNumber: 226
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 202
+      lineNumber: 227
     },
     __self: undefined
   })))));
@@ -3237,7 +3363,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_4__);
 
 
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/product/ProductCardTall.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/product/ProductCardTall.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
@@ -3388,14 +3514,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/product/ProductSection.tsx";
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/product/ProductSection.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   height: 35rem;
   width: 100%;
-  padding: 3rem 6rem;
+  padding: 3rem 10rem;
   margin-bottom: 4rem;
 `;
 const ProductContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
@@ -3518,7 +3644,7 @@ const useResponsive = () => {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/nutchanonploypray/work/gypstore/frontend/pages/index.tsx */"./pages/index.tsx");
+module.exports = __webpack_require__(/*! /Users/puwong/Developer/senior/gypstore/frontend/pages/index.tsx */"./pages/index.tsx");
 
 
 /***/ }),

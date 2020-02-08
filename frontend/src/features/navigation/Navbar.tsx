@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useResponsive } from '../../hooks/useResponsive'
 import styled from '@emotion/styled'
-import { DatePicker, message, Button, Icon } from 'antd'
+import { DatePicker, message, Button, Icon, Menu, Dropdown } from 'antd'
 import Search from 'antd/lib/input/Search'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_ME } from './gql'
@@ -102,6 +102,9 @@ const NavigateList = styled.div`
       color: rgb(100, 100, 100);
     }
   }
+  a:hover {
+    color: rgb(100, 100, 100);
+  }
 `
 
 const ButtonList = styled.div`
@@ -116,6 +119,9 @@ const ButtonList = styled.div`
     :hover {
       color: rgb(100, 100, 100);
     }
+  }
+  a:hover {
+    color: rgb(100, 100, 100);
   }
 `
 
@@ -142,6 +148,23 @@ export const Navbar = () => {
     localStorage.removeItem('userToken')
     router.push('/signin')
   }
+
+  const { SubMenu } = Menu;
+  const menu = (
+    <Menu>
+      <Menu.Item>แผ่นยิปซัม</Menu.Item>
+      <Menu.Item>แผ่นดูดซับเสียง</Menu.Item>
+      <Menu.Item>โครงคร่าวฝ้าเพดานและผนังยิปซัม</Menu.Item>
+      <Menu.Item>โครงคร่าวและแผ่นฝ้าเพดานทีบาร์</Menu.Item>
+      <Menu.Item>ปูนฉาบยิปซัม</Menu.Item>
+      <SubMenu title="ชิ้นงานสำเร็จรูป">
+        <Menu.Item>ช่องเซอร์วิสสำเร็จรูป</Menu.Item>
+        <Menu.Item>สเตปสำเร็จรูป</Menu.Item>
+      </SubMenu>
+      <Menu.Item>อุปกรณ์เสริม</Menu.Item>
+      <Menu.Item>เครื่องมือช่าง</Menu.Item>
+    </Menu>
+  )
 
   return (
     <Header>
@@ -187,9 +210,11 @@ export const Navbar = () => {
           />
         </SearchContainer>
         <NavigateList>
-          <a href="/categories">
-            <div>สินค้า </div>
-          </a>
+          <Dropdown overlay={menu}>
+            <a className="ant-dropdown-link" href="/categories">
+              สินค้า <Icon type="down" />
+            </a>
+          </Dropdown>
           <div>บริการ</div>
           <div>คะแนนสะสม</div>
         </NavigateList>
