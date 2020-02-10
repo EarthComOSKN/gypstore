@@ -2,6 +2,8 @@ import styled from '@emotion/styled'
 import { ProductCardTall } from '../product/ProductCardTall'
 import { AmountInput } from '../../component/AmountInput'
 import { Button } from 'antd'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_SHOPPING_CART } from './gql'
 
 const Container = styled.div`
   background-color: white;
@@ -49,9 +51,18 @@ const StyledButton = styled(Button)`
 `
 
 export const ShoppingCart = () => {
+  const { data, loading, error } = useQuery(GET_SHOPPING_CART, {
+    fetchPolicy: 'network-only',
+  })
+  if (loading) return <div>Lodaing...</div>
+  console.log(data, error)
+  const me = data.me as User
+  const shoppingCart = me.shoppingCart
+  const shoppingCartItem = shoppingCart.productItems as any
+
   return (
     <Container>
-      <h2>รถเข็นสินค้า (2)</h2>
+      <h2>รถเข็นสินค้า ({shoppingCartItem.length})</h2>
       <CartTable>
         <CartRow>
           <h4>สินค้า</h4>
@@ -59,21 +70,24 @@ export const ShoppingCart = () => {
           <h4>ปริมาณ</h4>
           <h4>ราคารวม</h4>
         </CartRow>
-        {[1, 2, 3].map(e => (
-          <CartRow>
-            <Product>
-              <ProductCardTall buyable={false} onlyImage />
-              <ProductName>
-                แผ่นยิบซัมบอร์ด เอสซีจี SCG มาตรฐาน 9 มม. ขอบลาด ชนิดธรรมดา
-              </ProductName>
-            </Product>
-            <Price>130 บาท / แผ่น</Price>
-            <Amount>
-              <AmountInput onChange={e => null} amount={100} />
-            </Amount>
-            <Price>13,000 บาท</Price>
-          </CartRow>
-        ))}
+        {shoppingCartItem.map(item => {
+          const { pi, amount } = item
+          return (
+            <CartRow>
+              <Product>
+                <ProductCardTall buyable={false} onlyImage />
+                <ProductName>{pi.name}</ProductName>
+              </Product>
+              <Price>
+                {pi.salePrice} บาท / {pi.unitType}
+              </Price>
+              <Amount>
+                <AmountInput onChange={e => null} amount={100} />
+              </Amount>
+              <Price>{+pi.salePrice * amount} บาท</Price>
+            </CartRow>
+          )
+        })}
         <div>
           <CartSumRow>
             <h2>ราคารวม (2รายการ)</h2>

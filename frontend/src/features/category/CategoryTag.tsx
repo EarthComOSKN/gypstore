@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Card } from "antd";
+import styled from '@emotion/styled'
+import { Card } from 'antd'
 
 const StyledCard = styled(Card)`
   cursor: pointer;
@@ -14,30 +14,32 @@ const StyledCard = styled(Card)`
   :hover {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   }
-`;
+`
 
-const CatagoryLogo = styled.img`
+const CategoryLogo = styled.img`
   height: 60px;
   width: auto;
   margin-right: 1rem;
-`;
+`
 
 const CategoryName = styled.h3`
   margin: 0;
   width: 100%;
   text-align: center;
-`;
+`
 
 type Props = {
-  title: string;
-};
+  title: string
+}
 
 export const CategoryTag = (props: Props) => {
-  const { title } = props;
+  const { title } = props
   return (
-    <StyledCard>
-      <CatagoryLogo src="/assets/logo-without-text.png" alt="logo" />
-      <CategoryName>{title}</CategoryName>
-    </StyledCard>
-  );
-};
+    <a href={`/category/${title}`}>
+      <StyledCard>
+        <CategoryLogo src="/assets/logo-without-text.png" alt="logo" />
+        <CategoryName>{title}</CategoryName>
+      </StyledCard>
+    </a>
+  )
+}

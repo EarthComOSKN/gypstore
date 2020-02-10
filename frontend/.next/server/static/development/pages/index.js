@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2264,7 +2264,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _src_features_home_HomePage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/features/home/HomePage */ "./src/features/home/HomePage.tsx");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/pages/index.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/pages/index.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2294,7 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/component/Footer.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/component/Footer.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2552,7 +2552,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _product_ProductCardTall__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../product/ProductCardTall */ "./src/features/product/ProductCardTall.tsx");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/hero/HeroProduct.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/hero/HeroProduct.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2644,7 +2644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/home/HomeCarousel.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/home/HomeCarousel.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2772,7 +2772,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hero_HeroProduct__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hero/HeroProduct */ "./src/features/hero/HeroProduct.tsx");
 /* harmony import */ var _component_Footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../component/Footer */ "./src/component/Footer.tsx");
 /* harmony import */ var _product_ProductSection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../product/ProductSection */ "./src/features/product/ProductSection.tsx");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/home/HomePage.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/home/HomePage.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2905,9 +2905,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gql__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./gql */ "./src/features/navigation/gql.ts");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/navigation/Navbar.tsx";
+/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./const */ "./src/features/navigation/const.ts");
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/navigation/Navbar.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -3064,108 +3066,61 @@ const Navbar = () => {
   const menu = __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154
-    },
-    __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 155
     },
     __self: undefined
-  }, "\u0E41\u0E1C\u0E48\u0E19\u0E22\u0E34\u0E1B\u0E0B\u0E31\u0E21"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 156
-    },
-    __self: undefined
-  }, "\u0E41\u0E1C\u0E48\u0E19\u0E14\u0E39\u0E14\u0E0B\u0E31\u0E1A\u0E40\u0E2A\u0E35\u0E22\u0E07"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+  }, _const__WEBPACK_IMPORTED_MODULE_9__["NAV_CAT"].map(c => __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+    key: c,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 157
     },
     __self: undefined
-  }, "\u0E42\u0E04\u0E23\u0E07\u0E04\u0E23\u0E48\u0E32\u0E27\u0E1D\u0E49\u0E32\u0E40\u0E1E\u0E14\u0E32\u0E19\u0E41\u0E25\u0E30\u0E1C\u0E19\u0E31\u0E07\u0E22\u0E34\u0E1B\u0E0B\u0E31\u0E21"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+  }, __jsx("a", {
+    href: `/category/${c}`,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 158
     },
     __self: undefined
-  }, "\u0E42\u0E04\u0E23\u0E07\u0E04\u0E23\u0E48\u0E32\u0E27\u0E41\u0E25\u0E30\u0E41\u0E1C\u0E48\u0E19\u0E1D\u0E49\u0E32\u0E40\u0E1E\u0E14\u0E32\u0E19\u0E17\u0E35\u0E1A\u0E32\u0E23\u0E4C"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 159
-    },
-    __self: undefined
-  }, "\u0E1B\u0E39\u0E19\u0E09\u0E32\u0E1A\u0E22\u0E34\u0E1B\u0E0B\u0E31\u0E21"), __jsx(SubMenu, {
-    title: "\u0E0A\u0E34\u0E49\u0E19\u0E07\u0E32\u0E19\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E23\u0E39\u0E1B",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 160
-    },
-    __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 161
-    },
-    __self: undefined
-  }, "\u0E0A\u0E48\u0E2D\u0E07\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E23\u0E39\u0E1B"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 162
-    },
-    __self: undefined
-  }, "\u0E2A\u0E40\u0E15\u0E1B\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E23\u0E39\u0E1B")), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 164
-    },
-    __self: undefined
-  }, "\u0E2D\u0E38\u0E1B\u0E01\u0E23\u0E13\u0E4C\u0E40\u0E2A\u0E23\u0E34\u0E21"), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
+  }, c))));
+
+  return __jsx(Header, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 165
     },
     __self: undefined
-  }, "\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E21\u0E37\u0E2D\u0E0A\u0E48\u0E32\u0E07"));
-
-  return __jsx(Header, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 170
-    },
-    __self: undefined
   }, __jsx(SubHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 171
+      lineNumber: 166
     },
     __self: undefined
   }, loading ? 'Loading' : user ? __jsx(Username, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 175
+      lineNumber: 170
     },
     __self: undefined
   }, "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35 ", user.name, " | \xA0", ' ', __jsx(Logout, {
     onClick: () => logout(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 177
+      lineNumber: 172
     },
     __self: undefined
   }, "Logout")) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/register",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 181
+      lineNumber: 176
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 182
+      lineNumber: 177
     },
     __self: undefined
   }, "\u0E25\u0E07\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19")), __jsx("img", {
@@ -3173,33 +3128,33 @@ const Navbar = () => {
     src: "/assets/separate-icon.png",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 184
+      lineNumber: 179
     },
     __self: undefined
   }), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/signin",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 185
+      lineNumber: 180
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 186
+      lineNumber: 181
     },
     __self: undefined
   }, "\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A")))), __jsx(MainHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191
+      lineNumber: 186
     },
     __self: undefined
   }, __jsx("a", {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 192
+      lineNumber: 187
     },
     __self: undefined
   }, ' ', isDesktop ? __jsx("img", {
@@ -3208,7 +3163,7 @@ const Navbar = () => {
     src: "/assets/logo.png",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 195
+      lineNumber: 190
     },
     __self: undefined
   }) : __jsx("img", {
@@ -3217,13 +3172,13 @@ const Navbar = () => {
     src: "/assets/logo-without-text.png",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 197
+      lineNumber: 192
     },
     __self: undefined
   })), __jsx(SearchContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 204
+      lineNumber: 199
     },
     __self: undefined
   }, __jsx(antd_lib_input_Search__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -3235,20 +3190,20 @@ const Navbar = () => {
     enterButton: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 205
+      lineNumber: 200
     },
     __self: undefined
   })), __jsx(NavigateList, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 212
+      lineNumber: 207
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Dropdown"], {
     overlay: menu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 213
+      lineNumber: 208
     },
     __self: undefined
   }, __jsx("a", {
@@ -3256,64 +3211,78 @@ const Navbar = () => {
     href: "/categories",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 214
+      lineNumber: 209
     },
     __self: undefined
   }, "\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32 ", __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "down",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 215
+      lineNumber: 210
     },
     __self: undefined
   }))), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 218
+      lineNumber: 213
     },
     __self: undefined
   }, "\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23"), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 219
+      lineNumber: 214
     },
     __self: undefined
   }, "\u0E04\u0E30\u0E41\u0E19\u0E19\u0E2A\u0E30\u0E2A\u0E21")), __jsx(ButtonList, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 222
+      lineNumber: 217
     },
     __self: undefined
   }, __jsx("a", {
     href: "/quotation-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 223
+      lineNumber: 218
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "file-text",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 224
+      lineNumber: 219
     },
     __self: undefined
   })), __jsx("a", {
     href: "/shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 226
+      lineNumber: 221
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 227
+      lineNumber: 222
     },
     __self: undefined
   })))));
 };
+
+/***/ }),
+
+/***/ "./src/features/navigation/const.ts":
+/*!******************************************!*\
+  !*** ./src/features/navigation/const.ts ***!
+  \******************************************/
+/*! exports provided: NAV_CAT */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NAV_CAT", function() { return NAV_CAT; });
+const NAV_CAT = ['แผ่นยิปซัม', 'แผ่นดูดซับเสียง', 'โครงคร่าวฝ้าเพดานและผนังยิปซัม', 'โครงคร่าวและแผ่นฝ้าเพดานทีบาร์', 'ปูนฉาบยิปซัม', 'ช่องเซอร์วิสสำเร็จรูป', 'สเตปสำเร็จรูป', 'อุปกรณ์เสริม', 'เครื่องมือช่าง'];
 
 /***/ }),
 
@@ -3337,6 +3306,9 @@ const GET_ME = apollo_boost__WEBPACK_IMPORTED_MODULE_0__["gql"]`
       name
       email
       phone
+      shoppingCart {
+        id
+      }
     }
   }
 `;
@@ -3363,7 +3335,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_4__);
 
 
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/product/ProductCardTall.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/product/ProductCardTall.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
@@ -3514,7 +3486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/product/ProductSection.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/product/ProductSection.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -3637,14 +3609,14 @@ const useResponsive = () => {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/puwong/Developer/senior/gypstore/frontend/pages/index.tsx */"./pages/index.tsx");
+module.exports = __webpack_require__(/*! /Users/nutchanonploypray/work/gypstore/frontend/pages/index.tsx */"./pages/index.tsx");
 
 
 /***/ }),

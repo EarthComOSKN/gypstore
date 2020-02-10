@@ -1,7 +1,10 @@
-import { Button, Icon } from 'antd'
+import { Button, Icon, message } from 'antd'
 import styled from '@emotion/styled'
 import { useState } from 'react'
 import { AmountInput } from '../../component/AmountInput'
+import { GET_ME } from '../navigation/gql'
+import { useQuery, useMutation } from '@apollo/react-hooks'
+import { ADD_PRODUCT_TO_CART } from './gql'
 
 const Container = styled.div`
   font-size: 16px;
@@ -19,23 +22,54 @@ const StyledAmountInput = styled(AmountInput)`
   width: 15rem;
 `
 
-export const ProductInformation = () => {
+type Props = {
+  product: ProductItem
+}
+
+export const ProductInformation = (props: Props) => {
+  const { product } = props
+  const [isLoading, setLoading] = useState(false)
   const [amount, setAmount] = useState(1)
+  const { data, loading } = useQuery(GET_ME)
+  const me = data?.me as User
+  const [addProductToCard] = useMutation(ADD_PRODUCT_TO_CART)
+  if (loading) return <div>Loading ...</div>
+  const { name, description, brand, amount: productAmount, unitType } = product
+  const shid = me?.shoppingCart?.id
+
+  const addToCart = async () => {
+    setLoading(true)
+    try {
+      await addProductToCard({
+        variables: {
+          pid: product.id,
+          amount,
+          shid,
+          key: `${product.id}${shid}`,
+        },
+      })
+      message.success(`เพิ่ม ${product.name} สำเร็จ`)
+    } catch (error) {
+      message.error(`${error}`)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <Container>
-      <h3>แผ่นยิบซัมบอร์ด เอสซีจี SCG มาตรฐาน 9 มม. ขอบลาด ชนิดธรรมดา</h3>
+      <h3>{name}</h3>
       <ul>
+        <li>{description}</li>
+        <li>{brand}</li>
         <li>
-          น้ำหนักเบากว่าแผ่นยิปซัมทั่วไป เพิ่มประสิทธิภาพในการทำงานได้เร็วขึ้น
+          {productAmount} {unitType}
         </li>
-        <li>เหมาะสำหรับงานตกแต่งภายในที่ต้องการความเรียบเนียบ</li>
-        <li>ผ่านการรับรองตามมาตรฐานอุตสหกรรม (มอก.)</li>
       </ul>
       <p>จัดส่งได้ภายใน 1-3 วันทำการ</p>
-      <p>จำนวนที่ต้องการ (แผ่น)</p>
+      <p>จำนวนที่ต้องการ ({unitType})</p>
       <StyledAmountInput amount={amount} onChange={setAmount} />
-      <AddCartButton>
+      <AddCartButton disabled={isLoading} onClick={addToCart}>
         <Icon type="shopping-cart" />
         เพิ่มไปยังรถเข็น
       </AddCartButton>

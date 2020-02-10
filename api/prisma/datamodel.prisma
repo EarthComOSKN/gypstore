@@ -106,9 +106,17 @@ type ProductItem {
   category: Category! @relation(link: INLINE)
   shoppingCart: ShoppingCart @relation(link: INLINE)
   quotation: Quotation @relation(link: INLINE)
-  image: Image! @relation(link: INLINE)
+  image: String
   relatedProduct: [ProductItem] @relation(Link: INLINE)
 
+}
+
+type ShoppingCartItem {
+  id: ID! @id
+  key: String! @unique
+  product: ProductItem!
+  amount: Int!
+  ShoppingCart: ShoppingCart @relation(link: INLINE)
 }
 
 type ShoppingCart {
@@ -116,7 +124,7 @@ type ShoppingCart {
   total_cost: Float!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  productItems: [ProductItem]
+  productItems: [ShoppingCartItem]
   customer: User! @relation(link: INLINE)
 
 }
@@ -135,9 +143,4 @@ type Quotation {
 
 }
 
-type Image {
-  id: ID! @id
-  filename: String!
-  description: String
-}
 

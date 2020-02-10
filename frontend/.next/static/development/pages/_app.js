@@ -20556,7 +20556,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/pages/_app.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/pages/_app.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
 

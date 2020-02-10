@@ -1,10 +1,11 @@
-import { useRouter } from 'next/dist/client/router'
+import { useRouter, Router } from 'next/dist/client/router'
 import { Footer } from '../../component/Footer'
 import styled from '@emotion/styled'
 import { CategoryFilter } from './CategoryFilter'
 import { CategoryList } from './CategoryList'
 import { Card } from 'antd'
 import { Navbar } from '../navigation/Navbar'
+import { ProductList } from '../product/ProductList'
 
 const Container = styled.div`
   display: flex;
@@ -33,17 +34,16 @@ export const CategoryPage = () => {
   if (!router) return null
   console.log(router.query)
 
+  const category = router?.query?.cid
   return (
     <PageContainer>
       <Navbar />
       <Container>
-        {/* <FilterContainer>
-          <h2>Filter</h2>
-          <StyledCard style={{ height: "25rem" }}>
-            <CategoryFilter />
-          </StyledCard>
-        </FilterContainer> */}
-        <CategoryList />
+        {category ? (
+          <ProductList category={category as string} />
+        ) : (
+          <CategoryList />
+        )}
       </Container>
       <Footer />
     </PageContainer>

@@ -351,10 +351,6 @@ type AggregateCategory {
   count: Int!
 }
 
-type AggregateImage {
-  count: Int!
-}
-
 type AggregateInvoice {
   count: Int!
 }
@@ -380,6 +376,10 @@ type AggregateShipping {
 }
 
 type AggregateShoppingCart {
+  count: Int!
+}
+
+type AggregateShoppingCartItem {
   count: Int!
 }
 
@@ -576,146 +576,6 @@ input CategoryWhereUniqueInput {
 }
 
 scalar DateTime
-
-type Image {
-  id: ID!
-  filename: String!
-  description: String
-}
-
-type ImageConnection {
-  pageInfo: PageInfo!
-  edges: [ImageEdge]!
-  aggregate: AggregateImage!
-}
-
-input ImageCreateInput {
-  id: ID
-  filename: String!
-  description: String
-}
-
-input ImageCreateOneInput {
-  create: ImageCreateInput
-  connect: ImageWhereUniqueInput
-}
-
-type ImageEdge {
-  node: Image!
-  cursor: String!
-}
-
-enum ImageOrderByInput {
-  id_ASC
-  id_DESC
-  filename_ASC
-  filename_DESC
-  description_ASC
-  description_DESC
-}
-
-type ImagePreviousValues {
-  id: ID!
-  filename: String!
-  description: String
-}
-
-type ImageSubscriptionPayload {
-  mutation: MutationType!
-  node: Image
-  updatedFields: [String!]
-  previousValues: ImagePreviousValues
-}
-
-input ImageSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: ImageWhereInput
-  AND: [ImageSubscriptionWhereInput!]
-  OR: [ImageSubscriptionWhereInput!]
-  NOT: [ImageSubscriptionWhereInput!]
-}
-
-input ImageUpdateDataInput {
-  filename: String
-  description: String
-}
-
-input ImageUpdateInput {
-  filename: String
-  description: String
-}
-
-input ImageUpdateManyMutationInput {
-  filename: String
-  description: String
-}
-
-input ImageUpdateOneRequiredInput {
-  create: ImageCreateInput
-  update: ImageUpdateDataInput
-  upsert: ImageUpsertNestedInput
-  connect: ImageWhereUniqueInput
-}
-
-input ImageUpsertNestedInput {
-  update: ImageUpdateDataInput!
-  create: ImageCreateInput!
-}
-
-input ImageWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  filename: String
-  filename_not: String
-  filename_in: [String!]
-  filename_not_in: [String!]
-  filename_lt: String
-  filename_lte: String
-  filename_gt: String
-  filename_gte: String
-  filename_contains: String
-  filename_not_contains: String
-  filename_starts_with: String
-  filename_not_starts_with: String
-  filename_ends_with: String
-  filename_not_ends_with: String
-  description: String
-  description_not: String
-  description_in: [String!]
-  description_not_in: [String!]
-  description_lt: String
-  description_lte: String
-  description_gt: String
-  description_gte: String
-  description_contains: String
-  description_not_contains: String
-  description_starts_with: String
-  description_not_starts_with: String
-  description_ends_with: String
-  description_not_ends_with: String
-  AND: [ImageWhereInput!]
-  OR: [ImageWhereInput!]
-  NOT: [ImageWhereInput!]
-}
-
-input ImageWhereUniqueInput {
-  id: ID
-}
 
 type Invoice {
   id: ID!
@@ -1127,12 +987,6 @@ type Mutation {
   upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
   deleteCategory(where: CategoryWhereUniqueInput!): Category
   deleteManyCategories(where: CategoryWhereInput): BatchPayload!
-  createImage(data: ImageCreateInput!): Image!
-  updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
-  updateManyImages(data: ImageUpdateManyMutationInput!, where: ImageWhereInput): BatchPayload!
-  upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
-  deleteImage(where: ImageWhereUniqueInput!): Image
-  deleteManyImages(where: ImageWhereInput): BatchPayload!
   createInvoice(data: InvoiceCreateInput!): Invoice!
   updateInvoice(data: InvoiceUpdateInput!, where: InvoiceWhereUniqueInput!): Invoice
   updateManyInvoices(data: InvoiceUpdateManyMutationInput!, where: InvoiceWhereInput): BatchPayload!
@@ -1174,6 +1028,12 @@ type Mutation {
   upsertShoppingCart(where: ShoppingCartWhereUniqueInput!, create: ShoppingCartCreateInput!, update: ShoppingCartUpdateInput!): ShoppingCart!
   deleteShoppingCart(where: ShoppingCartWhereUniqueInput!): ShoppingCart
   deleteManyShoppingCarts(where: ShoppingCartWhereInput): BatchPayload!
+  createShoppingCartItem(data: ShoppingCartItemCreateInput!): ShoppingCartItem!
+  updateShoppingCartItem(data: ShoppingCartItemUpdateInput!, where: ShoppingCartItemWhereUniqueInput!): ShoppingCartItem
+  updateManyShoppingCartItems(data: ShoppingCartItemUpdateManyMutationInput!, where: ShoppingCartItemWhereInput): BatchPayload!
+  upsertShoppingCartItem(where: ShoppingCartItemWhereUniqueInput!, create: ShoppingCartItemCreateInput!, update: ShoppingCartItemUpdateInput!): ShoppingCartItem!
+  deleteShoppingCartItem(where: ShoppingCartItemWhereUniqueInput!): ShoppingCartItem
+  deleteManyShoppingCartItems(where: ShoppingCartItemWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -1610,7 +1470,7 @@ type ProductItem {
   category: Category!
   shoppingCart: ShoppingCart
   quotation: Quotation
-  image: Image!
+  image: String
   relatedProduct(where: ProductItemWhereInput, orderBy: ProductItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductItem!]
 }
 
@@ -1633,9 +1493,9 @@ input ProductItemCreateInput {
   amount: Int!
   isPublished: Boolean
   category: CategoryCreateOneWithoutProductItemInput!
-  shoppingCart: ShoppingCartCreateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartCreateOneInput
   quotation: QuotationCreateOneWithoutProductItemsInput
-  image: ImageCreateOneInput!
+  image: String
   relatedProduct: ProductItemCreateManyInput
 }
 
@@ -1654,9 +1514,9 @@ input ProductItemCreateManyWithoutQuotationInput {
   connect: [ProductItemWhereUniqueInput!]
 }
 
-input ProductItemCreateManyWithoutShoppingCartInput {
-  create: [ProductItemCreateWithoutShoppingCartInput!]
-  connect: [ProductItemWhereUniqueInput!]
+input ProductItemCreateOneInput {
+  create: ProductItemCreateInput
+  connect: ProductItemWhereUniqueInput
 }
 
 input ProductItemCreateWithoutCategoryInput {
@@ -1671,9 +1531,9 @@ input ProductItemCreateWithoutCategoryInput {
   TermDetail: String!
   amount: Int!
   isPublished: Boolean
-  shoppingCart: ShoppingCartCreateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartCreateOneInput
   quotation: QuotationCreateOneWithoutProductItemsInput
-  image: ImageCreateOneInput!
+  image: String
   relatedProduct: ProductItemCreateManyInput
 }
 
@@ -1690,26 +1550,8 @@ input ProductItemCreateWithoutQuotationInput {
   amount: Int!
   isPublished: Boolean
   category: CategoryCreateOneWithoutProductItemInput!
-  shoppingCart: ShoppingCartCreateOneWithoutProductItemsInput
-  image: ImageCreateOneInput!
-  relatedProduct: ProductItemCreateManyInput
-}
-
-input ProductItemCreateWithoutShoppingCartInput {
-  id: ID
-  name: String!
-  price: String!
-  salePrice: String!
-  brand: String!
-  unitType: String!
-  description: String
-  MenuDetail: String!
-  TermDetail: String!
-  amount: Int!
-  isPublished: Boolean
-  category: CategoryCreateOneWithoutProductItemInput!
-  quotation: QuotationCreateOneWithoutProductItemsInput
-  image: ImageCreateOneInput!
+  shoppingCart: ShoppingCartCreateOneInput
+  image: String
   relatedProduct: ProductItemCreateManyInput
 }
 
@@ -1745,6 +1587,8 @@ enum ProductItemOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  image_ASC
+  image_DESC
 }
 
 type ProductItemPreviousValues {
@@ -1761,6 +1605,7 @@ type ProductItemPreviousValues {
   isPublished: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
+  image: String
 }
 
 input ProductItemScalarWhereInput {
@@ -1916,6 +1761,20 @@ input ProductItemScalarWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
   AND: [ProductItemScalarWhereInput!]
   OR: [ProductItemScalarWhereInput!]
   NOT: [ProductItemScalarWhereInput!]
@@ -1951,9 +1810,9 @@ input ProductItemUpdateDataInput {
   amount: Int
   isPublished: Boolean
   category: CategoryUpdateOneRequiredWithoutProductItemInput
-  shoppingCart: ShoppingCartUpdateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartUpdateOneInput
   quotation: QuotationUpdateOneWithoutProductItemsInput
-  image: ImageUpdateOneRequiredInput
+  image: String
   relatedProduct: ProductItemUpdateManyInput
 }
 
@@ -1969,9 +1828,9 @@ input ProductItemUpdateInput {
   amount: Int
   isPublished: Boolean
   category: CategoryUpdateOneRequiredWithoutProductItemInput
-  shoppingCart: ShoppingCartUpdateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartUpdateOneInput
   quotation: QuotationUpdateOneWithoutProductItemsInput
-  image: ImageUpdateOneRequiredInput
+  image: String
   relatedProduct: ProductItemUpdateManyInput
 }
 
@@ -1986,6 +1845,7 @@ input ProductItemUpdateManyDataInput {
   TermDetail: String
   amount: Int
   isPublished: Boolean
+  image: String
 }
 
 input ProductItemUpdateManyInput {
@@ -2011,6 +1871,7 @@ input ProductItemUpdateManyMutationInput {
   TermDetail: String
   amount: Int
   isPublished: Boolean
+  image: String
 }
 
 input ProductItemUpdateManyWithoutCategoryInput {
@@ -2037,21 +1898,16 @@ input ProductItemUpdateManyWithoutQuotationInput {
   updateMany: [ProductItemUpdateManyWithWhereNestedInput!]
 }
 
-input ProductItemUpdateManyWithoutShoppingCartInput {
-  create: [ProductItemCreateWithoutShoppingCartInput!]
-  delete: [ProductItemWhereUniqueInput!]
-  connect: [ProductItemWhereUniqueInput!]
-  set: [ProductItemWhereUniqueInput!]
-  disconnect: [ProductItemWhereUniqueInput!]
-  update: [ProductItemUpdateWithWhereUniqueWithoutShoppingCartInput!]
-  upsert: [ProductItemUpsertWithWhereUniqueWithoutShoppingCartInput!]
-  deleteMany: [ProductItemScalarWhereInput!]
-  updateMany: [ProductItemUpdateManyWithWhereNestedInput!]
-}
-
 input ProductItemUpdateManyWithWhereNestedInput {
   where: ProductItemScalarWhereInput!
   data: ProductItemUpdateManyDataInput!
+}
+
+input ProductItemUpdateOneRequiredInput {
+  create: ProductItemCreateInput
+  update: ProductItemUpdateDataInput
+  upsert: ProductItemUpsertNestedInput
+  connect: ProductItemWhereUniqueInput
 }
 
 input ProductItemUpdateWithoutCategoryDataInput {
@@ -2065,9 +1921,9 @@ input ProductItemUpdateWithoutCategoryDataInput {
   TermDetail: String
   amount: Int
   isPublished: Boolean
-  shoppingCart: ShoppingCartUpdateOneWithoutProductItemsInput
+  shoppingCart: ShoppingCartUpdateOneInput
   quotation: QuotationUpdateOneWithoutProductItemsInput
-  image: ImageUpdateOneRequiredInput
+  image: String
   relatedProduct: ProductItemUpdateManyInput
 }
 
@@ -2083,25 +1939,8 @@ input ProductItemUpdateWithoutQuotationDataInput {
   amount: Int
   isPublished: Boolean
   category: CategoryUpdateOneRequiredWithoutProductItemInput
-  shoppingCart: ShoppingCartUpdateOneWithoutProductItemsInput
-  image: ImageUpdateOneRequiredInput
-  relatedProduct: ProductItemUpdateManyInput
-}
-
-input ProductItemUpdateWithoutShoppingCartDataInput {
-  name: String
-  price: String
-  salePrice: String
-  brand: String
-  unitType: String
-  description: String
-  MenuDetail: String
-  TermDetail: String
-  amount: Int
-  isPublished: Boolean
-  category: CategoryUpdateOneRequiredWithoutProductItemInput
-  quotation: QuotationUpdateOneWithoutProductItemsInput
-  image: ImageUpdateOneRequiredInput
+  shoppingCart: ShoppingCartUpdateOneInput
+  image: String
   relatedProduct: ProductItemUpdateManyInput
 }
 
@@ -2120,9 +1959,9 @@ input ProductItemUpdateWithWhereUniqueWithoutQuotationInput {
   data: ProductItemUpdateWithoutQuotationDataInput!
 }
 
-input ProductItemUpdateWithWhereUniqueWithoutShoppingCartInput {
-  where: ProductItemWhereUniqueInput!
-  data: ProductItemUpdateWithoutShoppingCartDataInput!
+input ProductItemUpsertNestedInput {
+  update: ProductItemUpdateDataInput!
+  create: ProductItemCreateInput!
 }
 
 input ProductItemUpsertWithWhereUniqueNestedInput {
@@ -2141,12 +1980,6 @@ input ProductItemUpsertWithWhereUniqueWithoutQuotationInput {
   where: ProductItemWhereUniqueInput!
   update: ProductItemUpdateWithoutQuotationDataInput!
   create: ProductItemCreateWithoutQuotationInput!
-}
-
-input ProductItemUpsertWithWhereUniqueWithoutShoppingCartInput {
-  where: ProductItemWhereUniqueInput!
-  update: ProductItemUpdateWithoutShoppingCartDataInput!
-  create: ProductItemCreateWithoutShoppingCartInput!
 }
 
 input ProductItemWhereInput {
@@ -2305,7 +2138,20 @@ input ProductItemWhereInput {
   category: CategoryWhereInput
   shoppingCart: ShoppingCartWhereInput
   quotation: QuotationWhereInput
-  image: ImageWhereInput
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
   relatedProduct_every: ProductItemWhereInput
   relatedProduct_some: ProductItemWhereInput
   relatedProduct_none: ProductItemWhereInput
@@ -2325,9 +2171,6 @@ type Query {
   category(where: CategoryWhereUniqueInput!): Category
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
   categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
-  image(where: ImageWhereUniqueInput!): Image
-  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image]!
-  imagesConnection(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ImageConnection!
   invoice(where: InvoiceWhereUniqueInput!): Invoice
   invoices(where: InvoiceWhereInput, orderBy: InvoiceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Invoice]!
   invoicesConnection(where: InvoiceWhereInput, orderBy: InvoiceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): InvoiceConnection!
@@ -2349,6 +2192,9 @@ type Query {
   shoppingCart(where: ShoppingCartWhereUniqueInput!): ShoppingCart
   shoppingCarts(where: ShoppingCartWhereInput, orderBy: ShoppingCartOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ShoppingCart]!
   shoppingCartsConnection(where: ShoppingCartWhereInput, orderBy: ShoppingCartOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ShoppingCartConnection!
+  shoppingCartItem(where: ShoppingCartItemWhereUniqueInput!): ShoppingCartItem
+  shoppingCartItems(where: ShoppingCartItemWhereInput, orderBy: ShoppingCartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ShoppingCartItem]!
+  shoppingCartItemsConnection(where: ShoppingCartItemWhereInput, orderBy: ShoppingCartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ShoppingCartItemConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -3314,7 +3160,7 @@ type ShoppingCart {
   total_cost: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
-  productItems(where: ProductItemWhereInput, orderBy: ProductItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductItem!]
+  productItems(where: ShoppingCartItemWhereInput, orderBy: ShoppingCartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ShoppingCartItem!]
   customer: User!
 }
 
@@ -3327,8 +3173,13 @@ type ShoppingCartConnection {
 input ShoppingCartCreateInput {
   id: ID
   total_cost: Float!
-  productItems: ProductItemCreateManyWithoutShoppingCartInput
+  productItems: ShoppingCartItemCreateManyWithoutShoppingCartInput
   customer: UserCreateOneWithoutShoppingCartInput!
+}
+
+input ShoppingCartCreateOneInput {
+  create: ShoppingCartCreateInput
+  connect: ShoppingCartWhereUniqueInput
 }
 
 input ShoppingCartCreateOneWithoutCustomerInput {
@@ -3344,7 +3195,7 @@ input ShoppingCartCreateOneWithoutProductItemsInput {
 input ShoppingCartCreateWithoutCustomerInput {
   id: ID
   total_cost: Float!
-  productItems: ProductItemCreateManyWithoutShoppingCartInput
+  productItems: ShoppingCartItemCreateManyWithoutShoppingCartInput
 }
 
 input ShoppingCartCreateWithoutProductItemsInput {
@@ -3356,6 +3207,220 @@ input ShoppingCartCreateWithoutProductItemsInput {
 type ShoppingCartEdge {
   node: ShoppingCart!
   cursor: String!
+}
+
+type ShoppingCartItem {
+  id: ID!
+  key: String!
+  product: ProductItem!
+  amount: Int!
+  ShoppingCart: ShoppingCart
+}
+
+type ShoppingCartItemConnection {
+  pageInfo: PageInfo!
+  edges: [ShoppingCartItemEdge]!
+  aggregate: AggregateShoppingCartItem!
+}
+
+input ShoppingCartItemCreateInput {
+  id: ID
+  key: String!
+  product: ProductItemCreateOneInput!
+  amount: Int!
+  ShoppingCart: ShoppingCartCreateOneWithoutProductItemsInput
+}
+
+input ShoppingCartItemCreateManyWithoutShoppingCartInput {
+  create: [ShoppingCartItemCreateWithoutShoppingCartInput!]
+  connect: [ShoppingCartItemWhereUniqueInput!]
+}
+
+input ShoppingCartItemCreateWithoutShoppingCartInput {
+  id: ID
+  key: String!
+  product: ProductItemCreateOneInput!
+  amount: Int!
+}
+
+type ShoppingCartItemEdge {
+  node: ShoppingCartItem!
+  cursor: String!
+}
+
+enum ShoppingCartItemOrderByInput {
+  id_ASC
+  id_DESC
+  key_ASC
+  key_DESC
+  amount_ASC
+  amount_DESC
+}
+
+type ShoppingCartItemPreviousValues {
+  id: ID!
+  key: String!
+  amount: Int!
+}
+
+input ShoppingCartItemScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  amount: Int
+  amount_not: Int
+  amount_in: [Int!]
+  amount_not_in: [Int!]
+  amount_lt: Int
+  amount_lte: Int
+  amount_gt: Int
+  amount_gte: Int
+  AND: [ShoppingCartItemScalarWhereInput!]
+  OR: [ShoppingCartItemScalarWhereInput!]
+  NOT: [ShoppingCartItemScalarWhereInput!]
+}
+
+type ShoppingCartItemSubscriptionPayload {
+  mutation: MutationType!
+  node: ShoppingCartItem
+  updatedFields: [String!]
+  previousValues: ShoppingCartItemPreviousValues
+}
+
+input ShoppingCartItemSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ShoppingCartItemWhereInput
+  AND: [ShoppingCartItemSubscriptionWhereInput!]
+  OR: [ShoppingCartItemSubscriptionWhereInput!]
+  NOT: [ShoppingCartItemSubscriptionWhereInput!]
+}
+
+input ShoppingCartItemUpdateInput {
+  key: String
+  product: ProductItemUpdateOneRequiredInput
+  amount: Int
+  ShoppingCart: ShoppingCartUpdateOneWithoutProductItemsInput
+}
+
+input ShoppingCartItemUpdateManyDataInput {
+  key: String
+  amount: Int
+}
+
+input ShoppingCartItemUpdateManyMutationInput {
+  key: String
+  amount: Int
+}
+
+input ShoppingCartItemUpdateManyWithoutShoppingCartInput {
+  create: [ShoppingCartItemCreateWithoutShoppingCartInput!]
+  delete: [ShoppingCartItemWhereUniqueInput!]
+  connect: [ShoppingCartItemWhereUniqueInput!]
+  set: [ShoppingCartItemWhereUniqueInput!]
+  disconnect: [ShoppingCartItemWhereUniqueInput!]
+  update: [ShoppingCartItemUpdateWithWhereUniqueWithoutShoppingCartInput!]
+  upsert: [ShoppingCartItemUpsertWithWhereUniqueWithoutShoppingCartInput!]
+  deleteMany: [ShoppingCartItemScalarWhereInput!]
+  updateMany: [ShoppingCartItemUpdateManyWithWhereNestedInput!]
+}
+
+input ShoppingCartItemUpdateManyWithWhereNestedInput {
+  where: ShoppingCartItemScalarWhereInput!
+  data: ShoppingCartItemUpdateManyDataInput!
+}
+
+input ShoppingCartItemUpdateWithoutShoppingCartDataInput {
+  key: String
+  product: ProductItemUpdateOneRequiredInput
+  amount: Int
+}
+
+input ShoppingCartItemUpdateWithWhereUniqueWithoutShoppingCartInput {
+  where: ShoppingCartItemWhereUniqueInput!
+  data: ShoppingCartItemUpdateWithoutShoppingCartDataInput!
+}
+
+input ShoppingCartItemUpsertWithWhereUniqueWithoutShoppingCartInput {
+  where: ShoppingCartItemWhereUniqueInput!
+  update: ShoppingCartItemUpdateWithoutShoppingCartDataInput!
+  create: ShoppingCartItemCreateWithoutShoppingCartInput!
+}
+
+input ShoppingCartItemWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  product: ProductItemWhereInput
+  amount: Int
+  amount_not: Int
+  amount_in: [Int!]
+  amount_not_in: [Int!]
+  amount_lt: Int
+  amount_lte: Int
+  amount_gt: Int
+  amount_gte: Int
+  ShoppingCart: ShoppingCartWhereInput
+  AND: [ShoppingCartItemWhereInput!]
+  OR: [ShoppingCartItemWhereInput!]
+  NOT: [ShoppingCartItemWhereInput!]
+}
+
+input ShoppingCartItemWhereUniqueInput {
+  id: ID
+  key: String
 }
 
 enum ShoppingCartOrderByInput {
@@ -3394,14 +3459,29 @@ input ShoppingCartSubscriptionWhereInput {
   NOT: [ShoppingCartSubscriptionWhereInput!]
 }
 
+input ShoppingCartUpdateDataInput {
+  total_cost: Float
+  productItems: ShoppingCartItemUpdateManyWithoutShoppingCartInput
+  customer: UserUpdateOneRequiredWithoutShoppingCartInput
+}
+
 input ShoppingCartUpdateInput {
   total_cost: Float
-  productItems: ProductItemUpdateManyWithoutShoppingCartInput
+  productItems: ShoppingCartItemUpdateManyWithoutShoppingCartInput
   customer: UserUpdateOneRequiredWithoutShoppingCartInput
 }
 
 input ShoppingCartUpdateManyMutationInput {
   total_cost: Float
+}
+
+input ShoppingCartUpdateOneInput {
+  create: ShoppingCartCreateInput
+  update: ShoppingCartUpdateDataInput
+  upsert: ShoppingCartUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ShoppingCartWhereUniqueInput
 }
 
 input ShoppingCartUpdateOneRequiredWithoutCustomerInput {
@@ -3422,12 +3502,17 @@ input ShoppingCartUpdateOneWithoutProductItemsInput {
 
 input ShoppingCartUpdateWithoutCustomerDataInput {
   total_cost: Float
-  productItems: ProductItemUpdateManyWithoutShoppingCartInput
+  productItems: ShoppingCartItemUpdateManyWithoutShoppingCartInput
 }
 
 input ShoppingCartUpdateWithoutProductItemsDataInput {
   total_cost: Float
   customer: UserUpdateOneRequiredWithoutShoppingCartInput
+}
+
+input ShoppingCartUpsertNestedInput {
+  update: ShoppingCartUpdateDataInput!
+  create: ShoppingCartCreateInput!
 }
 
 input ShoppingCartUpsertWithoutCustomerInput {
@@ -3479,9 +3564,9 @@ input ShoppingCartWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
-  productItems_every: ProductItemWhereInput
-  productItems_some: ProductItemWhereInput
-  productItems_none: ProductItemWhereInput
+  productItems_every: ShoppingCartItemWhereInput
+  productItems_some: ShoppingCartItemWhereInput
+  productItems_none: ShoppingCartItemWhereInput
   customer: UserWhereInput
   AND: [ShoppingCartWhereInput!]
   OR: [ShoppingCartWhereInput!]
@@ -3495,7 +3580,6 @@ input ShoppingCartWhereUniqueInput {
 type Subscription {
   address(where: AddressSubscriptionWhereInput): AddressSubscriptionPayload
   category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
-  image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
   invoice(where: InvoiceSubscriptionWhereInput): InvoiceSubscriptionPayload
   payment(where: PaymentSubscriptionWhereInput): PaymentSubscriptionPayload
   productItem(where: ProductItemSubscriptionWhereInput): ProductItemSubscriptionPayload
@@ -3503,6 +3587,7 @@ type Subscription {
   saleman(where: SalemanSubscriptionWhereInput): SalemanSubscriptionPayload
   shipping(where: ShippingSubscriptionWhereInput): ShippingSubscriptionPayload
   shoppingCart(where: ShoppingCartSubscriptionWhereInput): ShoppingCartSubscriptionPayload
+  shoppingCartItem(where: ShoppingCartItemSubscriptionWhereInput): ShoppingCartItemSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 

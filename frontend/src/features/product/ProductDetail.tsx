@@ -13,11 +13,17 @@ const Container = styled.div`
   grid-gap: 2rem;
   grid-template-columns: 1fr 1.25fr 1fr;
 `
-export const ProductDetail = () => {
+
+type Props = {
+  product: ProductItem
+}
+
+export const ProductDetail = (props: Props) => {
+  const { product } = props
   return (
     <Container>
       <ProductImage />
-      <ProductInformation />
+      <ProductInformation product={product} />
       <ProductSupport />
     </Container>
   )

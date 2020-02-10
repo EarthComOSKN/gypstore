@@ -4,6 +4,9 @@ import { Navbar } from '../navigation/Navbar'
 import { NavBreadcrumb } from '../navigation/NavBreadcrumb'
 import { ProductDetail } from './ProductDetail'
 import { ProductRelated } from './ProductRelated'
+import { useRouter } from 'next/router'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_PRODUCT_DETAIL } from './gql'
 
 const Container = styled.div`
   padding: 3rem 0rem;
@@ -13,6 +16,20 @@ const Container = styled.div`
 `
 
 export const ProductDetailPage = () => {
+  const router = useRouter()
+  const productId = router?.query?.pid
+  console.log(productId)
+  const { data, loading } = useQuery(GET_PRODUCT_DETAIL, {
+    variables: {
+      id: productId,
+    },
+    skip: !productId,
+  })
+  if (!router) return null
+  if (loading) return <div>Loading...</div>
+  if (!data) return null
+  const product = data?.productItem as ProductItem
+
   const nav = [
     {
       link: '/',
@@ -20,13 +37,13 @@ export const ProductDetailPage = () => {
       text: 'Home',
     },
     {
-      link: '/',
+      link: `/category/${product.category.name}`,
 
-      text: 'ฝ้าผนัง',
+      text: product.category.name,
     },
     {
-      link: '/',
-      text: 'กระดานชนวน',
+      link: `/product/${product.id}`,
+      text: product.name,
     },
   ]
   return (
@@ -34,7 +51,7 @@ export const ProductDetailPage = () => {
       <Navbar />
       <Container>
         <NavBreadcrumb nav={nav} />
-        <ProductDetail />
+        <ProductDetail product={product} />
         <ProductRelated />
       </Container>
       <Footer />

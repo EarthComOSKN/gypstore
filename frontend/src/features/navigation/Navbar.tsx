@@ -6,6 +6,7 @@ import Search from 'antd/lib/input/Search'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_ME } from './gql'
 import { useRouter } from 'next/router'
+import { NAV_CAT } from './const'
 
 const Header = styled.div`
   height: 120px;
@@ -149,20 +150,14 @@ export const Navbar = () => {
     router.push('/signin')
   }
 
-  const { SubMenu } = Menu;
+  const { SubMenu } = Menu
   const menu = (
     <Menu>
-      <Menu.Item>แผ่นยิปซัม</Menu.Item>
-      <Menu.Item>แผ่นดูดซับเสียง</Menu.Item>
-      <Menu.Item>โครงคร่าวฝ้าเพดานและผนังยิปซัม</Menu.Item>
-      <Menu.Item>โครงคร่าวและแผ่นฝ้าเพดานทีบาร์</Menu.Item>
-      <Menu.Item>ปูนฉาบยิปซัม</Menu.Item>
-      <SubMenu title="ชิ้นงานสำเร็จรูป">
-        <Menu.Item>ช่องเซอร์วิสสำเร็จรูป</Menu.Item>
-        <Menu.Item>สเตปสำเร็จรูป</Menu.Item>
-      </SubMenu>
-      <Menu.Item>อุปกรณ์เสริม</Menu.Item>
-      <Menu.Item>เครื่องมือช่าง</Menu.Item>
+      {NAV_CAT.map(c => (
+        <Menu.Item key={c}>
+          <a href={`/category/${c}`}>{c}</a>
+        </Menu.Item>
+      ))}
     </Menu>
   )
 
