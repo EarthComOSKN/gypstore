@@ -1,19 +1,9 @@
 import { gql } from 'apollo-boost'
 
-export const GET_SHOPPING_CART = gql`
-  query {
-    me {
-      shoppingCart {
-        productItems {
-          id
-          product {
-            name
-            salePrice
-            unitType
-          }
-          amount
-        }
-      }
+export const DELETE_ITEM = gql`
+  mutation($key: String!) {
+    deleteShoppingCartItem(where: { key: $key }) {
+      id
     }
   }
 `

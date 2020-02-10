@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
 import { ProductCardTall } from '../product/ProductCardTall'
 import { AmountInput } from '../../component/AmountInput'
-import { Button } from 'antd'
-import { useQuery } from '@apollo/react-hooks'
-import { GET_SHOPPING_CART } from './gql'
+import { Button, message, Icon, Modal } from 'antd'
+import { useQuery, useMutation } from '@apollo/react-hooks'
+import { DELETE_ITEM } from './gql'
+import { GET_ME } from '../navigation/gql'
+const { confirm } = Modal
 
 const Container = styled.div`
   background-color: white;
@@ -49,20 +51,63 @@ const StyledButton = styled(Button)`
   font-size: 1rem;
   padding: 0rem 2rem;
 `
+const DeleteIcon = styled(Icon)`
+  cursor: pointer;
+  & svg {
+    fill: red;
+  }
+  margin-left: 1rem;
+  font-size: 1.25rem;
+`
 
 export const ShoppingCart = () => {
-  const { data, loading, error } = useQuery(GET_SHOPPING_CART, {
-    fetchPolicy: 'network-only',
+  const { data, loading, error } = useQuery(GET_ME)
+  const [deleteProductItem] = useMutation(DELETE_ITEM, {
+    update(cache, mutationResult) {
+      const { me } = cache.readQuery({ query: GET_ME })
+      const user = me as User
+      const oldShoppingItems = [...user.shoppingCart.productItems]
+      const newShoppingItems = oldShoppingItems.filter(
+        i => i.id !== mutationResult.data.deleteShoppingCartItem.id,
+      )
+      const newUser = { ...user }
+      newUser.shoppingCart.productItems = [...newShoppingItems]
+      // cache.writeData(newUser)
+    },
   })
   if (loading) return <div>Lodaing...</div>
-  console.log(data, error)
   const me = data.me as User
-  const shoppingCart = me.shoppingCart
-  const shoppingCartItem = shoppingCart.productItems as any
+  const shoppingCart = me.shoppingCart as ShoppingCart
+  const shoppingCartItems = shoppingCart.productItems
+
+  const showDeleteConfirm = async (key: string, name: string) => {
+    confirm({
+      title: `คุณต้องการนำสินค้า ${name} ออกใช่หรือไม่?`,
+      content: '',
+      okText: 'ลบ',
+      okType: 'danger',
+      cancelText: 'ยกเลิก',
+      async onOk() {
+        await deleteItem(key)
+      },
+      onCancel() {
+        console.log('Cancel')
+      },
+    })
+  }
+
+  const deleteItem = async (key: string) => {
+    try {
+      await deleteProductItem({ variables: { key } })
+      message.success('รบรายการ สำเร็จ')
+    } catch (error) {
+      message.error('error has occur')
+    }
+  }
 
   return (
     <Container>
-      <h2>รถเข็นสินค้า ({shoppingCartItem.length})</h2>
+      <h2>รถเข็นสินค้า ({shoppingCartItems.length})</h2>
       <CartTable>
         <CartRow>
           <h4>สินค้า</h4>
@@ -70,28 +115,49 @@ export const ShoppingCart = () => {
           <h4>ปริมาณ</h4>
           <h4>ราคารวม</h4>
         </CartRow>
-        {shoppingCartItem.map(item => {
-          const { pi, amount } = item
+        {shoppingCartItems.map(item => {
+          const { product, amount } = item
           return (
             <CartRow>
               <Product>
                 <ProductCardTall buyable={false} onlyImage />
-                <ProductName>{pi.name}</ProductName>
+                <ProductName>
+                  {product.name}
+                  <DeleteIcon
+                    onClick={() =>
+                      showDeleteConfirm(
+                        `${product.id}${shoppingCart.id}`,
+                        product.name,
+                      )
+                    }
+                    type="delete"
+                  />
+                </ProductName>
               </Product>
               <Price>
-                {pi.salePrice} บาท / {pi.unitType}
+                {product.salePrice} บาท / {product.unitType}
               </Price>
               <Amount>
-                <AmountInput onChange={e => null} amount={100} />
+                <AmountInput onChange={e => null} amount={amount} />
               </Amount>
-              <Price>{+pi.salePrice * amount} บาท</Price>
+              <Price>
+                {(+product.salePrice * amount).toLocaleString()} บาท
+              </Price>
             </CartRow>
           )
         })}
         <div>
           <CartSumRow>
-            <h2>ราคารวม (2รายการ)</h2>
-            <h2>39,000 บาท</h2>
+            <h2>ราคารวม ({shoppingCartItems.length} รายการ)</h2>
+            <h2>
+              {shoppingCartItems
+                .reduce(
+                  (prv, cur) => prv + cur.amount * +cur.product.salePrice,
+                  0,
+                )
+                .toLocaleString()}{' '}
+              บาท
+            </h2>
           </CartSumRow>
           <CartSumRow>
             <StyledButton>พิมพ์ใบเสนอราคา</StyledButton>

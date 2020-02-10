@@ -9,6 +9,16 @@ export const GET_ME = gql`
       phone
       shoppingCart {
         id
+        productItems {
+          id
+          product {
+            id
+            name
+            salePrice
+            unitType
+          }
+          amount
+        }
       }
     }
   }

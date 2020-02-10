@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3308,6 +3308,16 @@ const GET_ME = apollo_boost__WEBPACK_IMPORTED_MODULE_0__["gql"]`
       phone
       shoppingCart {
         id
+        productItems {
+          id
+          product {
+            id
+            name
+            salePrice
+            unitType
+          }
+          amount
+        }
       }
     }
   }
@@ -3609,7 +3619,7 @@ const useResponsive = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/
