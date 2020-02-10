@@ -1,1 +1,0 @@
-{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport { SubCategoryPage } from \"../../../../src/features/sub-category/SubCategoryPage\";\nexport default (() => __jsx(SubCategoryPage, null));","map":null,"metadata":{},"sourceType":"module"}
