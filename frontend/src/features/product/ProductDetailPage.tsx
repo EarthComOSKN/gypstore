@@ -37,13 +37,13 @@ export const ProductDetailPage = () => {
       text: 'Home',
     },
     {
-      link: `/category/${product.category.name}`,
+      link: `/category/${product?.category?.name || 'แผ่นยิปซั่ม'}`,
 
-      text: product.category.name,
+      text: product?.category?.name || 'แผ่นยิปซั่ม',
     },
     {
-      link: `/product/${product.id}`,
-      text: product.name,
+      link: `/product/${product?.id || ''}`,
+      text: product?.name || '',
     },
   ]
   return (
@@ -51,7 +51,12 @@ export const ProductDetailPage = () => {
       <Navbar />
       <Container>
         <NavBreadcrumb nav={nav} />
-        <ProductDetail product={product} />
+
+        {product ? (
+          <ProductDetail product={product} />
+        ) : (
+          <h1>ไม่มีสินค้านี้</h1>
+        )}
         <ProductRelated />
       </Container>
       <Footer />

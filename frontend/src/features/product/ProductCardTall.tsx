@@ -78,7 +78,7 @@ export const ProductCardTall = (props: Props) => {
   } = props
   return (
     <Container onlyImage={onlyImage} {...restProps}>
-      <a href="/product/test">
+      <a href="/categories">
         <StyledCard
           hoverable
           cover={
