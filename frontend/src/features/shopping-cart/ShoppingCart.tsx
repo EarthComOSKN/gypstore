@@ -5,6 +5,7 @@ import { Button, message, Icon, Modal } from 'antd'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { DELETE_ITEM } from './gql'
 import { GET_ME } from '../navigation/gql'
+import { useRouter } from 'next/router'
 const { confirm } = Modal
 
 const Container = styled.div`
@@ -62,6 +63,7 @@ const DeleteIcon = styled(Icon)`
 
 export const ShoppingCart = () => {
   const { data, loading, error } = useQuery(GET_ME)
+  const router = useRouter()
   const [deleteProductItem] = useMutation(DELETE_ITEM, {
     update(cache, mutationResult) {
       const { me } = cache.readQuery({ query: GET_ME })
@@ -76,6 +78,10 @@ export const ShoppingCart = () => {
     },
   })
   if (loading) return <div>Lodaing...</div>
+  if (!data) {
+    router.push('/signin')
+    return null
+  }
   const me = data.me as User
   const shoppingCart = me.shoppingCart as ShoppingCart
   const shoppingCartItems = shoppingCart.productItems

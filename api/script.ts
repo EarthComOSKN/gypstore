@@ -222,8 +222,3 @@ const main = async () => {
 };
 
 main();
-// mutation{
-//   createProductItem(data:){
-//     id
-//   }
-// }
