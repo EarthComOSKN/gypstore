@@ -29,15 +29,15 @@ export const TableWrapper = styled("div", () => ({
   height: "450px"
 }));
 
-export const StyledTable = withStyle(BaseStyledTable, {
+export const StyledTable = withStyle(BaseStyledTable, () => ({
   borderTopLeftRadius: "0 !important",
   borderTopRightRadius: "0 !important",
   borderBottomLeftRadius: "0 !important",
   borderBottomRightRadius: "0 !important",
   alignContent: "start"
-});
+}));
 
-export const StyledHeadCell = withStyle(BaseStyledHeadCell, {
+export const StyledHeadCell = withStyle(BaseStyledHeadCell, () => ({
   fontFamily: "'Lato', sans-serif",
   fontWeight: 700,
   color: "#161F6A !important",
@@ -46,14 +46,14 @@ export const StyledHeadCell = withStyle(BaseStyledHeadCell, {
   borderColor: "rgba(0, 0, 0, 0.12)",
   alignSelf: "start",
   zIndex: 1
-});
+}));
 
-export const StyledBodyCell = withStyle(BaseStyledCell, {
+export const StyledBodyCell = withStyle(BaseStyledCell, () => ({
   fontFamily: "'Lato', sans-serif",
   fontWeight: 400,
   color: "#161F6A !important",
   alignSelf: "center"
-});
+}));
 
 export const ProgressWrapper = styled("div", () => ({
   width: "100%",

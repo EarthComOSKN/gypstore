@@ -48,41 +48,41 @@ const TableWrapper = styled("div", () => ({
   padding: "0 25px 25px"
 }));
 
-const StyledHead = withStyle(BaseStyledHead, {
+const StyledHead = withStyle(BaseStyledHead, () => ({
   width: "100%",
 
   "@media only screen and (max-width: 767px)": {
     width: "1000px"
   }
-});
+}));
 
-const StyledBody = withStyle(BaseStyledBody, {
+const StyledBody = withStyle(BaseStyledBody, () => ({
   width: "100%",
 
   "@media only screen and (max-width: 767px)": {
     width: "1000px"
   }
-});
+}));
 
-const StyledHeadCell = withStyle(BaseStyledHeadCell, {
+const StyledHeadCell = withStyle(BaseStyledHeadCell, () => ({
   fontFamily: "'Lato', sans-serif",
   fontWeight: 700,
   color: "#161F6A !important"
-});
+}));
 
-const SmallHeadCell = withStyle(StyledHeadCell, {
+const SmallHeadCell = withStyle(StyledHeadCell, () => ({
   maxWidth: "70px"
-});
+}));
 
-const StyledCell = withStyle(BaseStyledCell, {
+const StyledCell = withStyle(BaseStyledCell, () => ({
   fontFamily: "'Lato', sans-serif",
   fontWeight: 400,
   color: "#161F6A !important"
-});
+}));
 
-const SmallCell = withStyle(StyledCell, {
+const SmallCell = withStyle(StyledCell, () => ({
   maxWidth: "70px"
-});
+}));
 
 export default function Products() {
   const { data, error } = useQuery(GET_PRODUCTS);

@@ -32,7 +32,7 @@ const MyInput = ({ field, form, ...props }) => {
 
 export default () => {
   let history = useHistory();
-  let location = useLocation();
+  let location: any = useLocation();
   const { authenticate, isAuthenticated } = useContext(AuthContext);
   if (isAuthenticated) return <Redirect to={{ pathname: "/" }} />;
 
