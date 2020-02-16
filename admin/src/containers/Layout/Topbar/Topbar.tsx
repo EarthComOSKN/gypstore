@@ -26,7 +26,7 @@ import {
   CloseButton,
   DrawerWrapper
 } from "./Topbar.style";
-import Logoimage from "../../../image/PickBazar.png";
+import Logoimage from "../../../image/logo.png";
 import UserImage from "../../../image/user.jpg";
 import { useDrawerDispatch } from "../../../context/DrawerContext";
 import { MenuIcon } from "../../../components/AllSvgIcon";

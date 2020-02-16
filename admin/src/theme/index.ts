@@ -4,7 +4,7 @@ export const theme = createTheme(
   {
     ...lightThemePrimitives,
     primaryFontFamily: "'Lato', sans-serif",
-    primary: "#00C58D",
+    primary: "#FF8E0A",
     primary700: "#00bd87"
   },
   {
@@ -146,9 +146,9 @@ export const theme = createTheme(
       }
     },
     colors: {
-      primary: "#00C58D",
-      primary700: "#00bd87",
-      primary400: "#03D3B5",
+      primary: "#FF8E0A",
+      primary700: "#FF8E0A",
+      primary400: "#FF8E0A",
       red400: "#FC5C63",
       red700: "#FC6687",
       greyE6: "#E6E6E6",

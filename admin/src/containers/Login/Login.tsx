@@ -51,9 +51,9 @@ export default () => {
           render={({ errors, status, touched, isSubmitting }) => (
             <Form>
               <FormFields>
-                <LogoWrapper>
+                {/* <LogoWrapper>
                   <LogoImage src={Logoimage} alt="pickbazar-admin" />
-                </LogoWrapper>
+                </LogoWrapper> */}
                 <FormTitle>Log in to admin</FormTitle>
               </FormFields>
 

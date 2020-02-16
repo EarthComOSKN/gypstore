@@ -1,113 +1,137 @@
-import React, { useState } from 'react';
-import { styled } from 'baseui';
-import { Button } from 'baseui/button';
+import React, { useState } from "react";
+import { styled } from "baseui";
+import { Button } from "baseui/button";
 import {
   Grid,
   Row as Rows,
-  Col as Column,
-} from '../../components/FlexBox/FlexBox';
-import Input from '../../components/Input/Input';
-import Select from '../../components/Select/Select';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
-import { Header, Heading } from '../../components/WrapperStyle';
-import Fade from 'react-reveal/Fade';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import NoResult from '../../components/NoResult/NoResult';
-import { CURRENCY } from '../../settings/constants';
-import Placeholder from '../../components/Placeholder/Placeholder';
+  Col as Column
+} from "../../components/FlexBox/FlexBox";
+import Input from "../../components/Input/Input";
+import Select from "../../components/Select/Select";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
+import { Header, Heading } from "../../components/WrapperStyle";
+import Fade from "react-reveal/Fade";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import NoResult from "../../components/NoResult/NoResult";
+import { CURRENCY } from "../../settings/constants";
+import Placeholder from "../../components/Placeholder/Placeholder";
 
-export const ProductsRow = styled('div', ({ $theme }) => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  marginTop: '25px',
+export const ProductsRow = styled("div", ({ $theme }) => ({
+  display: "flex",
+  flexWrap: "wrap",
+  marginTop: "25px",
   backgroundColor: $theme.colors.backgroundF7,
-  position: 'relative',
-  zIndex: '1',
+  position: "relative",
+  zIndex: "1",
 
-  '@media only screen and (max-width: 767px)': {
-    marginLeft: '-7.5px',
-    marginRight: '-7.5px',
-    marginTop: '15px',
-  },
+  "@media only screen and (max-width: 767px)": {
+    marginLeft: "-7.5px",
+    marginRight: "-7.5px",
+    marginTop: "15px"
+  }
 }));
 
 export const Col = styled(Column, () => ({
-  '@media only screen and (max-width: 767px)': {
-    marginBottom: '20px',
+  "@media only screen and (max-width: 767px)": {
+    marginBottom: "20px",
 
-    ':last-child': {
-      marginBottom: 0,
-    },
-  },
+    ":last-child": {
+      marginBottom: 0
+    }
+  }
 }));
 
 const Row = styled(Rows, () => ({
-  '@media only screen and (min-width: 768px) and (max-width: 991px)': {
-    alignItems: 'center',
-  },
+  "@media only screen and (min-width: 768px) and (max-width: 991px)": {
+    alignItems: "center"
+  }
 }));
 
-export const ProductCardWrapper = styled('div', () => ({
-  height: '100%',
+export const ProductCardWrapper = styled("div", () => ({
+  height: "100%"
 }));
 
-export const LoaderWrapper = styled('div', () => ({
-  width: '100%',
-  height: '100vh',
-  display: 'flex',
-  flexWrap: 'wrap',
+export const LoaderWrapper = styled("div", () => ({
+  width: "100%",
+  height: "100vh",
+  display: "flex",
+  flexWrap: "wrap"
 }));
 
-export const LoaderItem = styled('div', () => ({
-  width: '25%',
-  padding: '0 15px',
-  marginBottom: '30px',
+export const LoaderItem = styled("div", () => ({
+  width: "25%",
+  padding: "0 15px",
+  marginBottom: "30px"
 }));
+
+// const GET_PRODUCTS = gql`
+//   query getProducts(
+//     $type: String
+//     $sortByPrice: String
+//     $searchText: String
+//     $offset: Int
+//   ) {
+//     products(
+//       type: $type
+//       sortByPrice: $sortByPrice
+//       searchText: $searchText
+//       offset: $offset
+//     ) {
+//       items {
+//         id
+//         name
+//         description
+//         image
+//         type
+//         price
+//         unit
+//         salePrice
+//         discountInPercent
+//       }
+//       totalCount
+//       hasMore
+//     }
+//   }
+// `;
 
 const GET_PRODUCTS = gql`
-  query getProducts(
-    $type: String
-    $sortByPrice: String
-    $searchText: String
-    $offset: Int
-  ) {
-    products(
-      type: $type
-      sortByPrice: $sortByPrice
-      searchText: $searchText
-      offset: $offset
-    ) {
-      items {
-        id
+  # Write your query or mutation here
+  query {
+    productItems {
+      id
+      name
+      price
+      salePrice
+      brand
+      unitType
+      description
+      MenuDetail
+      TermDetail
+      amount
+      isPublished
+      createdAt
+      updatedAt
+      category {
         name
-        description
-        image
-        type
-        price
-        unit
-        salePrice
-        discountInPercent
       }
-      totalCount
-      hasMore
     }
   }
 `;
-
 const typeSelectOptions = [
-  { value: 'grocery', label: 'Grocery' },
-  { value: 'women-cloths', label: 'Women Cloths' },
-  { value: 'bags', label: 'Bags' },
-  { value: 'makeup', label: 'Makeup' },
+  { value: "grocery", label: "Grocery" },
+  { value: "women-cloths", label: "Women Cloths" },
+  { value: "bags", label: "Bags" },
+  { value: "makeup", label: "Makeup" }
 ];
 const priceSelectOptions = [
-  { value: 'highestToLowest', label: 'Highest To Lowest' },
-  { value: 'lowestToHighest', label: 'Lowest To Highest' },
+  { value: "highestToLowest", label: "Highest To Lowest" },
+  { value: "lowestToHighest", label: "Lowest To Highest" }
 ];
 
 export default function Products() {
   const { data, error, refetch, fetchMore } = useQuery(GET_PRODUCTS);
+
   const [type, setType] = useState([]);
   const [priceOrder, setPriceOrder] = useState([]);
   const [search, setSearch] = useState([]);
@@ -116,31 +140,31 @@ export default function Products() {
     return <div>Error! {error.message}</div>;
   }
   function loadMore() {
-    fetchMore({
-      variables: {
-        offset: data.products.items.length,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult) return prev;
-        return Object.assign({}, prev, {
-          products: {
-            __typename: prev.products.__typename,
-            items: [...prev.products.items, ...fetchMoreResult.products.items],
-            hasMore: fetchMoreResult.products.hasMore,
-          },
-        });
-      },
-    });
+    // fetchMore({
+    //   variables: {
+    //     offset: data.products.items.length
+    //   },
+    //   updateQuery: (prev, { fetchMoreResult }) => {
+    //     if (!fetchMoreResult) return prev;
+    //     return Object.assign({}, prev, {
+    //       products: {
+    //         __typename: prev.products.__typename,
+    //         items: [...prev.products.items, ...fetchMoreResult.products.items],
+    //         hasMore: fetchMoreResult.products.hasMore
+    //       }
+    //     });
+    //   }
+    // });
   }
   function handlePriceSort({ value }) {
     setPriceOrder(value);
     if (value.length) {
       refetch({
-        sortByPrice: value[0].value,
+        sortByPrice: value[0].value
       });
     } else {
       refetch({
-        sortByPrice: null,
+        sortByPrice: null
       });
     }
   }
@@ -148,11 +172,11 @@ export default function Products() {
     setType(value);
     if (value.length) {
       refetch({
-        type: value[0].value,
+        type: value[0].value
       });
     } else {
       refetch({
-        type: null,
+        type: null
       });
     }
   }
@@ -176,9 +200,9 @@ export default function Products() {
                 <Col md={3} xs={12}>
                   <Select
                     options={typeSelectOptions}
-                    labelKey='label'
-                    valueKey='value'
-                    placeholder='Category Type'
+                    labelKey="label"
+                    valueKey="value"
+                    placeholder="Category Type"
                     value={type}
                     searchable={false}
                     onChange={handleCategoryType}
@@ -188,10 +212,10 @@ export default function Products() {
                 <Col md={3} xs={12}>
                   <Select
                     options={priceSelectOptions}
-                    labelKey='label'
-                    valueKey='value'
+                    labelKey="label"
+                    valueKey="value"
                     value={priceOrder}
-                    placeholder='Price'
+                    placeholder="Price"
                     searchable={false}
                     onChange={handlePriceSort}
                   />
@@ -200,7 +224,7 @@ export default function Products() {
                 <Col md={6} xs={12}>
                   <Input
                     value={search}
-                    placeholder='Ex: Search By Name'
+                    placeholder="Ex: Search By Name"
                     onChange={handleSearch}
                     clearable
                   />
@@ -211,25 +235,25 @@ export default function Products() {
 
           <Row>
             {data ? (
-              data.products && data.products.items.length !== 0 ? (
-                data.products.items.map((item: any, index: number) => (
+              data.productItems && data.productItems.length !== 0 ? (
+                data.productItems.map((item: any, index: number) => (
                   <Col
                     md={4}
                     lg={3}
                     sm={6}
                     xs={12}
                     key={index}
-                    style={{ margin: '15px 0' }}
+                    style={{ margin: "15px 0" }}
                   >
                     <Fade bottom duration={800} delay={index * 10}>
                       <ProductCard
                         title={item.name}
-                        weight={item.unit}
-                        image={item.image}
+                        weight={item.unitType}
+                        image=""
                         currency={CURRENCY}
                         price={item.price}
                         salePrice={item.salePrice}
-                        discountInPercent={item.discountInPercent}
+                        discountInPercent={0}
                         data={item}
                       />
                     </Fade>
@@ -255,16 +279,16 @@ export default function Products() {
               </LoaderWrapper>
             )}
           </Row>
-          {data && data.products && data.products.hasMore && (
+          {/* {data && data.productItems && data.products.hasMore && (
             <Row>
               <Col
                 md={12}
-                style={{ display: 'flex', justifyContent: 'center' }}
+                style={{ display: "flex", justifyContent: "center" }}
               >
                 <Button onClick={loadMore}>Load More</Button>
               </Col>
             </Row>
-          )}
+          )} */}
         </Col>
       </Row>
     </Grid>
