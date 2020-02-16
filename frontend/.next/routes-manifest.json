@@ -1,0 +1,1 @@
+{"version":1,"basePath":"","redirects":[],"rewrites":[],"headers":[],"dynamicRoutes":[{"page":"/category/[cid]","regex":"^\\/category\\/([^/]+?)(?:\\/)?$"},{"page":"/category/[cid]/sub-category/[scid]","regex":"^\\/category\\/([^/]+?)\\/sub\\-category\\/([^/]+?)(?:\\/)?$"},{"page":"/product/[pid]","regex":"^\\/product\\/([^/]+?)(?:\\/)?$"}]}
