@@ -65,14 +65,14 @@ const Routes = () => {
     <AuthProvider>
       <Suspense fallback={<InLineLoader />}>
         <Switch>
-          <PrivateRoute exact={true} path={PRODUCTS}>
+          <PrivateRoute exact={true} path={DASHBOARD}>
             <AdminLayout>
               <Suspense fallback={<InLineLoader />}>
-                <Dashboard />
+                <Products />
               </Suspense>
             </AdminLayout>
           </PrivateRoute>
-          <PrivateRoute path={PRODUCTS}>
+          <PrivateRoute exact={true} path={PRODUCTS}>
             <AdminLayout>
               <Suspense fallback={<InLineLoader />}>
                 <Products />
