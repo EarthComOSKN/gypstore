@@ -5,7 +5,6 @@ import { Card, Button } from 'antd'
 const { Meta } = Card
 
 const ProductImageContainer = styled.div`
-  padding: 2rem;
   width: 100%;
   > img {
     width: 100%;

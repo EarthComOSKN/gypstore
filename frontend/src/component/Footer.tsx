@@ -5,27 +5,38 @@ const FooterContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: black;
-  padding: 1rem 7rem;
+  padding: 1rem 7rem 0rem 7rem;
 `;
 
 const MainFooter = styled.div`
   bottom: 0;
 
-  height: 30rem;
+  height: 18rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
   & h2,
   h3,
   h4 {
+    color: #ff8e0a;
+  }
+  h5 {
+    font-size: 14px;
     color: white;
   }
   color: white !important;
 
   & > div {
-    padding-top: 2.5rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
+  }
+
+  a {
+    color: white;
+    :hover {
+      color: rgb(100, 100, 100);
+    }
   }
 `;
 
@@ -40,22 +51,37 @@ const SubFooter = styled.div`
   }
 `;
 
-const ContactUs = styled.div``;
-const Service = styled.div``;
+const ContactUs = styled.div`
+  p {
+    margin-bottom: 0.5rem;
+    padding-left: 1.75rem;
+  }
+`;
+
+const Service = styled.div`
+  a {
+    color: white;
+    padding-bottom: 0.75rem;
+
+    :hover {
+      color: rgb(100, 100, 100);
+    }
+  }
+`;
 const Payment = styled.div``;
 
 const ContactLogoList = styled.div`
-  width: 10rem;
+  width: 8rem;
   display: flex;
   justify-content: space-between;
   i {
-    font-size: 2em;
+    font-size: 1.75em;
   }
 `;
 
 const LineQR = styled.img`
-  margin-top: 2rem;
-  width: 10rem;
+  margin-top: 1rem;
+  width: 8rem;
 `;
 
 const PaymentMethod = styled.img`
@@ -67,36 +93,50 @@ export const Footer = () => {
     <FooterContainer>
       <MainFooter>
         <ContactUs>
-          <h2>ติดต่อเรา</h2>
+          <h3>ติดต่อเรา</h3>
           <ContactLogoList>
-            <Icon type="phone" theme="filled" />
-            <Icon type="facebook" theme="filled" />
-            <Icon type="instagram" theme="filled" />
+            <a href="/">
+              <Icon type="phone" theme="filled" />
+            </a>
+            <a href="/">
+              <Icon type="facebook" theme="filled" />
+            </a>
+            <a href="/">
+              <Icon type="instagram" theme="filled" />
+            </a>
           </ContactLogoList>
           <LineQR src="/assets/line-qr.png" alt="line-qr" />
           <p>@gypstore</p>
 
-          <h3>
+        </ContactUs>
+        <Service>
+          <h3>ศูนย์ช่วยเหลือ</h3>
+          <a href="/">  
+            ติดต่อเรา
+          </a>
+          <a href="/">  
+            วิธีการสั่งซื้อสินค้า
+          </a>
+          <a href="/">  
+            วิธีการชำระเงิน
+          </a>
+          <a href="/">  
+            การจัดส่งสินค้า
+          </a>
+          <a href="/">  
+            ตรวจสอบสถานะการจัดส่ง
+          </a>
+        </Service>
+        <Payment>
+          <h3>การชำระเงิน</h3>
+          <PaymentMethod src="/assets/payment-option.png" alt="payment" />
+          <br />
+          <h3>ช่วงเวลาเปิดทำการ</h3>
+          <h5>
             จันทร์ - ศุกร์ 8.00-17.00 น.
             <br />
             เสาร์ 08.00-12.00 น.
-          </h3>
-        </ContactUs>
-        <Service>
-          <h2>บริการ</h2>
-          <h4>ติดต่อเรา</h4>
-
-          <h4>วิธีการสั่งซื้อสินค้า</h4>
-
-          <h4>วิธีการชำระเงิน</h4>
-
-          <h4>การจัดส่งสินค้า</h4>
-
-          <h4>ตรวจสอบคะแนนสะสม</h4>
-        </Service>
-        <Payment>
-          <h2>การชำระเงิน</h2>
-          <PaymentMethod src="/assets/payment-option.png" alt="payment" />
+          </h5>
         </Payment>
       </MainFooter>
       <SubFooter>

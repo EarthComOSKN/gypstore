@@ -3,8 +3,7 @@ import { ProductCardTall } from '../product/ProductCardTall'
 
 const Container = styled.div`
   width: 100%;
-  padding: 3rem;
-  margin-bottom: 5rem;
+  padding: 3rem 8rem;
 `
 
 const StyledProductCardTall = styled(ProductCardTall)`
@@ -23,9 +22,8 @@ const ProductList = styled.div`
 export const HeroProduct = () => {
   return (
     <Container>
-      <h2>สินค้าขายดี</h2>
+      <h2>สินค้าขายดีที่สุด</h2>
       <ProductList>
-        <StyledProductCardTall />
         <StyledProductCardTall />
         <StyledProductCardTall />
         <StyledProductCardTall />

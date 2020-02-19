@@ -3,19 +3,21 @@ import styled from "@emotion/styled";
 const Container = styled.div`
   height: 35rem;
   width: 100%;
-  padding: 3rem 10rem;
-  margin-bottom: 4rem;
+  padding: 3rem 8rem;
+  background-color: rgb(222, 222, 222);
 `;
 
 const ProductContainer = styled.div`
   display: grid;
+  margin-bottom: 4rem;
   background-color: black;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1px;
   grid-template-areas:
     "bg bg . ."
     "bg bg . .";
-  height: 100%;
+  height: 85%;
+  width: 100%;
 `;
 
 const ProductCardWide = styled.div<{ bigcard?: Boolean }>`
