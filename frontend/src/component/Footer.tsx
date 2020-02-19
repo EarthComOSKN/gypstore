@@ -56,6 +56,9 @@ const ContactUs = styled.div`
     margin-bottom: 0.5rem;
     padding-left: 1.75rem;
   }
+  a {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Service = styled.div`
@@ -76,6 +79,18 @@ const ContactLogoList = styled.div`
   justify-content: space-between;
   i {
     font-size: 1.75em;
+  }
+`;
+
+const LineButton = styled.div`
+  img {
+    :hover {
+      opacity: 0.7;
+      transition: opacity .5s ease-out;
+      -moz-transition: opacity .5s ease-out;
+      -webkit-transition: opacity .5s ease-out;
+      -o-transition: opacity .5s ease-out;
+    }
   }
 `;
 
@@ -105,8 +120,11 @@ export const Footer = () => {
               <Icon type="instagram" theme="filled" />
             </a>
           </ContactLogoList>
-          <LineQR src="/assets/line-qr.png" alt="line-qr" />
-          <p>@gypstore</p>
+          <LineButton>  
+            <a href="https://lin.ee/rYWItfi"><img src="/assets/line-add-friend.png" alt="เพิ่มเพื่อน" height="36" /></a>
+          </LineButton>
+          {/* <LineQR src="/assets/line-qr.png" alt="line-qr" />
+          <p>@gypstore</p> */}
 
         </ContactUs>
         <Service>
