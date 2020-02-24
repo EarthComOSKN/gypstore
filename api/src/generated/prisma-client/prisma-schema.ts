@@ -367,7 +367,7 @@ type AggregateQuotation {
   count: Int!
 }
 
-type AggregateSaleman {
+type AggregateSalesman {
   count: Int!
 }
 
@@ -585,7 +585,7 @@ type Invoice {
   updatedAt: DateTime!
   user: User!
   quotation: Quotation!
-  saleman: Saleman!
+  salesman: Salesman!
   address: Address
   payment: Payment
 }
@@ -602,7 +602,7 @@ input InvoiceCreateInput {
   creditTerm: String!
   user: UserCreateOneInput!
   quotation: QuotationCreateOneInput!
-  saleman: SalemanCreateOneWithoutInvoicesInput!
+  salesman: SalesmanCreateOneWithoutInvoicesInput!
   address: AddressCreateOneWithoutInvoicesInput
   payment: PaymentCreateOneWithoutInvoiceInput
 }
@@ -612,8 +612,8 @@ input InvoiceCreateManyWithoutAddressInput {
   connect: [InvoiceWhereUniqueInput!]
 }
 
-input InvoiceCreateManyWithoutSalemanInput {
-  create: [InvoiceCreateWithoutSalemanInput!]
+input InvoiceCreateManyWithoutSalesmanInput {
+  create: [InvoiceCreateWithoutSalesmanInput!]
   connect: [InvoiceWhereUniqueInput!]
 }
 
@@ -633,7 +633,7 @@ input InvoiceCreateWithoutAddressInput {
   creditTerm: String!
   user: UserCreateOneInput!
   quotation: QuotationCreateOneInput!
-  saleman: SalemanCreateOneWithoutInvoicesInput!
+  salesman: SalesmanCreateOneWithoutInvoicesInput!
   payment: PaymentCreateOneWithoutInvoiceInput
 }
 
@@ -643,11 +643,11 @@ input InvoiceCreateWithoutPaymentInput {
   creditTerm: String!
   user: UserCreateOneInput!
   quotation: QuotationCreateOneInput!
-  saleman: SalemanCreateOneWithoutInvoicesInput!
+  salesman: SalesmanCreateOneWithoutInvoicesInput!
   address: AddressCreateOneWithoutInvoicesInput
 }
 
-input InvoiceCreateWithoutSalemanInput {
+input InvoiceCreateWithoutSalesmanInput {
   id: ID
   docId: String!
   creditTerm: String!
@@ -770,7 +770,7 @@ input InvoiceUpdateDataInput {
   creditTerm: String
   user: UserUpdateOneRequiredInput
   quotation: QuotationUpdateOneRequiredInput
-  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+  salesman: SalesmanUpdateOneRequiredWithoutInvoicesInput
   address: AddressUpdateOneWithoutInvoicesInput
   payment: PaymentUpdateOneWithoutInvoiceInput
 }
@@ -780,7 +780,7 @@ input InvoiceUpdateInput {
   creditTerm: String
   user: UserUpdateOneRequiredInput
   quotation: QuotationUpdateOneRequiredInput
-  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+  salesman: SalesmanUpdateOneRequiredWithoutInvoicesInput
   address: AddressUpdateOneWithoutInvoicesInput
   payment: PaymentUpdateOneWithoutInvoiceInput
 }
@@ -807,14 +807,14 @@ input InvoiceUpdateManyWithoutAddressInput {
   updateMany: [InvoiceUpdateManyWithWhereNestedInput!]
 }
 
-input InvoiceUpdateManyWithoutSalemanInput {
-  create: [InvoiceCreateWithoutSalemanInput!]
+input InvoiceUpdateManyWithoutSalesmanInput {
+  create: [InvoiceCreateWithoutSalesmanInput!]
   delete: [InvoiceWhereUniqueInput!]
   connect: [InvoiceWhereUniqueInput!]
   set: [InvoiceWhereUniqueInput!]
   disconnect: [InvoiceWhereUniqueInput!]
-  update: [InvoiceUpdateWithWhereUniqueWithoutSalemanInput!]
-  upsert: [InvoiceUpsertWithWhereUniqueWithoutSalemanInput!]
+  update: [InvoiceUpdateWithWhereUniqueWithoutSalesmanInput!]
+  upsert: [InvoiceUpsertWithWhereUniqueWithoutSalesmanInput!]
   deleteMany: [InvoiceScalarWhereInput!]
   updateMany: [InvoiceUpdateManyWithWhereNestedInput!]
 }
@@ -845,7 +845,7 @@ input InvoiceUpdateWithoutAddressDataInput {
   creditTerm: String
   user: UserUpdateOneRequiredInput
   quotation: QuotationUpdateOneRequiredInput
-  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+  salesman: SalesmanUpdateOneRequiredWithoutInvoicesInput
   payment: PaymentUpdateOneWithoutInvoiceInput
 }
 
@@ -854,11 +854,11 @@ input InvoiceUpdateWithoutPaymentDataInput {
   creditTerm: String
   user: UserUpdateOneRequiredInput
   quotation: QuotationUpdateOneRequiredInput
-  saleman: SalemanUpdateOneRequiredWithoutInvoicesInput
+  salesman: SalesmanUpdateOneRequiredWithoutInvoicesInput
   address: AddressUpdateOneWithoutInvoicesInput
 }
 
-input InvoiceUpdateWithoutSalemanDataInput {
+input InvoiceUpdateWithoutSalesmanDataInput {
   docId: String
   creditTerm: String
   user: UserUpdateOneRequiredInput
@@ -872,9 +872,9 @@ input InvoiceUpdateWithWhereUniqueWithoutAddressInput {
   data: InvoiceUpdateWithoutAddressDataInput!
 }
 
-input InvoiceUpdateWithWhereUniqueWithoutSalemanInput {
+input InvoiceUpdateWithWhereUniqueWithoutSalesmanInput {
   where: InvoiceWhereUniqueInput!
-  data: InvoiceUpdateWithoutSalemanDataInput!
+  data: InvoiceUpdateWithoutSalesmanDataInput!
 }
 
 input InvoiceUpsertNestedInput {
@@ -893,10 +893,10 @@ input InvoiceUpsertWithWhereUniqueWithoutAddressInput {
   create: InvoiceCreateWithoutAddressInput!
 }
 
-input InvoiceUpsertWithWhereUniqueWithoutSalemanInput {
+input InvoiceUpsertWithWhereUniqueWithoutSalesmanInput {
   where: InvoiceWhereUniqueInput!
-  update: InvoiceUpdateWithoutSalemanDataInput!
-  create: InvoiceCreateWithoutSalemanInput!
+  update: InvoiceUpdateWithoutSalesmanDataInput!
+  create: InvoiceCreateWithoutSalesmanInput!
 }
 
 input InvoiceWhereInput {
@@ -960,7 +960,7 @@ input InvoiceWhereInput {
   updatedAt_gte: DateTime
   user: UserWhereInput
   quotation: QuotationWhereInput
-  saleman: SalemanWhereInput
+  salesman: SalesmanWhereInput
   address: AddressWhereInput
   payment: PaymentWhereInput
   AND: [InvoiceWhereInput!]
@@ -1011,11 +1011,12 @@ type Mutation {
   upsertQuotation(where: QuotationWhereUniqueInput!, create: QuotationCreateInput!, update: QuotationUpdateInput!): Quotation!
   deleteQuotation(where: QuotationWhereUniqueInput!): Quotation
   deleteManyQuotations(where: QuotationWhereInput): BatchPayload!
-  createSaleman(data: SalemanCreateInput!): Saleman!
-  updateSaleman(data: SalemanUpdateInput!, where: SalemanWhereUniqueInput!): Saleman
-  upsertSaleman(where: SalemanWhereUniqueInput!, create: SalemanCreateInput!, update: SalemanUpdateInput!): Saleman!
-  deleteSaleman(where: SalemanWhereUniqueInput!): Saleman
-  deleteManySalemen(where: SalemanWhereInput): BatchPayload!
+  createSalesman(data: SalesmanCreateInput!): Salesman!
+  updateSalesman(data: SalesmanUpdateInput!, where: SalesmanWhereUniqueInput!): Salesman
+  updateManySalesmen(data: SalesmanUpdateManyMutationInput!, where: SalesmanWhereInput): BatchPayload!
+  upsertSalesman(where: SalesmanWhereUniqueInput!, create: SalesmanCreateInput!, update: SalesmanUpdateInput!): Salesman!
+  deleteSalesman(where: SalesmanWhereUniqueInput!): Salesman
+  deleteManySalesmen(where: SalesmanWhereInput): BatchPayload!
   createShipping(data: ShippingCreateInput!): Shipping!
   updateShipping(data: ShippingUpdateInput!, where: ShippingWhereUniqueInput!): Shipping
   updateManyShippings(data: ShippingUpdateManyMutationInput!, where: ShippingWhereInput): BatchPayload!
@@ -1066,7 +1067,7 @@ type Payment {
   createdAt: DateTime!
   updatedAt: DateTime!
   customer: User!
-  saleman: Saleman!
+  salesman: Salesman!
   quotation: Quotation!
   Invoice: Invoice
 }
@@ -1082,7 +1083,7 @@ input PaymentCreateInput {
   docId: String!
   amount: String!
   customer: UserCreateOneWithoutPaymentsInput!
-  saleman: SalemanCreateOneWithoutPaymentsInput!
+  salesman: SalesmanCreateOneWithoutPaymentsInput!
   quotation: QuotationCreateOneWithoutPaymentInput!
   Invoice: InvoiceCreateOneWithoutPaymentInput
 }
@@ -1092,8 +1093,8 @@ input PaymentCreateManyWithoutCustomerInput {
   connect: [PaymentWhereUniqueInput!]
 }
 
-input PaymentCreateManyWithoutSalemanInput {
-  create: [PaymentCreateWithoutSalemanInput!]
+input PaymentCreateManyWithoutSalesmanInput {
+  create: [PaymentCreateWithoutSalesmanInput!]
   connect: [PaymentWhereUniqueInput!]
 }
 
@@ -1111,7 +1112,7 @@ input PaymentCreateWithoutCustomerInput {
   id: ID
   docId: String!
   amount: String!
-  saleman: SalemanCreateOneWithoutPaymentsInput!
+  salesman: SalesmanCreateOneWithoutPaymentsInput!
   quotation: QuotationCreateOneWithoutPaymentInput!
   Invoice: InvoiceCreateOneWithoutPaymentInput
 }
@@ -1121,7 +1122,7 @@ input PaymentCreateWithoutInvoiceInput {
   docId: String!
   amount: String!
   customer: UserCreateOneWithoutPaymentsInput!
-  saleman: SalemanCreateOneWithoutPaymentsInput!
+  salesman: SalesmanCreateOneWithoutPaymentsInput!
   quotation: QuotationCreateOneWithoutPaymentInput!
 }
 
@@ -1130,11 +1131,11 @@ input PaymentCreateWithoutQuotationInput {
   docId: String!
   amount: String!
   customer: UserCreateOneWithoutPaymentsInput!
-  saleman: SalemanCreateOneWithoutPaymentsInput!
+  salesman: SalesmanCreateOneWithoutPaymentsInput!
   Invoice: InvoiceCreateOneWithoutPaymentInput
 }
 
-input PaymentCreateWithoutSalemanInput {
+input PaymentCreateWithoutSalesmanInput {
   id: ID
   docId: String!
   amount: String!
@@ -1255,7 +1256,7 @@ input PaymentUpdateInput {
   docId: String
   amount: String
   customer: UserUpdateOneRequiredWithoutPaymentsInput
-  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+  salesman: SalesmanUpdateOneRequiredWithoutPaymentsInput
   quotation: QuotationUpdateOneRequiredWithoutPaymentInput
   Invoice: InvoiceUpdateOneWithoutPaymentInput
 }
@@ -1282,14 +1283,14 @@ input PaymentUpdateManyWithoutCustomerInput {
   updateMany: [PaymentUpdateManyWithWhereNestedInput!]
 }
 
-input PaymentUpdateManyWithoutSalemanInput {
-  create: [PaymentCreateWithoutSalemanInput!]
+input PaymentUpdateManyWithoutSalesmanInput {
+  create: [PaymentCreateWithoutSalesmanInput!]
   delete: [PaymentWhereUniqueInput!]
   connect: [PaymentWhereUniqueInput!]
   set: [PaymentWhereUniqueInput!]
   disconnect: [PaymentWhereUniqueInput!]
-  update: [PaymentUpdateWithWhereUniqueWithoutSalemanInput!]
-  upsert: [PaymentUpsertWithWhereUniqueWithoutSalemanInput!]
+  update: [PaymentUpdateWithWhereUniqueWithoutSalesmanInput!]
+  upsert: [PaymentUpsertWithWhereUniqueWithoutSalesmanInput!]
   deleteMany: [PaymentScalarWhereInput!]
   updateMany: [PaymentUpdateManyWithWhereNestedInput!]
 }
@@ -1320,7 +1321,7 @@ input PaymentUpdateOneWithoutQuotationInput {
 input PaymentUpdateWithoutCustomerDataInput {
   docId: String
   amount: String
-  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+  salesman: SalesmanUpdateOneRequiredWithoutPaymentsInput
   quotation: QuotationUpdateOneRequiredWithoutPaymentInput
   Invoice: InvoiceUpdateOneWithoutPaymentInput
 }
@@ -1329,7 +1330,7 @@ input PaymentUpdateWithoutInvoiceDataInput {
   docId: String
   amount: String
   customer: UserUpdateOneRequiredWithoutPaymentsInput
-  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+  salesman: SalesmanUpdateOneRequiredWithoutPaymentsInput
   quotation: QuotationUpdateOneRequiredWithoutPaymentInput
 }
 
@@ -1337,11 +1338,11 @@ input PaymentUpdateWithoutQuotationDataInput {
   docId: String
   amount: String
   customer: UserUpdateOneRequiredWithoutPaymentsInput
-  saleman: SalemanUpdateOneRequiredWithoutPaymentsInput
+  salesman: SalesmanUpdateOneRequiredWithoutPaymentsInput
   Invoice: InvoiceUpdateOneWithoutPaymentInput
 }
 
-input PaymentUpdateWithoutSalemanDataInput {
+input PaymentUpdateWithoutSalesmanDataInput {
   docId: String
   amount: String
   customer: UserUpdateOneRequiredWithoutPaymentsInput
@@ -1354,9 +1355,9 @@ input PaymentUpdateWithWhereUniqueWithoutCustomerInput {
   data: PaymentUpdateWithoutCustomerDataInput!
 }
 
-input PaymentUpdateWithWhereUniqueWithoutSalemanInput {
+input PaymentUpdateWithWhereUniqueWithoutSalesmanInput {
   where: PaymentWhereUniqueInput!
-  data: PaymentUpdateWithoutSalemanDataInput!
+  data: PaymentUpdateWithoutSalesmanDataInput!
 }
 
 input PaymentUpsertWithoutInvoiceInput {
@@ -1375,10 +1376,10 @@ input PaymentUpsertWithWhereUniqueWithoutCustomerInput {
   create: PaymentCreateWithoutCustomerInput!
 }
 
-input PaymentUpsertWithWhereUniqueWithoutSalemanInput {
+input PaymentUpsertWithWhereUniqueWithoutSalesmanInput {
   where: PaymentWhereUniqueInput!
-  update: PaymentUpdateWithoutSalemanDataInput!
-  create: PaymentCreateWithoutSalemanInput!
+  update: PaymentUpdateWithoutSalesmanDataInput!
+  create: PaymentCreateWithoutSalesmanInput!
 }
 
 input PaymentWhereInput {
@@ -1441,7 +1442,7 @@ input PaymentWhereInput {
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
   customer: UserWhereInput
-  saleman: SalemanWhereInput
+  salesman: SalesmanWhereInput
   quotation: QuotationWhereInput
   Invoice: InvoiceWhereInput
   AND: [PaymentWhereInput!]
@@ -2183,9 +2184,9 @@ type Query {
   quotation(where: QuotationWhereUniqueInput!): Quotation
   quotations(where: QuotationWhereInput, orderBy: QuotationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Quotation]!
   quotationsConnection(where: QuotationWhereInput, orderBy: QuotationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): QuotationConnection!
-  saleman(where: SalemanWhereUniqueInput!): Saleman
-  salemen(where: SalemanWhereInput, orderBy: SalemanOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Saleman]!
-  salemenConnection(where: SalemanWhereInput, orderBy: SalemanOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SalemanConnection!
+  salesman(where: SalesmanWhereUniqueInput!): Salesman
+  salesmen(where: SalesmanWhereInput, orderBy: SalesmanOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Salesman]!
+  salesmenConnection(where: SalesmanWhereInput, orderBy: SalesmanOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SalesmanConnection!
   shipping(where: ShippingWhereUniqueInput!): Shipping
   shippings(where: ShippingWhereInput, orderBy: ShippingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Shipping]!
   shippingsConnection(where: ShippingWhereInput, orderBy: ShippingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ShippingConnection!
@@ -2207,7 +2208,7 @@ type Quotation {
   productItems(where: ProductItemWhereInput, orderBy: ProductItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductItem!]
   createdAt: DateTime!
   updatedAt: DateTime!
-  saleman: Saleman!
+  salesman: Salesman!
   payment: Payment
   shipping: Shipping
   customer: User!
@@ -2223,7 +2224,7 @@ input QuotationCreateInput {
   id: ID
   docId: String!
   productItems: ProductItemCreateManyWithoutQuotationInput
-  saleman: SalemanCreateOneWithoutQuotationsInput!
+  salesman: SalesmanCreateOneWithoutQuotationsInput!
   payment: PaymentCreateOneWithoutQuotationInput
   shipping: ShippingCreateOneWithoutQuotationInput
   customer: UserCreateOneWithoutQuotationsInput!
@@ -2234,8 +2235,8 @@ input QuotationCreateManyWithoutCustomerInput {
   connect: [QuotationWhereUniqueInput!]
 }
 
-input QuotationCreateManyWithoutSalemanInput {
-  create: [QuotationCreateWithoutSalemanInput!]
+input QuotationCreateManyWithoutSalesmanInput {
+  create: [QuotationCreateWithoutSalesmanInput!]
   connect: [QuotationWhereUniqueInput!]
 }
 
@@ -2263,7 +2264,7 @@ input QuotationCreateWithoutCustomerInput {
   id: ID
   docId: String!
   productItems: ProductItemCreateManyWithoutQuotationInput
-  saleman: SalemanCreateOneWithoutQuotationsInput!
+  salesman: SalesmanCreateOneWithoutQuotationsInput!
   payment: PaymentCreateOneWithoutQuotationInput
   shipping: ShippingCreateOneWithoutQuotationInput
 }
@@ -2272,7 +2273,7 @@ input QuotationCreateWithoutPaymentInput {
   id: ID
   docId: String!
   productItems: ProductItemCreateManyWithoutQuotationInput
-  saleman: SalemanCreateOneWithoutQuotationsInput!
+  salesman: SalesmanCreateOneWithoutQuotationsInput!
   shipping: ShippingCreateOneWithoutQuotationInput
   customer: UserCreateOneWithoutQuotationsInput!
 }
@@ -2280,13 +2281,13 @@ input QuotationCreateWithoutPaymentInput {
 input QuotationCreateWithoutProductItemsInput {
   id: ID
   docId: String!
-  saleman: SalemanCreateOneWithoutQuotationsInput!
+  salesman: SalesmanCreateOneWithoutQuotationsInput!
   payment: PaymentCreateOneWithoutQuotationInput
   shipping: ShippingCreateOneWithoutQuotationInput
   customer: UserCreateOneWithoutQuotationsInput!
 }
 
-input QuotationCreateWithoutSalemanInput {
+input QuotationCreateWithoutSalesmanInput {
   id: ID
   docId: String!
   productItems: ProductItemCreateManyWithoutQuotationInput
@@ -2299,7 +2300,7 @@ input QuotationCreateWithoutShippingInput {
   id: ID
   docId: String!
   productItems: ProductItemCreateManyWithoutQuotationInput
-  saleman: SalemanCreateOneWithoutQuotationsInput!
+  salesman: SalesmanCreateOneWithoutQuotationsInput!
   payment: PaymentCreateOneWithoutQuotationInput
   customer: UserCreateOneWithoutQuotationsInput!
 }
@@ -2398,7 +2399,7 @@ input QuotationSubscriptionWhereInput {
 input QuotationUpdateDataInput {
   docId: String
   productItems: ProductItemUpdateManyWithoutQuotationInput
-  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
   payment: PaymentUpdateOneWithoutQuotationInput
   shipping: ShippingUpdateOneWithoutQuotationInput
   customer: UserUpdateOneRequiredWithoutQuotationsInput
@@ -2407,7 +2408,7 @@ input QuotationUpdateDataInput {
 input QuotationUpdateInput {
   docId: String
   productItems: ProductItemUpdateManyWithoutQuotationInput
-  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
   payment: PaymentUpdateOneWithoutQuotationInput
   shipping: ShippingUpdateOneWithoutQuotationInput
   customer: UserUpdateOneRequiredWithoutQuotationsInput
@@ -2433,14 +2434,14 @@ input QuotationUpdateManyWithoutCustomerInput {
   updateMany: [QuotationUpdateManyWithWhereNestedInput!]
 }
 
-input QuotationUpdateManyWithoutSalemanInput {
-  create: [QuotationCreateWithoutSalemanInput!]
+input QuotationUpdateManyWithoutSalesmanInput {
+  create: [QuotationCreateWithoutSalesmanInput!]
   delete: [QuotationWhereUniqueInput!]
   connect: [QuotationWhereUniqueInput!]
   set: [QuotationWhereUniqueInput!]
   disconnect: [QuotationWhereUniqueInput!]
-  update: [QuotationUpdateWithWhereUniqueWithoutSalemanInput!]
-  upsert: [QuotationUpsertWithWhereUniqueWithoutSalemanInput!]
+  update: [QuotationUpdateWithWhereUniqueWithoutSalesmanInput!]
+  upsert: [QuotationUpsertWithWhereUniqueWithoutSalesmanInput!]
   deleteMany: [QuotationScalarWhereInput!]
   updateMany: [QuotationUpdateManyWithWhereNestedInput!]
 }
@@ -2483,7 +2484,7 @@ input QuotationUpdateOneWithoutProductItemsInput {
 input QuotationUpdateWithoutCustomerDataInput {
   docId: String
   productItems: ProductItemUpdateManyWithoutQuotationInput
-  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
   payment: PaymentUpdateOneWithoutQuotationInput
   shipping: ShippingUpdateOneWithoutQuotationInput
 }
@@ -2491,20 +2492,20 @@ input QuotationUpdateWithoutCustomerDataInput {
 input QuotationUpdateWithoutPaymentDataInput {
   docId: String
   productItems: ProductItemUpdateManyWithoutQuotationInput
-  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
   shipping: ShippingUpdateOneWithoutQuotationInput
   customer: UserUpdateOneRequiredWithoutQuotationsInput
 }
 
 input QuotationUpdateWithoutProductItemsDataInput {
   docId: String
-  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
   payment: PaymentUpdateOneWithoutQuotationInput
   shipping: ShippingUpdateOneWithoutQuotationInput
   customer: UserUpdateOneRequiredWithoutQuotationsInput
 }
 
-input QuotationUpdateWithoutSalemanDataInput {
+input QuotationUpdateWithoutSalesmanDataInput {
   docId: String
   productItems: ProductItemUpdateManyWithoutQuotationInput
   payment: PaymentUpdateOneWithoutQuotationInput
@@ -2515,7 +2516,7 @@ input QuotationUpdateWithoutSalemanDataInput {
 input QuotationUpdateWithoutShippingDataInput {
   docId: String
   productItems: ProductItemUpdateManyWithoutQuotationInput
-  saleman: SalemanUpdateOneRequiredWithoutQuotationsInput
+  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
   payment: PaymentUpdateOneWithoutQuotationInput
   customer: UserUpdateOneRequiredWithoutQuotationsInput
 }
@@ -2525,9 +2526,9 @@ input QuotationUpdateWithWhereUniqueWithoutCustomerInput {
   data: QuotationUpdateWithoutCustomerDataInput!
 }
 
-input QuotationUpdateWithWhereUniqueWithoutSalemanInput {
+input QuotationUpdateWithWhereUniqueWithoutSalesmanInput {
   where: QuotationWhereUniqueInput!
-  data: QuotationUpdateWithoutSalemanDataInput!
+  data: QuotationUpdateWithoutSalesmanDataInput!
 }
 
 input QuotationUpsertNestedInput {
@@ -2556,10 +2557,10 @@ input QuotationUpsertWithWhereUniqueWithoutCustomerInput {
   create: QuotationCreateWithoutCustomerInput!
 }
 
-input QuotationUpsertWithWhereUniqueWithoutSalemanInput {
+input QuotationUpsertWithWhereUniqueWithoutSalesmanInput {
   where: QuotationWhereUniqueInput!
-  update: QuotationUpdateWithoutSalemanDataInput!
-  create: QuotationCreateWithoutSalemanInput!
+  update: QuotationUpdateWithoutSalesmanDataInput!
+  create: QuotationCreateWithoutSalesmanInput!
 }
 
 input QuotationWhereInput {
@@ -2610,7 +2611,7 @@ input QuotationWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
-  saleman: SalemanWhereInput
+  salesman: SalesmanWhereInput
   payment: PaymentWhereInput
   shipping: ShippingWhereInput
   customer: UserWhereInput
@@ -2623,8 +2624,11 @@ input QuotationWhereUniqueInput {
   id: ID
 }
 
-type Saleman {
+type Salesman {
   id: ID!
+  name: String!
+  email: String!
+  phone: String!
   createdAt: DateTime!
   updatedAt: DateTime!
   payments(where: PaymentWhereInput, orderBy: PaymentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Payment!]
@@ -2632,148 +2636,187 @@ type Saleman {
   quotations(where: QuotationWhereInput, orderBy: QuotationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Quotation!]
 }
 
-type SalemanConnection {
+type SalesmanConnection {
   pageInfo: PageInfo!
-  edges: [SalemanEdge]!
-  aggregate: AggregateSaleman!
+  edges: [SalesmanEdge]!
+  aggregate: AggregateSalesman!
 }
 
-input SalemanCreateInput {
+input SalesmanCreateInput {
   id: ID
-  payments: PaymentCreateManyWithoutSalemanInput
-  invoices: InvoiceCreateManyWithoutSalemanInput
-  quotations: QuotationCreateManyWithoutSalemanInput
+  name: String!
+  email: String!
+  phone: String!
+  payments: PaymentCreateManyWithoutSalesmanInput
+  invoices: InvoiceCreateManyWithoutSalesmanInput
+  quotations: QuotationCreateManyWithoutSalesmanInput
 }
 
-input SalemanCreateOneWithoutInvoicesInput {
-  create: SalemanCreateWithoutInvoicesInput
-  connect: SalemanWhereUniqueInput
+input SalesmanCreateOneWithoutInvoicesInput {
+  create: SalesmanCreateWithoutInvoicesInput
+  connect: SalesmanWhereUniqueInput
 }
 
-input SalemanCreateOneWithoutPaymentsInput {
-  create: SalemanCreateWithoutPaymentsInput
-  connect: SalemanWhereUniqueInput
+input SalesmanCreateOneWithoutPaymentsInput {
+  create: SalesmanCreateWithoutPaymentsInput
+  connect: SalesmanWhereUniqueInput
 }
 
-input SalemanCreateOneWithoutQuotationsInput {
-  create: SalemanCreateWithoutQuotationsInput
-  connect: SalemanWhereUniqueInput
+input SalesmanCreateOneWithoutQuotationsInput {
+  create: SalesmanCreateWithoutQuotationsInput
+  connect: SalesmanWhereUniqueInput
 }
 
-input SalemanCreateWithoutInvoicesInput {
+input SalesmanCreateWithoutInvoicesInput {
   id: ID
-  payments: PaymentCreateManyWithoutSalemanInput
-  quotations: QuotationCreateManyWithoutSalemanInput
+  name: String!
+  email: String!
+  phone: String!
+  payments: PaymentCreateManyWithoutSalesmanInput
+  quotations: QuotationCreateManyWithoutSalesmanInput
 }
 
-input SalemanCreateWithoutPaymentsInput {
+input SalesmanCreateWithoutPaymentsInput {
   id: ID
-  invoices: InvoiceCreateManyWithoutSalemanInput
-  quotations: QuotationCreateManyWithoutSalemanInput
+  name: String!
+  email: String!
+  phone: String!
+  invoices: InvoiceCreateManyWithoutSalesmanInput
+  quotations: QuotationCreateManyWithoutSalesmanInput
 }
 
-input SalemanCreateWithoutQuotationsInput {
+input SalesmanCreateWithoutQuotationsInput {
   id: ID
-  payments: PaymentCreateManyWithoutSalemanInput
-  invoices: InvoiceCreateManyWithoutSalemanInput
+  name: String!
+  email: String!
+  phone: String!
+  payments: PaymentCreateManyWithoutSalesmanInput
+  invoices: InvoiceCreateManyWithoutSalesmanInput
 }
 
-type SalemanEdge {
-  node: Saleman!
+type SalesmanEdge {
+  node: Salesman!
   cursor: String!
 }
 
-enum SalemanOrderByInput {
+enum SalesmanOrderByInput {
   id_ASC
   id_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  phone_ASC
+  phone_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
 
-type SalemanPreviousValues {
+type SalesmanPreviousValues {
   id: ID!
+  name: String!
+  email: String!
+  phone: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type SalemanSubscriptionPayload {
+type SalesmanSubscriptionPayload {
   mutation: MutationType!
-  node: Saleman
+  node: Salesman
   updatedFields: [String!]
-  previousValues: SalemanPreviousValues
+  previousValues: SalesmanPreviousValues
 }
 
-input SalemanSubscriptionWhereInput {
+input SalesmanSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: SalemanWhereInput
-  AND: [SalemanSubscriptionWhereInput!]
-  OR: [SalemanSubscriptionWhereInput!]
-  NOT: [SalemanSubscriptionWhereInput!]
+  node: SalesmanWhereInput
+  AND: [SalesmanSubscriptionWhereInput!]
+  OR: [SalesmanSubscriptionWhereInput!]
+  NOT: [SalesmanSubscriptionWhereInput!]
 }
 
-input SalemanUpdateInput {
-  payments: PaymentUpdateManyWithoutSalemanInput
-  invoices: InvoiceUpdateManyWithoutSalemanInput
-  quotations: QuotationUpdateManyWithoutSalemanInput
+input SalesmanUpdateInput {
+  name: String
+  email: String
+  phone: String
+  payments: PaymentUpdateManyWithoutSalesmanInput
+  invoices: InvoiceUpdateManyWithoutSalesmanInput
+  quotations: QuotationUpdateManyWithoutSalesmanInput
 }
 
-input SalemanUpdateOneRequiredWithoutInvoicesInput {
-  create: SalemanCreateWithoutInvoicesInput
-  update: SalemanUpdateWithoutInvoicesDataInput
-  upsert: SalemanUpsertWithoutInvoicesInput
-  connect: SalemanWhereUniqueInput
+input SalesmanUpdateManyMutationInput {
+  name: String
+  email: String
+  phone: String
 }
 
-input SalemanUpdateOneRequiredWithoutPaymentsInput {
-  create: SalemanCreateWithoutPaymentsInput
-  update: SalemanUpdateWithoutPaymentsDataInput
-  upsert: SalemanUpsertWithoutPaymentsInput
-  connect: SalemanWhereUniqueInput
+input SalesmanUpdateOneRequiredWithoutInvoicesInput {
+  create: SalesmanCreateWithoutInvoicesInput
+  update: SalesmanUpdateWithoutInvoicesDataInput
+  upsert: SalesmanUpsertWithoutInvoicesInput
+  connect: SalesmanWhereUniqueInput
 }
 
-input SalemanUpdateOneRequiredWithoutQuotationsInput {
-  create: SalemanCreateWithoutQuotationsInput
-  update: SalemanUpdateWithoutQuotationsDataInput
-  upsert: SalemanUpsertWithoutQuotationsInput
-  connect: SalemanWhereUniqueInput
+input SalesmanUpdateOneRequiredWithoutPaymentsInput {
+  create: SalesmanCreateWithoutPaymentsInput
+  update: SalesmanUpdateWithoutPaymentsDataInput
+  upsert: SalesmanUpsertWithoutPaymentsInput
+  connect: SalesmanWhereUniqueInput
 }
 
-input SalemanUpdateWithoutInvoicesDataInput {
-  payments: PaymentUpdateManyWithoutSalemanInput
-  quotations: QuotationUpdateManyWithoutSalemanInput
+input SalesmanUpdateOneRequiredWithoutQuotationsInput {
+  create: SalesmanCreateWithoutQuotationsInput
+  update: SalesmanUpdateWithoutQuotationsDataInput
+  upsert: SalesmanUpsertWithoutQuotationsInput
+  connect: SalesmanWhereUniqueInput
 }
 
-input SalemanUpdateWithoutPaymentsDataInput {
-  invoices: InvoiceUpdateManyWithoutSalemanInput
-  quotations: QuotationUpdateManyWithoutSalemanInput
+input SalesmanUpdateWithoutInvoicesDataInput {
+  name: String
+  email: String
+  phone: String
+  payments: PaymentUpdateManyWithoutSalesmanInput
+  quotations: QuotationUpdateManyWithoutSalesmanInput
 }
 
-input SalemanUpdateWithoutQuotationsDataInput {
-  payments: PaymentUpdateManyWithoutSalemanInput
-  invoices: InvoiceUpdateManyWithoutSalemanInput
+input SalesmanUpdateWithoutPaymentsDataInput {
+  name: String
+  email: String
+  phone: String
+  invoices: InvoiceUpdateManyWithoutSalesmanInput
+  quotations: QuotationUpdateManyWithoutSalesmanInput
 }
 
-input SalemanUpsertWithoutInvoicesInput {
-  update: SalemanUpdateWithoutInvoicesDataInput!
-  create: SalemanCreateWithoutInvoicesInput!
+input SalesmanUpdateWithoutQuotationsDataInput {
+  name: String
+  email: String
+  phone: String
+  payments: PaymentUpdateManyWithoutSalesmanInput
+  invoices: InvoiceUpdateManyWithoutSalesmanInput
 }
 
-input SalemanUpsertWithoutPaymentsInput {
-  update: SalemanUpdateWithoutPaymentsDataInput!
-  create: SalemanCreateWithoutPaymentsInput!
+input SalesmanUpsertWithoutInvoicesInput {
+  update: SalesmanUpdateWithoutInvoicesDataInput!
+  create: SalesmanCreateWithoutInvoicesInput!
 }
 
-input SalemanUpsertWithoutQuotationsInput {
-  update: SalemanUpdateWithoutQuotationsDataInput!
-  create: SalemanCreateWithoutQuotationsInput!
+input SalesmanUpsertWithoutPaymentsInput {
+  update: SalesmanUpdateWithoutPaymentsDataInput!
+  create: SalesmanCreateWithoutPaymentsInput!
 }
 
-input SalemanWhereInput {
+input SalesmanUpsertWithoutQuotationsInput {
+  update: SalesmanUpdateWithoutQuotationsDataInput!
+  create: SalesmanCreateWithoutQuotationsInput!
+}
+
+input SalesmanWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -2788,6 +2831,48 @@ input SalemanWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2813,12 +2898,12 @@ input SalemanWhereInput {
   quotations_every: QuotationWhereInput
   quotations_some: QuotationWhereInput
   quotations_none: QuotationWhereInput
-  AND: [SalemanWhereInput!]
-  OR: [SalemanWhereInput!]
-  NOT: [SalemanWhereInput!]
+  AND: [SalesmanWhereInput!]
+  OR: [SalesmanWhereInput!]
+  NOT: [SalesmanWhereInput!]
 }
 
-input SalemanWhereUniqueInput {
+input SalesmanWhereUniqueInput {
   id: ID
 }
 
@@ -3584,7 +3669,7 @@ type Subscription {
   payment(where: PaymentSubscriptionWhereInput): PaymentSubscriptionPayload
   productItem(where: ProductItemSubscriptionWhereInput): ProductItemSubscriptionPayload
   quotation(where: QuotationSubscriptionWhereInput): QuotationSubscriptionPayload
-  saleman(where: SalemanSubscriptionWhereInput): SalemanSubscriptionPayload
+  salesman(where: SalesmanSubscriptionWhereInput): SalesmanSubscriptionPayload
   shipping(where: ShippingSubscriptionWhereInput): ShippingSubscriptionPayload
   shoppingCart(where: ShoppingCartSubscriptionWhereInput): ShoppingCartSubscriptionPayload
   shoppingCartItem(where: ShoppingCartItemSubscriptionWhereInput): ShoppingCartItemSubscriptionPayload
@@ -3593,11 +3678,13 @@ type Subscription {
 
 type User {
   id: ID!
+  runningId: Int
   type: String
   name: String!
   email: String!
   password: String!
   phone: String!
+  activated: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
   shoppingCart: ShoppingCart!
@@ -3614,11 +3701,13 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
+  runningId: Int
   type: String
   name: String!
   email: String!
   password: String!
   phone: String!
+  activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   quotations: QuotationCreateManyWithoutCustomerInput
   payments: PaymentCreateManyWithoutCustomerInput
@@ -3652,11 +3741,13 @@ input UserCreateOneWithoutShoppingCartInput {
 
 input UserCreateWithoutAddressesInput {
   id: ID
+  runningId: Int
   type: String
   name: String!
   email: String!
   password: String!
   phone: String!
+  activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   quotations: QuotationCreateManyWithoutCustomerInput
   payments: PaymentCreateManyWithoutCustomerInput
@@ -3664,11 +3755,13 @@ input UserCreateWithoutAddressesInput {
 
 input UserCreateWithoutPaymentsInput {
   id: ID
+  runningId: Int
   type: String
   name: String!
   email: String!
   password: String!
   phone: String!
+  activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   quotations: QuotationCreateManyWithoutCustomerInput
   addresses: AddressCreateManyWithoutCustomerInput
@@ -3676,11 +3769,13 @@ input UserCreateWithoutPaymentsInput {
 
 input UserCreateWithoutQuotationsInput {
   id: ID
+  runningId: Int
   type: String
   name: String!
   email: String!
   password: String!
   phone: String!
+  activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   payments: PaymentCreateManyWithoutCustomerInput
   addresses: AddressCreateManyWithoutCustomerInput
@@ -3688,11 +3783,13 @@ input UserCreateWithoutQuotationsInput {
 
 input UserCreateWithoutShoppingCartInput {
   id: ID
+  runningId: Int
   type: String
   name: String!
   email: String!
   password: String!
   phone: String!
+  activated: Boolean
   quotations: QuotationCreateManyWithoutCustomerInput
   payments: PaymentCreateManyWithoutCustomerInput
   addresses: AddressCreateManyWithoutCustomerInput
@@ -3706,6 +3803,8 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  runningId_ASC
+  runningId_DESC
   type_ASC
   type_DESC
   name_ASC
@@ -3716,6 +3815,8 @@ enum UserOrderByInput {
   password_DESC
   phone_ASC
   phone_DESC
+  activated_ASC
+  activated_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -3724,11 +3825,13 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
+  runningId: Int
   type: String
   name: String!
   email: String!
   password: String!
   phone: String!
+  activated: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -3752,11 +3855,13 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  runningId: Int
   type: String
   name: String
   email: String
   password: String
   phone: String
+  activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
   payments: PaymentUpdateManyWithoutCustomerInput
@@ -3764,11 +3869,13 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
+  runningId: Int
   type: String
   name: String
   email: String
   password: String
   phone: String
+  activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
   payments: PaymentUpdateManyWithoutCustomerInput
@@ -3776,11 +3883,13 @@ input UserUpdateInput {
 }
 
 input UserUpdateManyMutationInput {
+  runningId: Int
   type: String
   name: String
   email: String
   password: String
   phone: String
+  activated: Boolean
 }
 
 input UserUpdateOneRequiredInput {
@@ -3819,44 +3928,52 @@ input UserUpdateOneRequiredWithoutShoppingCartInput {
 }
 
 input UserUpdateWithoutAddressesDataInput {
+  runningId: Int
   type: String
   name: String
   email: String
   password: String
   phone: String
+  activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
   payments: PaymentUpdateManyWithoutCustomerInput
 }
 
 input UserUpdateWithoutPaymentsDataInput {
+  runningId: Int
   type: String
   name: String
   email: String
   password: String
   phone: String
+  activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
   addresses: AddressUpdateManyWithoutCustomerInput
 }
 
 input UserUpdateWithoutQuotationsDataInput {
+  runningId: Int
   type: String
   name: String
   email: String
   password: String
   phone: String
+  activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   payments: PaymentUpdateManyWithoutCustomerInput
   addresses: AddressUpdateManyWithoutCustomerInput
 }
 
 input UserUpdateWithoutShoppingCartDataInput {
+  runningId: Int
   type: String
   name: String
   email: String
   password: String
   phone: String
+  activated: Boolean
   quotations: QuotationUpdateManyWithoutCustomerInput
   payments: PaymentUpdateManyWithoutCustomerInput
   addresses: AddressUpdateManyWithoutCustomerInput
@@ -3902,6 +4019,14 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  runningId: Int
+  runningId_not: Int
+  runningId_in: [Int!]
+  runningId_not_in: [Int!]
+  runningId_lt: Int
+  runningId_lte: Int
+  runningId_gt: Int
+  runningId_gte: Int
   type: String
   type_not: String
   type_in: [String!]
@@ -3972,6 +4097,8 @@ input UserWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
+  activated: Boolean
+  activated_not: Boolean
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

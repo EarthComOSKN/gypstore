@@ -1,18 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Client as Styletron } from 'styletron-engine-atomic';
-import { Provider as StyletronProvider } from 'styletron-react';
-import { BaseProvider } from 'baseui';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { theme } from './theme';
-import Routes from './routes';
-import ApolloClient from 'apollo-boost';
-import * as serviceWorker from './serviceWorker';
-import './theme/global.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Client as Styletron } from "styletron-engine-atomic";
+import { Provider as StyletronProvider } from "styletron-react";
+import { BaseProvider } from "baseui";
+import { ApolloProvider } from "@apollo/react-hooks";
+import { theme } from "./theme";
+import Routes from "./routes";
+import ApolloClient from "apollo-boost";
+import * as serviceWorker from "./serviceWorker";
+import "./theme/global.css";
+import "antd/dist/antd.css";
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_API_URL,
+  uri: process.env.REACT_APP_API_URL
 });
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

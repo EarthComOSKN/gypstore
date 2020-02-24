@@ -41,37 +41,37 @@ const sidebarMenus = [
     path: PRODUCTS,
     exact: false,
     icon: <ProductIcon />
-  }
+  },
   // {
   //   name: "Category",
   //   path: CATEGORY,
   //   exact: false,
   //   icon: <SidebarCategoryIcon />
-  // }
+  // },
   // {
   //   name: "Orders",
   //   path: ORDERS,
   //   exact: false,
   //   icon: <OrderIcon />
   // },
-  // {
-  //   name: "Customers",
-  //   path: CUSTOMERS,
-  //   exact: false,
-  //   icon: <CustomerIcon />
-  // },
+  {
+    name: "Customers",
+    path: CUSTOMERS,
+    exact: false,
+    icon: <CustomerIcon />
+  },
   // {
   //   name: "Coupons",
   //   path: COUPONS,
   //   exact: false,
   //   icon: <CouponIcon />
   // },
-  // {
-  //   name: "Settings",
-  //   path: SETTINGS,
-  //   exact: false,
-  //   icon: <SettingIcon />
-  // }
+  {
+    name: "Settings",
+    path: SETTINGS,
+    exact: false,
+    icon: <SettingIcon />
+  }
 ];
 
 export default withRouter(function Sidebar({

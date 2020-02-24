@@ -4,6 +4,8 @@ import {
   StyledHeadCell as BaseStyledHeadCell,
   StyledBodyCell as BaseStyledCell
 } from "baseui/table-grid";
+import { StatefulTooltip } from "baseui/tooltip";
+import { Button } from "../../components/NoResult/NoResult.style";
 
 export const TableWrapper = styled("div", () => ({
   width: "100%",
@@ -32,4 +34,16 @@ export const StyledBodyCell = withStyle(BaseStyledCell, () => ({
   fontWeight: 400,
   color: "#161F6A !important",
   alignSelf: "center"
+}));
+
+export const StyledStatefulToolTip = StatefulTooltip;
+export const BanButton = withStyle(Button, () => ({
+  borderRadius: "6px",
+  backgroundColor: "rgb(255, 0, 0)",
+  textAlign: "center"
+}));
+export const ActivateButton = withStyle(Button, () => ({
+  borderRadius: "6px",
+  backgroundColor: "green",
+  textAlign: "center"
 }));

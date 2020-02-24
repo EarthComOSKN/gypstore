@@ -1,65 +1,64 @@
-import React, { useCallback, useState } from 'react';
-import Moment from 'react-moment';
-import { withStyle } from 'baseui';
+import React, { useCallback, useState } from "react";
+import Moment from "react-moment";
+import { withStyle } from "baseui";
 import {
   Grid,
   Row as Rows,
-  Col as Column,
-} from '../../components/FlexBox/FlexBox';
-import { useDrawerDispatch } from '../../context/DrawerContext';
-import Select from '../../components/Select/Select';
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
+  Col as Column
+} from "../../components/FlexBox/FlexBox";
+import { useDrawerDispatch } from "../../context/DrawerContext";
+import Select from "../../components/Select/Select";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 
-import { Plus } from '../../components/AllSvgIcon';
+import { Plus } from "../../components/AllSvgIcon";
 
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
-import { Wrapper, Header, Heading } from '../../components/WrapperStyle';
+import { Wrapper, Header, Heading } from "../../components/WrapperStyle";
 
 import {
   TableWrapper,
   StyledTable,
   StyledHeadCell,
-  StyledBodyCell,
-} from './StaffMembers.style';
-import NoResult from '../../components/NoResult/NoResult';
+  StyledBodyCell
+} from "./StaffMembers.style";
+import NoResult from "../../components/NoResult/NoResult";
 
 const GET_STUFFS = gql`
-  query getStuffs($role: String, $searchBy: String) {
-    stuffs(role: $role, searchBy: $searchBy) {
+  query {
+    salesmen {
       id
       name
       email
-      contact_number
-      creation_date
-      role
+      phone
+      createdAt
     }
   }
 `;
 
 const Col = withStyle(Column, () => ({
-  '@media only screen and (max-width: 767px)': {
-    marginBottom: '20px',
+  "@media only screen and (max-width: 767px)": {
+    marginBottom: "20px",
 
-    ':last-child': {
-      marginBottom: 0,
-    },
-  },
+    ":last-child": {
+      marginBottom: 0
+    }
+  }
 }));
 
 const Row = withStyle(Rows, () => ({
-  '@media only screen and (min-width: 768px)': {
-    alignItems: 'center',
-  },
+  "@media only screen and (min-width: 768px)": {
+    alignItems: "center"
+  }
 }));
 
 const roleSelectOptions = [
-  { value: 'admin', label: 'Admin' },
-  { value: 'manager', label: 'Manager' },
-  { value: 'member', label: 'Member' },
-  { value: 'delivery boy', label: 'Delivery boy' },
+  { value: "admin", label: "Admin" },
+  { value: "manager", label: "Manager" },
+  { value: "member", label: "Member" },
+  { value: "delivery boy", label: "Delivery boy" }
 ];
 
 export default function StuffMembers() {
@@ -67,30 +66,30 @@ export default function StuffMembers() {
 
   const openDrawer = useCallback(
     () =>
-      dispatch({ type: 'OPEN_DRAWER', drawerComponent: 'STAFF_MEMBER_FORM' }),
+      dispatch({ type: "OPEN_DRAWER", drawerComponent: "STAFF_MEMBER_FORM" }),
     [dispatch]
   );
   const [role, setRole] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   const { data, error, refetch } = useQuery(GET_STUFFS);
   if (error) {
     return <div>Error! {error.message}</div>;
   }
   function handleCategory({ value }) {
-    setRole(value);
-    if (value.length) {
-      refetch({ role: value[0].value, searchBy: search });
-    } else {
-      refetch({
-        role: null,
-      });
-    }
+    // setRole(value);
+    // if (value.length) {
+    //   refetch({ role: value[0].value, searchBy: search });
+    // } else {
+    //   refetch({
+    //     role: null
+    //   });
+    // }
   }
   function handleSearch(event) {
-    const value = event.currentTarget.value;
-    setSearch(value);
-    refetch({ searchBy: value });
+    // const value = event.currentTarget.value;
+    // setSearch(value);
+    // refetch({ searchBy: value });
   }
 
   return (
@@ -100,7 +99,7 @@ export default function StuffMembers() {
           <Header
             style={{
               marginBottom: 40,
-              boxShadow: '0 0 5px rgba(0, 0 ,0, 0.05)',
+              boxShadow: "0 0 5px rgba(0, 0 ,0, 0.05)"
             }}
           >
             <Col md={3} xs={12}>
@@ -112,9 +111,9 @@ export default function StuffMembers() {
                 <Col md={3} xs={12}>
                   <Select
                     options={roleSelectOptions}
-                    labelKey='label'
-                    valueKey='value'
-                    placeholder='Role'
+                    labelKey="label"
+                    valueKey="value"
+                    placeholder="Role"
                     value={role}
                     searchable={false}
                     onChange={handleCategory}
@@ -124,7 +123,7 @@ export default function StuffMembers() {
                 <Col md={5} xs={12}>
                   <Input
                     value={search}
-                    placeholder='Ex: Quick Search By Name'
+                    placeholder="Ex: Quick Search By Name"
                     onChange={handleSearch}
                     clearable
                   />
@@ -137,13 +136,13 @@ export default function StuffMembers() {
                     overrides={{
                       BaseButton: {
                         style: () => ({
-                          width: '100%',
-                          borderTopLeftRadius: '3px',
-                          borderTopRightRadius: '3px',
-                          borderBottomLeftRadius: '3px',
-                          borderBottomRightRadius: '3px',
-                        }),
-                      },
+                          width: "100%",
+                          borderTopLeftRadius: "3px",
+                          borderTopRightRadius: "3px",
+                          borderBottomLeftRadius: "3px",
+                          borderBottomRightRadius: "3px"
+                        })
+                      }
                     }}
                   >
                     Add Members
@@ -153,9 +152,9 @@ export default function StuffMembers() {
             </Col>
           </Header>
 
-          <Wrapper style={{ boxShadow: '0 0 5px rgba(0, 0 , 0, 0.05)' }}>
+          <Wrapper style={{ boxShadow: "0 0 5px rgba(0, 0 , 0, 0.05)" }}>
             <TableWrapper>
-              <StyledTable $gridTemplateColumns='minmax(70px, 70px) minmax(270px, max-content) minmax(270px, max-content) minmax(150px, max-content) minmax(150px, auto) minmax(150px, auto)'>
+              <StyledTable $gridTemplateColumns="minmax(70px, 70px) minmax(270px, max-content) minmax(270px, max-content) minmax(150px, max-content) minmax(150px, auto) minmax(150px, auto)">
                 <StyledHeadCell>ID</StyledHeadCell>
                 <StyledHeadCell>Name</StyledHeadCell>
                 <StyledHeadCell>Email</StyledHeadCell>
@@ -164,8 +163,8 @@ export default function StuffMembers() {
                 <StyledHeadCell>Role</StyledHeadCell>
 
                 {data ? (
-                  data.stuffs.length ? (
-                    data.stuffs
+                  data.salesmen.length ? (
+                    data.salesmen
                       .map(item => Object.values(item))
                       .map((row, index) => (
                         <React.Fragment key={index}>
@@ -174,7 +173,7 @@ export default function StuffMembers() {
                           <StyledBodyCell>{row[2]}</StyledBodyCell>
                           <StyledBodyCell>{row[3]}</StyledBodyCell>
                           <StyledBodyCell>
-                            <Moment format='Do MMM YYYY'>{row[4]}</Moment>
+                            <Moment format="Do MMM YYYY">{row[4]}</Moment>
                           </StyledBodyCell>
                           <StyledBodyCell>{row[5]}</StyledBodyCell>
                         </React.Fragment>
@@ -183,8 +182,8 @@ export default function StuffMembers() {
                     <NoResult
                       hideButton={false}
                       style={{
-                        gridColumnStart: '1',
-                        gridColumnEnd: 'one',
+                        gridColumnStart: "1",
+                        gridColumnEnd: "one"
                       }}
                     />
                   )

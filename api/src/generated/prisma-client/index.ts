@@ -22,7 +22,7 @@ export interface Exists {
   payment: (where?: PaymentWhereInput) => Promise<boolean>;
   productItem: (where?: ProductItemWhereInput) => Promise<boolean>;
   quotation: (where?: QuotationWhereInput) => Promise<boolean>;
-  saleman: (where?: SalemanWhereInput) => Promise<boolean>;
+  salesman: (where?: SalesmanWhereInput) => Promise<boolean>;
   shipping: (where?: ShippingWhereInput) => Promise<boolean>;
   shoppingCart: (where?: ShoppingCartWhereInput) => Promise<boolean>;
   shoppingCartItem: (where?: ShoppingCartItemWhereInput) => Promise<boolean>;
@@ -164,25 +164,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => QuotationConnectionPromise;
-  saleman: (where: SalemanWhereUniqueInput) => SalemanNullablePromise;
-  salemen: (args?: {
-    where?: SalemanWhereInput;
-    orderBy?: SalemanOrderByInput;
+  salesman: (where: SalesmanWhereUniqueInput) => SalesmanNullablePromise;
+  salesmen: (args?: {
+    where?: SalesmanWhereInput;
+    orderBy?: SalesmanOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<Saleman>;
-  salemenConnection: (args?: {
-    where?: SalemanWhereInput;
-    orderBy?: SalemanOrderByInput;
+  }) => FragmentableArray<Salesman>;
+  salesmenConnection: (args?: {
+    where?: SalesmanWhereInput;
+    orderBy?: SalesmanOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => SalemanConnectionPromise;
+  }) => SalesmanConnectionPromise;
   shipping: (where: ShippingWhereUniqueInput) => ShippingNullablePromise;
   shippings: (args?: {
     where?: ShippingWhereInput;
@@ -367,18 +367,22 @@ export interface Prisma {
   }) => QuotationPromise;
   deleteQuotation: (where: QuotationWhereUniqueInput) => QuotationPromise;
   deleteManyQuotations: (where?: QuotationWhereInput) => BatchPayloadPromise;
-  createSaleman: (data: SalemanCreateInput) => SalemanPromise;
-  updateSaleman: (args: {
-    data: SalemanUpdateInput;
-    where: SalemanWhereUniqueInput;
-  }) => SalemanPromise;
-  upsertSaleman: (args: {
-    where: SalemanWhereUniqueInput;
-    create: SalemanCreateInput;
-    update: SalemanUpdateInput;
-  }) => SalemanPromise;
-  deleteSaleman: (where: SalemanWhereUniqueInput) => SalemanPromise;
-  deleteManySalemen: (where?: SalemanWhereInput) => BatchPayloadPromise;
+  createSalesman: (data: SalesmanCreateInput) => SalesmanPromise;
+  updateSalesman: (args: {
+    data: SalesmanUpdateInput;
+    where: SalesmanWhereUniqueInput;
+  }) => SalesmanPromise;
+  updateManySalesmen: (args: {
+    data: SalesmanUpdateManyMutationInput;
+    where?: SalesmanWhereInput;
+  }) => BatchPayloadPromise;
+  upsertSalesman: (args: {
+    where: SalesmanWhereUniqueInput;
+    create: SalesmanCreateInput;
+    update: SalesmanUpdateInput;
+  }) => SalesmanPromise;
+  deleteSalesman: (where: SalesmanWhereUniqueInput) => SalesmanPromise;
+  deleteManySalesmen: (where?: SalesmanWhereInput) => BatchPayloadPromise;
   createShipping: (data: ShippingCreateInput) => ShippingPromise;
   updateShipping: (args: {
     data: ShippingUpdateInput;
@@ -480,9 +484,9 @@ export interface Subscription {
   quotation: (
     where?: QuotationSubscriptionWhereInput
   ) => QuotationSubscriptionPayloadSubscription;
-  saleman: (
-    where?: SalemanSubscriptionWhereInput
-  ) => SalemanSubscriptionPayloadSubscription;
+  salesman: (
+    where?: SalesmanSubscriptionWhereInput
+  ) => SalesmanSubscriptionPayloadSubscription;
   shipping: (
     where?: ShippingSubscriptionWhereInput
   ) => ShippingSubscriptionPayloadSubscription;
@@ -613,9 +617,15 @@ export type CategoryOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type SalemanOrderByInput =
+export type SalesmanOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "phone_ASC"
+  | "phone_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -634,6 +644,8 @@ export type ShoppingCartOrderByInput =
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "runningId_ASC"
+  | "runningId_DESC"
   | "type_ASC"
   | "type_DESC"
   | "name_ASC"
@@ -644,6 +656,8 @@ export type UserOrderByInput =
   | "password_DESC"
   | "phone_ASC"
   | "phone_DESC"
+  | "activated_ASC"
+  | "activated_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -994,6 +1008,14 @@ export interface UserWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  runningId?: Maybe<Int>;
+  runningId_not?: Maybe<Int>;
+  runningId_in?: Maybe<Int[] | Int>;
+  runningId_not_in?: Maybe<Int[] | Int>;
+  runningId_lt?: Maybe<Int>;
+  runningId_lte?: Maybe<Int>;
+  runningId_gt?: Maybe<Int>;
+  runningId_gte?: Maybe<Int>;
   type?: Maybe<String>;
   type_not?: Maybe<String>;
   type_in?: Maybe<String[] | String>;
@@ -1064,6 +1086,8 @@ export interface UserWhereInput {
   phone_not_starts_with?: Maybe<String>;
   phone_ends_with?: Maybe<String>;
   phone_not_ends_with?: Maybe<String>;
+  activated?: Maybe<Boolean>;
+  activated_not?: Maybe<Boolean>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1143,7 +1167,7 @@ export interface QuotationWhereInput {
   updatedAt_lte?: Maybe<DateTimeInput>;
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
-  saleman?: Maybe<SalemanWhereInput>;
+  salesman?: Maybe<SalesmanWhereInput>;
   payment?: Maybe<PaymentWhereInput>;
   shipping?: Maybe<ShippingWhereInput>;
   customer?: Maybe<UserWhereInput>;
@@ -1152,7 +1176,7 @@ export interface QuotationWhereInput {
   NOT?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
 }
 
-export interface SalemanWhereInput {
+export interface SalesmanWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1167,6 +1191,48 @@ export interface SalemanWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  phone?: Maybe<String>;
+  phone_not?: Maybe<String>;
+  phone_in?: Maybe<String[] | String>;
+  phone_not_in?: Maybe<String[] | String>;
+  phone_lt?: Maybe<String>;
+  phone_lte?: Maybe<String>;
+  phone_gt?: Maybe<String>;
+  phone_gte?: Maybe<String>;
+  phone_contains?: Maybe<String>;
+  phone_not_contains?: Maybe<String>;
+  phone_starts_with?: Maybe<String>;
+  phone_not_starts_with?: Maybe<String>;
+  phone_ends_with?: Maybe<String>;
+  phone_not_ends_with?: Maybe<String>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1192,9 +1258,9 @@ export interface SalemanWhereInput {
   quotations_every?: Maybe<QuotationWhereInput>;
   quotations_some?: Maybe<QuotationWhereInput>;
   quotations_none?: Maybe<QuotationWhereInput>;
-  AND?: Maybe<SalemanWhereInput[] | SalemanWhereInput>;
-  OR?: Maybe<SalemanWhereInput[] | SalemanWhereInput>;
-  NOT?: Maybe<SalemanWhereInput[] | SalemanWhereInput>;
+  AND?: Maybe<SalesmanWhereInput[] | SalesmanWhereInput>;
+  OR?: Maybe<SalesmanWhereInput[] | SalesmanWhereInput>;
+  NOT?: Maybe<SalesmanWhereInput[] | SalesmanWhereInput>;
 }
 
 export interface PaymentWhereInput {
@@ -1257,7 +1323,7 @@ export interface PaymentWhereInput {
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
   customer?: Maybe<UserWhereInput>;
-  saleman?: Maybe<SalemanWhereInput>;
+  salesman?: Maybe<SalesmanWhereInput>;
   quotation?: Maybe<QuotationWhereInput>;
   Invoice?: Maybe<InvoiceWhereInput>;
   AND?: Maybe<PaymentWhereInput[] | PaymentWhereInput>;
@@ -1326,7 +1392,7 @@ export interface InvoiceWhereInput {
   updatedAt_gte?: Maybe<DateTimeInput>;
   user?: Maybe<UserWhereInput>;
   quotation?: Maybe<QuotationWhereInput>;
-  saleman?: Maybe<SalemanWhereInput>;
+  salesman?: Maybe<SalesmanWhereInput>;
   address?: Maybe<AddressWhereInput>;
   payment?: Maybe<PaymentWhereInput>;
   AND?: Maybe<InvoiceWhereInput[] | InvoiceWhereInput>;
@@ -1500,7 +1566,7 @@ export type QuotationWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export type SalemanWhereUniqueInput = AtLeastOne<{
+export type SalesmanWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -1538,11 +1604,13 @@ export interface UserCreateOneWithoutAddressesInput {
 
 export interface UserCreateWithoutAddressesInput {
   id?: Maybe<ID_Input>;
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
   phone: String;
+  activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
@@ -1668,11 +1736,13 @@ export interface UserCreateOneWithoutShoppingCartInput {
 
 export interface UserCreateWithoutShoppingCartInput {
   id?: Maybe<ID_Input>;
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
   phone: String;
+  activated?: Maybe<Boolean>;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
@@ -1689,7 +1759,7 @@ export interface QuotationCreateWithoutCustomerInput {
   id?: Maybe<ID_Input>;
   docId: String;
   productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  saleman: SalemanCreateOneWithoutQuotationsInput;
+  salesman: SalesmanCreateOneWithoutQuotationsInput;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
 }
@@ -1725,25 +1795,28 @@ export interface ProductItemCreateManyInput {
   connect?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
 }
 
-export interface SalemanCreateOneWithoutQuotationsInput {
-  create?: Maybe<SalemanCreateWithoutQuotationsInput>;
-  connect?: Maybe<SalemanWhereUniqueInput>;
+export interface SalesmanCreateOneWithoutQuotationsInput {
+  create?: Maybe<SalesmanCreateWithoutQuotationsInput>;
+  connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
-export interface SalemanCreateWithoutQuotationsInput {
+export interface SalesmanCreateWithoutQuotationsInput {
   id?: Maybe<ID_Input>;
-  payments?: Maybe<PaymentCreateManyWithoutSalemanInput>;
-  invoices?: Maybe<InvoiceCreateManyWithoutSalemanInput>;
+  name: String;
+  email: String;
+  phone: String;
+  payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>;
+  invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>;
 }
 
-export interface PaymentCreateManyWithoutSalemanInput {
+export interface PaymentCreateManyWithoutSalesmanInput {
   create?: Maybe<
-    PaymentCreateWithoutSalemanInput[] | PaymentCreateWithoutSalemanInput
+    PaymentCreateWithoutSalesmanInput[] | PaymentCreateWithoutSalesmanInput
   >;
   connect?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
 }
 
-export interface PaymentCreateWithoutSalemanInput {
+export interface PaymentCreateWithoutSalesmanInput {
   id?: Maybe<ID_Input>;
   docId: String;
   amount: String;
@@ -1759,11 +1832,13 @@ export interface UserCreateOneWithoutPaymentsInput {
 
 export interface UserCreateWithoutPaymentsInput {
   id?: Maybe<ID_Input>;
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
   phone: String;
+  activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
@@ -1797,7 +1872,7 @@ export interface InvoiceCreateWithoutAddressInput {
   creditTerm: String;
   user: UserCreateOneInput;
   quotation: QuotationCreateOneInput;
-  saleman: SalemanCreateOneWithoutInvoicesInput;
+  salesman: SalesmanCreateOneWithoutInvoicesInput;
   payment?: Maybe<PaymentCreateOneWithoutInvoiceInput>;
 }
 
@@ -1808,11 +1883,13 @@ export interface UserCreateOneInput {
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
   phone: String;
+  activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
@@ -1830,30 +1907,33 @@ export interface PaymentCreateWithoutCustomerInput {
   id?: Maybe<ID_Input>;
   docId: String;
   amount: String;
-  saleman: SalemanCreateOneWithoutPaymentsInput;
+  salesman: SalesmanCreateOneWithoutPaymentsInput;
   quotation: QuotationCreateOneWithoutPaymentInput;
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>;
 }
 
-export interface SalemanCreateOneWithoutPaymentsInput {
-  create?: Maybe<SalemanCreateWithoutPaymentsInput>;
-  connect?: Maybe<SalemanWhereUniqueInput>;
+export interface SalesmanCreateOneWithoutPaymentsInput {
+  create?: Maybe<SalesmanCreateWithoutPaymentsInput>;
+  connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
-export interface SalemanCreateWithoutPaymentsInput {
+export interface SalesmanCreateWithoutPaymentsInput {
   id?: Maybe<ID_Input>;
-  invoices?: Maybe<InvoiceCreateManyWithoutSalemanInput>;
-  quotations?: Maybe<QuotationCreateManyWithoutSalemanInput>;
+  name: String;
+  email: String;
+  phone: String;
+  invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>;
+  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>;
 }
 
-export interface InvoiceCreateManyWithoutSalemanInput {
+export interface InvoiceCreateManyWithoutSalesmanInput {
   create?: Maybe<
-    InvoiceCreateWithoutSalemanInput[] | InvoiceCreateWithoutSalemanInput
+    InvoiceCreateWithoutSalesmanInput[] | InvoiceCreateWithoutSalesmanInput
   >;
   connect?: Maybe<InvoiceWhereUniqueInput[] | InvoiceWhereUniqueInput>;
 }
 
-export interface InvoiceCreateWithoutSalemanInput {
+export interface InvoiceCreateWithoutSalesmanInput {
   id?: Maybe<ID_Input>;
   docId: String;
   creditTerm: String;
@@ -1872,7 +1952,7 @@ export interface QuotationCreateInput {
   id?: Maybe<ID_Input>;
   docId: String;
   productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  saleman: SalemanCreateOneWithoutQuotationsInput;
+  salesman: SalesmanCreateOneWithoutQuotationsInput;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
@@ -1888,7 +1968,7 @@ export interface PaymentCreateWithoutQuotationInput {
   docId: String;
   amount: String;
   customer: UserCreateOneWithoutPaymentsInput;
-  saleman: SalemanCreateOneWithoutPaymentsInput;
+  salesman: SalesmanCreateOneWithoutPaymentsInput;
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>;
 }
 
@@ -1903,29 +1983,32 @@ export interface InvoiceCreateWithoutPaymentInput {
   creditTerm: String;
   user: UserCreateOneInput;
   quotation: QuotationCreateOneInput;
-  saleman: SalemanCreateOneWithoutInvoicesInput;
+  salesman: SalesmanCreateOneWithoutInvoicesInput;
   address?: Maybe<AddressCreateOneWithoutInvoicesInput>;
 }
 
-export interface SalemanCreateOneWithoutInvoicesInput {
-  create?: Maybe<SalemanCreateWithoutInvoicesInput>;
-  connect?: Maybe<SalemanWhereUniqueInput>;
+export interface SalesmanCreateOneWithoutInvoicesInput {
+  create?: Maybe<SalesmanCreateWithoutInvoicesInput>;
+  connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
-export interface SalemanCreateWithoutInvoicesInput {
+export interface SalesmanCreateWithoutInvoicesInput {
   id?: Maybe<ID_Input>;
-  payments?: Maybe<PaymentCreateManyWithoutSalemanInput>;
-  quotations?: Maybe<QuotationCreateManyWithoutSalemanInput>;
+  name: String;
+  email: String;
+  phone: String;
+  payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>;
+  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>;
 }
 
-export interface QuotationCreateManyWithoutSalemanInput {
+export interface QuotationCreateManyWithoutSalesmanInput {
   create?: Maybe<
-    QuotationCreateWithoutSalemanInput[] | QuotationCreateWithoutSalemanInput
+    QuotationCreateWithoutSalesmanInput[] | QuotationCreateWithoutSalesmanInput
   >;
   connect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
 }
 
-export interface QuotationCreateWithoutSalemanInput {
+export interface QuotationCreateWithoutSalesmanInput {
   id?: Maybe<ID_Input>;
   docId: String;
   productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
@@ -1959,7 +2042,7 @@ export interface InvoiceCreateInput {
   creditTerm: String;
   user: UserCreateOneInput;
   quotation: QuotationCreateOneInput;
-  saleman: SalemanCreateOneWithoutInvoicesInput;
+  salesman: SalesmanCreateOneWithoutInvoicesInput;
   address?: Maybe<AddressCreateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentCreateOneWithoutInvoiceInput>;
 }
@@ -2002,7 +2085,7 @@ export interface QuotationCreateWithoutShippingInput {
   id?: Maybe<ID_Input>;
   docId: String;
   productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  saleman: SalemanCreateOneWithoutQuotationsInput;
+  salesman: SalesmanCreateOneWithoutQuotationsInput;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
 }
@@ -2014,11 +2097,13 @@ export interface UserCreateOneWithoutQuotationsInput {
 
 export interface UserCreateWithoutQuotationsInput {
   id?: Maybe<ID_Input>;
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name: String;
   email: String;
   password: String;
   phone: String;
+  activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
@@ -2034,7 +2119,7 @@ export interface PaymentCreateWithoutInvoiceInput {
   docId: String;
   amount: String;
   customer: UserCreateOneWithoutPaymentsInput;
-  saleman: SalemanCreateOneWithoutPaymentsInput;
+  salesman: SalesmanCreateOneWithoutPaymentsInput;
   quotation: QuotationCreateOneWithoutPaymentInput;
 }
 
@@ -2047,7 +2132,7 @@ export interface QuotationCreateWithoutPaymentInput {
   id?: Maybe<ID_Input>;
   docId: String;
   productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  saleman: SalemanCreateOneWithoutQuotationsInput;
+  salesman: SalesmanCreateOneWithoutQuotationsInput;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
 }
@@ -2073,7 +2158,7 @@ export interface QuotationCreateOneWithoutProductItemsInput {
 export interface QuotationCreateWithoutProductItemsInput {
   id?: Maybe<ID_Input>;
   docId: String;
-  saleman: SalemanCreateOneWithoutQuotationsInput;
+  salesman: SalesmanCreateOneWithoutQuotationsInput;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
@@ -2095,11 +2180,13 @@ export interface UserUpdateOneRequiredWithoutAddressesInput {
 }
 
 export interface UserUpdateWithoutAddressesDataInput {
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
@@ -2287,11 +2374,13 @@ export interface UserUpdateOneRequiredWithoutShoppingCartInput {
 }
 
 export interface UserUpdateWithoutShoppingCartDataInput {
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  activated?: Maybe<Boolean>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
@@ -2328,7 +2417,7 @@ export interface QuotationUpdateWithWhereUniqueWithoutCustomerInput {
 export interface QuotationUpdateWithoutCustomerDataInput {
   docId?: Maybe<String>;
   productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
 }
@@ -2616,33 +2705,36 @@ export interface ProductItemUpsertWithWhereUniqueWithoutQuotationInput {
   create: ProductItemCreateWithoutQuotationInput;
 }
 
-export interface SalemanUpdateOneRequiredWithoutQuotationsInput {
-  create?: Maybe<SalemanCreateWithoutQuotationsInput>;
-  update?: Maybe<SalemanUpdateWithoutQuotationsDataInput>;
-  upsert?: Maybe<SalemanUpsertWithoutQuotationsInput>;
-  connect?: Maybe<SalemanWhereUniqueInput>;
+export interface SalesmanUpdateOneRequiredWithoutQuotationsInput {
+  create?: Maybe<SalesmanCreateWithoutQuotationsInput>;
+  update?: Maybe<SalesmanUpdateWithoutQuotationsDataInput>;
+  upsert?: Maybe<SalesmanUpsertWithoutQuotationsInput>;
+  connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
-export interface SalemanUpdateWithoutQuotationsDataInput {
-  payments?: Maybe<PaymentUpdateManyWithoutSalemanInput>;
-  invoices?: Maybe<InvoiceUpdateManyWithoutSalemanInput>;
+export interface SalesmanUpdateWithoutQuotationsDataInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>;
+  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>;
 }
 
-export interface PaymentUpdateManyWithoutSalemanInput {
+export interface PaymentUpdateManyWithoutSalesmanInput {
   create?: Maybe<
-    PaymentCreateWithoutSalemanInput[] | PaymentCreateWithoutSalemanInput
+    PaymentCreateWithoutSalesmanInput[] | PaymentCreateWithoutSalesmanInput
   >;
   delete?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
   connect?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
   set?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
   disconnect?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
   update?: Maybe<
-    | PaymentUpdateWithWhereUniqueWithoutSalemanInput[]
-    | PaymentUpdateWithWhereUniqueWithoutSalemanInput
+    | PaymentUpdateWithWhereUniqueWithoutSalesmanInput[]
+    | PaymentUpdateWithWhereUniqueWithoutSalesmanInput
   >;
   upsert?: Maybe<
-    | PaymentUpsertWithWhereUniqueWithoutSalemanInput[]
-    | PaymentUpsertWithWhereUniqueWithoutSalemanInput
+    | PaymentUpsertWithWhereUniqueWithoutSalesmanInput[]
+    | PaymentUpsertWithWhereUniqueWithoutSalesmanInput
   >;
   deleteMany?: Maybe<PaymentScalarWhereInput[] | PaymentScalarWhereInput>;
   updateMany?: Maybe<
@@ -2651,12 +2743,12 @@ export interface PaymentUpdateManyWithoutSalemanInput {
   >;
 }
 
-export interface PaymentUpdateWithWhereUniqueWithoutSalemanInput {
+export interface PaymentUpdateWithWhereUniqueWithoutSalesmanInput {
   where: PaymentWhereUniqueInput;
-  data: PaymentUpdateWithoutSalemanDataInput;
+  data: PaymentUpdateWithoutSalesmanDataInput;
 }
 
-export interface PaymentUpdateWithoutSalemanDataInput {
+export interface PaymentUpdateWithoutSalesmanDataInput {
   docId?: Maybe<String>;
   amount?: Maybe<String>;
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
@@ -2672,11 +2764,13 @@ export interface UserUpdateOneRequiredWithoutPaymentsInput {
 }
 
 export interface UserUpdateWithoutPaymentsDataInput {
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
@@ -2750,7 +2844,7 @@ export interface InvoiceUpdateWithoutAddressDataInput {
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
   quotation?: Maybe<QuotationUpdateOneRequiredInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>;
 }
 
@@ -2762,11 +2856,13 @@ export interface UserUpdateOneRequiredInput {
 }
 
 export interface UserUpdateDataInput {
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
@@ -2804,38 +2900,41 @@ export interface PaymentUpdateWithWhereUniqueWithoutCustomerInput {
 export interface PaymentUpdateWithoutCustomerDataInput {
   docId?: Maybe<String>;
   amount?: Maybe<String>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>;
   quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>;
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>;
 }
 
-export interface SalemanUpdateOneRequiredWithoutPaymentsInput {
-  create?: Maybe<SalemanCreateWithoutPaymentsInput>;
-  update?: Maybe<SalemanUpdateWithoutPaymentsDataInput>;
-  upsert?: Maybe<SalemanUpsertWithoutPaymentsInput>;
-  connect?: Maybe<SalemanWhereUniqueInput>;
+export interface SalesmanUpdateOneRequiredWithoutPaymentsInput {
+  create?: Maybe<SalesmanCreateWithoutPaymentsInput>;
+  update?: Maybe<SalesmanUpdateWithoutPaymentsDataInput>;
+  upsert?: Maybe<SalesmanUpsertWithoutPaymentsInput>;
+  connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
-export interface SalemanUpdateWithoutPaymentsDataInput {
-  invoices?: Maybe<InvoiceUpdateManyWithoutSalemanInput>;
-  quotations?: Maybe<QuotationUpdateManyWithoutSalemanInput>;
+export interface SalesmanUpdateWithoutPaymentsDataInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>;
+  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>;
 }
 
-export interface InvoiceUpdateManyWithoutSalemanInput {
+export interface InvoiceUpdateManyWithoutSalesmanInput {
   create?: Maybe<
-    InvoiceCreateWithoutSalemanInput[] | InvoiceCreateWithoutSalemanInput
+    InvoiceCreateWithoutSalesmanInput[] | InvoiceCreateWithoutSalesmanInput
   >;
   delete?: Maybe<InvoiceWhereUniqueInput[] | InvoiceWhereUniqueInput>;
   connect?: Maybe<InvoiceWhereUniqueInput[] | InvoiceWhereUniqueInput>;
   set?: Maybe<InvoiceWhereUniqueInput[] | InvoiceWhereUniqueInput>;
   disconnect?: Maybe<InvoiceWhereUniqueInput[] | InvoiceWhereUniqueInput>;
   update?: Maybe<
-    | InvoiceUpdateWithWhereUniqueWithoutSalemanInput[]
-    | InvoiceUpdateWithWhereUniqueWithoutSalemanInput
+    | InvoiceUpdateWithWhereUniqueWithoutSalesmanInput[]
+    | InvoiceUpdateWithWhereUniqueWithoutSalesmanInput
   >;
   upsert?: Maybe<
-    | InvoiceUpsertWithWhereUniqueWithoutSalemanInput[]
-    | InvoiceUpsertWithWhereUniqueWithoutSalemanInput
+    | InvoiceUpsertWithWhereUniqueWithoutSalesmanInput[]
+    | InvoiceUpsertWithWhereUniqueWithoutSalesmanInput
   >;
   deleteMany?: Maybe<InvoiceScalarWhereInput[] | InvoiceScalarWhereInput>;
   updateMany?: Maybe<
@@ -2844,12 +2943,12 @@ export interface InvoiceUpdateManyWithoutSalemanInput {
   >;
 }
 
-export interface InvoiceUpdateWithWhereUniqueWithoutSalemanInput {
+export interface InvoiceUpdateWithWhereUniqueWithoutSalesmanInput {
   where: InvoiceWhereUniqueInput;
-  data: InvoiceUpdateWithoutSalemanDataInput;
+  data: InvoiceUpdateWithoutSalesmanDataInput;
 }
 
-export interface InvoiceUpdateWithoutSalemanDataInput {
+export interface InvoiceUpdateWithoutSalesmanDataInput {
   docId?: Maybe<String>;
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
@@ -2868,7 +2967,7 @@ export interface QuotationUpdateOneRequiredInput {
 export interface QuotationUpdateDataInput {
   docId?: Maybe<String>;
   productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
@@ -2887,7 +2986,7 @@ export interface PaymentUpdateWithoutQuotationDataInput {
   docId?: Maybe<String>;
   amount?: Maybe<String>;
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>;
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>;
 }
 
@@ -2905,37 +3004,40 @@ export interface InvoiceUpdateWithoutPaymentDataInput {
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
   quotation?: Maybe<QuotationUpdateOneRequiredInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>;
 }
 
-export interface SalemanUpdateOneRequiredWithoutInvoicesInput {
-  create?: Maybe<SalemanCreateWithoutInvoicesInput>;
-  update?: Maybe<SalemanUpdateWithoutInvoicesDataInput>;
-  upsert?: Maybe<SalemanUpsertWithoutInvoicesInput>;
-  connect?: Maybe<SalemanWhereUniqueInput>;
+export interface SalesmanUpdateOneRequiredWithoutInvoicesInput {
+  create?: Maybe<SalesmanCreateWithoutInvoicesInput>;
+  update?: Maybe<SalesmanUpdateWithoutInvoicesDataInput>;
+  upsert?: Maybe<SalesmanUpsertWithoutInvoicesInput>;
+  connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
-export interface SalemanUpdateWithoutInvoicesDataInput {
-  payments?: Maybe<PaymentUpdateManyWithoutSalemanInput>;
-  quotations?: Maybe<QuotationUpdateManyWithoutSalemanInput>;
+export interface SalesmanUpdateWithoutInvoicesDataInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>;
+  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>;
 }
 
-export interface QuotationUpdateManyWithoutSalemanInput {
+export interface QuotationUpdateManyWithoutSalesmanInput {
   create?: Maybe<
-    QuotationCreateWithoutSalemanInput[] | QuotationCreateWithoutSalemanInput
+    QuotationCreateWithoutSalesmanInput[] | QuotationCreateWithoutSalesmanInput
   >;
   delete?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
   connect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
   set?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
   disconnect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
   update?: Maybe<
-    | QuotationUpdateWithWhereUniqueWithoutSalemanInput[]
-    | QuotationUpdateWithWhereUniqueWithoutSalemanInput
+    | QuotationUpdateWithWhereUniqueWithoutSalesmanInput[]
+    | QuotationUpdateWithWhereUniqueWithoutSalesmanInput
   >;
   upsert?: Maybe<
-    | QuotationUpsertWithWhereUniqueWithoutSalemanInput[]
-    | QuotationUpsertWithWhereUniqueWithoutSalemanInput
+    | QuotationUpsertWithWhereUniqueWithoutSalesmanInput[]
+    | QuotationUpsertWithWhereUniqueWithoutSalesmanInput
   >;
   deleteMany?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
   updateMany?: Maybe<
@@ -2944,12 +3046,12 @@ export interface QuotationUpdateManyWithoutSalemanInput {
   >;
 }
 
-export interface QuotationUpdateWithWhereUniqueWithoutSalemanInput {
+export interface QuotationUpdateWithWhereUniqueWithoutSalesmanInput {
   where: QuotationWhereUniqueInput;
-  data: QuotationUpdateWithoutSalemanDataInput;
+  data: QuotationUpdateWithoutSalesmanDataInput;
 }
 
-export interface QuotationUpdateWithoutSalemanDataInput {
+export interface QuotationUpdateWithoutSalesmanDataInput {
   docId?: Maybe<String>;
   productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
@@ -2986,7 +3088,7 @@ export interface InvoiceUpdateDataInput {
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
   quotation?: Maybe<QuotationUpdateOneRequiredInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>;
 }
@@ -3053,7 +3155,7 @@ export interface QuotationUpdateOneRequiredWithoutShippingInput {
 export interface QuotationUpdateWithoutShippingDataInput {
   docId?: Maybe<String>;
   productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
 }
@@ -3066,11 +3168,13 @@ export interface UserUpdateOneRequiredWithoutQuotationsInput {
 }
 
 export interface UserUpdateWithoutQuotationsDataInput {
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
@@ -3193,7 +3297,7 @@ export interface PaymentUpdateWithoutInvoiceDataInput {
   docId?: Maybe<String>;
   amount?: Maybe<String>;
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>;
   quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>;
 }
 
@@ -3207,7 +3311,7 @@ export interface QuotationUpdateOneRequiredWithoutPaymentInput {
 export interface QuotationUpdateWithoutPaymentDataInput {
   docId?: Maybe<String>;
   productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
 }
@@ -3251,10 +3355,10 @@ export interface ShippingUpsertWithoutQuotationInput {
   create: ShippingCreateWithoutQuotationInput;
 }
 
-export interface QuotationUpsertWithWhereUniqueWithoutSalemanInput {
+export interface QuotationUpsertWithWhereUniqueWithoutSalesmanInput {
   where: QuotationWhereUniqueInput;
-  update: QuotationUpdateWithoutSalemanDataInput;
-  create: QuotationCreateWithoutSalemanInput;
+  update: QuotationUpdateWithoutSalesmanDataInput;
+  create: QuotationCreateWithoutSalesmanInput;
 }
 
 export interface QuotationScalarWhereInput {
@@ -3316,9 +3420,9 @@ export interface QuotationUpdateManyDataInput {
   docId?: Maybe<String>;
 }
 
-export interface SalemanUpsertWithoutInvoicesInput {
-  update: SalemanUpdateWithoutInvoicesDataInput;
-  create: SalemanCreateWithoutInvoicesInput;
+export interface SalesmanUpsertWithoutInvoicesInput {
+  update: SalesmanUpdateWithoutInvoicesDataInput;
+  create: SalesmanCreateWithoutInvoicesInput;
 }
 
 export interface InvoiceUpsertWithoutPaymentInput {
@@ -3336,10 +3440,10 @@ export interface QuotationUpsertNestedInput {
   create: QuotationCreateInput;
 }
 
-export interface InvoiceUpsertWithWhereUniqueWithoutSalemanInput {
+export interface InvoiceUpsertWithWhereUniqueWithoutSalesmanInput {
   where: InvoiceWhereUniqueInput;
-  update: InvoiceUpdateWithoutSalemanDataInput;
-  create: InvoiceCreateWithoutSalemanInput;
+  update: InvoiceUpdateWithoutSalesmanDataInput;
+  create: InvoiceCreateWithoutSalesmanInput;
 }
 
 export interface InvoiceScalarWhereInput {
@@ -3416,9 +3520,9 @@ export interface InvoiceUpdateManyDataInput {
   creditTerm?: Maybe<String>;
 }
 
-export interface SalemanUpsertWithoutPaymentsInput {
-  update: SalemanUpdateWithoutPaymentsDataInput;
-  create: SalemanCreateWithoutPaymentsInput;
+export interface SalesmanUpsertWithoutPaymentsInput {
+  update: SalesmanUpdateWithoutPaymentsDataInput;
+  create: SalesmanCreateWithoutPaymentsInput;
 }
 
 export interface PaymentUpsertWithWhereUniqueWithoutCustomerInput {
@@ -3597,15 +3701,15 @@ export interface UserUpsertWithoutPaymentsInput {
   create: UserCreateWithoutPaymentsInput;
 }
 
-export interface PaymentUpsertWithWhereUniqueWithoutSalemanInput {
+export interface PaymentUpsertWithWhereUniqueWithoutSalesmanInput {
   where: PaymentWhereUniqueInput;
-  update: PaymentUpdateWithoutSalemanDataInput;
-  create: PaymentCreateWithoutSalemanInput;
+  update: PaymentUpdateWithoutSalesmanDataInput;
+  create: PaymentCreateWithoutSalesmanInput;
 }
 
-export interface SalemanUpsertWithoutQuotationsInput {
-  update: SalemanUpdateWithoutQuotationsDataInput;
-  create: SalemanCreateWithoutQuotationsInput;
+export interface SalesmanUpsertWithoutQuotationsInput {
+  update: SalesmanUpdateWithoutQuotationsDataInput;
+  create: SalesmanCreateWithoutQuotationsInput;
 }
 
 export interface QuotationUpsertWithWhereUniqueWithoutCustomerInput {
@@ -3635,7 +3739,7 @@ export interface QuotationUpdateOneWithoutProductItemsInput {
 
 export interface QuotationUpdateWithoutProductItemsDataInput {
   docId?: Maybe<String>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
@@ -3761,7 +3865,7 @@ export interface InvoiceUpdateInput {
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
   quotation?: Maybe<QuotationUpdateOneRequiredInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>;
 }
@@ -3776,7 +3880,7 @@ export interface PaymentCreateInput {
   docId: String;
   amount: String;
   customer: UserCreateOneWithoutPaymentsInput;
-  saleman: SalemanCreateOneWithoutPaymentsInput;
+  salesman: SalesmanCreateOneWithoutPaymentsInput;
   quotation: QuotationCreateOneWithoutPaymentInput;
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>;
 }
@@ -3785,7 +3889,7 @@ export interface PaymentUpdateInput {
   docId?: Maybe<String>;
   amount?: Maybe<String>;
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>;
   quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>;
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>;
 }
@@ -3830,7 +3934,7 @@ export interface ProductItemUpdateManyMutationInput {
 export interface QuotationUpdateInput {
   docId?: Maybe<String>;
   productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>;
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
@@ -3840,17 +3944,29 @@ export interface QuotationUpdateManyMutationInput {
   docId?: Maybe<String>;
 }
 
-export interface SalemanCreateInput {
+export interface SalesmanCreateInput {
   id?: Maybe<ID_Input>;
-  payments?: Maybe<PaymentCreateManyWithoutSalemanInput>;
-  invoices?: Maybe<InvoiceCreateManyWithoutSalemanInput>;
-  quotations?: Maybe<QuotationCreateManyWithoutSalemanInput>;
+  name: String;
+  email: String;
+  phone: String;
+  payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>;
+  invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>;
+  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>;
 }
 
-export interface SalemanUpdateInput {
-  payments?: Maybe<PaymentUpdateManyWithoutSalemanInput>;
-  invoices?: Maybe<InvoiceUpdateManyWithoutSalemanInput>;
-  quotations?: Maybe<QuotationUpdateManyWithoutSalemanInput>;
+export interface SalesmanUpdateInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>;
+  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>;
+  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>;
+}
+
+export interface SalesmanUpdateManyMutationInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
 }
 
 export interface ShippingCreateInput {
@@ -3939,11 +4055,13 @@ export interface ShoppingCartItemUpdateManyMutationInput {
 }
 
 export interface UserUpdateInput {
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
@@ -3951,11 +4069,13 @@ export interface UserUpdateInput {
 }
 
 export interface UserUpdateManyMutationInput {
+  runningId?: Maybe<Int>;
   type?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  activated?: Maybe<Boolean>;
 }
 
 export interface AddressSubscriptionWhereInput {
@@ -4040,15 +4160,19 @@ export interface QuotationSubscriptionWhereInput {
   >;
 }
 
-export interface SalemanSubscriptionWhereInput {
+export interface SalesmanSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<SalemanWhereInput>;
-  AND?: Maybe<SalemanSubscriptionWhereInput[] | SalemanSubscriptionWhereInput>;
-  OR?: Maybe<SalemanSubscriptionWhereInput[] | SalemanSubscriptionWhereInput>;
-  NOT?: Maybe<SalemanSubscriptionWhereInput[] | SalemanSubscriptionWhereInput>;
+  node?: Maybe<SalesmanWhereInput>;
+  AND?: Maybe<
+    SalesmanSubscriptionWhereInput[] | SalesmanSubscriptionWhereInput
+  >;
+  OR?: Maybe<SalesmanSubscriptionWhereInput[] | SalesmanSubscriptionWhereInput>;
+  NOT?: Maybe<
+    SalesmanSubscriptionWhereInput[] | SalesmanSubscriptionWhereInput
+  >;
 }
 
 export interface ShippingSubscriptionWhereInput {
@@ -4213,22 +4337,26 @@ export interface AddressNullablePromise
 
 export interface User {
   id: ID_Output;
+  runningId?: Int;
   type?: String;
   name: String;
   email: String;
   password: String;
   phone: String;
+  activated: Boolean;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
+  runningId: () => Promise<Int>;
   type: () => Promise<String>;
   name: () => Promise<String>;
   email: () => Promise<String>;
   password: () => Promise<String>;
   phone: () => Promise<String>;
+  activated: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   shoppingCart: <T = ShoppingCartPromise>() => T;
@@ -4265,11 +4393,13 @@ export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  runningId: () => Promise<AsyncIterator<Int>>;
   type: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   phone: () => Promise<AsyncIterator<String>>;
+  activated: () => Promise<AsyncIterator<Boolean>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   shoppingCart: <T = ShoppingCartSubscription>() => T;
@@ -4306,11 +4436,13 @@ export interface UserNullablePromise
   extends Promise<User | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  runningId: () => Promise<Int>;
   type: () => Promise<String>;
   name: () => Promise<String>;
   email: () => Promise<String>;
   password: () => Promise<String>;
   phone: () => Promise<String>;
+  activated: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   shoppingCart: <T = ShoppingCartPromise>() => T;
@@ -4636,7 +4768,7 @@ export interface QuotationPromise extends Promise<Quotation>, Fragmentable {
   }) => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  saleman: <T = SalemanPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
   payment: <T = PaymentPromise>() => T;
   shipping: <T = ShippingPromise>() => T;
   customer: <T = UserPromise>() => T;
@@ -4658,7 +4790,7 @@ export interface QuotationSubscription
   }) => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  saleman: <T = SalemanSubscription>() => T;
+  salesman: <T = SalesmanSubscription>() => T;
   payment: <T = PaymentSubscription>() => T;
   shipping: <T = ShippingSubscription>() => T;
   customer: <T = UserSubscription>() => T;
@@ -4680,20 +4812,26 @@ export interface QuotationNullablePromise
   }) => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  saleman: <T = SalemanPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
   payment: <T = PaymentPromise>() => T;
   shipping: <T = ShippingPromise>() => T;
   customer: <T = UserPromise>() => T;
 }
 
-export interface Saleman {
+export interface Salesman {
   id: ID_Output;
+  name: String;
+  email: String;
+  phone: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
-export interface SalemanPromise extends Promise<Saleman>, Fragmentable {
+export interface SalesmanPromise extends Promise<Salesman>, Fragmentable {
   id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   payments: <T = FragmentableArray<Payment>>(args?: {
@@ -4725,10 +4863,13 @@ export interface SalemanPromise extends Promise<Saleman>, Fragmentable {
   }) => T;
 }
 
-export interface SalemanSubscription
-  extends Promise<AsyncIterator<Saleman>>,
+export interface SalesmanSubscription
+  extends Promise<AsyncIterator<Salesman>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   payments: <T = Promise<AsyncIterator<PaymentSubscription>>>(args?: {
@@ -4760,10 +4901,13 @@ export interface SalemanSubscription
   }) => T;
 }
 
-export interface SalemanNullablePromise
-  extends Promise<Saleman | null>,
+export interface SalesmanNullablePromise
+  extends Promise<Salesman | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   payments: <T = FragmentableArray<Payment>>(args?: {
@@ -4810,7 +4954,7 @@ export interface PaymentPromise extends Promise<Payment>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   customer: <T = UserPromise>() => T;
-  saleman: <T = SalemanPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
   quotation: <T = QuotationPromise>() => T;
   Invoice: <T = InvoicePromise>() => T;
 }
@@ -4824,7 +4968,7 @@ export interface PaymentSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   customer: <T = UserSubscription>() => T;
-  saleman: <T = SalemanSubscription>() => T;
+  salesman: <T = SalesmanSubscription>() => T;
   quotation: <T = QuotationSubscription>() => T;
   Invoice: <T = InvoiceSubscription>() => T;
 }
@@ -4838,7 +4982,7 @@ export interface PaymentNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   customer: <T = UserPromise>() => T;
-  saleman: <T = SalemanPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
   quotation: <T = QuotationPromise>() => T;
   Invoice: <T = InvoicePromise>() => T;
 }
@@ -4859,7 +5003,7 @@ export interface InvoicePromise extends Promise<Invoice>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
   user: <T = UserPromise>() => T;
   quotation: <T = QuotationPromise>() => T;
-  saleman: <T = SalemanPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
   address: <T = AddressPromise>() => T;
   payment: <T = PaymentPromise>() => T;
 }
@@ -4874,7 +5018,7 @@ export interface InvoiceSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   user: <T = UserSubscription>() => T;
   quotation: <T = QuotationSubscription>() => T;
-  saleman: <T = SalemanSubscription>() => T;
+  salesman: <T = SalesmanSubscription>() => T;
   address: <T = AddressSubscription>() => T;
   payment: <T = PaymentSubscription>() => T;
 }
@@ -4889,7 +5033,7 @@ export interface InvoiceNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
   user: <T = UserPromise>() => T;
   quotation: <T = QuotationPromise>() => T;
-  saleman: <T = SalemanPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
   address: <T = AddressPromise>() => T;
   payment: <T = PaymentPromise>() => T;
 }
@@ -5296,56 +5440,58 @@ export interface AggregateQuotationSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface SalemanConnection {
+export interface SalesmanConnection {
   pageInfo: PageInfo;
-  edges: SalemanEdge[];
+  edges: SalesmanEdge[];
 }
 
-export interface SalemanConnectionPromise
-  extends Promise<SalemanConnection>,
+export interface SalesmanConnectionPromise
+  extends Promise<SalesmanConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<SalemanEdge>>() => T;
-  aggregate: <T = AggregateSalemanPromise>() => T;
+  edges: <T = FragmentableArray<SalesmanEdge>>() => T;
+  aggregate: <T = AggregateSalesmanPromise>() => T;
 }
 
-export interface SalemanConnectionSubscription
-  extends Promise<AsyncIterator<SalemanConnection>>,
+export interface SalesmanConnectionSubscription
+  extends Promise<AsyncIterator<SalesmanConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<SalemanEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateSalemanSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SalesmanEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSalesmanSubscription>() => T;
 }
 
-export interface SalemanEdge {
-  node: Saleman;
+export interface SalesmanEdge {
+  node: Salesman;
   cursor: String;
 }
 
-export interface SalemanEdgePromise extends Promise<SalemanEdge>, Fragmentable {
-  node: <T = SalemanPromise>() => T;
+export interface SalesmanEdgePromise
+  extends Promise<SalesmanEdge>,
+    Fragmentable {
+  node: <T = SalesmanPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface SalemanEdgeSubscription
-  extends Promise<AsyncIterator<SalemanEdge>>,
+export interface SalesmanEdgeSubscription
+  extends Promise<AsyncIterator<SalesmanEdge>>,
     Fragmentable {
-  node: <T = SalemanSubscription>() => T;
+  node: <T = SalesmanSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateSaleman {
+export interface AggregateSalesman {
   count: Int;
 }
 
-export interface AggregateSalemanPromise
-  extends Promise<AggregateSaleman>,
+export interface AggregateSalesmanPromise
+  extends Promise<AggregateSalesman>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateSalemanSubscription
-  extends Promise<AsyncIterator<AggregateSaleman>>,
+export interface AggregateSalesmanSubscription
+  extends Promise<AsyncIterator<AggregateSalesman>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -5927,49 +6073,58 @@ export interface QuotationPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface SalemanSubscriptionPayload {
+export interface SalesmanSubscriptionPayload {
   mutation: MutationType;
-  node: Saleman;
+  node: Salesman;
   updatedFields: String[];
-  previousValues: SalemanPreviousValues;
+  previousValues: SalesmanPreviousValues;
 }
 
-export interface SalemanSubscriptionPayloadPromise
-  extends Promise<SalemanSubscriptionPayload>,
+export interface SalesmanSubscriptionPayloadPromise
+  extends Promise<SalesmanSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = SalemanPromise>() => T;
+  node: <T = SalesmanPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = SalemanPreviousValuesPromise>() => T;
+  previousValues: <T = SalesmanPreviousValuesPromise>() => T;
 }
 
-export interface SalemanSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<SalemanSubscriptionPayload>>,
+export interface SalesmanSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SalesmanSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = SalemanSubscription>() => T;
+  node: <T = SalesmanSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = SalemanPreviousValuesSubscription>() => T;
+  previousValues: <T = SalesmanPreviousValuesSubscription>() => T;
 }
 
-export interface SalemanPreviousValues {
+export interface SalesmanPreviousValues {
   id: ID_Output;
+  name: String;
+  email: String;
+  phone: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
-export interface SalemanPreviousValuesPromise
-  extends Promise<SalemanPreviousValues>,
+export interface SalesmanPreviousValuesPromise
+  extends Promise<SalesmanPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface SalemanPreviousValuesSubscription
-  extends Promise<AsyncIterator<SalemanPreviousValues>>,
+export interface SalesmanPreviousValuesSubscription
+  extends Promise<AsyncIterator<SalesmanPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -6154,11 +6309,13 @@ export interface UserSubscriptionPayloadSubscription
 
 export interface UserPreviousValues {
   id: ID_Output;
+  runningId?: Int;
   type?: String;
   name: String;
   email: String;
   password: String;
   phone: String;
+  activated: Boolean;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -6167,11 +6324,13 @@ export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  runningId: () => Promise<Int>;
   type: () => Promise<String>;
   name: () => Promise<String>;
   email: () => Promise<String>;
   password: () => Promise<String>;
   phone: () => Promise<String>;
+  activated: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -6180,11 +6339,13 @@ export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  runningId: () => Promise<AsyncIterator<Int>>;
   type: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   phone: () => Promise<AsyncIterator<String>>;
+  activated: () => Promise<AsyncIterator<Boolean>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -6211,11 +6372,6 @@ DateTime scalar output type, which is always a string
 export type DateTimeOutput = string;
 
 /*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
-*/
-export type Float = number;
-
-/*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
 export type Int = number;
@@ -6224,6 +6380,11 @@ export type Int = number;
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
+*/
+export type Float = number;
 
 export type Long = string;
 
@@ -6245,7 +6406,7 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "Saleman",
+    name: "Salesman",
     embedded: false
   },
   {
@@ -6285,6 +6446,6 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `http://13.229.249.128:4466/`
+  endpoint: `http://localhost:4466/`
 });
 export const prisma = new Prisma();

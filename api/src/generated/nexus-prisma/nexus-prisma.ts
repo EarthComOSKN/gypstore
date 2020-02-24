@@ -21,7 +21,7 @@ export interface NexusPrismaTypes {
       ProductItem: ProductItemObject
       Category: CategoryObject
       Quotation: QuotationObject
-      Saleman: SalemanObject
+      Salesman: SalesmanObject
       Payment: PaymentObject
       Invoice: InvoiceObject
       Address: AddressObject
@@ -36,9 +36,9 @@ export interface NexusPrismaTypes {
       PaymentConnection: PaymentConnectionObject
       PaymentEdge: PaymentEdgeObject
       AggregatePayment: AggregatePaymentObject
-      SalemanConnection: SalemanConnectionObject
-      SalemanEdge: SalemanEdgeObject
-      AggregateSaleman: AggregateSalemanObject
+      SalesmanConnection: SalesmanConnectionObject
+      SalesmanEdge: SalesmanEdgeObject
+      AggregateSalesman: AggregateSalesmanObject
       InvoiceConnection: InvoiceConnectionObject
       InvoiceEdge: InvoiceEdgeObject
       AggregateInvoice: AggregateInvoiceObject
@@ -69,8 +69,8 @@ export interface NexusPrismaTypes {
       AddressPreviousValues: AddressPreviousValuesObject
       PaymentSubscriptionPayload: PaymentSubscriptionPayloadObject
       PaymentPreviousValues: PaymentPreviousValuesObject
-      SalemanSubscriptionPayload: SalemanSubscriptionPayloadObject
-      SalemanPreviousValues: SalemanPreviousValuesObject
+      SalesmanSubscriptionPayload: SalesmanSubscriptionPayloadObject
+      SalesmanPreviousValues: SalesmanPreviousValuesObject
       InvoiceSubscriptionPayload: InvoiceSubscriptionPayloadObject
       InvoicePreviousValues: InvoicePreviousValuesObject
       ShippingSubscriptionPayload: ShippingSubscriptionPayloadObject
@@ -94,7 +94,7 @@ export interface NexusPrismaTypes {
       ProductItem: ProductItemFieldDetails
       Category: CategoryFieldDetails
       Quotation: QuotationFieldDetails
-      Saleman: SalemanFieldDetails
+      Salesman: SalesmanFieldDetails
       Payment: PaymentFieldDetails
       Invoice: InvoiceFieldDetails
       Address: AddressFieldDetails
@@ -109,9 +109,9 @@ export interface NexusPrismaTypes {
       PaymentConnection: PaymentConnectionFieldDetails
       PaymentEdge: PaymentEdgeFieldDetails
       AggregatePayment: AggregatePaymentFieldDetails
-      SalemanConnection: SalemanConnectionFieldDetails
-      SalemanEdge: SalemanEdgeFieldDetails
-      AggregateSaleman: AggregateSalemanFieldDetails
+      SalesmanConnection: SalesmanConnectionFieldDetails
+      SalesmanEdge: SalesmanEdgeFieldDetails
+      AggregateSalesman: AggregateSalesmanFieldDetails
       InvoiceConnection: InvoiceConnectionFieldDetails
       InvoiceEdge: InvoiceEdgeFieldDetails
       AggregateInvoice: AggregateInvoiceFieldDetails
@@ -142,8 +142,8 @@ export interface NexusPrismaTypes {
       AddressPreviousValues: AddressPreviousValuesFieldDetails
       PaymentSubscriptionPayload: PaymentSubscriptionPayloadFieldDetails
       PaymentPreviousValues: PaymentPreviousValuesFieldDetails
-      SalemanSubscriptionPayload: SalemanSubscriptionPayloadFieldDetails
-      SalemanPreviousValues: SalemanPreviousValuesFieldDetails
+      SalesmanSubscriptionPayload: SalesmanSubscriptionPayloadFieldDetails
+      SalesmanPreviousValues: SalesmanPreviousValuesFieldDetails
       InvoiceSubscriptionPayload: InvoiceSubscriptionPayloadFieldDetails
       InvoicePreviousValues: InvoicePreviousValuesFieldDetails
       ShippingSubscriptionPayload: ShippingSubscriptionPayloadFieldDetails
@@ -169,14 +169,14 @@ export interface NexusPrismaTypes {
       ShoppingCartWhereInput: ShoppingCartWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
       QuotationWhereInput: QuotationWhereInputInputObject
-      SalemanWhereInput: SalemanWhereInputInputObject
+      SalesmanWhereInput: SalesmanWhereInputInputObject
       PaymentWhereInput: PaymentWhereInputInputObject
       InvoiceWhereInput: InvoiceWhereInputInputObject
       AddressWhereInput: AddressWhereInputInputObject
       ShippingWhereInput: ShippingWhereInputInputObject
       AddressWhereUniqueInput: AddressWhereUniqueInputInputObject
       PaymentWhereUniqueInput: PaymentWhereUniqueInputInputObject
-      SalemanWhereUniqueInput: SalemanWhereUniqueInputInputObject
+      SalesmanWhereUniqueInput: SalesmanWhereUniqueInputInputObject
       InvoiceWhereUniqueInput: InvoiceWhereUniqueInputInputObject
       ShippingWhereUniqueInput: ShippingWhereUniqueInputInputObject
       CategoryWhereUniqueInput: CategoryWhereUniqueInputInputObject
@@ -206,10 +206,10 @@ export interface NexusPrismaTypes {
       ProductItemCreateManyWithoutQuotationInput: ProductItemCreateManyWithoutQuotationInputInputObject
       ProductItemCreateWithoutQuotationInput: ProductItemCreateWithoutQuotationInputInputObject
       ProductItemCreateManyInput: ProductItemCreateManyInputInputObject
-      SalemanCreateOneWithoutQuotationsInput: SalemanCreateOneWithoutQuotationsInputInputObject
-      SalemanCreateWithoutQuotationsInput: SalemanCreateWithoutQuotationsInputInputObject
-      PaymentCreateManyWithoutSalemanInput: PaymentCreateManyWithoutSalemanInputInputObject
-      PaymentCreateWithoutSalemanInput: PaymentCreateWithoutSalemanInputInputObject
+      SalesmanCreateOneWithoutQuotationsInput: SalesmanCreateOneWithoutQuotationsInputInputObject
+      SalesmanCreateWithoutQuotationsInput: SalesmanCreateWithoutQuotationsInputInputObject
+      PaymentCreateManyWithoutSalesmanInput: PaymentCreateManyWithoutSalesmanInputInputObject
+      PaymentCreateWithoutSalesmanInput: PaymentCreateWithoutSalesmanInputInputObject
       UserCreateOneWithoutPaymentsInput: UserCreateOneWithoutPaymentsInputInputObject
       UserCreateWithoutPaymentsInput: UserCreateWithoutPaymentsInputInputObject
       AddressCreateManyWithoutCustomerInput: AddressCreateManyWithoutCustomerInputInputObject
@@ -221,10 +221,10 @@ export interface NexusPrismaTypes {
       QuotationCreateInput: QuotationCreateInputInputObject
       PaymentCreateOneWithoutQuotationInput: PaymentCreateOneWithoutQuotationInputInputObject
       PaymentCreateWithoutQuotationInput: PaymentCreateWithoutQuotationInputInputObject
-      SalemanCreateOneWithoutPaymentsInput: SalemanCreateOneWithoutPaymentsInputInputObject
-      SalemanCreateWithoutPaymentsInput: SalemanCreateWithoutPaymentsInputInputObject
-      InvoiceCreateManyWithoutSalemanInput: InvoiceCreateManyWithoutSalemanInputInputObject
-      InvoiceCreateWithoutSalemanInput: InvoiceCreateWithoutSalemanInputInputObject
+      SalesmanCreateOneWithoutPaymentsInput: SalesmanCreateOneWithoutPaymentsInputInputObject
+      SalesmanCreateWithoutPaymentsInput: SalesmanCreateWithoutPaymentsInputInputObject
+      InvoiceCreateManyWithoutSalesmanInput: InvoiceCreateManyWithoutSalesmanInputInputObject
+      InvoiceCreateWithoutSalesmanInput: InvoiceCreateWithoutSalesmanInputInputObject
       AddressCreateOneWithoutInvoicesInput: AddressCreateOneWithoutInvoicesInputInputObject
       AddressCreateWithoutInvoicesInput: AddressCreateWithoutInvoicesInputInputObject
       UserCreateOneWithoutAddressesInput: UserCreateOneWithoutAddressesInputInputObject
@@ -237,10 +237,10 @@ export interface NexusPrismaTypes {
       ShippingCreateWithoutQuotationInput: ShippingCreateWithoutQuotationInputInputObject
       InvoiceCreateOneInput: InvoiceCreateOneInputInputObject
       InvoiceCreateInput: InvoiceCreateInputInputObject
-      SalemanCreateOneWithoutInvoicesInput: SalemanCreateOneWithoutInvoicesInputInputObject
-      SalemanCreateWithoutInvoicesInput: SalemanCreateWithoutInvoicesInputInputObject
-      QuotationCreateManyWithoutSalemanInput: QuotationCreateManyWithoutSalemanInputInputObject
-      QuotationCreateWithoutSalemanInput: QuotationCreateWithoutSalemanInputInputObject
+      SalesmanCreateOneWithoutInvoicesInput: SalesmanCreateOneWithoutInvoicesInputInputObject
+      SalesmanCreateWithoutInvoicesInput: SalesmanCreateWithoutInvoicesInputInputObject
+      QuotationCreateManyWithoutSalesmanInput: QuotationCreateManyWithoutSalesmanInputInputObject
+      QuotationCreateWithoutSalesmanInput: QuotationCreateWithoutSalesmanInputInputObject
       UserCreateOneWithoutQuotationsInput: UserCreateOneWithoutQuotationsInputInputObject
       UserCreateWithoutQuotationsInput: UserCreateWithoutQuotationsInputInputObject
       PaymentCreateOneWithoutInvoiceInput: PaymentCreateOneWithoutInvoiceInputInputObject
@@ -287,11 +287,11 @@ export interface NexusPrismaTypes {
       ProductItemUpdateManyWithWhereNestedInput: ProductItemUpdateManyWithWhereNestedInputInputObject
       ProductItemUpdateManyDataInput: ProductItemUpdateManyDataInputInputObject
       ProductItemUpsertWithWhereUniqueWithoutQuotationInput: ProductItemUpsertWithWhereUniqueWithoutQuotationInputInputObject
-      SalemanUpdateOneRequiredWithoutQuotationsInput: SalemanUpdateOneRequiredWithoutQuotationsInputInputObject
-      SalemanUpdateWithoutQuotationsDataInput: SalemanUpdateWithoutQuotationsDataInputInputObject
-      PaymentUpdateManyWithoutSalemanInput: PaymentUpdateManyWithoutSalemanInputInputObject
-      PaymentUpdateWithWhereUniqueWithoutSalemanInput: PaymentUpdateWithWhereUniqueWithoutSalemanInputInputObject
-      PaymentUpdateWithoutSalemanDataInput: PaymentUpdateWithoutSalemanDataInputInputObject
+      SalesmanUpdateOneRequiredWithoutQuotationsInput: SalesmanUpdateOneRequiredWithoutQuotationsInputInputObject
+      SalesmanUpdateWithoutQuotationsDataInput: SalesmanUpdateWithoutQuotationsDataInputInputObject
+      PaymentUpdateManyWithoutSalesmanInput: PaymentUpdateManyWithoutSalesmanInputInputObject
+      PaymentUpdateWithWhereUniqueWithoutSalesmanInput: PaymentUpdateWithWhereUniqueWithoutSalesmanInputInputObject
+      PaymentUpdateWithoutSalesmanDataInput: PaymentUpdateWithoutSalesmanDataInputInputObject
       UserUpdateOneRequiredWithoutPaymentsInput: UserUpdateOneRequiredWithoutPaymentsInputInputObject
       UserUpdateWithoutPaymentsDataInput: UserUpdateWithoutPaymentsDataInputInputObject
       AddressUpdateManyWithoutCustomerInput: AddressUpdateManyWithoutCustomerInputInputObject
@@ -305,22 +305,22 @@ export interface NexusPrismaTypes {
       PaymentUpdateManyWithoutCustomerInput: PaymentUpdateManyWithoutCustomerInputInputObject
       PaymentUpdateWithWhereUniqueWithoutCustomerInput: PaymentUpdateWithWhereUniqueWithoutCustomerInputInputObject
       PaymentUpdateWithoutCustomerDataInput: PaymentUpdateWithoutCustomerDataInputInputObject
-      SalemanUpdateOneRequiredWithoutPaymentsInput: SalemanUpdateOneRequiredWithoutPaymentsInputInputObject
-      SalemanUpdateWithoutPaymentsDataInput: SalemanUpdateWithoutPaymentsDataInputInputObject
-      InvoiceUpdateManyWithoutSalemanInput: InvoiceUpdateManyWithoutSalemanInputInputObject
-      InvoiceUpdateWithWhereUniqueWithoutSalemanInput: InvoiceUpdateWithWhereUniqueWithoutSalemanInputInputObject
-      InvoiceUpdateWithoutSalemanDataInput: InvoiceUpdateWithoutSalemanDataInputInputObject
+      SalesmanUpdateOneRequiredWithoutPaymentsInput: SalesmanUpdateOneRequiredWithoutPaymentsInputInputObject
+      SalesmanUpdateWithoutPaymentsDataInput: SalesmanUpdateWithoutPaymentsDataInputInputObject
+      InvoiceUpdateManyWithoutSalesmanInput: InvoiceUpdateManyWithoutSalesmanInputInputObject
+      InvoiceUpdateWithWhereUniqueWithoutSalesmanInput: InvoiceUpdateWithWhereUniqueWithoutSalesmanInputInputObject
+      InvoiceUpdateWithoutSalesmanDataInput: InvoiceUpdateWithoutSalesmanDataInputInputObject
       QuotationUpdateOneRequiredInput: QuotationUpdateOneRequiredInputInputObject
       QuotationUpdateDataInput: QuotationUpdateDataInputInputObject
       PaymentUpdateOneWithoutQuotationInput: PaymentUpdateOneWithoutQuotationInputInputObject
       PaymentUpdateWithoutQuotationDataInput: PaymentUpdateWithoutQuotationDataInputInputObject
       InvoiceUpdateOneWithoutPaymentInput: InvoiceUpdateOneWithoutPaymentInputInputObject
       InvoiceUpdateWithoutPaymentDataInput: InvoiceUpdateWithoutPaymentDataInputInputObject
-      SalemanUpdateOneRequiredWithoutInvoicesInput: SalemanUpdateOneRequiredWithoutInvoicesInputInputObject
-      SalemanUpdateWithoutInvoicesDataInput: SalemanUpdateWithoutInvoicesDataInputInputObject
-      QuotationUpdateManyWithoutSalemanInput: QuotationUpdateManyWithoutSalemanInputInputObject
-      QuotationUpdateWithWhereUniqueWithoutSalemanInput: QuotationUpdateWithWhereUniqueWithoutSalemanInputInputObject
-      QuotationUpdateWithoutSalemanDataInput: QuotationUpdateWithoutSalemanDataInputInputObject
+      SalesmanUpdateOneRequiredWithoutInvoicesInput: SalesmanUpdateOneRequiredWithoutInvoicesInputInputObject
+      SalesmanUpdateWithoutInvoicesDataInput: SalesmanUpdateWithoutInvoicesDataInputInputObject
+      QuotationUpdateManyWithoutSalesmanInput: QuotationUpdateManyWithoutSalesmanInputInputObject
+      QuotationUpdateWithWhereUniqueWithoutSalesmanInput: QuotationUpdateWithWhereUniqueWithoutSalesmanInputInputObject
+      QuotationUpdateWithoutSalesmanDataInput: QuotationUpdateWithoutSalesmanDataInputInputObject
       ShippingUpdateOneWithoutQuotationInput: ShippingUpdateOneWithoutQuotationInputInputObject
       ShippingUpdateWithoutQuotationDataInput: ShippingUpdateWithoutQuotationDataInputInputObject
       InvoiceUpdateOneRequiredInput: InvoiceUpdateOneRequiredInputInputObject
@@ -355,19 +355,19 @@ export interface NexusPrismaTypes {
       AddressUpdateWithoutShippingDataInput: AddressUpdateWithoutShippingDataInputInputObject
       AddressUpsertWithoutShippingInput: AddressUpsertWithoutShippingInputInputObject
       ShippingUpsertWithoutQuotationInput: ShippingUpsertWithoutQuotationInputInputObject
-      QuotationUpsertWithWhereUniqueWithoutSalemanInput: QuotationUpsertWithWhereUniqueWithoutSalemanInputInputObject
+      QuotationUpsertWithWhereUniqueWithoutSalesmanInput: QuotationUpsertWithWhereUniqueWithoutSalesmanInputInputObject
       QuotationScalarWhereInput: QuotationScalarWhereInputInputObject
       QuotationUpdateManyWithWhereNestedInput: QuotationUpdateManyWithWhereNestedInputInputObject
       QuotationUpdateManyDataInput: QuotationUpdateManyDataInputInputObject
-      SalemanUpsertWithoutInvoicesInput: SalemanUpsertWithoutInvoicesInputInputObject
+      SalesmanUpsertWithoutInvoicesInput: SalesmanUpsertWithoutInvoicesInputInputObject
       InvoiceUpsertWithoutPaymentInput: InvoiceUpsertWithoutPaymentInputInputObject
       PaymentUpsertWithoutQuotationInput: PaymentUpsertWithoutQuotationInputInputObject
       QuotationUpsertNestedInput: QuotationUpsertNestedInputInputObject
-      InvoiceUpsertWithWhereUniqueWithoutSalemanInput: InvoiceUpsertWithWhereUniqueWithoutSalemanInputInputObject
+      InvoiceUpsertWithWhereUniqueWithoutSalesmanInput: InvoiceUpsertWithWhereUniqueWithoutSalesmanInputInputObject
       InvoiceScalarWhereInput: InvoiceScalarWhereInputInputObject
       InvoiceUpdateManyWithWhereNestedInput: InvoiceUpdateManyWithWhereNestedInputInputObject
       InvoiceUpdateManyDataInput: InvoiceUpdateManyDataInputInputObject
-      SalemanUpsertWithoutPaymentsInput: SalemanUpsertWithoutPaymentsInputInputObject
+      SalesmanUpsertWithoutPaymentsInput: SalesmanUpsertWithoutPaymentsInputInputObject
       PaymentUpsertWithWhereUniqueWithoutCustomerInput: PaymentUpsertWithWhereUniqueWithoutCustomerInputInputObject
       PaymentScalarWhereInput: PaymentScalarWhereInputInputObject
       PaymentUpdateManyWithWhereNestedInput: PaymentUpdateManyWithWhereNestedInputInputObject
@@ -379,8 +379,8 @@ export interface NexusPrismaTypes {
       AddressUpdateManyWithWhereNestedInput: AddressUpdateManyWithWhereNestedInputInputObject
       AddressUpdateManyDataInput: AddressUpdateManyDataInputInputObject
       UserUpsertWithoutPaymentsInput: UserUpsertWithoutPaymentsInputInputObject
-      PaymentUpsertWithWhereUniqueWithoutSalemanInput: PaymentUpsertWithWhereUniqueWithoutSalemanInputInputObject
-      SalemanUpsertWithoutQuotationsInput: SalemanUpsertWithoutQuotationsInputInputObject
+      PaymentUpsertWithWhereUniqueWithoutSalesmanInput: PaymentUpsertWithWhereUniqueWithoutSalesmanInputInputObject
+      SalesmanUpsertWithoutQuotationsInput: SalesmanUpsertWithoutQuotationsInputInputObject
       QuotationUpsertWithWhereUniqueWithoutCustomerInput: QuotationUpsertWithWhereUniqueWithoutCustomerInputInputObject
       UserUpsertWithoutShoppingCartInput: UserUpsertWithoutShoppingCartInputInputObject
       ShoppingCartUpsertNestedInput: ShoppingCartUpsertNestedInputInputObject
@@ -403,8 +403,9 @@ export interface NexusPrismaTypes {
       PaymentCreateInput: PaymentCreateInputInputObject
       PaymentUpdateInput: PaymentUpdateInputInputObject
       PaymentUpdateManyMutationInput: PaymentUpdateManyMutationInputInputObject
-      SalemanCreateInput: SalemanCreateInputInputObject
-      SalemanUpdateInput: SalemanUpdateInputInputObject
+      SalesmanCreateInput: SalesmanCreateInputInputObject
+      SalesmanUpdateInput: SalesmanUpdateInputInputObject
+      SalesmanUpdateManyMutationInput: SalesmanUpdateManyMutationInputInputObject
       InvoiceUpdateInput: InvoiceUpdateInputInputObject
       InvoiceUpdateManyMutationInput: InvoiceUpdateManyMutationInputInputObject
       ShippingCreateInput: ShippingCreateInputInputObject
@@ -429,7 +430,7 @@ export interface NexusPrismaTypes {
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
       AddressSubscriptionWhereInput: AddressSubscriptionWhereInputInputObject
       PaymentSubscriptionWhereInput: PaymentSubscriptionWhereInputInputObject
-      SalemanSubscriptionWhereInput: SalemanSubscriptionWhereInputInputObject
+      SalesmanSubscriptionWhereInput: SalesmanSubscriptionWhereInputInputObject
       InvoiceSubscriptionWhereInput: InvoiceSubscriptionWhereInputInputObject
       ShippingSubscriptionWhereInput: ShippingSubscriptionWhereInputInputObject
       CategorySubscriptionWhereInput: CategorySubscriptionWhereInputInputObject
@@ -448,7 +449,7 @@ export interface NexusPrismaTypes {
     QuotationOrderByInput: QuotationOrderByInputValues,
     AddressOrderByInput: AddressOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
-    SalemanOrderByInput: SalemanOrderByInputValues,
+    SalesmanOrderByInput: SalesmanOrderByInputValues,
     CategoryOrderByInput: CategoryOrderByInputValues,
     ShoppingCartOrderByInput: ShoppingCartOrderByInputValues,
     MutationType: MutationTypeValues,
@@ -468,9 +469,9 @@ type QueryObject =
   | { name: 'payment', args?: QueryPaymentArgs[] | false, alias?: string  } 
   | { name: 'payments', args?: QueryPaymentsArgs[] | false, alias?: string  } 
   | { name: 'paymentsConnection', args?: QueryPaymentsConnectionArgs[] | false, alias?: string  } 
-  | { name: 'saleman', args?: QuerySalemanArgs[] | false, alias?: string  } 
-  | { name: 'salemen', args?: QuerySalemenArgs[] | false, alias?: string  } 
-  | { name: 'salemenConnection', args?: QuerySalemenConnectionArgs[] | false, alias?: string  } 
+  | { name: 'salesman', args?: QuerySalesmanArgs[] | false, alias?: string  } 
+  | { name: 'salesmen', args?: QuerySalesmenArgs[] | false, alias?: string  } 
+  | { name: 'salesmenConnection', args?: QuerySalesmenConnectionArgs[] | false, alias?: string  } 
   | { name: 'invoice', args?: QueryInvoiceArgs[] | false, alias?: string  } 
   | { name: 'invoices', args?: QueryInvoicesArgs[] | false, alias?: string  } 
   | { name: 'invoicesConnection', args?: QueryInvoicesConnectionArgs[] | false, alias?: string  } 
@@ -503,9 +504,9 @@ type QueryFields =
   | 'payment'
   | 'payments'
   | 'paymentsConnection'
-  | 'saleman'
-  | 'salemen'
-  | 'salemenConnection'
+  | 'salesman'
+  | 'salesmen'
+  | 'salesmenConnection'
   | 'invoice'
   | 'invoices'
   | 'invoicesConnection'
@@ -583,9 +584,9 @@ type QueryPaymentsConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QuerySalemanArgs =
+type QuerySalesmanArgs =
   | 'where'
-type QuerySalemenArgs =
+type QuerySalesmenArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -593,7 +594,7 @@ type QuerySalemenArgs =
   | 'before'
   | 'first'
   | 'last'
-type QuerySalemenConnectionArgs =
+type QuerySalesmenConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -847,44 +848,44 @@ export interface QueryFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PaymentConnection> | prisma.PaymentConnection
   }
-  saleman: {
-    type: 'Saleman'
-    args: Record<QuerySalemanArgs, core.NexusArgDef<string>>
+  salesman: {
+    type: 'Salesman'
+    args: Record<QuerySalesmanArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where: SalemanWhereUniqueInput }  ,
+      args: { where: SalesmanWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman | null> | prisma.Saleman | null
+    ) => Promise<prisma.Salesman | null> | prisma.Salesman | null
   }
-  salemen: {
-    type: 'Saleman'
-    args: Record<QuerySalemenArgs, core.NexusArgDef<string>>
+  salesmen: {
+    type: 'Salesman'
+    args: Record<QuerySalesmenArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: SalemanWhereInput | null, orderBy?: prisma.SalemanOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: SalesmanWhereInput | null, orderBy?: prisma.SalesmanOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman[]> | prisma.Saleman[]
+    ) => Promise<prisma.Salesman[]> | prisma.Salesman[]
   }
-  salemenConnection: {
-    type: 'SalemanConnection'
-    args: Record<QuerySalemenConnectionArgs, core.NexusArgDef<string>>
+  salesmenConnection: {
+    type: 'SalesmanConnection'
+    args: Record<QuerySalesmenConnectionArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: SalemanWhereInput | null, orderBy?: prisma.SalemanOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: SalesmanWhereInput | null, orderBy?: prisma.SalesmanOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.SalemanConnection> | prisma.SalemanConnection
+    ) => Promise<prisma.SalesmanConnection> | prisma.SalesmanConnection
   }
   invoice: {
     type: 'Invoice'
@@ -1167,11 +1168,13 @@ export interface QueryFieldDetails {
 type UserObject =
   | UserFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'runningId', args?: [] | false, alias?: string  } 
   | { name: 'type', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'phone', args?: [] | false, alias?: string  } 
+  | { name: 'activated', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'shoppingCart', args?: [] | false, alias?: string  } 
@@ -1181,11 +1184,13 @@ type UserObject =
 
 type UserFields =
   | 'id'
+  | 'runningId'
   | 'type'
   | 'name'
   | 'email'
   | 'password'
   | 'phone'
+  | 'activated'
   | 'createdAt'
   | 'updatedAt'
   | 'shoppingCart'
@@ -1229,6 +1234,14 @@ export interface UserFieldDetails {
     nullable: false
     resolve: undefined
   }
+  runningId: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   type: {
     type: 'String'
     args: {}
@@ -1263,6 +1276,14 @@ export interface UserFieldDetails {
   }
   phone: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  activated: {
+    type: 'Boolean'
     args: {}
     description: string
     list: undefined
@@ -1830,7 +1851,7 @@ type QuotationObject =
   | { name: 'productItems', args?: QuotationProductItemsArgs[] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'saleman', args?: [] | false, alias?: string  } 
+  | { name: 'salesman', args?: [] | false, alias?: string  } 
   | { name: 'payment', args?: [] | false, alias?: string  } 
   | { name: 'shipping', args?: [] | false, alias?: string  } 
   | { name: 'customer', args?: [] | false, alias?: string  } 
@@ -1841,7 +1862,7 @@ type QuotationFields =
   | 'productItems'
   | 'createdAt'
   | 'updatedAt'
-  | 'saleman'
+  | 'salesman'
   | 'payment'
   | 'shipping'
   | 'customer'
@@ -1903,8 +1924,8 @@ export interface QuotationFieldDetails {
     nullable: false
     resolve: undefined
   }
-  saleman: {
-    type: 'Saleman'
+  salesman: {
+    type: 'Salesman'
     args: {}
     description: string
     list: undefined
@@ -1914,7 +1935,7 @@ export interface QuotationFieldDetails {
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman> | prisma.Saleman
+    ) => Promise<prisma.Salesman> | prisma.Salesman
   }
   payment: {
     type: 'Payment'
@@ -1958,19 +1979,25 @@ export interface QuotationFieldDetails {
 }
   
 
-// Types for Saleman
+// Types for Salesman
 
-type SalemanObject =
-  | SalemanFields
+type SalesmanObject =
+  | SalesmanFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'phone', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'payments', args?: SalemanPaymentsArgs[] | false, alias?: string  } 
-  | { name: 'invoices', args?: SalemanInvoicesArgs[] | false, alias?: string  } 
-  | { name: 'quotations', args?: SalemanQuotationsArgs[] | false, alias?: string  } 
+  | { name: 'payments', args?: SalesmanPaymentsArgs[] | false, alias?: string  } 
+  | { name: 'invoices', args?: SalesmanInvoicesArgs[] | false, alias?: string  } 
+  | { name: 'quotations', args?: SalesmanQuotationsArgs[] | false, alias?: string  } 
 
-type SalemanFields =
+type SalesmanFields =
   | 'id'
+  | 'name'
+  | 'email'
+  | 'phone'
   | 'createdAt'
   | 'updatedAt'
   | 'payments'
@@ -1978,7 +2005,7 @@ type SalemanFields =
   | 'quotations'
 
 
-type SalemanPaymentsArgs =
+type SalesmanPaymentsArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -1986,7 +2013,7 @@ type SalemanPaymentsArgs =
   | 'before'
   | 'first'
   | 'last'
-type SalemanInvoicesArgs =
+type SalesmanInvoicesArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -1994,7 +2021,7 @@ type SalemanInvoicesArgs =
   | 'before'
   | 'first'
   | 'last'
-type SalemanQuotationsArgs =
+type SalesmanQuotationsArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -2004,9 +2031,33 @@ type SalemanQuotationsArgs =
   | 'last'
   
 
-export interface SalemanFieldDetails {
+export interface SalesmanFieldDetails {
   id: {
     type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  email: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  phone: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -2031,12 +2082,12 @@ export interface SalemanFieldDetails {
   }
   payments: {
     type: 'Payment'
-    args: Record<SalemanPaymentsArgs, core.NexusArgDef<string>>
+    args: Record<SalesmanPaymentsArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Saleman">,
+      root: core.RootValue<"Salesman">,
       args: { where?: PaymentWhereInput | null, orderBy?: prisma.PaymentOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
@@ -2044,12 +2095,12 @@ export interface SalemanFieldDetails {
   }
   invoices: {
     type: 'Invoice'
-    args: Record<SalemanInvoicesArgs, core.NexusArgDef<string>>
+    args: Record<SalesmanInvoicesArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Saleman">,
+      root: core.RootValue<"Salesman">,
       args: { where?: InvoiceWhereInput | null, orderBy?: prisma.InvoiceOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
@@ -2057,12 +2108,12 @@ export interface SalemanFieldDetails {
   }
   quotations: {
     type: 'Quotation'
-    args: Record<SalemanQuotationsArgs, core.NexusArgDef<string>>
+    args: Record<SalesmanQuotationsArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Saleman">,
+      root: core.RootValue<"Salesman">,
       args: { where?: QuotationWhereInput | null, orderBy?: prisma.QuotationOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
@@ -2081,7 +2132,7 @@ type PaymentObject =
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'customer', args?: [] | false, alias?: string  } 
-  | { name: 'saleman', args?: [] | false, alias?: string  } 
+  | { name: 'salesman', args?: [] | false, alias?: string  } 
   | { name: 'quotation', args?: [] | false, alias?: string  } 
   | { name: 'Invoice', args?: [] | false, alias?: string  } 
 
@@ -2092,7 +2143,7 @@ type PaymentFields =
   | 'createdAt'
   | 'updatedAt'
   | 'customer'
-  | 'saleman'
+  | 'salesman'
   | 'quotation'
   | 'Invoice'
 
@@ -2154,8 +2205,8 @@ export interface PaymentFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
   }
-  saleman: {
-    type: 'Saleman'
+  salesman: {
+    type: 'Salesman'
     args: {}
     description: string
     list: undefined
@@ -2165,7 +2216,7 @@ export interface PaymentFieldDetails {
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman> | prisma.Saleman
+    ) => Promise<prisma.Salesman> | prisma.Salesman
   }
   quotation: {
     type: 'Quotation'
@@ -2207,7 +2258,7 @@ type InvoiceObject =
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'user', args?: [] | false, alias?: string  } 
   | { name: 'quotation', args?: [] | false, alias?: string  } 
-  | { name: 'saleman', args?: [] | false, alias?: string  } 
+  | { name: 'salesman', args?: [] | false, alias?: string  } 
   | { name: 'address', args?: [] | false, alias?: string  } 
   | { name: 'payment', args?: [] | false, alias?: string  } 
 
@@ -2219,7 +2270,7 @@ type InvoiceFields =
   | 'updatedAt'
   | 'user'
   | 'quotation'
-  | 'saleman'
+  | 'salesman'
   | 'address'
   | 'payment'
 
@@ -2294,8 +2345,8 @@ export interface InvoiceFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Quotation> | prisma.Quotation
   }
-  saleman: {
-    type: 'Saleman'
+  salesman: {
+    type: 'Salesman'
     args: {}
     description: string
     list: undefined
@@ -2305,7 +2356,7 @@ export interface InvoiceFieldDetails {
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman> | prisma.Saleman
+    ) => Promise<prisma.Salesman> | prisma.Salesman
   }
   address: {
     type: 'Address'
@@ -3011,15 +3062,15 @@ export interface AggregatePaymentFieldDetails {
 }
   
 
-// Types for SalemanConnection
+// Types for SalesmanConnection
 
-type SalemanConnectionObject =
-  | SalemanConnectionFields
+type SalesmanConnectionObject =
+  | SalesmanConnectionFields
   | { name: 'pageInfo', args?: [] | false, alias?: string  } 
   | { name: 'edges', args?: [] | false, alias?: string  } 
   | { name: 'aggregate', args?: [] | false, alias?: string  } 
 
-type SalemanConnectionFields =
+type SalesmanConnectionFields =
   | 'pageInfo'
   | 'edges'
   | 'aggregate'
@@ -3028,7 +3079,7 @@ type SalemanConnectionFields =
 
   
 
-export interface SalemanConnectionFieldDetails {
+export interface SalesmanConnectionFieldDetails {
   pageInfo: {
     type: 'PageInfo'
     args: {}
@@ -3036,49 +3087,49 @@ export interface SalemanConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"SalemanConnection">,
+      root: core.RootValue<"SalesmanConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
   edges: {
-    type: 'SalemanEdge'
+    type: 'SalesmanEdge'
     args: {}
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"SalemanConnection">,
+      root: core.RootValue<"SalesmanConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.SalemanEdge[]> | prisma.SalemanEdge[]
+    ) => Promise<prisma.SalesmanEdge[]> | prisma.SalesmanEdge[]
   }
   aggregate: {
-    type: 'AggregateSaleman'
+    type: 'AggregateSalesman'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"SalemanConnection">,
+      root: core.RootValue<"SalesmanConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateSaleman> | prisma.AggregateSaleman
+    ) => Promise<prisma.AggregateSalesman> | prisma.AggregateSalesman
   }
 }
   
 
-// Types for SalemanEdge
+// Types for SalesmanEdge
 
-type SalemanEdgeObject =
-  | SalemanEdgeFields
+type SalesmanEdgeObject =
+  | SalesmanEdgeFields
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'cursor', args?: [] | false, alias?: string  } 
 
-type SalemanEdgeFields =
+type SalesmanEdgeFields =
   | 'node'
   | 'cursor'
 
@@ -3086,19 +3137,19 @@ type SalemanEdgeFields =
 
   
 
-export interface SalemanEdgeFieldDetails {
+export interface SalesmanEdgeFieldDetails {
   node: {
-    type: 'Saleman'
+    type: 'Salesman'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"SalemanEdge">,
+      root: core.RootValue<"SalesmanEdge">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman> | prisma.Saleman
+    ) => Promise<prisma.Salesman> | prisma.Salesman
   }
   cursor: {
     type: 'String'
@@ -3111,20 +3162,20 @@ export interface SalemanEdgeFieldDetails {
 }
   
 
-// Types for AggregateSaleman
+// Types for AggregateSalesman
 
-type AggregateSalemanObject =
-  | AggregateSalemanFields
+type AggregateSalesmanObject =
+  | AggregateSalesmanFields
   | { name: 'count', args?: [] | false, alias?: string  } 
 
-type AggregateSalemanFields =
+type AggregateSalesmanFields =
   | 'count'
 
 
 
   
 
-export interface AggregateSalemanFieldDetails {
+export interface AggregateSalesmanFieldDetails {
   count: {
     type: 'Int'
     args: {}
@@ -4033,11 +4084,12 @@ type MutationObject =
   | { name: 'upsertPayment', args?: MutationUpsertPaymentArgs[] | false, alias?: string  } 
   | { name: 'deletePayment', args?: MutationDeletePaymentArgs[] | false, alias?: string  } 
   | { name: 'deleteManyPayments', args?: MutationDeleteManyPaymentsArgs[] | false, alias?: string  } 
-  | { name: 'createSaleman', args?: MutationCreateSalemanArgs[] | false, alias?: string  } 
-  | { name: 'updateSaleman', args?: MutationUpdateSalemanArgs[] | false, alias?: string  } 
-  | { name: 'upsertSaleman', args?: MutationUpsertSalemanArgs[] | false, alias?: string  } 
-  | { name: 'deleteSaleman', args?: MutationDeleteSalemanArgs[] | false, alias?: string  } 
-  | { name: 'deleteManySalemen', args?: MutationDeleteManySalemenArgs[] | false, alias?: string  } 
+  | { name: 'createSalesman', args?: MutationCreateSalesmanArgs[] | false, alias?: string  } 
+  | { name: 'updateSalesman', args?: MutationUpdateSalesmanArgs[] | false, alias?: string  } 
+  | { name: 'updateManySalesmen', args?: MutationUpdateManySalesmenArgs[] | false, alias?: string  } 
+  | { name: 'upsertSalesman', args?: MutationUpsertSalesmanArgs[] | false, alias?: string  } 
+  | { name: 'deleteSalesman', args?: MutationDeleteSalesmanArgs[] | false, alias?: string  } 
+  | { name: 'deleteManySalesmen', args?: MutationDeleteManySalesmenArgs[] | false, alias?: string  } 
   | { name: 'createInvoice', args?: MutationCreateInvoiceArgs[] | false, alias?: string  } 
   | { name: 'updateInvoice', args?: MutationUpdateInvoiceArgs[] | false, alias?: string  } 
   | { name: 'updateManyInvoices', args?: MutationUpdateManyInvoicesArgs[] | false, alias?: string  } 
@@ -4100,11 +4152,12 @@ type MutationFields =
   | 'upsertPayment'
   | 'deletePayment'
   | 'deleteManyPayments'
-  | 'createSaleman'
-  | 'updateSaleman'
-  | 'upsertSaleman'
-  | 'deleteSaleman'
-  | 'deleteManySalemen'
+  | 'createSalesman'
+  | 'updateSalesman'
+  | 'updateManySalesmen'
+  | 'upsertSalesman'
+  | 'deleteSalesman'
+  | 'deleteManySalesmen'
   | 'createInvoice'
   | 'updateInvoice'
   | 'updateManyInvoices'
@@ -4197,18 +4250,21 @@ type MutationDeletePaymentArgs =
   | 'where'
 type MutationDeleteManyPaymentsArgs =
   | 'where'
-type MutationCreateSalemanArgs =
+type MutationCreateSalesmanArgs =
   | 'data'
-type MutationUpdateSalemanArgs =
+type MutationUpdateSalesmanArgs =
   | 'data'
   | 'where'
-type MutationUpsertSalemanArgs =
+type MutationUpdateManySalesmenArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertSalesmanArgs =
   | 'where'
   | 'create'
   | 'update'
-type MutationDeleteSalemanArgs =
+type MutationDeleteSalesmanArgs =
   | 'where'
-type MutationDeleteManySalemenArgs =
+type MutationDeleteManySalesmenArgs =
   | 'where'
 type MutationCreateInvoiceArgs =
   | 'data'
@@ -4559,67 +4615,80 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  createSaleman: {
-    type: 'Saleman'
-    args: Record<MutationCreateSalemanArgs, core.NexusArgDef<string>>
+  createSalesman: {
+    type: 'Salesman'
+    args: Record<MutationCreateSalesmanArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: SalemanCreateInput }  ,
+      args: { data: SalesmanCreateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman> | prisma.Saleman
+    ) => Promise<prisma.Salesman> | prisma.Salesman
   }
-  updateSaleman: {
-    type: 'Saleman'
-    args: Record<MutationUpdateSalemanArgs, core.NexusArgDef<string>>
+  updateSalesman: {
+    type: 'Salesman'
+    args: Record<MutationUpdateSalesmanArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: SalemanUpdateInput, where: SalemanWhereUniqueInput }  ,
+      args: { data: SalesmanUpdateInput, where: SalesmanWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman | null> | prisma.Saleman | null
+    ) => Promise<prisma.Salesman | null> | prisma.Salesman | null
   }
-  upsertSaleman: {
-    type: 'Saleman'
-    args: Record<MutationUpsertSalemanArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: SalemanWhereUniqueInput, create: SalemanCreateInput, update: SalemanUpdateInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman> | prisma.Saleman
-  }
-  deleteSaleman: {
-    type: 'Saleman'
-    args: Record<MutationDeleteSalemanArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: SalemanWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman | null> | prisma.Saleman | null
-  }
-  deleteManySalemen: {
+  updateManySalesmen: {
     type: 'BatchPayload'
-    args: Record<MutationDeleteManySalemenArgs, core.NexusArgDef<string>>
+    args: Record<MutationUpdateManySalesmenArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where?: SalemanWhereInput | null }  ,
+      args: { data: SalesmanUpdateManyMutationInput, where?: SalesmanWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertSalesman: {
+    type: 'Salesman'
+    args: Record<MutationUpsertSalesmanArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: SalesmanWhereUniqueInput, create: SalesmanCreateInput, update: SalesmanUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Salesman> | prisma.Salesman
+  }
+  deleteSalesman: {
+    type: 'Salesman'
+    args: Record<MutationDeleteSalesmanArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: SalesmanWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Salesman | null> | prisma.Salesman | null
+  }
+  deleteManySalesmen: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManySalesmenArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: SalesmanWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
@@ -5205,7 +5274,7 @@ type SubscriptionObject =
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
   | { name: 'address', args?: SubscriptionAddressArgs[] | false, alias?: string  } 
   | { name: 'payment', args?: SubscriptionPaymentArgs[] | false, alias?: string  } 
-  | { name: 'saleman', args?: SubscriptionSalemanArgs[] | false, alias?: string  } 
+  | { name: 'salesman', args?: SubscriptionSalesmanArgs[] | false, alias?: string  } 
   | { name: 'invoice', args?: SubscriptionInvoiceArgs[] | false, alias?: string  } 
   | { name: 'shipping', args?: SubscriptionShippingArgs[] | false, alias?: string  } 
   | { name: 'category', args?: SubscriptionCategoryArgs[] | false, alias?: string  } 
@@ -5218,7 +5287,7 @@ type SubscriptionFields =
   | 'user'
   | 'address'
   | 'payment'
-  | 'saleman'
+  | 'salesman'
   | 'invoice'
   | 'shipping'
   | 'category'
@@ -5234,7 +5303,7 @@ type SubscriptionAddressArgs =
   | 'where'
 type SubscriptionPaymentArgs =
   | 'where'
-type SubscriptionSalemanArgs =
+type SubscriptionSalesmanArgs =
   | 'where'
 type SubscriptionInvoiceArgs =
   | 'where'
@@ -5292,18 +5361,18 @@ export interface SubscriptionFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PaymentSubscriptionPayload | null> | prisma.PaymentSubscriptionPayload | null
   }
-  saleman: {
-    type: 'SalemanSubscriptionPayload'
-    args: Record<SubscriptionSalemanArgs, core.NexusArgDef<string>>
+  salesman: {
+    type: 'SalesmanSubscriptionPayload'
+    args: Record<SubscriptionSalesmanArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Subscription">,
-      args: { where?: SalemanSubscriptionWhereInput | null }  ,
+      args: { where?: SalesmanSubscriptionWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.SalemanSubscriptionPayload | null> | prisma.SalemanSubscriptionPayload | null
+    ) => Promise<prisma.SalesmanSubscriptionPayload | null> | prisma.SalesmanSubscriptionPayload | null
   }
   invoice: {
     type: 'InvoiceSubscriptionPayload'
@@ -5474,21 +5543,25 @@ export interface UserSubscriptionPayloadFieldDetails {
 type UserPreviousValuesObject =
   | UserPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'runningId', args?: [] | false, alias?: string  } 
   | { name: 'type', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'phone', args?: [] | false, alias?: string  } 
+  | { name: 'activated', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
+  | 'runningId'
   | 'type'
   | 'name'
   | 'email'
   | 'password'
   | 'phone'
+  | 'activated'
   | 'createdAt'
   | 'updatedAt'
 
@@ -5503,6 +5576,14 @@ export interface UserPreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  runningId: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   type: {
@@ -5539,6 +5620,14 @@ export interface UserPreviousValuesFieldDetails {
   }
   phone: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  activated: {
+    type: 'Boolean'
     args: {}
     description: string
     list: undefined
@@ -5834,16 +5923,16 @@ export interface PaymentPreviousValuesFieldDetails {
 }
   
 
-// Types for SalemanSubscriptionPayload
+// Types for SalesmanSubscriptionPayload
 
-type SalemanSubscriptionPayloadObject =
-  | SalemanSubscriptionPayloadFields
+type SalesmanSubscriptionPayloadObject =
+  | SalesmanSubscriptionPayloadFields
   | { name: 'mutation', args?: [] | false, alias?: string  } 
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'updatedFields', args?: [] | false, alias?: string  } 
   | { name: 'previousValues', args?: [] | false, alias?: string  } 
 
-type SalemanSubscriptionPayloadFields =
+type SalesmanSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
@@ -5853,7 +5942,7 @@ type SalemanSubscriptionPayloadFields =
 
   
 
-export interface SalemanSubscriptionPayloadFieldDetails {
+export interface SalesmanSubscriptionPayloadFieldDetails {
   mutation: {
     type: 'MutationType'
     args: {}
@@ -5861,24 +5950,24 @@ export interface SalemanSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"SalemanSubscriptionPayload">,
+      root: core.RootValue<"SalesmanSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
   node: {
-    type: 'Saleman'
+    type: 'Salesman'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"SalemanSubscriptionPayload">,
+      root: core.RootValue<"SalesmanSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Saleman | null> | prisma.Saleman | null
+    ) => Promise<prisma.Salesman | null> | prisma.Salesman | null
   }
   updatedFields: {
     type: 'String'
@@ -5889,31 +5978,37 @@ export interface SalemanSubscriptionPayloadFieldDetails {
     resolve: undefined
   }
   previousValues: {
-    type: 'SalemanPreviousValues'
+    type: 'SalesmanPreviousValues'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"SalemanSubscriptionPayload">,
+      root: core.RootValue<"SalesmanSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.SalemanPreviousValues | null> | prisma.SalemanPreviousValues | null
+    ) => Promise<prisma.SalesmanPreviousValues | null> | prisma.SalesmanPreviousValues | null
   }
 }
   
 
-// Types for SalemanPreviousValues
+// Types for SalesmanPreviousValues
 
-type SalemanPreviousValuesObject =
-  | SalemanPreviousValuesFields
+type SalesmanPreviousValuesObject =
+  | SalesmanPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'phone', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
-type SalemanPreviousValuesFields =
+type SalesmanPreviousValuesFields =
   | 'id'
+  | 'name'
+  | 'email'
+  | 'phone'
   | 'createdAt'
   | 'updatedAt'
 
@@ -5921,9 +6016,33 @@ type SalemanPreviousValuesFields =
 
   
 
-export interface SalemanPreviousValuesFieldDetails {
+export interface SalesmanPreviousValuesFieldDetails {
   id: {
     type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  email: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  phone: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -7613,6 +7732,14 @@ export interface UserWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
+  runningId?: number | null
+  runningId_not?: number | null
+  runningId_in?: number[]
+  runningId_not_in?: number[]
+  runningId_lt?: number | null
+  runningId_lte?: number | null
+  runningId_gt?: number | null
+  runningId_gte?: number | null
   type?: string | null
   type_not?: string | null
   type_in?: string[]
@@ -7683,6 +7810,8 @@ export interface UserWhereInput {
   phone_not_starts_with?: string | null
   phone_ends_with?: string | null
   phone_not_ends_with?: string | null
+  activated?: boolean | null
+  activated_not?: boolean | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -7729,6 +7858,14 @@ export type UserWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'runningId', alias?: string  } 
+  | { name: 'runningId_not', alias?: string  } 
+  | { name: 'runningId_in', alias?: string  } 
+  | { name: 'runningId_not_in', alias?: string  } 
+  | { name: 'runningId_lt', alias?: string  } 
+  | { name: 'runningId_lte', alias?: string  } 
+  | { name: 'runningId_gt', alias?: string  } 
+  | { name: 'runningId_gte', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'type_not', alias?: string  } 
   | { name: 'type_in', alias?: string  } 
@@ -7799,6 +7936,8 @@ export type UserWhereInputInputObject =
   | { name: 'phone_not_starts_with', alias?: string  } 
   | { name: 'phone_ends_with', alias?: string  } 
   | { name: 'phone_not_ends_with', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
+  | { name: 'activated_not', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -7877,7 +8016,7 @@ export interface QuotationWhereInput {
   updatedAt_lte?: string | null
   updatedAt_gt?: string | null
   updatedAt_gte?: string | null
-  saleman?: SalemanWhereInput | null
+  salesman?: SalesmanWhereInput | null
   payment?: PaymentWhereInput | null
   shipping?: ShippingWhereInput | null
   customer?: UserWhereInput | null
@@ -7934,7 +8073,7 @@ export type QuotationWhereInputInputObject =
   | { name: 'updatedAt_lte', alias?: string  } 
   | { name: 'updatedAt_gt', alias?: string  } 
   | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -7942,7 +8081,7 @@ export type QuotationWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface SalemanWhereInput {
+export interface SalesmanWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -7957,6 +8096,48 @@ export interface SalemanWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  email?: string | null
+  email_not?: string | null
+  email_in?: string[]
+  email_not_in?: string[]
+  email_lt?: string | null
+  email_lte?: string | null
+  email_gt?: string | null
+  email_gte?: string | null
+  email_contains?: string | null
+  email_not_contains?: string | null
+  email_starts_with?: string | null
+  email_not_starts_with?: string | null
+  email_ends_with?: string | null
+  email_not_ends_with?: string | null
+  phone?: string | null
+  phone_not?: string | null
+  phone_in?: string[]
+  phone_not_in?: string[]
+  phone_lt?: string | null
+  phone_lte?: string | null
+  phone_gt?: string | null
+  phone_gte?: string | null
+  phone_contains?: string | null
+  phone_not_contains?: string | null
+  phone_starts_with?: string | null
+  phone_not_starts_with?: string | null
+  phone_ends_with?: string | null
+  phone_not_ends_with?: string | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -7982,12 +8163,12 @@ export interface SalemanWhereInput {
   quotations_every?: QuotationWhereInput | null
   quotations_some?: QuotationWhereInput | null
   quotations_none?: QuotationWhereInput | null
-  AND?: SalemanWhereInput[]
-  OR?: SalemanWhereInput[]
-  NOT?: SalemanWhereInput[]
+  AND?: SalesmanWhereInput[]
+  OR?: SalesmanWhereInput[]
+  NOT?: SalesmanWhereInput[]
 }
-export type SalemanWhereInputInputObject =
-  | Extract<keyof SalemanWhereInput, string>
+export type SalesmanWhereInputInputObject =
+  | Extract<keyof SalesmanWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -8002,6 +8183,48 @@ export type SalemanWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'email_not', alias?: string  } 
+  | { name: 'email_in', alias?: string  } 
+  | { name: 'email_not_in', alias?: string  } 
+  | { name: 'email_lt', alias?: string  } 
+  | { name: 'email_lte', alias?: string  } 
+  | { name: 'email_gt', alias?: string  } 
+  | { name: 'email_gte', alias?: string  } 
+  | { name: 'email_contains', alias?: string  } 
+  | { name: 'email_not_contains', alias?: string  } 
+  | { name: 'email_starts_with', alias?: string  } 
+  | { name: 'email_not_starts_with', alias?: string  } 
+  | { name: 'email_ends_with', alias?: string  } 
+  | { name: 'email_not_ends_with', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
+  | { name: 'phone_not', alias?: string  } 
+  | { name: 'phone_in', alias?: string  } 
+  | { name: 'phone_not_in', alias?: string  } 
+  | { name: 'phone_lt', alias?: string  } 
+  | { name: 'phone_lte', alias?: string  } 
+  | { name: 'phone_gt', alias?: string  } 
+  | { name: 'phone_gte', alias?: string  } 
+  | { name: 'phone_contains', alias?: string  } 
+  | { name: 'phone_not_contains', alias?: string  } 
+  | { name: 'phone_starts_with', alias?: string  } 
+  | { name: 'phone_not_starts_with', alias?: string  } 
+  | { name: 'phone_ends_with', alias?: string  } 
+  | { name: 'phone_not_ends_with', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -8091,7 +8314,7 @@ export interface PaymentWhereInput {
   updatedAt_gt?: string | null
   updatedAt_gte?: string | null
   customer?: UserWhereInput | null
-  saleman?: SalemanWhereInput | null
+  salesman?: SalesmanWhereInput | null
   quotation?: QuotationWhereInput | null
   Invoice?: InvoiceWhereInput | null
   AND?: PaymentWhereInput[]
@@ -8159,7 +8382,7 @@ export type PaymentWhereInputInputObject =
   | { name: 'updatedAt_gt', alias?: string  } 
   | { name: 'updatedAt_gte', alias?: string  } 
   | { name: 'customer', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   | { name: 'Invoice', alias?: string  } 
   | { name: 'AND', alias?: string  } 
@@ -8227,7 +8450,7 @@ export interface InvoiceWhereInput {
   updatedAt_gte?: string | null
   user?: UserWhereInput | null
   quotation?: QuotationWhereInput | null
-  saleman?: SalemanWhereInput | null
+  salesman?: SalesmanWhereInput | null
   address?: AddressWhereInput | null
   payment?: PaymentWhereInput | null
   AND?: InvoiceWhereInput[]
@@ -8296,7 +8519,7 @@ export type InvoiceWhereInputInputObject =
   | { name: 'updatedAt_gte', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'address', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'AND', alias?: string  } 
@@ -8607,11 +8830,11 @@ export type PaymentWhereUniqueInputInputObject =
   | Extract<keyof PaymentWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
-export interface SalemanWhereUniqueInput {
+export interface SalesmanWhereUniqueInput {
   id?: string | null
 }
-export type SalemanWhereUniqueInputInputObject =
-  | Extract<keyof SalemanWhereUniqueInput, string>
+export type SalesmanWhereUniqueInputInputObject =
+  | Extract<keyof SalesmanWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
 export interface InvoiceWhereUniqueInput {
@@ -8667,11 +8890,13 @@ export type QuotationWhereUniqueInputInputObject =
   
 export interface UserCreateInput {
   id?: string | null
+  runningId?: number | null
   type?: string | null
   name?: string
   email?: string
   password?: string
   phone?: string
+  activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: QuotationCreateManyWithoutCustomerInput | null
   payments?: PaymentCreateManyWithoutCustomerInput | null
@@ -8680,11 +8905,13 @@ export interface UserCreateInput {
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -8897,11 +9124,13 @@ export type UserCreateOneWithoutShoppingCartInputInputObject =
   
 export interface UserCreateWithoutShoppingCartInput {
   id?: string | null
+  runningId?: number | null
   type?: string | null
   name?: string
   email?: string
   password?: string
   phone?: string
+  activated?: boolean | null
   quotations?: QuotationCreateManyWithoutCustomerInput | null
   payments?: PaymentCreateManyWithoutCustomerInput | null
   addresses?: AddressCreateManyWithoutCustomerInput | null
@@ -8909,11 +9138,13 @@ export interface UserCreateWithoutShoppingCartInput {
 export type UserCreateWithoutShoppingCartInputInputObject =
   | Extract<keyof UserCreateWithoutShoppingCartInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'addresses', alias?: string  } 
@@ -8931,7 +9162,7 @@ export interface QuotationCreateWithoutCustomerInput {
   id?: string | null
   docId?: string
   productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  saleman?: SalemanCreateOneWithoutQuotationsInput
+  salesman?: SalesmanCreateOneWithoutQuotationsInput
   payment?: PaymentCreateOneWithoutQuotationInput | null
   shipping?: ShippingCreateOneWithoutQuotationInput | null
 }
@@ -8940,7 +9171,7 @@ export type QuotationCreateWithoutCustomerInputInputObject =
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   
@@ -8997,36 +9228,42 @@ export type ProductItemCreateManyInputInputObject =
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface SalemanCreateOneWithoutQuotationsInput {
-  create?: SalemanCreateWithoutQuotationsInput | null
-  connect?: SalemanWhereUniqueInput | null
+export interface SalesmanCreateOneWithoutQuotationsInput {
+  create?: SalesmanCreateWithoutQuotationsInput | null
+  connect?: SalesmanWhereUniqueInput | null
 }
-export type SalemanCreateOneWithoutQuotationsInputInputObject =
-  | Extract<keyof SalemanCreateOneWithoutQuotationsInput, string>
+export type SalesmanCreateOneWithoutQuotationsInputInputObject =
+  | Extract<keyof SalesmanCreateOneWithoutQuotationsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface SalemanCreateWithoutQuotationsInput {
+export interface SalesmanCreateWithoutQuotationsInput {
   id?: string | null
-  payments?: PaymentCreateManyWithoutSalemanInput | null
-  invoices?: InvoiceCreateManyWithoutSalemanInput | null
+  name?: string
+  email?: string
+  phone?: string
+  payments?: PaymentCreateManyWithoutSalesmanInput | null
+  invoices?: InvoiceCreateManyWithoutSalesmanInput | null
 }
-export type SalemanCreateWithoutQuotationsInputInputObject =
-  | Extract<keyof SalemanCreateWithoutQuotationsInput, string>
+export type SalesmanCreateWithoutQuotationsInputInputObject =
+  | Extract<keyof SalesmanCreateWithoutQuotationsInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'invoices', alias?: string  } 
   
-export interface PaymentCreateManyWithoutSalemanInput {
-  create?: PaymentCreateWithoutSalemanInput[]
+export interface PaymentCreateManyWithoutSalesmanInput {
+  create?: PaymentCreateWithoutSalesmanInput[]
   connect?: PaymentWhereUniqueInput[]
 }
-export type PaymentCreateManyWithoutSalemanInputInputObject =
-  | Extract<keyof PaymentCreateManyWithoutSalemanInput, string>
+export type PaymentCreateManyWithoutSalesmanInputInputObject =
+  | Extract<keyof PaymentCreateManyWithoutSalesmanInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface PaymentCreateWithoutSalemanInput {
+export interface PaymentCreateWithoutSalesmanInput {
   id?: string | null
   docId?: string
   amount?: string
@@ -9034,8 +9271,8 @@ export interface PaymentCreateWithoutSalemanInput {
   quotation?: QuotationCreateOneWithoutPaymentInput
   Invoice?: InvoiceCreateOneWithoutPaymentInput | null
 }
-export type PaymentCreateWithoutSalemanInputInputObject =
-  | Extract<keyof PaymentCreateWithoutSalemanInput, string>
+export type PaymentCreateWithoutSalesmanInputInputObject =
+  | Extract<keyof PaymentCreateWithoutSalesmanInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
@@ -9054,11 +9291,13 @@ export type UserCreateOneWithoutPaymentsInputInputObject =
   
 export interface UserCreateWithoutPaymentsInput {
   id?: string | null
+  runningId?: number | null
   type?: string | null
   name?: string
   email?: string
   password?: string
   phone?: string
+  activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: QuotationCreateManyWithoutCustomerInput | null
   addresses?: AddressCreateManyWithoutCustomerInput | null
@@ -9066,11 +9305,13 @@ export interface UserCreateWithoutPaymentsInput {
 export type UserCreateWithoutPaymentsInputInputObject =
   | Extract<keyof UserCreateWithoutPaymentsInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'addresses', alias?: string  } 
@@ -9114,7 +9355,7 @@ export interface InvoiceCreateWithoutAddressInput {
   creditTerm?: string
   user?: UserCreateOneInput
   quotation?: QuotationCreateOneInput
-  saleman?: SalemanCreateOneWithoutInvoicesInput
+  salesman?: SalesmanCreateOneWithoutInvoicesInput
   payment?: PaymentCreateOneWithoutInvoiceInput | null
 }
 export type InvoiceCreateWithoutAddressInputInputObject =
@@ -9124,7 +9365,7 @@ export type InvoiceCreateWithoutAddressInputInputObject =
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   
 export interface UserCreateOneInput {
@@ -9149,7 +9390,7 @@ export interface QuotationCreateInput {
   id?: string | null
   docId?: string
   productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  saleman?: SalemanCreateOneWithoutQuotationsInput
+  salesman?: SalesmanCreateOneWithoutQuotationsInput
   payment?: PaymentCreateOneWithoutQuotationInput | null
   shipping?: ShippingCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
@@ -9159,7 +9400,7 @@ export type QuotationCreateInputInputObject =
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -9178,7 +9419,7 @@ export interface PaymentCreateWithoutQuotationInput {
   docId?: string
   amount?: string
   customer?: UserCreateOneWithoutPaymentsInput
-  saleman?: SalemanCreateOneWithoutPaymentsInput
+  salesman?: SalesmanCreateOneWithoutPaymentsInput
   Invoice?: InvoiceCreateOneWithoutPaymentInput | null
 }
 export type PaymentCreateWithoutQuotationInputInputObject =
@@ -9187,39 +9428,45 @@ export type PaymentCreateWithoutQuotationInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'customer', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'Invoice', alias?: string  } 
   
-export interface SalemanCreateOneWithoutPaymentsInput {
-  create?: SalemanCreateWithoutPaymentsInput | null
-  connect?: SalemanWhereUniqueInput | null
+export interface SalesmanCreateOneWithoutPaymentsInput {
+  create?: SalesmanCreateWithoutPaymentsInput | null
+  connect?: SalesmanWhereUniqueInput | null
 }
-export type SalemanCreateOneWithoutPaymentsInputInputObject =
-  | Extract<keyof SalemanCreateOneWithoutPaymentsInput, string>
+export type SalesmanCreateOneWithoutPaymentsInputInputObject =
+  | Extract<keyof SalesmanCreateOneWithoutPaymentsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface SalemanCreateWithoutPaymentsInput {
+export interface SalesmanCreateWithoutPaymentsInput {
   id?: string | null
-  invoices?: InvoiceCreateManyWithoutSalemanInput | null
-  quotations?: QuotationCreateManyWithoutSalemanInput | null
+  name?: string
+  email?: string
+  phone?: string
+  invoices?: InvoiceCreateManyWithoutSalesmanInput | null
+  quotations?: QuotationCreateManyWithoutSalesmanInput | null
 }
-export type SalemanCreateWithoutPaymentsInputInputObject =
-  | Extract<keyof SalemanCreateWithoutPaymentsInput, string>
+export type SalesmanCreateWithoutPaymentsInputInputObject =
+  | Extract<keyof SalesmanCreateWithoutPaymentsInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'invoices', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   
-export interface InvoiceCreateManyWithoutSalemanInput {
-  create?: InvoiceCreateWithoutSalemanInput[]
+export interface InvoiceCreateManyWithoutSalesmanInput {
+  create?: InvoiceCreateWithoutSalesmanInput[]
   connect?: InvoiceWhereUniqueInput[]
 }
-export type InvoiceCreateManyWithoutSalemanInputInputObject =
-  | Extract<keyof InvoiceCreateManyWithoutSalemanInput, string>
+export type InvoiceCreateManyWithoutSalesmanInputInputObject =
+  | Extract<keyof InvoiceCreateManyWithoutSalesmanInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface InvoiceCreateWithoutSalemanInput {
+export interface InvoiceCreateWithoutSalesmanInput {
   id?: string | null
   docId?: string
   creditTerm?: string
@@ -9228,8 +9475,8 @@ export interface InvoiceCreateWithoutSalemanInput {
   address?: AddressCreateOneWithoutInvoicesInput | null
   payment?: PaymentCreateOneWithoutInvoiceInput | null
 }
-export type InvoiceCreateWithoutSalemanInputInputObject =
-  | Extract<keyof InvoiceCreateWithoutSalemanInput, string>
+export type InvoiceCreateWithoutSalesmanInputInputObject =
+  | Extract<keyof InvoiceCreateWithoutSalesmanInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'creditTerm', alias?: string  } 
@@ -9273,11 +9520,13 @@ export type UserCreateOneWithoutAddressesInputInputObject =
   
 export interface UserCreateWithoutAddressesInput {
   id?: string | null
+  runningId?: number | null
   type?: string | null
   name?: string
   email?: string
   password?: string
   phone?: string
+  activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: QuotationCreateManyWithoutCustomerInput | null
   payments?: PaymentCreateManyWithoutCustomerInput | null
@@ -9285,11 +9534,13 @@ export interface UserCreateWithoutAddressesInput {
 export type UserCreateWithoutAddressesInputInputObject =
   | Extract<keyof UserCreateWithoutAddressesInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -9307,7 +9558,7 @@ export interface PaymentCreateWithoutCustomerInput {
   id?: string | null
   docId?: string
   amount?: string
-  saleman?: SalemanCreateOneWithoutPaymentsInput
+  salesman?: SalesmanCreateOneWithoutPaymentsInput
   quotation?: QuotationCreateOneWithoutPaymentInput
   Invoice?: InvoiceCreateOneWithoutPaymentInput | null
 }
@@ -9316,7 +9567,7 @@ export type PaymentCreateWithoutCustomerInputInputObject =
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   | { name: 'Invoice', alias?: string  } 
   
@@ -9333,7 +9584,7 @@ export interface QuotationCreateWithoutPaymentInput {
   id?: string | null
   docId?: string
   productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  saleman?: SalemanCreateOneWithoutQuotationsInput
+  salesman?: SalesmanCreateOneWithoutQuotationsInput
   shipping?: ShippingCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
 }
@@ -9342,7 +9593,7 @@ export type QuotationCreateWithoutPaymentInputInputObject =
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   
@@ -9387,7 +9638,7 @@ export interface InvoiceCreateInput {
   creditTerm?: string
   user?: UserCreateOneInput
   quotation?: QuotationCreateOneInput
-  saleman?: SalemanCreateOneWithoutInvoicesInput
+  salesman?: SalesmanCreateOneWithoutInvoicesInput
   address?: AddressCreateOneWithoutInvoicesInput | null
   payment?: PaymentCreateOneWithoutInvoiceInput | null
 }
@@ -9398,40 +9649,46 @@ export type InvoiceCreateInputInputObject =
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'address', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   
-export interface SalemanCreateOneWithoutInvoicesInput {
-  create?: SalemanCreateWithoutInvoicesInput | null
-  connect?: SalemanWhereUniqueInput | null
+export interface SalesmanCreateOneWithoutInvoicesInput {
+  create?: SalesmanCreateWithoutInvoicesInput | null
+  connect?: SalesmanWhereUniqueInput | null
 }
-export type SalemanCreateOneWithoutInvoicesInputInputObject =
-  | Extract<keyof SalemanCreateOneWithoutInvoicesInput, string>
+export type SalesmanCreateOneWithoutInvoicesInputInputObject =
+  | Extract<keyof SalesmanCreateOneWithoutInvoicesInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface SalemanCreateWithoutInvoicesInput {
+export interface SalesmanCreateWithoutInvoicesInput {
   id?: string | null
-  payments?: PaymentCreateManyWithoutSalemanInput | null
-  quotations?: QuotationCreateManyWithoutSalemanInput | null
+  name?: string
+  email?: string
+  phone?: string
+  payments?: PaymentCreateManyWithoutSalesmanInput | null
+  quotations?: QuotationCreateManyWithoutSalesmanInput | null
 }
-export type SalemanCreateWithoutInvoicesInputInputObject =
-  | Extract<keyof SalemanCreateWithoutInvoicesInput, string>
+export type SalesmanCreateWithoutInvoicesInputInputObject =
+  | Extract<keyof SalesmanCreateWithoutInvoicesInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   
-export interface QuotationCreateManyWithoutSalemanInput {
-  create?: QuotationCreateWithoutSalemanInput[]
+export interface QuotationCreateManyWithoutSalesmanInput {
+  create?: QuotationCreateWithoutSalesmanInput[]
   connect?: QuotationWhereUniqueInput[]
 }
-export type QuotationCreateManyWithoutSalemanInputInputObject =
-  | Extract<keyof QuotationCreateManyWithoutSalemanInput, string>
+export type QuotationCreateManyWithoutSalesmanInputInputObject =
+  | Extract<keyof QuotationCreateManyWithoutSalesmanInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface QuotationCreateWithoutSalemanInput {
+export interface QuotationCreateWithoutSalesmanInput {
   id?: string | null
   docId?: string
   productItems?: ProductItemCreateManyWithoutQuotationInput | null
@@ -9439,8 +9696,8 @@ export interface QuotationCreateWithoutSalemanInput {
   shipping?: ShippingCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
 }
-export type QuotationCreateWithoutSalemanInputInputObject =
-  | Extract<keyof QuotationCreateWithoutSalemanInput, string>
+export type QuotationCreateWithoutSalesmanInputInputObject =
+  | Extract<keyof QuotationCreateWithoutSalesmanInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
@@ -9459,11 +9716,13 @@ export type UserCreateOneWithoutQuotationsInputInputObject =
   
 export interface UserCreateWithoutQuotationsInput {
   id?: string | null
+  runningId?: number | null
   type?: string | null
   name?: string
   email?: string
   password?: string
   phone?: string
+  activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   payments?: PaymentCreateManyWithoutCustomerInput | null
   addresses?: AddressCreateManyWithoutCustomerInput | null
@@ -9471,11 +9730,13 @@ export interface UserCreateWithoutQuotationsInput {
 export type UserCreateWithoutQuotationsInputInputObject =
   | Extract<keyof UserCreateWithoutQuotationsInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'addresses', alias?: string  } 
@@ -9494,7 +9755,7 @@ export interface PaymentCreateWithoutInvoiceInput {
   docId?: string
   amount?: string
   customer?: UserCreateOneWithoutPaymentsInput
-  saleman?: SalemanCreateOneWithoutPaymentsInput
+  salesman?: SalesmanCreateOneWithoutPaymentsInput
   quotation?: QuotationCreateOneWithoutPaymentInput
 }
 export type PaymentCreateWithoutInvoiceInputInputObject =
@@ -9503,7 +9764,7 @@ export type PaymentCreateWithoutInvoiceInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'customer', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface AddressCreateOneWithoutShippingInput {
@@ -9545,7 +9806,7 @@ export interface InvoiceCreateWithoutPaymentInput {
   creditTerm?: string
   user?: UserCreateOneInput
   quotation?: QuotationCreateOneInput
-  saleman?: SalemanCreateOneWithoutInvoicesInput
+  salesman?: SalesmanCreateOneWithoutInvoicesInput
   address?: AddressCreateOneWithoutInvoicesInput | null
 }
 export type InvoiceCreateWithoutPaymentInputInputObject =
@@ -9555,7 +9816,7 @@ export type InvoiceCreateWithoutPaymentInputInputObject =
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'address', alias?: string  } 
   
 export interface ShippingCreateManyWithoutAddressInput {
@@ -9597,7 +9858,7 @@ export interface QuotationCreateWithoutShippingInput {
   id?: string | null
   docId?: string
   productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  saleman?: SalemanCreateOneWithoutQuotationsInput
+  salesman?: SalesmanCreateOneWithoutQuotationsInput
   payment?: PaymentCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
 }
@@ -9606,7 +9867,7 @@ export type QuotationCreateWithoutShippingInputInputObject =
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   
@@ -9622,7 +9883,7 @@ export type QuotationCreateOneWithoutProductItemsInputInputObject =
 export interface QuotationCreateWithoutProductItemsInput {
   id?: string | null
   docId?: string
-  saleman?: SalemanCreateOneWithoutQuotationsInput
+  salesman?: SalesmanCreateOneWithoutQuotationsInput
   payment?: PaymentCreateOneWithoutQuotationInput | null
   shipping?: ShippingCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
@@ -9631,17 +9892,19 @@ export type QuotationCreateWithoutProductItemsInputInputObject =
   | Extract<keyof QuotationCreateWithoutProductItemsInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   
 export interface UserUpdateInput {
+  runningId?: number | null
   type?: string | null
   name?: string | null
   email?: string | null
   password?: string | null
   phone?: string | null
+  activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
   payments?: PaymentUpdateManyWithoutCustomerInput | null
@@ -9649,11 +9912,13 @@ export interface UserUpdateInput {
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -9929,22 +10194,26 @@ export type UserUpdateOneRequiredWithoutShoppingCartInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface UserUpdateWithoutShoppingCartDataInput {
+  runningId?: number | null
   type?: string | null
   name?: string | null
   email?: string | null
   password?: string | null
   phone?: string | null
+  activated?: boolean | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
   payments?: PaymentUpdateManyWithoutCustomerInput | null
   addresses?: AddressUpdateManyWithoutCustomerInput | null
 }
 export type UserUpdateWithoutShoppingCartDataInputInputObject =
   | Extract<keyof UserUpdateWithoutShoppingCartDataInput, string>
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'addresses', alias?: string  } 
@@ -9984,7 +10253,7 @@ export type QuotationUpdateWithWhereUniqueWithoutCustomerInputInputObject =
 export interface QuotationUpdateWithoutCustomerDataInput {
   docId?: string | null
   productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutQuotationsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
 }
@@ -9992,7 +10261,7 @@ export type QuotationUpdateWithoutCustomerDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutCustomerDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   
@@ -10494,41 +10763,47 @@ export type ProductItemUpsertWithWhereUniqueWithoutQuotationInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface SalemanUpdateOneRequiredWithoutQuotationsInput {
-  create?: SalemanCreateWithoutQuotationsInput | null
-  update?: SalemanUpdateWithoutQuotationsDataInput | null
-  upsert?: SalemanUpsertWithoutQuotationsInput | null
-  connect?: SalemanWhereUniqueInput | null
+export interface SalesmanUpdateOneRequiredWithoutQuotationsInput {
+  create?: SalesmanCreateWithoutQuotationsInput | null
+  update?: SalesmanUpdateWithoutQuotationsDataInput | null
+  upsert?: SalesmanUpsertWithoutQuotationsInput | null
+  connect?: SalesmanWhereUniqueInput | null
 }
-export type SalemanUpdateOneRequiredWithoutQuotationsInputInputObject =
-  | Extract<keyof SalemanUpdateOneRequiredWithoutQuotationsInput, string>
+export type SalesmanUpdateOneRequiredWithoutQuotationsInputInputObject =
+  | Extract<keyof SalesmanUpdateOneRequiredWithoutQuotationsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface SalemanUpdateWithoutQuotationsDataInput {
-  payments?: PaymentUpdateManyWithoutSalemanInput | null
-  invoices?: InvoiceUpdateManyWithoutSalemanInput | null
+export interface SalesmanUpdateWithoutQuotationsDataInput {
+  name?: string | null
+  email?: string | null
+  phone?: string | null
+  payments?: PaymentUpdateManyWithoutSalesmanInput | null
+  invoices?: InvoiceUpdateManyWithoutSalesmanInput | null
 }
-export type SalemanUpdateWithoutQuotationsDataInputInputObject =
-  | Extract<keyof SalemanUpdateWithoutQuotationsDataInput, string>
+export type SalesmanUpdateWithoutQuotationsDataInputInputObject =
+  | Extract<keyof SalesmanUpdateWithoutQuotationsDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'invoices', alias?: string  } 
   
-export interface PaymentUpdateManyWithoutSalemanInput {
-  create?: PaymentCreateWithoutSalemanInput[]
+export interface PaymentUpdateManyWithoutSalesmanInput {
+  create?: PaymentCreateWithoutSalesmanInput[]
   delete?: PaymentWhereUniqueInput[]
   connect?: PaymentWhereUniqueInput[]
   set?: PaymentWhereUniqueInput[]
   disconnect?: PaymentWhereUniqueInput[]
-  update?: PaymentUpdateWithWhereUniqueWithoutSalemanInput[]
-  upsert?: PaymentUpsertWithWhereUniqueWithoutSalemanInput[]
+  update?: PaymentUpdateWithWhereUniqueWithoutSalesmanInput[]
+  upsert?: PaymentUpsertWithWhereUniqueWithoutSalesmanInput[]
   deleteMany?: PaymentScalarWhereInput[]
   updateMany?: PaymentUpdateManyWithWhereNestedInput[]
 }
-export type PaymentUpdateManyWithoutSalemanInputInputObject =
-  | Extract<keyof PaymentUpdateManyWithoutSalemanInput, string>
+export type PaymentUpdateManyWithoutSalesmanInputInputObject =
+  | Extract<keyof PaymentUpdateManyWithoutSalesmanInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -10539,24 +10814,24 @@ export type PaymentUpdateManyWithoutSalemanInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface PaymentUpdateWithWhereUniqueWithoutSalemanInput {
+export interface PaymentUpdateWithWhereUniqueWithoutSalesmanInput {
   where?: PaymentWhereUniqueInput
-  data?: PaymentUpdateWithoutSalemanDataInput
+  data?: PaymentUpdateWithoutSalesmanDataInput
 }
-export type PaymentUpdateWithWhereUniqueWithoutSalemanInputInputObject =
-  | Extract<keyof PaymentUpdateWithWhereUniqueWithoutSalemanInput, string>
+export type PaymentUpdateWithWhereUniqueWithoutSalesmanInputInputObject =
+  | Extract<keyof PaymentUpdateWithWhereUniqueWithoutSalesmanInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface PaymentUpdateWithoutSalemanDataInput {
+export interface PaymentUpdateWithoutSalesmanDataInput {
   docId?: string | null
   amount?: string | null
   customer?: UserUpdateOneRequiredWithoutPaymentsInput | null
   quotation?: QuotationUpdateOneRequiredWithoutPaymentInput | null
   Invoice?: InvoiceUpdateOneWithoutPaymentInput | null
 }
-export type PaymentUpdateWithoutSalemanDataInputInputObject =
-  | Extract<keyof PaymentUpdateWithoutSalemanDataInput, string>
+export type PaymentUpdateWithoutSalesmanDataInputInputObject =
+  | Extract<keyof PaymentUpdateWithoutSalesmanDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -10577,22 +10852,26 @@ export type UserUpdateOneRequiredWithoutPaymentsInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface UserUpdateWithoutPaymentsDataInput {
+  runningId?: number | null
   type?: string | null
   name?: string | null
   email?: string | null
   password?: string | null
   phone?: string | null
+  activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
   addresses?: AddressUpdateManyWithoutCustomerInput | null
 }
 export type UserUpdateWithoutPaymentsDataInputInputObject =
   | Extract<keyof UserUpdateWithoutPaymentsDataInput, string>
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'addresses', alias?: string  } 
@@ -10679,7 +10958,7 @@ export interface InvoiceUpdateWithoutAddressDataInput {
   creditTerm?: string | null
   user?: UserUpdateOneRequiredInput | null
   quotation?: QuotationUpdateOneRequiredInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutInvoicesInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutInvoicesInput | null
   payment?: PaymentUpdateOneWithoutInvoiceInput | null
 }
 export type InvoiceUpdateWithoutAddressDataInputInputObject =
@@ -10688,7 +10967,7 @@ export type InvoiceUpdateWithoutAddressDataInputInputObject =
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   
 export interface UserUpdateOneRequiredInput {
@@ -10705,11 +10984,13 @@ export type UserUpdateOneRequiredInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface UserUpdateDataInput {
+  runningId?: number | null
   type?: string | null
   name?: string | null
   email?: string | null
   password?: string | null
   phone?: string | null
+  activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
   payments?: PaymentUpdateManyWithoutCustomerInput | null
@@ -10717,11 +10998,13 @@ export interface UserUpdateDataInput {
 }
 export type UserUpdateDataInputInputObject =
   | Extract<keyof UserUpdateDataInput, string>
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -10762,7 +11045,7 @@ export type PaymentUpdateWithWhereUniqueWithoutCustomerInputInputObject =
 export interface PaymentUpdateWithoutCustomerDataInput {
   docId?: string | null
   amount?: string | null
-  saleman?: SalemanUpdateOneRequiredWithoutPaymentsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutPaymentsInput | null
   quotation?: QuotationUpdateOneRequiredWithoutPaymentInput | null
   Invoice?: InvoiceUpdateOneWithoutPaymentInput | null
 }
@@ -10770,45 +11053,51 @@ export type PaymentUpdateWithoutCustomerDataInputInputObject =
   | Extract<keyof PaymentUpdateWithoutCustomerDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   | { name: 'Invoice', alias?: string  } 
   
-export interface SalemanUpdateOneRequiredWithoutPaymentsInput {
-  create?: SalemanCreateWithoutPaymentsInput | null
-  update?: SalemanUpdateWithoutPaymentsDataInput | null
-  upsert?: SalemanUpsertWithoutPaymentsInput | null
-  connect?: SalemanWhereUniqueInput | null
+export interface SalesmanUpdateOneRequiredWithoutPaymentsInput {
+  create?: SalesmanCreateWithoutPaymentsInput | null
+  update?: SalesmanUpdateWithoutPaymentsDataInput | null
+  upsert?: SalesmanUpsertWithoutPaymentsInput | null
+  connect?: SalesmanWhereUniqueInput | null
 }
-export type SalemanUpdateOneRequiredWithoutPaymentsInputInputObject =
-  | Extract<keyof SalemanUpdateOneRequiredWithoutPaymentsInput, string>
+export type SalesmanUpdateOneRequiredWithoutPaymentsInputInputObject =
+  | Extract<keyof SalesmanUpdateOneRequiredWithoutPaymentsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface SalemanUpdateWithoutPaymentsDataInput {
-  invoices?: InvoiceUpdateManyWithoutSalemanInput | null
-  quotations?: QuotationUpdateManyWithoutSalemanInput | null
+export interface SalesmanUpdateWithoutPaymentsDataInput {
+  name?: string | null
+  email?: string | null
+  phone?: string | null
+  invoices?: InvoiceUpdateManyWithoutSalesmanInput | null
+  quotations?: QuotationUpdateManyWithoutSalesmanInput | null
 }
-export type SalemanUpdateWithoutPaymentsDataInputInputObject =
-  | Extract<keyof SalemanUpdateWithoutPaymentsDataInput, string>
+export type SalesmanUpdateWithoutPaymentsDataInputInputObject =
+  | Extract<keyof SalesmanUpdateWithoutPaymentsDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'invoices', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   
-export interface InvoiceUpdateManyWithoutSalemanInput {
-  create?: InvoiceCreateWithoutSalemanInput[]
+export interface InvoiceUpdateManyWithoutSalesmanInput {
+  create?: InvoiceCreateWithoutSalesmanInput[]
   delete?: InvoiceWhereUniqueInput[]
   connect?: InvoiceWhereUniqueInput[]
   set?: InvoiceWhereUniqueInput[]
   disconnect?: InvoiceWhereUniqueInput[]
-  update?: InvoiceUpdateWithWhereUniqueWithoutSalemanInput[]
-  upsert?: InvoiceUpsertWithWhereUniqueWithoutSalemanInput[]
+  update?: InvoiceUpdateWithWhereUniqueWithoutSalesmanInput[]
+  upsert?: InvoiceUpsertWithWhereUniqueWithoutSalesmanInput[]
   deleteMany?: InvoiceScalarWhereInput[]
   updateMany?: InvoiceUpdateManyWithWhereNestedInput[]
 }
-export type InvoiceUpdateManyWithoutSalemanInputInputObject =
-  | Extract<keyof InvoiceUpdateManyWithoutSalemanInput, string>
+export type InvoiceUpdateManyWithoutSalesmanInputInputObject =
+  | Extract<keyof InvoiceUpdateManyWithoutSalesmanInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -10819,16 +11108,16 @@ export type InvoiceUpdateManyWithoutSalemanInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface InvoiceUpdateWithWhereUniqueWithoutSalemanInput {
+export interface InvoiceUpdateWithWhereUniqueWithoutSalesmanInput {
   where?: InvoiceWhereUniqueInput
-  data?: InvoiceUpdateWithoutSalemanDataInput
+  data?: InvoiceUpdateWithoutSalesmanDataInput
 }
-export type InvoiceUpdateWithWhereUniqueWithoutSalemanInputInputObject =
-  | Extract<keyof InvoiceUpdateWithWhereUniqueWithoutSalemanInput, string>
+export type InvoiceUpdateWithWhereUniqueWithoutSalesmanInputInputObject =
+  | Extract<keyof InvoiceUpdateWithWhereUniqueWithoutSalesmanInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface InvoiceUpdateWithoutSalemanDataInput {
+export interface InvoiceUpdateWithoutSalesmanDataInput {
   docId?: string | null
   creditTerm?: string | null
   user?: UserUpdateOneRequiredInput | null
@@ -10836,8 +11125,8 @@ export interface InvoiceUpdateWithoutSalemanDataInput {
   address?: AddressUpdateOneWithoutInvoicesInput | null
   payment?: PaymentUpdateOneWithoutInvoiceInput | null
 }
-export type InvoiceUpdateWithoutSalemanDataInputInputObject =
-  | Extract<keyof InvoiceUpdateWithoutSalemanDataInput, string>
+export type InvoiceUpdateWithoutSalesmanDataInputInputObject =
+  | Extract<keyof InvoiceUpdateWithoutSalesmanDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
@@ -10861,7 +11150,7 @@ export type QuotationUpdateOneRequiredInputInputObject =
 export interface QuotationUpdateDataInput {
   docId?: string | null
   productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutQuotationsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
@@ -10870,7 +11159,7 @@ export type QuotationUpdateDataInputInputObject =
   | Extract<keyof QuotationUpdateDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -10896,7 +11185,7 @@ export interface PaymentUpdateWithoutQuotationDataInput {
   docId?: string | null
   amount?: string | null
   customer?: UserUpdateOneRequiredWithoutPaymentsInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutPaymentsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutPaymentsInput | null
   Invoice?: InvoiceUpdateOneWithoutPaymentInput | null
 }
 export type PaymentUpdateWithoutQuotationDataInputInputObject =
@@ -10904,7 +11193,7 @@ export type PaymentUpdateWithoutQuotationDataInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'customer', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'Invoice', alias?: string  } 
   
 export interface InvoiceUpdateOneWithoutPaymentInput {
@@ -10929,7 +11218,7 @@ export interface InvoiceUpdateWithoutPaymentDataInput {
   creditTerm?: string | null
   user?: UserUpdateOneRequiredInput | null
   quotation?: QuotationUpdateOneRequiredInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutInvoicesInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutInvoicesInput | null
   address?: AddressUpdateOneWithoutInvoicesInput | null
 }
 export type InvoiceUpdateWithoutPaymentDataInputInputObject =
@@ -10938,44 +11227,50 @@ export type InvoiceUpdateWithoutPaymentDataInputInputObject =
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'address', alias?: string  } 
   
-export interface SalemanUpdateOneRequiredWithoutInvoicesInput {
-  create?: SalemanCreateWithoutInvoicesInput | null
-  update?: SalemanUpdateWithoutInvoicesDataInput | null
-  upsert?: SalemanUpsertWithoutInvoicesInput | null
-  connect?: SalemanWhereUniqueInput | null
+export interface SalesmanUpdateOneRequiredWithoutInvoicesInput {
+  create?: SalesmanCreateWithoutInvoicesInput | null
+  update?: SalesmanUpdateWithoutInvoicesDataInput | null
+  upsert?: SalesmanUpsertWithoutInvoicesInput | null
+  connect?: SalesmanWhereUniqueInput | null
 }
-export type SalemanUpdateOneRequiredWithoutInvoicesInputInputObject =
-  | Extract<keyof SalemanUpdateOneRequiredWithoutInvoicesInput, string>
+export type SalesmanUpdateOneRequiredWithoutInvoicesInputInputObject =
+  | Extract<keyof SalesmanUpdateOneRequiredWithoutInvoicesInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface SalemanUpdateWithoutInvoicesDataInput {
-  payments?: PaymentUpdateManyWithoutSalemanInput | null
-  quotations?: QuotationUpdateManyWithoutSalemanInput | null
+export interface SalesmanUpdateWithoutInvoicesDataInput {
+  name?: string | null
+  email?: string | null
+  phone?: string | null
+  payments?: PaymentUpdateManyWithoutSalesmanInput | null
+  quotations?: QuotationUpdateManyWithoutSalesmanInput | null
 }
-export type SalemanUpdateWithoutInvoicesDataInputInputObject =
-  | Extract<keyof SalemanUpdateWithoutInvoicesDataInput, string>
+export type SalesmanUpdateWithoutInvoicesDataInputInputObject =
+  | Extract<keyof SalesmanUpdateWithoutInvoicesDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   
-export interface QuotationUpdateManyWithoutSalemanInput {
-  create?: QuotationCreateWithoutSalemanInput[]
+export interface QuotationUpdateManyWithoutSalesmanInput {
+  create?: QuotationCreateWithoutSalesmanInput[]
   delete?: QuotationWhereUniqueInput[]
   connect?: QuotationWhereUniqueInput[]
   set?: QuotationWhereUniqueInput[]
   disconnect?: QuotationWhereUniqueInput[]
-  update?: QuotationUpdateWithWhereUniqueWithoutSalemanInput[]
-  upsert?: QuotationUpsertWithWhereUniqueWithoutSalemanInput[]
+  update?: QuotationUpdateWithWhereUniqueWithoutSalesmanInput[]
+  upsert?: QuotationUpsertWithWhereUniqueWithoutSalesmanInput[]
   deleteMany?: QuotationScalarWhereInput[]
   updateMany?: QuotationUpdateManyWithWhereNestedInput[]
 }
-export type QuotationUpdateManyWithoutSalemanInputInputObject =
-  | Extract<keyof QuotationUpdateManyWithoutSalemanInput, string>
+export type QuotationUpdateManyWithoutSalesmanInputInputObject =
+  | Extract<keyof QuotationUpdateManyWithoutSalesmanInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -10986,24 +11281,24 @@ export type QuotationUpdateManyWithoutSalemanInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface QuotationUpdateWithWhereUniqueWithoutSalemanInput {
+export interface QuotationUpdateWithWhereUniqueWithoutSalesmanInput {
   where?: QuotationWhereUniqueInput
-  data?: QuotationUpdateWithoutSalemanDataInput
+  data?: QuotationUpdateWithoutSalesmanDataInput
 }
-export type QuotationUpdateWithWhereUniqueWithoutSalemanInputInputObject =
-  | Extract<keyof QuotationUpdateWithWhereUniqueWithoutSalemanInput, string>
+export type QuotationUpdateWithWhereUniqueWithoutSalesmanInputInputObject =
+  | Extract<keyof QuotationUpdateWithWhereUniqueWithoutSalesmanInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface QuotationUpdateWithoutSalemanDataInput {
+export interface QuotationUpdateWithoutSalesmanDataInput {
   docId?: string | null
   productItems?: ProductItemUpdateManyWithoutQuotationInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
 }
-export type QuotationUpdateWithoutSalemanDataInputInputObject =
-  | Extract<keyof QuotationUpdateWithoutSalemanDataInput, string>
+export type QuotationUpdateWithoutSalesmanDataInputInputObject =
+  | Extract<keyof QuotationUpdateWithoutSalesmanDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
   | { name: 'payment', alias?: string  } 
@@ -11060,7 +11355,7 @@ export interface InvoiceUpdateDataInput {
   creditTerm?: string | null
   user?: UserUpdateOneRequiredInput | null
   quotation?: QuotationUpdateOneRequiredInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutInvoicesInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutInvoicesInput | null
   address?: AddressUpdateOneWithoutInvoicesInput | null
   payment?: PaymentUpdateOneWithoutInvoiceInput | null
 }
@@ -11070,7 +11365,7 @@ export type InvoiceUpdateDataInputInputObject =
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'address', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   
@@ -11118,22 +11413,26 @@ export type UserUpdateOneRequiredWithoutAddressesInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface UserUpdateWithoutAddressesDataInput {
+  runningId?: number | null
   type?: string | null
   name?: string | null
   email?: string | null
   password?: string | null
   phone?: string | null
+  activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
   payments?: PaymentUpdateManyWithoutCustomerInput | null
 }
 export type UserUpdateWithoutAddressesDataInputInputObject =
   | Extract<keyof UserUpdateWithoutAddressesDataInput, string>
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -11210,7 +11509,7 @@ export type QuotationUpdateOneRequiredWithoutShippingInputInputObject =
 export interface QuotationUpdateWithoutShippingDataInput {
   docId?: string | null
   productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutQuotationsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
 }
@@ -11218,7 +11517,7 @@ export type QuotationUpdateWithoutShippingDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutShippingDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   
@@ -11236,22 +11535,26 @@ export type UserUpdateOneRequiredWithoutQuotationsInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface UserUpdateWithoutQuotationsDataInput {
+  runningId?: number | null
   type?: string | null
   name?: string | null
   email?: string | null
   password?: string | null
   phone?: string | null
+  activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   payments?: PaymentUpdateManyWithoutCustomerInput | null
   addresses?: AddressUpdateManyWithoutCustomerInput | null
 }
 export type UserUpdateWithoutQuotationsDataInputInputObject =
   | Extract<keyof UserUpdateWithoutQuotationsDataInput, string>
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'addresses', alias?: string  } 
@@ -11478,7 +11781,7 @@ export interface PaymentUpdateWithoutInvoiceDataInput {
   docId?: string | null
   amount?: string | null
   customer?: UserUpdateOneRequiredWithoutPaymentsInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutPaymentsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutPaymentsInput | null
   quotation?: QuotationUpdateOneRequiredWithoutPaymentInput | null
 }
 export type PaymentUpdateWithoutInvoiceDataInputInputObject =
@@ -11486,7 +11789,7 @@ export type PaymentUpdateWithoutInvoiceDataInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'customer', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface QuotationUpdateOneRequiredWithoutPaymentInput {
@@ -11505,7 +11808,7 @@ export type QuotationUpdateOneRequiredWithoutPaymentInputInputObject =
 export interface QuotationUpdateWithoutPaymentDataInput {
   docId?: string | null
   productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutQuotationsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
 }
@@ -11513,7 +11816,7 @@ export type QuotationUpdateWithoutPaymentDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutPaymentDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   
@@ -11588,13 +11891,13 @@ export type ShippingUpsertWithoutQuotationInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface QuotationUpsertWithWhereUniqueWithoutSalemanInput {
+export interface QuotationUpsertWithWhereUniqueWithoutSalesmanInput {
   where?: QuotationWhereUniqueInput
-  update?: QuotationUpdateWithoutSalemanDataInput
-  create?: QuotationCreateWithoutSalemanInput
+  update?: QuotationUpdateWithoutSalesmanDataInput
+  create?: QuotationCreateWithoutSalesmanInput
 }
-export type QuotationUpsertWithWhereUniqueWithoutSalemanInputInputObject =
-  | Extract<keyof QuotationUpsertWithWhereUniqueWithoutSalemanInput, string>
+export type QuotationUpsertWithWhereUniqueWithoutSalesmanInputInputObject =
+  | Extract<keyof QuotationUpsertWithWhereUniqueWithoutSalesmanInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
@@ -11714,12 +12017,12 @@ export type QuotationUpdateManyDataInputInputObject =
   | Extract<keyof QuotationUpdateManyDataInput, string>
   | { name: 'docId', alias?: string  } 
   
-export interface SalemanUpsertWithoutInvoicesInput {
-  update?: SalemanUpdateWithoutInvoicesDataInput
-  create?: SalemanCreateWithoutInvoicesInput
+export interface SalesmanUpsertWithoutInvoicesInput {
+  update?: SalesmanUpdateWithoutInvoicesDataInput
+  create?: SalesmanCreateWithoutInvoicesInput
 }
-export type SalemanUpsertWithoutInvoicesInputInputObject =
-  | Extract<keyof SalemanUpsertWithoutInvoicesInput, string>
+export type SalesmanUpsertWithoutInvoicesInputInputObject =
+  | Extract<keyof SalesmanUpsertWithoutInvoicesInput, string>
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
@@ -11750,13 +12053,13 @@ export type QuotationUpsertNestedInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface InvoiceUpsertWithWhereUniqueWithoutSalemanInput {
+export interface InvoiceUpsertWithWhereUniqueWithoutSalesmanInput {
   where?: InvoiceWhereUniqueInput
-  update?: InvoiceUpdateWithoutSalemanDataInput
-  create?: InvoiceCreateWithoutSalemanInput
+  update?: InvoiceUpdateWithoutSalesmanDataInput
+  create?: InvoiceCreateWithoutSalesmanInput
 }
-export type InvoiceUpsertWithWhereUniqueWithoutSalemanInputInputObject =
-  | Extract<keyof InvoiceUpsertWithWhereUniqueWithoutSalemanInput, string>
+export type InvoiceUpsertWithWhereUniqueWithoutSalesmanInputInputObject =
+  | Extract<keyof InvoiceUpsertWithWhereUniqueWithoutSalesmanInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
@@ -11906,12 +12209,12 @@ export type InvoiceUpdateManyDataInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'creditTerm', alias?: string  } 
   
-export interface SalemanUpsertWithoutPaymentsInput {
-  update?: SalemanUpdateWithoutPaymentsDataInput
-  create?: SalemanCreateWithoutPaymentsInput
+export interface SalesmanUpsertWithoutPaymentsInput {
+  update?: SalesmanUpdateWithoutPaymentsDataInput
+  create?: SalesmanCreateWithoutPaymentsInput
 }
-export type SalemanUpsertWithoutPaymentsInputInputObject =
-  | Extract<keyof SalemanUpsertWithoutPaymentsInput, string>
+export type SalesmanUpsertWithoutPaymentsInputInputObject =
+  | Extract<keyof SalesmanUpsertWithoutPaymentsInput, string>
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
@@ -12256,23 +12559,23 @@ export type UserUpsertWithoutPaymentsInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface PaymentUpsertWithWhereUniqueWithoutSalemanInput {
+export interface PaymentUpsertWithWhereUniqueWithoutSalesmanInput {
   where?: PaymentWhereUniqueInput
-  update?: PaymentUpdateWithoutSalemanDataInput
-  create?: PaymentCreateWithoutSalemanInput
+  update?: PaymentUpdateWithoutSalesmanDataInput
+  create?: PaymentCreateWithoutSalesmanInput
 }
-export type PaymentUpsertWithWhereUniqueWithoutSalemanInputInputObject =
-  | Extract<keyof PaymentUpsertWithWhereUniqueWithoutSalemanInput, string>
+export type PaymentUpsertWithWhereUniqueWithoutSalesmanInputInputObject =
+  | Extract<keyof PaymentUpsertWithWhereUniqueWithoutSalesmanInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface SalemanUpsertWithoutQuotationsInput {
-  update?: SalemanUpdateWithoutQuotationsDataInput
-  create?: SalemanCreateWithoutQuotationsInput
+export interface SalesmanUpsertWithoutQuotationsInput {
+  update?: SalesmanUpdateWithoutQuotationsDataInput
+  create?: SalesmanCreateWithoutQuotationsInput
 }
-export type SalemanUpsertWithoutQuotationsInputInputObject =
-  | Extract<keyof SalemanUpsertWithoutQuotationsInput, string>
+export type SalesmanUpsertWithoutQuotationsInputInputObject =
+  | Extract<keyof SalesmanUpsertWithoutQuotationsInput, string>
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
@@ -12324,7 +12627,7 @@ export type QuotationUpdateOneWithoutProductItemsInputInputObject =
   
 export interface QuotationUpdateWithoutProductItemsDataInput {
   docId?: string | null
-  saleman?: SalemanUpdateOneRequiredWithoutQuotationsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
@@ -12332,7 +12635,7 @@ export interface QuotationUpdateWithoutProductItemsDataInput {
 export type QuotationUpdateWithoutProductItemsDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutProductItemsDataInput, string>
   | { name: 'docId', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -12506,19 +12809,23 @@ export type ShoppingCartUpsertWithoutCustomerInputInputObject =
   | { name: 'create', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
+  runningId?: number | null
   type?: string | null
   name?: string | null
   email?: string | null
   password?: string | null
   phone?: string | null
+  activated?: boolean | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
+  | { name: 'runningId', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'activated', alias?: string  } 
   
 export interface AddressCreateInput {
   id?: string | null
@@ -12566,7 +12873,7 @@ export interface PaymentCreateInput {
   docId?: string
   amount?: string
   customer?: UserCreateOneWithoutPaymentsInput
-  saleman?: SalemanCreateOneWithoutPaymentsInput
+  salesman?: SalesmanCreateOneWithoutPaymentsInput
   quotation?: QuotationCreateOneWithoutPaymentInput
   Invoice?: InvoiceCreateOneWithoutPaymentInput | null
 }
@@ -12576,7 +12883,7 @@ export type PaymentCreateInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'customer', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   | { name: 'Invoice', alias?: string  } 
   
@@ -12584,7 +12891,7 @@ export interface PaymentUpdateInput {
   docId?: string | null
   amount?: string | null
   customer?: UserUpdateOneRequiredWithoutPaymentsInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutPaymentsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutPaymentsInput | null
   quotation?: QuotationUpdateOneRequiredWithoutPaymentInput | null
   Invoice?: InvoiceUpdateOneWithoutPaymentInput | null
 }
@@ -12593,7 +12900,7 @@ export type PaymentUpdateInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'customer', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   | { name: 'Invoice', alias?: string  } 
   
@@ -12606,36 +12913,59 @@ export type PaymentUpdateManyMutationInputInputObject =
   | { name: 'docId', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   
-export interface SalemanCreateInput {
+export interface SalesmanCreateInput {
   id?: string | null
-  payments?: PaymentCreateManyWithoutSalemanInput | null
-  invoices?: InvoiceCreateManyWithoutSalemanInput | null
-  quotations?: QuotationCreateManyWithoutSalemanInput | null
+  name?: string
+  email?: string
+  phone?: string
+  payments?: PaymentCreateManyWithoutSalesmanInput | null
+  invoices?: InvoiceCreateManyWithoutSalesmanInput | null
+  quotations?: QuotationCreateManyWithoutSalesmanInput | null
 }
-export type SalemanCreateInputInputObject =
-  | Extract<keyof SalemanCreateInput, string>
+export type SalesmanCreateInputInputObject =
+  | Extract<keyof SalesmanCreateInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'invoices', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   
-export interface SalemanUpdateInput {
-  payments?: PaymentUpdateManyWithoutSalemanInput | null
-  invoices?: InvoiceUpdateManyWithoutSalemanInput | null
-  quotations?: QuotationUpdateManyWithoutSalemanInput | null
+export interface SalesmanUpdateInput {
+  name?: string | null
+  email?: string | null
+  phone?: string | null
+  payments?: PaymentUpdateManyWithoutSalesmanInput | null
+  invoices?: InvoiceUpdateManyWithoutSalesmanInput | null
+  quotations?: QuotationUpdateManyWithoutSalesmanInput | null
 }
-export type SalemanUpdateInputInputObject =
-  | Extract<keyof SalemanUpdateInput, string>
+export type SalesmanUpdateInputInputObject =
+  | Extract<keyof SalesmanUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   | { name: 'payments', alias?: string  } 
   | { name: 'invoices', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
+  
+export interface SalesmanUpdateManyMutationInput {
+  name?: string | null
+  email?: string | null
+  phone?: string | null
+}
+export type SalesmanUpdateManyMutationInputInputObject =
+  | Extract<keyof SalesmanUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'phone', alias?: string  } 
   
 export interface InvoiceUpdateInput {
   docId?: string | null
   creditTerm?: string | null
   user?: UserUpdateOneRequiredInput | null
   quotation?: QuotationUpdateOneRequiredInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutInvoicesInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutInvoicesInput | null
   address?: AddressUpdateOneWithoutInvoicesInput | null
   payment?: PaymentUpdateOneWithoutInvoiceInput | null
 }
@@ -12645,7 +12975,7 @@ export type InvoiceUpdateInputInputObject =
   | { name: 'creditTerm', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'address', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   
@@ -12898,7 +13228,7 @@ export type ShoppingCartUpdateManyMutationInputInputObject =
 export interface QuotationUpdateInput {
   docId?: string | null
   productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  saleman?: SalemanUpdateOneRequiredWithoutQuotationsInput | null
+  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
@@ -12907,7 +13237,7 @@ export type QuotationUpdateInputInputObject =
   | Extract<keyof QuotationUpdateInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'productItems', alias?: string  } 
-  | { name: 'saleman', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -12982,18 +13312,18 @@ export type PaymentSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface SalemanSubscriptionWhereInput {
+export interface SalesmanSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
   updatedFields_contains_every?: string[]
   updatedFields_contains_some?: string[]
-  node?: SalemanWhereInput | null
-  AND?: SalemanSubscriptionWhereInput[]
-  OR?: SalemanSubscriptionWhereInput[]
-  NOT?: SalemanSubscriptionWhereInput[]
+  node?: SalesmanWhereInput | null
+  AND?: SalesmanSubscriptionWhereInput[]
+  OR?: SalesmanSubscriptionWhereInput[]
+  NOT?: SalesmanSubscriptionWhereInput[]
 }
-export type SalemanSubscriptionWhereInputInputObject =
-  | Extract<keyof SalemanSubscriptionWhereInput, string>
+export type SalesmanSubscriptionWhereInputInputObject =
+  | Extract<keyof SalesmanSubscriptionWhereInput, string>
   | { name: 'mutation_in', alias?: string  } 
   | { name: 'updatedFields_contains', alias?: string  } 
   | { name: 'updatedFields_contains_every', alias?: string  } 
@@ -13256,6 +13586,8 @@ export type AddressOrderByInputValues =
 export type UserOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'runningId_ASC'
+  | 'runningId_DESC'
   | 'type_ASC'
   | 'type_DESC'
   | 'name_ASC'
@@ -13266,14 +13598,22 @@ export type UserOrderByInputValues =
   | 'password_DESC'
   | 'phone_ASC'
   | 'phone_DESC'
+  | 'activated_ASC'
+  | 'activated_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
-export type SalemanOrderByInputValues =
+export type SalesmanOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'email_ASC'
+  | 'email_DESC'
+  | 'phone_ASC'
+  | 'phone_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

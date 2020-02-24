@@ -1,10 +1,12 @@
 type User {
   id: ID! @id
+  runningId: Int
   type: String
   name: String!
   email: String! @unique
   password: String!
   phone: String!
+  activated: Boolean! @default(value: true) 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   shoppingCart: ShoppingCart!
@@ -32,14 +34,17 @@ type Payment {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   customer: User! @relation(link: INLINE)
-  saleman: Saleman! @relation(link: INLINE)
+  salesman: Salesman! @relation(link: INLINE)
   quotation: Quotation! @relation(link: INLINE)
   Invoice: Invoice 
 
 }
 
-type Saleman {
+type Salesman {
   id: ID! @id
+  name: String!
+  email: String!
+  phone: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   payments: [Payment]
@@ -57,7 +62,7 @@ type Invoice {
   updatedAt: DateTime! @updatedAt
   user: User! @relation(link: INLINE)
   quotation: Quotation! @relation(link: INLINE)
-  saleman: Saleman! @relation(link: INLINE)
+  salesman: Salesman! @relation(link: INLINE)
   address: Address @relation(link: INLINE)
   payment: Payment @relation(link: INLINE)
 
@@ -136,7 +141,7 @@ type Quotation {
   productItems: [ProductItem!]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  saleman: Saleman! @relation(link: INLINE)
+  salesman: Salesman! @relation(link: INLINE)
   payment: Payment 
   shipping: Shipping 
   customer: User! @relation(link: INLINE)

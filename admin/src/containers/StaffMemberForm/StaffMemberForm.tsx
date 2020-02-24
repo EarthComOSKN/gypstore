@@ -35,16 +35,13 @@ const GET_STUFFS = gql`
 `;
 
 const CREATE_STUFF = gql`
-  mutation createStuff($stuff: AddStuffInput!) {
-    createStuff(stuff: $stuff) {
+  mutation createSalesman($data: SalesmanCreateInput!) {
+    createSalesman(data: $data) {
       id
-      first_name
-      last_name
       name
       email
-      contact_number
-      creation_date
-      role
+      phone
+      createdAt
     }
   }
 `;
@@ -57,32 +54,35 @@ const StuffMemberForm: React.FC<Props> = props => {
     dispatch
   ]);
   const { register, handleSubmit } = useForm();
-  const [country, setCountry] = React.useState(undefined);
+  const [country, setCountry] = React.useState({
+    label: "Thailand (ไทย)",
+    id: "TH",
+    dialCode: "+66"
+  });
   const [checked, setChecked] = React.useState(true);
   const [text, setText] = React.useState("");
 
   const [createStuff] = useMutation(CREATE_STUFF, {
     update(cache, { data: { createStuff } }) {
-      const { stuffs } = cache.readQuery({
+      const { salesmen } = cache.readQuery({
         query: GET_STUFFS
       });
 
       cache.writeQuery({
         query: GET_STUFFS,
-        data: { stuffs: stuffs.concat([createStuff]) }
+        data: { salesmen: salesmen.concat([createStuff]) }
       });
     }
   });
   const onSubmit = data => {
-    const newStuff = {
-      id: uuidv4(),
-      ...data,
-      role: data.role ? "admin" : "stuff",
-      creation_date: new Date()
-    };
     console.log(data);
-    createStuff({ variables: { stuff: newStuff } });
-    closeDrawer();
+    const newStuff = {
+      name: data.first_name + " " + data.last_name,
+      phone: data.contact_number,
+      email: data.email
+    };
+    createStuff({ variables: { data: newStuff } });
+    // closeDrawer();
   };
 
   return (
@@ -134,7 +134,10 @@ const StuffMemberForm: React.FC<Props> = props => {
                   <FormLabel>Contact No.</FormLabel>
                   <PhoneInput
                     country={country}
-                    onCountryChange={({ option }) => setCountry(option)}
+                    onCountryChange={({ option }) => {
+                      console.log(option);
+                      setCountry(option);
+                    }}
                     text={text}
                     onTextChange={e => setText(e.currentTarget.value)}
                     inputRef={register({ required: true })}
@@ -154,7 +157,7 @@ const StuffMemberForm: React.FC<Props> = props => {
             </Col>
           </Row>
 
-          <Row>
+          {/* <Row>
             <Col lg={4}>
               <FieldDetails>
                 Expand or restrict user’s permissions to access certain part of
@@ -182,7 +185,7 @@ const StuffMemberForm: React.FC<Props> = props => {
                 </FormFields>
               </DrawerBox>
             </Col>
-          </Row>
+          </Row> */}
         </Scrollbars>
 
         <ButtonGroup>

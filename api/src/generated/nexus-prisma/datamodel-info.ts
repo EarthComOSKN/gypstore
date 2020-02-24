@@ -8,7 +8,7 @@ export default {
     User: ['id', 'email'],
     Address: ['id'],
     Payment: ['id'],
-    Saleman: ['id'],
+    Salesman: ['id'],
     Invoice: ['id'],
     Shipping: ['id'],
     Category: ['id'],
@@ -652,7 +652,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "args": [
               {
@@ -663,7 +663,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanWhereUniqueInput",
+                    "name": "SalesmanWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -672,14 +672,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Saleman",
+              "name": "Salesman",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "salemen",
+            "name": "salesmen",
             "description": null,
             "args": [
               {
@@ -687,7 +687,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanWhereInput",
+                  "name": "SalesmanWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -697,7 +697,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "SalemanOrderByInput",
+                  "name": "SalesmanOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -761,7 +761,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Saleman",
+                  "name": "Salesman",
                   "ofType": null
                 }
               }
@@ -770,7 +770,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "salemenConnection",
+            "name": "salesmenConnection",
             "description": null,
             "args": [
               {
@@ -778,7 +778,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanWhereInput",
+                  "name": "SalesmanWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -788,7 +788,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "SalemanOrderByInput",
+                  "name": "SalesmanOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -849,7 +849,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "SalemanConnection",
+                "name": "SalesmanConnection",
                 "ofType": null
               }
             },
@@ -2397,6 +2397,18 @@ export default {
             "deprecationReason": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "type",
             "description": null,
             "args": [],
@@ -2466,6 +2478,22 @@ export default {
               "ofType": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
                 "ofType": null
               }
             },
@@ -2796,6 +2824,26 @@ export default {
         ],
         "inputFields": null,
         "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Int",
+        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -5488,26 +5536,6 @@ export default {
         "possibleTypes": null
       },
       {
-        "kind": "SCALAR",
-        "name": "Int",
-        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Boolean",
-        "description": "The `Boolean` scalar type represents `true` or `false`.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "INPUT_OBJECT",
         "name": "CategoryWhereInput",
         "description": null,
@@ -6828,6 +6856,102 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -7603,6 +7727,26 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -8499,11 +8643,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereInput",
+              "name": "SalesmanWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -8599,7 +8743,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanWhereInput",
+        "name": "SalesmanWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8755,6 +8899,474 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -9052,7 +9664,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanWhereInput",
+                  "name": "SalesmanWhereInput",
                   "ofType": null
                 }
               }
@@ -9070,7 +9682,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanWhereInput",
+                  "name": "SalesmanWhereInput",
                   "ofType": null
                 }
               }
@@ -9088,7 +9700,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanWhereInput",
+                  "name": "SalesmanWhereInput",
                   "ofType": null
                 }
               }
@@ -9777,11 +10389,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereInput",
+              "name": "SalesmanWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10552,11 +11164,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereInput",
+              "name": "SalesmanWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -13320,7 +13932,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "args": [],
             "type": {
@@ -13328,7 +13940,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Saleman",
+                "name": "Salesman",
                 "ofType": null
               }
             },
@@ -13383,7 +13995,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "Saleman",
+        "name": "Salesman",
         "description": null,
         "fields": [
           {
@@ -13396,6 +14008,54 @@ export default {
               "ofType": {
                 "kind": "SCALAR",
                 "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -13886,7 +14546,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "args": [],
             "type": {
@@ -13894,7 +14554,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Saleman",
+                "name": "Salesman",
                 "ofType": null
               }
             },
@@ -14053,7 +14713,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "args": [],
             "type": {
@@ -14061,7 +14721,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Saleman",
+                "name": "Salesman",
                 "ofType": null
               }
             },
@@ -14847,6 +15507,18 @@ export default {
             "deprecationReason": null
           },
           {
+            "name": "runningId_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "runningId_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "type_ASC",
             "description": null,
             "isDeprecated": false,
@@ -14902,6 +15574,18 @@ export default {
           },
           {
             "name": "phone_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "activated_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "activated_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -15443,7 +16127,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanWhereUniqueInput",
+        "name": "SalesmanWhereUniqueInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -15464,7 +16148,7 @@ export default {
       },
       {
         "kind": "ENUM",
-        "name": "SalemanOrderByInput",
+        "name": "SalesmanOrderByInput",
         "description": null,
         "fields": null,
         "inputFields": null,
@@ -15478,6 +16162,42 @@ export default {
           },
           {
             "name": "id_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "email_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "email_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "phone_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "phone_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -15511,7 +16231,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "SalemanConnection",
+        "name": "SalesmanConnection",
         "description": null,
         "fields": [
           {
@@ -15542,7 +16262,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "SalemanEdge",
+                  "name": "SalesmanEdge",
                   "ofType": null
                 }
               }
@@ -15559,7 +16279,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "AggregateSaleman",
+                "name": "AggregateSalesman",
                 "ofType": null
               }
             },
@@ -15574,7 +16294,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "SalemanEdge",
+        "name": "SalesmanEdge",
         "description": null,
         "fields": [
           {
@@ -15586,7 +16306,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Saleman",
+                "name": "Salesman",
                 "ofType": null
               }
             },
@@ -15617,7 +16337,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "AggregateSaleman",
+        "name": "AggregateSalesman",
         "description": null,
         "fields": [
           {
@@ -17559,7 +18279,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "createSaleman",
+            "name": "createSalesman",
             "description": null,
             "args": [
               {
@@ -17570,7 +18290,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanCreateInput",
+                    "name": "SalesmanCreateInput",
                     "ofType": null
                   }
                 },
@@ -17582,7 +18302,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Saleman",
+                "name": "Salesman",
                 "ofType": null
               }
             },
@@ -17590,7 +18310,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "updateSaleman",
+            "name": "updateSalesman",
             "description": null,
             "args": [
               {
@@ -17601,7 +18321,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanUpdateInput",
+                    "name": "SalesmanUpdateInput",
                     "ofType": null
                   }
                 },
@@ -17615,7 +18335,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanWhereUniqueInput",
+                    "name": "SalesmanWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -17624,14 +18344,55 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Saleman",
+              "name": "Salesman",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "upsertSaleman",
+            "name": "updateManySalesmen",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "SalesmanUpdateManyMutationInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "SalesmanWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upsertSalesman",
             "description": null,
             "args": [
               {
@@ -17642,7 +18403,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanWhereUniqueInput",
+                    "name": "SalesmanWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -17656,7 +18417,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanCreateInput",
+                    "name": "SalesmanCreateInput",
                     "ofType": null
                   }
                 },
@@ -17670,7 +18431,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanUpdateInput",
+                    "name": "SalesmanUpdateInput",
                     "ofType": null
                   }
                 },
@@ -17682,7 +18443,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Saleman",
+                "name": "Salesman",
                 "ofType": null
               }
             },
@@ -17690,7 +18451,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "deleteSaleman",
+            "name": "deleteSalesman",
             "description": null,
             "args": [
               {
@@ -17701,7 +18462,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SalemanWhereUniqueInput",
+                    "name": "SalesmanWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -17710,14 +18471,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Saleman",
+              "name": "Salesman",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "deleteManySalemen",
+            "name": "deleteManySalesmen",
             "description": null,
             "args": [
               {
@@ -17725,7 +18486,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanWhereInput",
+                  "name": "SalesmanWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -19348,6 +20109,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -19410,6 +20181,16 @@ export default {
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -20426,6 +21207,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -20488,6 +21279,16 @@ export default {
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -20614,14 +21415,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutQuotationsInput",
+                "name": "SalesmanCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
             },
@@ -20945,7 +21746,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanCreateOneWithoutQuotationsInput",
+        "name": "SalesmanCreateOneWithoutQuotationsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -20954,7 +21755,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanCreateWithoutQuotationsInput",
+              "name": "SalesmanCreateWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -20964,7 +21765,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereUniqueInput",
+              "name": "SalesmanWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -20976,7 +21777,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanCreateWithoutQuotationsInput",
+        "name": "SalesmanCreateWithoutQuotationsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -20991,11 +21792,53 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "payments",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateManyWithoutSalemanInput",
+              "name": "PaymentCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -21005,7 +21848,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "InvoiceCreateManyWithoutSalemanInput",
+              "name": "InvoiceCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -21017,7 +21860,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentCreateManyWithoutSalemanInput",
+        "name": "PaymentCreateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -21032,7 +21875,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "PaymentCreateWithoutSalemanInput",
+                  "name": "PaymentCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -21064,7 +21907,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentCreateWithoutSalemanInput",
+        "name": "PaymentCreateWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -21197,6 +22040,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -21259,6 +22112,16 @@ export default {
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -21537,14 +22400,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutInvoicesInput",
+                "name": "SalesmanCreateOneWithoutInvoicesInput",
                 "ofType": null
               }
             },
@@ -21668,14 +22531,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutQuotationsInput",
+                "name": "SalesmanCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
             },
@@ -21810,14 +22673,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutPaymentsInput",
+                "name": "SalesmanCreateOneWithoutPaymentsInput",
                 "ofType": null
               }
             },
@@ -21840,7 +22703,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanCreateOneWithoutPaymentsInput",
+        "name": "SalesmanCreateOneWithoutPaymentsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -21849,7 +22712,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanCreateWithoutPaymentsInput",
+              "name": "SalesmanCreateWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -21859,7 +22722,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereUniqueInput",
+              "name": "SalesmanWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -21871,7 +22734,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanCreateWithoutPaymentsInput",
+        "name": "SalesmanCreateWithoutPaymentsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -21886,11 +22749,53 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "invoices",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "InvoiceCreateManyWithoutSalemanInput",
+              "name": "InvoiceCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -21900,7 +22805,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateManyWithoutSalemanInput",
+              "name": "QuotationCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -21912,7 +22817,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "InvoiceCreateManyWithoutSalemanInput",
+        "name": "InvoiceCreateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -21927,7 +22832,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "InvoiceCreateWithoutSalemanInput",
+                  "name": "InvoiceCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -21959,7 +22864,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "InvoiceCreateWithoutSalemanInput",
+        "name": "InvoiceCreateWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -22206,6 +23111,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -22268,6 +23183,16 @@ export default {
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -22402,14 +23327,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutPaymentsInput",
+                "name": "SalesmanCreateOneWithoutPaymentsInput",
                 "ofType": null
               }
             },
@@ -22516,14 +23441,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutQuotationsInput",
+                "name": "SalesmanCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
             },
@@ -22784,14 +23709,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutInvoicesInput",
+                "name": "SalesmanCreateOneWithoutInvoicesInput",
                 "ofType": null
               }
             },
@@ -22824,7 +23749,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanCreateOneWithoutInvoicesInput",
+        "name": "SalesmanCreateOneWithoutInvoicesInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -22833,7 +23758,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanCreateWithoutInvoicesInput",
+              "name": "SalesmanCreateWithoutInvoicesInput",
               "ofType": null
             },
             "defaultValue": null
@@ -22843,7 +23768,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereUniqueInput",
+              "name": "SalesmanWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -22855,7 +23780,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanCreateWithoutInvoicesInput",
+        "name": "SalesmanCreateWithoutInvoicesInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -22870,11 +23795,53 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "payments",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateManyWithoutSalemanInput",
+              "name": "PaymentCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -22884,7 +23851,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateManyWithoutSalemanInput",
+              "name": "QuotationCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -22896,7 +23863,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateManyWithoutSalemanInput",
+        "name": "QuotationCreateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -22911,7 +23878,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationCreateWithoutSalemanInput",
+                  "name": "QuotationCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -22943,7 +23910,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateWithoutSalemanInput",
+        "name": "QuotationCreateWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -23068,6 +24035,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -23130,6 +24107,16 @@ export default {
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -23262,14 +24249,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutPaymentsInput",
+                "name": "SalesmanCreateOneWithoutPaymentsInput",
                 "ofType": null
               }
             },
@@ -23502,14 +24489,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutInvoicesInput",
+                "name": "SalesmanCreateOneWithoutInvoicesInput",
                 "ofType": null
               }
             },
@@ -23740,14 +24727,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutQuotationsInput",
+                "name": "SalesmanCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
             },
@@ -23844,14 +24831,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutQuotationsInput",
+                "name": "SalesmanCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
             },
@@ -23903,6 +24890,16 @@ export default {
         "fields": null,
         "inputFields": [
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -23948,6 +24945,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -25271,6 +26278,16 @@ export default {
         "fields": null,
         "inputFields": [
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -25316,6 +26333,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -25594,11 +26621,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28404,7 +29431,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpdateOneRequiredWithoutQuotationsInput",
+        "name": "SalesmanUpdateOneRequiredWithoutQuotationsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -28413,7 +29440,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanCreateWithoutQuotationsInput",
+              "name": "SalesmanCreateWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28423,7 +29450,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateWithoutQuotationsDataInput",
+              "name": "SalesmanUpdateWithoutQuotationsDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28433,7 +29460,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpsertWithoutQuotationsInput",
+              "name": "SalesmanUpsertWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28443,7 +29470,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereUniqueInput",
+              "name": "SalesmanWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28455,16 +29482,46 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpdateWithoutQuotationsDataInput",
+        "name": "SalesmanUpdateWithoutQuotationsDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
           {
             "name": "payments",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateManyWithoutSalemanInput",
+              "name": "PaymentUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28474,7 +29531,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "InvoiceUpdateManyWithoutSalemanInput",
+              "name": "InvoiceUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28486,7 +29543,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateManyWithoutSalemanInput",
+        "name": "PaymentUpdateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -28501,7 +29558,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "PaymentCreateWithoutSalemanInput",
+                  "name": "PaymentCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -28591,7 +29648,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "PaymentUpdateWithWhereUniqueWithoutSalemanInput",
+                  "name": "PaymentUpdateWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -28609,7 +29666,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "PaymentUpsertWithWhereUniqueWithoutSalemanInput",
+                  "name": "PaymentUpsertWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -28659,7 +29716,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateWithWhereUniqueWithoutSalemanInput",
+        "name": "PaymentUpdateWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -28685,7 +29742,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PaymentUpdateWithoutSalemanDataInput",
+                "name": "PaymentUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -28698,7 +29755,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateWithoutSalemanDataInput",
+        "name": "PaymentUpdateWithoutSalesmanDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -28815,6 +29872,16 @@ export default {
         "fields": null,
         "inputFields": [
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -28860,6 +29927,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -29421,11 +30498,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutInvoicesInput",
+              "name": "SalesmanUpdateOneRequiredWithoutInvoicesInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29503,6 +30580,16 @@ export default {
         "fields": null,
         "inputFields": [
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -29548,6 +30635,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -29836,11 +30933,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29872,7 +30969,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpdateOneRequiredWithoutPaymentsInput",
+        "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -29881,7 +30978,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanCreateWithoutPaymentsInput",
+              "name": "SalesmanCreateWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29891,7 +30988,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateWithoutPaymentsDataInput",
+              "name": "SalesmanUpdateWithoutPaymentsDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29901,7 +30998,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpsertWithoutPaymentsInput",
+              "name": "SalesmanUpsertWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29911,7 +31008,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereUniqueInput",
+              "name": "SalesmanWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29923,16 +31020,46 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpdateWithoutPaymentsDataInput",
+        "name": "SalesmanUpdateWithoutPaymentsDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
           {
             "name": "invoices",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "InvoiceUpdateManyWithoutSalemanInput",
+              "name": "InvoiceUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29942,7 +31069,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateManyWithoutSalemanInput",
+              "name": "QuotationUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -29954,7 +31081,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "InvoiceUpdateManyWithoutSalemanInput",
+        "name": "InvoiceUpdateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -29969,7 +31096,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "InvoiceCreateWithoutSalemanInput",
+                  "name": "InvoiceCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -30059,7 +31186,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "InvoiceUpdateWithWhereUniqueWithoutSalemanInput",
+                  "name": "InvoiceUpdateWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -30077,7 +31204,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "InvoiceUpsertWithWhereUniqueWithoutSalemanInput",
+                  "name": "InvoiceUpsertWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -30127,7 +31254,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "InvoiceUpdateWithWhereUniqueWithoutSalemanInput",
+        "name": "InvoiceUpdateWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -30153,7 +31280,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "InvoiceUpdateWithoutSalemanDataInput",
+                "name": "InvoiceUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -30166,7 +31293,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "InvoiceUpdateWithoutSalemanDataInput",
+        "name": "InvoiceUpdateWithoutSalesmanDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -30313,11 +31440,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30465,11 +31592,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30607,11 +31734,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutInvoicesInput",
+              "name": "SalesmanUpdateOneRequiredWithoutInvoicesInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30633,7 +31760,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpdateOneRequiredWithoutInvoicesInput",
+        "name": "SalesmanUpdateOneRequiredWithoutInvoicesInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -30642,7 +31769,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanCreateWithoutInvoicesInput",
+              "name": "SalesmanCreateWithoutInvoicesInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30652,7 +31779,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateWithoutInvoicesDataInput",
+              "name": "SalesmanUpdateWithoutInvoicesDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30662,7 +31789,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpsertWithoutInvoicesInput",
+              "name": "SalesmanUpsertWithoutInvoicesInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30672,7 +31799,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereUniqueInput",
+              "name": "SalesmanWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30684,16 +31811,46 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpdateWithoutInvoicesDataInput",
+        "name": "SalesmanUpdateWithoutInvoicesDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
           {
             "name": "payments",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateManyWithoutSalemanInput",
+              "name": "PaymentUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30703,7 +31860,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateManyWithoutSalemanInput",
+              "name": "QuotationUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30715,7 +31872,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateManyWithoutSalemanInput",
+        "name": "QuotationUpdateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -30730,7 +31887,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationCreateWithoutSalemanInput",
+                  "name": "QuotationCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -30820,7 +31977,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationUpdateWithWhereUniqueWithoutSalemanInput",
+                  "name": "QuotationUpdateWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -30838,7 +31995,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationUpsertWithWhereUniqueWithoutSalemanInput",
+                  "name": "QuotationUpsertWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -30888,7 +32045,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateWithWhereUniqueWithoutSalemanInput",
+        "name": "QuotationUpdateWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -30914,7 +32071,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutSalemanDataInput",
+                "name": "QuotationUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -30927,7 +32084,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateWithoutSalemanDataInput",
+        "name": "QuotationUpdateWithoutSalesmanDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -31216,11 +32373,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutInvoicesInput",
+              "name": "SalesmanUpdateOneRequiredWithoutInvoicesInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31430,6 +32587,16 @@ export default {
         "fields": null,
         "inputFields": [
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -31475,6 +32642,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -31904,11 +33081,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31996,6 +33173,16 @@ export default {
         "fields": null,
         "inputFields": [
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -32041,6 +33228,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -33259,11 +34456,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -33361,11 +34558,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -33694,7 +34891,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpsertWithWhereUniqueWithoutSalemanInput",
+        "name": "QuotationUpsertWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -33720,7 +34917,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutSalemanDataInput",
+                "name": "QuotationUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -33734,7 +34931,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateWithoutSalemanInput",
+                "name": "QuotationCreateWithoutSalesmanInput",
                 "ofType": null
               }
             },
@@ -34376,7 +35573,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpsertWithoutInvoicesInput",
+        "name": "SalesmanUpsertWithoutInvoicesInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -34388,7 +35585,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanUpdateWithoutInvoicesDataInput",
+                "name": "SalesmanUpdateWithoutInvoicesDataInput",
                 "ofType": null
               }
             },
@@ -34402,7 +35599,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateWithoutInvoicesInput",
+                "name": "SalesmanCreateWithoutInvoicesInput",
                 "ofType": null
               }
             },
@@ -34532,7 +35729,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "InvoiceUpsertWithWhereUniqueWithoutSalemanInput",
+        "name": "InvoiceUpsertWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -34558,7 +35755,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "InvoiceUpdateWithoutSalemanDataInput",
+                "name": "InvoiceUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -34572,7 +35769,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "InvoiceCreateWithoutSalemanInput",
+                "name": "InvoiceCreateWithoutSalesmanInput",
                 "ofType": null
               }
             },
@@ -35380,7 +36577,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpsertWithoutPaymentsInput",
+        "name": "SalesmanUpsertWithoutPaymentsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -35392,7 +36589,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanUpdateWithoutPaymentsDataInput",
+                "name": "SalesmanUpdateWithoutPaymentsDataInput",
                 "ofType": null
               }
             },
@@ -35406,7 +36603,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateWithoutPaymentsInput",
+                "name": "SalesmanCreateWithoutPaymentsInput",
                 "ofType": null
               }
             },
@@ -37246,7 +38443,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpsertWithWhereUniqueWithoutSalemanInput",
+        "name": "PaymentUpsertWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -37272,7 +38469,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PaymentUpdateWithoutSalemanDataInput",
+                "name": "PaymentUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -37286,7 +38483,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PaymentCreateWithoutSalemanInput",
+                "name": "PaymentCreateWithoutSalesmanInput",
                 "ofType": null
               }
             },
@@ -37299,7 +38496,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpsertWithoutQuotationsInput",
+        "name": "SalesmanUpsertWithoutQuotationsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -37311,7 +38508,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanUpdateWithoutQuotationsDataInput",
+                "name": "SalesmanUpdateWithoutQuotationsDataInput",
                 "ofType": null
               }
             },
@@ -37325,7 +38522,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateWithoutQuotationsInput",
+                "name": "SalesmanCreateWithoutQuotationsInput",
                 "ofType": null
               }
             },
@@ -37555,11 +38752,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -38450,6 +39647,16 @@ export default {
         "fields": null,
         "inputFields": [
           {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "type",
             "description": null,
             "type": {
@@ -38495,6 +39702,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -38775,14 +39992,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalemanCreateOneWithoutPaymentsInput",
+                "name": "SalesmanCreateOneWithoutPaymentsInput",
                 "ofType": null
               }
             },
@@ -38854,11 +40071,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -38921,7 +40138,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanCreateInput",
+        "name": "SalesmanCreateInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -38936,11 +40153,53 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "payments",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateManyWithoutSalemanInput",
+              "name": "PaymentCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -38950,7 +40209,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "InvoiceCreateManyWithoutSalemanInput",
+              "name": "InvoiceCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -38960,7 +40219,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateManyWithoutSalemanInput",
+              "name": "QuotationCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -38972,16 +40231,46 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanUpdateInput",
+        "name": "SalesmanUpdateInput",
         "description": null,
         "fields": null,
         "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
           {
             "name": "payments",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateManyWithoutSalemanInput",
+              "name": "PaymentUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -38991,7 +40280,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "InvoiceUpdateManyWithoutSalemanInput",
+              "name": "InvoiceUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -39001,7 +40290,48 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateManyWithoutSalemanInput",
+              "name": "QuotationUpdateManyWithoutSalesmanInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SalesmanUpdateManyMutationInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -39058,11 +40388,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutInvoicesInput",
+              "name": "SalesmanUpdateOneRequiredWithoutInvoicesInput",
               "ofType": null
             },
             "defaultValue": null
@@ -40149,11 +41479,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanUpdateOneRequiredWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneRequiredWithoutQuotationsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -40289,7 +41619,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saleman",
+            "name": "salesman",
             "description": null,
             "args": [
               {
@@ -40297,7 +41627,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanSubscriptionWhereInput",
+                  "name": "SalesmanSubscriptionWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -40305,7 +41635,7 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "SalemanSubscriptionPayload",
+              "name": "SalesmanSubscriptionPayload",
               "ofType": null
             },
             "isDeprecated": false,
@@ -40739,6 +42069,18 @@ export default {
             "deprecationReason": null
           },
           {
+            "name": "runningId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "type",
             "description": null,
             "args": [],
@@ -40808,6 +42150,22 @@ export default {
               "ofType": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
                 "ofType": null
               }
             },
@@ -41456,7 +42814,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalemanSubscriptionWhereInput",
+        "name": "SalesmanSubscriptionWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -41529,7 +42887,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalemanWhereInput",
+              "name": "SalesmanWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -41545,7 +42903,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanSubscriptionWhereInput",
+                  "name": "SalesmanSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -41563,7 +42921,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanSubscriptionWhereInput",
+                  "name": "SalesmanSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -41581,7 +42939,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SalemanSubscriptionWhereInput",
+                  "name": "SalesmanSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -41595,7 +42953,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "SalemanSubscriptionPayload",
+        "name": "SalesmanSubscriptionPayload",
         "description": null,
         "fields": [
           {
@@ -41620,7 +42978,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Saleman",
+              "name": "Salesman",
               "ofType": null
             },
             "isDeprecated": false,
@@ -41652,7 +43010,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "SalemanPreviousValues",
+              "name": "SalesmanPreviousValues",
               "ofType": null
             },
             "isDeprecated": false,
@@ -41666,7 +43024,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "SalemanPreviousValues",
+        "name": "SalesmanPreviousValues",
         "description": null,
         "fields": [
           {
@@ -41679,6 +43037,54 @@ export default {
               "ofType": {
                 "kind": "SCALAR",
                 "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
