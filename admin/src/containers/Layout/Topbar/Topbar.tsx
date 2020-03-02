@@ -156,7 +156,10 @@ const Topbar = ({ refs }: any) => {
           }}
         >
           <ProfileImg>
-            <Image src={UserImage} alt="user" />
+            <Image
+              src="https://www.tenforums.com/geek/gars/images/2/types/thumb__ser.png"
+              alt="user"
+            />
           </ProfileImg>
         </Popover>
       </TopbarRightSide>
