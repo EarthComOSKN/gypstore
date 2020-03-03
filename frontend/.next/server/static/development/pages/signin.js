@@ -88,7 +88,11 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
 /******/ 	return __webpack_require__(__webpack_require__.s = 4);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2151,8 +2155,13 @@ if (false) {} else {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
 /* harmony import */ var _src_features_register_SignInPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/features/register/SignInPage */ "./src/features/register/SignInPage.tsx");
 var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/pages/signin.tsx";
+=======
+/* harmony import */ var _src_features_category_CategoryPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../src/features/category/CategoryPage */ "./src/features/category/CategoryPage.tsx");
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/pages/category/[cid].tsx";
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2166,6 +2175,335 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
+=======
+/***/ "./src/component/Footer.tsx":
+/*!**********************************!*\
+  !*** ./src/component/Footer.tsx ***!
+  \**********************************/
+/*! exports provided: Footer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Footer", function() { return Footer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/component/Footer.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const FooterContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  display: flex;
+  flex-direction: column;
+  background: black;
+  padding: 1rem 7rem 0rem 7rem;
+`;
+const MainFooter = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  bottom: 0;
+
+  height: 18rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  & h2,
+  h3,
+  h4 {
+    color: #ff8e0a;
+  }
+  h5 {
+    font-size: 14px;
+    color: white;
+  }
+  color: white !important;
+
+  & > div {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: white;
+    :hover {
+      color: rgb(100, 100, 100);
+    }
+  }
+`;
+const SubFooter = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  display: flex;
+  justify-content: space-between;
+  border-top: .05rem solid white;
+  p {
+    padding-top: .5rem;
+    color: white;
+    font-size: 10px;
+  }
+`;
+const ContactUs = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  p {
+    margin-bottom: 0.5rem;
+    padding-left: 1.75rem;
+  }
+  a {
+    margin-bottom: 1.5rem;
+  }
+`;
+const Service = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  a {
+    color: white;
+    padding-bottom: 0.75rem;
+
+    :hover {
+      color: rgb(100, 100, 100);
+    }
+  }
+`;
+const Payment = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div``;
+const ContactLogoList = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  width: 8rem;
+  display: flex;
+  justify-content: space-between;
+  i {
+    font-size: 1.75em;
+  }
+`;
+const LineButton = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  img {
+    :hover {
+      opacity: 0.7;
+      transition: opacity .5s ease-out;
+      -moz-transition: opacity .5s ease-out;
+      -webkit-transition: opacity .5s ease-out;
+      -o-transition: opacity .5s ease-out;
+    }
+  }
+`;
+const LineQR = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.img`
+  margin-top: 1rem;
+  width: 8rem;
+`;
+const PaymentMethod = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.img`
+  width: 15rem;
+`;
+const Footer = () => {
+  return __jsx(FooterContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108
+    },
+    __self: undefined
+  }, __jsx(MainFooter, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 109
+    },
+    __self: undefined
+  }, __jsx(ContactUs, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110
+    },
+    __self: undefined
+  }, __jsx("h3", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 111
+    },
+    __self: undefined
+  }, "\u0E15\u0E34\u0E14\u0E15\u0E48\u0E2D\u0E40\u0E23\u0E32"), __jsx(ContactLogoList, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112
+    },
+    __self: undefined
+  }, __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+    type: "phone",
+    theme: "filled",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 114
+    },
+    __self: undefined
+  })), __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+    type: "facebook",
+    theme: "filled",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117
+    },
+    __self: undefined
+  })), __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 119
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+    type: "instagram",
+    theme: "filled",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 120
+    },
+    __self: undefined
+  }))), __jsx(LineButton, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 123
+    },
+    __self: undefined
+  }, __jsx("a", {
+    href: "https://lin.ee/rYWItfi",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 124
+    },
+    __self: undefined
+  }, __jsx("img", {
+    src: "/assets/line-add-friend.png",
+    alt: "\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19",
+    height: "36",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 124
+    },
+    __self: undefined
+  })))), __jsx(Service, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 130
+    },
+    __self: undefined
+  }, __jsx("h3", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 131
+    },
+    __self: undefined
+  }, "\u0E28\u0E39\u0E19\u0E22\u0E4C\u0E0A\u0E48\u0E27\u0E22\u0E40\u0E2B\u0E25\u0E37\u0E2D"), __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 132
+    },
+    __self: undefined
+  }, "\u0E15\u0E34\u0E14\u0E15\u0E48\u0E2D\u0E40\u0E23\u0E32"), __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 135
+    },
+    __self: undefined
+  }, "\u0E27\u0E34\u0E18\u0E35\u0E01\u0E32\u0E23\u0E2A\u0E31\u0E48\u0E07\u0E0B\u0E37\u0E49\u0E2D\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32"), __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138
+    },
+    __self: undefined
+  }, "\u0E27\u0E34\u0E18\u0E35\u0E01\u0E32\u0E23\u0E0A\u0E33\u0E23\u0E30\u0E40\u0E07\u0E34\u0E19"), __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141
+    },
+    __self: undefined
+  }, "\u0E01\u0E32\u0E23\u0E08\u0E31\u0E14\u0E2A\u0E48\u0E07\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32"), __jsx("a", {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 144
+    },
+    __self: undefined
+  }, "\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E01\u0E32\u0E23\u0E08\u0E31\u0E14\u0E2A\u0E48\u0E07")), __jsx(Payment, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 148
+    },
+    __self: undefined
+  }, __jsx("h3", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 149
+    },
+    __self: undefined
+  }, "\u0E01\u0E32\u0E23\u0E0A\u0E33\u0E23\u0E30\u0E40\u0E07\u0E34\u0E19"), __jsx(PaymentMethod, {
+    src: "/assets/payment-option.png",
+    alt: "payment",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 150
+    },
+    __self: undefined
+  }), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 151
+    },
+    __self: undefined
+  }), __jsx("h3", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 152
+    },
+    __self: undefined
+  }, "\u0E0A\u0E48\u0E27\u0E07\u0E40\u0E27\u0E25\u0E32\u0E40\u0E1B\u0E34\u0E14\u0E17\u0E33\u0E01\u0E32\u0E23"), __jsx("h5", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 153
+    },
+    __self: undefined
+  }, "\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C - \u0E28\u0E38\u0E01\u0E23\u0E4C 8.00-17.00 \u0E19.", __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 155
+    },
+    __self: undefined
+  }), "\u0E40\u0E2A\u0E32\u0E23\u0E4C 08.00-12.00 \u0E19."))), __jsx(SubFooter, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 160
+    },
+    __self: undefined
+  }, __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161
+    },
+    __self: undefined
+  }, "Copyright @ 2020  Gypstore Co., Ltd.  All Right Reserved."), __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 162
+    },
+    __self: undefined
+  }, "\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17 \u0E22\u0E34\u0E1B\u0E2A\u0E42\u0E15\u0E23\u0E4C \u0E08\u0E33\u0E01\u0E31\u0E14 \u0E40\u0E25\u0E02\u0E17\u0E35\u0E48 14/12 \u0E15\u0E33\u0E1A\u0E25\u0E1A\u0E36\u0E07\u0E04\u0E33\u0E1E\u0E23\u0E49\u0E2D\u0E22 \u0E2D\u0E33\u0E40\u0E20\u0E2D\u0E25\u0E33\u0E25\u0E39\u0E01\u0E01\u0E32 \u0E1B\u0E17\u0E38\u0E21\u0E18\u0E32\u0E19\u0E35 12150")));
+};
+
+/***/ }),
+
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
 /***/ "./src/const.ts":
 /*!**********************!*\
   !*** ./src/const.ts ***!
@@ -2184,6 +2522,270 @@ const BREAKPOINTS = {
 
 /***/ }),
 
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
+=======
+/***/ "./src/features/category/CategoryList.tsx":
+/*!************************************************!*\
+  !*** ./src/features/category/CategoryList.tsx ***!
+  \************************************************/
+/*! exports provided: CategoryList */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryList", function() { return CategoryList; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _CategoryTag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CategoryTag */ "./src/features/category/CategoryTag.tsx");
+/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./const */ "./src/features/category/const.ts");
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/category/CategoryList.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  flex: 1;
+  > h1 {
+    text-align: center;
+  }
+`;
+const CategoryResultContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  background: white;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  background: transparent;
+`;
+const CategoryList = () => {
+  return __jsx(Container, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, __jsx("h1", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: undefined
+  }, "Catagories"), __jsx(CategoryResultContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: undefined
+  }, _const__WEBPACK_IMPORTED_MODULE_3__["CATEGORY"].map(cat => __jsx(_CategoryTag__WEBPACK_IMPORTED_MODULE_2__["CategoryTag"], {
+    key: cat,
+    title: cat,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: undefined
+  }))));
+};
+
+/***/ }),
+
+/***/ "./src/features/category/CategoryPage.tsx":
+/*!************************************************!*\
+  !*** ./src/features/category/CategoryPage.tsx ***!
+  \************************************************/
+/*! exports provided: CategoryPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryPage", function() { return CategoryPage; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_dist_client_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/client/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_dist_client_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_dist_client_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _component_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../component/Footer */ "./src/component/Footer.tsx");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _CategoryList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CategoryList */ "./src/features/category/CategoryList.tsx");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _navigation_Navbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../navigation/Navbar */ "./src/features/navigation/Navbar.tsx");
+/* harmony import */ var _product_ProductList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../product/ProductList */ "./src/features/product/ProductList.tsx");
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/category/CategoryPage.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
+  display: flex;
+  padding: 2rem 4rem;
+  margin-bottom: 5rem;
+`;
+const FilterContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
+  height: 24rem;
+  width: 18rem;
+  margin-right: 3rem;
+`;
+const PageContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
+  background-color: rgb(241, 241, 241);
+`;
+const StyledCard = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default()(antd__WEBPACK_IMPORTED_MODULE_5__["Card"])`
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  height: 25rem;
+  border-radius: 5px;
+`;
+const CategoryPage = () => {
+  var _router$query;
+
+  const router = Object(next_dist_client_router__WEBPACK_IMPORTED_MODULE_1__["useRouter"])();
+  if (!router) return null;
+  console.log(router.query);
+  const category = router === null || router === void 0 ? void 0 : (_router$query = router.query) === null || _router$query === void 0 ? void 0 : _router$query.cid;
+  return __jsx(PageContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: undefined
+  }, __jsx(_navigation_Navbar__WEBPACK_IMPORTED_MODULE_6__["Navbar"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: undefined
+  }), __jsx(Container, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: undefined
+  }, category ? __jsx(_product_ProductList__WEBPACK_IMPORTED_MODULE_7__["ProductList"], {
+    category: category,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: undefined
+  }) : __jsx(_CategoryList__WEBPACK_IMPORTED_MODULE_4__["CategoryList"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: undefined
+  })), __jsx(_component_Footer__WEBPACK_IMPORTED_MODULE_2__["Footer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: undefined
+  }));
+};
+
+/***/ }),
+
+/***/ "./src/features/category/CategoryTag.tsx":
+/*!***********************************************!*\
+  !*** ./src/features/category/CategoryTag.tsx ***!
+  \***********************************************/
+/*! exports provided: CategoryTag */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryTag", function() { return CategoryTag; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/category/CategoryTag.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const StyledCard = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_2__["Card"])`
+  cursor: pointer;
+  & .ant-card-body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  :hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  }
+`;
+const CategoryLogo = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.img`
+  height: 60px;
+  width: auto;
+  margin-right: 1rem;
+`;
+const CategoryName = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.h3`
+  margin: 0;
+  width: 100%;
+  text-align: center;
+`;
+const CategoryTag = props => {
+  const {
+    title
+  } = props;
+  return __jsx("a", {
+    href: `/category/${title}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38
+    },
+    __self: undefined
+  }, __jsx(StyledCard, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: undefined
+  }, __jsx(CategoryLogo, {
+    src: "/assets/logo-without-text.png",
+    alt: "logo",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: undefined
+  }), __jsx(CategoryName, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: undefined
+  }, title)));
+};
+
+/***/ }),
+
+/***/ "./src/features/category/const.ts":
+/*!****************************************!*\
+  !*** ./src/features/category/const.ts ***!
+  \****************************************/
+/*! exports provided: CATEGORY */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATEGORY", function() { return CATEGORY; });
+const CATEGORY = ['แผ่นยิปซัม', 'แผ่นดูดซับเสียง', 'โครงคร่าวฝ้าเพดานและผนังยิปซัม', 'โครงคร่าวและแผ่นฝ้าเพดานทีบาร์', 'ปูนฉาบยิปซัม', 'ช่องเซอร์วิสสำเร็จรูป', 'สเตปสำเร็จรูป', 'อุปกรณ์เสริม', 'เครื่องมือช่าง'];
+
+/***/ }),
+
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
 /***/ "./src/features/navigation/Navbar.tsx":
 /*!********************************************!*\
   !*** ./src/features/navigation/Navbar.tsx ***!
@@ -2211,7 +2813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./const */ "./src/features/navigation/const.ts");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/navigation/Navbar.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/navigation/Navbar.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2320,7 +2922,7 @@ const NavigateList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
 `;
 const ButtonList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   font-size: 1.5rem;
-  width: 5rem;
+  width: 2.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -2533,12 +3135,18 @@ const Navbar = () => {
       lineNumber: 213
     },
     __self: undefined
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
   }, "\u0E42\u0E1B\u0E23\u0E42\u0E21\u0E0A\u0E31\u0E48\u0E19"), __jsx("div", {
+=======
+  }, "\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23"), __jsx("a", {
+    href: "/quotation-list",
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
     __source: {
       fileName: _jsxFileName,
       lineNumber: 214
     },
     __self: undefined
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
   }, "\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E01\u0E32\u0E23\u0E2A\u0E48\u0E07")), __jsx(ButtonList, {
     __source: {
       fileName: _jsxFileName,
@@ -2547,30 +3155,33 @@ const Navbar = () => {
     __self: undefined
   }, __jsx("a", {
     href: "/quotation-list",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 218
-    },
-    __self: undefined
+=======
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "file-text",
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 215
+    },
+    __self: undefined
+  }), " \u0E43\u0E1A\u0E40\u0E2A\u0E19\u0E2D\u0E23\u0E32\u0E04\u0E32")), __jsx(ButtonList, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 219
     },
     __self: undefined
-  })), __jsx("a", {
+  }, __jsx("a", {
     href: "/shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 221
+      lineNumber: 220
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 222
+      lineNumber: 221
     },
     __self: undefined
   })))));
@@ -2642,6 +3253,7 @@ const GET_ME = apollo_boost__WEBPACK_IMPORTED_MODULE_0__["gql"]`
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
@@ -2652,6 +3264,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/register/SignIn.tsx";
+=======
+/* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @apollo/react-hooks */ "@apollo/react-hooks");
+/* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _gql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gql */ "./src/features/product/gql.ts");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/product/ProductList.tsx";
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2993,6 +3617,7 @@ const useResponsive = () => {
 
 /***/ }),
 
+<<<<<<< HEAD:frontend/.next/server/static/development/pages/signin.js
 /***/ 4:
 /*!********************************!*\
   !*** multi ./pages/signin.tsx ***!
@@ -3001,6 +3626,16 @@ const useResponsive = () => {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! /Users/puwong/Developer/senior/gypstore/frontend/pages/signin.tsx */"./pages/signin.tsx");
+=======
+/***/ 6:
+/*!****************************************!*\
+  !*** multi ./pages/category/[cid].tsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /Users/nutchanonploypray/work/gypstore/frontend/pages/category/[cid].tsx */"./pages/category/[cid].tsx");
+>>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a:frontend/.next/server/static/development/pages/category/[cid].js
 
 
 /***/ }),

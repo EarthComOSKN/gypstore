@@ -215,7 +215,7 @@ const main = async () => {
       ...pd[i],
       category: {
         connect: {
-          id: "ck6g0tu2z007b0731slamrcxd"
+          id: "ck7b9ytvz000z0753q75otp1i"
         }
       }
     });

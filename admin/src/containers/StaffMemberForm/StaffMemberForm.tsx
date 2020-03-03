@@ -75,14 +75,14 @@ const StuffMemberForm: React.FC<Props> = props => {
     }
   });
   const onSubmit = data => {
-    console.log(data);
     const newStuff = {
       name: data.first_name + " " + data.last_name,
       phone: data.contact_number,
       email: data.email
     };
     createStuff({ variables: { data: newStuff } });
-    // closeDrawer();
+    closeDrawer();
+    window.location.reload();
   };
 
   return (

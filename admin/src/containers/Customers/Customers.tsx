@@ -200,7 +200,7 @@ export default function Customers() {
                             <StyledBodyCell>
                               <ImageWrapper>
                                 <Image
-                                  src="https://randomuser.me/api/portraits/men/80.jpg"
+                                  src="https://www.tenforums.com/geek/gars/images/2/types/thumb__ser.png"
                                   alt="pic"
                                 />
                               </ImageWrapper>

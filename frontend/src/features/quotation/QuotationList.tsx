@@ -36,7 +36,7 @@ const Quotation = styled.div`
 `
 const Price = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 const Amount = styled(Price)``
@@ -50,7 +50,7 @@ const StyledButton = styled(Button)`
 export const QuotationList = () => {
   return (
     <Container>
-      <h2>ใบเสนอราคา (2 รายการ)</h2>
+      <h2>ใบเสนอราคา (1 รายการ)</h2>
       <CartTable>
         <CartRow>
           <h4>ใบเสนอราคา</h4>
@@ -58,7 +58,7 @@ export const QuotationList = () => {
           <h4>วันที่ออกใบเสนอราคา</h4>
           <h4>ราคารวม</h4>
         </CartRow>
-        {[1, 2, 3].map(e => (
+        {[1].map(e => (
           <CartRow>
             <Quotation>
               <ProductCardTall buyable={false} onlyImage />

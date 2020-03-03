@@ -2091,7 +2091,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _src_apollo_client__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../src/apollo-client */ "./src/apollo-client.ts");
 
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/pages/_app.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/pages/_app.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 

@@ -40,4 +40,4 @@ jspm_packages
 
 .env
 
-# .next
+frontend/.next
