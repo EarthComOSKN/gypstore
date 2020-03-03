@@ -2735,9 +2735,6 @@ const onChange = current => {
 const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
   .ant-carousel .slick-slide {
     text-align: center;
-    height: 400px;
-    line-height: 400px;
-    background: #364d79;
     overflow: hidden;
   }
 
@@ -2746,10 +2743,10 @@ const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
   }
 `;
 const Banner1 = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-  background-image: url("/assets/banner3.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  img {
+    height: 100%;
+    width: 100%;
+  }
 `;
 const Banner2 = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
   background-image: url("/assets/banner2.png");
@@ -2757,74 +2754,72 @@ const Banner2 = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
   background-size: cover;
   background-repeat: no-repeat;
 `;
-const Banner3 = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-  background-image: url("/assets/banner3.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-`;
 const HomeCarousel = () => __jsx(Container, {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 42
+    lineNumber: 33
   },
   __self: undefined
 }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Carousel"], {
   afterChange: onChange,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 43
+    lineNumber: 34
   },
   __self: undefined
 }, __jsx(Banner1, {
   __source: {
     fileName: _jsxFileName,
+    lineNumber: 35
+  },
+  __self: undefined
+}, __jsx("img", {
+  src: "/assets/banner3.jpg",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 36
+  },
+  __self: undefined
+})), __jsx(Banner1, {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 38
+  },
+  __self: undefined
+}, __jsx("img", {
+  src: "/assets/banner2.png",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 39
+  },
+  __self: undefined
+})), __jsx(Banner1, {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 41
+  },
+  __self: undefined
+}, __jsx("img", {
+  src: "/assets/banner3.jpg",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 42
+  },
+  __self: undefined
+})), __jsx(Banner1, {
+  __source: {
+    fileName: _jsxFileName,
     lineNumber: 44
   },
   __self: undefined
-}, __jsx("h3", {
+}, __jsx("img", {
+  src: "/assets/banner2.png",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 45
   },
   __self: undefined
-}, "1")), __jsx(Banner2, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 47
-  },
-  __self: undefined
-}, __jsx("h3", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 48
-  },
-  __self: undefined
-}, "1")), __jsx(Banner3, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 50
-  },
-  __self: undefined
-}, __jsx("h3", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 51
-  },
-  __self: undefined
-}, "1")), __jsx(Banner1, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 53
-  },
-  __self: undefined
-}, __jsx("h3", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 54
-  },
-  __self: undefined
-}, "1"))));
+}))));
 
 /***/ }),
 
@@ -3086,8 +3081,8 @@ const SearchContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.d
   }
 `;
 const NavigateList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
-  width: 15rem;
-  margin-right: 3rem;
+  width: 18rem;
+  margin-right: 3.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3309,19 +3304,20 @@ const Navbar = () => {
       lineNumber: 210
     },
     __self: undefined
-  }))), __jsx("div", {
+  }))), __jsx("a", {
+    href: "/promotion",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 213
     },
     __self: undefined
-  }, "\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23"), __jsx("div", {
+  }, "\u0E42\u0E1B\u0E23\u0E42\u0E21\u0E0A\u0E31\u0E48\u0E19"), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 214
     },
     __self: undefined
-  }, "\u0E04\u0E30\u0E41\u0E19\u0E19\u0E2A\u0E30\u0E2A\u0E21")), __jsx(ButtonList, {
+  }, "\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E01\u0E32\u0E23\u0E2A\u0E48\u0E07")), __jsx(ButtonList, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 217

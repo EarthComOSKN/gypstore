@@ -45,7 +45,6 @@ export const PartnerCard = () => {
           <img alt="shera" src="/assets/shera-logo.png" />
         </BrandImageContainer>
       </BrandList>
-      {/* <h2>ทำไมต้องยิปสโตร์</h2> */}
     </Container>
   );
 }

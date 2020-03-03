@@ -92,8 +92,8 @@ const SearchContainer = styled.div`
 `
 
 const NavigateList = styled.div`
-  width: 15rem;
-  margin-right: 3rem;
+  width: 18rem;
+  margin-right: 3.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -210,8 +210,8 @@ export const Navbar = () => {
               สินค้า <Icon type="down" />
             </a>
           </Dropdown>
-          <div>บริการ</div>
-          <div>คะแนนสะสม</div>
+          <a href="/promotion">โปรโมชั่น</a>
+          <div>สถานะการส่ง</div>
         </NavigateList>
 
         <ButtonList>
