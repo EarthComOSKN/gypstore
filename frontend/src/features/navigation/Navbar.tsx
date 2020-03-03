@@ -110,7 +110,7 @@ const NavigateList = styled.div`
 
 const ButtonList = styled.div`
   font-size: 1.5rem;
-  width: 5rem;
+  width: 2.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -211,13 +211,12 @@ export const Navbar = () => {
             </a>
           </Dropdown>
           <div>บริการ</div>
-          <div>คะแนนสะสม</div>
+          <a href="/quotation-list">
+            <Icon type="file-text" /> ใบเสนอราคา
+          </a>
         </NavigateList>
 
         <ButtonList>
-          <a href="/quotation-list">
-            <Icon type="file-text" />
-          </a>
           <a href="/shopping-cart">
             <Icon type="shopping-cart" />
           </a>

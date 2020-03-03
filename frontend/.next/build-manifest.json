@@ -4,10 +4,6 @@
     "static/development/dll/dll_d6a88dbe3071bd165157.js.map"
   ],
   "pages": {
-    "/": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
@@ -23,11 +19,19 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
+    "/categories": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/category/[cid]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/quotation-list": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/shopping-cart": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

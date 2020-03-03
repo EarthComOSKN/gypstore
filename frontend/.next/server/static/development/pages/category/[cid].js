@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2152,7 +2152,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _src_features_category_CategoryPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../src/features/category/CategoryPage */ "./src/features/category/CategoryPage.tsx");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/pages/category/[cid].tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/pages/category/[cid].tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2182,7 +2182,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/component/Footer.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/component/Footer.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2526,7 +2526,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _CategoryTag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CategoryTag */ "./src/features/category/CategoryTag.tsx");
 /* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./const */ "./src/features/category/const.ts");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/category/CategoryList.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/category/CategoryList.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2599,7 +2599,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _navigation_Navbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../navigation/Navbar */ "./src/features/navigation/Navbar.tsx");
 /* harmony import */ var _product_ProductList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../product/ProductList */ "./src/features/product/ProductList.tsx");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/category/CategoryPage.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/category/CategoryPage.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2692,7 +2692,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/category/CategoryTag.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/category/CategoryTag.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2798,7 +2798,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./const */ "./src/features/navigation/const.ts");
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/navigation/Navbar.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/navigation/Navbar.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2907,7 +2907,7 @@ const NavigateList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
 `;
 const ButtonList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   font-size: 1.5rem;
-  width: 5rem;
+  width: 2.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -3119,44 +3119,38 @@ const Navbar = () => {
       lineNumber: 213
     },
     __self: undefined
-  }, "\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23"), __jsx("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 214
-    },
-    __self: undefined
-  }, "\u0E04\u0E30\u0E41\u0E19\u0E19\u0E2A\u0E30\u0E2A\u0E21")), __jsx(ButtonList, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 217
-    },
-    __self: undefined
-  }, __jsx("a", {
+  }, "\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23"), __jsx("a", {
     href: "/quotation-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 218
+      lineNumber: 214
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "file-text",
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 215
+    },
+    __self: undefined
+  }), " \u0E43\u0E1A\u0E40\u0E2A\u0E19\u0E2D\u0E23\u0E32\u0E04\u0E32")), __jsx(ButtonList, {
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 219
     },
     __self: undefined
-  })), __jsx("a", {
+  }, __jsx("a", {
     href: "/shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 221
+      lineNumber: 220
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 222
+      lineNumber: 221
     },
     __self: undefined
   })))));
@@ -3238,7 +3232,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/product/ProductList.tsx";
+var _jsxFileName = "/Users/nutchanonploypray/work/gypstore/frontend/src/features/product/ProductList.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -3477,14 +3471,14 @@ const useResponsive = () => {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!****************************************!*\
   !*** multi ./pages/category/[cid].tsx ***!
   \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/puwong/Developer/senior/gypstore/frontend/pages/category/[cid].tsx */"./pages/category/[cid].tsx");
+module.exports = __webpack_require__(/*! /Users/nutchanonploypray/work/gypstore/frontend/pages/category/[cid].tsx */"./pages/category/[cid].tsx");
 
 
 /***/ }),
