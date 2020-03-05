@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/index":"static/development/pages/index.js","/signin":"static/development/pages/signin.js","/":"static/development/pages/index.js"}
-=======
-{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/categories":"static/development/pages/categories.js","/category/[cid]":"static/development/pages/category/[cid].js","/quotation-list":"static/development/pages/quotation-list.js","/shopping-cart":"static/development/pages/shopping-cart.js"}
->>>>>>> de6eb31728b03a6e80cf48369f830a7f966ce35a
+{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/categories":"static/development/pages/categories.js","/index":"static/development/pages/index.js","/quotation-list":"static/development/pages/quotation-list.js","/":"static/development/pages/index.js"}

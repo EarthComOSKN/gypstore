@@ -6,8 +6,9 @@ import { GET_USERS } from "./gql";
 import { HeroProduct } from "../hero/HeroProduct";
 import { Footer } from "../../component/Footer";
 import { ProductSection } from "../product/ProductSection";
-import { PartnerCard } from "../../features/partner/partnerCard";
+import { PartnerCard } from "../../features/partner/PartnerCard";
 import { BackTop } from "antd";
+import { HomeCategory } from "./HomeCategory";
 
 const PageContainer = styled.div`
   background-color: rgb(241, 241, 241);
@@ -24,6 +25,7 @@ export const HomePage = () => {
       <BackTop />
       <Navbar />
       <HomeCarousel />
+      <HomeCategory />
       <HeroProduct />
       <ProductSection title="ระบบฝ้าเพดานฉาบเรียบ" />
       <ProductSection title="ระบบผนังเบา" />

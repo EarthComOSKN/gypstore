@@ -4,8 +4,9 @@ import { CATEGORY } from './const'
 
 const Container = styled.div`
   flex: 1;
-  > h1 {
+  > h2 {
     text-align: center;
+    margin-bottom: 2rem;
   }
 `
 
@@ -20,7 +21,7 @@ const CategoryResultContainer = styled.div`
 export const CategoryList = () => {
   return (
     <Container>
-      <h1>Catagories</h1>
+      <h2>หมวดหมู่สินค้า</h2>
       <CategoryResultContainer>
         {CATEGORY.map(cat => (
           <CategoryTag key={cat} title={cat} />

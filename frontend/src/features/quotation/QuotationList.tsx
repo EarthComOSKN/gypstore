@@ -25,7 +25,7 @@ const CartRow = styled.div`
 const CartSumRow = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 2rem 0rem 0rem 0rem;
   background-color: white;
 `
 const Quotation = styled.div`
@@ -45,6 +45,12 @@ const StyledButton = styled(Button)`
   background-color: #ff8e0a;
   font-size: 1rem;
   padding: 0rem 2rem;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+  }
 `
 
 export const QuotationList = () => {

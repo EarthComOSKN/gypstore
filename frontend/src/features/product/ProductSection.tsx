@@ -4,7 +4,7 @@ const Container = styled.div`
   height: 35rem;
   width: 100%;
   padding: 3rem 8rem;
-  background-color: rgb(222, 222, 222);
+  background-color: rgb(241, 241, 241);
 `;
 
 const ProductContainer = styled.div`

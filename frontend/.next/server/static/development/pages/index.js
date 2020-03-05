@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2823,6 +2823,193 @@ const HomeCarousel = () => __jsx(Container, {
 
 /***/ }),
 
+/***/ "./src/features/home/HomeCategory.tsx":
+/*!********************************************!*\
+  !*** ./src/features/home/HomeCategory.tsx ***!
+  \********************************************/
+/*! exports provided: HomeCategory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeCategory", function() { return HomeCategory; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _HomeCategoryTag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HomeCategoryTag */ "./src/features/home/HomeCategoryTag.tsx");
+/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./const */ "./src/features/home/const.ts");
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/home/HomeCategory.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  background-color: white;  
+  padding-bottom: 2rem;
+
+  h1,
+  h2,
+  h3,
+  h4 {  
+    padding: 2rem 8rem 0rem 8rem;
+  }
+`;
+const RowList = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  width: 100%;
+  margin: 1rem 0rem;
+  padding: 1rem 6rem;
+  display: flex;
+  justify-content: space-between;
+`;
+const HomeCategory = () => {
+  return __jsx(Container, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: undefined
+  }, __jsx("h2", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: undefined
+  }, "\u0E2B\u0E21\u0E27\u0E14\u0E2B\u0E21\u0E39\u0E48\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32"), __jsx(RowList, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  }, _const__WEBPACK_IMPORTED_MODULE_3__["CATEGORY_ROW1"].map(c => __jsx(_HomeCategoryTag__WEBPACK_IMPORTED_MODULE_2__["HomeCategoryTag"], {
+    name: c[0],
+    source: c[1],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: undefined
+  }))), __jsx(RowList, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: undefined
+  }, _const__WEBPACK_IMPORTED_MODULE_3__["CATEGORY_ROW2"].map(c => __jsx(_HomeCategoryTag__WEBPACK_IMPORTED_MODULE_2__["HomeCategoryTag"], {
+    name: c[0],
+    source: c[1],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37
+    },
+    __self: undefined
+  }))));
+};
+
+/***/ }),
+
+/***/ "./src/features/home/HomeCategoryTag.tsx":
+/*!***********************************************!*\
+  !*** ./src/features/home/HomeCategoryTag.tsx ***!
+  \***********************************************/
+/*! exports provided: HomeCategoryTag */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeCategoryTag", function() { return HomeCategoryTag; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/home/HomeCategoryTag.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+const MenuButton = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+`;
+const CategoryLogo = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.img`
+  height: 9rem;
+  width: auto;
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+
+  &:hover {
+    -webkit-transform: scale(1.15);
+	  transform: scale(1.15);
+  }
+`;
+const CategoryName = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  font-size: 1rem;
+  color: black;
+`;
+const HomeCategoryTag = props => {
+  const {
+    name,
+    source
+  } = props;
+  return __jsx("a", {
+    href: `/category/${name}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37
+    },
+    __self: undefined
+  }, __jsx(MenuButton, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38
+    },
+    __self: undefined
+  }, __jsx(CategoryLogo, {
+    src: source,
+    alt: name,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: undefined
+  }), __jsx(CategoryName, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: undefined
+  }, name)));
+}; // export const HomeCategoryTag = (props: Props) => {
+//   const { name, source, row } = props
+//   return (
+//     <>
+//       <RowList>
+//         <a>
+//           <MenuButton>
+//             <CategoryLogo src="/assets/gypsum.png" alt="logo" />
+//             <CategoryName>Test</CategoryName>
+//           </MenuButton>
+//         </a>
+//       </RowList>
+//       <RowList>
+//         <a>
+//           <MenuButton>
+//             <CategoryLogo src="/assets/gypsum.png" alt="logo" />
+//             <CategoryName>Test</CategoryName>
+//           </MenuButton>
+//         </a>
+//       </RowList>
+//     </>
+//   )
+// }
+
+/***/ }),
+
 /***/ "./src/features/home/HomePage.tsx":
 /*!****************************************!*\
   !*** ./src/features/home/HomePage.tsx ***!
@@ -2845,12 +3032,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hero_HeroProduct__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hero/HeroProduct */ "./src/features/hero/HeroProduct.tsx");
 /* harmony import */ var _component_Footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../component/Footer */ "./src/component/Footer.tsx");
 /* harmony import */ var _product_ProductSection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../product/ProductSection */ "./src/features/product/ProductSection.tsx");
-/* harmony import */ var _features_partner_partnerCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../features/partner/partnerCard */ "./src/features/partner/partnerCard.tsx");
+/* harmony import */ var _features_partner_PartnerCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../features/partner/PartnerCard */ "./src/features/partner/PartnerCard.tsx");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "antd");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _HomeCategory__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./HomeCategory */ "./src/features/home/HomeCategory.tsx");
 var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/home/HomePage.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -2872,7 +3061,7 @@ const HomePage = () => {
   if (loading) return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 19
     },
     __self: undefined
   }, "loading");
@@ -2880,61 +3069,83 @@ const HomePage = () => {
   return __jsx(PageContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 24
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_10__["BackTop"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 25
     },
     __self: undefined
   }), __jsx(_navigation_Navbar__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 26
     },
     __self: undefined
   }), __jsx(_HomeCarousel__WEBPACK_IMPORTED_MODULE_3__["HomeCarousel"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 27
+    },
+    __self: undefined
+  }), __jsx(_HomeCategory__WEBPACK_IMPORTED_MODULE_11__["HomeCategory"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
     },
     __self: undefined
   }), __jsx(_hero_HeroProduct__WEBPACK_IMPORTED_MODULE_6__["HeroProduct"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 29
     },
     __self: undefined
   }), __jsx(_product_ProductSection__WEBPACK_IMPORTED_MODULE_8__["ProductSection"], {
     title: "\u0E23\u0E30\u0E1A\u0E1A\u0E1D\u0E49\u0E32\u0E40\u0E1E\u0E14\u0E32\u0E19\u0E09\u0E32\u0E1A\u0E40\u0E23\u0E35\u0E22\u0E1A",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 30
     },
     __self: undefined
   }), __jsx(_product_ProductSection__WEBPACK_IMPORTED_MODULE_8__["ProductSection"], {
     title: "\u0E23\u0E30\u0E1A\u0E1A\u0E1C\u0E19\u0E31\u0E07\u0E40\u0E1A\u0E32",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 31
     },
     __self: undefined
-  }), __jsx(_features_partner_partnerCard__WEBPACK_IMPORTED_MODULE_9__["PartnerCard"], {
+  }), __jsx(_features_partner_PartnerCard__WEBPACK_IMPORTED_MODULE_9__["PartnerCard"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 32
     },
     __self: undefined
   }), __jsx(_component_Footer__WEBPACK_IMPORTED_MODULE_7__["Footer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 33
     },
     __self: undefined
   }));
 };
+
+/***/ }),
+
+/***/ "./src/features/home/const.ts":
+/*!************************************!*\
+  !*** ./src/features/home/const.ts ***!
+  \************************************/
+/*! exports provided: CATEGORY_ROW1, CATEGORY_ROW2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATEGORY_ROW1", function() { return CATEGORY_ROW1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATEGORY_ROW2", function() { return CATEGORY_ROW2; });
+const CATEGORY_ROW1 = [['แผ่นยิปซัม', '/assets/gypsum.png'], ['แผ่นดูดซับเสียง', '/assets/gypsum.png'], ['โครงฝ้าเพดานและผนังยิปซัม', '/assets/gypsum.png'], ['ฉนวนกันความร้อน', '/assets/gypsum.png'], ['โครงและแผ่นฝ้าเพดานทีบาร์', '/assets/gypsum.png']];
+const CATEGORY_ROW2 = [['ปูนฉาบยิปซัม', '/assets/gypsum.png'], ['ช่องเซอร์วิสสำเร็จรูป', '/assets/gypsum.png'], ['สเตปสำเร็จรูป', '/assets/gypsum.png'], ['อุปกรณ์เสริม', '/assets/gypsum.png'], ['เครื่องมือช่าง', '/assets/gypsum.png']];
 
 /***/ }),
 
@@ -3081,7 +3292,7 @@ const SearchContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.d
   }
 `;
 const NavigateList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
-  width: 18rem;
+  width: 25rem;
   margin-right: 3.5rem;
   display: flex;
   justify-content: space-between;
@@ -3098,7 +3309,7 @@ const NavigateList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
 `;
 const ButtonList = _emotion_styled__WEBPACK_IMPORTED_MODULE_3___default.a.div`
   font-size: 1.5rem;
-  width: 5rem;
+  width: 2.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -3317,27 +3528,27 @@ const Navbar = () => {
       lineNumber: 214
     },
     __self: undefined
-  }, "\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E01\u0E32\u0E23\u0E2A\u0E48\u0E07")), __jsx(ButtonList, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 217
-    },
-    __self: undefined
-  }, __jsx("a", {
+  }, "\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E01\u0E32\u0E23\u0E2A\u0E48\u0E07"), __jsx("a", {
     href: "/quotation-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 218
+      lineNumber: 215
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     type: "file-text",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 219
+      lineNumber: 216
     },
     __self: undefined
-  })), __jsx("a", {
+  }), " \u0E43\u0E1A\u0E40\u0E2A\u0E19\u0E2D\u0E23\u0E32\u0E04\u0E32")), __jsx(ButtonList, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 220
+    },
+    __self: undefined
+  }, __jsx("a", {
     href: "/shopping-cart",
     __source: {
       fileName: _jsxFileName,
@@ -3409,9 +3620,9 @@ const GET_ME = apollo_boost__WEBPACK_IMPORTED_MODULE_0__["gql"]`
 
 /***/ }),
 
-/***/ "./src/features/partner/partnerCard.tsx":
+/***/ "./src/features/partner/PartnerCard.tsx":
 /*!**********************************************!*\
-  !*** ./src/features/partner/partnerCard.tsx ***!
+  !*** ./src/features/partner/PartnerCard.tsx ***!
   \**********************************************/
 /*! exports provided: PartnerCard */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3423,12 +3634,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/partner/partnerCard.tsx";
+/* harmony import */ var _PartnerCardImg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PartnerCardImg */ "./src/features/partner/PartnerCardImg.tsx");
+/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./const */ "./src/features/partner/const.ts");
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/partner/PartnerCard.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
+
 const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
-  padding: 2rem 8rem;
+  padding: 2rem 8rem 1rem 8rem;
+  margin: 2rem 0rem;
+  background-color: #ff8e0a;
   text-align: center;
 `;
 const BrandList = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
@@ -3438,6 +3655,56 @@ const BrandList = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   align-items: center;
   justify-content: center;
 `;
+const PartnerCard = () => {
+  return __jsx(Container, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, __jsx("h2", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: undefined
+  }, "\u0E41\u0E1A\u0E23\u0E19\u0E14\u0E4C\u0E17\u0E35\u0E48\u0E40\u0E02\u0E49\u0E32\u0E23\u0E48\u0E27\u0E21\u0E01\u0E31\u0E1A\u0E40\u0E23\u0E32"), __jsx(BrandList, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: undefined
+  }, _const__WEBPACK_IMPORTED_MODULE_3__["BRAND"].map(c => __jsx(_PartnerCardImg__WEBPACK_IMPORTED_MODULE_2__["PartnerCardImg"], {
+    name: c[0],
+    source: c[1],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: undefined
+  }))));
+};
+
+/***/ }),
+
+/***/ "./src/features/partner/PartnerCardImg.tsx":
+/*!*************************************************!*\
+  !*** ./src/features/partner/PartnerCardImg.tsx ***!
+  \*************************************************/
+/*! exports provided: PartnerCardImg */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PartnerCardImg", function() { return PartnerCardImg; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
+/* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/puwong/Developer/senior/gypstore/frontend/src/features/partner/PartnerCardImg.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 const BrandImageContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   > img {
     max-width: 120px;
@@ -3445,111 +3712,41 @@ const BrandImageContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default
     margin: 0rem 1rem;
   }
 `;
-const PartnerCard = () => {
-  return __jsx(Container, {
+const PartnerCardImg = props => {
+  const {
+    name,
+    source
+  } = props;
+  return __jsx(BrandImageContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: undefined
-  }, __jsx("h2", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    },
-    __self: undefined
-  }, "\u0E41\u0E1A\u0E23\u0E19\u0E14\u0E4C\u0E17\u0E35\u0E48\u0E40\u0E02\u0E49\u0E32\u0E23\u0E48\u0E27\u0E21\u0E01\u0E31\u0E1A\u0E40\u0E23\u0E32"), __jsx(BrandList, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28
-    },
-    __self: undefined
-  }, __jsx(BrandImageContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 19
     },
     __self: undefined
   }, __jsx("img", {
-    alt: "\u0E22\u0E34\u0E1B\u0E23\u0E2D\u0E04",
-    src: "/assets/gyproc-logo.png",
+    alt: name,
+    src: source,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 20
     },
     __self: undefined
-  })), __jsx(BrandImageContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32
-    },
-    __self: undefined
-  }, __jsx("img", {
-    alt: "\u0E15\u0E23\u0E07\u0E0A\u0E49\u0E32\u0E07",
-    src: "/assets/scg-logo.png",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33
-    },
-    __self: undefined
-  })), __jsx(BrandImageContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35
-    },
-    __self: undefined
-  }, __jsx("img", {
-    alt: "\u0E40\u0E2D\u0E2A\u0E0B\u0E35\u0E41\u0E2D\u0E25",
-    src: "/assets/scl-logo.png",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36
-    },
-    __self: undefined
-  })), __jsx(BrandImageContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38
-    },
-    __self: undefined
-  }, __jsx("img", {
-    alt: "\u0E04\u0E19\u0E2D\u0E1F",
-    src: "/assets/knauf-logo.png",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39
-    },
-    __self: undefined
-  })), __jsx(BrandImageContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41
-    },
-    __self: undefined
-  }, __jsx("img", {
-    alt: "rockwool",
-    src: "/assets/rockwool-logo.png",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42
-    },
-    __self: undefined
-  })), __jsx(BrandImageContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44
-    },
-    __self: undefined
-  }, __jsx("img", {
-    alt: "shera",
-    src: "/assets/shera-logo.png",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 45
-    },
-    __self: undefined
-  }))));
+  }));
 };
+
+/***/ }),
+
+/***/ "./src/features/partner/const.ts":
+/*!***************************************!*\
+  !*** ./src/features/partner/const.ts ***!
+  \***************************************/
+/*! exports provided: BRAND */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BRAND", function() { return BRAND; });
+const BRAND = [['ยิปรอค', '/assets/gyproc-logo.png'], ['ตรงช้าง', '/assets/scg-logo.png'], ['เอสซีแอล', '/assets/scl-logo.png'], ['คนอฟ', '/assets/knauf-logo.png'], ['rockwool', '/assets/rockwool-logo.png'], ['shera', '/assets/shera-logo.png']];
 
 /***/ }),
 
@@ -3731,7 +3928,7 @@ const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   height: 35rem;
   width: 100%;
   padding: 3rem 8rem;
-  background-color: rgb(222, 222, 222);
+  background-color: rgb(241, 241, 241);
 `;
 const ProductContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   display: grid;
@@ -3848,7 +4045,7 @@ const useResponsive = () => {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/
