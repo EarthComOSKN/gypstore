@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 import { ProductCardTall } from '../product/ProductCardTall'
 import { AmountInput } from '../../component/AmountInput'
-import { Button, message, Icon, Modal } from 'antd'
+import { Button, message, Icon, Modal, Spin } from 'antd'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { DELETE_ITEM } from './gql'
 import { GET_ME } from '../navigation/gql'
 import { useRouter } from 'next/router'
+import { FullPageLoading } from '../../component/Loading'
 const { confirm } = Modal
 
 const Container = styled.div`
@@ -31,7 +32,7 @@ const CartRow = styled.div`
 const CartSumRow = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   background-color: white;
 `
 const Product = styled.div`
@@ -60,6 +61,12 @@ const DeleteIcon = styled(Icon)`
   margin-left: 1rem;
   font-size: 1.25rem;
 `
+const NoItems = styled.div`
+  display: flex;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
+`
 
 export const ShoppingCart = () => {
   const { data, loading, error } = useQuery(GET_ME)
@@ -77,7 +84,7 @@ export const ShoppingCart = () => {
       // cache.writeData(newUser)
     },
   })
-  if (loading) return <div>Lodaing...</div>
+  if (loading) return <FullPageLoading />
   if (!data) {
     router.push('/signin')
     return null
@@ -121,6 +128,9 @@ export const ShoppingCart = () => {
           <h4>ปริมาณ</h4>
           <h4>ราคารวม</h4>
         </CartRow>
+        {shoppingCartItems.length === 0 && (
+          <NoItems>ไม่มีรายการในขณะนี้</NoItems>
+        )}
         {shoppingCartItems.map(item => {
           const { product, amount } = item
           return (
@@ -154,8 +164,21 @@ export const ShoppingCart = () => {
         })}
         <div>
           <CartSumRow>
+            <h3>vat 7%</h3>
+            <h3>
+              {shoppingCartItems
+                .reduce(
+                  (prv, cur) =>
+                    prv + cur.amount * +cur.product.salePrice * 0.07,
+                  0,
+                )
+                .toLocaleString()}{' '}
+              บาท
+            </h3>
+          </CartSumRow>
+          <CartSumRow>
             <h2>ราคารวม ({shoppingCartItems.length} รายการ)</h2>
-            <h2>
+            <h3>
               {shoppingCartItems
                 .reduce(
                   (prv, cur) => prv + cur.amount * +cur.product.salePrice,
@@ -163,7 +186,7 @@ export const ShoppingCart = () => {
                 )
                 .toLocaleString()}{' '}
               บาท
-            </h2>
+            </h3>
           </CartSumRow>
           <CartSumRow>
             <StyledButton>พิมพ์ใบเสนอราคา</StyledButton>

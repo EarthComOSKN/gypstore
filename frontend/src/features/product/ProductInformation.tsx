@@ -5,6 +5,7 @@ import { AmountInput } from '../../component/AmountInput'
 import { GET_ME } from '../navigation/gql'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { ADD_PRODUCT_TO_CART } from './gql'
+import { FullPageLoading } from '../../component/Loading'
 
 const Container = styled.div`
   font-size: 16px;
@@ -33,8 +34,15 @@ export const ProductInformation = (props: Props) => {
   const { data, loading } = useQuery(GET_ME)
   const me = data?.me as User
   const [addProductToCard] = useMutation(ADD_PRODUCT_TO_CART)
-  if (loading) return <div>Loading ...</div>
-  const { name, description, brand, amount: productAmount, unitType } = product
+  if (loading) return <FullPageLoading />
+  const {
+    name,
+    description,
+    brand,
+    amount: productAmount,
+    unitType,
+    price,
+  } = product
   const shid = me?.shoppingCart?.id
 
   const addToCart = async () => {
@@ -66,6 +74,8 @@ export const ProductInformation = (props: Props) => {
           {productAmount} {unitType}
         </li>
       </ul>
+      ราคา {price} ฿ / {unitType}
+      <p></p>
       <p>จัดส่งได้ภายใน 1-3 วันทำการ</p>
       <p>จำนวนที่ต้องการ ({unitType})</p>
       <StyledAmountInput amount={amount} onChange={setAmount} />
