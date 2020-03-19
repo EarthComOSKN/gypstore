@@ -6446,6 +6446,6 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `http://localhost:4466/`
+  endpoint: `http://13.229.249.128:4466/`
 });
 export const prisma = new Prisma();

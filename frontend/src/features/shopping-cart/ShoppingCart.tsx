@@ -189,7 +189,8 @@ export const ShoppingCart = () => {
             </h3>
           </CartSumRow>
           <CartSumRow>
-            <StyledButton>พิมพ์ใบเสนอราคา</StyledButton>
+            {/* <StyledButton>พิมพ์ใบเสนอราคา</StyledButton> */}
+            <div></div>
             <StyledButton>ถัดไป</StyledButton>
           </CartSumRow>
         </div>

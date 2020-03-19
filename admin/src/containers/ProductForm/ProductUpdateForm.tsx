@@ -19,24 +19,25 @@ import {
   ButtonGroup
 } from "../DrawerItems/DrawerItems.style";
 
-const options = [
-  { value: "Fruits & Vegetables", name: "Fruits & Vegetables", id: "1" },
-  { value: "Meat & Fish", name: "Meat & Fish", id: "2" },
-  { value: "Purse", name: "Purse", id: "3" },
-  { value: "Hand bags", name: "Hand bags", id: "4" },
-  { value: "Shoulder bags", name: "Shoulder bags", id: "5" },
-  { value: "Wallet", name: "Wallet", id: "6" },
-  { value: "Laptop bags", name: "Laptop bags", id: "7" },
-  { value: "Women Dress", name: "Women Dress", id: "8" },
-  { value: "Outer Wear", name: "Outer Wear", id: "9" },
-  { value: "Pants", name: "Pants", id: "10" }
-];
-
 const typeOptions = [
-  { value: "grocery", name: "Grocery", id: "1" },
-  { value: "women-cloths", name: "Women Cloths", id: "2" },
-  { value: "bags", name: "Bags", id: "3" },
-  { value: "makeup", name: "Makeup", id: "4" }
+  { value: "แผ่นยิปซัม", name: "แผ่นยิปซัม", id: "1" },
+  { value: "แผ่นดูดซับเสียง", name: "แผ่นดูดซับเสียง", id: "1" },
+  {
+    value: "โครงฝ้าเพดานและผนังยิปซัม",
+    name: "โครงฝ้าเพดานและผนังยิปซัม",
+    id: "1"
+  },
+  { value: "ฉนวนกันความร้อน", name: "ฉนวนกันความร้อน", id: "1" },
+  {
+    value: "โครงและแผ่นฝ้าเพดานทีบาร์",
+    name: "โครงและแผ่นฝ้าเพดานทีบาร์",
+    id: "1"
+  },
+  { value: "ปูนฉาบยิปซัม", name: "ปูนฉาบยิปซัม", id: "1" },
+  { value: "ช่องเซอร์วิสสำเร็จรูป", name: "ช่องเซอร์วิสสำเร็จรูป", id: "1" },
+  { value: "สเตปสำเร็จรูป", name: "สเตปสำเร็จรูป", id: "1" },
+  { value: "อุปกรณ์เสริม", name: "อุปกรณ์เสริม", id: "1" },
+  { value: "เครื่องมือช่าง", name: "เครื่องมือช่าง", id: "1" }
 ];
 
 type Props = any;
@@ -44,13 +45,14 @@ type Props = any;
 const AddProduct: React.FC<Props> = () => {
   const dispatch = useDrawerDispatch();
   const data = useDrawerState("data");
+  console.log(data);
   const closeDrawer = useCallback(() => dispatch({ type: "CLOSE_DRAWER" }), [
     dispatch
   ]);
   const { register, handleSubmit, setValue } = useForm({
-    defaultValues: data
+    defaultValues: { ...data, category: data?.category?.name }
   });
-  const [type, setType] = useState([{ value: data.type }]);
+  const [type, setType] = useState([{ value: data?.category?.name }]);
   const [tag, setTag] = useState([]);
   const [description, setDescription] = useState(data.description);
   React.useEffect(() => {
@@ -93,7 +95,7 @@ const AddProduct: React.FC<Props> = () => {
     //   creation_date: new Date(),
     // };
     console.log(data, "newProduct data");
-    closeDrawer();
+    // closeDrawer();
   };
 
   return (
@@ -144,7 +146,7 @@ const AddProduct: React.FC<Props> = () => {
                 <FormFields>
                   <FormLabel>Name</FormLabel>
                   <Input
-                    inputRef={register({ required: true, maxLength: 20 })}
+                    inputRef={register({ required: true, maxLength: 200 })}
                     name="name"
                   />
                 </FormFields>
@@ -158,12 +160,7 @@ const AddProduct: React.FC<Props> = () => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Unit</FormLabel>
-                  <Input type="text" inputRef={register} name="unit" />
-                </FormFields>
-
-                <FormFields>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>Price (Baht)</FormLabel>
                   <Input
                     type="number"
                     inputRef={register({ required: true })}
@@ -172,31 +169,26 @@ const AddProduct: React.FC<Props> = () => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Sale Price</FormLabel>
+                  <FormLabel>Sale Price (Baht)</FormLabel>
                   <Input type="number" inputRef={register} name="salePrice" />
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Discount In Percent</FormLabel>
-                  <Input
-                    type="number"
-                    inputRef={register}
-                    name="discountInPercent"
-                  />
+                  <FormLabel>Product Quantity (Unit)</FormLabel>
+                  <Input type="number" inputRef={register} name="amount" />
+                </FormFields>
+                <FormFields>
+                  <FormLabel>Unit</FormLabel>
+                  <Input type="text" inputRef={register} name="unitType" />
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Product Quantity</FormLabel>
-                  <Input type="number" inputRef={register} name="quantity" />
-                </FormFields>
-
-                <FormFields>
-                  <FormLabel>Type</FormLabel>
+                  <FormLabel>Category</FormLabel>
                   <Select
                     options={typeOptions}
                     labelKey="name"
                     valueKey="value"
-                    placeholder="Product Type"
+                    placeholder="Category"
                     value={type}
                     searchable={false}
                     onChange={handleTypeChange}
@@ -245,46 +237,6 @@ const AddProduct: React.FC<Props> = () => {
                         }
                       }
                     }}
-                  />
-                </FormFields>
-
-                <FormFields>
-                  <FormLabel>Categories</FormLabel>
-                  <Select
-                    options={options}
-                    labelKey="name"
-                    valueKey="value"
-                    placeholder="Product Tag"
-                    value={tag}
-                    onChange={handleMultiChange}
-                    overrides={{
-                      Placeholder: {
-                        style: ({ $theme }) => {
-                          return {
-                            ...$theme.typography.fontBold14,
-                            color: $theme.colors.textNormal
-                          };
-                        }
-                      },
-                      DropdownListItem: {
-                        style: ({ $theme }) => {
-                          return {
-                            ...$theme.typography.fontBold14,
-                            color: $theme.colors.textNormal
-                          };
-                        }
-                      },
-                      Popover: {
-                        props: {
-                          overrides: {
-                            Body: {
-                              style: { zIndex: 5 }
-                            }
-                          }
-                        }
-                      }
-                    }}
-                    multi
                   />
                 </FormFields>
               </DrawerBox>

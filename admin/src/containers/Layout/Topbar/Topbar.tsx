@@ -157,7 +157,7 @@ const Topbar = ({ refs }: any) => {
         >
           <ProfileImg>
             <Image
-              src="https://www.tenforums.com/geek/gars/images/2/types/thumb__ser.png"
+              src="https://www.computerhope.com/jargon/g/guest-user.jpg"
               alt="user"
             />
           </ProfileImg>
