@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2735,21 +2735,24 @@ const onChange = current => {
 const Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
   .ant-carousel .slick-slide {
     text-align: center;
+    height: 400px;
+    line-height: 400px;
+    background: white;
     overflow: hidden;
   }
 
   .ant-carousel .slick-slide h3 {
-    color: #fff;
+    color: white;
   }
 `;
 const Banner1 = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-  img {
-    height: 100%;
+  > img {
+    height: auto;
     width: 100%;
   }
 `;
 const Banner2 = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-  background-image: url("/assets/banner2.png");
+  background-image: url("/assets/banner3.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2757,37 +2760,24 @@ const Banner2 = _emotion_styled__WEBPACK_IMPORTED_MODULE_2___default.a.div`
 const HomeCarousel = () => __jsx(Container, {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 33
+    lineNumber: 36
   },
   __self: undefined
 }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Carousel"], {
   afterChange: onChange,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 34
+    lineNumber: 37
   },
   __self: undefined
 }, __jsx(Banner1, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 35
-  },
-  __self: undefined
-}, __jsx("img", {
-  src: "/assets/banner3.jpg",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 36
-  },
-  __self: undefined
-})), __jsx(Banner1, {
   __source: {
     fileName: _jsxFileName,
     lineNumber: 38
   },
   __self: undefined
 }, __jsx("img", {
-  src: "/assets/banner2.png",
+  src: "/assets/banner3.jpg",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 39
@@ -2800,7 +2790,7 @@ const HomeCarousel = () => __jsx(Container, {
   },
   __self: undefined
 }, __jsx("img", {
-  src: "/assets/banner3.jpg",
+  src: "/assets/banner2.png",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 42
@@ -2813,7 +2803,7 @@ const HomeCarousel = () => __jsx(Container, {
   },
   __self: undefined
 }, __jsx("img", {
-  src: "/assets/banner2.png",
+  src: "/assets/banner3.jpg",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 45
@@ -3144,8 +3134,8 @@ const HomePage = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATEGORY_ROW1", function() { return CATEGORY_ROW1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATEGORY_ROW2", function() { return CATEGORY_ROW2; });
-const CATEGORY_ROW1 = [['แผ่นยิปซัม', '/assets/gypsum.png'], ['แผ่นดูดซับเสียง', '/assets/gypsum.png'], ['โครงฝ้าเพดานและผนังยิปซัม', '/assets/gypsum.png'], ['ฉนวนกันความร้อน', '/assets/gypsum.png'], ['โครงและแผ่นฝ้าเพดานทีบาร์', '/assets/gypsum.png']];
-const CATEGORY_ROW2 = [['ปูนฉาบยิปซัม', '/assets/gypsum.png'], ['ช่องเซอร์วิสสำเร็จรูป', '/assets/gypsum.png'], ['สเตปสำเร็จรูป', '/assets/gypsum.png'], ['อุปกรณ์เสริม', '/assets/gypsum.png'], ['เครื่องมือช่าง', '/assets/gypsum.png']];
+const CATEGORY_ROW1 = [['แผ่นยิปซัม', '/assets/gypsum.png'], ['แผ่นดูดซับเสียง', '/assets/acoustic.png'], ['โครงฝ้าเพดานและผนังยิปซัม', '/assets/cline.png'], ['โครงและแผ่นฝ้าเพดานทีบาร์', '/assets/proline.png'], ['ฉนวนกันความร้อน', '/assets/resis.png']];
+const CATEGORY_ROW2 = [['ปูนฉาบยิปซัม', '/assets/gypsum.png'], ['ช่องเซอร์วิสสำเร็จรูป', '/assets/service-panel.png'], ['สเตปสำเร็จรูป', '/assets/step.png'], ['อุปกรณ์เสริม', '/assets/gypsum.png'], ['เครื่องมือช่าง', '/assets/gypsum.png']];
 
 /***/ }),
 
@@ -3522,7 +3512,8 @@ const Navbar = () => {
       lineNumber: 213
     },
     __self: undefined
-  }, "\u0E42\u0E1B\u0E23\u0E42\u0E21\u0E0A\u0E31\u0E48\u0E19"), __jsx("div", {
+  }, "\u0E42\u0E1B\u0E23\u0E42\u0E21\u0E0A\u0E31\u0E48\u0E19"), __jsx("a", {
+    href: "/delivery",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 214
@@ -4045,7 +4036,7 @@ const useResponsive = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/

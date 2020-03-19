@@ -27,11 +27,19 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/category/[cid]": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/delivery": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/quotation-list": [
+    "/promotion": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
