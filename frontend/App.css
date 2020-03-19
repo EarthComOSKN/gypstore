@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
-@import '~react-image-gallery/styles/css/image-gallery.css';
+
 *,
 body * {
   box-sizing: border-box;
@@ -11,6 +11,7 @@ html {
   font-size: 15.5px;
   font-family: Kanit, sans-serif;
 }
+
 @media (min-width: 1600px) {
   html {
     font-size: 16.5px;
@@ -42,6 +43,7 @@ p {
 h1 {
   font-size: 3em;
 }
+
 h2 {
   font-size: 2em;
 }
@@ -49,6 +51,7 @@ h2 {
 h3 {
   font-size: 1.554em;
 }
+
 h4 {
   font-size: 1.254em;
 }

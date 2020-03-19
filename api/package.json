@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --no-notify --respawn --transpileOnly --http-parser=legacy index.ts"
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly --http-parser=legacy index.ts",
+    "start": "ts-node-dev --no-notify --respawn --transpileOnly --http-parser=legacy index.ts"
   },
   "dependencies": {
     "@prisma/photon": "2.0.0-preview019",
