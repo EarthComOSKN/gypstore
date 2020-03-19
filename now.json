@@ -1,0 +1,7 @@
+{
+  "name": "gypstore",
+  "version": 1,
+  "public": false,
+  "builds": [{ "src": "front/next.config.js", "use": "@now/next" }],
+  "routes": [{ "src": "/(.*)", "dest": "/front/$1", "continue": true }]
+}

@@ -1,5 +1,5 @@
-endpoint: http://13.229.249.128:4466/
-# endpoint: http://localhost:4466/
+# endpoint: http://13.229.249.128:4466/
+endpoint: http://localhost:4466/
 
 datamodel: datamodel.prisma
 
