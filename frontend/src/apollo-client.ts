@@ -5,7 +5,7 @@ import { createHttpLink } from 'apollo-link-http'
 const uri =
   process.env.NODE_ENV !== 'production'
     ? 'http://localhost:4000'
-    : 'http://13.229.249.128:4000/'
+    : 'https://gypstore-api-4r4kliwroa-de.a.run.app/'
 
 const httpLink = createHttpLink({ uri, fetch: !process.browser && fetch })
 

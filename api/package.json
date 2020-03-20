@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly --http-parser=legacy index.ts",
-    "start": "ts-node-dev --no-notify --respawn --transpileOnly --http-parser=legacy index.ts"
+    "start": "node ./dist/index.js",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@prisma/photon": "2.0.0-preview019",
@@ -13,7 +14,6 @@
     "@types/jsonwebtoken": "^8.3.7",
     "apollo-errors": "^1.9.0",
     "apollo-server": "^2.9.16",
-    "bcrypt": "^3.0.7",
     "graphql": "^14.5.8",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
@@ -22,6 +22,7 @@
     "prisma-client-lib": "^1.34.10",
     "ts-node": "^8.6.2",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.7.5"
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.8.3"
   }
 }

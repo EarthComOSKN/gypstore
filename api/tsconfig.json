@@ -2,7 +2,10 @@
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "dist",
-    "strict": true,
-    "lib": ["esnext", "dom"]
-  }
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
+  },
+
+  "exclude": ["node_modules", "src/generated"]
 }
