@@ -211,7 +211,7 @@ export const Navbar = () => {
             </a>
           </Dropdown>
           <a href="/promotion">โปรโมชั่น</a>
-          <div>สถานะการส่ง</div>
+          <a href="/delivery">สถานะการส่ง</a>
           <a href="/quotation-list">
             <Icon type="file-text" /> ใบเสนอราคา
           </a>

@@ -8,22 +8,25 @@ const onChange = (current: number): void => {
 const Container = styled.div`
   .ant-carousel .slick-slide {
     text-align: center;
+    height: 400px;
+    line-height: 400px;
+    background: white;
     overflow: hidden;
   }
 
   .ant-carousel .slick-slide h3 {
-    color: #fff;
+    color: white;
   }
 `;
 
 const Banner1 = styled.div`
-  img {
-    height: 100%;
+  > img {
+    height: auto;
     width: 100%;
   }
 `;
 const Banner2 = styled.div`
-  background-image: url("/assets/banner2.png");
+  background-image: url("/assets/banner3.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -40,9 +43,6 @@ export const HomeCarousel = () => (
       </Banner1>
       <Banner1>
         <img src="/assets/banner3.jpg" />
-      </Banner1>
-      <Banner1>
-        <img src="/assets/banner2.png" />
       </Banner1>
     </Carousel>
   </Container>
