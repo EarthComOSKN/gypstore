@@ -2777,7 +2777,7 @@ const HomeCarousel = () => __jsx(Container, {
   },
   __self: undefined
 }, __jsx("img", {
-  src: "/assets/banner3.jpg",
+  src: "/assets/dev-banner.png",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 39
@@ -2790,7 +2790,7 @@ const HomeCarousel = () => __jsx(Container, {
   },
   __self: undefined
 }, __jsx("img", {
-  src: "/assets/banner2.png",
+  src: "/assets/dev-banner.png",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 42
@@ -2803,7 +2803,7 @@ const HomeCarousel = () => __jsx(Container, {
   },
   __self: undefined
 }, __jsx("img", {
-  src: "/assets/banner3.jpg",
+  src: "/assets/dev-banner.png",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 45
