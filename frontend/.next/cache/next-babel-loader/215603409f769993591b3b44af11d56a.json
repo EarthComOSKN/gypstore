@@ -1,1 +1,0 @@
-{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport { Navbar } from '../navigation/Navbar';\nimport { Footer } from '../../component/Footer';\nexport const PromotionPage = () => {\n  return __jsx(React.Fragment, null, __jsx(Navbar, null), __jsx(Footer, null));\n};","map":null,"metadata":{},"sourceType":"module"}

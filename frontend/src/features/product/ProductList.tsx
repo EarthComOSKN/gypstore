@@ -18,6 +18,8 @@ const ProductContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `
 
 const CoverImg = styled.img`
