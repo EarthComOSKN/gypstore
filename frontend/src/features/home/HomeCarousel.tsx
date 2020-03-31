@@ -36,13 +36,13 @@ export const HomeCarousel = () => (
   <Container>
     <Carousel afterChange={onChange}>
       <Banner1>
-        <img src="/assets/banner3.jpg" />
+        <img src="/assets/dev-banner.png" />
       </Banner1>
       <Banner1>
-        <img src="/assets/banner2.png" />
+        <img src="/assets/dev-banner.png" />
       </Banner1>
       <Banner1>
-        <img src="/assets/banner3.jpg" />
+        <img src="/assets/dev-banner.png" />
       </Banner1>
     </Carousel>
   </Container>
