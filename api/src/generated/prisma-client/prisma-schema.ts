@@ -3684,6 +3684,7 @@ type User {
   email: String!
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -3707,6 +3708,7 @@ input UserCreateInput {
   email: String!
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   quotations: QuotationCreateManyWithoutCustomerInput
@@ -3747,6 +3749,7 @@ input UserCreateWithoutAddressesInput {
   email: String!
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   quotations: QuotationCreateManyWithoutCustomerInput
@@ -3761,6 +3764,7 @@ input UserCreateWithoutPaymentsInput {
   email: String!
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   quotations: QuotationCreateManyWithoutCustomerInput
@@ -3775,6 +3779,7 @@ input UserCreateWithoutQuotationsInput {
   email: String!
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput!
   payments: PaymentCreateManyWithoutCustomerInput
@@ -3789,6 +3794,7 @@ input UserCreateWithoutShoppingCartInput {
   email: String!
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean
   quotations: QuotationCreateManyWithoutCustomerInput
   payments: PaymentCreateManyWithoutCustomerInput
@@ -3815,6 +3821,8 @@ enum UserOrderByInput {
   password_DESC
   phone_ASC
   phone_DESC
+  avatar_ASC
+  avatar_DESC
   activated_ASC
   activated_DESC
   createdAt_ASC
@@ -3831,6 +3839,7 @@ type UserPreviousValues {
   email: String!
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -3861,6 +3870,7 @@ input UserUpdateDataInput {
   email: String
   password: String
   phone: String
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
@@ -3875,6 +3885,7 @@ input UserUpdateInput {
   email: String
   password: String
   phone: String
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
@@ -3889,6 +3900,7 @@ input UserUpdateManyMutationInput {
   email: String
   password: String
   phone: String
+  avatar: String
   activated: Boolean
 }
 
@@ -3934,6 +3946,7 @@ input UserUpdateWithoutAddressesDataInput {
   email: String
   password: String
   phone: String
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
@@ -3947,6 +3960,7 @@ input UserUpdateWithoutPaymentsDataInput {
   email: String
   password: String
   phone: String
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   quotations: QuotationUpdateManyWithoutCustomerInput
@@ -3960,6 +3974,7 @@ input UserUpdateWithoutQuotationsDataInput {
   email: String
   password: String
   phone: String
+  avatar: String
   activated: Boolean
   shoppingCart: ShoppingCartUpdateOneRequiredWithoutCustomerInput
   payments: PaymentUpdateManyWithoutCustomerInput
@@ -3973,6 +3988,7 @@ input UserUpdateWithoutShoppingCartDataInput {
   email: String
   password: String
   phone: String
+  avatar: String
   activated: Boolean
   quotations: QuotationUpdateManyWithoutCustomerInput
   payments: PaymentUpdateManyWithoutCustomerInput
@@ -4097,6 +4113,20 @@ input UserWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
+  avatar: String
+  avatar_not: String
+  avatar_in: [String!]
+  avatar_not_in: [String!]
+  avatar_lt: String
+  avatar_lte: String
+  avatar_gt: String
+  avatar_gte: String
+  avatar_contains: String
+  avatar_not_contains: String
+  avatar_starts_with: String
+  avatar_not_starts_with: String
+  avatar_ends_with: String
+  avatar_not_ends_with: String
   activated: Boolean
   activated_not: Boolean
   createdAt: DateTime

@@ -3400,6 +3400,7 @@ input ShoppingCartWhereUniqueInput {
 type User {
   activated: Boolean!
   addresses(after: String, before: String, first: Int, last: Int, orderBy: AddressOrderByInput, skip: Int, where: AddressWhereInput): [Address!]
+  avatar: String
   createdAt: DateTime!
   email: String!
   id: ID!
@@ -3423,6 +3424,7 @@ type UserConnection {
 input UserCreateInput {
   activated: Boolean
   addresses: AddressCreateManyWithoutCustomerInput
+  avatar: String
   email: String!
   id: ID
   name: String!
@@ -3462,6 +3464,7 @@ input UserCreateOneWithoutShoppingCartInput {
 
 input UserCreateWithoutAddressesInput {
   activated: Boolean
+  avatar: String
   email: String!
   id: ID
   name: String!
@@ -3477,6 +3480,7 @@ input UserCreateWithoutAddressesInput {
 input UserCreateWithoutPaymentsInput {
   activated: Boolean
   addresses: AddressCreateManyWithoutCustomerInput
+  avatar: String
   email: String!
   id: ID
   name: String!
@@ -3491,6 +3495,7 @@ input UserCreateWithoutPaymentsInput {
 input UserCreateWithoutQuotationsInput {
   activated: Boolean
   addresses: AddressCreateManyWithoutCustomerInput
+  avatar: String
   email: String!
   id: ID
   name: String!
@@ -3505,6 +3510,7 @@ input UserCreateWithoutQuotationsInput {
 input UserCreateWithoutShoppingCartInput {
   activated: Boolean
   addresses: AddressCreateManyWithoutCustomerInput
+  avatar: String
   email: String!
   id: ID
   name: String!
@@ -3524,6 +3530,8 @@ type UserEdge {
 enum UserOrderByInput {
   activated_ASC
   activated_DESC
+  avatar_ASC
+  avatar_DESC
   createdAt_ASC
   createdAt_DESC
   email_ASC
@@ -3547,6 +3555,7 @@ enum UserOrderByInput {
 input UserUpdateDataInput {
   activated: Boolean
   addresses: AddressUpdateManyWithoutCustomerInput
+  avatar: String
   email: String
   name: String
   password: String
@@ -3561,6 +3570,7 @@ input UserUpdateDataInput {
 input UserUpdateInput {
   activated: Boolean
   addresses: AddressUpdateManyWithoutCustomerInput
+  avatar: String
   email: String
   name: String
   password: String
@@ -3574,6 +3584,7 @@ input UserUpdateInput {
 
 input UserUpdateManyMutationInput {
   activated: Boolean
+  avatar: String
   email: String
   name: String
   password: String
@@ -3619,6 +3630,7 @@ input UserUpdateOneRequiredWithoutShoppingCartInput {
 
 input UserUpdateWithoutAddressesDataInput {
   activated: Boolean
+  avatar: String
   email: String
   name: String
   password: String
@@ -3633,6 +3645,7 @@ input UserUpdateWithoutAddressesDataInput {
 input UserUpdateWithoutPaymentsDataInput {
   activated: Boolean
   addresses: AddressUpdateManyWithoutCustomerInput
+  avatar: String
   email: String
   name: String
   password: String
@@ -3646,6 +3659,7 @@ input UserUpdateWithoutPaymentsDataInput {
 input UserUpdateWithoutQuotationsDataInput {
   activated: Boolean
   addresses: AddressUpdateManyWithoutCustomerInput
+  avatar: String
   email: String
   name: String
   password: String
@@ -3659,6 +3673,7 @@ input UserUpdateWithoutQuotationsDataInput {
 input UserUpdateWithoutShoppingCartDataInput {
   activated: Boolean
   addresses: AddressUpdateManyWithoutCustomerInput
+  avatar: String
   email: String
   name: String
   password: String
@@ -3701,6 +3716,20 @@ input UserWhereInput {
   addresses_none: AddressWhereInput
   addresses_some: AddressWhereInput
   AND: [UserWhereInput!]
+  avatar: String
+  avatar_contains: String
+  avatar_ends_with: String
+  avatar_gt: String
+  avatar_gte: String
+  avatar_in: [String!]
+  avatar_lt: String
+  avatar_lte: String
+  avatar_not: String
+  avatar_not_contains: String
+  avatar_not_ends_with: String
+  avatar_not_in: [String!]
+  avatar_not_starts_with: String
+  avatar_starts_with: String
   createdAt: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime

@@ -656,6 +656,8 @@ export type UserOrderByInput =
   | "password_DESC"
   | "phone_ASC"
   | "phone_DESC"
+  | "avatar_ASC"
+  | "avatar_DESC"
   | "activated_ASC"
   | "activated_DESC"
   | "createdAt_ASC"
@@ -1086,6 +1088,20 @@ export interface UserWhereInput {
   phone_not_starts_with?: Maybe<String>;
   phone_ends_with?: Maybe<String>;
   phone_not_ends_with?: Maybe<String>;
+  avatar?: Maybe<String>;
+  avatar_not?: Maybe<String>;
+  avatar_in?: Maybe<String[] | String>;
+  avatar_not_in?: Maybe<String[] | String>;
+  avatar_lt?: Maybe<String>;
+  avatar_lte?: Maybe<String>;
+  avatar_gt?: Maybe<String>;
+  avatar_gte?: Maybe<String>;
+  avatar_contains?: Maybe<String>;
+  avatar_not_contains?: Maybe<String>;
+  avatar_starts_with?: Maybe<String>;
+  avatar_not_starts_with?: Maybe<String>;
+  avatar_ends_with?: Maybe<String>;
+  avatar_not_ends_with?: Maybe<String>;
   activated?: Maybe<Boolean>;
   activated_not?: Maybe<Boolean>;
   createdAt?: Maybe<DateTimeInput>;
@@ -1610,6 +1626,7 @@ export interface UserCreateWithoutAddressesInput {
   email: String;
   password: String;
   phone: String;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
@@ -1742,6 +1759,7 @@ export interface UserCreateWithoutShoppingCartInput {
   email: String;
   password: String;
   phone: String;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
@@ -1838,6 +1856,7 @@ export interface UserCreateWithoutPaymentsInput {
   email: String;
   password: String;
   phone: String;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
@@ -1889,6 +1908,7 @@ export interface UserCreateInput {
   email: String;
   password: String;
   phone: String;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
@@ -2103,6 +2123,7 @@ export interface UserCreateWithoutQuotationsInput {
   email: String;
   password: String;
   phone: String;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
@@ -2186,6 +2207,7 @@ export interface UserUpdateWithoutAddressesDataInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
@@ -2380,6 +2402,7 @@ export interface UserUpdateWithoutShoppingCartDataInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
@@ -2770,6 +2793,7 @@ export interface UserUpdateWithoutPaymentsDataInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
@@ -2862,6 +2886,7 @@ export interface UserUpdateDataInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
@@ -3174,6 +3199,7 @@ export interface UserUpdateWithoutQuotationsDataInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
@@ -4061,6 +4087,7 @@ export interface UserUpdateInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
@@ -4075,6 +4102,7 @@ export interface UserUpdateManyMutationInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   phone?: Maybe<String>;
+  avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
 }
 
@@ -4343,6 +4371,7 @@ export interface User {
   email: String;
   password: String;
   phone: String;
+  avatar?: String;
   activated: Boolean;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -4356,6 +4385,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   email: () => Promise<String>;
   password: () => Promise<String>;
   phone: () => Promise<String>;
+  avatar: () => Promise<String>;
   activated: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -4399,6 +4429,7 @@ export interface UserSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   phone: () => Promise<AsyncIterator<String>>;
+  avatar: () => Promise<AsyncIterator<String>>;
   activated: () => Promise<AsyncIterator<Boolean>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -4442,6 +4473,7 @@ export interface UserNullablePromise
   email: () => Promise<String>;
   password: () => Promise<String>;
   phone: () => Promise<String>;
+  avatar: () => Promise<String>;
   activated: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -6315,6 +6347,7 @@ export interface UserPreviousValues {
   email: String;
   password: String;
   phone: String;
+  avatar?: String;
   activated: Boolean;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -6330,6 +6363,7 @@ export interface UserPreviousValuesPromise
   email: () => Promise<String>;
   password: () => Promise<String>;
   phone: () => Promise<String>;
+  avatar: () => Promise<String>;
   activated: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -6345,6 +6379,7 @@ export interface UserPreviousValuesSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   phone: () => Promise<AsyncIterator<String>>;
+  avatar: () => Promise<AsyncIterator<String>>;
   activated: () => Promise<AsyncIterator<Boolean>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -6446,6 +6481,6 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `http://13.229.249.128:4466/`
+  endpoint: `https://eu1.prisma.sh/mrearth25-5430b1/gypstore-prisma/dev`
 });
 export const prisma = new Prisma();

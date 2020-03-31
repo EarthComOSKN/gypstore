@@ -4,7 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import { createHttpLink } from 'apollo-link-http'
 const uri =
   process.env.NODE_ENV !== 'production'
-    ? 'https://gypstore-api-4r4kliwroa-de.a.run.app/'
+    ? 'http://localhost:4000'
     : 'https://gypstore-api-4r4kliwroa-de.a.run.app/'
 
 const httpLink = createHttpLink({ uri, fetch: !process.browser && fetch })

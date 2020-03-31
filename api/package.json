@@ -9,11 +9,14 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@google-cloud/storage": "^4.7.0",
     "@prisma/photon": "2.0.0-preview019",
     "@types/bcrypt": "^3.0.0",
     "@types/jsonwebtoken": "^8.3.7",
     "apollo-errors": "^1.9.0",
     "apollo-server": "^2.9.16",
+    "aws-sdk": "^2.648.0",
+    "body-parser": "^1.19.0",
     "graphql": "^14.5.8",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",

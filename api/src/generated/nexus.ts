@@ -2629,6 +2629,7 @@ export interface NexusGenInputs {
   UserCreateInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressCreateManyWithoutCustomerInput'] | null; // AddressCreateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email: string; // String!
     id?: string | null; // ID
     name: string; // String!
@@ -2662,6 +2663,7 @@ export interface NexusGenInputs {
   }
   UserCreateWithoutAddressesInput: { // input type
     activated?: boolean | null; // Boolean
+    avatar?: string | null; // String
     email: string; // String!
     id?: string | null; // ID
     name: string; // String!
@@ -2676,6 +2678,7 @@ export interface NexusGenInputs {
   UserCreateWithoutPaymentsInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressCreateManyWithoutCustomerInput'] | null; // AddressCreateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email: string; // String!
     id?: string | null; // ID
     name: string; // String!
@@ -2689,6 +2692,7 @@ export interface NexusGenInputs {
   UserCreateWithoutQuotationsInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressCreateManyWithoutCustomerInput'] | null; // AddressCreateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email: string; // String!
     id?: string | null; // ID
     name: string; // String!
@@ -2702,6 +2706,7 @@ export interface NexusGenInputs {
   UserCreateWithoutShoppingCartInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressCreateManyWithoutCustomerInput'] | null; // AddressCreateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email: string; // String!
     id?: string | null; // ID
     name: string; // String!
@@ -2715,6 +2720,7 @@ export interface NexusGenInputs {
   UserUpdateDataInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressUpdateManyWithoutCustomerInput'] | null; // AddressUpdateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
@@ -2728,6 +2734,7 @@ export interface NexusGenInputs {
   UserUpdateInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressUpdateManyWithoutCustomerInput'] | null; // AddressUpdateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
@@ -2740,6 +2747,7 @@ export interface NexusGenInputs {
   }
   UserUpdateManyMutationInput: { // input type
     activated?: boolean | null; // Boolean
+    avatar?: string | null; // String
     email?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
@@ -2779,6 +2787,7 @@ export interface NexusGenInputs {
   }
   UserUpdateWithoutAddressesDataInput: { // input type
     activated?: boolean | null; // Boolean
+    avatar?: string | null; // String
     email?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
@@ -2792,6 +2801,7 @@ export interface NexusGenInputs {
   UserUpdateWithoutPaymentsDataInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressUpdateManyWithoutCustomerInput'] | null; // AddressUpdateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
@@ -2804,6 +2814,7 @@ export interface NexusGenInputs {
   UserUpdateWithoutQuotationsDataInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressUpdateManyWithoutCustomerInput'] | null; // AddressUpdateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
@@ -2816,6 +2827,7 @@ export interface NexusGenInputs {
   UserUpdateWithoutShoppingCartDataInput: { // input type
     activated?: boolean | null; // Boolean
     addresses?: NexusGenInputs['AddressUpdateManyWithoutCustomerInput'] | null; // AddressUpdateManyWithoutCustomerInput
+    avatar?: string | null; // String
     email?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
@@ -2852,6 +2864,20 @@ export interface NexusGenInputs {
     addresses_none?: NexusGenInputs['AddressWhereInput'] | null; // AddressWhereInput
     addresses_some?: NexusGenInputs['AddressWhereInput'] | null; // AddressWhereInput
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    avatar?: string | null; // String
+    avatar_contains?: string | null; // String
+    avatar_ends_with?: string | null; // String
+    avatar_gt?: string | null; // String
+    avatar_gte?: string | null; // String
+    avatar_in?: string[] | null; // [String!]
+    avatar_lt?: string | null; // String
+    avatar_lte?: string | null; // String
+    avatar_not?: string | null; // String
+    avatar_not_contains?: string | null; // String
+    avatar_not_ends_with?: string | null; // String
+    avatar_not_in?: string[] | null; // [String!]
+    avatar_not_starts_with?: string | null; // String
+    avatar_starts_with?: string | null; // String
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
     createdAt_gte?: any | null; // DateTime
@@ -2987,7 +3013,7 @@ export interface NexusGenEnums {
   ShippingOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "docId_ASC" | "docId_DESC" | "dueDate_ASC" | "dueDate_DESC" | "id_ASC" | "id_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   ShoppingCartItemOrderByInput: "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   ShoppingCartOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "total_cost_ASC" | "total_cost_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  UserOrderByInput: "activated_ASC" | "activated_DESC" | "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "password_ASC" | "password_DESC" | "phone_ASC" | "phone_DESC" | "runningId_ASC" | "runningId_DESC" | "type_ASC" | "type_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  UserOrderByInput: "activated_ASC" | "activated_DESC" | "avatar_ASC" | "avatar_DESC" | "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "password_ASC" | "password_DESC" | "phone_ASC" | "phone_DESC" | "runningId_ASC" | "runningId_DESC" | "type_ASC" | "type_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -3197,6 +3223,7 @@ export interface NexusGenRootTypes {
   }
   User: { // root type
     activated: boolean; // Boolean!
+    avatar?: string | null; // String
     createdAt: any; // DateTime!
     email: string; // String!
     id: string; // ID!
@@ -3858,6 +3885,7 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     activated: boolean; // Boolean!
     addresses: NexusGenRootTypes['Address'][] | null; // [Address!]
+    avatar: string | null; // String
     createdAt: any; // DateTime!
     email: string; // String!
     id: string; // ID!

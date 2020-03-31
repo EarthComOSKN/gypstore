@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from 'apollo-boost'
 
 export const REGISTER = gql`
   mutation register(
@@ -7,6 +7,7 @@ export const REGISTER = gql`
     $password: String!
     $phone: String!
     $type: String!
+    $avatar: String
   ) {
     register(
       data: {
@@ -15,6 +16,7 @@ export const REGISTER = gql`
         password: $password
         phone: $phone
         type: $type
+        avatar: $avatar
         shoppingCart: { create: { total_cost: 0 } }
       }
     ) {
@@ -25,7 +27,7 @@ export const REGISTER = gql`
       }
     }
   }
-`;
+`
 
 export const LOGIN = gql`
   mutation($email: String!, $password: String!) {
@@ -33,4 +35,4 @@ export const LOGIN = gql`
       token
     }
   }
-`;
+`

@@ -14,6 +14,7 @@ import {
 } from "../../generated/prisma-client";
 import { JWT_SECRET } from "../../const";
 import * as jwt from "jsonwebtoken";
+import S3Service from "../../s3";
 
 export const registerConfig: NexusOutputFieldConfig<"Mutation", "register"> = {
   type: "Me",
@@ -26,9 +27,20 @@ export const registerConfig: NexusOutputFieldConfig<"Mutation", "register"> = {
       .aggregate()
       .count();
     const input = args.data;
+    console.log(input);
+    let avatarUrl;
+    try {
+      if (input.avatar) {
+        avatarUrl = await S3Service.uploadImage(
+          input.avatar.split(",")[1],
+          `${input.name}.png`
+        );
+      }
+    } catch (error) {}
 
     const inputWithRunningid = {
       ...input,
+      avatar: avatarUrl,
       runningId: totalUser + 1
     } as UserCreateInput;
 

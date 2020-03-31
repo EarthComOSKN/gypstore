@@ -1174,6 +1174,7 @@ type UserObject =
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'phone', args?: [] | false, alias?: string  } 
+  | { name: 'avatar', args?: [] | false, alias?: string  } 
   | { name: 'activated', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
@@ -1190,6 +1191,7 @@ type UserFields =
   | 'email'
   | 'password'
   | 'phone'
+  | 'avatar'
   | 'activated'
   | 'createdAt'
   | 'updatedAt'
@@ -1280,6 +1282,14 @@ export interface UserFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  avatar: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   activated: {
@@ -5549,6 +5559,7 @@ type UserPreviousValuesObject =
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'phone', args?: [] | false, alias?: string  } 
+  | { name: 'avatar', args?: [] | false, alias?: string  } 
   | { name: 'activated', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
@@ -5561,6 +5572,7 @@ type UserPreviousValuesFields =
   | 'email'
   | 'password'
   | 'phone'
+  | 'avatar'
   | 'activated'
   | 'createdAt'
   | 'updatedAt'
@@ -5624,6 +5636,14 @@ export interface UserPreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  avatar: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   activated: {
@@ -7810,6 +7830,20 @@ export interface UserWhereInput {
   phone_not_starts_with?: string | null
   phone_ends_with?: string | null
   phone_not_ends_with?: string | null
+  avatar?: string | null
+  avatar_not?: string | null
+  avatar_in?: string[]
+  avatar_not_in?: string[]
+  avatar_lt?: string | null
+  avatar_lte?: string | null
+  avatar_gt?: string | null
+  avatar_gte?: string | null
+  avatar_contains?: string | null
+  avatar_not_contains?: string | null
+  avatar_starts_with?: string | null
+  avatar_not_starts_with?: string | null
+  avatar_ends_with?: string | null
+  avatar_not_ends_with?: string | null
   activated?: boolean | null
   activated_not?: boolean | null
   createdAt?: string | null
@@ -7936,6 +7970,20 @@ export type UserWhereInputInputObject =
   | { name: 'phone_not_starts_with', alias?: string  } 
   | { name: 'phone_ends_with', alias?: string  } 
   | { name: 'phone_not_ends_with', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
+  | { name: 'avatar_not', alias?: string  } 
+  | { name: 'avatar_in', alias?: string  } 
+  | { name: 'avatar_not_in', alias?: string  } 
+  | { name: 'avatar_lt', alias?: string  } 
+  | { name: 'avatar_lte', alias?: string  } 
+  | { name: 'avatar_gt', alias?: string  } 
+  | { name: 'avatar_gte', alias?: string  } 
+  | { name: 'avatar_contains', alias?: string  } 
+  | { name: 'avatar_not_contains', alias?: string  } 
+  | { name: 'avatar_starts_with', alias?: string  } 
+  | { name: 'avatar_not_starts_with', alias?: string  } 
+  | { name: 'avatar_ends_with', alias?: string  } 
+  | { name: 'avatar_not_ends_with', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'activated_not', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
@@ -8896,6 +8944,7 @@ export interface UserCreateInput {
   email?: string
   password?: string
   phone?: string
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: QuotationCreateManyWithoutCustomerInput | null
@@ -8911,6 +8960,7 @@ export type UserCreateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
@@ -9130,6 +9180,7 @@ export interface UserCreateWithoutShoppingCartInput {
   email?: string
   password?: string
   phone?: string
+  avatar?: string | null
   activated?: boolean | null
   quotations?: QuotationCreateManyWithoutCustomerInput | null
   payments?: PaymentCreateManyWithoutCustomerInput | null
@@ -9144,6 +9195,7 @@ export type UserCreateWithoutShoppingCartInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -9297,6 +9349,7 @@ export interface UserCreateWithoutPaymentsInput {
   email?: string
   password?: string
   phone?: string
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: QuotationCreateManyWithoutCustomerInput | null
@@ -9311,6 +9364,7 @@ export type UserCreateWithoutPaymentsInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
@@ -9526,6 +9580,7 @@ export interface UserCreateWithoutAddressesInput {
   email?: string
   password?: string
   phone?: string
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: QuotationCreateManyWithoutCustomerInput | null
@@ -9540,6 +9595,7 @@ export type UserCreateWithoutAddressesInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
@@ -9722,6 +9778,7 @@ export interface UserCreateWithoutQuotationsInput {
   email?: string
   password?: string
   phone?: string
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartCreateOneWithoutCustomerInput
   payments?: PaymentCreateManyWithoutCustomerInput | null
@@ -9736,6 +9793,7 @@ export type UserCreateWithoutQuotationsInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -9904,6 +9962,7 @@ export interface UserUpdateInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
@@ -9918,6 +9977,7 @@ export type UserUpdateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
@@ -10200,6 +10260,7 @@ export interface UserUpdateWithoutShoppingCartDataInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  avatar?: string | null
   activated?: boolean | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
   payments?: PaymentUpdateManyWithoutCustomerInput | null
@@ -10213,6 +10274,7 @@ export type UserUpdateWithoutShoppingCartDataInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -10858,6 +10920,7 @@ export interface UserUpdateWithoutPaymentsDataInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
@@ -10871,6 +10934,7 @@ export type UserUpdateWithoutPaymentsDataInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
@@ -10990,6 +11054,7 @@ export interface UserUpdateDataInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
@@ -11004,6 +11069,7 @@ export type UserUpdateDataInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
@@ -11419,6 +11485,7 @@ export interface UserUpdateWithoutAddressesDataInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   quotations?: QuotationUpdateManyWithoutCustomerInput | null
@@ -11432,6 +11499,7 @@ export type UserUpdateWithoutAddressesDataInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'quotations', alias?: string  } 
@@ -11541,6 +11609,7 @@ export interface UserUpdateWithoutQuotationsDataInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  avatar?: string | null
   activated?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneRequiredWithoutCustomerInput | null
   payments?: PaymentUpdateManyWithoutCustomerInput | null
@@ -11554,6 +11623,7 @@ export type UserUpdateWithoutQuotationsDataInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   | { name: 'shoppingCart', alias?: string  } 
   | { name: 'payments', alias?: string  } 
@@ -12815,6 +12885,7 @@ export interface UserUpdateManyMutationInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  avatar?: string | null
   activated?: boolean | null
 }
 export type UserUpdateManyMutationInputInputObject =
@@ -12825,6 +12896,7 @@ export type UserUpdateManyMutationInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'avatar', alias?: string  } 
   | { name: 'activated', alias?: string  } 
   
 export interface AddressCreateInput {
@@ -13598,6 +13670,8 @@ export type UserOrderByInputValues =
   | 'password_DESC'
   | 'phone_ASC'
   | 'phone_DESC'
+  | 'avatar_ASC'
+  | 'avatar_DESC'
   | 'activated_ASC'
   | 'activated_DESC'
   | 'createdAt_ASC'

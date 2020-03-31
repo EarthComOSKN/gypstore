@@ -6,6 +6,7 @@ type User {
   email: String! @unique
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean! @default(value: true) 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt

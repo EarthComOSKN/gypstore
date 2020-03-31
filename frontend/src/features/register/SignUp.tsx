@@ -1,9 +1,29 @@
-import styled from "@emotion/styled";
-import { Button, Form, Input, Tooltip, Icon, message } from "antd";
-import { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
-import { REGISTER } from "./gql";
-import { useRouter } from "next/router";
+import styled from '@emotion/styled'
+import { Button, Form, Input, Tooltip, Icon, Upload, message } from 'antd'
+import { useState } from 'react'
+import { useMutation } from '@apollo/react-hooks'
+import { REGISTER } from './gql'
+import { useRouter } from 'next/router'
+
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
+
+function getBase64(img, callback) {
+  const reader = new FileReader()
+  reader.addEventListener('load', () => callback(reader.result))
+  reader.readAsDataURL(img)
+}
+
+function beforeUpload(file) {
+  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
+  if (!isJpgOrPng) {
+    message.error('You can only upload JPG/PNG file!')
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2
+  if (!isLt2M) {
+    message.error('Image must smaller than 2MB!')
+  }
+  return isJpgOrPng && isLt2M
+}
 
 const Container = styled.div`
   display: flex;
@@ -20,53 +40,75 @@ const Container = styled.div`
       border-color: #ffa53b;
     }
   }
-`;
+`
 
 function SignUp(props) {
-  const { getFieldDecorator, validateFields } = props.form;
-  const router = useRouter();
-  const [confirmDirty, setConfirmDirty] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [register] = useMutation(REGISTER);
+  const { getFieldDecorator, validateFields } = props.form
+  const router = useRouter()
+  const [confirmDirty, setConfirmDirty] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [register] = useMutation(REGISTER)
+  const [imageUrl, setImageUrl] = useState('')
+
+  const uploadButton = (
+    <div>
+      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      <div className="ant-upload-text">Upload</div>
+    </div>
+  )
+
+  const handleChange = info => {
+    if (info.file.status === 'uploading') {
+      setLoading(true)
+      return
+    }
+    if (info.file.status === 'done') {
+      getBase64(info.file.originFileObj, imageUrl => {
+        setImageUrl(imageUrl)
+        setLoading(false)
+      })
+    }
+  }
 
   const createUser = async ({ nickname, email, password, phone }) => {
     try {
-      setLoading(true);
+      setLoading(true)
       const res = await register({
         variables: {
           name: nickname,
-          type: "Admin",
+          type: 'Admin',
+          avatar: imageUrl,
           email,
           password,
-          phone
-        }
-      });
-      const { token } = res?.data?.register;
-      localStorage.setItem("userToken", token);
-      router.push("/");
-      message.success("Register Completed");
+          phone,
+        },
+      })
+      const { token } = res?.data?.register
+      localStorage.setItem('userToken', token)
+      router.push('/')
+      message.success('Register Completed')
     } catch (error) {
-      message.error(`${error}`);
+      message.error(`${error}`)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault()
     await validateFields(async (err, values) => {
       if (!err) {
-        await createUser(values);
-      } else console.log("eeeee", err);
-    });
-  };
+        await createUser(values)
+      } else console.log('eeeee', err)
+    })
+  }
 
   const handleConfirmBlur = e => {
-    const { value } = e.target;
+    const { value } = e.target
     {
-      setConfirmDirty(confirmDirty || !!value);
+      setConfirmDirty(confirmDirty || !!value)
     }
-  };
+  }
 
   // const validateToNextPassword = (rule, value, callback) => {
   //   const { form } = this.props;
@@ -85,10 +127,26 @@ function SignUp(props) {
   //     callback();
   //   }
   // };
+  console.log('imageUrl ', imageUrl)
 
   return (
     <Container>
       <h1>ลงทะเบียน</h1>
+      <Upload
+        name="avatar"
+        listType="picture-card"
+        className="avatar-uploader"
+        showUploadList={false}
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={beforeUpload}
+        onChange={handleChange}
+      >
+        {imageUrl ? (
+          <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+        ) : (
+          uploadButton
+        )}
+      </Upload>
       <Form onSubmit={handleSubmit}>
         <Form.Item
           label={
@@ -100,54 +158,54 @@ function SignUp(props) {
             </span>
           }
         >
-          {getFieldDecorator("nickname", {
+          {getFieldDecorator('nickname', {
             rules: [
               {
                 required: true,
-                message: "กรุณาใส่ชื่อที่แสดง",
-                whitespace: true
-              }
-            ]
+                message: 'กรุณาใส่ชื่อที่แสดง',
+                whitespace: true,
+              },
+            ],
           })(<Input />)}
         </Form.Item>
         <Form.Item label="อีเมล">
-          {getFieldDecorator("email", {
+          {getFieldDecorator('email', {
             rules: [
               {
-                type: "email",
-                message: "อีเมลไม่ถูกต้อง"
+                type: 'email',
+                message: 'อีเมลไม่ถูกต้อง',
               },
               {
                 required: true,
-                message: "กรุณาระบุอีเมล"
-              }
-            ]
+                message: 'กรุณาระบุอีเมล',
+              },
+            ],
           })(<Input />)}
         </Form.Item>
         <Form.Item label="รหัสผ่าน">
-          {getFieldDecorator("password", {
+          {getFieldDecorator('password', {
             rules: [
               {
                 required: true,
-                message: "กรุณาระบุรหัสผ่าน"
-              }
-            ]
+                message: 'กรุณาระบุรหัสผ่าน',
+              },
+            ],
           })(<Input.Password />)}
         </Form.Item>
         <Form.Item label="ยืนยันรหัสผ่าน" hasFeedback>
-          {getFieldDecorator("confirm", {
+          {getFieldDecorator('confirm', {
             rules: [
               {
                 required: true,
-                message: "กรุณาระบุยืนยันรหัสผ่าน"
-              }
-            ]
+                message: 'กรุณาระบุยืนยันรหัสผ่าน',
+              },
+            ],
           })(<Input.Password onBlur={handleConfirmBlur} />)}
         </Form.Item>
         <Form.Item label="เบอร์โทรศัพท์">
-          {getFieldDecorator("phone", {
-            rules: [{ required: true, message: "กรุณาใส่เบอร์ติดต่อ" }]
-          })(<Input style={{ width: "100%" }} />)}
+          {getFieldDecorator('phone', {
+            rules: [{ required: true, message: 'กรุณาใส่เบอร์ติดต่อ' }],
+          })(<Input style={{ width: '100%' }} />)}
         </Form.Item>
         <Form.Item>
           <Button
@@ -161,7 +219,7 @@ function SignUp(props) {
         </Form.Item>
       </Form>
     </Container>
-  );
+  )
 }
 
-export default Form.create()(SignUp);
+export default Form.create()(SignUp)

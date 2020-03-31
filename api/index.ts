@@ -10,6 +10,7 @@ import { User } from "./src/types/User";
 import { Me } from "./src/types/Me";
 import * as express from "express";
 import { getUserFromToken } from "./lib/jwt";
+import * as bodyParser from "body-parser";
 
 const app = express();
 
@@ -45,6 +46,12 @@ app.use((req: any, res, next) => {
       .send({ error: "invalid token" });
     throw error;
   }
+});
+app.use(bodyParser.json());
+app.post("/upload-image", (req, res) => {
+  console.log(req.body);
+
+  res.sendStatus(200);
 });
 
 const server = new ApolloServer({
