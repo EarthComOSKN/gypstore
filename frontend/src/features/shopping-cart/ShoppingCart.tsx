@@ -3,7 +3,12 @@ import { ProductCardTall } from '../product/ProductCardTall'
 import { AmountInput } from '../../component/AmountInput'
 import { Button, message, Icon, Modal, Spin } from 'antd'
 import { useQuery, useMutation } from '@apollo/react-hooks'
-import { DELETE_ITEM } from './gql'
+import {
+  DELETE_ITEM,
+  CREATE_QUOTATION,
+  CREATE_QUOTATION_ITEMS,
+  CLEAR_SHOPPING_CART,
+} from './gql'
 import { GET_ME } from '../navigation/gql'
 import { useRouter } from 'next/router'
 import { FullPageLoading } from '../../component/Loading'
@@ -84,12 +89,15 @@ export const ShoppingCart = () => {
       // cache.writeData(newUser)
     },
   })
+  const [createQuotation] = useMutation(CREATE_QUOTATION)
+  const [createQuotationItem] = useMutation(CREATE_QUOTATION_ITEMS)
+  const [resetShoppingCart] = useMutation(CLEAR_SHOPPING_CART)
   if (loading) return <FullPageLoading />
-  if (!data) {
+  const me = data?.me as User
+  if (!me) {
     router.push('/signin')
     return null
   }
-  const me = data.me as User
   const shoppingCart = me.shoppingCart as ShoppingCart
   const shoppingCartItems = shoppingCart.productItems
 
@@ -102,6 +110,65 @@ export const ShoppingCart = () => {
       cancelText: 'ยกเลิก',
       async onOk() {
         await deleteItem(key)
+      },
+      onCancel() {
+        console.log('Cancel')
+      },
+    })
+  }
+
+  const clearShoppingCart = async () => {
+    const hide = message.loading('กำลังล้าง ตะกร้าสินค้า')
+    resetShoppingCart({
+      variables: {
+        sid: shoppingCart.id,
+      },
+    })
+      .then(res => {
+        hide()
+        message.success('ล้างตะกร้าสำเร็จ')
+        window.location.reload()
+      })
+      .catch(err => {
+        hide()
+        message.error('เกิดข้อผิดพลาด')
+      })
+  }
+
+  const requestQuotation = async () => {
+    const hide = message.loading('กำลังยื่นขอ ใบเสนอราคา')
+    try {
+      const res = await createQuotation({
+        variables: {
+          userId: me.id,
+        },
+      })
+      const data = res.data as Mutation
+      const qid = data.createQuotation.id
+      await Promise.all(
+        shoppingCartItems.map(shopItem => {
+          createQuotationItem({
+            variables: {
+              qid: qid,
+              key: `${qid}${shopItem.product.id}`,
+              pid: shopItem.product.id,
+              amount: shopItem.amount,
+              price: +shopItem.product.salePrice * shopItem.amount,
+            },
+          })
+        }),
+      )
+      hide()
+      message.success('ยื่นขอสำเร็จ')
+    } catch (error) {
+      hide()
+      message.error('เกิดข้อผิดพลาด')
+    }
+    Modal.confirm({
+      title: 'ต้องการล้างตะกร้าสินค้าหรือไม่?',
+
+      onOk() {
+        clearShoppingCart()
       },
       onCancel() {
         console.log('Cancel')
@@ -189,7 +256,9 @@ export const ShoppingCart = () => {
             </h3>
           </CartSumRow>
           <CartSumRow>
-            {/* <StyledButton>พิมพ์ใบเสนอราคา</StyledButton> */}
+            <StyledButton onClick={() => requestQuotation()}>
+              ขอใบเสนอราคา
+            </StyledButton>
             <div></div>
             <StyledButton>ถัดไป</StyledButton>
           </CartSumRow>

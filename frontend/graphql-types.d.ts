@@ -406,8 +406,13 @@ type AggregateQuotation = {
   count: Scalars['Int']
 }
 
-type AggregateSaleman = {
-  __typename?: 'AggregateSaleman'
+type AggregateQuotationItem = {
+  __typename?: 'AggregateQuotationItem'
+  count: Scalars['Int']
+}
+
+type AggregateSalesman = {
+  __typename?: 'AggregateSalesman'
   count: Scalars['Int']
 }
 
@@ -644,7 +649,7 @@ type Invoice = {
   updatedAt: Scalars['DateTime']
   user: User
   quotation: Quotation
-  saleman: Saleman
+  salesman: Salesman
   address?: Maybe<Address>
   payment?: Maybe<Payment>
 }
@@ -662,7 +667,7 @@ type InvoiceCreateInput = {
   creditTerm: Scalars['String']
   user: UserCreateOneInput
   quotation: QuotationCreateOneInput
-  saleman: SalemanCreateOneWithoutInvoicesInput
+  salesman: SalesmanCreateOneWithoutInvoicesInput
   address?: Maybe<AddressCreateOneWithoutInvoicesInput>
   payment?: Maybe<PaymentCreateOneWithoutInvoiceInput>
 }
@@ -672,8 +677,8 @@ type InvoiceCreateManyWithoutAddressInput = {
   connect?: Maybe<Array<InvoiceWhereUniqueInput>>
 }
 
-type InvoiceCreateManyWithoutSalemanInput = {
-  create?: Maybe<Array<InvoiceCreateWithoutSalemanInput>>
+type InvoiceCreateManyWithoutSalesmanInput = {
+  create?: Maybe<Array<InvoiceCreateWithoutSalesmanInput>>
   connect?: Maybe<Array<InvoiceWhereUniqueInput>>
 }
 
@@ -693,7 +698,7 @@ type InvoiceCreateWithoutAddressInput = {
   creditTerm: Scalars['String']
   user: UserCreateOneInput
   quotation: QuotationCreateOneInput
-  saleman: SalemanCreateOneWithoutInvoicesInput
+  salesman: SalesmanCreateOneWithoutInvoicesInput
   payment?: Maybe<PaymentCreateOneWithoutInvoiceInput>
 }
 
@@ -703,11 +708,11 @@ type InvoiceCreateWithoutPaymentInput = {
   creditTerm: Scalars['String']
   user: UserCreateOneInput
   quotation: QuotationCreateOneInput
-  saleman: SalemanCreateOneWithoutInvoicesInput
+  salesman: SalesmanCreateOneWithoutInvoicesInput
   address?: Maybe<AddressCreateOneWithoutInvoicesInput>
 }
 
-type InvoiceCreateWithoutSalemanInput = {
+type InvoiceCreateWithoutSalesmanInput = {
   id?: Maybe<Scalars['ID']>
   docId: Scalars['String']
   creditTerm: Scalars['String']
@@ -833,7 +838,7 @@ type InvoiceUpdateDataInput = {
   creditTerm?: Maybe<Scalars['String']>
   user?: Maybe<UserUpdateOneRequiredInput>
   quotation?: Maybe<QuotationUpdateOneRequiredInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>
 }
@@ -843,7 +848,7 @@ type InvoiceUpdateInput = {
   creditTerm?: Maybe<Scalars['String']>
   user?: Maybe<UserUpdateOneRequiredInput>
   quotation?: Maybe<QuotationUpdateOneRequiredInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>
 }
@@ -870,14 +875,14 @@ type InvoiceUpdateManyWithoutAddressInput = {
   updateMany?: Maybe<Array<InvoiceUpdateManyWithWhereNestedInput>>
 }
 
-type InvoiceUpdateManyWithoutSalemanInput = {
-  create?: Maybe<Array<InvoiceCreateWithoutSalemanInput>>
+type InvoiceUpdateManyWithoutSalesmanInput = {
+  create?: Maybe<Array<InvoiceCreateWithoutSalesmanInput>>
   delete?: Maybe<Array<InvoiceWhereUniqueInput>>
   connect?: Maybe<Array<InvoiceWhereUniqueInput>>
   set?: Maybe<Array<InvoiceWhereUniqueInput>>
   disconnect?: Maybe<Array<InvoiceWhereUniqueInput>>
-  update?: Maybe<Array<InvoiceUpdateWithWhereUniqueWithoutSalemanInput>>
-  upsert?: Maybe<Array<InvoiceUpsertWithWhereUniqueWithoutSalemanInput>>
+  update?: Maybe<Array<InvoiceUpdateWithWhereUniqueWithoutSalesmanInput>>
+  upsert?: Maybe<Array<InvoiceUpsertWithWhereUniqueWithoutSalesmanInput>>
   deleteMany?: Maybe<Array<InvoiceScalarWhereInput>>
   updateMany?: Maybe<Array<InvoiceUpdateManyWithWhereNestedInput>>
 }
@@ -908,7 +913,7 @@ type InvoiceUpdateWithoutAddressDataInput = {
   creditTerm?: Maybe<Scalars['String']>
   user?: Maybe<UserUpdateOneRequiredInput>
   quotation?: Maybe<QuotationUpdateOneRequiredInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>
 }
 
@@ -917,11 +922,11 @@ type InvoiceUpdateWithoutPaymentDataInput = {
   creditTerm?: Maybe<Scalars['String']>
   user?: Maybe<UserUpdateOneRequiredInput>
   quotation?: Maybe<QuotationUpdateOneRequiredInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutInvoicesInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>
 }
 
-type InvoiceUpdateWithoutSalemanDataInput = {
+type InvoiceUpdateWithoutSalesmanDataInput = {
   docId?: Maybe<Scalars['String']>
   creditTerm?: Maybe<Scalars['String']>
   user?: Maybe<UserUpdateOneRequiredInput>
@@ -935,9 +940,9 @@ type InvoiceUpdateWithWhereUniqueWithoutAddressInput = {
   data: InvoiceUpdateWithoutAddressDataInput
 }
 
-type InvoiceUpdateWithWhereUniqueWithoutSalemanInput = {
+type InvoiceUpdateWithWhereUniqueWithoutSalesmanInput = {
   where: InvoiceWhereUniqueInput
-  data: InvoiceUpdateWithoutSalemanDataInput
+  data: InvoiceUpdateWithoutSalesmanDataInput
 }
 
 type InvoiceUpsertNestedInput = {
@@ -956,10 +961,10 @@ type InvoiceUpsertWithWhereUniqueWithoutAddressInput = {
   create: InvoiceCreateWithoutAddressInput
 }
 
-type InvoiceUpsertWithWhereUniqueWithoutSalemanInput = {
+type InvoiceUpsertWithWhereUniqueWithoutSalesmanInput = {
   where: InvoiceWhereUniqueInput
-  update: InvoiceUpdateWithoutSalemanDataInput
-  create: InvoiceCreateWithoutSalemanInput
+  update: InvoiceUpdateWithoutSalesmanDataInput
+  create: InvoiceCreateWithoutSalesmanInput
 }
 
 type InvoiceWhereInput = {
@@ -1023,7 +1028,7 @@ type InvoiceWhereInput = {
   updatedAt_gte?: Maybe<Scalars['DateTime']>
   user?: Maybe<UserWhereInput>
   quotation?: Maybe<QuotationWhereInput>
-  saleman?: Maybe<SalemanWhereInput>
+  salesman?: Maybe<SalesmanWhereInput>
   address?: Maybe<AddressWhereInput>
   payment?: Maybe<PaymentWhereInput>
   AND?: Maybe<Array<InvoiceWhereInput>>
@@ -1073,11 +1078,18 @@ type Mutation = {
   upsertQuotation: Quotation
   deleteQuotation?: Maybe<Quotation>
   deleteManyQuotations: BatchPayload
-  createSaleman: Saleman
-  updateSaleman?: Maybe<Saleman>
-  upsertSaleman: Saleman
-  deleteSaleman?: Maybe<Saleman>
-  deleteManySalemen: BatchPayload
+  createQuotationItem: QuotationItem
+  updateQuotationItem?: Maybe<QuotationItem>
+  updateManyQuotationItems: BatchPayload
+  upsertQuotationItem: QuotationItem
+  deleteQuotationItem?: Maybe<QuotationItem>
+  deleteManyQuotationItems: BatchPayload
+  createSalesman: Salesman
+  updateSalesman?: Maybe<Salesman>
+  updateManySalesmen: BatchPayload
+  upsertSalesman: Salesman
+  deleteSalesman?: Maybe<Salesman>
+  deleteManySalesmen: BatchPayload
   createShipping: Shipping
   updateShipping?: Maybe<Shipping>
   updateManyShippings: BatchPayload
@@ -1272,27 +1284,60 @@ type MutationDeleteManyQuotationsArgs = {
   where?: Maybe<QuotationWhereInput>
 }
 
-type MutationCreateSalemanArgs = {
-  data: SalemanCreateInput
+type MutationCreateQuotationItemArgs = {
+  data: QuotationItemCreateInput
 }
 
-type MutationUpdateSalemanArgs = {
-  data: SalemanUpdateInput
-  where: SalemanWhereUniqueInput
+type MutationUpdateQuotationItemArgs = {
+  data: QuotationItemUpdateInput
+  where: QuotationItemWhereUniqueInput
 }
 
-type MutationUpsertSalemanArgs = {
-  where: SalemanWhereUniqueInput
-  create: SalemanCreateInput
-  update: SalemanUpdateInput
+type MutationUpdateManyQuotationItemsArgs = {
+  data: QuotationItemUpdateManyMutationInput
+  where?: Maybe<QuotationItemWhereInput>
 }
 
-type MutationDeleteSalemanArgs = {
-  where: SalemanWhereUniqueInput
+type MutationUpsertQuotationItemArgs = {
+  where: QuotationItemWhereUniqueInput
+  create: QuotationItemCreateInput
+  update: QuotationItemUpdateInput
 }
 
-type MutationDeleteManySalemenArgs = {
-  where?: Maybe<SalemanWhereInput>
+type MutationDeleteQuotationItemArgs = {
+  where: QuotationItemWhereUniqueInput
+}
+
+type MutationDeleteManyQuotationItemsArgs = {
+  where?: Maybe<QuotationItemWhereInput>
+}
+
+type MutationCreateSalesmanArgs = {
+  data: SalesmanCreateInput
+}
+
+type MutationUpdateSalesmanArgs = {
+  data: SalesmanUpdateInput
+  where: SalesmanWhereUniqueInput
+}
+
+type MutationUpdateManySalesmenArgs = {
+  data: SalesmanUpdateManyMutationInput
+  where?: Maybe<SalesmanWhereInput>
+}
+
+type MutationUpsertSalesmanArgs = {
+  where: SalesmanWhereUniqueInput
+  create: SalesmanCreateInput
+  update: SalesmanUpdateInput
+}
+
+type MutationDeleteSalesmanArgs = {
+  where: SalesmanWhereUniqueInput
+}
+
+type MutationDeleteManySalesmenArgs = {
+  where?: Maybe<SalesmanWhereInput>
 }
 
 type MutationCreateShippingArgs = {
@@ -1433,7 +1478,7 @@ type Payment = {
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
   customer: User
-  saleman: Saleman
+  salesman: Salesman
   quotation: Quotation
   Invoice?: Maybe<Invoice>
 }
@@ -1450,7 +1495,7 @@ type PaymentCreateInput = {
   docId: Scalars['String']
   amount: Scalars['String']
   customer: UserCreateOneWithoutPaymentsInput
-  saleman: SalemanCreateOneWithoutPaymentsInput
+  salesman: SalesmanCreateOneWithoutPaymentsInput
   quotation: QuotationCreateOneWithoutPaymentInput
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>
 }
@@ -1460,8 +1505,8 @@ type PaymentCreateManyWithoutCustomerInput = {
   connect?: Maybe<Array<PaymentWhereUniqueInput>>
 }
 
-type PaymentCreateManyWithoutSalemanInput = {
-  create?: Maybe<Array<PaymentCreateWithoutSalemanInput>>
+type PaymentCreateManyWithoutSalesmanInput = {
+  create?: Maybe<Array<PaymentCreateWithoutSalesmanInput>>
   connect?: Maybe<Array<PaymentWhereUniqueInput>>
 }
 
@@ -1479,7 +1524,7 @@ type PaymentCreateWithoutCustomerInput = {
   id?: Maybe<Scalars['ID']>
   docId: Scalars['String']
   amount: Scalars['String']
-  saleman: SalemanCreateOneWithoutPaymentsInput
+  salesman: SalesmanCreateOneWithoutPaymentsInput
   quotation: QuotationCreateOneWithoutPaymentInput
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>
 }
@@ -1489,7 +1534,7 @@ type PaymentCreateWithoutInvoiceInput = {
   docId: Scalars['String']
   amount: Scalars['String']
   customer: UserCreateOneWithoutPaymentsInput
-  saleman: SalemanCreateOneWithoutPaymentsInput
+  salesman: SalesmanCreateOneWithoutPaymentsInput
   quotation: QuotationCreateOneWithoutPaymentInput
 }
 
@@ -1498,11 +1543,11 @@ type PaymentCreateWithoutQuotationInput = {
   docId: Scalars['String']
   amount: Scalars['String']
   customer: UserCreateOneWithoutPaymentsInput
-  saleman: SalemanCreateOneWithoutPaymentsInput
+  salesman: SalesmanCreateOneWithoutPaymentsInput
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>
 }
 
-type PaymentCreateWithoutSalemanInput = {
+type PaymentCreateWithoutSalesmanInput = {
   id?: Maybe<Scalars['ID']>
   docId: Scalars['String']
   amount: Scalars['String']
@@ -1626,7 +1671,7 @@ type PaymentUpdateInput = {
   docId?: Maybe<Scalars['String']>
   amount?: Maybe<Scalars['String']>
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>
   quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>
 }
@@ -1653,14 +1698,14 @@ type PaymentUpdateManyWithoutCustomerInput = {
   updateMany?: Maybe<Array<PaymentUpdateManyWithWhereNestedInput>>
 }
 
-type PaymentUpdateManyWithoutSalemanInput = {
-  create?: Maybe<Array<PaymentCreateWithoutSalemanInput>>
+type PaymentUpdateManyWithoutSalesmanInput = {
+  create?: Maybe<Array<PaymentCreateWithoutSalesmanInput>>
   delete?: Maybe<Array<PaymentWhereUniqueInput>>
   connect?: Maybe<Array<PaymentWhereUniqueInput>>
   set?: Maybe<Array<PaymentWhereUniqueInput>>
   disconnect?: Maybe<Array<PaymentWhereUniqueInput>>
-  update?: Maybe<Array<PaymentUpdateWithWhereUniqueWithoutSalemanInput>>
-  upsert?: Maybe<Array<PaymentUpsertWithWhereUniqueWithoutSalemanInput>>
+  update?: Maybe<Array<PaymentUpdateWithWhereUniqueWithoutSalesmanInput>>
+  upsert?: Maybe<Array<PaymentUpsertWithWhereUniqueWithoutSalesmanInput>>
   deleteMany?: Maybe<Array<PaymentScalarWhereInput>>
   updateMany?: Maybe<Array<PaymentUpdateManyWithWhereNestedInput>>
 }
@@ -1691,7 +1736,7 @@ type PaymentUpdateOneWithoutQuotationInput = {
 type PaymentUpdateWithoutCustomerDataInput = {
   docId?: Maybe<Scalars['String']>
   amount?: Maybe<Scalars['String']>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>
   quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>
 }
@@ -1700,7 +1745,7 @@ type PaymentUpdateWithoutInvoiceDataInput = {
   docId?: Maybe<Scalars['String']>
   amount?: Maybe<Scalars['String']>
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>
   quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>
 }
 
@@ -1708,11 +1753,11 @@ type PaymentUpdateWithoutQuotationDataInput = {
   docId?: Maybe<Scalars['String']>
   amount?: Maybe<Scalars['String']>
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutPaymentsInput>
+  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutPaymentsInput>
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>
 }
 
-type PaymentUpdateWithoutSalemanDataInput = {
+type PaymentUpdateWithoutSalesmanDataInput = {
   docId?: Maybe<Scalars['String']>
   amount?: Maybe<Scalars['String']>
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>
@@ -1725,9 +1770,9 @@ type PaymentUpdateWithWhereUniqueWithoutCustomerInput = {
   data: PaymentUpdateWithoutCustomerDataInput
 }
 
-type PaymentUpdateWithWhereUniqueWithoutSalemanInput = {
+type PaymentUpdateWithWhereUniqueWithoutSalesmanInput = {
   where: PaymentWhereUniqueInput
-  data: PaymentUpdateWithoutSalemanDataInput
+  data: PaymentUpdateWithoutSalesmanDataInput
 }
 
 type PaymentUpsertWithoutInvoiceInput = {
@@ -1746,10 +1791,10 @@ type PaymentUpsertWithWhereUniqueWithoutCustomerInput = {
   create: PaymentCreateWithoutCustomerInput
 }
 
-type PaymentUpsertWithWhereUniqueWithoutSalemanInput = {
+type PaymentUpsertWithWhereUniqueWithoutSalesmanInput = {
   where: PaymentWhereUniqueInput
-  update: PaymentUpdateWithoutSalemanDataInput
-  create: PaymentCreateWithoutSalemanInput
+  update: PaymentUpdateWithoutSalesmanDataInput
+  create: PaymentCreateWithoutSalesmanInput
 }
 
 type PaymentWhereInput = {
@@ -1812,7 +1857,7 @@ type PaymentWhereInput = {
   updatedAt_gt?: Maybe<Scalars['DateTime']>
   updatedAt_gte?: Maybe<Scalars['DateTime']>
   customer?: Maybe<UserWhereInput>
-  saleman?: Maybe<SalemanWhereInput>
+  salesman?: Maybe<SalesmanWhereInput>
   quotation?: Maybe<QuotationWhereInput>
   Invoice?: Maybe<InvoiceWhereInput>
   AND?: Maybe<Array<PaymentWhereInput>>
@@ -1877,7 +1922,7 @@ type ProductItemCreateInput = {
   isPublished?: Maybe<Scalars['Boolean']>
   category: CategoryCreateOneWithoutProductItemInput
   shoppingCart?: Maybe<ShoppingCartCreateOneInput>
-  quotation?: Maybe<QuotationCreateOneWithoutProductItemsInput>
+  quotation?: Maybe<QuotationCreateOneInput>
   image?: Maybe<Scalars['String']>
   relatedProduct?: Maybe<ProductItemCreateManyInput>
 }
@@ -1889,11 +1934,6 @@ type ProductItemCreateManyInput = {
 
 type ProductItemCreateManyWithoutCategoryInput = {
   create?: Maybe<Array<ProductItemCreateWithoutCategoryInput>>
-  connect?: Maybe<Array<ProductItemWhereUniqueInput>>
-}
-
-type ProductItemCreateManyWithoutQuotationInput = {
-  create?: Maybe<Array<ProductItemCreateWithoutQuotationInput>>
   connect?: Maybe<Array<ProductItemWhereUniqueInput>>
 }
 
@@ -1915,25 +1955,7 @@ type ProductItemCreateWithoutCategoryInput = {
   amount: Scalars['Int']
   isPublished?: Maybe<Scalars['Boolean']>
   shoppingCart?: Maybe<ShoppingCartCreateOneInput>
-  quotation?: Maybe<QuotationCreateOneWithoutProductItemsInput>
-  image?: Maybe<Scalars['String']>
-  relatedProduct?: Maybe<ProductItemCreateManyInput>
-}
-
-type ProductItemCreateWithoutQuotationInput = {
-  id?: Maybe<Scalars['ID']>
-  name: Scalars['String']
-  price: Scalars['String']
-  salePrice: Scalars['String']
-  brand: Scalars['String']
-  unitType: Scalars['String']
-  description?: Maybe<Scalars['String']>
-  MenuDetail: Scalars['String']
-  TermDetail: Scalars['String']
-  amount: Scalars['Int']
-  isPublished?: Maybe<Scalars['Boolean']>
-  category: CategoryCreateOneWithoutProductItemInput
-  shoppingCart?: Maybe<ShoppingCartCreateOneInput>
+  quotation?: Maybe<QuotationCreateOneInput>
   image?: Maybe<Scalars['String']>
   relatedProduct?: Maybe<ProductItemCreateManyInput>
 }
@@ -2197,7 +2219,7 @@ type ProductItemUpdateDataInput = {
   isPublished?: Maybe<Scalars['Boolean']>
   category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>
-  quotation?: Maybe<QuotationUpdateOneWithoutProductItemsInput>
+  quotation?: Maybe<QuotationUpdateOneInput>
   image?: Maybe<Scalars['String']>
   relatedProduct?: Maybe<ProductItemUpdateManyInput>
 }
@@ -2215,7 +2237,7 @@ type ProductItemUpdateInput = {
   isPublished?: Maybe<Scalars['Boolean']>
   category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>
-  quotation?: Maybe<QuotationUpdateOneWithoutProductItemsInput>
+  quotation?: Maybe<QuotationUpdateOneInput>
   image?: Maybe<Scalars['String']>
   relatedProduct?: Maybe<ProductItemUpdateManyInput>
 }
@@ -2272,18 +2294,6 @@ type ProductItemUpdateManyWithoutCategoryInput = {
   updateMany?: Maybe<Array<ProductItemUpdateManyWithWhereNestedInput>>
 }
 
-type ProductItemUpdateManyWithoutQuotationInput = {
-  create?: Maybe<Array<ProductItemCreateWithoutQuotationInput>>
-  delete?: Maybe<Array<ProductItemWhereUniqueInput>>
-  connect?: Maybe<Array<ProductItemWhereUniqueInput>>
-  set?: Maybe<Array<ProductItemWhereUniqueInput>>
-  disconnect?: Maybe<Array<ProductItemWhereUniqueInput>>
-  update?: Maybe<Array<ProductItemUpdateWithWhereUniqueWithoutQuotationInput>>
-  upsert?: Maybe<Array<ProductItemUpsertWithWhereUniqueWithoutQuotationInput>>
-  deleteMany?: Maybe<Array<ProductItemScalarWhereInput>>
-  updateMany?: Maybe<Array<ProductItemUpdateManyWithWhereNestedInput>>
-}
-
 type ProductItemUpdateManyWithWhereNestedInput = {
   where: ProductItemScalarWhereInput
   data: ProductItemUpdateManyDataInput
@@ -2308,24 +2318,7 @@ type ProductItemUpdateWithoutCategoryDataInput = {
   amount?: Maybe<Scalars['Int']>
   isPublished?: Maybe<Scalars['Boolean']>
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>
-  quotation?: Maybe<QuotationUpdateOneWithoutProductItemsInput>
-  image?: Maybe<Scalars['String']>
-  relatedProduct?: Maybe<ProductItemUpdateManyInput>
-}
-
-type ProductItemUpdateWithoutQuotationDataInput = {
-  name?: Maybe<Scalars['String']>
-  price?: Maybe<Scalars['String']>
-  salePrice?: Maybe<Scalars['String']>
-  brand?: Maybe<Scalars['String']>
-  unitType?: Maybe<Scalars['String']>
-  description?: Maybe<Scalars['String']>
-  MenuDetail?: Maybe<Scalars['String']>
-  TermDetail?: Maybe<Scalars['String']>
-  amount?: Maybe<Scalars['Int']>
-  isPublished?: Maybe<Scalars['Boolean']>
-  category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>
-  shoppingCart?: Maybe<ShoppingCartUpdateOneInput>
+  quotation?: Maybe<QuotationUpdateOneInput>
   image?: Maybe<Scalars['String']>
   relatedProduct?: Maybe<ProductItemUpdateManyInput>
 }
@@ -2338,11 +2331,6 @@ type ProductItemUpdateWithWhereUniqueNestedInput = {
 type ProductItemUpdateWithWhereUniqueWithoutCategoryInput = {
   where: ProductItemWhereUniqueInput
   data: ProductItemUpdateWithoutCategoryDataInput
-}
-
-type ProductItemUpdateWithWhereUniqueWithoutQuotationInput = {
-  where: ProductItemWhereUniqueInput
-  data: ProductItemUpdateWithoutQuotationDataInput
 }
 
 type ProductItemUpsertNestedInput = {
@@ -2360,12 +2348,6 @@ type ProductItemUpsertWithWhereUniqueWithoutCategoryInput = {
   where: ProductItemWhereUniqueInput
   update: ProductItemUpdateWithoutCategoryDataInput
   create: ProductItemCreateWithoutCategoryInput
-}
-
-type ProductItemUpsertWithWhereUniqueWithoutQuotationInput = {
-  where: ProductItemWhereUniqueInput
-  update: ProductItemUpdateWithoutQuotationDataInput
-  create: ProductItemCreateWithoutQuotationInput
 }
 
 type ProductItemWhereInput = {
@@ -2570,9 +2552,12 @@ type Query = {
   quotation?: Maybe<Quotation>
   quotations: Array<Maybe<Quotation>>
   quotationsConnection: QuotationConnection
-  saleman?: Maybe<Saleman>
-  salemen: Array<Maybe<Saleman>>
-  salemenConnection: SalemanConnection
+  quotationItem?: Maybe<QuotationItem>
+  quotationItems: Array<Maybe<QuotationItem>>
+  quotationItemsConnection: QuotationItemConnection
+  salesman?: Maybe<Salesman>
+  salesmen: Array<Maybe<Salesman>>
+  salesmenConnection: SalesmanConnection
   shipping?: Maybe<Shipping>
   shippings: Array<Maybe<Shipping>>
   shippingsConnection: ShippingConnection
@@ -2732,13 +2717,13 @@ type QueryQuotationsConnectionArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-type QuerySalemanArgs = {
-  where: SalemanWhereUniqueInput
+type QueryQuotationItemArgs = {
+  where: QuotationItemWhereUniqueInput
 }
 
-type QuerySalemenArgs = {
-  where?: Maybe<SalemanWhereInput>
-  orderBy?: Maybe<SalemanOrderByInput>
+type QueryQuotationItemsArgs = {
+  where?: Maybe<QuotationItemWhereInput>
+  orderBy?: Maybe<QuotationItemOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -2746,9 +2731,33 @@ type QuerySalemenArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-type QuerySalemenConnectionArgs = {
-  where?: Maybe<SalemanWhereInput>
-  orderBy?: Maybe<SalemanOrderByInput>
+type QueryQuotationItemsConnectionArgs = {
+  where?: Maybe<QuotationItemWhereInput>
+  orderBy?: Maybe<QuotationItemOrderByInput>
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
+
+type QuerySalesmanArgs = {
+  where: SalesmanWhereUniqueInput
+}
+
+type QuerySalesmenArgs = {
+  where?: Maybe<SalesmanWhereInput>
+  orderBy?: Maybe<SalesmanOrderByInput>
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
+
+type QuerySalesmenConnectionArgs = {
+  where?: Maybe<SalesmanWhereInput>
+  orderBy?: Maybe<SalesmanOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -2859,19 +2868,19 @@ type QueryNodeArgs = {
 type Quotation = {
   __typename?: 'Quotation'
   id: Scalars['ID']
-  docId: Scalars['String']
-  productItems?: Maybe<Array<ProductItem>>
+  docId?: Maybe<Scalars['String']>
+  quotationItem?: Maybe<Array<QuotationItem>>
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
-  saleman: Saleman
+  salesman?: Maybe<Salesman>
   payment?: Maybe<Payment>
   shipping?: Maybe<Shipping>
   customer: User
 }
 
-type QuotationProductItemsArgs = {
-  where?: Maybe<ProductItemWhereInput>
-  orderBy?: Maybe<ProductItemOrderByInput>
+type QuotationQuotationItemArgs = {
+  where?: Maybe<QuotationItemWhereInput>
+  orderBy?: Maybe<QuotationItemOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -2888,9 +2897,9 @@ type QuotationConnection = {
 
 type QuotationCreateInput = {
   id?: Maybe<Scalars['ID']>
-  docId: Scalars['String']
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>
-  saleman: SalemanCreateOneWithoutQuotationsInput
+  docId?: Maybe<Scalars['String']>
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>
   customer: UserCreateOneWithoutQuotationsInput
@@ -2901,8 +2910,8 @@ type QuotationCreateManyWithoutCustomerInput = {
   connect?: Maybe<Array<QuotationWhereUniqueInput>>
 }
 
-type QuotationCreateManyWithoutSalemanInput = {
-  create?: Maybe<Array<QuotationCreateWithoutSalemanInput>>
+type QuotationCreateManyWithoutSalesmanInput = {
+  create?: Maybe<Array<QuotationCreateWithoutSalesmanInput>>
   connect?: Maybe<Array<QuotationWhereUniqueInput>>
 }
 
@@ -2916,8 +2925,8 @@ type QuotationCreateOneWithoutPaymentInput = {
   connect?: Maybe<QuotationWhereUniqueInput>
 }
 
-type QuotationCreateOneWithoutProductItemsInput = {
-  create?: Maybe<QuotationCreateWithoutProductItemsInput>
+type QuotationCreateOneWithoutQuotationItemInput = {
+  create?: Maybe<QuotationCreateWithoutQuotationItemInput>
   connect?: Maybe<QuotationWhereUniqueInput>
 }
 
@@ -2928,35 +2937,35 @@ type QuotationCreateOneWithoutShippingInput = {
 
 type QuotationCreateWithoutCustomerInput = {
   id?: Maybe<Scalars['ID']>
-  docId: Scalars['String']
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>
-  saleman: SalemanCreateOneWithoutQuotationsInput
+  docId?: Maybe<Scalars['String']>
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>
 }
 
 type QuotationCreateWithoutPaymentInput = {
   id?: Maybe<Scalars['ID']>
-  docId: Scalars['String']
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>
-  saleman: SalemanCreateOneWithoutQuotationsInput
+  docId?: Maybe<Scalars['String']>
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>
   customer: UserCreateOneWithoutQuotationsInput
 }
 
-type QuotationCreateWithoutProductItemsInput = {
+type QuotationCreateWithoutQuotationItemInput = {
   id?: Maybe<Scalars['ID']>
-  docId: Scalars['String']
-  saleman: SalemanCreateOneWithoutQuotationsInput
+  docId?: Maybe<Scalars['String']>
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>
   customer: UserCreateOneWithoutQuotationsInput
 }
 
-type QuotationCreateWithoutSalemanInput = {
+type QuotationCreateWithoutSalesmanInput = {
   id?: Maybe<Scalars['ID']>
-  docId: Scalars['String']
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>
+  docId?: Maybe<Scalars['String']>
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>
   customer: UserCreateOneWithoutQuotationsInput
@@ -2964,9 +2973,9 @@ type QuotationCreateWithoutSalemanInput = {
 
 type QuotationCreateWithoutShippingInput = {
   id?: Maybe<Scalars['ID']>
-  docId: Scalars['String']
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>
-  saleman: SalemanCreateOneWithoutQuotationsInput
+  docId?: Maybe<Scalars['String']>
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>
   customer: UserCreateOneWithoutQuotationsInput
 }
@@ -2975,6 +2984,251 @@ type QuotationEdge = {
   __typename?: 'QuotationEdge'
   node: Quotation
   cursor: Scalars['String']
+}
+
+type QuotationItem = {
+  __typename?: 'QuotationItem'
+  id: Scalars['ID']
+  key: Scalars['String']
+  product: ProductItem
+  amount: Scalars['Int']
+  realPrice: Scalars['Float']
+  quotation: Quotation
+}
+
+type QuotationItemConnection = {
+  __typename?: 'QuotationItemConnection'
+  pageInfo: PageInfo
+  edges: Array<Maybe<QuotationItemEdge>>
+  aggregate: AggregateQuotationItem
+}
+
+type QuotationItemCreateInput = {
+  id?: Maybe<Scalars['ID']>
+  key: Scalars['String']
+  product: ProductItemCreateOneInput
+  amount: Scalars['Int']
+  realPrice: Scalars['Float']
+  quotation: QuotationCreateOneWithoutQuotationItemInput
+}
+
+type QuotationItemCreateManyWithoutQuotationInput = {
+  create?: Maybe<Array<QuotationItemCreateWithoutQuotationInput>>
+  connect?: Maybe<Array<QuotationItemWhereUniqueInput>>
+}
+
+type QuotationItemCreateWithoutQuotationInput = {
+  id?: Maybe<Scalars['ID']>
+  key: Scalars['String']
+  product: ProductItemCreateOneInput
+  amount: Scalars['Int']
+  realPrice: Scalars['Float']
+}
+
+type QuotationItemEdge = {
+  __typename?: 'QuotationItemEdge'
+  node: QuotationItem
+  cursor: Scalars['String']
+}
+
+enum QuotationItemOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  KeyAsc = 'key_ASC',
+  KeyDesc = 'key_DESC',
+  AmountAsc = 'amount_ASC',
+  AmountDesc = 'amount_DESC',
+  RealPriceAsc = 'realPrice_ASC',
+  RealPriceDesc = 'realPrice_DESC',
+}
+
+type QuotationItemPreviousValues = {
+  __typename?: 'QuotationItemPreviousValues'
+  id: Scalars['ID']
+  key: Scalars['String']
+  amount: Scalars['Int']
+  realPrice: Scalars['Float']
+}
+
+type QuotationItemScalarWhereInput = {
+  id?: Maybe<Scalars['ID']>
+  id_not?: Maybe<Scalars['ID']>
+  id_in?: Maybe<Array<Scalars['ID']>>
+  id_not_in?: Maybe<Array<Scalars['ID']>>
+  id_lt?: Maybe<Scalars['ID']>
+  id_lte?: Maybe<Scalars['ID']>
+  id_gt?: Maybe<Scalars['ID']>
+  id_gte?: Maybe<Scalars['ID']>
+  id_contains?: Maybe<Scalars['ID']>
+  id_not_contains?: Maybe<Scalars['ID']>
+  id_starts_with?: Maybe<Scalars['ID']>
+  id_not_starts_with?: Maybe<Scalars['ID']>
+  id_ends_with?: Maybe<Scalars['ID']>
+  id_not_ends_with?: Maybe<Scalars['ID']>
+  key?: Maybe<Scalars['String']>
+  key_not?: Maybe<Scalars['String']>
+  key_in?: Maybe<Array<Scalars['String']>>
+  key_not_in?: Maybe<Array<Scalars['String']>>
+  key_lt?: Maybe<Scalars['String']>
+  key_lte?: Maybe<Scalars['String']>
+  key_gt?: Maybe<Scalars['String']>
+  key_gte?: Maybe<Scalars['String']>
+  key_contains?: Maybe<Scalars['String']>
+  key_not_contains?: Maybe<Scalars['String']>
+  key_starts_with?: Maybe<Scalars['String']>
+  key_not_starts_with?: Maybe<Scalars['String']>
+  key_ends_with?: Maybe<Scalars['String']>
+  key_not_ends_with?: Maybe<Scalars['String']>
+  amount?: Maybe<Scalars['Int']>
+  amount_not?: Maybe<Scalars['Int']>
+  amount_in?: Maybe<Array<Scalars['Int']>>
+  amount_not_in?: Maybe<Array<Scalars['Int']>>
+  amount_lt?: Maybe<Scalars['Int']>
+  amount_lte?: Maybe<Scalars['Int']>
+  amount_gt?: Maybe<Scalars['Int']>
+  amount_gte?: Maybe<Scalars['Int']>
+  realPrice?: Maybe<Scalars['Float']>
+  realPrice_not?: Maybe<Scalars['Float']>
+  realPrice_in?: Maybe<Array<Scalars['Float']>>
+  realPrice_not_in?: Maybe<Array<Scalars['Float']>>
+  realPrice_lt?: Maybe<Scalars['Float']>
+  realPrice_lte?: Maybe<Scalars['Float']>
+  realPrice_gt?: Maybe<Scalars['Float']>
+  realPrice_gte?: Maybe<Scalars['Float']>
+  AND?: Maybe<Array<QuotationItemScalarWhereInput>>
+  OR?: Maybe<Array<QuotationItemScalarWhereInput>>
+  NOT?: Maybe<Array<QuotationItemScalarWhereInput>>
+}
+
+type QuotationItemSubscriptionPayload = {
+  __typename?: 'QuotationItemSubscriptionPayload'
+  mutation: MutationType
+  node?: Maybe<QuotationItem>
+  updatedFields?: Maybe<Array<Scalars['String']>>
+  previousValues?: Maybe<QuotationItemPreviousValues>
+}
+
+type QuotationItemSubscriptionWhereInput = {
+  mutation_in?: Maybe<Array<MutationType>>
+  updatedFields_contains?: Maybe<Scalars['String']>
+  updatedFields_contains_every?: Maybe<Array<Scalars['String']>>
+  updatedFields_contains_some?: Maybe<Array<Scalars['String']>>
+  node?: Maybe<QuotationItemWhereInput>
+  AND?: Maybe<Array<QuotationItemSubscriptionWhereInput>>
+  OR?: Maybe<Array<QuotationItemSubscriptionWhereInput>>
+  NOT?: Maybe<Array<QuotationItemSubscriptionWhereInput>>
+}
+
+type QuotationItemUpdateInput = {
+  key?: Maybe<Scalars['String']>
+  product?: Maybe<ProductItemUpdateOneRequiredInput>
+  amount?: Maybe<Scalars['Int']>
+  realPrice?: Maybe<Scalars['Float']>
+  quotation?: Maybe<QuotationUpdateOneRequiredWithoutQuotationItemInput>
+}
+
+type QuotationItemUpdateManyDataInput = {
+  key?: Maybe<Scalars['String']>
+  amount?: Maybe<Scalars['Int']>
+  realPrice?: Maybe<Scalars['Float']>
+}
+
+type QuotationItemUpdateManyMutationInput = {
+  key?: Maybe<Scalars['String']>
+  amount?: Maybe<Scalars['Int']>
+  realPrice?: Maybe<Scalars['Float']>
+}
+
+type QuotationItemUpdateManyWithoutQuotationInput = {
+  create?: Maybe<Array<QuotationItemCreateWithoutQuotationInput>>
+  delete?: Maybe<Array<QuotationItemWhereUniqueInput>>
+  connect?: Maybe<Array<QuotationItemWhereUniqueInput>>
+  set?: Maybe<Array<QuotationItemWhereUniqueInput>>
+  disconnect?: Maybe<Array<QuotationItemWhereUniqueInput>>
+  update?: Maybe<Array<QuotationItemUpdateWithWhereUniqueWithoutQuotationInput>>
+  upsert?: Maybe<Array<QuotationItemUpsertWithWhereUniqueWithoutQuotationInput>>
+  deleteMany?: Maybe<Array<QuotationItemScalarWhereInput>>
+  updateMany?: Maybe<Array<QuotationItemUpdateManyWithWhereNestedInput>>
+}
+
+type QuotationItemUpdateManyWithWhereNestedInput = {
+  where: QuotationItemScalarWhereInput
+  data: QuotationItemUpdateManyDataInput
+}
+
+type QuotationItemUpdateWithoutQuotationDataInput = {
+  key?: Maybe<Scalars['String']>
+  product?: Maybe<ProductItemUpdateOneRequiredInput>
+  amount?: Maybe<Scalars['Int']>
+  realPrice?: Maybe<Scalars['Float']>
+}
+
+type QuotationItemUpdateWithWhereUniqueWithoutQuotationInput = {
+  where: QuotationItemWhereUniqueInput
+  data: QuotationItemUpdateWithoutQuotationDataInput
+}
+
+type QuotationItemUpsertWithWhereUniqueWithoutQuotationInput = {
+  where: QuotationItemWhereUniqueInput
+  update: QuotationItemUpdateWithoutQuotationDataInput
+  create: QuotationItemCreateWithoutQuotationInput
+}
+
+type QuotationItemWhereInput = {
+  id?: Maybe<Scalars['ID']>
+  id_not?: Maybe<Scalars['ID']>
+  id_in?: Maybe<Array<Scalars['ID']>>
+  id_not_in?: Maybe<Array<Scalars['ID']>>
+  id_lt?: Maybe<Scalars['ID']>
+  id_lte?: Maybe<Scalars['ID']>
+  id_gt?: Maybe<Scalars['ID']>
+  id_gte?: Maybe<Scalars['ID']>
+  id_contains?: Maybe<Scalars['ID']>
+  id_not_contains?: Maybe<Scalars['ID']>
+  id_starts_with?: Maybe<Scalars['ID']>
+  id_not_starts_with?: Maybe<Scalars['ID']>
+  id_ends_with?: Maybe<Scalars['ID']>
+  id_not_ends_with?: Maybe<Scalars['ID']>
+  key?: Maybe<Scalars['String']>
+  key_not?: Maybe<Scalars['String']>
+  key_in?: Maybe<Array<Scalars['String']>>
+  key_not_in?: Maybe<Array<Scalars['String']>>
+  key_lt?: Maybe<Scalars['String']>
+  key_lte?: Maybe<Scalars['String']>
+  key_gt?: Maybe<Scalars['String']>
+  key_gte?: Maybe<Scalars['String']>
+  key_contains?: Maybe<Scalars['String']>
+  key_not_contains?: Maybe<Scalars['String']>
+  key_starts_with?: Maybe<Scalars['String']>
+  key_not_starts_with?: Maybe<Scalars['String']>
+  key_ends_with?: Maybe<Scalars['String']>
+  key_not_ends_with?: Maybe<Scalars['String']>
+  product?: Maybe<ProductItemWhereInput>
+  amount?: Maybe<Scalars['Int']>
+  amount_not?: Maybe<Scalars['Int']>
+  amount_in?: Maybe<Array<Scalars['Int']>>
+  amount_not_in?: Maybe<Array<Scalars['Int']>>
+  amount_lt?: Maybe<Scalars['Int']>
+  amount_lte?: Maybe<Scalars['Int']>
+  amount_gt?: Maybe<Scalars['Int']>
+  amount_gte?: Maybe<Scalars['Int']>
+  realPrice?: Maybe<Scalars['Float']>
+  realPrice_not?: Maybe<Scalars['Float']>
+  realPrice_in?: Maybe<Array<Scalars['Float']>>
+  realPrice_not_in?: Maybe<Array<Scalars['Float']>>
+  realPrice_lt?: Maybe<Scalars['Float']>
+  realPrice_lte?: Maybe<Scalars['Float']>
+  realPrice_gt?: Maybe<Scalars['Float']>
+  realPrice_gte?: Maybe<Scalars['Float']>
+  quotation?: Maybe<QuotationWhereInput>
+  AND?: Maybe<Array<QuotationItemWhereInput>>
+  OR?: Maybe<Array<QuotationItemWhereInput>>
+  NOT?: Maybe<Array<QuotationItemWhereInput>>
+}
+
+type QuotationItemWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>
+  key?: Maybe<Scalars['String']>
 }
 
 enum QuotationOrderByInput {
@@ -2991,7 +3245,7 @@ enum QuotationOrderByInput {
 type QuotationPreviousValues = {
   __typename?: 'QuotationPreviousValues'
   id: Scalars['ID']
-  docId: Scalars['String']
+  docId?: Maybe<Scalars['String']>
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
 }
@@ -3067,8 +3321,8 @@ type QuotationSubscriptionWhereInput = {
 
 type QuotationUpdateDataInput = {
   docId?: Maybe<Scalars['String']>
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
@@ -3076,8 +3330,8 @@ type QuotationUpdateDataInput = {
 
 type QuotationUpdateInput = {
   docId?: Maybe<Scalars['String']>
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
@@ -3103,14 +3357,14 @@ type QuotationUpdateManyWithoutCustomerInput = {
   updateMany?: Maybe<Array<QuotationUpdateManyWithWhereNestedInput>>
 }
 
-type QuotationUpdateManyWithoutSalemanInput = {
-  create?: Maybe<Array<QuotationCreateWithoutSalemanInput>>
+type QuotationUpdateManyWithoutSalesmanInput = {
+  create?: Maybe<Array<QuotationCreateWithoutSalesmanInput>>
   delete?: Maybe<Array<QuotationWhereUniqueInput>>
   connect?: Maybe<Array<QuotationWhereUniqueInput>>
   set?: Maybe<Array<QuotationWhereUniqueInput>>
   disconnect?: Maybe<Array<QuotationWhereUniqueInput>>
-  update?: Maybe<Array<QuotationUpdateWithWhereUniqueWithoutSalemanInput>>
-  upsert?: Maybe<Array<QuotationUpsertWithWhereUniqueWithoutSalemanInput>>
+  update?: Maybe<Array<QuotationUpdateWithWhereUniqueWithoutSalesmanInput>>
+  upsert?: Maybe<Array<QuotationUpsertWithWhereUniqueWithoutSalesmanInput>>
   deleteMany?: Maybe<Array<QuotationScalarWhereInput>>
   updateMany?: Maybe<Array<QuotationUpdateManyWithWhereNestedInput>>
 }
@@ -3118,6 +3372,15 @@ type QuotationUpdateManyWithoutSalemanInput = {
 type QuotationUpdateManyWithWhereNestedInput = {
   where: QuotationScalarWhereInput
   data: QuotationUpdateManyDataInput
+}
+
+type QuotationUpdateOneInput = {
+  create?: Maybe<QuotationCreateInput>
+  update?: Maybe<QuotationUpdateDataInput>
+  upsert?: Maybe<QuotationUpsertNestedInput>
+  delete?: Maybe<Scalars['Boolean']>
+  disconnect?: Maybe<Scalars['Boolean']>
+  connect?: Maybe<QuotationWhereUniqueInput>
 }
 
 type QuotationUpdateOneRequiredInput = {
@@ -3134,6 +3397,13 @@ type QuotationUpdateOneRequiredWithoutPaymentInput = {
   connect?: Maybe<QuotationWhereUniqueInput>
 }
 
+type QuotationUpdateOneRequiredWithoutQuotationItemInput = {
+  create?: Maybe<QuotationCreateWithoutQuotationItemInput>
+  update?: Maybe<QuotationUpdateWithoutQuotationItemDataInput>
+  upsert?: Maybe<QuotationUpsertWithoutQuotationItemInput>
+  connect?: Maybe<QuotationWhereUniqueInput>
+}
+
 type QuotationUpdateOneRequiredWithoutShippingInput = {
   create?: Maybe<QuotationCreateWithoutShippingInput>
   update?: Maybe<QuotationUpdateWithoutShippingDataInput>
@@ -3141,42 +3411,33 @@ type QuotationUpdateOneRequiredWithoutShippingInput = {
   connect?: Maybe<QuotationWhereUniqueInput>
 }
 
-type QuotationUpdateOneWithoutProductItemsInput = {
-  create?: Maybe<QuotationCreateWithoutProductItemsInput>
-  update?: Maybe<QuotationUpdateWithoutProductItemsDataInput>
-  upsert?: Maybe<QuotationUpsertWithoutProductItemsInput>
-  delete?: Maybe<Scalars['Boolean']>
-  disconnect?: Maybe<Scalars['Boolean']>
-  connect?: Maybe<QuotationWhereUniqueInput>
-}
-
 type QuotationUpdateWithoutCustomerDataInput = {
   docId?: Maybe<Scalars['String']>
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>
 }
 
 type QuotationUpdateWithoutPaymentDataInput = {
   docId?: Maybe<Scalars['String']>
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
 }
 
-type QuotationUpdateWithoutProductItemsDataInput = {
+type QuotationUpdateWithoutQuotationItemDataInput = {
   docId?: Maybe<Scalars['String']>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
 }
 
-type QuotationUpdateWithoutSalemanDataInput = {
+type QuotationUpdateWithoutSalesmanDataInput = {
   docId?: Maybe<Scalars['String']>
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
@@ -3184,8 +3445,8 @@ type QuotationUpdateWithoutSalemanDataInput = {
 
 type QuotationUpdateWithoutShippingDataInput = {
   docId?: Maybe<Scalars['String']>
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>
-  saleman?: Maybe<SalemanUpdateOneRequiredWithoutQuotationsInput>
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
 }
@@ -3195,9 +3456,9 @@ type QuotationUpdateWithWhereUniqueWithoutCustomerInput = {
   data: QuotationUpdateWithoutCustomerDataInput
 }
 
-type QuotationUpdateWithWhereUniqueWithoutSalemanInput = {
+type QuotationUpdateWithWhereUniqueWithoutSalesmanInput = {
   where: QuotationWhereUniqueInput
-  data: QuotationUpdateWithoutSalemanDataInput
+  data: QuotationUpdateWithoutSalesmanDataInput
 }
 
 type QuotationUpsertNestedInput = {
@@ -3210,9 +3471,9 @@ type QuotationUpsertWithoutPaymentInput = {
   create: QuotationCreateWithoutPaymentInput
 }
 
-type QuotationUpsertWithoutProductItemsInput = {
-  update: QuotationUpdateWithoutProductItemsDataInput
-  create: QuotationCreateWithoutProductItemsInput
+type QuotationUpsertWithoutQuotationItemInput = {
+  update: QuotationUpdateWithoutQuotationItemDataInput
+  create: QuotationCreateWithoutQuotationItemInput
 }
 
 type QuotationUpsertWithoutShippingInput = {
@@ -3226,10 +3487,10 @@ type QuotationUpsertWithWhereUniqueWithoutCustomerInput = {
   create: QuotationCreateWithoutCustomerInput
 }
 
-type QuotationUpsertWithWhereUniqueWithoutSalemanInput = {
+type QuotationUpsertWithWhereUniqueWithoutSalesmanInput = {
   where: QuotationWhereUniqueInput
-  update: QuotationUpdateWithoutSalemanDataInput
-  create: QuotationCreateWithoutSalemanInput
+  update: QuotationUpdateWithoutSalesmanDataInput
+  create: QuotationCreateWithoutSalesmanInput
 }
 
 type QuotationWhereInput = {
@@ -3261,9 +3522,9 @@ type QuotationWhereInput = {
   docId_not_starts_with?: Maybe<Scalars['String']>
   docId_ends_with?: Maybe<Scalars['String']>
   docId_not_ends_with?: Maybe<Scalars['String']>
-  productItems_every?: Maybe<ProductItemWhereInput>
-  productItems_some?: Maybe<ProductItemWhereInput>
-  productItems_none?: Maybe<ProductItemWhereInput>
+  quotationItem_every?: Maybe<QuotationItemWhereInput>
+  quotationItem_some?: Maybe<QuotationItemWhereInput>
+  quotationItem_none?: Maybe<QuotationItemWhereInput>
   createdAt?: Maybe<Scalars['DateTime']>
   createdAt_not?: Maybe<Scalars['DateTime']>
   createdAt_in?: Maybe<Array<Scalars['DateTime']>>
@@ -3280,7 +3541,7 @@ type QuotationWhereInput = {
   updatedAt_lte?: Maybe<Scalars['DateTime']>
   updatedAt_gt?: Maybe<Scalars['DateTime']>
   updatedAt_gte?: Maybe<Scalars['DateTime']>
-  saleman?: Maybe<SalemanWhereInput>
+  salesman?: Maybe<SalesmanWhereInput>
   payment?: Maybe<PaymentWhereInput>
   shipping?: Maybe<ShippingWhereInput>
   customer?: Maybe<UserWhereInput>
@@ -3293,9 +3554,12 @@ type QuotationWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
 }
 
-type Saleman = {
-  __typename?: 'Saleman'
+type Salesman = {
+  __typename?: 'Salesman'
   id: Scalars['ID']
+  name: Scalars['String']
+  email: Scalars['String']
+  phone: Scalars['String']
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
   payments?: Maybe<Array<Payment>>
@@ -3303,7 +3567,7 @@ type Saleman = {
   quotations?: Maybe<Array<Quotation>>
 }
 
-type SalemanPaymentsArgs = {
+type SalesmanPaymentsArgs = {
   where?: Maybe<PaymentWhereInput>
   orderBy?: Maybe<PaymentOrderByInput>
   skip?: Maybe<Scalars['Int']>
@@ -3313,7 +3577,7 @@ type SalemanPaymentsArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-type SalemanInvoicesArgs = {
+type SalesmanInvoicesArgs = {
   where?: Maybe<InvoiceWhereInput>
   orderBy?: Maybe<InvoiceOrderByInput>
   skip?: Maybe<Scalars['Int']>
@@ -3323,7 +3587,7 @@ type SalemanInvoicesArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-type SalemanQuotationsArgs = {
+type SalesmanQuotationsArgs = {
   where?: Maybe<QuotationWhereInput>
   orderBy?: Maybe<QuotationOrderByInput>
   skip?: Maybe<Scalars['Int']>
@@ -3333,152 +3597,193 @@ type SalemanQuotationsArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-type SalemanConnection = {
-  __typename?: 'SalemanConnection'
+type SalesmanConnection = {
+  __typename?: 'SalesmanConnection'
   pageInfo: PageInfo
-  edges: Array<Maybe<SalemanEdge>>
-  aggregate: AggregateSaleman
+  edges: Array<Maybe<SalesmanEdge>>
+  aggregate: AggregateSalesman
 }
 
-type SalemanCreateInput = {
+type SalesmanCreateInput = {
   id?: Maybe<Scalars['ID']>
-  payments?: Maybe<PaymentCreateManyWithoutSalemanInput>
-  invoices?: Maybe<InvoiceCreateManyWithoutSalemanInput>
-  quotations?: Maybe<QuotationCreateManyWithoutSalemanInput>
+  name: Scalars['String']
+  email: Scalars['String']
+  phone: Scalars['String']
+  payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>
+  invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>
+  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>
 }
 
-type SalemanCreateOneWithoutInvoicesInput = {
-  create?: Maybe<SalemanCreateWithoutInvoicesInput>
-  connect?: Maybe<SalemanWhereUniqueInput>
+type SalesmanCreateOneWithoutInvoicesInput = {
+  create?: Maybe<SalesmanCreateWithoutInvoicesInput>
+  connect?: Maybe<SalesmanWhereUniqueInput>
 }
 
-type SalemanCreateOneWithoutPaymentsInput = {
-  create?: Maybe<SalemanCreateWithoutPaymentsInput>
-  connect?: Maybe<SalemanWhereUniqueInput>
+type SalesmanCreateOneWithoutPaymentsInput = {
+  create?: Maybe<SalesmanCreateWithoutPaymentsInput>
+  connect?: Maybe<SalesmanWhereUniqueInput>
 }
 
-type SalemanCreateOneWithoutQuotationsInput = {
-  create?: Maybe<SalemanCreateWithoutQuotationsInput>
-  connect?: Maybe<SalemanWhereUniqueInput>
+type SalesmanCreateOneWithoutQuotationsInput = {
+  create?: Maybe<SalesmanCreateWithoutQuotationsInput>
+  connect?: Maybe<SalesmanWhereUniqueInput>
 }
 
-type SalemanCreateWithoutInvoicesInput = {
+type SalesmanCreateWithoutInvoicesInput = {
   id?: Maybe<Scalars['ID']>
-  payments?: Maybe<PaymentCreateManyWithoutSalemanInput>
-  quotations?: Maybe<QuotationCreateManyWithoutSalemanInput>
+  name: Scalars['String']
+  email: Scalars['String']
+  phone: Scalars['String']
+  payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>
+  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>
 }
 
-type SalemanCreateWithoutPaymentsInput = {
+type SalesmanCreateWithoutPaymentsInput = {
   id?: Maybe<Scalars['ID']>
-  invoices?: Maybe<InvoiceCreateManyWithoutSalemanInput>
-  quotations?: Maybe<QuotationCreateManyWithoutSalemanInput>
+  name: Scalars['String']
+  email: Scalars['String']
+  phone: Scalars['String']
+  invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>
+  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>
 }
 
-type SalemanCreateWithoutQuotationsInput = {
+type SalesmanCreateWithoutQuotationsInput = {
   id?: Maybe<Scalars['ID']>
-  payments?: Maybe<PaymentCreateManyWithoutSalemanInput>
-  invoices?: Maybe<InvoiceCreateManyWithoutSalemanInput>
+  name: Scalars['String']
+  email: Scalars['String']
+  phone: Scalars['String']
+  payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>
+  invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>
 }
 
-type SalemanEdge = {
-  __typename?: 'SalemanEdge'
-  node: Saleman
+type SalesmanEdge = {
+  __typename?: 'SalesmanEdge'
+  node: Salesman
   cursor: Scalars['String']
 }
 
-enum SalemanOrderByInput {
+enum SalesmanOrderByInput {
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  PhoneAsc = 'phone_ASC',
+  PhoneDesc = 'phone_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC',
 }
 
-type SalemanPreviousValues = {
-  __typename?: 'SalemanPreviousValues'
+type SalesmanPreviousValues = {
+  __typename?: 'SalesmanPreviousValues'
   id: Scalars['ID']
+  name: Scalars['String']
+  email: Scalars['String']
+  phone: Scalars['String']
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
 }
 
-type SalemanSubscriptionPayload = {
-  __typename?: 'SalemanSubscriptionPayload'
+type SalesmanSubscriptionPayload = {
+  __typename?: 'SalesmanSubscriptionPayload'
   mutation: MutationType
-  node?: Maybe<Saleman>
+  node?: Maybe<Salesman>
   updatedFields?: Maybe<Array<Scalars['String']>>
-  previousValues?: Maybe<SalemanPreviousValues>
+  previousValues?: Maybe<SalesmanPreviousValues>
 }
 
-type SalemanSubscriptionWhereInput = {
+type SalesmanSubscriptionWhereInput = {
   mutation_in?: Maybe<Array<MutationType>>
   updatedFields_contains?: Maybe<Scalars['String']>
   updatedFields_contains_every?: Maybe<Array<Scalars['String']>>
   updatedFields_contains_some?: Maybe<Array<Scalars['String']>>
-  node?: Maybe<SalemanWhereInput>
-  AND?: Maybe<Array<SalemanSubscriptionWhereInput>>
-  OR?: Maybe<Array<SalemanSubscriptionWhereInput>>
-  NOT?: Maybe<Array<SalemanSubscriptionWhereInput>>
+  node?: Maybe<SalesmanWhereInput>
+  AND?: Maybe<Array<SalesmanSubscriptionWhereInput>>
+  OR?: Maybe<Array<SalesmanSubscriptionWhereInput>>
+  NOT?: Maybe<Array<SalesmanSubscriptionWhereInput>>
 }
 
-type SalemanUpdateInput = {
-  payments?: Maybe<PaymentUpdateManyWithoutSalemanInput>
-  invoices?: Maybe<InvoiceUpdateManyWithoutSalemanInput>
-  quotations?: Maybe<QuotationUpdateManyWithoutSalemanInput>
+type SalesmanUpdateInput = {
+  name?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>
+  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>
+  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>
 }
 
-type SalemanUpdateOneRequiredWithoutInvoicesInput = {
-  create?: Maybe<SalemanCreateWithoutInvoicesInput>
-  update?: Maybe<SalemanUpdateWithoutInvoicesDataInput>
-  upsert?: Maybe<SalemanUpsertWithoutInvoicesInput>
-  connect?: Maybe<SalemanWhereUniqueInput>
+type SalesmanUpdateManyMutationInput = {
+  name?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
 }
 
-type SalemanUpdateOneRequiredWithoutPaymentsInput = {
-  create?: Maybe<SalemanCreateWithoutPaymentsInput>
-  update?: Maybe<SalemanUpdateWithoutPaymentsDataInput>
-  upsert?: Maybe<SalemanUpsertWithoutPaymentsInput>
-  connect?: Maybe<SalemanWhereUniqueInput>
+type SalesmanUpdateOneRequiredWithoutInvoicesInput = {
+  create?: Maybe<SalesmanCreateWithoutInvoicesInput>
+  update?: Maybe<SalesmanUpdateWithoutInvoicesDataInput>
+  upsert?: Maybe<SalesmanUpsertWithoutInvoicesInput>
+  connect?: Maybe<SalesmanWhereUniqueInput>
 }
 
-type SalemanUpdateOneRequiredWithoutQuotationsInput = {
-  create?: Maybe<SalemanCreateWithoutQuotationsInput>
-  update?: Maybe<SalemanUpdateWithoutQuotationsDataInput>
-  upsert?: Maybe<SalemanUpsertWithoutQuotationsInput>
-  connect?: Maybe<SalemanWhereUniqueInput>
+type SalesmanUpdateOneRequiredWithoutPaymentsInput = {
+  create?: Maybe<SalesmanCreateWithoutPaymentsInput>
+  update?: Maybe<SalesmanUpdateWithoutPaymentsDataInput>
+  upsert?: Maybe<SalesmanUpsertWithoutPaymentsInput>
+  connect?: Maybe<SalesmanWhereUniqueInput>
 }
 
-type SalemanUpdateWithoutInvoicesDataInput = {
-  payments?: Maybe<PaymentUpdateManyWithoutSalemanInput>
-  quotations?: Maybe<QuotationUpdateManyWithoutSalemanInput>
+type SalesmanUpdateOneWithoutQuotationsInput = {
+  create?: Maybe<SalesmanCreateWithoutQuotationsInput>
+  update?: Maybe<SalesmanUpdateWithoutQuotationsDataInput>
+  upsert?: Maybe<SalesmanUpsertWithoutQuotationsInput>
+  delete?: Maybe<Scalars['Boolean']>
+  disconnect?: Maybe<Scalars['Boolean']>
+  connect?: Maybe<SalesmanWhereUniqueInput>
 }
 
-type SalemanUpdateWithoutPaymentsDataInput = {
-  invoices?: Maybe<InvoiceUpdateManyWithoutSalemanInput>
-  quotations?: Maybe<QuotationUpdateManyWithoutSalemanInput>
+type SalesmanUpdateWithoutInvoicesDataInput = {
+  name?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>
+  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>
 }
 
-type SalemanUpdateWithoutQuotationsDataInput = {
-  payments?: Maybe<PaymentUpdateManyWithoutSalemanInput>
-  invoices?: Maybe<InvoiceUpdateManyWithoutSalemanInput>
+type SalesmanUpdateWithoutPaymentsDataInput = {
+  name?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>
+  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>
 }
 
-type SalemanUpsertWithoutInvoicesInput = {
-  update: SalemanUpdateWithoutInvoicesDataInput
-  create: SalemanCreateWithoutInvoicesInput
+type SalesmanUpdateWithoutQuotationsDataInput = {
+  name?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>
+  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>
 }
 
-type SalemanUpsertWithoutPaymentsInput = {
-  update: SalemanUpdateWithoutPaymentsDataInput
-  create: SalemanCreateWithoutPaymentsInput
+type SalesmanUpsertWithoutInvoicesInput = {
+  update: SalesmanUpdateWithoutInvoicesDataInput
+  create: SalesmanCreateWithoutInvoicesInput
 }
 
-type SalemanUpsertWithoutQuotationsInput = {
-  update: SalemanUpdateWithoutQuotationsDataInput
-  create: SalemanCreateWithoutQuotationsInput
+type SalesmanUpsertWithoutPaymentsInput = {
+  update: SalesmanUpdateWithoutPaymentsDataInput
+  create: SalesmanCreateWithoutPaymentsInput
 }
 
-type SalemanWhereInput = {
+type SalesmanUpsertWithoutQuotationsInput = {
+  update: SalesmanUpdateWithoutQuotationsDataInput
+  create: SalesmanCreateWithoutQuotationsInput
+}
+
+type SalesmanWhereInput = {
   id?: Maybe<Scalars['ID']>
   id_not?: Maybe<Scalars['ID']>
   id_in?: Maybe<Array<Scalars['ID']>>
@@ -3493,6 +3798,48 @@ type SalemanWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>
   id_ends_with?: Maybe<Scalars['ID']>
   id_not_ends_with?: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  name_not?: Maybe<Scalars['String']>
+  name_in?: Maybe<Array<Scalars['String']>>
+  name_not_in?: Maybe<Array<Scalars['String']>>
+  name_lt?: Maybe<Scalars['String']>
+  name_lte?: Maybe<Scalars['String']>
+  name_gt?: Maybe<Scalars['String']>
+  name_gte?: Maybe<Scalars['String']>
+  name_contains?: Maybe<Scalars['String']>
+  name_not_contains?: Maybe<Scalars['String']>
+  name_starts_with?: Maybe<Scalars['String']>
+  name_not_starts_with?: Maybe<Scalars['String']>
+  name_ends_with?: Maybe<Scalars['String']>
+  name_not_ends_with?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  email_not?: Maybe<Scalars['String']>
+  email_in?: Maybe<Array<Scalars['String']>>
+  email_not_in?: Maybe<Array<Scalars['String']>>
+  email_lt?: Maybe<Scalars['String']>
+  email_lte?: Maybe<Scalars['String']>
+  email_gt?: Maybe<Scalars['String']>
+  email_gte?: Maybe<Scalars['String']>
+  email_contains?: Maybe<Scalars['String']>
+  email_not_contains?: Maybe<Scalars['String']>
+  email_starts_with?: Maybe<Scalars['String']>
+  email_not_starts_with?: Maybe<Scalars['String']>
+  email_ends_with?: Maybe<Scalars['String']>
+  email_not_ends_with?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  phone_not?: Maybe<Scalars['String']>
+  phone_in?: Maybe<Array<Scalars['String']>>
+  phone_not_in?: Maybe<Array<Scalars['String']>>
+  phone_lt?: Maybe<Scalars['String']>
+  phone_lte?: Maybe<Scalars['String']>
+  phone_gt?: Maybe<Scalars['String']>
+  phone_gte?: Maybe<Scalars['String']>
+  phone_contains?: Maybe<Scalars['String']>
+  phone_not_contains?: Maybe<Scalars['String']>
+  phone_starts_with?: Maybe<Scalars['String']>
+  phone_not_starts_with?: Maybe<Scalars['String']>
+  phone_ends_with?: Maybe<Scalars['String']>
+  phone_not_ends_with?: Maybe<Scalars['String']>
   createdAt?: Maybe<Scalars['DateTime']>
   createdAt_not?: Maybe<Scalars['DateTime']>
   createdAt_in?: Maybe<Array<Scalars['DateTime']>>
@@ -3518,12 +3865,12 @@ type SalemanWhereInput = {
   quotations_every?: Maybe<QuotationWhereInput>
   quotations_some?: Maybe<QuotationWhereInput>
   quotations_none?: Maybe<QuotationWhereInput>
-  AND?: Maybe<Array<SalemanWhereInput>>
-  OR?: Maybe<Array<SalemanWhereInput>>
-  NOT?: Maybe<Array<SalemanWhereInput>>
+  AND?: Maybe<Array<SalesmanWhereInput>>
+  OR?: Maybe<Array<SalesmanWhereInput>>
+  NOT?: Maybe<Array<SalesmanWhereInput>>
 }
 
-type SalemanWhereUniqueInput = {
+type SalesmanWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
 }
 
@@ -4319,7 +4666,8 @@ type Subscription = {
   payment?: Maybe<PaymentSubscriptionPayload>
   productItem?: Maybe<ProductItemSubscriptionPayload>
   quotation?: Maybe<QuotationSubscriptionPayload>
-  saleman?: Maybe<SalemanSubscriptionPayload>
+  quotationItem?: Maybe<QuotationItemSubscriptionPayload>
+  salesman?: Maybe<SalesmanSubscriptionPayload>
   shipping?: Maybe<ShippingSubscriptionPayload>
   shoppingCart?: Maybe<ShoppingCartSubscriptionPayload>
   shoppingCartItem?: Maybe<ShoppingCartItemSubscriptionPayload>
@@ -4350,8 +4698,12 @@ type SubscriptionQuotationArgs = {
   where?: Maybe<QuotationSubscriptionWhereInput>
 }
 
-type SubscriptionSalemanArgs = {
-  where?: Maybe<SalemanSubscriptionWhereInput>
+type SubscriptionQuotationItemArgs = {
+  where?: Maybe<QuotationItemSubscriptionWhereInput>
+}
+
+type SubscriptionSalesmanArgs = {
+  where?: Maybe<SalesmanSubscriptionWhereInput>
 }
 
 type SubscriptionShippingArgs = {
@@ -4373,11 +4725,14 @@ type SubscriptionUserArgs = {
 type User = {
   __typename?: 'User'
   id: Scalars['ID']
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name: Scalars['String']
   email: Scalars['String']
   password: Scalars['String']
   phone: Scalars['String']
+  avatar?: Maybe<Scalars['String']>
+  activated: Scalars['Boolean']
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
   shoppingCart: ShoppingCart
@@ -4425,11 +4780,14 @@ type UserConnection = {
 
 type UserCreateInput = {
   id?: Maybe<Scalars['ID']>
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name: Scalars['String']
   email: Scalars['String']
   password: Scalars['String']
   phone: Scalars['String']
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>
@@ -4463,11 +4821,14 @@ type UserCreateOneWithoutShoppingCartInput = {
 
 type UserCreateWithoutAddressesInput = {
   id?: Maybe<Scalars['ID']>
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name: Scalars['String']
   email: Scalars['String']
   password: Scalars['String']
   phone: Scalars['String']
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>
@@ -4475,11 +4836,14 @@ type UserCreateWithoutAddressesInput = {
 
 type UserCreateWithoutPaymentsInput = {
   id?: Maybe<Scalars['ID']>
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name: Scalars['String']
   email: Scalars['String']
   password: Scalars['String']
   phone: Scalars['String']
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>
@@ -4487,11 +4851,14 @@ type UserCreateWithoutPaymentsInput = {
 
 type UserCreateWithoutQuotationsInput = {
   id?: Maybe<Scalars['ID']>
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name: Scalars['String']
   email: Scalars['String']
   password: Scalars['String']
   phone: Scalars['String']
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>
@@ -4499,11 +4866,14 @@ type UserCreateWithoutQuotationsInput = {
 
 type UserCreateWithoutShoppingCartInput = {
   id?: Maybe<Scalars['ID']>
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name: Scalars['String']
   email: Scalars['String']
   password: Scalars['String']
   phone: Scalars['String']
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>
@@ -4518,6 +4888,8 @@ type UserEdge = {
 enum UserOrderByInput {
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  RunningIdAsc = 'runningId_ASC',
+  RunningIdDesc = 'runningId_DESC',
   TypeAsc = 'type_ASC',
   TypeDesc = 'type_DESC',
   NameAsc = 'name_ASC',
@@ -4528,6 +4900,10 @@ enum UserOrderByInput {
   PasswordDesc = 'password_DESC',
   PhoneAsc = 'phone_ASC',
   PhoneDesc = 'phone_DESC',
+  AvatarAsc = 'avatar_ASC',
+  AvatarDesc = 'avatar_DESC',
+  ActivatedAsc = 'activated_ASC',
+  ActivatedDesc = 'activated_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -4537,11 +4913,14 @@ enum UserOrderByInput {
 type UserPreviousValues = {
   __typename?: 'UserPreviousValues'
   id: Scalars['ID']
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name: Scalars['String']
   email: Scalars['String']
   password: Scalars['String']
   phone: Scalars['String']
+  avatar?: Maybe<Scalars['String']>
+  activated: Scalars['Boolean']
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
 }
@@ -4566,11 +4945,14 @@ type UserSubscriptionWhereInput = {
 }
 
 type UserUpdateDataInput = {
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>
@@ -4578,11 +4960,14 @@ type UserUpdateDataInput = {
 }
 
 type UserUpdateInput = {
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>
@@ -4590,11 +4975,14 @@ type UserUpdateInput = {
 }
 
 type UserUpdateManyMutationInput = {
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
 }
 
 type UserUpdateOneRequiredInput = {
@@ -4633,44 +5021,56 @@ type UserUpdateOneRequiredWithoutShoppingCartInput = {
 }
 
 type UserUpdateWithoutAddressesDataInput = {
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>
 }
 
 type UserUpdateWithoutPaymentsDataInput = {
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>
 }
 
 type UserUpdateWithoutQuotationsDataInput = {
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>
 }
 
 type UserUpdateWithoutShoppingCartDataInput = {
+  runningId?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>
@@ -4716,6 +5116,14 @@ type UserWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>
   id_ends_with?: Maybe<Scalars['ID']>
   id_not_ends_with?: Maybe<Scalars['ID']>
+  runningId?: Maybe<Scalars['Int']>
+  runningId_not?: Maybe<Scalars['Int']>
+  runningId_in?: Maybe<Array<Scalars['Int']>>
+  runningId_not_in?: Maybe<Array<Scalars['Int']>>
+  runningId_lt?: Maybe<Scalars['Int']>
+  runningId_lte?: Maybe<Scalars['Int']>
+  runningId_gt?: Maybe<Scalars['Int']>
+  runningId_gte?: Maybe<Scalars['Int']>
   type?: Maybe<Scalars['String']>
   type_not?: Maybe<Scalars['String']>
   type_in?: Maybe<Array<Scalars['String']>>
@@ -4786,6 +5194,22 @@ type UserWhereInput = {
   phone_not_starts_with?: Maybe<Scalars['String']>
   phone_ends_with?: Maybe<Scalars['String']>
   phone_not_ends_with?: Maybe<Scalars['String']>
+  avatar?: Maybe<Scalars['String']>
+  avatar_not?: Maybe<Scalars['String']>
+  avatar_in?: Maybe<Array<Scalars['String']>>
+  avatar_not_in?: Maybe<Array<Scalars['String']>>
+  avatar_lt?: Maybe<Scalars['String']>
+  avatar_lte?: Maybe<Scalars['String']>
+  avatar_gt?: Maybe<Scalars['String']>
+  avatar_gte?: Maybe<Scalars['String']>
+  avatar_contains?: Maybe<Scalars['String']>
+  avatar_not_contains?: Maybe<Scalars['String']>
+  avatar_starts_with?: Maybe<Scalars['String']>
+  avatar_not_starts_with?: Maybe<Scalars['String']>
+  avatar_ends_with?: Maybe<Scalars['String']>
+  avatar_not_ends_with?: Maybe<Scalars['String']>
+  activated?: Maybe<Scalars['Boolean']>
+  activated_not?: Maybe<Scalars['Boolean']>
   createdAt?: Maybe<Scalars['DateTime']>
   createdAt_not?: Maybe<Scalars['DateTime']>
   createdAt_in?: Maybe<Array<Scalars['DateTime']>>

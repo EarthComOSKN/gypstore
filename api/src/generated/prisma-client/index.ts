@@ -22,6 +22,7 @@ export interface Exists {
   payment: (where?: PaymentWhereInput) => Promise<boolean>;
   productItem: (where?: ProductItemWhereInput) => Promise<boolean>;
   quotation: (where?: QuotationWhereInput) => Promise<boolean>;
+  quotationItem: (where?: QuotationItemWhereInput) => Promise<boolean>;
   salesman: (where?: SalesmanWhereInput) => Promise<boolean>;
   shipping: (where?: ShippingWhereInput) => Promise<boolean>;
   shoppingCart: (where?: ShoppingCartWhereInput) => Promise<boolean>;
@@ -164,6 +165,27 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => QuotationConnectionPromise;
+  quotationItem: (
+    where: QuotationItemWhereUniqueInput
+  ) => QuotationItemNullablePromise;
+  quotationItems: (args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<QuotationItem>;
+  quotationItemsConnection: (args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => QuotationItemConnectionPromise;
   salesman: (where: SalesmanWhereUniqueInput) => SalesmanNullablePromise;
   salesmen: (args?: {
     where?: SalesmanWhereInput;
@@ -367,6 +389,26 @@ export interface Prisma {
   }) => QuotationPromise;
   deleteQuotation: (where: QuotationWhereUniqueInput) => QuotationPromise;
   deleteManyQuotations: (where?: QuotationWhereInput) => BatchPayloadPromise;
+  createQuotationItem: (data: QuotationItemCreateInput) => QuotationItemPromise;
+  updateQuotationItem: (args: {
+    data: QuotationItemUpdateInput;
+    where: QuotationItemWhereUniqueInput;
+  }) => QuotationItemPromise;
+  updateManyQuotationItems: (args: {
+    data: QuotationItemUpdateManyMutationInput;
+    where?: QuotationItemWhereInput;
+  }) => BatchPayloadPromise;
+  upsertQuotationItem: (args: {
+    where: QuotationItemWhereUniqueInput;
+    create: QuotationItemCreateInput;
+    update: QuotationItemUpdateInput;
+  }) => QuotationItemPromise;
+  deleteQuotationItem: (
+    where: QuotationItemWhereUniqueInput
+  ) => QuotationItemPromise;
+  deleteManyQuotationItems: (
+    where?: QuotationItemWhereInput
+  ) => BatchPayloadPromise;
   createSalesman: (data: SalesmanCreateInput) => SalesmanPromise;
   updateSalesman: (args: {
     data: SalesmanUpdateInput;
@@ -484,6 +526,9 @@ export interface Subscription {
   quotation: (
     where?: QuotationSubscriptionWhereInput
   ) => QuotationSubscriptionPayloadSubscription;
+  quotationItem: (
+    where?: QuotationItemSubscriptionWhereInput
+  ) => QuotationItemSubscriptionPayloadSubscription;
   salesman: (
     where?: SalesmanSubscriptionWhereInput
   ) => SalesmanSubscriptionPayloadSubscription;
@@ -546,6 +591,16 @@ export type ProductItemOrderByInput =
   | "updatedAt_DESC"
   | "image_ASC"
   | "image_DESC";
+
+export type QuotationItemOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "key_ASC"
+  | "key_DESC"
+  | "amount_ASC"
+  | "amount_DESC"
+  | "realPrice_ASC"
+  | "realPrice_DESC";
 
 export type PaymentOrderByInput =
   | "id_ASC"
@@ -1164,9 +1219,9 @@ export interface QuotationWhereInput {
   docId_not_starts_with?: Maybe<String>;
   docId_ends_with?: Maybe<String>;
   docId_not_ends_with?: Maybe<String>;
-  productItems_every?: Maybe<ProductItemWhereInput>;
-  productItems_some?: Maybe<ProductItemWhereInput>;
-  productItems_none?: Maybe<ProductItemWhereInput>;
+  quotationItem_every?: Maybe<QuotationItemWhereInput>;
+  quotationItem_some?: Maybe<QuotationItemWhereInput>;
+  quotationItem_none?: Maybe<QuotationItemWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1190,6 +1245,58 @@ export interface QuotationWhereInput {
   AND?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
   OR?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
   NOT?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
+}
+
+export interface QuotationItemWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  product?: Maybe<ProductItemWhereInput>;
+  amount?: Maybe<Int>;
+  amount_not?: Maybe<Int>;
+  amount_in?: Maybe<Int[] | Int>;
+  amount_not_in?: Maybe<Int[] | Int>;
+  amount_lt?: Maybe<Int>;
+  amount_lte?: Maybe<Int>;
+  amount_gt?: Maybe<Int>;
+  amount_gte?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+  realPrice_not?: Maybe<Float>;
+  realPrice_in?: Maybe<Float[] | Float>;
+  realPrice_not_in?: Maybe<Float[] | Float>;
+  realPrice_lt?: Maybe<Float>;
+  realPrice_lte?: Maybe<Float>;
+  realPrice_gt?: Maybe<Float>;
+  realPrice_gte?: Maybe<Float>;
+  quotation?: Maybe<QuotationWhereInput>;
+  AND?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
+  OR?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
+  NOT?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
 }
 
 export interface SalesmanWhereInput {
@@ -1582,6 +1689,11 @@ export type QuotationWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
+export type QuotationItemWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  key?: Maybe<String>;
+}>;
+
 export type SalesmanWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -1680,7 +1792,7 @@ export interface ProductItemCreateInput {
   isPublished?: Maybe<Boolean>;
   category: CategoryCreateOneWithoutProductItemInput;
   shoppingCart?: Maybe<ShoppingCartCreateOneInput>;
-  quotation?: Maybe<QuotationCreateOneWithoutProductItemsInput>;
+  quotation?: Maybe<QuotationCreateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemCreateManyInput>;
 }
@@ -1729,7 +1841,7 @@ export interface ProductItemCreateWithoutCategoryInput {
   amount: Int;
   isPublished?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartCreateOneInput>;
-  quotation?: Maybe<QuotationCreateOneWithoutProductItemsInput>;
+  quotation?: Maybe<QuotationCreateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemCreateManyInput>;
 }
@@ -1775,42 +1887,29 @@ export interface QuotationCreateManyWithoutCustomerInput {
 
 export interface QuotationCreateWithoutCustomerInput {
   id?: Maybe<ID_Input>;
-  docId: String;
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  salesman: SalesmanCreateOneWithoutQuotationsInput;
+  docId?: Maybe<String>;
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
 }
 
-export interface ProductItemCreateManyWithoutQuotationInput {
+export interface QuotationItemCreateManyWithoutQuotationInput {
   create?: Maybe<
-    | ProductItemCreateWithoutQuotationInput[]
-    | ProductItemCreateWithoutQuotationInput
+    | QuotationItemCreateWithoutQuotationInput[]
+    | QuotationItemCreateWithoutQuotationInput
   >;
-  connect?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
+  connect?: Maybe<
+    QuotationItemWhereUniqueInput[] | QuotationItemWhereUniqueInput
+  >;
 }
 
-export interface ProductItemCreateWithoutQuotationInput {
+export interface QuotationItemCreateWithoutQuotationInput {
   id?: Maybe<ID_Input>;
-  name: String;
-  price: String;
-  salePrice: String;
-  brand: String;
-  unitType: String;
-  description?: Maybe<String>;
-  MenuDetail: String;
-  TermDetail: String;
+  key: String;
+  product: ProductItemCreateOneInput;
   amount: Int;
-  isPublished?: Maybe<Boolean>;
-  category: CategoryCreateOneWithoutProductItemInput;
-  shoppingCart?: Maybe<ShoppingCartCreateOneInput>;
-  image?: Maybe<String>;
-  relatedProduct?: Maybe<ProductItemCreateManyInput>;
-}
-
-export interface ProductItemCreateManyInput {
-  create?: Maybe<ProductItemCreateInput[] | ProductItemCreateInput>;
-  connect?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
+  realPrice: Float;
 }
 
 export interface SalesmanCreateOneWithoutQuotationsInput {
@@ -1970,9 +2069,9 @@ export interface QuotationCreateOneInput {
 
 export interface QuotationCreateInput {
   id?: Maybe<ID_Input>;
-  docId: String;
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  salesman: SalesmanCreateOneWithoutQuotationsInput;
+  docId?: Maybe<String>;
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
@@ -2030,8 +2129,8 @@ export interface QuotationCreateManyWithoutSalesmanInput {
 
 export interface QuotationCreateWithoutSalesmanInput {
   id?: Maybe<ID_Input>;
-  docId: String;
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
+  docId?: Maybe<String>;
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
@@ -2103,9 +2202,9 @@ export interface QuotationCreateOneWithoutShippingInput {
 
 export interface QuotationCreateWithoutShippingInput {
   id?: Maybe<ID_Input>;
-  docId: String;
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  salesman: SalesmanCreateOneWithoutQuotationsInput;
+  docId?: Maybe<String>;
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
   payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
 }
@@ -2151,9 +2250,9 @@ export interface QuotationCreateOneWithoutPaymentInput {
 
 export interface QuotationCreateWithoutPaymentInput {
   id?: Maybe<ID_Input>;
-  docId: String;
-  productItems?: Maybe<ProductItemCreateManyWithoutQuotationInput>;
-  salesman: SalesmanCreateOneWithoutQuotationsInput;
+  docId?: Maybe<String>;
+  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
   shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
 }
@@ -2171,18 +2270,9 @@ export interface AddressCreateWithoutShippingInput {
   invoices?: Maybe<InvoiceCreateManyWithoutAddressInput>;
 }
 
-export interface QuotationCreateOneWithoutProductItemsInput {
-  create?: Maybe<QuotationCreateWithoutProductItemsInput>;
-  connect?: Maybe<QuotationWhereUniqueInput>;
-}
-
-export interface QuotationCreateWithoutProductItemsInput {
-  id?: Maybe<ID_Input>;
-  docId: String;
-  salesman: SalesmanCreateOneWithoutQuotationsInput;
-  payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
-  customer: UserCreateOneWithoutQuotationsInput;
+export interface ProductItemCreateManyInput {
+  create?: Maybe<ProductItemCreateInput[] | ProductItemCreateInput>;
+  connect?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
 }
 
 export interface AddressUpdateInput {
@@ -2291,7 +2381,7 @@ export interface ProductItemUpdateDataInput {
   isPublished?: Maybe<Boolean>;
   category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>;
-  quotation?: Maybe<QuotationUpdateOneWithoutProductItemsInput>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemUpdateManyInput>;
 }
@@ -2368,7 +2458,7 @@ export interface ProductItemUpdateWithoutCategoryDataInput {
   amount?: Maybe<Int>;
   isPublished?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>;
-  quotation?: Maybe<QuotationUpdateOneWithoutProductItemsInput>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemUpdateManyInput>;
 }
@@ -2439,99 +2529,63 @@ export interface QuotationUpdateWithWhereUniqueWithoutCustomerInput {
 
 export interface QuotationUpdateWithoutCustomerDataInput {
   docId?: Maybe<String>;
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
 }
 
-export interface ProductItemUpdateManyWithoutQuotationInput {
+export interface QuotationItemUpdateManyWithoutQuotationInput {
   create?: Maybe<
-    | ProductItemCreateWithoutQuotationInput[]
-    | ProductItemCreateWithoutQuotationInput
+    | QuotationItemCreateWithoutQuotationInput[]
+    | QuotationItemCreateWithoutQuotationInput
   >;
-  delete?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
-  connect?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
-  set?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
+  delete?: Maybe<
+    QuotationItemWhereUniqueInput[] | QuotationItemWhereUniqueInput
+  >;
+  connect?: Maybe<
+    QuotationItemWhereUniqueInput[] | QuotationItemWhereUniqueInput
+  >;
+  set?: Maybe<QuotationItemWhereUniqueInput[] | QuotationItemWhereUniqueInput>;
   disconnect?: Maybe<
-    ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput
+    QuotationItemWhereUniqueInput[] | QuotationItemWhereUniqueInput
   >;
   update?: Maybe<
-    | ProductItemUpdateWithWhereUniqueWithoutQuotationInput[]
-    | ProductItemUpdateWithWhereUniqueWithoutQuotationInput
+    | QuotationItemUpdateWithWhereUniqueWithoutQuotationInput[]
+    | QuotationItemUpdateWithWhereUniqueWithoutQuotationInput
   >;
   upsert?: Maybe<
-    | ProductItemUpsertWithWhereUniqueWithoutQuotationInput[]
-    | ProductItemUpsertWithWhereUniqueWithoutQuotationInput
+    | QuotationItemUpsertWithWhereUniqueWithoutQuotationInput[]
+    | QuotationItemUpsertWithWhereUniqueWithoutQuotationInput
   >;
   deleteMany?: Maybe<
-    ProductItemScalarWhereInput[] | ProductItemScalarWhereInput
+    QuotationItemScalarWhereInput[] | QuotationItemScalarWhereInput
   >;
   updateMany?: Maybe<
-    | ProductItemUpdateManyWithWhereNestedInput[]
-    | ProductItemUpdateManyWithWhereNestedInput
+    | QuotationItemUpdateManyWithWhereNestedInput[]
+    | QuotationItemUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface ProductItemUpdateWithWhereUniqueWithoutQuotationInput {
-  where: ProductItemWhereUniqueInput;
-  data: ProductItemUpdateWithoutQuotationDataInput;
+export interface QuotationItemUpdateWithWhereUniqueWithoutQuotationInput {
+  where: QuotationItemWhereUniqueInput;
+  data: QuotationItemUpdateWithoutQuotationDataInput;
 }
 
-export interface ProductItemUpdateWithoutQuotationDataInput {
-  name?: Maybe<String>;
-  price?: Maybe<String>;
-  salePrice?: Maybe<String>;
-  brand?: Maybe<String>;
-  unitType?: Maybe<String>;
-  description?: Maybe<String>;
-  MenuDetail?: Maybe<String>;
-  TermDetail?: Maybe<String>;
+export interface QuotationItemUpdateWithoutQuotationDataInput {
+  key?: Maybe<String>;
+  product?: Maybe<ProductItemUpdateOneRequiredInput>;
   amount?: Maybe<Int>;
-  isPublished?: Maybe<Boolean>;
-  category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>;
-  shoppingCart?: Maybe<ShoppingCartUpdateOneInput>;
-  image?: Maybe<String>;
-  relatedProduct?: Maybe<ProductItemUpdateManyInput>;
+  realPrice?: Maybe<Float>;
 }
 
-export interface ProductItemUpdateManyInput {
-  create?: Maybe<ProductItemCreateInput[] | ProductItemCreateInput>;
-  update?: Maybe<
-    | ProductItemUpdateWithWhereUniqueNestedInput[]
-    | ProductItemUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | ProductItemUpsertWithWhereUniqueNestedInput[]
-    | ProductItemUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
-  connect?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
-  set?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
-  disconnect?: Maybe<
-    ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput
-  >;
-  deleteMany?: Maybe<
-    ProductItemScalarWhereInput[] | ProductItemScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | ProductItemUpdateManyWithWhereNestedInput[]
-    | ProductItemUpdateManyWithWhereNestedInput
-  >;
+export interface QuotationItemUpsertWithWhereUniqueWithoutQuotationInput {
+  where: QuotationItemWhereUniqueInput;
+  update: QuotationItemUpdateWithoutQuotationDataInput;
+  create: QuotationItemCreateWithoutQuotationInput;
 }
 
-export interface ProductItemUpdateWithWhereUniqueNestedInput {
-  where: ProductItemWhereUniqueInput;
-  data: ProductItemUpdateDataInput;
-}
-
-export interface ProductItemUpsertWithWhereUniqueNestedInput {
-  where: ProductItemWhereUniqueInput;
-  update: ProductItemUpdateDataInput;
-  create: ProductItemCreateInput;
-}
-
-export interface ProductItemScalarWhereInput {
+export interface QuotationItemScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -2546,118 +2600,20 @@ export interface ProductItemScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  price?: Maybe<String>;
-  price_not?: Maybe<String>;
-  price_in?: Maybe<String[] | String>;
-  price_not_in?: Maybe<String[] | String>;
-  price_lt?: Maybe<String>;
-  price_lte?: Maybe<String>;
-  price_gt?: Maybe<String>;
-  price_gte?: Maybe<String>;
-  price_contains?: Maybe<String>;
-  price_not_contains?: Maybe<String>;
-  price_starts_with?: Maybe<String>;
-  price_not_starts_with?: Maybe<String>;
-  price_ends_with?: Maybe<String>;
-  price_not_ends_with?: Maybe<String>;
-  salePrice?: Maybe<String>;
-  salePrice_not?: Maybe<String>;
-  salePrice_in?: Maybe<String[] | String>;
-  salePrice_not_in?: Maybe<String[] | String>;
-  salePrice_lt?: Maybe<String>;
-  salePrice_lte?: Maybe<String>;
-  salePrice_gt?: Maybe<String>;
-  salePrice_gte?: Maybe<String>;
-  salePrice_contains?: Maybe<String>;
-  salePrice_not_contains?: Maybe<String>;
-  salePrice_starts_with?: Maybe<String>;
-  salePrice_not_starts_with?: Maybe<String>;
-  salePrice_ends_with?: Maybe<String>;
-  salePrice_not_ends_with?: Maybe<String>;
-  brand?: Maybe<String>;
-  brand_not?: Maybe<String>;
-  brand_in?: Maybe<String[] | String>;
-  brand_not_in?: Maybe<String[] | String>;
-  brand_lt?: Maybe<String>;
-  brand_lte?: Maybe<String>;
-  brand_gt?: Maybe<String>;
-  brand_gte?: Maybe<String>;
-  brand_contains?: Maybe<String>;
-  brand_not_contains?: Maybe<String>;
-  brand_starts_with?: Maybe<String>;
-  brand_not_starts_with?: Maybe<String>;
-  brand_ends_with?: Maybe<String>;
-  brand_not_ends_with?: Maybe<String>;
-  unitType?: Maybe<String>;
-  unitType_not?: Maybe<String>;
-  unitType_in?: Maybe<String[] | String>;
-  unitType_not_in?: Maybe<String[] | String>;
-  unitType_lt?: Maybe<String>;
-  unitType_lte?: Maybe<String>;
-  unitType_gt?: Maybe<String>;
-  unitType_gte?: Maybe<String>;
-  unitType_contains?: Maybe<String>;
-  unitType_not_contains?: Maybe<String>;
-  unitType_starts_with?: Maybe<String>;
-  unitType_not_starts_with?: Maybe<String>;
-  unitType_ends_with?: Maybe<String>;
-  unitType_not_ends_with?: Maybe<String>;
-  description?: Maybe<String>;
-  description_not?: Maybe<String>;
-  description_in?: Maybe<String[] | String>;
-  description_not_in?: Maybe<String[] | String>;
-  description_lt?: Maybe<String>;
-  description_lte?: Maybe<String>;
-  description_gt?: Maybe<String>;
-  description_gte?: Maybe<String>;
-  description_contains?: Maybe<String>;
-  description_not_contains?: Maybe<String>;
-  description_starts_with?: Maybe<String>;
-  description_not_starts_with?: Maybe<String>;
-  description_ends_with?: Maybe<String>;
-  description_not_ends_with?: Maybe<String>;
-  MenuDetail?: Maybe<String>;
-  MenuDetail_not?: Maybe<String>;
-  MenuDetail_in?: Maybe<String[] | String>;
-  MenuDetail_not_in?: Maybe<String[] | String>;
-  MenuDetail_lt?: Maybe<String>;
-  MenuDetail_lte?: Maybe<String>;
-  MenuDetail_gt?: Maybe<String>;
-  MenuDetail_gte?: Maybe<String>;
-  MenuDetail_contains?: Maybe<String>;
-  MenuDetail_not_contains?: Maybe<String>;
-  MenuDetail_starts_with?: Maybe<String>;
-  MenuDetail_not_starts_with?: Maybe<String>;
-  MenuDetail_ends_with?: Maybe<String>;
-  MenuDetail_not_ends_with?: Maybe<String>;
-  TermDetail?: Maybe<String>;
-  TermDetail_not?: Maybe<String>;
-  TermDetail_in?: Maybe<String[] | String>;
-  TermDetail_not_in?: Maybe<String[] | String>;
-  TermDetail_lt?: Maybe<String>;
-  TermDetail_lte?: Maybe<String>;
-  TermDetail_gt?: Maybe<String>;
-  TermDetail_gte?: Maybe<String>;
-  TermDetail_contains?: Maybe<String>;
-  TermDetail_not_contains?: Maybe<String>;
-  TermDetail_starts_with?: Maybe<String>;
-  TermDetail_not_starts_with?: Maybe<String>;
-  TermDetail_ends_with?: Maybe<String>;
-  TermDetail_not_ends_with?: Maybe<String>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
   amount?: Maybe<Int>;
   amount_not?: Maybe<Int>;
   amount_in?: Maybe<Int[] | Int>;
@@ -2666,72 +2622,36 @@ export interface ProductItemScalarWhereInput {
   amount_lte?: Maybe<Int>;
   amount_gt?: Maybe<Int>;
   amount_gte?: Maybe<Int>;
-  isPublished?: Maybe<Boolean>;
-  isPublished_not?: Maybe<Boolean>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  image?: Maybe<String>;
-  image_not?: Maybe<String>;
-  image_in?: Maybe<String[] | String>;
-  image_not_in?: Maybe<String[] | String>;
-  image_lt?: Maybe<String>;
-  image_lte?: Maybe<String>;
-  image_gt?: Maybe<String>;
-  image_gte?: Maybe<String>;
-  image_contains?: Maybe<String>;
-  image_not_contains?: Maybe<String>;
-  image_starts_with?: Maybe<String>;
-  image_not_starts_with?: Maybe<String>;
-  image_ends_with?: Maybe<String>;
-  image_not_ends_with?: Maybe<String>;
-  AND?: Maybe<ProductItemScalarWhereInput[] | ProductItemScalarWhereInput>;
-  OR?: Maybe<ProductItemScalarWhereInput[] | ProductItemScalarWhereInput>;
-  NOT?: Maybe<ProductItemScalarWhereInput[] | ProductItemScalarWhereInput>;
+  realPrice?: Maybe<Float>;
+  realPrice_not?: Maybe<Float>;
+  realPrice_in?: Maybe<Float[] | Float>;
+  realPrice_not_in?: Maybe<Float[] | Float>;
+  realPrice_lt?: Maybe<Float>;
+  realPrice_lte?: Maybe<Float>;
+  realPrice_gt?: Maybe<Float>;
+  realPrice_gte?: Maybe<Float>;
+  AND?: Maybe<QuotationItemScalarWhereInput[] | QuotationItemScalarWhereInput>;
+  OR?: Maybe<QuotationItemScalarWhereInput[] | QuotationItemScalarWhereInput>;
+  NOT?: Maybe<QuotationItemScalarWhereInput[] | QuotationItemScalarWhereInput>;
 }
 
-export interface ProductItemUpdateManyWithWhereNestedInput {
-  where: ProductItemScalarWhereInput;
-  data: ProductItemUpdateManyDataInput;
+export interface QuotationItemUpdateManyWithWhereNestedInput {
+  where: QuotationItemScalarWhereInput;
+  data: QuotationItemUpdateManyDataInput;
 }
 
-export interface ProductItemUpdateManyDataInput {
-  name?: Maybe<String>;
-  price?: Maybe<String>;
-  salePrice?: Maybe<String>;
-  brand?: Maybe<String>;
-  unitType?: Maybe<String>;
-  description?: Maybe<String>;
-  MenuDetail?: Maybe<String>;
-  TermDetail?: Maybe<String>;
+export interface QuotationItemUpdateManyDataInput {
+  key?: Maybe<String>;
   amount?: Maybe<Int>;
-  isPublished?: Maybe<Boolean>;
-  image?: Maybe<String>;
+  realPrice?: Maybe<Float>;
 }
 
-export interface ProductItemUpsertWithWhereUniqueWithoutQuotationInput {
-  where: ProductItemWhereUniqueInput;
-  update: ProductItemUpdateWithoutQuotationDataInput;
-  create: ProductItemCreateWithoutQuotationInput;
-}
-
-export interface SalesmanUpdateOneRequiredWithoutQuotationsInput {
+export interface SalesmanUpdateOneWithoutQuotationsInput {
   create?: Maybe<SalesmanCreateWithoutQuotationsInput>;
   update?: Maybe<SalesmanUpdateWithoutQuotationsDataInput>;
   upsert?: Maybe<SalesmanUpsertWithoutQuotationsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
   connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
@@ -2991,8 +2911,8 @@ export interface QuotationUpdateOneRequiredInput {
 
 export interface QuotationUpdateDataInput {
   docId?: Maybe<String>;
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
@@ -3078,7 +2998,7 @@ export interface QuotationUpdateWithWhereUniqueWithoutSalesmanInput {
 
 export interface QuotationUpdateWithoutSalesmanDataInput {
   docId?: Maybe<String>;
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
@@ -3179,8 +3099,8 @@ export interface QuotationUpdateOneRequiredWithoutShippingInput {
 
 export interface QuotationUpdateWithoutShippingDataInput {
   docId?: Maybe<String>;
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
 }
@@ -3336,8 +3256,8 @@ export interface QuotationUpdateOneRequiredWithoutPaymentInput {
 
 export interface QuotationUpdateWithoutPaymentDataInput {
   docId?: Maybe<String>;
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
 }
@@ -3754,26 +3674,240 @@ export interface ShoppingCartUpsertNestedInput {
   create: ShoppingCartCreateInput;
 }
 
-export interface QuotationUpdateOneWithoutProductItemsInput {
-  create?: Maybe<QuotationCreateWithoutProductItemsInput>;
-  update?: Maybe<QuotationUpdateWithoutProductItemsDataInput>;
-  upsert?: Maybe<QuotationUpsertWithoutProductItemsInput>;
+export interface QuotationUpdateOneInput {
+  create?: Maybe<QuotationCreateInput>;
+  update?: Maybe<QuotationUpdateDataInput>;
+  upsert?: Maybe<QuotationUpsertNestedInput>;
   delete?: Maybe<Boolean>;
   disconnect?: Maybe<Boolean>;
   connect?: Maybe<QuotationWhereUniqueInput>;
 }
 
-export interface QuotationUpdateWithoutProductItemsDataInput {
-  docId?: Maybe<String>;
-  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
-  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
-  customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+export interface ProductItemUpdateManyInput {
+  create?: Maybe<ProductItemCreateInput[] | ProductItemCreateInput>;
+  update?: Maybe<
+    | ProductItemUpdateWithWhereUniqueNestedInput[]
+    | ProductItemUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ProductItemUpsertWithWhereUniqueNestedInput[]
+    | ProductItemUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
+  connect?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
+  set?: Maybe<ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput>;
+  disconnect?: Maybe<
+    ProductItemWhereUniqueInput[] | ProductItemWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    ProductItemScalarWhereInput[] | ProductItemScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | ProductItemUpdateManyWithWhereNestedInput[]
+    | ProductItemUpdateManyWithWhereNestedInput
+  >;
 }
 
-export interface QuotationUpsertWithoutProductItemsInput {
-  update: QuotationUpdateWithoutProductItemsDataInput;
-  create: QuotationCreateWithoutProductItemsInput;
+export interface ProductItemUpdateWithWhereUniqueNestedInput {
+  where: ProductItemWhereUniqueInput;
+  data: ProductItemUpdateDataInput;
+}
+
+export interface ProductItemUpsertWithWhereUniqueNestedInput {
+  where: ProductItemWhereUniqueInput;
+  update: ProductItemUpdateDataInput;
+  create: ProductItemCreateInput;
+}
+
+export interface ProductItemScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  price?: Maybe<String>;
+  price_not?: Maybe<String>;
+  price_in?: Maybe<String[] | String>;
+  price_not_in?: Maybe<String[] | String>;
+  price_lt?: Maybe<String>;
+  price_lte?: Maybe<String>;
+  price_gt?: Maybe<String>;
+  price_gte?: Maybe<String>;
+  price_contains?: Maybe<String>;
+  price_not_contains?: Maybe<String>;
+  price_starts_with?: Maybe<String>;
+  price_not_starts_with?: Maybe<String>;
+  price_ends_with?: Maybe<String>;
+  price_not_ends_with?: Maybe<String>;
+  salePrice?: Maybe<String>;
+  salePrice_not?: Maybe<String>;
+  salePrice_in?: Maybe<String[] | String>;
+  salePrice_not_in?: Maybe<String[] | String>;
+  salePrice_lt?: Maybe<String>;
+  salePrice_lte?: Maybe<String>;
+  salePrice_gt?: Maybe<String>;
+  salePrice_gte?: Maybe<String>;
+  salePrice_contains?: Maybe<String>;
+  salePrice_not_contains?: Maybe<String>;
+  salePrice_starts_with?: Maybe<String>;
+  salePrice_not_starts_with?: Maybe<String>;
+  salePrice_ends_with?: Maybe<String>;
+  salePrice_not_ends_with?: Maybe<String>;
+  brand?: Maybe<String>;
+  brand_not?: Maybe<String>;
+  brand_in?: Maybe<String[] | String>;
+  brand_not_in?: Maybe<String[] | String>;
+  brand_lt?: Maybe<String>;
+  brand_lte?: Maybe<String>;
+  brand_gt?: Maybe<String>;
+  brand_gte?: Maybe<String>;
+  brand_contains?: Maybe<String>;
+  brand_not_contains?: Maybe<String>;
+  brand_starts_with?: Maybe<String>;
+  brand_not_starts_with?: Maybe<String>;
+  brand_ends_with?: Maybe<String>;
+  brand_not_ends_with?: Maybe<String>;
+  unitType?: Maybe<String>;
+  unitType_not?: Maybe<String>;
+  unitType_in?: Maybe<String[] | String>;
+  unitType_not_in?: Maybe<String[] | String>;
+  unitType_lt?: Maybe<String>;
+  unitType_lte?: Maybe<String>;
+  unitType_gt?: Maybe<String>;
+  unitType_gte?: Maybe<String>;
+  unitType_contains?: Maybe<String>;
+  unitType_not_contains?: Maybe<String>;
+  unitType_starts_with?: Maybe<String>;
+  unitType_not_starts_with?: Maybe<String>;
+  unitType_ends_with?: Maybe<String>;
+  unitType_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  MenuDetail?: Maybe<String>;
+  MenuDetail_not?: Maybe<String>;
+  MenuDetail_in?: Maybe<String[] | String>;
+  MenuDetail_not_in?: Maybe<String[] | String>;
+  MenuDetail_lt?: Maybe<String>;
+  MenuDetail_lte?: Maybe<String>;
+  MenuDetail_gt?: Maybe<String>;
+  MenuDetail_gte?: Maybe<String>;
+  MenuDetail_contains?: Maybe<String>;
+  MenuDetail_not_contains?: Maybe<String>;
+  MenuDetail_starts_with?: Maybe<String>;
+  MenuDetail_not_starts_with?: Maybe<String>;
+  MenuDetail_ends_with?: Maybe<String>;
+  MenuDetail_not_ends_with?: Maybe<String>;
+  TermDetail?: Maybe<String>;
+  TermDetail_not?: Maybe<String>;
+  TermDetail_in?: Maybe<String[] | String>;
+  TermDetail_not_in?: Maybe<String[] | String>;
+  TermDetail_lt?: Maybe<String>;
+  TermDetail_lte?: Maybe<String>;
+  TermDetail_gt?: Maybe<String>;
+  TermDetail_gte?: Maybe<String>;
+  TermDetail_contains?: Maybe<String>;
+  TermDetail_not_contains?: Maybe<String>;
+  TermDetail_starts_with?: Maybe<String>;
+  TermDetail_not_starts_with?: Maybe<String>;
+  TermDetail_ends_with?: Maybe<String>;
+  TermDetail_not_ends_with?: Maybe<String>;
+  amount?: Maybe<Int>;
+  amount_not?: Maybe<Int>;
+  amount_in?: Maybe<Int[] | Int>;
+  amount_not_in?: Maybe<Int[] | Int>;
+  amount_lt?: Maybe<Int>;
+  amount_lte?: Maybe<Int>;
+  amount_gt?: Maybe<Int>;
+  amount_gte?: Maybe<Int>;
+  isPublished?: Maybe<Boolean>;
+  isPublished_not?: Maybe<Boolean>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  image?: Maybe<String>;
+  image_not?: Maybe<String>;
+  image_in?: Maybe<String[] | String>;
+  image_not_in?: Maybe<String[] | String>;
+  image_lt?: Maybe<String>;
+  image_lte?: Maybe<String>;
+  image_gt?: Maybe<String>;
+  image_gte?: Maybe<String>;
+  image_contains?: Maybe<String>;
+  image_not_contains?: Maybe<String>;
+  image_starts_with?: Maybe<String>;
+  image_not_starts_with?: Maybe<String>;
+  image_ends_with?: Maybe<String>;
+  image_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ProductItemScalarWhereInput[] | ProductItemScalarWhereInput>;
+  OR?: Maybe<ProductItemScalarWhereInput[] | ProductItemScalarWhereInput>;
+  NOT?: Maybe<ProductItemScalarWhereInput[] | ProductItemScalarWhereInput>;
+}
+
+export interface ProductItemUpdateManyWithWhereNestedInput {
+  where: ProductItemScalarWhereInput;
+  data: ProductItemUpdateManyDataInput;
+}
+
+export interface ProductItemUpdateManyDataInput {
+  name?: Maybe<String>;
+  price?: Maybe<String>;
+  salePrice?: Maybe<String>;
+  brand?: Maybe<String>;
+  unitType?: Maybe<String>;
+  description?: Maybe<String>;
+  MenuDetail?: Maybe<String>;
+  TermDetail?: Maybe<String>;
+  amount?: Maybe<Int>;
+  isPublished?: Maybe<Boolean>;
+  image?: Maybe<String>;
 }
 
 export interface ProductItemUpsertWithWhereUniqueWithoutCategoryInput {
@@ -3938,7 +4072,7 @@ export interface ProductItemUpdateInput {
   isPublished?: Maybe<Boolean>;
   category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>;
-  quotation?: Maybe<QuotationUpdateOneWithoutProductItemsInput>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemUpdateManyInput>;
 }
@@ -3959,8 +4093,8 @@ export interface ProductItemUpdateManyMutationInput {
 
 export interface QuotationUpdateInput {
   docId?: Maybe<String>;
-  productItems?: Maybe<ProductItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneRequiredWithoutQuotationsInput>;
+  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
   payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
@@ -3968,6 +4102,63 @@ export interface QuotationUpdateInput {
 
 export interface QuotationUpdateManyMutationInput {
   docId?: Maybe<String>;
+}
+
+export interface QuotationItemCreateInput {
+  id?: Maybe<ID_Input>;
+  key: String;
+  product: ProductItemCreateOneInput;
+  amount: Int;
+  realPrice: Float;
+  quotation: QuotationCreateOneWithoutQuotationItemInput;
+}
+
+export interface QuotationCreateOneWithoutQuotationItemInput {
+  create?: Maybe<QuotationCreateWithoutQuotationItemInput>;
+  connect?: Maybe<QuotationWhereUniqueInput>;
+}
+
+export interface QuotationCreateWithoutQuotationItemInput {
+  id?: Maybe<ID_Input>;
+  docId?: Maybe<String>;
+  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
+  payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
+  shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
+  customer: UserCreateOneWithoutQuotationsInput;
+}
+
+export interface QuotationItemUpdateInput {
+  key?: Maybe<String>;
+  product?: Maybe<ProductItemUpdateOneRequiredInput>;
+  amount?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+  quotation?: Maybe<QuotationUpdateOneRequiredWithoutQuotationItemInput>;
+}
+
+export interface QuotationUpdateOneRequiredWithoutQuotationItemInput {
+  create?: Maybe<QuotationCreateWithoutQuotationItemInput>;
+  update?: Maybe<QuotationUpdateWithoutQuotationItemDataInput>;
+  upsert?: Maybe<QuotationUpsertWithoutQuotationItemInput>;
+  connect?: Maybe<QuotationWhereUniqueInput>;
+}
+
+export interface QuotationUpdateWithoutQuotationItemDataInput {
+  docId?: Maybe<String>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
+  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
+  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+}
+
+export interface QuotationUpsertWithoutQuotationItemInput {
+  update: QuotationUpdateWithoutQuotationItemDataInput;
+  create: QuotationCreateWithoutQuotationItemInput;
+}
+
+export interface QuotationItemUpdateManyMutationInput {
+  key?: Maybe<String>;
+  amount?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
 }
 
 export interface SalesmanCreateInput {
@@ -4185,6 +4376,23 @@ export interface QuotationSubscriptionWhereInput {
   >;
   NOT?: Maybe<
     QuotationSubscriptionWhereInput[] | QuotationSubscriptionWhereInput
+  >;
+}
+
+export interface QuotationItemSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<QuotationItemWhereInput>;
+  AND?: Maybe<
+    QuotationItemSubscriptionWhereInput[] | QuotationItemSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    QuotationItemSubscriptionWhereInput[] | QuotationItemSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    QuotationItemSubscriptionWhereInput[] | QuotationItemSubscriptionWhereInput
   >;
 }
 
@@ -4781,7 +4989,7 @@ export interface CategoryNullablePromise
 
 export interface Quotation {
   id: ID_Output;
-  docId: String;
+  docId?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -4789,9 +4997,9 @@ export interface Quotation {
 export interface QuotationPromise extends Promise<Quotation>, Fragmentable {
   id: () => Promise<ID_Output>;
   docId: () => Promise<String>;
-  productItems: <T = FragmentableArray<ProductItem>>(args?: {
-    where?: ProductItemWhereInput;
-    orderBy?: ProductItemOrderByInput;
+  quotationItem: <T = FragmentableArray<QuotationItem>>(args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -4811,9 +5019,11 @@ export interface QuotationSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   docId: () => Promise<AsyncIterator<String>>;
-  productItems: <T = Promise<AsyncIterator<ProductItemSubscription>>>(args?: {
-    where?: ProductItemWhereInput;
-    orderBy?: ProductItemOrderByInput;
+  quotationItem: <
+    T = Promise<AsyncIterator<QuotationItemSubscription>>
+  >(args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -4833,9 +5043,9 @@ export interface QuotationNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   docId: () => Promise<String>;
-  productItems: <T = FragmentableArray<ProductItem>>(args?: {
-    where?: ProductItemWhereInput;
-    orderBy?: ProductItemOrderByInput;
+  quotationItem: <T = FragmentableArray<QuotationItem>>(args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -4848,6 +5058,46 @@ export interface QuotationNullablePromise
   payment: <T = PaymentPromise>() => T;
   shipping: <T = ShippingPromise>() => T;
   customer: <T = UserPromise>() => T;
+}
+
+export interface QuotationItem {
+  id: ID_Output;
+  key: String;
+  amount: Int;
+  realPrice: Float;
+}
+
+export interface QuotationItemPromise
+  extends Promise<QuotationItem>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  product: <T = ProductItemPromise>() => T;
+  amount: () => Promise<Int>;
+  realPrice: () => Promise<Float>;
+  quotation: <T = QuotationPromise>() => T;
+}
+
+export interface QuotationItemSubscription
+  extends Promise<AsyncIterator<QuotationItem>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  key: () => Promise<AsyncIterator<String>>;
+  product: <T = ProductItemSubscription>() => T;
+  amount: () => Promise<AsyncIterator<Int>>;
+  realPrice: () => Promise<AsyncIterator<Float>>;
+  quotation: <T = QuotationSubscription>() => T;
+}
+
+export interface QuotationItemNullablePromise
+  extends Promise<QuotationItem | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  product: <T = ProductItemPromise>() => T;
+  amount: () => Promise<Int>;
+  realPrice: () => Promise<Float>;
+  quotation: <T = QuotationPromise>() => T;
 }
 
 export interface Salesman {
@@ -5472,6 +5722,62 @@ export interface AggregateQuotationSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface QuotationItemConnection {
+  pageInfo: PageInfo;
+  edges: QuotationItemEdge[];
+}
+
+export interface QuotationItemConnectionPromise
+  extends Promise<QuotationItemConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<QuotationItemEdge>>() => T;
+  aggregate: <T = AggregateQuotationItemPromise>() => T;
+}
+
+export interface QuotationItemConnectionSubscription
+  extends Promise<AsyncIterator<QuotationItemConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<QuotationItemEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateQuotationItemSubscription>() => T;
+}
+
+export interface QuotationItemEdge {
+  node: QuotationItem;
+  cursor: String;
+}
+
+export interface QuotationItemEdgePromise
+  extends Promise<QuotationItemEdge>,
+    Fragmentable {
+  node: <T = QuotationItemPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface QuotationItemEdgeSubscription
+  extends Promise<AsyncIterator<QuotationItemEdge>>,
+    Fragmentable {
+  node: <T = QuotationItemSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateQuotationItem {
+  count: Int;
+}
+
+export interface AggregateQuotationItemPromise
+  extends Promise<AggregateQuotationItem>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateQuotationItemSubscription
+  extends Promise<AsyncIterator<AggregateQuotationItem>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface SalesmanConnection {
   pageInfo: PageInfo;
   edges: SalesmanEdge[];
@@ -6082,7 +6388,7 @@ export interface QuotationSubscriptionPayloadSubscription
 
 export interface QuotationPreviousValues {
   id: ID_Output;
-  docId: String;
+  docId?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -6103,6 +6409,56 @@ export interface QuotationPreviousValuesSubscription
   docId: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface QuotationItemSubscriptionPayload {
+  mutation: MutationType;
+  node: QuotationItem;
+  updatedFields: String[];
+  previousValues: QuotationItemPreviousValues;
+}
+
+export interface QuotationItemSubscriptionPayloadPromise
+  extends Promise<QuotationItemSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = QuotationItemPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = QuotationItemPreviousValuesPromise>() => T;
+}
+
+export interface QuotationItemSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<QuotationItemSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = QuotationItemSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = QuotationItemPreviousValuesSubscription>() => T;
+}
+
+export interface QuotationItemPreviousValues {
+  id: ID_Output;
+  key: String;
+  amount: Int;
+  realPrice: Float;
+}
+
+export interface QuotationItemPreviousValuesPromise
+  extends Promise<QuotationItemPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  amount: () => Promise<Int>;
+  realPrice: () => Promise<Float>;
+}
+
+export interface QuotationItemPreviousValuesSubscription
+  extends Promise<AsyncIterator<QuotationItemPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  key: () => Promise<AsyncIterator<String>>;
+  amount: () => Promise<AsyncIterator<Int>>;
+  realPrice: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface SalesmanSubscriptionPayload {
@@ -6466,6 +6822,10 @@ export const models: Model[] = [
   },
   {
     name: "ShoppingCart",
+    embedded: false
+  },
+  {
+    name: "QuotationItem",
     embedded: false
   },
   {

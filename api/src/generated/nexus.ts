@@ -1000,7 +1000,7 @@ export interface NexusGenInputs {
     MenuDetail: string; // String!
     name: string; // String!
     price: string; // String!
-    quotation?: NexusGenInputs['QuotationCreateOneWithoutProductItemsInput'] | null; // QuotationCreateOneWithoutProductItemsInput
+    quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     relatedProduct?: NexusGenInputs['ProductItemCreateManyInput'] | null; // ProductItemCreateManyInput
     salePrice: string; // String!
     shoppingCart?: NexusGenInputs['ShoppingCartCreateOneInput'] | null; // ShoppingCartCreateOneInput
@@ -1014,10 +1014,6 @@ export interface NexusGenInputs {
   ProductItemCreateManyWithoutCategoryInput: { // input type
     connect?: NexusGenInputs['ProductItemWhereUniqueInput'][] | null; // [ProductItemWhereUniqueInput!]
     create?: NexusGenInputs['ProductItemCreateWithoutCategoryInput'][] | null; // [ProductItemCreateWithoutCategoryInput!]
-  }
-  ProductItemCreateManyWithoutQuotationInput: { // input type
-    connect?: NexusGenInputs['ProductItemWhereUniqueInput'][] | null; // [ProductItemWhereUniqueInput!]
-    create?: NexusGenInputs['ProductItemCreateWithoutQuotationInput'][] | null; // [ProductItemCreateWithoutQuotationInput!]
   }
   ProductItemCreateOneInput: { // input type
     connect?: NexusGenInputs['ProductItemWhereUniqueInput'] | null; // ProductItemWhereUniqueInput
@@ -1033,24 +1029,7 @@ export interface NexusGenInputs {
     MenuDetail: string; // String!
     name: string; // String!
     price: string; // String!
-    quotation?: NexusGenInputs['QuotationCreateOneWithoutProductItemsInput'] | null; // QuotationCreateOneWithoutProductItemsInput
-    relatedProduct?: NexusGenInputs['ProductItemCreateManyInput'] | null; // ProductItemCreateManyInput
-    salePrice: string; // String!
-    shoppingCart?: NexusGenInputs['ShoppingCartCreateOneInput'] | null; // ShoppingCartCreateOneInput
-    TermDetail: string; // String!
-    unitType: string; // String!
-  }
-  ProductItemCreateWithoutQuotationInput: { // input type
-    amount: number; // Int!
-    brand: string; // String!
-    category: NexusGenInputs['CategoryCreateOneWithoutProductItemInput']; // CategoryCreateOneWithoutProductItemInput!
-    description?: string | null; // String
-    id?: string | null; // ID
-    image?: string | null; // String
-    isPublished?: boolean | null; // Boolean
-    MenuDetail: string; // String!
-    name: string; // String!
-    price: string; // String!
+    quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     relatedProduct?: NexusGenInputs['ProductItemCreateManyInput'] | null; // ProductItemCreateManyInput
     salePrice: string; // String!
     shoppingCart?: NexusGenInputs['ShoppingCartCreateOneInput'] | null; // ShoppingCartCreateOneInput
@@ -1238,7 +1217,7 @@ export interface NexusGenInputs {
     MenuDetail?: string | null; // String
     name?: string | null; // String
     price?: string | null; // String
-    quotation?: NexusGenInputs['QuotationUpdateOneWithoutProductItemsInput'] | null; // QuotationUpdateOneWithoutProductItemsInput
+    quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     relatedProduct?: NexusGenInputs['ProductItemUpdateManyInput'] | null; // ProductItemUpdateManyInput
     salePrice?: string | null; // String
     shoppingCart?: NexusGenInputs['ShoppingCartUpdateOneInput'] | null; // ShoppingCartUpdateOneInput
@@ -1255,7 +1234,7 @@ export interface NexusGenInputs {
     MenuDetail?: string | null; // String
     name?: string | null; // String
     price?: string | null; // String
-    quotation?: NexusGenInputs['QuotationUpdateOneWithoutProductItemsInput'] | null; // QuotationUpdateOneWithoutProductItemsInput
+    quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     relatedProduct?: NexusGenInputs['ProductItemUpdateManyInput'] | null; // ProductItemUpdateManyInput
     salePrice?: string | null; // String
     shoppingCart?: NexusGenInputs['ShoppingCartUpdateOneInput'] | null; // ShoppingCartUpdateOneInput
@@ -1314,17 +1293,6 @@ export interface NexusGenInputs {
     updateMany?: NexusGenInputs['ProductItemUpdateManyWithWhereNestedInput'][] | null; // [ProductItemUpdateManyWithWhereNestedInput!]
     upsert?: NexusGenInputs['ProductItemUpsertWithWhereUniqueWithoutCategoryInput'][] | null; // [ProductItemUpsertWithWhereUniqueWithoutCategoryInput!]
   }
-  ProductItemUpdateManyWithoutQuotationInput: { // input type
-    connect?: NexusGenInputs['ProductItemWhereUniqueInput'][] | null; // [ProductItemWhereUniqueInput!]
-    create?: NexusGenInputs['ProductItemCreateWithoutQuotationInput'][] | null; // [ProductItemCreateWithoutQuotationInput!]
-    delete?: NexusGenInputs['ProductItemWhereUniqueInput'][] | null; // [ProductItemWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['ProductItemScalarWhereInput'][] | null; // [ProductItemScalarWhereInput!]
-    disconnect?: NexusGenInputs['ProductItemWhereUniqueInput'][] | null; // [ProductItemWhereUniqueInput!]
-    set?: NexusGenInputs['ProductItemWhereUniqueInput'][] | null; // [ProductItemWhereUniqueInput!]
-    update?: NexusGenInputs['ProductItemUpdateWithWhereUniqueWithoutQuotationInput'][] | null; // [ProductItemUpdateWithWhereUniqueWithoutQuotationInput!]
-    updateMany?: NexusGenInputs['ProductItemUpdateManyWithWhereNestedInput'][] | null; // [ProductItemUpdateManyWithWhereNestedInput!]
-    upsert?: NexusGenInputs['ProductItemUpsertWithWhereUniqueWithoutQuotationInput'][] | null; // [ProductItemUpsertWithWhereUniqueWithoutQuotationInput!]
-  }
   ProductItemUpdateOneRequiredInput: { // input type
     connect?: NexusGenInputs['ProductItemWhereUniqueInput'] | null; // ProductItemWhereUniqueInput
     create?: NexusGenInputs['ProductItemCreateInput'] | null; // ProductItemCreateInput
@@ -1339,10 +1307,6 @@ export interface NexusGenInputs {
     data: NexusGenInputs['ProductItemUpdateWithoutCategoryDataInput']; // ProductItemUpdateWithoutCategoryDataInput!
     where: NexusGenInputs['ProductItemWhereUniqueInput']; // ProductItemWhereUniqueInput!
   }
-  ProductItemUpdateWithWhereUniqueWithoutQuotationInput: { // input type
-    data: NexusGenInputs['ProductItemUpdateWithoutQuotationDataInput']; // ProductItemUpdateWithoutQuotationDataInput!
-    where: NexusGenInputs['ProductItemWhereUniqueInput']; // ProductItemWhereUniqueInput!
-  }
   ProductItemUpdateWithoutCategoryDataInput: { // input type
     amount?: number | null; // Int
     brand?: string | null; // String
@@ -1352,23 +1316,7 @@ export interface NexusGenInputs {
     MenuDetail?: string | null; // String
     name?: string | null; // String
     price?: string | null; // String
-    quotation?: NexusGenInputs['QuotationUpdateOneWithoutProductItemsInput'] | null; // QuotationUpdateOneWithoutProductItemsInput
-    relatedProduct?: NexusGenInputs['ProductItemUpdateManyInput'] | null; // ProductItemUpdateManyInput
-    salePrice?: string | null; // String
-    shoppingCart?: NexusGenInputs['ShoppingCartUpdateOneInput'] | null; // ShoppingCartUpdateOneInput
-    TermDetail?: string | null; // String
-    unitType?: string | null; // String
-  }
-  ProductItemUpdateWithoutQuotationDataInput: { // input type
-    amount?: number | null; // Int
-    brand?: string | null; // String
-    category?: NexusGenInputs['CategoryUpdateOneRequiredWithoutProductItemInput'] | null; // CategoryUpdateOneRequiredWithoutProductItemInput
-    description?: string | null; // String
-    image?: string | null; // String
-    isPublished?: boolean | null; // Boolean
-    MenuDetail?: string | null; // String
-    name?: string | null; // String
-    price?: string | null; // String
+    quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     relatedProduct?: NexusGenInputs['ProductItemUpdateManyInput'] | null; // ProductItemUpdateManyInput
     salePrice?: string | null; // String
     shoppingCart?: NexusGenInputs['ShoppingCartUpdateOneInput'] | null; // ShoppingCartUpdateOneInput
@@ -1387,11 +1335,6 @@ export interface NexusGenInputs {
   ProductItemUpsertWithWhereUniqueWithoutCategoryInput: { // input type
     create: NexusGenInputs['ProductItemCreateWithoutCategoryInput']; // ProductItemCreateWithoutCategoryInput!
     update: NexusGenInputs['ProductItemUpdateWithoutCategoryDataInput']; // ProductItemUpdateWithoutCategoryDataInput!
-    where: NexusGenInputs['ProductItemWhereUniqueInput']; // ProductItemWhereUniqueInput!
-  }
-  ProductItemUpsertWithWhereUniqueWithoutQuotationInput: { // input type
-    create: NexusGenInputs['ProductItemCreateWithoutQuotationInput']; // ProductItemCreateWithoutQuotationInput!
-    update: NexusGenInputs['ProductItemUpdateWithoutQuotationDataInput']; // ProductItemUpdateWithoutQuotationDataInput!
     where: NexusGenInputs['ProductItemWhereUniqueInput']; // ProductItemWhereUniqueInput!
   }
   ProductItemWhereInput: { // input type
@@ -1576,11 +1519,11 @@ export interface NexusGenInputs {
   }
   QuotationCreateInput: { // input type
     customer: NexusGenInputs['UserCreateOneWithoutQuotationsInput']; // UserCreateOneWithoutQuotationsInput!
-    docId: string; // String!
+    docId?: string | null; // String
     id?: string | null; // ID
     payment?: NexusGenInputs['PaymentCreateOneWithoutQuotationInput'] | null; // PaymentCreateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemCreateManyWithoutQuotationInput'] | null; // ProductItemCreateManyWithoutQuotationInput
-    salesman: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput']; // SalesmanCreateOneWithoutQuotationsInput!
+    quotationItem?: NexusGenInputs['QuotationItemCreateManyWithoutQuotationInput'] | null; // QuotationItemCreateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput'] | null; // SalesmanCreateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutQuotationInput'] | null; // ShippingCreateOneWithoutQuotationInput
   }
   QuotationCreateManyWithoutCustomerInput: { // input type
@@ -1599,53 +1542,223 @@ export interface NexusGenInputs {
     connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
     create?: NexusGenInputs['QuotationCreateWithoutPaymentInput'] | null; // QuotationCreateWithoutPaymentInput
   }
-  QuotationCreateOneWithoutProductItemsInput: { // input type
+  QuotationCreateOneWithoutQuotationItemInput: { // input type
     connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
-    create?: NexusGenInputs['QuotationCreateWithoutProductItemsInput'] | null; // QuotationCreateWithoutProductItemsInput
+    create?: NexusGenInputs['QuotationCreateWithoutQuotationItemInput'] | null; // QuotationCreateWithoutQuotationItemInput
   }
   QuotationCreateOneWithoutShippingInput: { // input type
     connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
     create?: NexusGenInputs['QuotationCreateWithoutShippingInput'] | null; // QuotationCreateWithoutShippingInput
   }
   QuotationCreateWithoutCustomerInput: { // input type
-    docId: string; // String!
+    docId?: string | null; // String
     id?: string | null; // ID
     payment?: NexusGenInputs['PaymentCreateOneWithoutQuotationInput'] | null; // PaymentCreateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemCreateManyWithoutQuotationInput'] | null; // ProductItemCreateManyWithoutQuotationInput
-    salesman: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput']; // SalesmanCreateOneWithoutQuotationsInput!
+    quotationItem?: NexusGenInputs['QuotationItemCreateManyWithoutQuotationInput'] | null; // QuotationItemCreateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput'] | null; // SalesmanCreateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutQuotationInput'] | null; // ShippingCreateOneWithoutQuotationInput
   }
   QuotationCreateWithoutPaymentInput: { // input type
     customer: NexusGenInputs['UserCreateOneWithoutQuotationsInput']; // UserCreateOneWithoutQuotationsInput!
-    docId: string; // String!
+    docId?: string | null; // String
     id?: string | null; // ID
-    productItems?: NexusGenInputs['ProductItemCreateManyWithoutQuotationInput'] | null; // ProductItemCreateManyWithoutQuotationInput
-    salesman: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput']; // SalesmanCreateOneWithoutQuotationsInput!
+    quotationItem?: NexusGenInputs['QuotationItemCreateManyWithoutQuotationInput'] | null; // QuotationItemCreateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput'] | null; // SalesmanCreateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutQuotationInput'] | null; // ShippingCreateOneWithoutQuotationInput
   }
-  QuotationCreateWithoutProductItemsInput: { // input type
+  QuotationCreateWithoutQuotationItemInput: { // input type
     customer: NexusGenInputs['UserCreateOneWithoutQuotationsInput']; // UserCreateOneWithoutQuotationsInput!
-    docId: string; // String!
+    docId?: string | null; // String
     id?: string | null; // ID
     payment?: NexusGenInputs['PaymentCreateOneWithoutQuotationInput'] | null; // PaymentCreateOneWithoutQuotationInput
-    salesman: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput']; // SalesmanCreateOneWithoutQuotationsInput!
+    salesman?: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput'] | null; // SalesmanCreateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutQuotationInput'] | null; // ShippingCreateOneWithoutQuotationInput
   }
   QuotationCreateWithoutSalesmanInput: { // input type
     customer: NexusGenInputs['UserCreateOneWithoutQuotationsInput']; // UserCreateOneWithoutQuotationsInput!
-    docId: string; // String!
+    docId?: string | null; // String
     id?: string | null; // ID
     payment?: NexusGenInputs['PaymentCreateOneWithoutQuotationInput'] | null; // PaymentCreateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemCreateManyWithoutQuotationInput'] | null; // ProductItemCreateManyWithoutQuotationInput
+    quotationItem?: NexusGenInputs['QuotationItemCreateManyWithoutQuotationInput'] | null; // QuotationItemCreateManyWithoutQuotationInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutQuotationInput'] | null; // ShippingCreateOneWithoutQuotationInput
   }
   QuotationCreateWithoutShippingInput: { // input type
     customer: NexusGenInputs['UserCreateOneWithoutQuotationsInput']; // UserCreateOneWithoutQuotationsInput!
-    docId: string; // String!
+    docId?: string | null; // String
     id?: string | null; // ID
     payment?: NexusGenInputs['PaymentCreateOneWithoutQuotationInput'] | null; // PaymentCreateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemCreateManyWithoutQuotationInput'] | null; // ProductItemCreateManyWithoutQuotationInput
-    salesman: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput']; // SalesmanCreateOneWithoutQuotationsInput!
+    quotationItem?: NexusGenInputs['QuotationItemCreateManyWithoutQuotationInput'] | null; // QuotationItemCreateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanCreateOneWithoutQuotationsInput'] | null; // SalesmanCreateOneWithoutQuotationsInput
+  }
+  QuotationItemCreateInput: { // input type
+    amount: number; // Int!
+    id?: string | null; // ID
+    key: string; // String!
+    product: NexusGenInputs['ProductItemCreateOneInput']; // ProductItemCreateOneInput!
+    quotation: NexusGenInputs['QuotationCreateOneWithoutQuotationItemInput']; // QuotationCreateOneWithoutQuotationItemInput!
+    realPrice: number; // Float!
+  }
+  QuotationItemCreateManyWithoutQuotationInput: { // input type
+    connect?: NexusGenInputs['QuotationItemWhereUniqueInput'][] | null; // [QuotationItemWhereUniqueInput!]
+    create?: NexusGenInputs['QuotationItemCreateWithoutQuotationInput'][] | null; // [QuotationItemCreateWithoutQuotationInput!]
+  }
+  QuotationItemCreateWithoutQuotationInput: { // input type
+    amount: number; // Int!
+    id?: string | null; // ID
+    key: string; // String!
+    product: NexusGenInputs['ProductItemCreateOneInput']; // ProductItemCreateOneInput!
+    realPrice: number; // Float!
+  }
+  QuotationItemScalarWhereInput: { // input type
+    amount?: number | null; // Int
+    amount_gt?: number | null; // Int
+    amount_gte?: number | null; // Int
+    amount_in?: number[] | null; // [Int!]
+    amount_lt?: number | null; // Int
+    amount_lte?: number | null; // Int
+    amount_not?: number | null; // Int
+    amount_not_in?: number[] | null; // [Int!]
+    AND?: NexusGenInputs['QuotationItemScalarWhereInput'][] | null; // [QuotationItemScalarWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    key?: string | null; // String
+    key_contains?: string | null; // String
+    key_ends_with?: string | null; // String
+    key_gt?: string | null; // String
+    key_gte?: string | null; // String
+    key_in?: string[] | null; // [String!]
+    key_lt?: string | null; // String
+    key_lte?: string | null; // String
+    key_not?: string | null; // String
+    key_not_contains?: string | null; // String
+    key_not_ends_with?: string | null; // String
+    key_not_in?: string[] | null; // [String!]
+    key_not_starts_with?: string | null; // String
+    key_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['QuotationItemScalarWhereInput'][] | null; // [QuotationItemScalarWhereInput!]
+    OR?: NexusGenInputs['QuotationItemScalarWhereInput'][] | null; // [QuotationItemScalarWhereInput!]
+    realPrice?: number | null; // Float
+    realPrice_gt?: number | null; // Float
+    realPrice_gte?: number | null; // Float
+    realPrice_in?: number[] | null; // [Float!]
+    realPrice_lt?: number | null; // Float
+    realPrice_lte?: number | null; // Float
+    realPrice_not?: number | null; // Float
+    realPrice_not_in?: number[] | null; // [Float!]
+  }
+  QuotationItemUpdateInput: { // input type
+    amount?: number | null; // Int
+    key?: string | null; // String
+    product?: NexusGenInputs['ProductItemUpdateOneRequiredInput'] | null; // ProductItemUpdateOneRequiredInput
+    quotation?: NexusGenInputs['QuotationUpdateOneRequiredWithoutQuotationItemInput'] | null; // QuotationUpdateOneRequiredWithoutQuotationItemInput
+    realPrice?: number | null; // Float
+  }
+  QuotationItemUpdateManyDataInput: { // input type
+    amount?: number | null; // Int
+    key?: string | null; // String
+    realPrice?: number | null; // Float
+  }
+  QuotationItemUpdateManyMutationInput: { // input type
+    amount?: number | null; // Int
+    key?: string | null; // String
+    realPrice?: number | null; // Float
+  }
+  QuotationItemUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['QuotationItemUpdateManyDataInput']; // QuotationItemUpdateManyDataInput!
+    where: NexusGenInputs['QuotationItemScalarWhereInput']; // QuotationItemScalarWhereInput!
+  }
+  QuotationItemUpdateManyWithoutQuotationInput: { // input type
+    connect?: NexusGenInputs['QuotationItemWhereUniqueInput'][] | null; // [QuotationItemWhereUniqueInput!]
+    create?: NexusGenInputs['QuotationItemCreateWithoutQuotationInput'][] | null; // [QuotationItemCreateWithoutQuotationInput!]
+    delete?: NexusGenInputs['QuotationItemWhereUniqueInput'][] | null; // [QuotationItemWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['QuotationItemScalarWhereInput'][] | null; // [QuotationItemScalarWhereInput!]
+    disconnect?: NexusGenInputs['QuotationItemWhereUniqueInput'][] | null; // [QuotationItemWhereUniqueInput!]
+    set?: NexusGenInputs['QuotationItemWhereUniqueInput'][] | null; // [QuotationItemWhereUniqueInput!]
+    update?: NexusGenInputs['QuotationItemUpdateWithWhereUniqueWithoutQuotationInput'][] | null; // [QuotationItemUpdateWithWhereUniqueWithoutQuotationInput!]
+    updateMany?: NexusGenInputs['QuotationItemUpdateManyWithWhereNestedInput'][] | null; // [QuotationItemUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['QuotationItemUpsertWithWhereUniqueWithoutQuotationInput'][] | null; // [QuotationItemUpsertWithWhereUniqueWithoutQuotationInput!]
+  }
+  QuotationItemUpdateWithWhereUniqueWithoutQuotationInput: { // input type
+    data: NexusGenInputs['QuotationItemUpdateWithoutQuotationDataInput']; // QuotationItemUpdateWithoutQuotationDataInput!
+    where: NexusGenInputs['QuotationItemWhereUniqueInput']; // QuotationItemWhereUniqueInput!
+  }
+  QuotationItemUpdateWithoutQuotationDataInput: { // input type
+    amount?: number | null; // Int
+    key?: string | null; // String
+    product?: NexusGenInputs['ProductItemUpdateOneRequiredInput'] | null; // ProductItemUpdateOneRequiredInput
+    realPrice?: number | null; // Float
+  }
+  QuotationItemUpsertWithWhereUniqueWithoutQuotationInput: { // input type
+    create: NexusGenInputs['QuotationItemCreateWithoutQuotationInput']; // QuotationItemCreateWithoutQuotationInput!
+    update: NexusGenInputs['QuotationItemUpdateWithoutQuotationDataInput']; // QuotationItemUpdateWithoutQuotationDataInput!
+    where: NexusGenInputs['QuotationItemWhereUniqueInput']; // QuotationItemWhereUniqueInput!
+  }
+  QuotationItemWhereInput: { // input type
+    amount?: number | null; // Int
+    amount_gt?: number | null; // Int
+    amount_gte?: number | null; // Int
+    amount_in?: number[] | null; // [Int!]
+    amount_lt?: number | null; // Int
+    amount_lte?: number | null; // Int
+    amount_not?: number | null; // Int
+    amount_not_in?: number[] | null; // [Int!]
+    AND?: NexusGenInputs['QuotationItemWhereInput'][] | null; // [QuotationItemWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    key?: string | null; // String
+    key_contains?: string | null; // String
+    key_ends_with?: string | null; // String
+    key_gt?: string | null; // String
+    key_gte?: string | null; // String
+    key_in?: string[] | null; // [String!]
+    key_lt?: string | null; // String
+    key_lte?: string | null; // String
+    key_not?: string | null; // String
+    key_not_contains?: string | null; // String
+    key_not_ends_with?: string | null; // String
+    key_not_in?: string[] | null; // [String!]
+    key_not_starts_with?: string | null; // String
+    key_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['QuotationItemWhereInput'][] | null; // [QuotationItemWhereInput!]
+    OR?: NexusGenInputs['QuotationItemWhereInput'][] | null; // [QuotationItemWhereInput!]
+    product?: NexusGenInputs['ProductItemWhereInput'] | null; // ProductItemWhereInput
+    quotation?: NexusGenInputs['QuotationWhereInput'] | null; // QuotationWhereInput
+    realPrice?: number | null; // Float
+    realPrice_gt?: number | null; // Float
+    realPrice_gte?: number | null; // Float
+    realPrice_in?: number[] | null; // [Float!]
+    realPrice_lt?: number | null; // Float
+    realPrice_lte?: number | null; // Float
+    realPrice_not?: number | null; // Float
+    realPrice_not_in?: number[] | null; // [Float!]
+  }
+  QuotationItemWhereUniqueInput: { // input type
+    id?: string | null; // ID
+    key?: string | null; // String
   }
   QuotationScalarWhereInput: { // input type
     AND?: NexusGenInputs['QuotationScalarWhereInput'][] | null; // [QuotationScalarWhereInput!]
@@ -1700,16 +1813,16 @@ export interface NexusGenInputs {
     customer?: NexusGenInputs['UserUpdateOneRequiredWithoutQuotationsInput'] | null; // UserUpdateOneRequiredWithoutQuotationsInput
     docId?: string | null; // String
     payment?: NexusGenInputs['PaymentUpdateOneWithoutQuotationInput'] | null; // PaymentUpdateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemUpdateManyWithoutQuotationInput'] | null; // ProductItemUpdateManyWithoutQuotationInput
-    salesman?: NexusGenInputs['SalesmanUpdateOneRequiredWithoutQuotationsInput'] | null; // SalesmanUpdateOneRequiredWithoutQuotationsInput
+    quotationItem?: NexusGenInputs['QuotationItemUpdateManyWithoutQuotationInput'] | null; // QuotationItemUpdateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanUpdateOneWithoutQuotationsInput'] | null; // SalesmanUpdateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutQuotationInput'] | null; // ShippingUpdateOneWithoutQuotationInput
   }
   QuotationUpdateInput: { // input type
     customer?: NexusGenInputs['UserUpdateOneRequiredWithoutQuotationsInput'] | null; // UserUpdateOneRequiredWithoutQuotationsInput
     docId?: string | null; // String
     payment?: NexusGenInputs['PaymentUpdateOneWithoutQuotationInput'] | null; // PaymentUpdateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemUpdateManyWithoutQuotationInput'] | null; // ProductItemUpdateManyWithoutQuotationInput
-    salesman?: NexusGenInputs['SalesmanUpdateOneRequiredWithoutQuotationsInput'] | null; // SalesmanUpdateOneRequiredWithoutQuotationsInput
+    quotationItem?: NexusGenInputs['QuotationItemUpdateManyWithoutQuotationInput'] | null; // QuotationItemUpdateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanUpdateOneWithoutQuotationsInput'] | null; // SalesmanUpdateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutQuotationInput'] | null; // ShippingUpdateOneWithoutQuotationInput
   }
   QuotationUpdateManyDataInput: { // input type
@@ -1744,6 +1857,14 @@ export interface NexusGenInputs {
     updateMany?: NexusGenInputs['QuotationUpdateManyWithWhereNestedInput'][] | null; // [QuotationUpdateManyWithWhereNestedInput!]
     upsert?: NexusGenInputs['QuotationUpsertWithWhereUniqueWithoutSalesmanInput'][] | null; // [QuotationUpsertWithWhereUniqueWithoutSalesmanInput!]
   }
+  QuotationUpdateOneInput: { // input type
+    connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
+    create?: NexusGenInputs['QuotationCreateInput'] | null; // QuotationCreateInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['QuotationUpdateDataInput'] | null; // QuotationUpdateDataInput
+    upsert?: NexusGenInputs['QuotationUpsertNestedInput'] | null; // QuotationUpsertNestedInput
+  }
   QuotationUpdateOneRequiredInput: { // input type
     connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
     create?: NexusGenInputs['QuotationCreateInput'] | null; // QuotationCreateInput
@@ -1756,19 +1877,17 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['QuotationUpdateWithoutPaymentDataInput'] | null; // QuotationUpdateWithoutPaymentDataInput
     upsert?: NexusGenInputs['QuotationUpsertWithoutPaymentInput'] | null; // QuotationUpsertWithoutPaymentInput
   }
+  QuotationUpdateOneRequiredWithoutQuotationItemInput: { // input type
+    connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
+    create?: NexusGenInputs['QuotationCreateWithoutQuotationItemInput'] | null; // QuotationCreateWithoutQuotationItemInput
+    update?: NexusGenInputs['QuotationUpdateWithoutQuotationItemDataInput'] | null; // QuotationUpdateWithoutQuotationItemDataInput
+    upsert?: NexusGenInputs['QuotationUpsertWithoutQuotationItemInput'] | null; // QuotationUpsertWithoutQuotationItemInput
+  }
   QuotationUpdateOneRequiredWithoutShippingInput: { // input type
     connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
     create?: NexusGenInputs['QuotationCreateWithoutShippingInput'] | null; // QuotationCreateWithoutShippingInput
     update?: NexusGenInputs['QuotationUpdateWithoutShippingDataInput'] | null; // QuotationUpdateWithoutShippingDataInput
     upsert?: NexusGenInputs['QuotationUpsertWithoutShippingInput'] | null; // QuotationUpsertWithoutShippingInput
-  }
-  QuotationUpdateOneWithoutProductItemsInput: { // input type
-    connect?: NexusGenInputs['QuotationWhereUniqueInput'] | null; // QuotationWhereUniqueInput
-    create?: NexusGenInputs['QuotationCreateWithoutProductItemsInput'] | null; // QuotationCreateWithoutProductItemsInput
-    delete?: boolean | null; // Boolean
-    disconnect?: boolean | null; // Boolean
-    update?: NexusGenInputs['QuotationUpdateWithoutProductItemsDataInput'] | null; // QuotationUpdateWithoutProductItemsDataInput
-    upsert?: NexusGenInputs['QuotationUpsertWithoutProductItemsInput'] | null; // QuotationUpsertWithoutProductItemsInput
   }
   QuotationUpdateWithWhereUniqueWithoutCustomerInput: { // input type
     data: NexusGenInputs['QuotationUpdateWithoutCustomerDataInput']; // QuotationUpdateWithoutCustomerDataInput!
@@ -1781,37 +1900,37 @@ export interface NexusGenInputs {
   QuotationUpdateWithoutCustomerDataInput: { // input type
     docId?: string | null; // String
     payment?: NexusGenInputs['PaymentUpdateOneWithoutQuotationInput'] | null; // PaymentUpdateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemUpdateManyWithoutQuotationInput'] | null; // ProductItemUpdateManyWithoutQuotationInput
-    salesman?: NexusGenInputs['SalesmanUpdateOneRequiredWithoutQuotationsInput'] | null; // SalesmanUpdateOneRequiredWithoutQuotationsInput
+    quotationItem?: NexusGenInputs['QuotationItemUpdateManyWithoutQuotationInput'] | null; // QuotationItemUpdateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanUpdateOneWithoutQuotationsInput'] | null; // SalesmanUpdateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutQuotationInput'] | null; // ShippingUpdateOneWithoutQuotationInput
   }
   QuotationUpdateWithoutPaymentDataInput: { // input type
     customer?: NexusGenInputs['UserUpdateOneRequiredWithoutQuotationsInput'] | null; // UserUpdateOneRequiredWithoutQuotationsInput
     docId?: string | null; // String
-    productItems?: NexusGenInputs['ProductItemUpdateManyWithoutQuotationInput'] | null; // ProductItemUpdateManyWithoutQuotationInput
-    salesman?: NexusGenInputs['SalesmanUpdateOneRequiredWithoutQuotationsInput'] | null; // SalesmanUpdateOneRequiredWithoutQuotationsInput
+    quotationItem?: NexusGenInputs['QuotationItemUpdateManyWithoutQuotationInput'] | null; // QuotationItemUpdateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanUpdateOneWithoutQuotationsInput'] | null; // SalesmanUpdateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutQuotationInput'] | null; // ShippingUpdateOneWithoutQuotationInput
   }
-  QuotationUpdateWithoutProductItemsDataInput: { // input type
+  QuotationUpdateWithoutQuotationItemDataInput: { // input type
     customer?: NexusGenInputs['UserUpdateOneRequiredWithoutQuotationsInput'] | null; // UserUpdateOneRequiredWithoutQuotationsInput
     docId?: string | null; // String
     payment?: NexusGenInputs['PaymentUpdateOneWithoutQuotationInput'] | null; // PaymentUpdateOneWithoutQuotationInput
-    salesman?: NexusGenInputs['SalesmanUpdateOneRequiredWithoutQuotationsInput'] | null; // SalesmanUpdateOneRequiredWithoutQuotationsInput
+    salesman?: NexusGenInputs['SalesmanUpdateOneWithoutQuotationsInput'] | null; // SalesmanUpdateOneWithoutQuotationsInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutQuotationInput'] | null; // ShippingUpdateOneWithoutQuotationInput
   }
   QuotationUpdateWithoutSalesmanDataInput: { // input type
     customer?: NexusGenInputs['UserUpdateOneRequiredWithoutQuotationsInput'] | null; // UserUpdateOneRequiredWithoutQuotationsInput
     docId?: string | null; // String
     payment?: NexusGenInputs['PaymentUpdateOneWithoutQuotationInput'] | null; // PaymentUpdateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemUpdateManyWithoutQuotationInput'] | null; // ProductItemUpdateManyWithoutQuotationInput
+    quotationItem?: NexusGenInputs['QuotationItemUpdateManyWithoutQuotationInput'] | null; // QuotationItemUpdateManyWithoutQuotationInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutQuotationInput'] | null; // ShippingUpdateOneWithoutQuotationInput
   }
   QuotationUpdateWithoutShippingDataInput: { // input type
     customer?: NexusGenInputs['UserUpdateOneRequiredWithoutQuotationsInput'] | null; // UserUpdateOneRequiredWithoutQuotationsInput
     docId?: string | null; // String
     payment?: NexusGenInputs['PaymentUpdateOneWithoutQuotationInput'] | null; // PaymentUpdateOneWithoutQuotationInput
-    productItems?: NexusGenInputs['ProductItemUpdateManyWithoutQuotationInput'] | null; // ProductItemUpdateManyWithoutQuotationInput
-    salesman?: NexusGenInputs['SalesmanUpdateOneRequiredWithoutQuotationsInput'] | null; // SalesmanUpdateOneRequiredWithoutQuotationsInput
+    quotationItem?: NexusGenInputs['QuotationItemUpdateManyWithoutQuotationInput'] | null; // QuotationItemUpdateManyWithoutQuotationInput
+    salesman?: NexusGenInputs['SalesmanUpdateOneWithoutQuotationsInput'] | null; // SalesmanUpdateOneWithoutQuotationsInput
   }
   QuotationUpsertNestedInput: { // input type
     create: NexusGenInputs['QuotationCreateInput']; // QuotationCreateInput!
@@ -1831,9 +1950,9 @@ export interface NexusGenInputs {
     create: NexusGenInputs['QuotationCreateWithoutPaymentInput']; // QuotationCreateWithoutPaymentInput!
     update: NexusGenInputs['QuotationUpdateWithoutPaymentDataInput']; // QuotationUpdateWithoutPaymentDataInput!
   }
-  QuotationUpsertWithoutProductItemsInput: { // input type
-    create: NexusGenInputs['QuotationCreateWithoutProductItemsInput']; // QuotationCreateWithoutProductItemsInput!
-    update: NexusGenInputs['QuotationUpdateWithoutProductItemsDataInput']; // QuotationUpdateWithoutProductItemsDataInput!
+  QuotationUpsertWithoutQuotationItemInput: { // input type
+    create: NexusGenInputs['QuotationCreateWithoutQuotationItemInput']; // QuotationCreateWithoutQuotationItemInput!
+    update: NexusGenInputs['QuotationUpdateWithoutQuotationItemDataInput']; // QuotationUpdateWithoutQuotationItemDataInput!
   }
   QuotationUpsertWithoutShippingInput: { // input type
     create: NexusGenInputs['QuotationCreateWithoutShippingInput']; // QuotationCreateWithoutShippingInput!
@@ -1881,9 +2000,9 @@ export interface NexusGenInputs {
     NOT?: NexusGenInputs['QuotationWhereInput'][] | null; // [QuotationWhereInput!]
     OR?: NexusGenInputs['QuotationWhereInput'][] | null; // [QuotationWhereInput!]
     payment?: NexusGenInputs['PaymentWhereInput'] | null; // PaymentWhereInput
-    productItems_every?: NexusGenInputs['ProductItemWhereInput'] | null; // ProductItemWhereInput
-    productItems_none?: NexusGenInputs['ProductItemWhereInput'] | null; // ProductItemWhereInput
-    productItems_some?: NexusGenInputs['ProductItemWhereInput'] | null; // ProductItemWhereInput
+    quotationItem_every?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
+    quotationItem_none?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
+    quotationItem_some?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
     salesman?: NexusGenInputs['SalesmanWhereInput'] | null; // SalesmanWhereInput
     shipping?: NexusGenInputs['ShippingWhereInput'] | null; // ShippingWhereInput
     updatedAt?: any | null; // DateTime
@@ -1968,9 +2087,11 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['SalesmanUpdateWithoutPaymentsDataInput'] | null; // SalesmanUpdateWithoutPaymentsDataInput
     upsert?: NexusGenInputs['SalesmanUpsertWithoutPaymentsInput'] | null; // SalesmanUpsertWithoutPaymentsInput
   }
-  SalesmanUpdateOneRequiredWithoutQuotationsInput: { // input type
+  SalesmanUpdateOneWithoutQuotationsInput: { // input type
     connect?: NexusGenInputs['SalesmanWhereUniqueInput'] | null; // SalesmanWhereUniqueInput
     create?: NexusGenInputs['SalesmanCreateWithoutQuotationsInput'] | null; // SalesmanCreateWithoutQuotationsInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
     update?: NexusGenInputs['SalesmanUpdateWithoutQuotationsDataInput'] | null; // SalesmanUpdateWithoutQuotationsDataInput
     upsert?: NexusGenInputs['SalesmanUpsertWithoutQuotationsInput'] | null; // SalesmanUpsertWithoutQuotationsInput
   }
@@ -3008,6 +3129,7 @@ export interface NexusGenEnums {
   InvoiceOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "creditTerm_ASC" | "creditTerm_DESC" | "docId_ASC" | "docId_DESC" | "id_ASC" | "id_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   PaymentOrderByInput: "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "docId_ASC" | "docId_DESC" | "id_ASC" | "id_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   ProductItemOrderByInput: "amount_ASC" | "amount_DESC" | "brand_ASC" | "brand_DESC" | "createdAt_ASC" | "createdAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "isPublished_ASC" | "isPublished_DESC" | "MenuDetail_ASC" | "MenuDetail_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "salePrice_ASC" | "salePrice_DESC" | "TermDetail_ASC" | "TermDetail_DESC" | "unitType_ASC" | "unitType_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  QuotationItemOrderByInput: "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "realPrice_ASC" | "realPrice_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   QuotationOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "docId_ASC" | "docId_DESC" | "id_ASC" | "id_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   SalesmanOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "phone_ASC" | "phone_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   ShippingOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "docId_ASC" | "docId_DESC" | "dueDate_ASC" | "dueDate_DESC" | "id_ASC" | "id_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
@@ -3048,6 +3170,9 @@ export interface NexusGenRootTypes {
     count: number; // Int!
   }
   AggregateQuotation: { // root type
+    count: number; // Int!
+  }
+  AggregateQuotationItem: { // root type
     count: number; // Int!
   }
   AggregateSalesman: { // root type
@@ -3150,7 +3275,7 @@ export interface NexusGenRootTypes {
   Query: {};
   Quotation: { // root type
     createdAt: any; // DateTime!
-    docId: string; // String!
+    docId?: string | null; // String
     id: string; // ID!
     updatedAt: any; // DateTime!
   }
@@ -3161,6 +3286,20 @@ export interface NexusGenRootTypes {
   QuotationEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['Quotation']; // Quotation!
+  }
+  QuotationItem: { // root type
+    amount: number; // Int!
+    id: string; // ID!
+    key: string; // String!
+    realPrice: number; // Float!
+  }
+  QuotationItemConnection: { // root type
+    edges: NexusGenRootTypes['QuotationItemEdge'][]; // [QuotationItemEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  QuotationItemEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['QuotationItem']; // QuotationItem!
   }
   Salesman: { // root type
     createdAt: any; // DateTime!
@@ -3352,10 +3491,8 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   ProductItemCreateInput: NexusGenInputs['ProductItemCreateInput'];
   ProductItemCreateManyInput: NexusGenInputs['ProductItemCreateManyInput'];
   ProductItemCreateManyWithoutCategoryInput: NexusGenInputs['ProductItemCreateManyWithoutCategoryInput'];
-  ProductItemCreateManyWithoutQuotationInput: NexusGenInputs['ProductItemCreateManyWithoutQuotationInput'];
   ProductItemCreateOneInput: NexusGenInputs['ProductItemCreateOneInput'];
   ProductItemCreateWithoutCategoryInput: NexusGenInputs['ProductItemCreateWithoutCategoryInput'];
-  ProductItemCreateWithoutQuotationInput: NexusGenInputs['ProductItemCreateWithoutQuotationInput'];
   ProductItemScalarWhereInput: NexusGenInputs['ProductItemScalarWhereInput'];
   ProductItemUpdateDataInput: NexusGenInputs['ProductItemUpdateDataInput'];
   ProductItemUpdateInput: NexusGenInputs['ProductItemUpdateInput'];
@@ -3364,17 +3501,13 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   ProductItemUpdateManyMutationInput: NexusGenInputs['ProductItemUpdateManyMutationInput'];
   ProductItemUpdateManyWithWhereNestedInput: NexusGenInputs['ProductItemUpdateManyWithWhereNestedInput'];
   ProductItemUpdateManyWithoutCategoryInput: NexusGenInputs['ProductItemUpdateManyWithoutCategoryInput'];
-  ProductItemUpdateManyWithoutQuotationInput: NexusGenInputs['ProductItemUpdateManyWithoutQuotationInput'];
   ProductItemUpdateOneRequiredInput: NexusGenInputs['ProductItemUpdateOneRequiredInput'];
   ProductItemUpdateWithWhereUniqueNestedInput: NexusGenInputs['ProductItemUpdateWithWhereUniqueNestedInput'];
   ProductItemUpdateWithWhereUniqueWithoutCategoryInput: NexusGenInputs['ProductItemUpdateWithWhereUniqueWithoutCategoryInput'];
-  ProductItemUpdateWithWhereUniqueWithoutQuotationInput: NexusGenInputs['ProductItemUpdateWithWhereUniqueWithoutQuotationInput'];
   ProductItemUpdateWithoutCategoryDataInput: NexusGenInputs['ProductItemUpdateWithoutCategoryDataInput'];
-  ProductItemUpdateWithoutQuotationDataInput: NexusGenInputs['ProductItemUpdateWithoutQuotationDataInput'];
   ProductItemUpsertNestedInput: NexusGenInputs['ProductItemUpsertNestedInput'];
   ProductItemUpsertWithWhereUniqueNestedInput: NexusGenInputs['ProductItemUpsertWithWhereUniqueNestedInput'];
   ProductItemUpsertWithWhereUniqueWithoutCategoryInput: NexusGenInputs['ProductItemUpsertWithWhereUniqueWithoutCategoryInput'];
-  ProductItemUpsertWithWhereUniqueWithoutQuotationInput: NexusGenInputs['ProductItemUpsertWithWhereUniqueWithoutQuotationInput'];
   ProductItemWhereInput: NexusGenInputs['ProductItemWhereInput'];
   ProductItemWhereUniqueInput: NexusGenInputs['ProductItemWhereUniqueInput'];
   QuotationCreateInput: NexusGenInputs['QuotationCreateInput'];
@@ -3382,13 +3515,27 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   QuotationCreateManyWithoutSalesmanInput: NexusGenInputs['QuotationCreateManyWithoutSalesmanInput'];
   QuotationCreateOneInput: NexusGenInputs['QuotationCreateOneInput'];
   QuotationCreateOneWithoutPaymentInput: NexusGenInputs['QuotationCreateOneWithoutPaymentInput'];
-  QuotationCreateOneWithoutProductItemsInput: NexusGenInputs['QuotationCreateOneWithoutProductItemsInput'];
+  QuotationCreateOneWithoutQuotationItemInput: NexusGenInputs['QuotationCreateOneWithoutQuotationItemInput'];
   QuotationCreateOneWithoutShippingInput: NexusGenInputs['QuotationCreateOneWithoutShippingInput'];
   QuotationCreateWithoutCustomerInput: NexusGenInputs['QuotationCreateWithoutCustomerInput'];
   QuotationCreateWithoutPaymentInput: NexusGenInputs['QuotationCreateWithoutPaymentInput'];
-  QuotationCreateWithoutProductItemsInput: NexusGenInputs['QuotationCreateWithoutProductItemsInput'];
+  QuotationCreateWithoutQuotationItemInput: NexusGenInputs['QuotationCreateWithoutQuotationItemInput'];
   QuotationCreateWithoutSalesmanInput: NexusGenInputs['QuotationCreateWithoutSalesmanInput'];
   QuotationCreateWithoutShippingInput: NexusGenInputs['QuotationCreateWithoutShippingInput'];
+  QuotationItemCreateInput: NexusGenInputs['QuotationItemCreateInput'];
+  QuotationItemCreateManyWithoutQuotationInput: NexusGenInputs['QuotationItemCreateManyWithoutQuotationInput'];
+  QuotationItemCreateWithoutQuotationInput: NexusGenInputs['QuotationItemCreateWithoutQuotationInput'];
+  QuotationItemScalarWhereInput: NexusGenInputs['QuotationItemScalarWhereInput'];
+  QuotationItemUpdateInput: NexusGenInputs['QuotationItemUpdateInput'];
+  QuotationItemUpdateManyDataInput: NexusGenInputs['QuotationItemUpdateManyDataInput'];
+  QuotationItemUpdateManyMutationInput: NexusGenInputs['QuotationItemUpdateManyMutationInput'];
+  QuotationItemUpdateManyWithWhereNestedInput: NexusGenInputs['QuotationItemUpdateManyWithWhereNestedInput'];
+  QuotationItemUpdateManyWithoutQuotationInput: NexusGenInputs['QuotationItemUpdateManyWithoutQuotationInput'];
+  QuotationItemUpdateWithWhereUniqueWithoutQuotationInput: NexusGenInputs['QuotationItemUpdateWithWhereUniqueWithoutQuotationInput'];
+  QuotationItemUpdateWithoutQuotationDataInput: NexusGenInputs['QuotationItemUpdateWithoutQuotationDataInput'];
+  QuotationItemUpsertWithWhereUniqueWithoutQuotationInput: NexusGenInputs['QuotationItemUpsertWithWhereUniqueWithoutQuotationInput'];
+  QuotationItemWhereInput: NexusGenInputs['QuotationItemWhereInput'];
+  QuotationItemWhereUniqueInput: NexusGenInputs['QuotationItemWhereUniqueInput'];
   QuotationScalarWhereInput: NexusGenInputs['QuotationScalarWhereInput'];
   QuotationUpdateDataInput: NexusGenInputs['QuotationUpdateDataInput'];
   QuotationUpdateInput: NexusGenInputs['QuotationUpdateInput'];
@@ -3397,22 +3544,23 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   QuotationUpdateManyWithWhereNestedInput: NexusGenInputs['QuotationUpdateManyWithWhereNestedInput'];
   QuotationUpdateManyWithoutCustomerInput: NexusGenInputs['QuotationUpdateManyWithoutCustomerInput'];
   QuotationUpdateManyWithoutSalesmanInput: NexusGenInputs['QuotationUpdateManyWithoutSalesmanInput'];
+  QuotationUpdateOneInput: NexusGenInputs['QuotationUpdateOneInput'];
   QuotationUpdateOneRequiredInput: NexusGenInputs['QuotationUpdateOneRequiredInput'];
   QuotationUpdateOneRequiredWithoutPaymentInput: NexusGenInputs['QuotationUpdateOneRequiredWithoutPaymentInput'];
+  QuotationUpdateOneRequiredWithoutQuotationItemInput: NexusGenInputs['QuotationUpdateOneRequiredWithoutQuotationItemInput'];
   QuotationUpdateOneRequiredWithoutShippingInput: NexusGenInputs['QuotationUpdateOneRequiredWithoutShippingInput'];
-  QuotationUpdateOneWithoutProductItemsInput: NexusGenInputs['QuotationUpdateOneWithoutProductItemsInput'];
   QuotationUpdateWithWhereUniqueWithoutCustomerInput: NexusGenInputs['QuotationUpdateWithWhereUniqueWithoutCustomerInput'];
   QuotationUpdateWithWhereUniqueWithoutSalesmanInput: NexusGenInputs['QuotationUpdateWithWhereUniqueWithoutSalesmanInput'];
   QuotationUpdateWithoutCustomerDataInput: NexusGenInputs['QuotationUpdateWithoutCustomerDataInput'];
   QuotationUpdateWithoutPaymentDataInput: NexusGenInputs['QuotationUpdateWithoutPaymentDataInput'];
-  QuotationUpdateWithoutProductItemsDataInput: NexusGenInputs['QuotationUpdateWithoutProductItemsDataInput'];
+  QuotationUpdateWithoutQuotationItemDataInput: NexusGenInputs['QuotationUpdateWithoutQuotationItemDataInput'];
   QuotationUpdateWithoutSalesmanDataInput: NexusGenInputs['QuotationUpdateWithoutSalesmanDataInput'];
   QuotationUpdateWithoutShippingDataInput: NexusGenInputs['QuotationUpdateWithoutShippingDataInput'];
   QuotationUpsertNestedInput: NexusGenInputs['QuotationUpsertNestedInput'];
   QuotationUpsertWithWhereUniqueWithoutCustomerInput: NexusGenInputs['QuotationUpsertWithWhereUniqueWithoutCustomerInput'];
   QuotationUpsertWithWhereUniqueWithoutSalesmanInput: NexusGenInputs['QuotationUpsertWithWhereUniqueWithoutSalesmanInput'];
   QuotationUpsertWithoutPaymentInput: NexusGenInputs['QuotationUpsertWithoutPaymentInput'];
-  QuotationUpsertWithoutProductItemsInput: NexusGenInputs['QuotationUpsertWithoutProductItemsInput'];
+  QuotationUpsertWithoutQuotationItemInput: NexusGenInputs['QuotationUpsertWithoutQuotationItemInput'];
   QuotationUpsertWithoutShippingInput: NexusGenInputs['QuotationUpsertWithoutShippingInput'];
   QuotationWhereInput: NexusGenInputs['QuotationWhereInput'];
   QuotationWhereUniqueInput: NexusGenInputs['QuotationWhereUniqueInput'];
@@ -3427,7 +3575,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   SalesmanUpdateManyMutationInput: NexusGenInputs['SalesmanUpdateManyMutationInput'];
   SalesmanUpdateOneRequiredWithoutInvoicesInput: NexusGenInputs['SalesmanUpdateOneRequiredWithoutInvoicesInput'];
   SalesmanUpdateOneRequiredWithoutPaymentsInput: NexusGenInputs['SalesmanUpdateOneRequiredWithoutPaymentsInput'];
-  SalesmanUpdateOneRequiredWithoutQuotationsInput: NexusGenInputs['SalesmanUpdateOneRequiredWithoutQuotationsInput'];
+  SalesmanUpdateOneWithoutQuotationsInput: NexusGenInputs['SalesmanUpdateOneWithoutQuotationsInput'];
   SalesmanUpdateWithoutInvoicesDataInput: NexusGenInputs['SalesmanUpdateWithoutInvoicesDataInput'];
   SalesmanUpdateWithoutPaymentsDataInput: NexusGenInputs['SalesmanUpdateWithoutPaymentsDataInput'];
   SalesmanUpdateWithoutQuotationsDataInput: NexusGenInputs['SalesmanUpdateWithoutQuotationsDataInput'];
@@ -3522,6 +3670,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   InvoiceOrderByInput: NexusGenEnums['InvoiceOrderByInput'];
   PaymentOrderByInput: NexusGenEnums['PaymentOrderByInput'];
   ProductItemOrderByInput: NexusGenEnums['ProductItemOrderByInput'];
+  QuotationItemOrderByInput: NexusGenEnums['QuotationItemOrderByInput'];
   QuotationOrderByInput: NexusGenEnums['QuotationOrderByInput'];
   SalesmanOrderByInput: NexusGenEnums['SalesmanOrderByInput'];
   ShippingOrderByInput: NexusGenEnums['ShippingOrderByInput'];
@@ -3566,6 +3715,9 @@ export interface NexusGenFieldTypes {
     count: number; // Int!
   }
   AggregateQuotation: { // field return type
+    count: number; // Int!
+  }
+  AggregateQuotationItem: { // field return type
     count: number; // Int!
   }
   AggregateSalesman: { // field return type
@@ -3635,6 +3787,7 @@ export interface NexusGenFieldTypes {
     createPayment: NexusGenRootTypes['Payment']; // Payment!
     createProductItem: NexusGenRootTypes['ProductItem']; // ProductItem!
     createQuotation: NexusGenRootTypes['Quotation']; // Quotation!
+    createQuotationItem: NexusGenRootTypes['QuotationItem']; // QuotationItem!
     createSalesman: NexusGenRootTypes['Salesman']; // Salesman!
     createShipping: NexusGenRootTypes['Shipping']; // Shipping!
     createShoppingCart: NexusGenRootTypes['ShoppingCart']; // ShoppingCart!
@@ -3648,6 +3801,7 @@ export interface NexusGenFieldTypes {
     deleteManyInvoices: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyPayments: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyProductItems: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyQuotationItems: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyQuotations: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManySalesmen: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyShippings: NexusGenRootTypes['BatchPayload']; // BatchPayload!
@@ -3657,6 +3811,7 @@ export interface NexusGenFieldTypes {
     deletePayment: NexusGenRootTypes['Payment'] | null; // Payment
     deleteProductItem: NexusGenRootTypes['ProductItem'] | null; // ProductItem
     deleteQuotation: NexusGenRootTypes['Quotation'] | null; // Quotation
+    deleteQuotationItem: NexusGenRootTypes['QuotationItem'] | null; // QuotationItem
     deleteSalesman: NexusGenRootTypes['Salesman'] | null; // Salesman
     deleteShipping: NexusGenRootTypes['Shipping'] | null; // Shipping
     deleteShoppingCart: NexusGenRootTypes['ShoppingCart'] | null; // ShoppingCart
@@ -3672,6 +3827,7 @@ export interface NexusGenFieldTypes {
     updateManyInvoices: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyPayments: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyProductItems: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyQuotationItems: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyQuotations: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManySalesmen: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyShippings: NexusGenRootTypes['BatchPayload']; // BatchPayload!
@@ -3681,6 +3837,7 @@ export interface NexusGenFieldTypes {
     updatePayment: NexusGenRootTypes['Payment'] | null; // Payment
     updateProductItem: NexusGenRootTypes['ProductItem'] | null; // ProductItem
     updateQuotation: NexusGenRootTypes['Quotation'] | null; // Quotation
+    updateQuotationItem: NexusGenRootTypes['QuotationItem'] | null; // QuotationItem
     updateSalesman: NexusGenRootTypes['Salesman'] | null; // Salesman
     updateShipping: NexusGenRootTypes['Shipping'] | null; // Shipping
     updateShoppingCart: NexusGenRootTypes['ShoppingCart'] | null; // ShoppingCart
@@ -3692,6 +3849,7 @@ export interface NexusGenFieldTypes {
     upsertPayment: NexusGenRootTypes['Payment']; // Payment!
     upsertProductItem: NexusGenRootTypes['ProductItem']; // ProductItem!
     upsertQuotation: NexusGenRootTypes['Quotation']; // Quotation!
+    upsertQuotationItem: NexusGenRootTypes['QuotationItem']; // QuotationItem!
     upsertSalesman: NexusGenRootTypes['Salesman']; // Salesman!
     upsertShipping: NexusGenRootTypes['Shipping']; // Shipping!
     upsertShoppingCart: NexusGenRootTypes['ShoppingCart']; // ShoppingCart!
@@ -3771,6 +3929,9 @@ export interface NexusGenFieldTypes {
     productItems: NexusGenRootTypes['ProductItem'][]; // [ProductItem!]!
     productItemsConnection: NexusGenRootTypes['ProductItemConnection']; // ProductItemConnection!
     quotation: NexusGenRootTypes['Quotation'] | null; // Quotation
+    quotationItem: NexusGenRootTypes['QuotationItem'] | null; // QuotationItem
+    quotationItems: NexusGenRootTypes['QuotationItem'][]; // [QuotationItem!]!
+    quotationItemsConnection: NexusGenRootTypes['QuotationItemConnection']; // QuotationItemConnection!
     quotations: NexusGenRootTypes['Quotation'][]; // [Quotation!]!
     quotationsConnection: NexusGenRootTypes['QuotationConnection']; // QuotationConnection!
     salesman: NexusGenRootTypes['Salesman'] | null; // Salesman
@@ -3792,11 +3953,11 @@ export interface NexusGenFieldTypes {
   Quotation: { // field return type
     createdAt: any; // DateTime!
     customer: NexusGenRootTypes['User']; // User!
-    docId: string; // String!
+    docId: string | null; // String
     id: string; // ID!
     payment: NexusGenRootTypes['Payment'] | null; // Payment
-    productItems: NexusGenRootTypes['ProductItem'][] | null; // [ProductItem!]
-    salesman: NexusGenRootTypes['Salesman']; // Salesman!
+    quotationItem: NexusGenRootTypes['QuotationItem'][] | null; // [QuotationItem!]
+    salesman: NexusGenRootTypes['Salesman'] | null; // Salesman
     shipping: NexusGenRootTypes['Shipping'] | null; // Shipping
     updatedAt: any; // DateTime!
   }
@@ -3808,6 +3969,23 @@ export interface NexusGenFieldTypes {
   QuotationEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Quotation']; // Quotation!
+  }
+  QuotationItem: { // field return type
+    amount: number; // Int!
+    id: string; // ID!
+    key: string; // String!
+    product: NexusGenRootTypes['ProductItem']; // ProductItem!
+    quotation: NexusGenRootTypes['Quotation']; // Quotation!
+    realPrice: number; // Float!
+  }
+  QuotationItemConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateQuotationItem']; // AggregateQuotationItem!
+    edges: NexusGenRootTypes['QuotationItemEdge'][]; // [QuotationItemEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  QuotationItemEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['QuotationItem']; // QuotationItem!
   }
   Salesman: { // field return type
     createdAt: any; // DateTime!
@@ -3961,6 +4139,9 @@ export interface NexusGenArgTypes {
     createQuotation: { // args
       data: NexusGenInputs['QuotationCreateInput']; // QuotationCreateInput!
     }
+    createQuotationItem: { // args
+      data: NexusGenInputs['QuotationItemCreateInput']; // QuotationItemCreateInput!
+    }
     createSalesman: { // args
       data: NexusGenInputs['SalesmanCreateInput']; // SalesmanCreateInput!
     }
@@ -4000,6 +4181,9 @@ export interface NexusGenArgTypes {
     deleteManyProductItems: { // args
       where?: NexusGenInputs['ProductItemWhereInput'] | null; // ProductItemWhereInput
     }
+    deleteManyQuotationItems: { // args
+      where?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
+    }
     deleteManyQuotations: { // args
       where?: NexusGenInputs['QuotationWhereInput'] | null; // QuotationWhereInput
     }
@@ -4026,6 +4210,9 @@ export interface NexusGenArgTypes {
     }
     deleteQuotation: { // args
       where: NexusGenInputs['QuotationWhereUniqueInput']; // QuotationWhereUniqueInput!
+    }
+    deleteQuotationItem: { // args
+      where: NexusGenInputs['QuotationItemWhereUniqueInput']; // QuotationItemWhereUniqueInput!
     }
     deleteSalesman: { // args
       where: NexusGenInputs['SalesmanWhereUniqueInput']; // SalesmanWhereUniqueInput!
@@ -4081,6 +4268,10 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['ProductItemUpdateManyMutationInput']; // ProductItemUpdateManyMutationInput!
       where?: NexusGenInputs['ProductItemWhereInput'] | null; // ProductItemWhereInput
     }
+    updateManyQuotationItems: { // args
+      data: NexusGenInputs['QuotationItemUpdateManyMutationInput']; // QuotationItemUpdateManyMutationInput!
+      where?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
+    }
     updateManyQuotations: { // args
       data: NexusGenInputs['QuotationUpdateManyMutationInput']; // QuotationUpdateManyMutationInput!
       where?: NexusGenInputs['QuotationWhereInput'] | null; // QuotationWhereInput
@@ -4116,6 +4307,10 @@ export interface NexusGenArgTypes {
     updateQuotation: { // args
       data: NexusGenInputs['QuotationUpdateInput']; // QuotationUpdateInput!
       where: NexusGenInputs['QuotationWhereUniqueInput']; // QuotationWhereUniqueInput!
+    }
+    updateQuotationItem: { // args
+      data: NexusGenInputs['QuotationItemUpdateInput']; // QuotationItemUpdateInput!
+      where: NexusGenInputs['QuotationItemWhereUniqueInput']; // QuotationItemWhereUniqueInput!
     }
     updateSalesman: { // args
       data: NexusGenInputs['SalesmanUpdateInput']; // SalesmanUpdateInput!
@@ -4166,6 +4361,11 @@ export interface NexusGenArgTypes {
       create: NexusGenInputs['QuotationCreateInput']; // QuotationCreateInput!
       update: NexusGenInputs['QuotationUpdateInput']; // QuotationUpdateInput!
       where: NexusGenInputs['QuotationWhereUniqueInput']; // QuotationWhereUniqueInput!
+    }
+    upsertQuotationItem: { // args
+      create: NexusGenInputs['QuotationItemCreateInput']; // QuotationItemCreateInput!
+      update: NexusGenInputs['QuotationItemUpdateInput']; // QuotationItemUpdateInput!
+      where: NexusGenInputs['QuotationItemWhereUniqueInput']; // QuotationItemWhereUniqueInput!
     }
     upsertSalesman: { // args
       create: NexusGenInputs['SalesmanCreateInput']; // SalesmanCreateInput!
@@ -4313,6 +4513,27 @@ export interface NexusGenArgTypes {
     quotation: { // args
       where: NexusGenInputs['QuotationWhereUniqueInput']; // QuotationWhereUniqueInput!
     }
+    quotationItem: { // args
+      where: NexusGenInputs['QuotationItemWhereUniqueInput']; // QuotationItemWhereUniqueInput!
+    }
+    quotationItems: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['QuotationItemOrderByInput'] | null; // QuotationItemOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
+    }
+    quotationItemsConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['QuotationItemOrderByInput'] | null; // QuotationItemOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
+    }
     quotations: { // args
       after?: string | null; // String
       before?: string | null; // String
@@ -4438,14 +4659,14 @@ export interface NexusGenArgTypes {
     }
   }
   Quotation: {
-    productItems: { // args
+    quotationItem: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['ProductItemOrderByInput'] | null; // ProductItemOrderByInput
+      orderBy?: NexusGenEnums['QuotationItemOrderByInput'] | null; // QuotationItemOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['ProductItemWhereInput'] | null; // ProductItemWhereInput
+      where?: NexusGenInputs['QuotationItemWhereInput'] | null; // QuotationItemWhereInput
     }
   }
   Salesman: {
@@ -4524,11 +4745,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Address" | "AddressConnection" | "AddressEdge" | "AggregateAddress" | "AggregateCategory" | "AggregateInvoice" | "AggregatePayment" | "AggregateProductItem" | "AggregateQuotation" | "AggregateSalesman" | "AggregateShipping" | "AggregateShoppingCart" | "AggregateShoppingCartItem" | "AggregateUser" | "BatchPayload" | "Category" | "CategoryConnection" | "CategoryEdge" | "Invoice" | "InvoiceConnection" | "InvoiceEdge" | "Me" | "Mutation" | "PageInfo" | "Payment" | "PaymentConnection" | "PaymentEdge" | "ProductItem" | "ProductItemConnection" | "ProductItemEdge" | "Query" | "Quotation" | "QuotationConnection" | "QuotationEdge" | "Salesman" | "SalesmanConnection" | "SalesmanEdge" | "Shipping" | "ShippingConnection" | "ShippingEdge" | "ShoppingCart" | "ShoppingCartConnection" | "ShoppingCartEdge" | "ShoppingCartItem" | "ShoppingCartItemConnection" | "ShoppingCartItemEdge" | "User" | "UserConnection" | "UserEdge";
+export type NexusGenObjectNames = "Address" | "AddressConnection" | "AddressEdge" | "AggregateAddress" | "AggregateCategory" | "AggregateInvoice" | "AggregatePayment" | "AggregateProductItem" | "AggregateQuotation" | "AggregateQuotationItem" | "AggregateSalesman" | "AggregateShipping" | "AggregateShoppingCart" | "AggregateShoppingCartItem" | "AggregateUser" | "BatchPayload" | "Category" | "CategoryConnection" | "CategoryEdge" | "Invoice" | "InvoiceConnection" | "InvoiceEdge" | "Me" | "Mutation" | "PageInfo" | "Payment" | "PaymentConnection" | "PaymentEdge" | "ProductItem" | "ProductItemConnection" | "ProductItemEdge" | "Query" | "Quotation" | "QuotationConnection" | "QuotationEdge" | "QuotationItem" | "QuotationItemConnection" | "QuotationItemEdge" | "Salesman" | "SalesmanConnection" | "SalesmanEdge" | "Shipping" | "ShippingConnection" | "ShippingEdge" | "ShoppingCart" | "ShoppingCartConnection" | "ShoppingCartEdge" | "ShoppingCartItem" | "ShoppingCartItemConnection" | "ShoppingCartItemEdge" | "User" | "UserConnection" | "UserEdge";
 
-export type NexusGenInputNames = "AddressCreateInput" | "AddressCreateManyWithoutCustomerInput" | "AddressCreateOneWithoutInvoicesInput" | "AddressCreateOneWithoutShippingInput" | "AddressCreateWithoutCustomerInput" | "AddressCreateWithoutInvoicesInput" | "AddressCreateWithoutShippingInput" | "AddressScalarWhereInput" | "AddressUpdateInput" | "AddressUpdateManyDataInput" | "AddressUpdateManyMutationInput" | "AddressUpdateManyWithWhereNestedInput" | "AddressUpdateManyWithoutCustomerInput" | "AddressUpdateOneRequiredWithoutShippingInput" | "AddressUpdateOneWithoutInvoicesInput" | "AddressUpdateWithWhereUniqueWithoutCustomerInput" | "AddressUpdateWithoutCustomerDataInput" | "AddressUpdateWithoutInvoicesDataInput" | "AddressUpdateWithoutShippingDataInput" | "AddressUpsertWithWhereUniqueWithoutCustomerInput" | "AddressUpsertWithoutInvoicesInput" | "AddressUpsertWithoutShippingInput" | "AddressWhereInput" | "AddressWhereUniqueInput" | "CategoryCreateInput" | "CategoryCreateOneInput" | "CategoryCreateOneWithoutProductItemInput" | "CategoryCreateWithoutProductItemInput" | "CategoryUpdateDataInput" | "CategoryUpdateInput" | "CategoryUpdateManyMutationInput" | "CategoryUpdateOneInput" | "CategoryUpdateOneRequiredWithoutProductItemInput" | "CategoryUpdateWithoutProductItemDataInput" | "CategoryUpsertNestedInput" | "CategoryUpsertWithoutProductItemInput" | "CategoryWhereInput" | "CategoryWhereUniqueInput" | "InvoiceCreateInput" | "InvoiceCreateManyWithoutAddressInput" | "InvoiceCreateManyWithoutSalesmanInput" | "InvoiceCreateOneInput" | "InvoiceCreateOneWithoutPaymentInput" | "InvoiceCreateWithoutAddressInput" | "InvoiceCreateWithoutPaymentInput" | "InvoiceCreateWithoutSalesmanInput" | "InvoiceScalarWhereInput" | "InvoiceUpdateDataInput" | "InvoiceUpdateInput" | "InvoiceUpdateManyDataInput" | "InvoiceUpdateManyMutationInput" | "InvoiceUpdateManyWithWhereNestedInput" | "InvoiceUpdateManyWithoutAddressInput" | "InvoiceUpdateManyWithoutSalesmanInput" | "InvoiceUpdateOneRequiredInput" | "InvoiceUpdateOneWithoutPaymentInput" | "InvoiceUpdateWithWhereUniqueWithoutAddressInput" | "InvoiceUpdateWithWhereUniqueWithoutSalesmanInput" | "InvoiceUpdateWithoutAddressDataInput" | "InvoiceUpdateWithoutPaymentDataInput" | "InvoiceUpdateWithoutSalesmanDataInput" | "InvoiceUpsertNestedInput" | "InvoiceUpsertWithWhereUniqueWithoutAddressInput" | "InvoiceUpsertWithWhereUniqueWithoutSalesmanInput" | "InvoiceUpsertWithoutPaymentInput" | "InvoiceWhereInput" | "InvoiceWhereUniqueInput" | "PaymentCreateInput" | "PaymentCreateManyWithoutCustomerInput" | "PaymentCreateManyWithoutSalesmanInput" | "PaymentCreateOneWithoutInvoiceInput" | "PaymentCreateOneWithoutQuotationInput" | "PaymentCreateWithoutCustomerInput" | "PaymentCreateWithoutInvoiceInput" | "PaymentCreateWithoutQuotationInput" | "PaymentCreateWithoutSalesmanInput" | "PaymentScalarWhereInput" | "PaymentUpdateInput" | "PaymentUpdateManyDataInput" | "PaymentUpdateManyMutationInput" | "PaymentUpdateManyWithWhereNestedInput" | "PaymentUpdateManyWithoutCustomerInput" | "PaymentUpdateManyWithoutSalesmanInput" | "PaymentUpdateOneWithoutInvoiceInput" | "PaymentUpdateOneWithoutQuotationInput" | "PaymentUpdateWithWhereUniqueWithoutCustomerInput" | "PaymentUpdateWithWhereUniqueWithoutSalesmanInput" | "PaymentUpdateWithoutCustomerDataInput" | "PaymentUpdateWithoutInvoiceDataInput" | "PaymentUpdateWithoutQuotationDataInput" | "PaymentUpdateWithoutSalesmanDataInput" | "PaymentUpsertWithWhereUniqueWithoutCustomerInput" | "PaymentUpsertWithWhereUniqueWithoutSalesmanInput" | "PaymentUpsertWithoutInvoiceInput" | "PaymentUpsertWithoutQuotationInput" | "PaymentWhereInput" | "PaymentWhereUniqueInput" | "ProductItemCreateInput" | "ProductItemCreateManyInput" | "ProductItemCreateManyWithoutCategoryInput" | "ProductItemCreateManyWithoutQuotationInput" | "ProductItemCreateOneInput" | "ProductItemCreateWithoutCategoryInput" | "ProductItemCreateWithoutQuotationInput" | "ProductItemScalarWhereInput" | "ProductItemUpdateDataInput" | "ProductItemUpdateInput" | "ProductItemUpdateManyDataInput" | "ProductItemUpdateManyInput" | "ProductItemUpdateManyMutationInput" | "ProductItemUpdateManyWithWhereNestedInput" | "ProductItemUpdateManyWithoutCategoryInput" | "ProductItemUpdateManyWithoutQuotationInput" | "ProductItemUpdateOneRequiredInput" | "ProductItemUpdateWithWhereUniqueNestedInput" | "ProductItemUpdateWithWhereUniqueWithoutCategoryInput" | "ProductItemUpdateWithWhereUniqueWithoutQuotationInput" | "ProductItemUpdateWithoutCategoryDataInput" | "ProductItemUpdateWithoutQuotationDataInput" | "ProductItemUpsertNestedInput" | "ProductItemUpsertWithWhereUniqueNestedInput" | "ProductItemUpsertWithWhereUniqueWithoutCategoryInput" | "ProductItemUpsertWithWhereUniqueWithoutQuotationInput" | "ProductItemWhereInput" | "ProductItemWhereUniqueInput" | "QuotationCreateInput" | "QuotationCreateManyWithoutCustomerInput" | "QuotationCreateManyWithoutSalesmanInput" | "QuotationCreateOneInput" | "QuotationCreateOneWithoutPaymentInput" | "QuotationCreateOneWithoutProductItemsInput" | "QuotationCreateOneWithoutShippingInput" | "QuotationCreateWithoutCustomerInput" | "QuotationCreateWithoutPaymentInput" | "QuotationCreateWithoutProductItemsInput" | "QuotationCreateWithoutSalesmanInput" | "QuotationCreateWithoutShippingInput" | "QuotationScalarWhereInput" | "QuotationUpdateDataInput" | "QuotationUpdateInput" | "QuotationUpdateManyDataInput" | "QuotationUpdateManyMutationInput" | "QuotationUpdateManyWithWhereNestedInput" | "QuotationUpdateManyWithoutCustomerInput" | "QuotationUpdateManyWithoutSalesmanInput" | "QuotationUpdateOneRequiredInput" | "QuotationUpdateOneRequiredWithoutPaymentInput" | "QuotationUpdateOneRequiredWithoutShippingInput" | "QuotationUpdateOneWithoutProductItemsInput" | "QuotationUpdateWithWhereUniqueWithoutCustomerInput" | "QuotationUpdateWithWhereUniqueWithoutSalesmanInput" | "QuotationUpdateWithoutCustomerDataInput" | "QuotationUpdateWithoutPaymentDataInput" | "QuotationUpdateWithoutProductItemsDataInput" | "QuotationUpdateWithoutSalesmanDataInput" | "QuotationUpdateWithoutShippingDataInput" | "QuotationUpsertNestedInput" | "QuotationUpsertWithWhereUniqueWithoutCustomerInput" | "QuotationUpsertWithWhereUniqueWithoutSalesmanInput" | "QuotationUpsertWithoutPaymentInput" | "QuotationUpsertWithoutProductItemsInput" | "QuotationUpsertWithoutShippingInput" | "QuotationWhereInput" | "QuotationWhereUniqueInput" | "SalesmanCreateInput" | "SalesmanCreateOneWithoutInvoicesInput" | "SalesmanCreateOneWithoutPaymentsInput" | "SalesmanCreateOneWithoutQuotationsInput" | "SalesmanCreateWithoutInvoicesInput" | "SalesmanCreateWithoutPaymentsInput" | "SalesmanCreateWithoutQuotationsInput" | "SalesmanUpdateInput" | "SalesmanUpdateManyMutationInput" | "SalesmanUpdateOneRequiredWithoutInvoicesInput" | "SalesmanUpdateOneRequiredWithoutPaymentsInput" | "SalesmanUpdateOneRequiredWithoutQuotationsInput" | "SalesmanUpdateWithoutInvoicesDataInput" | "SalesmanUpdateWithoutPaymentsDataInput" | "SalesmanUpdateWithoutQuotationsDataInput" | "SalesmanUpsertWithoutInvoicesInput" | "SalesmanUpsertWithoutPaymentsInput" | "SalesmanUpsertWithoutQuotationsInput" | "SalesmanWhereInput" | "SalesmanWhereUniqueInput" | "ShippingCreateInput" | "ShippingCreateManyWithoutAddressInput" | "ShippingCreateOneWithoutQuotationInput" | "ShippingCreateWithoutAddressInput" | "ShippingCreateWithoutQuotationInput" | "ShippingScalarWhereInput" | "ShippingUpdateInput" | "ShippingUpdateManyDataInput" | "ShippingUpdateManyMutationInput" | "ShippingUpdateManyWithWhereNestedInput" | "ShippingUpdateManyWithoutAddressInput" | "ShippingUpdateOneWithoutQuotationInput" | "ShippingUpdateWithWhereUniqueWithoutAddressInput" | "ShippingUpdateWithoutAddressDataInput" | "ShippingUpdateWithoutQuotationDataInput" | "ShippingUpsertWithWhereUniqueWithoutAddressInput" | "ShippingUpsertWithoutQuotationInput" | "ShippingWhereInput" | "ShippingWhereUniqueInput" | "ShoppingCartCreateInput" | "ShoppingCartCreateOneInput" | "ShoppingCartCreateOneWithoutCustomerInput" | "ShoppingCartCreateOneWithoutProductItemsInput" | "ShoppingCartCreateWithoutCustomerInput" | "ShoppingCartCreateWithoutProductItemsInput" | "ShoppingCartItemCreateInput" | "ShoppingCartItemCreateManyWithoutShoppingCartInput" | "ShoppingCartItemCreateWithoutShoppingCartInput" | "ShoppingCartItemScalarWhereInput" | "ShoppingCartItemUpdateInput" | "ShoppingCartItemUpdateManyDataInput" | "ShoppingCartItemUpdateManyMutationInput" | "ShoppingCartItemUpdateManyWithWhereNestedInput" | "ShoppingCartItemUpdateManyWithoutShoppingCartInput" | "ShoppingCartItemUpdateWithWhereUniqueWithoutShoppingCartInput" | "ShoppingCartItemUpdateWithoutShoppingCartDataInput" | "ShoppingCartItemUpsertWithWhereUniqueWithoutShoppingCartInput" | "ShoppingCartItemWhereInput" | "ShoppingCartItemWhereUniqueInput" | "ShoppingCartUpdateDataInput" | "ShoppingCartUpdateInput" | "ShoppingCartUpdateManyMutationInput" | "ShoppingCartUpdateOneInput" | "ShoppingCartUpdateOneRequiredWithoutCustomerInput" | "ShoppingCartUpdateOneWithoutProductItemsInput" | "ShoppingCartUpdateWithoutCustomerDataInput" | "ShoppingCartUpdateWithoutProductItemsDataInput" | "ShoppingCartUpsertNestedInput" | "ShoppingCartUpsertWithoutCustomerInput" | "ShoppingCartUpsertWithoutProductItemsInput" | "ShoppingCartWhereInput" | "ShoppingCartWhereUniqueInput" | "UserCreateInput" | "UserCreateOneInput" | "UserCreateOneWithoutAddressesInput" | "UserCreateOneWithoutPaymentsInput" | "UserCreateOneWithoutQuotationsInput" | "UserCreateOneWithoutShoppingCartInput" | "UserCreateWithoutAddressesInput" | "UserCreateWithoutPaymentsInput" | "UserCreateWithoutQuotationsInput" | "UserCreateWithoutShoppingCartInput" | "UserUpdateDataInput" | "UserUpdateInput" | "UserUpdateManyMutationInput" | "UserUpdateOneRequiredInput" | "UserUpdateOneRequiredWithoutAddressesInput" | "UserUpdateOneRequiredWithoutPaymentsInput" | "UserUpdateOneRequiredWithoutQuotationsInput" | "UserUpdateOneRequiredWithoutShoppingCartInput" | "UserUpdateWithoutAddressesDataInput" | "UserUpdateWithoutPaymentsDataInput" | "UserUpdateWithoutQuotationsDataInput" | "UserUpdateWithoutShoppingCartDataInput" | "UserUpsertNestedInput" | "UserUpsertWithoutAddressesInput" | "UserUpsertWithoutPaymentsInput" | "UserUpsertWithoutQuotationsInput" | "UserUpsertWithoutShoppingCartInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "AddressCreateInput" | "AddressCreateManyWithoutCustomerInput" | "AddressCreateOneWithoutInvoicesInput" | "AddressCreateOneWithoutShippingInput" | "AddressCreateWithoutCustomerInput" | "AddressCreateWithoutInvoicesInput" | "AddressCreateWithoutShippingInput" | "AddressScalarWhereInput" | "AddressUpdateInput" | "AddressUpdateManyDataInput" | "AddressUpdateManyMutationInput" | "AddressUpdateManyWithWhereNestedInput" | "AddressUpdateManyWithoutCustomerInput" | "AddressUpdateOneRequiredWithoutShippingInput" | "AddressUpdateOneWithoutInvoicesInput" | "AddressUpdateWithWhereUniqueWithoutCustomerInput" | "AddressUpdateWithoutCustomerDataInput" | "AddressUpdateWithoutInvoicesDataInput" | "AddressUpdateWithoutShippingDataInput" | "AddressUpsertWithWhereUniqueWithoutCustomerInput" | "AddressUpsertWithoutInvoicesInput" | "AddressUpsertWithoutShippingInput" | "AddressWhereInput" | "AddressWhereUniqueInput" | "CategoryCreateInput" | "CategoryCreateOneInput" | "CategoryCreateOneWithoutProductItemInput" | "CategoryCreateWithoutProductItemInput" | "CategoryUpdateDataInput" | "CategoryUpdateInput" | "CategoryUpdateManyMutationInput" | "CategoryUpdateOneInput" | "CategoryUpdateOneRequiredWithoutProductItemInput" | "CategoryUpdateWithoutProductItemDataInput" | "CategoryUpsertNestedInput" | "CategoryUpsertWithoutProductItemInput" | "CategoryWhereInput" | "CategoryWhereUniqueInput" | "InvoiceCreateInput" | "InvoiceCreateManyWithoutAddressInput" | "InvoiceCreateManyWithoutSalesmanInput" | "InvoiceCreateOneInput" | "InvoiceCreateOneWithoutPaymentInput" | "InvoiceCreateWithoutAddressInput" | "InvoiceCreateWithoutPaymentInput" | "InvoiceCreateWithoutSalesmanInput" | "InvoiceScalarWhereInput" | "InvoiceUpdateDataInput" | "InvoiceUpdateInput" | "InvoiceUpdateManyDataInput" | "InvoiceUpdateManyMutationInput" | "InvoiceUpdateManyWithWhereNestedInput" | "InvoiceUpdateManyWithoutAddressInput" | "InvoiceUpdateManyWithoutSalesmanInput" | "InvoiceUpdateOneRequiredInput" | "InvoiceUpdateOneWithoutPaymentInput" | "InvoiceUpdateWithWhereUniqueWithoutAddressInput" | "InvoiceUpdateWithWhereUniqueWithoutSalesmanInput" | "InvoiceUpdateWithoutAddressDataInput" | "InvoiceUpdateWithoutPaymentDataInput" | "InvoiceUpdateWithoutSalesmanDataInput" | "InvoiceUpsertNestedInput" | "InvoiceUpsertWithWhereUniqueWithoutAddressInput" | "InvoiceUpsertWithWhereUniqueWithoutSalesmanInput" | "InvoiceUpsertWithoutPaymentInput" | "InvoiceWhereInput" | "InvoiceWhereUniqueInput" | "PaymentCreateInput" | "PaymentCreateManyWithoutCustomerInput" | "PaymentCreateManyWithoutSalesmanInput" | "PaymentCreateOneWithoutInvoiceInput" | "PaymentCreateOneWithoutQuotationInput" | "PaymentCreateWithoutCustomerInput" | "PaymentCreateWithoutInvoiceInput" | "PaymentCreateWithoutQuotationInput" | "PaymentCreateWithoutSalesmanInput" | "PaymentScalarWhereInput" | "PaymentUpdateInput" | "PaymentUpdateManyDataInput" | "PaymentUpdateManyMutationInput" | "PaymentUpdateManyWithWhereNestedInput" | "PaymentUpdateManyWithoutCustomerInput" | "PaymentUpdateManyWithoutSalesmanInput" | "PaymentUpdateOneWithoutInvoiceInput" | "PaymentUpdateOneWithoutQuotationInput" | "PaymentUpdateWithWhereUniqueWithoutCustomerInput" | "PaymentUpdateWithWhereUniqueWithoutSalesmanInput" | "PaymentUpdateWithoutCustomerDataInput" | "PaymentUpdateWithoutInvoiceDataInput" | "PaymentUpdateWithoutQuotationDataInput" | "PaymentUpdateWithoutSalesmanDataInput" | "PaymentUpsertWithWhereUniqueWithoutCustomerInput" | "PaymentUpsertWithWhereUniqueWithoutSalesmanInput" | "PaymentUpsertWithoutInvoiceInput" | "PaymentUpsertWithoutQuotationInput" | "PaymentWhereInput" | "PaymentWhereUniqueInput" | "ProductItemCreateInput" | "ProductItemCreateManyInput" | "ProductItemCreateManyWithoutCategoryInput" | "ProductItemCreateOneInput" | "ProductItemCreateWithoutCategoryInput" | "ProductItemScalarWhereInput" | "ProductItemUpdateDataInput" | "ProductItemUpdateInput" | "ProductItemUpdateManyDataInput" | "ProductItemUpdateManyInput" | "ProductItemUpdateManyMutationInput" | "ProductItemUpdateManyWithWhereNestedInput" | "ProductItemUpdateManyWithoutCategoryInput" | "ProductItemUpdateOneRequiredInput" | "ProductItemUpdateWithWhereUniqueNestedInput" | "ProductItemUpdateWithWhereUniqueWithoutCategoryInput" | "ProductItemUpdateWithoutCategoryDataInput" | "ProductItemUpsertNestedInput" | "ProductItemUpsertWithWhereUniqueNestedInput" | "ProductItemUpsertWithWhereUniqueWithoutCategoryInput" | "ProductItemWhereInput" | "ProductItemWhereUniqueInput" | "QuotationCreateInput" | "QuotationCreateManyWithoutCustomerInput" | "QuotationCreateManyWithoutSalesmanInput" | "QuotationCreateOneInput" | "QuotationCreateOneWithoutPaymentInput" | "QuotationCreateOneWithoutQuotationItemInput" | "QuotationCreateOneWithoutShippingInput" | "QuotationCreateWithoutCustomerInput" | "QuotationCreateWithoutPaymentInput" | "QuotationCreateWithoutQuotationItemInput" | "QuotationCreateWithoutSalesmanInput" | "QuotationCreateWithoutShippingInput" | "QuotationItemCreateInput" | "QuotationItemCreateManyWithoutQuotationInput" | "QuotationItemCreateWithoutQuotationInput" | "QuotationItemScalarWhereInput" | "QuotationItemUpdateInput" | "QuotationItemUpdateManyDataInput" | "QuotationItemUpdateManyMutationInput" | "QuotationItemUpdateManyWithWhereNestedInput" | "QuotationItemUpdateManyWithoutQuotationInput" | "QuotationItemUpdateWithWhereUniqueWithoutQuotationInput" | "QuotationItemUpdateWithoutQuotationDataInput" | "QuotationItemUpsertWithWhereUniqueWithoutQuotationInput" | "QuotationItemWhereInput" | "QuotationItemWhereUniqueInput" | "QuotationScalarWhereInput" | "QuotationUpdateDataInput" | "QuotationUpdateInput" | "QuotationUpdateManyDataInput" | "QuotationUpdateManyMutationInput" | "QuotationUpdateManyWithWhereNestedInput" | "QuotationUpdateManyWithoutCustomerInput" | "QuotationUpdateManyWithoutSalesmanInput" | "QuotationUpdateOneInput" | "QuotationUpdateOneRequiredInput" | "QuotationUpdateOneRequiredWithoutPaymentInput" | "QuotationUpdateOneRequiredWithoutQuotationItemInput" | "QuotationUpdateOneRequiredWithoutShippingInput" | "QuotationUpdateWithWhereUniqueWithoutCustomerInput" | "QuotationUpdateWithWhereUniqueWithoutSalesmanInput" | "QuotationUpdateWithoutCustomerDataInput" | "QuotationUpdateWithoutPaymentDataInput" | "QuotationUpdateWithoutQuotationItemDataInput" | "QuotationUpdateWithoutSalesmanDataInput" | "QuotationUpdateWithoutShippingDataInput" | "QuotationUpsertNestedInput" | "QuotationUpsertWithWhereUniqueWithoutCustomerInput" | "QuotationUpsertWithWhereUniqueWithoutSalesmanInput" | "QuotationUpsertWithoutPaymentInput" | "QuotationUpsertWithoutQuotationItemInput" | "QuotationUpsertWithoutShippingInput" | "QuotationWhereInput" | "QuotationWhereUniqueInput" | "SalesmanCreateInput" | "SalesmanCreateOneWithoutInvoicesInput" | "SalesmanCreateOneWithoutPaymentsInput" | "SalesmanCreateOneWithoutQuotationsInput" | "SalesmanCreateWithoutInvoicesInput" | "SalesmanCreateWithoutPaymentsInput" | "SalesmanCreateWithoutQuotationsInput" | "SalesmanUpdateInput" | "SalesmanUpdateManyMutationInput" | "SalesmanUpdateOneRequiredWithoutInvoicesInput" | "SalesmanUpdateOneRequiredWithoutPaymentsInput" | "SalesmanUpdateOneWithoutQuotationsInput" | "SalesmanUpdateWithoutInvoicesDataInput" | "SalesmanUpdateWithoutPaymentsDataInput" | "SalesmanUpdateWithoutQuotationsDataInput" | "SalesmanUpsertWithoutInvoicesInput" | "SalesmanUpsertWithoutPaymentsInput" | "SalesmanUpsertWithoutQuotationsInput" | "SalesmanWhereInput" | "SalesmanWhereUniqueInput" | "ShippingCreateInput" | "ShippingCreateManyWithoutAddressInput" | "ShippingCreateOneWithoutQuotationInput" | "ShippingCreateWithoutAddressInput" | "ShippingCreateWithoutQuotationInput" | "ShippingScalarWhereInput" | "ShippingUpdateInput" | "ShippingUpdateManyDataInput" | "ShippingUpdateManyMutationInput" | "ShippingUpdateManyWithWhereNestedInput" | "ShippingUpdateManyWithoutAddressInput" | "ShippingUpdateOneWithoutQuotationInput" | "ShippingUpdateWithWhereUniqueWithoutAddressInput" | "ShippingUpdateWithoutAddressDataInput" | "ShippingUpdateWithoutQuotationDataInput" | "ShippingUpsertWithWhereUniqueWithoutAddressInput" | "ShippingUpsertWithoutQuotationInput" | "ShippingWhereInput" | "ShippingWhereUniqueInput" | "ShoppingCartCreateInput" | "ShoppingCartCreateOneInput" | "ShoppingCartCreateOneWithoutCustomerInput" | "ShoppingCartCreateOneWithoutProductItemsInput" | "ShoppingCartCreateWithoutCustomerInput" | "ShoppingCartCreateWithoutProductItemsInput" | "ShoppingCartItemCreateInput" | "ShoppingCartItemCreateManyWithoutShoppingCartInput" | "ShoppingCartItemCreateWithoutShoppingCartInput" | "ShoppingCartItemScalarWhereInput" | "ShoppingCartItemUpdateInput" | "ShoppingCartItemUpdateManyDataInput" | "ShoppingCartItemUpdateManyMutationInput" | "ShoppingCartItemUpdateManyWithWhereNestedInput" | "ShoppingCartItemUpdateManyWithoutShoppingCartInput" | "ShoppingCartItemUpdateWithWhereUniqueWithoutShoppingCartInput" | "ShoppingCartItemUpdateWithoutShoppingCartDataInput" | "ShoppingCartItemUpsertWithWhereUniqueWithoutShoppingCartInput" | "ShoppingCartItemWhereInput" | "ShoppingCartItemWhereUniqueInput" | "ShoppingCartUpdateDataInput" | "ShoppingCartUpdateInput" | "ShoppingCartUpdateManyMutationInput" | "ShoppingCartUpdateOneInput" | "ShoppingCartUpdateOneRequiredWithoutCustomerInput" | "ShoppingCartUpdateOneWithoutProductItemsInput" | "ShoppingCartUpdateWithoutCustomerDataInput" | "ShoppingCartUpdateWithoutProductItemsDataInput" | "ShoppingCartUpsertNestedInput" | "ShoppingCartUpsertWithoutCustomerInput" | "ShoppingCartUpsertWithoutProductItemsInput" | "ShoppingCartWhereInput" | "ShoppingCartWhereUniqueInput" | "UserCreateInput" | "UserCreateOneInput" | "UserCreateOneWithoutAddressesInput" | "UserCreateOneWithoutPaymentsInput" | "UserCreateOneWithoutQuotationsInput" | "UserCreateOneWithoutShoppingCartInput" | "UserCreateWithoutAddressesInput" | "UserCreateWithoutPaymentsInput" | "UserCreateWithoutQuotationsInput" | "UserCreateWithoutShoppingCartInput" | "UserUpdateDataInput" | "UserUpdateInput" | "UserUpdateManyMutationInput" | "UserUpdateOneRequiredInput" | "UserUpdateOneRequiredWithoutAddressesInput" | "UserUpdateOneRequiredWithoutPaymentsInput" | "UserUpdateOneRequiredWithoutQuotationsInput" | "UserUpdateOneRequiredWithoutShoppingCartInput" | "UserUpdateWithoutAddressesDataInput" | "UserUpdateWithoutPaymentsDataInput" | "UserUpdateWithoutQuotationsDataInput" | "UserUpdateWithoutShoppingCartDataInput" | "UserUpsertNestedInput" | "UserUpsertWithoutAddressesInput" | "UserUpsertWithoutPaymentsInput" | "UserUpsertWithoutQuotationsInput" | "UserUpsertWithoutShoppingCartInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames = "AddressOrderByInput" | "CategoryOrderByInput" | "InvoiceOrderByInput" | "PaymentOrderByInput" | "ProductItemOrderByInput" | "QuotationOrderByInput" | "SalesmanOrderByInput" | "ShippingOrderByInput" | "ShoppingCartItemOrderByInput" | "ShoppingCartOrderByInput" | "UserOrderByInput";
+export type NexusGenEnumNames = "AddressOrderByInput" | "CategoryOrderByInput" | "InvoiceOrderByInput" | "PaymentOrderByInput" | "ProductItemOrderByInput" | "QuotationItemOrderByInput" | "QuotationOrderByInput" | "SalesmanOrderByInput" | "ShippingOrderByInput" | "ShoppingCartItemOrderByInput" | "ShoppingCartOrderByInput" | "UserOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 

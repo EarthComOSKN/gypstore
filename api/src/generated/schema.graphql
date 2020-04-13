@@ -341,6 +341,10 @@ type AggregateQuotation {
   count: Int!
 }
 
+type AggregateQuotationItem {
+  count: Int!
+}
+
 type AggregateSalesman {
   count: Int!
 }
@@ -909,6 +913,7 @@ type Mutation {
   createPayment(data: PaymentCreateInput!): Payment!
   createProductItem(data: ProductItemCreateInput!): ProductItem!
   createQuotation(data: QuotationCreateInput!): Quotation!
+  createQuotationItem(data: QuotationItemCreateInput!): QuotationItem!
   createSalesman(data: SalesmanCreateInput!): Salesman!
   createShipping(data: ShippingCreateInput!): Shipping!
   createShoppingCart(data: ShoppingCartCreateInput!): ShoppingCart!
@@ -922,6 +927,7 @@ type Mutation {
   deleteManyInvoices(where: InvoiceWhereInput): BatchPayload!
   deleteManyPayments(where: PaymentWhereInput): BatchPayload!
   deleteManyProductItems(where: ProductItemWhereInput): BatchPayload!
+  deleteManyQuotationItems(where: QuotationItemWhereInput): BatchPayload!
   deleteManyQuotations(where: QuotationWhereInput): BatchPayload!
   deleteManySalesmen(where: SalesmanWhereInput): BatchPayload!
   deleteManyShippings(where: ShippingWhereInput): BatchPayload!
@@ -931,6 +937,7 @@ type Mutation {
   deletePayment(where: PaymentWhereUniqueInput!): Payment
   deleteProductItem(where: ProductItemWhereUniqueInput!): ProductItem
   deleteQuotation(where: QuotationWhereUniqueInput!): Quotation
+  deleteQuotationItem(where: QuotationItemWhereUniqueInput!): QuotationItem
   deleteSalesman(where: SalesmanWhereUniqueInput!): Salesman
   deleteShipping(where: ShippingWhereUniqueInput!): Shipping
   deleteShoppingCart(where: ShoppingCartWhereUniqueInput!): ShoppingCart
@@ -946,6 +953,7 @@ type Mutation {
   updateManyInvoices(data: InvoiceUpdateManyMutationInput!, where: InvoiceWhereInput): BatchPayload!
   updateManyPayments(data: PaymentUpdateManyMutationInput!, where: PaymentWhereInput): BatchPayload!
   updateManyProductItems(data: ProductItemUpdateManyMutationInput!, where: ProductItemWhereInput): BatchPayload!
+  updateManyQuotationItems(data: QuotationItemUpdateManyMutationInput!, where: QuotationItemWhereInput): BatchPayload!
   updateManyQuotations(data: QuotationUpdateManyMutationInput!, where: QuotationWhereInput): BatchPayload!
   updateManySalesmen(data: SalesmanUpdateManyMutationInput!, where: SalesmanWhereInput): BatchPayload!
   updateManyShippings(data: ShippingUpdateManyMutationInput!, where: ShippingWhereInput): BatchPayload!
@@ -955,6 +963,7 @@ type Mutation {
   updatePayment(data: PaymentUpdateInput!, where: PaymentWhereUniqueInput!): Payment
   updateProductItem(data: ProductItemUpdateInput!, where: ProductItemWhereUniqueInput!): ProductItem
   updateQuotation(data: QuotationUpdateInput!, where: QuotationWhereUniqueInput!): Quotation
+  updateQuotationItem(data: QuotationItemUpdateInput!, where: QuotationItemWhereUniqueInput!): QuotationItem
   updateSalesman(data: SalesmanUpdateInput!, where: SalesmanWhereUniqueInput!): Salesman
   updateShipping(data: ShippingUpdateInput!, where: ShippingWhereUniqueInput!): Shipping
   updateShoppingCart(data: ShoppingCartUpdateInput!, where: ShoppingCartWhereUniqueInput!): ShoppingCart
@@ -966,6 +975,7 @@ type Mutation {
   upsertPayment(create: PaymentCreateInput!, update: PaymentUpdateInput!, where: PaymentWhereUniqueInput!): Payment!
   upsertProductItem(create: ProductItemCreateInput!, update: ProductItemUpdateInput!, where: ProductItemWhereUniqueInput!): ProductItem!
   upsertQuotation(create: QuotationCreateInput!, update: QuotationUpdateInput!, where: QuotationWhereUniqueInput!): Quotation!
+  upsertQuotationItem(create: QuotationItemCreateInput!, update: QuotationItemUpdateInput!, where: QuotationItemWhereUniqueInput!): QuotationItem!
   upsertSalesman(create: SalesmanCreateInput!, update: SalesmanUpdateInput!, where: SalesmanWhereUniqueInput!): Salesman!
   upsertShipping(create: ShippingCreateInput!, update: ShippingUpdateInput!, where: ShippingWhereUniqueInput!): Shipping!
   upsertShoppingCart(create: ShoppingCartCreateInput!, update: ShoppingCartUpdateInput!, where: ShoppingCartWhereUniqueInput!): ShoppingCart!
@@ -1386,7 +1396,7 @@ input ProductItemCreateInput {
   MenuDetail: String!
   name: String!
   price: String!
-  quotation: QuotationCreateOneWithoutProductItemsInput
+  quotation: QuotationCreateOneInput
   relatedProduct: ProductItemCreateManyInput
   salePrice: String!
   shoppingCart: ShoppingCartCreateOneInput
@@ -1404,11 +1414,6 @@ input ProductItemCreateManyWithoutCategoryInput {
   create: [ProductItemCreateWithoutCategoryInput!]
 }
 
-input ProductItemCreateManyWithoutQuotationInput {
-  connect: [ProductItemWhereUniqueInput!]
-  create: [ProductItemCreateWithoutQuotationInput!]
-}
-
 input ProductItemCreateOneInput {
   connect: ProductItemWhereUniqueInput
   create: ProductItemCreateInput
@@ -1424,25 +1429,7 @@ input ProductItemCreateWithoutCategoryInput {
   MenuDetail: String!
   name: String!
   price: String!
-  quotation: QuotationCreateOneWithoutProductItemsInput
-  relatedProduct: ProductItemCreateManyInput
-  salePrice: String!
-  shoppingCart: ShoppingCartCreateOneInput
-  TermDetail: String!
-  unitType: String!
-}
-
-input ProductItemCreateWithoutQuotationInput {
-  amount: Int!
-  brand: String!
-  category: CategoryCreateOneWithoutProductItemInput!
-  description: String
-  id: ID
-  image: String
-  isPublished: Boolean
-  MenuDetail: String!
-  name: String!
-  price: String!
+  quotation: QuotationCreateOneInput
   relatedProduct: ProductItemCreateManyInput
   salePrice: String!
   shoppingCart: ShoppingCartCreateOneInput
@@ -1668,7 +1655,7 @@ input ProductItemUpdateDataInput {
   MenuDetail: String
   name: String
   price: String
-  quotation: QuotationUpdateOneWithoutProductItemsInput
+  quotation: QuotationUpdateOneInput
   relatedProduct: ProductItemUpdateManyInput
   salePrice: String
   shoppingCart: ShoppingCartUpdateOneInput
@@ -1686,7 +1673,7 @@ input ProductItemUpdateInput {
   MenuDetail: String
   name: String
   price: String
-  quotation: QuotationUpdateOneWithoutProductItemsInput
+  quotation: QuotationUpdateOneInput
   relatedProduct: ProductItemUpdateManyInput
   salePrice: String
   shoppingCart: ShoppingCartUpdateOneInput
@@ -1746,18 +1733,6 @@ input ProductItemUpdateManyWithoutCategoryInput {
   upsert: [ProductItemUpsertWithWhereUniqueWithoutCategoryInput!]
 }
 
-input ProductItemUpdateManyWithoutQuotationInput {
-  connect: [ProductItemWhereUniqueInput!]
-  create: [ProductItemCreateWithoutQuotationInput!]
-  delete: [ProductItemWhereUniqueInput!]
-  deleteMany: [ProductItemScalarWhereInput!]
-  disconnect: [ProductItemWhereUniqueInput!]
-  set: [ProductItemWhereUniqueInput!]
-  update: [ProductItemUpdateWithWhereUniqueWithoutQuotationInput!]
-  updateMany: [ProductItemUpdateManyWithWhereNestedInput!]
-  upsert: [ProductItemUpsertWithWhereUniqueWithoutQuotationInput!]
-}
-
 input ProductItemUpdateManyWithWhereNestedInput {
   data: ProductItemUpdateManyDataInput!
   where: ProductItemScalarWhereInput!
@@ -1779,24 +1754,7 @@ input ProductItemUpdateWithoutCategoryDataInput {
   MenuDetail: String
   name: String
   price: String
-  quotation: QuotationUpdateOneWithoutProductItemsInput
-  relatedProduct: ProductItemUpdateManyInput
-  salePrice: String
-  shoppingCart: ShoppingCartUpdateOneInput
-  TermDetail: String
-  unitType: String
-}
-
-input ProductItemUpdateWithoutQuotationDataInput {
-  amount: Int
-  brand: String
-  category: CategoryUpdateOneRequiredWithoutProductItemInput
-  description: String
-  image: String
-  isPublished: Boolean
-  MenuDetail: String
-  name: String
-  price: String
+  quotation: QuotationUpdateOneInput
   relatedProduct: ProductItemUpdateManyInput
   salePrice: String
   shoppingCart: ShoppingCartUpdateOneInput
@@ -1814,11 +1772,6 @@ input ProductItemUpdateWithWhereUniqueWithoutCategoryInput {
   where: ProductItemWhereUniqueInput!
 }
 
-input ProductItemUpdateWithWhereUniqueWithoutQuotationInput {
-  data: ProductItemUpdateWithoutQuotationDataInput!
-  where: ProductItemWhereUniqueInput!
-}
-
 input ProductItemUpsertNestedInput {
   create: ProductItemCreateInput!
   update: ProductItemUpdateDataInput!
@@ -1833,12 +1786,6 @@ input ProductItemUpsertWithWhereUniqueNestedInput {
 input ProductItemUpsertWithWhereUniqueWithoutCategoryInput {
   create: ProductItemCreateWithoutCategoryInput!
   update: ProductItemUpdateWithoutCategoryDataInput!
-  where: ProductItemWhereUniqueInput!
-}
-
-input ProductItemUpsertWithWhereUniqueWithoutQuotationInput {
-  create: ProductItemCreateWithoutQuotationInput!
-  update: ProductItemUpdateWithoutQuotationDataInput!
   where: ProductItemWhereUniqueInput!
 }
 
@@ -2042,6 +1989,9 @@ type Query {
   productItems(after: String, before: String, first: Int, last: Int, orderBy: ProductItemOrderByInput, skip: Int, where: ProductItemWhereInput): [ProductItem!]!
   productItemsConnection(after: String, before: String, first: Int, last: Int, orderBy: ProductItemOrderByInput, skip: Int, where: ProductItemWhereInput): ProductItemConnection!
   quotation(where: QuotationWhereUniqueInput!): Quotation
+  quotationItem(where: QuotationItemWhereUniqueInput!): QuotationItem
+  quotationItems(after: String, before: String, first: Int, last: Int, orderBy: QuotationItemOrderByInput, skip: Int, where: QuotationItemWhereInput): [QuotationItem!]!
+  quotationItemsConnection(after: String, before: String, first: Int, last: Int, orderBy: QuotationItemOrderByInput, skip: Int, where: QuotationItemWhereInput): QuotationItemConnection!
   quotations(after: String, before: String, first: Int, last: Int, orderBy: QuotationOrderByInput, skip: Int, where: QuotationWhereInput): [Quotation!]!
   quotationsConnection(after: String, before: String, first: Int, last: Int, orderBy: QuotationOrderByInput, skip: Int, where: QuotationWhereInput): QuotationConnection!
   salesman(where: SalesmanWhereUniqueInput!): Salesman
@@ -2064,11 +2014,11 @@ type Query {
 type Quotation {
   createdAt: DateTime!
   customer: User!
-  docId: String!
+  docId: String
   id: ID!
   payment: Payment
-  productItems(after: String, before: String, first: Int, last: Int, orderBy: ProductItemOrderByInput, skip: Int, where: ProductItemWhereInput): [ProductItem!]
-  salesman: Salesman!
+  quotationItem(after: String, before: String, first: Int, last: Int, orderBy: QuotationItemOrderByInput, skip: Int, where: QuotationItemWhereInput): [QuotationItem!]
+  salesman: Salesman
   shipping: Shipping
   updatedAt: DateTime!
 }
@@ -2081,11 +2031,11 @@ type QuotationConnection {
 
 input QuotationCreateInput {
   customer: UserCreateOneWithoutQuotationsInput!
-  docId: String!
+  docId: String
   id: ID
   payment: PaymentCreateOneWithoutQuotationInput
-  productItems: ProductItemCreateManyWithoutQuotationInput
-  salesman: SalesmanCreateOneWithoutQuotationsInput!
+  quotationItem: QuotationItemCreateManyWithoutQuotationInput
+  salesman: SalesmanCreateOneWithoutQuotationsInput
   shipping: ShippingCreateOneWithoutQuotationInput
 }
 
@@ -2109,9 +2059,9 @@ input QuotationCreateOneWithoutPaymentInput {
   create: QuotationCreateWithoutPaymentInput
 }
 
-input QuotationCreateOneWithoutProductItemsInput {
+input QuotationCreateOneWithoutQuotationItemInput {
   connect: QuotationWhereUniqueInput
-  create: QuotationCreateWithoutProductItemsInput
+  create: QuotationCreateWithoutQuotationItemInput
 }
 
 input QuotationCreateOneWithoutShippingInput {
@@ -2120,53 +2070,272 @@ input QuotationCreateOneWithoutShippingInput {
 }
 
 input QuotationCreateWithoutCustomerInput {
-  docId: String!
+  docId: String
   id: ID
   payment: PaymentCreateOneWithoutQuotationInput
-  productItems: ProductItemCreateManyWithoutQuotationInput
-  salesman: SalesmanCreateOneWithoutQuotationsInput!
+  quotationItem: QuotationItemCreateManyWithoutQuotationInput
+  salesman: SalesmanCreateOneWithoutQuotationsInput
   shipping: ShippingCreateOneWithoutQuotationInput
 }
 
 input QuotationCreateWithoutPaymentInput {
   customer: UserCreateOneWithoutQuotationsInput!
-  docId: String!
+  docId: String
   id: ID
-  productItems: ProductItemCreateManyWithoutQuotationInput
-  salesman: SalesmanCreateOneWithoutQuotationsInput!
+  quotationItem: QuotationItemCreateManyWithoutQuotationInput
+  salesman: SalesmanCreateOneWithoutQuotationsInput
   shipping: ShippingCreateOneWithoutQuotationInput
 }
 
-input QuotationCreateWithoutProductItemsInput {
+input QuotationCreateWithoutQuotationItemInput {
   customer: UserCreateOneWithoutQuotationsInput!
-  docId: String!
+  docId: String
   id: ID
   payment: PaymentCreateOneWithoutQuotationInput
-  salesman: SalesmanCreateOneWithoutQuotationsInput!
+  salesman: SalesmanCreateOneWithoutQuotationsInput
   shipping: ShippingCreateOneWithoutQuotationInput
 }
 
 input QuotationCreateWithoutSalesmanInput {
   customer: UserCreateOneWithoutQuotationsInput!
-  docId: String!
+  docId: String
   id: ID
   payment: PaymentCreateOneWithoutQuotationInput
-  productItems: ProductItemCreateManyWithoutQuotationInput
+  quotationItem: QuotationItemCreateManyWithoutQuotationInput
   shipping: ShippingCreateOneWithoutQuotationInput
 }
 
 input QuotationCreateWithoutShippingInput {
   customer: UserCreateOneWithoutQuotationsInput!
-  docId: String!
+  docId: String
   id: ID
   payment: PaymentCreateOneWithoutQuotationInput
-  productItems: ProductItemCreateManyWithoutQuotationInput
-  salesman: SalesmanCreateOneWithoutQuotationsInput!
+  quotationItem: QuotationItemCreateManyWithoutQuotationInput
+  salesman: SalesmanCreateOneWithoutQuotationsInput
 }
 
 type QuotationEdge {
   cursor: String!
   node: Quotation!
+}
+
+type QuotationItem {
+  amount: Int!
+  id: ID!
+  key: String!
+  product: ProductItem!
+  quotation: Quotation!
+  realPrice: Float!
+}
+
+type QuotationItemConnection {
+  aggregate: AggregateQuotationItem!
+  edges: [QuotationItemEdge!]!
+  pageInfo: PageInfo!
+}
+
+input QuotationItemCreateInput {
+  amount: Int!
+  id: ID
+  key: String!
+  product: ProductItemCreateOneInput!
+  quotation: QuotationCreateOneWithoutQuotationItemInput!
+  realPrice: Float!
+}
+
+input QuotationItemCreateManyWithoutQuotationInput {
+  connect: [QuotationItemWhereUniqueInput!]
+  create: [QuotationItemCreateWithoutQuotationInput!]
+}
+
+input QuotationItemCreateWithoutQuotationInput {
+  amount: Int!
+  id: ID
+  key: String!
+  product: ProductItemCreateOneInput!
+  realPrice: Float!
+}
+
+type QuotationItemEdge {
+  cursor: String!
+  node: QuotationItem!
+}
+
+enum QuotationItemOrderByInput {
+  amount_ASC
+  amount_DESC
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  key_ASC
+  key_DESC
+  realPrice_ASC
+  realPrice_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input QuotationItemScalarWhereInput {
+  amount: Int
+  amount_gt: Int
+  amount_gte: Int
+  amount_in: [Int!]
+  amount_lt: Int
+  amount_lte: Int
+  amount_not: Int
+  amount_not_in: [Int!]
+  AND: [QuotationItemScalarWhereInput!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  key: String
+  key_contains: String
+  key_ends_with: String
+  key_gt: String
+  key_gte: String
+  key_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_not: String
+  key_not_contains: String
+  key_not_ends_with: String
+  key_not_in: [String!]
+  key_not_starts_with: String
+  key_starts_with: String
+  NOT: [QuotationItemScalarWhereInput!]
+  OR: [QuotationItemScalarWhereInput!]
+  realPrice: Float
+  realPrice_gt: Float
+  realPrice_gte: Float
+  realPrice_in: [Float!]
+  realPrice_lt: Float
+  realPrice_lte: Float
+  realPrice_not: Float
+  realPrice_not_in: [Float!]
+}
+
+input QuotationItemUpdateInput {
+  amount: Int
+  key: String
+  product: ProductItemUpdateOneRequiredInput
+  quotation: QuotationUpdateOneRequiredWithoutQuotationItemInput
+  realPrice: Float
+}
+
+input QuotationItemUpdateManyDataInput {
+  amount: Int
+  key: String
+  realPrice: Float
+}
+
+input QuotationItemUpdateManyMutationInput {
+  amount: Int
+  key: String
+  realPrice: Float
+}
+
+input QuotationItemUpdateManyWithoutQuotationInput {
+  connect: [QuotationItemWhereUniqueInput!]
+  create: [QuotationItemCreateWithoutQuotationInput!]
+  delete: [QuotationItemWhereUniqueInput!]
+  deleteMany: [QuotationItemScalarWhereInput!]
+  disconnect: [QuotationItemWhereUniqueInput!]
+  set: [QuotationItemWhereUniqueInput!]
+  update: [QuotationItemUpdateWithWhereUniqueWithoutQuotationInput!]
+  updateMany: [QuotationItemUpdateManyWithWhereNestedInput!]
+  upsert: [QuotationItemUpsertWithWhereUniqueWithoutQuotationInput!]
+}
+
+input QuotationItemUpdateManyWithWhereNestedInput {
+  data: QuotationItemUpdateManyDataInput!
+  where: QuotationItemScalarWhereInput!
+}
+
+input QuotationItemUpdateWithoutQuotationDataInput {
+  amount: Int
+  key: String
+  product: ProductItemUpdateOneRequiredInput
+  realPrice: Float
+}
+
+input QuotationItemUpdateWithWhereUniqueWithoutQuotationInput {
+  data: QuotationItemUpdateWithoutQuotationDataInput!
+  where: QuotationItemWhereUniqueInput!
+}
+
+input QuotationItemUpsertWithWhereUniqueWithoutQuotationInput {
+  create: QuotationItemCreateWithoutQuotationInput!
+  update: QuotationItemUpdateWithoutQuotationDataInput!
+  where: QuotationItemWhereUniqueInput!
+}
+
+input QuotationItemWhereInput {
+  amount: Int
+  amount_gt: Int
+  amount_gte: Int
+  amount_in: [Int!]
+  amount_lt: Int
+  amount_lte: Int
+  amount_not: Int
+  amount_not_in: [Int!]
+  AND: [QuotationItemWhereInput!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  key: String
+  key_contains: String
+  key_ends_with: String
+  key_gt: String
+  key_gte: String
+  key_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_not: String
+  key_not_contains: String
+  key_not_ends_with: String
+  key_not_in: [String!]
+  key_not_starts_with: String
+  key_starts_with: String
+  NOT: [QuotationItemWhereInput!]
+  OR: [QuotationItemWhereInput!]
+  product: ProductItemWhereInput
+  quotation: QuotationWhereInput
+  realPrice: Float
+  realPrice_gt: Float
+  realPrice_gte: Float
+  realPrice_in: [Float!]
+  realPrice_lt: Float
+  realPrice_lte: Float
+  realPrice_not: Float
+  realPrice_not_in: [Float!]
+}
+
+input QuotationItemWhereUniqueInput {
+  id: ID
+  key: String
 }
 
 enum QuotationOrderByInput {
@@ -2234,8 +2403,8 @@ input QuotationUpdateDataInput {
   customer: UserUpdateOneRequiredWithoutQuotationsInput
   docId: String
   payment: PaymentUpdateOneWithoutQuotationInput
-  productItems: ProductItemUpdateManyWithoutQuotationInput
-  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
+  quotationItem: QuotationItemUpdateManyWithoutQuotationInput
+  salesman: SalesmanUpdateOneWithoutQuotationsInput
   shipping: ShippingUpdateOneWithoutQuotationInput
 }
 
@@ -2243,8 +2412,8 @@ input QuotationUpdateInput {
   customer: UserUpdateOneRequiredWithoutQuotationsInput
   docId: String
   payment: PaymentUpdateOneWithoutQuotationInput
-  productItems: ProductItemUpdateManyWithoutQuotationInput
-  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
+  quotationItem: QuotationItemUpdateManyWithoutQuotationInput
+  salesman: SalesmanUpdateOneWithoutQuotationsInput
   shipping: ShippingUpdateOneWithoutQuotationInput
 }
 
@@ -2285,6 +2454,15 @@ input QuotationUpdateManyWithWhereNestedInput {
   where: QuotationScalarWhereInput!
 }
 
+input QuotationUpdateOneInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateInput
+  delete: Boolean
+  disconnect: Boolean
+  update: QuotationUpdateDataInput
+  upsert: QuotationUpsertNestedInput
+}
+
 input QuotationUpdateOneRequiredInput {
   connect: QuotationWhereUniqueInput
   create: QuotationCreateInput
@@ -2299,6 +2477,13 @@ input QuotationUpdateOneRequiredWithoutPaymentInput {
   upsert: QuotationUpsertWithoutPaymentInput
 }
 
+input QuotationUpdateOneRequiredWithoutQuotationItemInput {
+  connect: QuotationWhereUniqueInput
+  create: QuotationCreateWithoutQuotationItemInput
+  update: QuotationUpdateWithoutQuotationItemDataInput
+  upsert: QuotationUpsertWithoutQuotationItemInput
+}
+
 input QuotationUpdateOneRequiredWithoutShippingInput {
   connect: QuotationWhereUniqueInput
   create: QuotationCreateWithoutShippingInput
@@ -2306,36 +2491,27 @@ input QuotationUpdateOneRequiredWithoutShippingInput {
   upsert: QuotationUpsertWithoutShippingInput
 }
 
-input QuotationUpdateOneWithoutProductItemsInput {
-  connect: QuotationWhereUniqueInput
-  create: QuotationCreateWithoutProductItemsInput
-  delete: Boolean
-  disconnect: Boolean
-  update: QuotationUpdateWithoutProductItemsDataInput
-  upsert: QuotationUpsertWithoutProductItemsInput
-}
-
 input QuotationUpdateWithoutCustomerDataInput {
   docId: String
   payment: PaymentUpdateOneWithoutQuotationInput
-  productItems: ProductItemUpdateManyWithoutQuotationInput
-  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
+  quotationItem: QuotationItemUpdateManyWithoutQuotationInput
+  salesman: SalesmanUpdateOneWithoutQuotationsInput
   shipping: ShippingUpdateOneWithoutQuotationInput
 }
 
 input QuotationUpdateWithoutPaymentDataInput {
   customer: UserUpdateOneRequiredWithoutQuotationsInput
   docId: String
-  productItems: ProductItemUpdateManyWithoutQuotationInput
-  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
+  quotationItem: QuotationItemUpdateManyWithoutQuotationInput
+  salesman: SalesmanUpdateOneWithoutQuotationsInput
   shipping: ShippingUpdateOneWithoutQuotationInput
 }
 
-input QuotationUpdateWithoutProductItemsDataInput {
+input QuotationUpdateWithoutQuotationItemDataInput {
   customer: UserUpdateOneRequiredWithoutQuotationsInput
   docId: String
   payment: PaymentUpdateOneWithoutQuotationInput
-  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
+  salesman: SalesmanUpdateOneWithoutQuotationsInput
   shipping: ShippingUpdateOneWithoutQuotationInput
 }
 
@@ -2343,7 +2519,7 @@ input QuotationUpdateWithoutSalesmanDataInput {
   customer: UserUpdateOneRequiredWithoutQuotationsInput
   docId: String
   payment: PaymentUpdateOneWithoutQuotationInput
-  productItems: ProductItemUpdateManyWithoutQuotationInput
+  quotationItem: QuotationItemUpdateManyWithoutQuotationInput
   shipping: ShippingUpdateOneWithoutQuotationInput
 }
 
@@ -2351,8 +2527,8 @@ input QuotationUpdateWithoutShippingDataInput {
   customer: UserUpdateOneRequiredWithoutQuotationsInput
   docId: String
   payment: PaymentUpdateOneWithoutQuotationInput
-  productItems: ProductItemUpdateManyWithoutQuotationInput
-  salesman: SalesmanUpdateOneRequiredWithoutQuotationsInput
+  quotationItem: QuotationItemUpdateManyWithoutQuotationInput
+  salesman: SalesmanUpdateOneWithoutQuotationsInput
 }
 
 input QuotationUpdateWithWhereUniqueWithoutCustomerInput {
@@ -2375,9 +2551,9 @@ input QuotationUpsertWithoutPaymentInput {
   update: QuotationUpdateWithoutPaymentDataInput!
 }
 
-input QuotationUpsertWithoutProductItemsInput {
-  create: QuotationCreateWithoutProductItemsInput!
-  update: QuotationUpdateWithoutProductItemsDataInput!
+input QuotationUpsertWithoutQuotationItemInput {
+  create: QuotationCreateWithoutQuotationItemInput!
+  update: QuotationUpdateWithoutQuotationItemDataInput!
 }
 
 input QuotationUpsertWithoutShippingInput {
@@ -2439,9 +2615,9 @@ input QuotationWhereInput {
   NOT: [QuotationWhereInput!]
   OR: [QuotationWhereInput!]
   payment: PaymentWhereInput
-  productItems_every: ProductItemWhereInput
-  productItems_none: ProductItemWhereInput
-  productItems_some: ProductItemWhereInput
+  quotationItem_every: QuotationItemWhereInput
+  quotationItem_none: QuotationItemWhereInput
+  quotationItem_some: QuotationItemWhereInput
   salesman: SalesmanWhereInput
   shipping: ShippingWhereInput
   updatedAt: DateTime
@@ -2577,9 +2753,11 @@ input SalesmanUpdateOneRequiredWithoutPaymentsInput {
   upsert: SalesmanUpsertWithoutPaymentsInput
 }
 
-input SalesmanUpdateOneRequiredWithoutQuotationsInput {
+input SalesmanUpdateOneWithoutQuotationsInput {
   connect: SalesmanWhereUniqueInput
   create: SalesmanCreateWithoutQuotationsInput
+  delete: Boolean
+  disconnect: Boolean
   update: SalesmanUpdateWithoutQuotationsDataInput
   upsert: SalesmanUpsertWithoutQuotationsInput
 }

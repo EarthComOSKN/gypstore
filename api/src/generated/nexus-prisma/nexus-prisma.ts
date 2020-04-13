@@ -21,6 +21,7 @@ export interface NexusPrismaTypes {
       ProductItem: ProductItemObject
       Category: CategoryObject
       Quotation: QuotationObject
+      QuotationItem: QuotationItemObject
       Salesman: SalesmanObject
       Payment: PaymentObject
       Invoice: InvoiceObject
@@ -57,6 +58,9 @@ export interface NexusPrismaTypes {
       ShoppingCartConnection: ShoppingCartConnectionObject
       ShoppingCartEdge: ShoppingCartEdgeObject
       AggregateShoppingCart: AggregateShoppingCartObject
+      QuotationItemConnection: QuotationItemConnectionObject
+      QuotationItemEdge: QuotationItemEdgeObject
+      AggregateQuotationItem: AggregateQuotationItemObject
       QuotationConnection: QuotationConnectionObject
       QuotationEdge: QuotationEdgeObject
       AggregateQuotation: AggregateQuotationObject
@@ -83,6 +87,8 @@ export interface NexusPrismaTypes {
       ShoppingCartItemPreviousValues: ShoppingCartItemPreviousValuesObject
       ShoppingCartSubscriptionPayload: ShoppingCartSubscriptionPayloadObject
       ShoppingCartPreviousValues: ShoppingCartPreviousValuesObject
+      QuotationItemSubscriptionPayload: QuotationItemSubscriptionPayloadObject
+      QuotationItemPreviousValues: QuotationItemPreviousValuesObject
       QuotationSubscriptionPayload: QuotationSubscriptionPayloadObject
       QuotationPreviousValues: QuotationPreviousValuesObject
     }
@@ -94,6 +100,7 @@ export interface NexusPrismaTypes {
       ProductItem: ProductItemFieldDetails
       Category: CategoryFieldDetails
       Quotation: QuotationFieldDetails
+      QuotationItem: QuotationItemFieldDetails
       Salesman: SalesmanFieldDetails
       Payment: PaymentFieldDetails
       Invoice: InvoiceFieldDetails
@@ -130,6 +137,9 @@ export interface NexusPrismaTypes {
       ShoppingCartConnection: ShoppingCartConnectionFieldDetails
       ShoppingCartEdge: ShoppingCartEdgeFieldDetails
       AggregateShoppingCart: AggregateShoppingCartFieldDetails
+      QuotationItemConnection: QuotationItemConnectionFieldDetails
+      QuotationItemEdge: QuotationItemEdgeFieldDetails
+      AggregateQuotationItem: AggregateQuotationItemFieldDetails
       QuotationConnection: QuotationConnectionFieldDetails
       QuotationEdge: QuotationEdgeFieldDetails
       AggregateQuotation: AggregateQuotationFieldDetails
@@ -156,6 +166,8 @@ export interface NexusPrismaTypes {
       ShoppingCartItemPreviousValues: ShoppingCartItemPreviousValuesFieldDetails
       ShoppingCartSubscriptionPayload: ShoppingCartSubscriptionPayloadFieldDetails
       ShoppingCartPreviousValues: ShoppingCartPreviousValuesFieldDetails
+      QuotationItemSubscriptionPayload: QuotationItemSubscriptionPayloadFieldDetails
+      QuotationItemPreviousValues: QuotationItemPreviousValuesFieldDetails
       QuotationSubscriptionPayload: QuotationSubscriptionPayloadFieldDetails
       QuotationPreviousValues: QuotationPreviousValuesFieldDetails
     }
@@ -169,6 +181,7 @@ export interface NexusPrismaTypes {
       ShoppingCartWhereInput: ShoppingCartWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
       QuotationWhereInput: QuotationWhereInputInputObject
+      QuotationItemWhereInput: QuotationItemWhereInputInputObject
       SalesmanWhereInput: SalesmanWhereInputInputObject
       PaymentWhereInput: PaymentWhereInputInputObject
       InvoiceWhereInput: InvoiceWhereInputInputObject
@@ -183,6 +196,7 @@ export interface NexusPrismaTypes {
       ProductItemWhereUniqueInput: ProductItemWhereUniqueInputInputObject
       ShoppingCartItemWhereUniqueInput: ShoppingCartItemWhereUniqueInputInputObject
       ShoppingCartWhereUniqueInput: ShoppingCartWhereUniqueInputInputObject
+      QuotationItemWhereUniqueInput: QuotationItemWhereUniqueInputInputObject
       QuotationWhereUniqueInput: QuotationWhereUniqueInputInputObject
       UserCreateInput: UserCreateInputInputObject
       ShoppingCartCreateOneWithoutCustomerInput: ShoppingCartCreateOneWithoutCustomerInputInputObject
@@ -203,9 +217,8 @@ export interface NexusPrismaTypes {
       UserCreateWithoutShoppingCartInput: UserCreateWithoutShoppingCartInputInputObject
       QuotationCreateManyWithoutCustomerInput: QuotationCreateManyWithoutCustomerInputInputObject
       QuotationCreateWithoutCustomerInput: QuotationCreateWithoutCustomerInputInputObject
-      ProductItemCreateManyWithoutQuotationInput: ProductItemCreateManyWithoutQuotationInputInputObject
-      ProductItemCreateWithoutQuotationInput: ProductItemCreateWithoutQuotationInputInputObject
-      ProductItemCreateManyInput: ProductItemCreateManyInputInputObject
+      QuotationItemCreateManyWithoutQuotationInput: QuotationItemCreateManyWithoutQuotationInputInputObject
+      QuotationItemCreateWithoutQuotationInput: QuotationItemCreateWithoutQuotationInputInputObject
       SalesmanCreateOneWithoutQuotationsInput: SalesmanCreateOneWithoutQuotationsInputInputObject
       SalesmanCreateWithoutQuotationsInput: SalesmanCreateWithoutQuotationsInputInputObject
       PaymentCreateManyWithoutSalesmanInput: PaymentCreateManyWithoutSalesmanInputInputObject
@@ -253,8 +266,7 @@ export interface NexusPrismaTypes {
       ShippingCreateWithoutAddressInput: ShippingCreateWithoutAddressInputInputObject
       QuotationCreateOneWithoutShippingInput: QuotationCreateOneWithoutShippingInputInputObject
       QuotationCreateWithoutShippingInput: QuotationCreateWithoutShippingInputInputObject
-      QuotationCreateOneWithoutProductItemsInput: QuotationCreateOneWithoutProductItemsInputInputObject
-      QuotationCreateWithoutProductItemsInput: QuotationCreateWithoutProductItemsInputInputObject
+      ProductItemCreateManyInput: ProductItemCreateManyInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
       ShoppingCartUpdateOneRequiredWithoutCustomerInput: ShoppingCartUpdateOneRequiredWithoutCustomerInputInputObject
       ShoppingCartUpdateWithoutCustomerDataInput: ShoppingCartUpdateWithoutCustomerDataInputInputObject
@@ -277,17 +289,14 @@ export interface NexusPrismaTypes {
       QuotationUpdateManyWithoutCustomerInput: QuotationUpdateManyWithoutCustomerInputInputObject
       QuotationUpdateWithWhereUniqueWithoutCustomerInput: QuotationUpdateWithWhereUniqueWithoutCustomerInputInputObject
       QuotationUpdateWithoutCustomerDataInput: QuotationUpdateWithoutCustomerDataInputInputObject
-      ProductItemUpdateManyWithoutQuotationInput: ProductItemUpdateManyWithoutQuotationInputInputObject
-      ProductItemUpdateWithWhereUniqueWithoutQuotationInput: ProductItemUpdateWithWhereUniqueWithoutQuotationInputInputObject
-      ProductItemUpdateWithoutQuotationDataInput: ProductItemUpdateWithoutQuotationDataInputInputObject
-      ProductItemUpdateManyInput: ProductItemUpdateManyInputInputObject
-      ProductItemUpdateWithWhereUniqueNestedInput: ProductItemUpdateWithWhereUniqueNestedInputInputObject
-      ProductItemUpsertWithWhereUniqueNestedInput: ProductItemUpsertWithWhereUniqueNestedInputInputObject
-      ProductItemScalarWhereInput: ProductItemScalarWhereInputInputObject
-      ProductItemUpdateManyWithWhereNestedInput: ProductItemUpdateManyWithWhereNestedInputInputObject
-      ProductItemUpdateManyDataInput: ProductItemUpdateManyDataInputInputObject
-      ProductItemUpsertWithWhereUniqueWithoutQuotationInput: ProductItemUpsertWithWhereUniqueWithoutQuotationInputInputObject
-      SalesmanUpdateOneRequiredWithoutQuotationsInput: SalesmanUpdateOneRequiredWithoutQuotationsInputInputObject
+      QuotationItemUpdateManyWithoutQuotationInput: QuotationItemUpdateManyWithoutQuotationInputInputObject
+      QuotationItemUpdateWithWhereUniqueWithoutQuotationInput: QuotationItemUpdateWithWhereUniqueWithoutQuotationInputInputObject
+      QuotationItemUpdateWithoutQuotationDataInput: QuotationItemUpdateWithoutQuotationDataInputInputObject
+      QuotationItemUpsertWithWhereUniqueWithoutQuotationInput: QuotationItemUpsertWithWhereUniqueWithoutQuotationInputInputObject
+      QuotationItemScalarWhereInput: QuotationItemScalarWhereInputInputObject
+      QuotationItemUpdateManyWithWhereNestedInput: QuotationItemUpdateManyWithWhereNestedInputInputObject
+      QuotationItemUpdateManyDataInput: QuotationItemUpdateManyDataInputInputObject
+      SalesmanUpdateOneWithoutQuotationsInput: SalesmanUpdateOneWithoutQuotationsInputInputObject
       SalesmanUpdateWithoutQuotationsDataInput: SalesmanUpdateWithoutQuotationsDataInputInputObject
       PaymentUpdateManyWithoutSalesmanInput: PaymentUpdateManyWithoutSalesmanInputInputObject
       PaymentUpdateWithWhereUniqueWithoutSalesmanInput: PaymentUpdateWithWhereUniqueWithoutSalesmanInputInputObject
@@ -384,9 +393,13 @@ export interface NexusPrismaTypes {
       QuotationUpsertWithWhereUniqueWithoutCustomerInput: QuotationUpsertWithWhereUniqueWithoutCustomerInputInputObject
       UserUpsertWithoutShoppingCartInput: UserUpsertWithoutShoppingCartInputInputObject
       ShoppingCartUpsertNestedInput: ShoppingCartUpsertNestedInputInputObject
-      QuotationUpdateOneWithoutProductItemsInput: QuotationUpdateOneWithoutProductItemsInputInputObject
-      QuotationUpdateWithoutProductItemsDataInput: QuotationUpdateWithoutProductItemsDataInputInputObject
-      QuotationUpsertWithoutProductItemsInput: QuotationUpsertWithoutProductItemsInputInputObject
+      QuotationUpdateOneInput: QuotationUpdateOneInputInputObject
+      ProductItemUpdateManyInput: ProductItemUpdateManyInputInputObject
+      ProductItemUpdateWithWhereUniqueNestedInput: ProductItemUpdateWithWhereUniqueNestedInputInputObject
+      ProductItemUpsertWithWhereUniqueNestedInput: ProductItemUpsertWithWhereUniqueNestedInputInputObject
+      ProductItemScalarWhereInput: ProductItemScalarWhereInputInputObject
+      ProductItemUpdateManyWithWhereNestedInput: ProductItemUpdateManyWithWhereNestedInputInputObject
+      ProductItemUpdateManyDataInput: ProductItemUpdateManyDataInputInputObject
       ProductItemUpsertWithWhereUniqueWithoutCategoryInput: ProductItemUpsertWithWhereUniqueWithoutCategoryInputInputObject
       CategoryUpsertNestedInput: CategoryUpsertNestedInputInputObject
       CategoryUpsertWithoutProductItemInput: CategoryUpsertWithoutProductItemInputInputObject
@@ -425,6 +438,14 @@ export interface NexusPrismaTypes {
       ShoppingCartItemUpdateManyMutationInput: ShoppingCartItemUpdateManyMutationInputInputObject
       ShoppingCartUpdateInput: ShoppingCartUpdateInputInputObject
       ShoppingCartUpdateManyMutationInput: ShoppingCartUpdateManyMutationInputInputObject
+      QuotationItemCreateInput: QuotationItemCreateInputInputObject
+      QuotationCreateOneWithoutQuotationItemInput: QuotationCreateOneWithoutQuotationItemInputInputObject
+      QuotationCreateWithoutQuotationItemInput: QuotationCreateWithoutQuotationItemInputInputObject
+      QuotationItemUpdateInput: QuotationItemUpdateInputInputObject
+      QuotationUpdateOneRequiredWithoutQuotationItemInput: QuotationUpdateOneRequiredWithoutQuotationItemInputInputObject
+      QuotationUpdateWithoutQuotationItemDataInput: QuotationUpdateWithoutQuotationItemDataInputInputObject
+      QuotationUpsertWithoutQuotationItemInput: QuotationUpsertWithoutQuotationItemInputInputObject
+      QuotationItemUpdateManyMutationInput: QuotationItemUpdateManyMutationInputInputObject
       QuotationUpdateInput: QuotationUpdateInputInputObject
       QuotationUpdateManyMutationInput: QuotationUpdateManyMutationInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
@@ -437,12 +458,14 @@ export interface NexusPrismaTypes {
       ProductItemSubscriptionWhereInput: ProductItemSubscriptionWhereInputInputObject
       ShoppingCartItemSubscriptionWhereInput: ShoppingCartItemSubscriptionWhereInputInputObject
       ShoppingCartSubscriptionWhereInput: ShoppingCartSubscriptionWhereInputInputObject
+      QuotationItemSubscriptionWhereInput: QuotationItemSubscriptionWhereInputInputObject
       QuotationSubscriptionWhereInput: QuotationSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
     ShoppingCartItemOrderByInput: ShoppingCartItemOrderByInputValues,
     ProductItemOrderByInput: ProductItemOrderByInputValues,
+    QuotationItemOrderByInput: QuotationItemOrderByInputValues,
     PaymentOrderByInput: PaymentOrderByInputValues,
     InvoiceOrderByInput: InvoiceOrderByInputValues,
     ShippingOrderByInput: ShippingOrderByInputValues,
@@ -490,6 +513,9 @@ type QueryObject =
   | { name: 'shoppingCart', args?: QueryShoppingCartArgs[] | false, alias?: string  } 
   | { name: 'shoppingCarts', args?: QueryShoppingCartsArgs[] | false, alias?: string  } 
   | { name: 'shoppingCartsConnection', args?: QueryShoppingCartsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'quotationItem', args?: QueryQuotationItemArgs[] | false, alias?: string  } 
+  | { name: 'quotationItems', args?: QueryQuotationItemsArgs[] | false, alias?: string  } 
+  | { name: 'quotationItemsConnection', args?: QueryQuotationItemsConnectionArgs[] | false, alias?: string  } 
   | { name: 'quotation', args?: QueryQuotationArgs[] | false, alias?: string  } 
   | { name: 'quotations', args?: QueryQuotationsArgs[] | false, alias?: string  } 
   | { name: 'quotationsConnection', args?: QueryQuotationsConnectionArgs[] | false, alias?: string  } 
@@ -525,6 +551,9 @@ type QueryFields =
   | 'shoppingCart'
   | 'shoppingCarts'
   | 'shoppingCartsConnection'
+  | 'quotationItem'
+  | 'quotationItems'
+  | 'quotationItemsConnection'
   | 'quotation'
   | 'quotations'
   | 'quotationsConnection'
@@ -703,6 +732,24 @@ type QueryShoppingCartsArgs =
   | 'first'
   | 'last'
 type QueryShoppingCartsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryQuotationItemArgs =
+  | 'where'
+type QueryQuotationItemsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryQuotationItemsConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -1120,6 +1167,45 @@ export interface QueryFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.ShoppingCartConnection> | prisma.ShoppingCartConnection
+  }
+  quotationItem: {
+    type: 'QuotationItem'
+    args: Record<QueryQuotationItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: QuotationItemWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem | null> | prisma.QuotationItem | null
+  }
+  quotationItems: {
+    type: 'QuotationItem'
+    args: Record<QueryQuotationItemsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: QuotationItemWhereInput | null, orderBy?: prisma.QuotationItemOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem[]> | prisma.QuotationItem[]
+  }
+  quotationItemsConnection: {
+    type: 'QuotationItemConnection'
+    args: Record<QueryQuotationItemsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: QuotationItemWhereInput | null, orderBy?: prisma.QuotationItemOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItemConnection> | prisma.QuotationItemConnection
   }
   quotation: {
     type: 'Quotation'
@@ -1858,7 +1944,7 @@ type QuotationObject =
   | QuotationFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'docId', args?: [] | false, alias?: string  } 
-  | { name: 'productItems', args?: QuotationProductItemsArgs[] | false, alias?: string  } 
+  | { name: 'quotationItem', args?: QuotationQuotationItemArgs[] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'salesman', args?: [] | false, alias?: string  } 
@@ -1869,7 +1955,7 @@ type QuotationObject =
 type QuotationFields =
   | 'id'
   | 'docId'
-  | 'productItems'
+  | 'quotationItem'
   | 'createdAt'
   | 'updatedAt'
   | 'salesman'
@@ -1878,7 +1964,7 @@ type QuotationFields =
   | 'customer'
 
 
-type QuotationProductItemsArgs =
+type QuotationQuotationItemArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -1902,21 +1988,21 @@ export interface QuotationFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
-  productItems: {
-    type: 'ProductItem'
-    args: Record<QuotationProductItemsArgs, core.NexusArgDef<string>>
+  quotationItem: {
+    type: 'QuotationItem'
+    args: Record<QuotationQuotationItemArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Quotation">,
-      args: { where?: ProductItemWhereInput | null, orderBy?: prisma.ProductItemOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: QuotationItemWhereInput | null, orderBy?: prisma.QuotationItemOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.ProductItem[]> | prisma.ProductItem[]
+    ) => Promise<prisma.QuotationItem[]> | prisma.QuotationItem[]
   }
   createdAt: {
     type: 'DateTime'
@@ -1939,13 +2025,13 @@ export interface QuotationFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
       root: core.RootValue<"Quotation">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Salesman> | prisma.Salesman
+    ) => Promise<prisma.Salesman | null> | prisma.Salesman | null
   }
   payment: {
     type: 'Payment'
@@ -1985,6 +2071,91 @@ export interface QuotationFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
+  }
+}
+  
+
+// Types for QuotationItem
+
+type QuotationItemObject =
+  | QuotationItemFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'key', args?: [] | false, alias?: string  } 
+  | { name: 'product', args?: [] | false, alias?: string  } 
+  | { name: 'amount', args?: [] | false, alias?: string  } 
+  | { name: 'realPrice', args?: [] | false, alias?: string  } 
+  | { name: 'quotation', args?: [] | false, alias?: string  } 
+
+type QuotationItemFields =
+  | 'id'
+  | 'key'
+  | 'product'
+  | 'amount'
+  | 'realPrice'
+  | 'quotation'
+
+
+
+  
+
+export interface QuotationItemFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  key: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  product: {
+    type: 'ProductItem'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"QuotationItem">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductItem> | prisma.ProductItem
+  }
+  amount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  realPrice: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  quotation: {
+    type: 'Quotation'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"QuotationItem">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Quotation> | prisma.Quotation
   }
 }
   
@@ -3947,6 +4118,131 @@ export interface AggregateShoppingCartFieldDetails {
 }
   
 
+// Types for QuotationItemConnection
+
+type QuotationItemConnectionObject =
+  | QuotationItemConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type QuotationItemConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface QuotationItemConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"QuotationItemConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'QuotationItemEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"QuotationItemConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItemEdge[]> | prisma.QuotationItemEdge[]
+  }
+  aggregate: {
+    type: 'AggregateQuotationItem'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"QuotationItemConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateQuotationItem> | prisma.AggregateQuotationItem
+  }
+}
+  
+
+// Types for QuotationItemEdge
+
+type QuotationItemEdgeObject =
+  | QuotationItemEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type QuotationItemEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface QuotationItemEdgeFieldDetails {
+  node: {
+    type: 'QuotationItem'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"QuotationItemEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem> | prisma.QuotationItem
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateQuotationItem
+
+type AggregateQuotationItemObject =
+  | AggregateQuotationItemFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateQuotationItemFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateQuotationItemFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for QuotationConnection
 
 type QuotationConnectionObject =
@@ -4136,6 +4432,12 @@ type MutationObject =
   | { name: 'upsertShoppingCart', args?: MutationUpsertShoppingCartArgs[] | false, alias?: string  } 
   | { name: 'deleteShoppingCart', args?: MutationDeleteShoppingCartArgs[] | false, alias?: string  } 
   | { name: 'deleteManyShoppingCarts', args?: MutationDeleteManyShoppingCartsArgs[] | false, alias?: string  } 
+  | { name: 'createQuotationItem', args?: MutationCreateQuotationItemArgs[] | false, alias?: string  } 
+  | { name: 'updateQuotationItem', args?: MutationUpdateQuotationItemArgs[] | false, alias?: string  } 
+  | { name: 'updateManyQuotationItems', args?: MutationUpdateManyQuotationItemsArgs[] | false, alias?: string  } 
+  | { name: 'upsertQuotationItem', args?: MutationUpsertQuotationItemArgs[] | false, alias?: string  } 
+  | { name: 'deleteQuotationItem', args?: MutationDeleteQuotationItemArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyQuotationItems', args?: MutationDeleteManyQuotationItemsArgs[] | false, alias?: string  } 
   | { name: 'createQuotation', args?: MutationCreateQuotationArgs[] | false, alias?: string  } 
   | { name: 'updateQuotation', args?: MutationUpdateQuotationArgs[] | false, alias?: string  } 
   | { name: 'updateManyQuotations', args?: MutationUpdateManyQuotationsArgs[] | false, alias?: string  } 
@@ -4204,6 +4506,12 @@ type MutationFields =
   | 'upsertShoppingCart'
   | 'deleteShoppingCart'
   | 'deleteManyShoppingCarts'
+  | 'createQuotationItem'
+  | 'updateQuotationItem'
+  | 'updateManyQuotationItems'
+  | 'upsertQuotationItem'
+  | 'deleteQuotationItem'
+  | 'deleteManyQuotationItems'
   | 'createQuotation'
   | 'updateQuotation'
   | 'updateManyQuotations'
@@ -4371,6 +4679,22 @@ type MutationUpsertShoppingCartArgs =
 type MutationDeleteShoppingCartArgs =
   | 'where'
 type MutationDeleteManyShoppingCartsArgs =
+  | 'where'
+type MutationCreateQuotationItemArgs =
+  | 'data'
+type MutationUpdateQuotationItemArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyQuotationItemsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertQuotationItemArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteQuotationItemArgs =
+  | 'where'
+type MutationDeleteManyQuotationItemsArgs =
   | 'where'
 type MutationCreateQuotationArgs =
   | 'data'
@@ -5171,6 +5495,84 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
+  createQuotationItem: {
+    type: 'QuotationItem'
+    args: Record<MutationCreateQuotationItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: QuotationItemCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem> | prisma.QuotationItem
+  }
+  updateQuotationItem: {
+    type: 'QuotationItem'
+    args: Record<MutationUpdateQuotationItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: QuotationItemUpdateInput, where: QuotationItemWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem | null> | prisma.QuotationItem | null
+  }
+  updateManyQuotationItems: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyQuotationItemsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: QuotationItemUpdateManyMutationInput, where?: QuotationItemWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertQuotationItem: {
+    type: 'QuotationItem'
+    args: Record<MutationUpsertQuotationItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: QuotationItemWhereUniqueInput, create: QuotationItemCreateInput, update: QuotationItemUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem> | prisma.QuotationItem
+  }
+  deleteQuotationItem: {
+    type: 'QuotationItem'
+    args: Record<MutationDeleteQuotationItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: QuotationItemWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem | null> | prisma.QuotationItem | null
+  }
+  deleteManyQuotationItems: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyQuotationItemsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: QuotationItemWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
   createQuotation: {
     type: 'Quotation'
     args: Record<MutationCreateQuotationArgs, core.NexusArgDef<string>>
@@ -5291,6 +5693,7 @@ type SubscriptionObject =
   | { name: 'productItem', args?: SubscriptionProductItemArgs[] | false, alias?: string  } 
   | { name: 'shoppingCartItem', args?: SubscriptionShoppingCartItemArgs[] | false, alias?: string  } 
   | { name: 'shoppingCart', args?: SubscriptionShoppingCartArgs[] | false, alias?: string  } 
+  | { name: 'quotationItem', args?: SubscriptionQuotationItemArgs[] | false, alias?: string  } 
   | { name: 'quotation', args?: SubscriptionQuotationArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
@@ -5304,6 +5707,7 @@ type SubscriptionFields =
   | 'productItem'
   | 'shoppingCartItem'
   | 'shoppingCart'
+  | 'quotationItem'
   | 'quotation'
 
 
@@ -5326,6 +5730,8 @@ type SubscriptionProductItemArgs =
 type SubscriptionShoppingCartItemArgs =
   | 'where'
 type SubscriptionShoppingCartArgs =
+  | 'where'
+type SubscriptionQuotationItemArgs =
   | 'where'
 type SubscriptionQuotationArgs =
   | 'where'
@@ -5461,6 +5867,19 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.ShoppingCartSubscriptionPayload | null> | prisma.ShoppingCartSubscriptionPayload | null
+  }
+  quotationItem: {
+    type: 'QuotationItemSubscriptionPayload'
+    args: Record<SubscriptionQuotationItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: QuotationItemSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItemSubscriptionPayload | null> | prisma.QuotationItemSubscriptionPayload | null
   }
   quotation: {
     type: 'QuotationSubscriptionPayload'
@@ -6958,6 +7377,131 @@ export interface ShoppingCartPreviousValuesFieldDetails {
 }
   
 
+// Types for QuotationItemSubscriptionPayload
+
+type QuotationItemSubscriptionPayloadObject =
+  | QuotationItemSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type QuotationItemSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface QuotationItemSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"QuotationItemSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'QuotationItem'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"QuotationItemSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItem | null> | prisma.QuotationItem | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'QuotationItemPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"QuotationItemSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.QuotationItemPreviousValues | null> | prisma.QuotationItemPreviousValues | null
+  }
+}
+  
+
+// Types for QuotationItemPreviousValues
+
+type QuotationItemPreviousValuesObject =
+  | QuotationItemPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'key', args?: [] | false, alias?: string  } 
+  | { name: 'amount', args?: [] | false, alias?: string  } 
+  | { name: 'realPrice', args?: [] | false, alias?: string  } 
+
+type QuotationItemPreviousValuesFields =
+  | 'id'
+  | 'key'
+  | 'amount'
+  | 'realPrice'
+
+
+
+  
+
+export interface QuotationItemPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  key: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  amount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  realPrice: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for QuotationSubscriptionPayload
 
 type QuotationSubscriptionPayloadObject =
@@ -7061,7 +7605,7 @@ export interface QuotationPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   createdAt: {
@@ -8045,9 +8589,9 @@ export interface QuotationWhereInput {
   docId_not_starts_with?: string | null
   docId_ends_with?: string | null
   docId_not_ends_with?: string | null
-  productItems_every?: ProductItemWhereInput | null
-  productItems_some?: ProductItemWhereInput | null
-  productItems_none?: ProductItemWhereInput | null
+  quotationItem_every?: QuotationItemWhereInput | null
+  quotationItem_some?: QuotationItemWhereInput | null
+  quotationItem_none?: QuotationItemWhereInput | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -8102,9 +8646,9 @@ export type QuotationWhereInputInputObject =
   | { name: 'docId_not_starts_with', alias?: string  } 
   | { name: 'docId_ends_with', alias?: string  } 
   | { name: 'docId_not_ends_with', alias?: string  } 
-  | { name: 'productItems_every', alias?: string  } 
-  | { name: 'productItems_some', alias?: string  } 
-  | { name: 'productItems_none', alias?: string  } 
+  | { name: 'quotationItem_every', alias?: string  } 
+  | { name: 'quotationItem_some', alias?: string  } 
+  | { name: 'quotationItem_none', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -8125,6 +8669,109 @@ export type QuotationWhereInputInputObject =
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface QuotationItemWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  key?: string | null
+  key_not?: string | null
+  key_in?: string[]
+  key_not_in?: string[]
+  key_lt?: string | null
+  key_lte?: string | null
+  key_gt?: string | null
+  key_gte?: string | null
+  key_contains?: string | null
+  key_not_contains?: string | null
+  key_starts_with?: string | null
+  key_not_starts_with?: string | null
+  key_ends_with?: string | null
+  key_not_ends_with?: string | null
+  product?: ProductItemWhereInput | null
+  amount?: number | null
+  amount_not?: number | null
+  amount_in?: number[]
+  amount_not_in?: number[]
+  amount_lt?: number | null
+  amount_lte?: number | null
+  amount_gt?: number | null
+  amount_gte?: number | null
+  realPrice?: number | null
+  realPrice_not?: number | null
+  realPrice_in?: number[]
+  realPrice_not_in?: number[]
+  realPrice_lt?: number | null
+  realPrice_lte?: number | null
+  realPrice_gt?: number | null
+  realPrice_gte?: number | null
+  quotation?: QuotationWhereInput | null
+  AND?: QuotationItemWhereInput[]
+  OR?: QuotationItemWhereInput[]
+  NOT?: QuotationItemWhereInput[]
+}
+export type QuotationItemWhereInputInputObject =
+  | Extract<keyof QuotationItemWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  | { name: 'key_not', alias?: string  } 
+  | { name: 'key_in', alias?: string  } 
+  | { name: 'key_not_in', alias?: string  } 
+  | { name: 'key_lt', alias?: string  } 
+  | { name: 'key_lte', alias?: string  } 
+  | { name: 'key_gt', alias?: string  } 
+  | { name: 'key_gte', alias?: string  } 
+  | { name: 'key_contains', alias?: string  } 
+  | { name: 'key_not_contains', alias?: string  } 
+  | { name: 'key_starts_with', alias?: string  } 
+  | { name: 'key_not_starts_with', alias?: string  } 
+  | { name: 'key_ends_with', alias?: string  } 
+  | { name: 'key_not_ends_with', alias?: string  } 
+  | { name: 'product', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'amount_not', alias?: string  } 
+  | { name: 'amount_in', alias?: string  } 
+  | { name: 'amount_not_in', alias?: string  } 
+  | { name: 'amount_lt', alias?: string  } 
+  | { name: 'amount_lte', alias?: string  } 
+  | { name: 'amount_gt', alias?: string  } 
+  | { name: 'amount_gte', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
+  | { name: 'realPrice_not', alias?: string  } 
+  | { name: 'realPrice_in', alias?: string  } 
+  | { name: 'realPrice_not_in', alias?: string  } 
+  | { name: 'realPrice_lt', alias?: string  } 
+  | { name: 'realPrice_lte', alias?: string  } 
+  | { name: 'realPrice_gt', alias?: string  } 
+  | { name: 'realPrice_gte', alias?: string  } 
+  | { name: 'quotation', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -8929,6 +9576,15 @@ export type ShoppingCartWhereUniqueInputInputObject =
   | Extract<keyof ShoppingCartWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
+export interface QuotationItemWhereUniqueInput {
+  id?: string | null
+  key?: string | null
+}
+export type QuotationItemWhereUniqueInputInputObject =
+  | Extract<keyof QuotationItemWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  
 export interface QuotationWhereUniqueInput {
   id?: string | null
 }
@@ -9032,7 +9688,7 @@ export interface ProductItemCreateInput {
   isPublished?: boolean | null
   category?: CategoryCreateOneWithoutProductItemInput
   shoppingCart?: ShoppingCartCreateOneInput | null
-  quotation?: QuotationCreateOneWithoutProductItemsInput | null
+  quotation?: QuotationCreateOneInput | null
   image?: string | null
   relatedProduct?: ProductItemCreateManyInput | null
 }
@@ -9119,7 +9775,7 @@ export interface ProductItemCreateWithoutCategoryInput {
   amount?: number
   isPublished?: boolean | null
   shoppingCart?: ShoppingCartCreateOneInput | null
-  quotation?: QuotationCreateOneWithoutProductItemsInput | null
+  quotation?: QuotationCreateOneInput | null
   image?: string | null
   relatedProduct?: ProductItemCreateManyInput | null
 }
@@ -9212,9 +9868,9 @@ export type QuotationCreateManyWithoutCustomerInputInputObject =
   
 export interface QuotationCreateWithoutCustomerInput {
   id?: string | null
-  docId?: string
-  productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  salesman?: SalesmanCreateOneWithoutQuotationsInput
+  docId?: string | null
+  quotationItem?: QuotationItemCreateManyWithoutQuotationInput | null
+  salesman?: SalesmanCreateOneWithoutQuotationsInput | null
   payment?: PaymentCreateOneWithoutQuotationInput | null
   shipping?: ShippingCreateOneWithoutQuotationInput | null
 }
@@ -9222,63 +9878,34 @@ export type QuotationCreateWithoutCustomerInputInputObject =
   | Extract<keyof QuotationCreateWithoutCustomerInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   
-export interface ProductItemCreateManyWithoutQuotationInput {
-  create?: ProductItemCreateWithoutQuotationInput[]
-  connect?: ProductItemWhereUniqueInput[]
+export interface QuotationItemCreateManyWithoutQuotationInput {
+  create?: QuotationItemCreateWithoutQuotationInput[]
+  connect?: QuotationItemWhereUniqueInput[]
 }
-export type ProductItemCreateManyWithoutQuotationInputInputObject =
-  | Extract<keyof ProductItemCreateManyWithoutQuotationInput, string>
+export type QuotationItemCreateManyWithoutQuotationInputInputObject =
+  | Extract<keyof QuotationItemCreateManyWithoutQuotationInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface ProductItemCreateWithoutQuotationInput {
+export interface QuotationItemCreateWithoutQuotationInput {
   id?: string | null
-  name?: string
-  price?: string
-  salePrice?: string
-  brand?: string
-  unitType?: string
-  description?: string | null
-  MenuDetail?: string
-  TermDetail?: string
+  key?: string
+  product?: ProductItemCreateOneInput
   amount?: number
-  isPublished?: boolean | null
-  category?: CategoryCreateOneWithoutProductItemInput
-  shoppingCart?: ShoppingCartCreateOneInput | null
-  image?: string | null
-  relatedProduct?: ProductItemCreateManyInput | null
+  realPrice?: number
 }
-export type ProductItemCreateWithoutQuotationInputInputObject =
-  | Extract<keyof ProductItemCreateWithoutQuotationInput, string>
+export type QuotationItemCreateWithoutQuotationInputInputObject =
+  | Extract<keyof QuotationItemCreateWithoutQuotationInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'salePrice', alias?: string  } 
-  | { name: 'brand', alias?: string  } 
-  | { name: 'unitType', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'MenuDetail', alias?: string  } 
-  | { name: 'TermDetail', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  | { name: 'product', alias?: string  } 
   | { name: 'amount', alias?: string  } 
-  | { name: 'isPublished', alias?: string  } 
-  | { name: 'category', alias?: string  } 
-  | { name: 'shoppingCart', alias?: string  } 
-  | { name: 'image', alias?: string  } 
-  | { name: 'relatedProduct', alias?: string  } 
-  
-export interface ProductItemCreateManyInput {
-  create?: ProductItemCreateInput[]
-  connect?: ProductItemWhereUniqueInput[]
-}
-export type ProductItemCreateManyInputInputObject =
-  | Extract<keyof ProductItemCreateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
   
 export interface SalesmanCreateOneWithoutQuotationsInput {
   create?: SalesmanCreateWithoutQuotationsInput | null
@@ -9442,9 +10069,9 @@ export type QuotationCreateOneInputInputObject =
   
 export interface QuotationCreateInput {
   id?: string | null
-  docId?: string
-  productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  salesman?: SalesmanCreateOneWithoutQuotationsInput
+  docId?: string | null
+  quotationItem?: QuotationItemCreateManyWithoutQuotationInput | null
+  salesman?: SalesmanCreateOneWithoutQuotationsInput | null
   payment?: PaymentCreateOneWithoutQuotationInput | null
   shipping?: ShippingCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
@@ -9453,7 +10080,7 @@ export type QuotationCreateInputInputObject =
   | Extract<keyof QuotationCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
@@ -9638,9 +10265,9 @@ export type QuotationCreateOneWithoutPaymentInputInputObject =
   
 export interface QuotationCreateWithoutPaymentInput {
   id?: string | null
-  docId?: string
-  productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  salesman?: SalesmanCreateOneWithoutQuotationsInput
+  docId?: string | null
+  quotationItem?: QuotationItemCreateManyWithoutQuotationInput | null
+  salesman?: SalesmanCreateOneWithoutQuotationsInput | null
   shipping?: ShippingCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
 }
@@ -9648,7 +10275,7 @@ export type QuotationCreateWithoutPaymentInputInputObject =
   | Extract<keyof QuotationCreateWithoutPaymentInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -9746,8 +10373,8 @@ export type QuotationCreateManyWithoutSalesmanInputInputObject =
   
 export interface QuotationCreateWithoutSalesmanInput {
   id?: string | null
-  docId?: string
-  productItems?: ProductItemCreateManyWithoutQuotationInput | null
+  docId?: string | null
+  quotationItem?: QuotationItemCreateManyWithoutQuotationInput | null
   payment?: PaymentCreateOneWithoutQuotationInput | null
   shipping?: ShippingCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
@@ -9756,7 +10383,7 @@ export type QuotationCreateWithoutSalesmanInputInputObject =
   | Extract<keyof QuotationCreateWithoutSalesmanInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -9914,9 +10541,9 @@ export type QuotationCreateOneWithoutShippingInputInputObject =
   
 export interface QuotationCreateWithoutShippingInput {
   id?: string | null
-  docId?: string
-  productItems?: ProductItemCreateManyWithoutQuotationInput | null
-  salesman?: SalesmanCreateOneWithoutQuotationsInput
+  docId?: string | null
+  quotationItem?: QuotationItemCreateManyWithoutQuotationInput | null
+  salesman?: SalesmanCreateOneWithoutQuotationsInput | null
   payment?: PaymentCreateOneWithoutQuotationInput | null
   customer?: UserCreateOneWithoutQuotationsInput
 }
@@ -9924,36 +10551,19 @@ export type QuotationCreateWithoutShippingInputInputObject =
   | Extract<keyof QuotationCreateWithoutShippingInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   
-export interface QuotationCreateOneWithoutProductItemsInput {
-  create?: QuotationCreateWithoutProductItemsInput | null
-  connect?: QuotationWhereUniqueInput | null
+export interface ProductItemCreateManyInput {
+  create?: ProductItemCreateInput[]
+  connect?: ProductItemWhereUniqueInput[]
 }
-export type QuotationCreateOneWithoutProductItemsInputInputObject =
-  | Extract<keyof QuotationCreateOneWithoutProductItemsInput, string>
+export type ProductItemCreateManyInputInputObject =
+  | Extract<keyof ProductItemCreateManyInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
-  
-export interface QuotationCreateWithoutProductItemsInput {
-  id?: string | null
-  docId?: string
-  salesman?: SalesmanCreateOneWithoutQuotationsInput
-  payment?: PaymentCreateOneWithoutQuotationInput | null
-  shipping?: ShippingCreateOneWithoutQuotationInput | null
-  customer?: UserCreateOneWithoutQuotationsInput
-}
-export type QuotationCreateWithoutProductItemsInputInputObject =
-  | Extract<keyof QuotationCreateWithoutProductItemsInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'docId', alias?: string  } 
-  | { name: 'salesman', alias?: string  } 
-  | { name: 'payment', alias?: string  } 
-  | { name: 'shipping', alias?: string  } 
-  | { name: 'customer', alias?: string  } 
   
 export interface UserUpdateInput {
   runningId?: number | null
@@ -10075,7 +10685,7 @@ export interface ProductItemUpdateDataInput {
   isPublished?: boolean | null
   category?: CategoryUpdateOneRequiredWithoutProductItemInput | null
   shoppingCart?: ShoppingCartUpdateOneInput | null
-  quotation?: QuotationUpdateOneWithoutProductItemsInput | null
+  quotation?: QuotationUpdateOneInput | null
   image?: string | null
   relatedProduct?: ProductItemUpdateManyInput | null
 }
@@ -10191,7 +10801,7 @@ export interface ProductItemUpdateWithoutCategoryDataInput {
   amount?: number | null
   isPublished?: boolean | null
   shoppingCart?: ShoppingCartUpdateOneInput | null
-  quotation?: QuotationUpdateOneWithoutProductItemsInput | null
+  quotation?: QuotationUpdateOneInput | null
   image?: string | null
   relatedProduct?: ProductItemUpdateManyInput | null
 }
@@ -10314,32 +10924,32 @@ export type QuotationUpdateWithWhereUniqueWithoutCustomerInputInputObject =
   
 export interface QuotationUpdateWithoutCustomerDataInput {
   docId?: string | null
-  productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
+  quotationItem?: QuotationItemUpdateManyWithoutQuotationInput | null
+  salesman?: SalesmanUpdateOneWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
 }
 export type QuotationUpdateWithoutCustomerDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutCustomerDataInput, string>
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   
-export interface ProductItemUpdateManyWithoutQuotationInput {
-  create?: ProductItemCreateWithoutQuotationInput[]
-  delete?: ProductItemWhereUniqueInput[]
-  connect?: ProductItemWhereUniqueInput[]
-  set?: ProductItemWhereUniqueInput[]
-  disconnect?: ProductItemWhereUniqueInput[]
-  update?: ProductItemUpdateWithWhereUniqueWithoutQuotationInput[]
-  upsert?: ProductItemUpsertWithWhereUniqueWithoutQuotationInput[]
-  deleteMany?: ProductItemScalarWhereInput[]
-  updateMany?: ProductItemUpdateManyWithWhereNestedInput[]
+export interface QuotationItemUpdateManyWithoutQuotationInput {
+  create?: QuotationItemCreateWithoutQuotationInput[]
+  delete?: QuotationItemWhereUniqueInput[]
+  connect?: QuotationItemWhereUniqueInput[]
+  set?: QuotationItemWhereUniqueInput[]
+  disconnect?: QuotationItemWhereUniqueInput[]
+  update?: QuotationItemUpdateWithWhereUniqueWithoutQuotationInput[]
+  upsert?: QuotationItemUpsertWithWhereUniqueWithoutQuotationInput[]
+  deleteMany?: QuotationItemScalarWhereInput[]
+  updateMany?: QuotationItemUpdateManyWithWhereNestedInput[]
 }
-export type ProductItemUpdateManyWithoutQuotationInputInputObject =
-  | Extract<keyof ProductItemUpdateManyWithoutQuotationInput, string>
+export type QuotationItemUpdateManyWithoutQuotationInputInputObject =
+  | Extract<keyof QuotationItemUpdateManyWithoutQuotationInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -10350,92 +10960,40 @@ export type ProductItemUpdateManyWithoutQuotationInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface ProductItemUpdateWithWhereUniqueWithoutQuotationInput {
-  where?: ProductItemWhereUniqueInput
-  data?: ProductItemUpdateWithoutQuotationDataInput
+export interface QuotationItemUpdateWithWhereUniqueWithoutQuotationInput {
+  where?: QuotationItemWhereUniqueInput
+  data?: QuotationItemUpdateWithoutQuotationDataInput
 }
-export type ProductItemUpdateWithWhereUniqueWithoutQuotationInputInputObject =
-  | Extract<keyof ProductItemUpdateWithWhereUniqueWithoutQuotationInput, string>
+export type QuotationItemUpdateWithWhereUniqueWithoutQuotationInputInputObject =
+  | Extract<keyof QuotationItemUpdateWithWhereUniqueWithoutQuotationInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface ProductItemUpdateWithoutQuotationDataInput {
-  name?: string | null
-  price?: string | null
-  salePrice?: string | null
-  brand?: string | null
-  unitType?: string | null
-  description?: string | null
-  MenuDetail?: string | null
-  TermDetail?: string | null
+export interface QuotationItemUpdateWithoutQuotationDataInput {
+  key?: string | null
+  product?: ProductItemUpdateOneRequiredInput | null
   amount?: number | null
-  isPublished?: boolean | null
-  category?: CategoryUpdateOneRequiredWithoutProductItemInput | null
-  shoppingCart?: ShoppingCartUpdateOneInput | null
-  image?: string | null
-  relatedProduct?: ProductItemUpdateManyInput | null
+  realPrice?: number | null
 }
-export type ProductItemUpdateWithoutQuotationDataInputInputObject =
-  | Extract<keyof ProductItemUpdateWithoutQuotationDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'salePrice', alias?: string  } 
-  | { name: 'brand', alias?: string  } 
-  | { name: 'unitType', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'MenuDetail', alias?: string  } 
-  | { name: 'TermDetail', alias?: string  } 
+export type QuotationItemUpdateWithoutQuotationDataInputInputObject =
+  | Extract<keyof QuotationItemUpdateWithoutQuotationDataInput, string>
+  | { name: 'key', alias?: string  } 
+  | { name: 'product', alias?: string  } 
   | { name: 'amount', alias?: string  } 
-  | { name: 'isPublished', alias?: string  } 
-  | { name: 'category', alias?: string  } 
-  | { name: 'shoppingCart', alias?: string  } 
-  | { name: 'image', alias?: string  } 
-  | { name: 'relatedProduct', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
   
-export interface ProductItemUpdateManyInput {
-  create?: ProductItemCreateInput[]
-  update?: ProductItemUpdateWithWhereUniqueNestedInput[]
-  upsert?: ProductItemUpsertWithWhereUniqueNestedInput[]
-  delete?: ProductItemWhereUniqueInput[]
-  connect?: ProductItemWhereUniqueInput[]
-  set?: ProductItemWhereUniqueInput[]
-  disconnect?: ProductItemWhereUniqueInput[]
-  deleteMany?: ProductItemScalarWhereInput[]
-  updateMany?: ProductItemUpdateManyWithWhereNestedInput[]
+export interface QuotationItemUpsertWithWhereUniqueWithoutQuotationInput {
+  where?: QuotationItemWhereUniqueInput
+  update?: QuotationItemUpdateWithoutQuotationDataInput
+  create?: QuotationItemCreateWithoutQuotationInput
 }
-export type ProductItemUpdateManyInputInputObject =
-  | Extract<keyof ProductItemUpdateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
-export interface ProductItemUpdateWithWhereUniqueNestedInput {
-  where?: ProductItemWhereUniqueInput
-  data?: ProductItemUpdateDataInput
-}
-export type ProductItemUpdateWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof ProductItemUpdateWithWhereUniqueNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface ProductItemUpsertWithWhereUniqueNestedInput {
-  where?: ProductItemWhereUniqueInput
-  update?: ProductItemUpdateDataInput
-  create?: ProductItemCreateInput
-}
-export type ProductItemUpsertWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof ProductItemUpsertWithWhereUniqueNestedInput, string>
+export type QuotationItemUpsertWithWhereUniqueWithoutQuotationInputInputObject =
+  | Extract<keyof QuotationItemUpsertWithWhereUniqueWithoutQuotationInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface ProductItemScalarWhereInput {
+export interface QuotationItemScalarWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -10450,118 +11008,20 @@ export interface ProductItemScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  price?: string | null
-  price_not?: string | null
-  price_in?: string[]
-  price_not_in?: string[]
-  price_lt?: string | null
-  price_lte?: string | null
-  price_gt?: string | null
-  price_gte?: string | null
-  price_contains?: string | null
-  price_not_contains?: string | null
-  price_starts_with?: string | null
-  price_not_starts_with?: string | null
-  price_ends_with?: string | null
-  price_not_ends_with?: string | null
-  salePrice?: string | null
-  salePrice_not?: string | null
-  salePrice_in?: string[]
-  salePrice_not_in?: string[]
-  salePrice_lt?: string | null
-  salePrice_lte?: string | null
-  salePrice_gt?: string | null
-  salePrice_gte?: string | null
-  salePrice_contains?: string | null
-  salePrice_not_contains?: string | null
-  salePrice_starts_with?: string | null
-  salePrice_not_starts_with?: string | null
-  salePrice_ends_with?: string | null
-  salePrice_not_ends_with?: string | null
-  brand?: string | null
-  brand_not?: string | null
-  brand_in?: string[]
-  brand_not_in?: string[]
-  brand_lt?: string | null
-  brand_lte?: string | null
-  brand_gt?: string | null
-  brand_gte?: string | null
-  brand_contains?: string | null
-  brand_not_contains?: string | null
-  brand_starts_with?: string | null
-  brand_not_starts_with?: string | null
-  brand_ends_with?: string | null
-  brand_not_ends_with?: string | null
-  unitType?: string | null
-  unitType_not?: string | null
-  unitType_in?: string[]
-  unitType_not_in?: string[]
-  unitType_lt?: string | null
-  unitType_lte?: string | null
-  unitType_gt?: string | null
-  unitType_gte?: string | null
-  unitType_contains?: string | null
-  unitType_not_contains?: string | null
-  unitType_starts_with?: string | null
-  unitType_not_starts_with?: string | null
-  unitType_ends_with?: string | null
-  unitType_not_ends_with?: string | null
-  description?: string | null
-  description_not?: string | null
-  description_in?: string[]
-  description_not_in?: string[]
-  description_lt?: string | null
-  description_lte?: string | null
-  description_gt?: string | null
-  description_gte?: string | null
-  description_contains?: string | null
-  description_not_contains?: string | null
-  description_starts_with?: string | null
-  description_not_starts_with?: string | null
-  description_ends_with?: string | null
-  description_not_ends_with?: string | null
-  MenuDetail?: string | null
-  MenuDetail_not?: string | null
-  MenuDetail_in?: string[]
-  MenuDetail_not_in?: string[]
-  MenuDetail_lt?: string | null
-  MenuDetail_lte?: string | null
-  MenuDetail_gt?: string | null
-  MenuDetail_gte?: string | null
-  MenuDetail_contains?: string | null
-  MenuDetail_not_contains?: string | null
-  MenuDetail_starts_with?: string | null
-  MenuDetail_not_starts_with?: string | null
-  MenuDetail_ends_with?: string | null
-  MenuDetail_not_ends_with?: string | null
-  TermDetail?: string | null
-  TermDetail_not?: string | null
-  TermDetail_in?: string[]
-  TermDetail_not_in?: string[]
-  TermDetail_lt?: string | null
-  TermDetail_lte?: string | null
-  TermDetail_gt?: string | null
-  TermDetail_gte?: string | null
-  TermDetail_contains?: string | null
-  TermDetail_not_contains?: string | null
-  TermDetail_starts_with?: string | null
-  TermDetail_not_starts_with?: string | null
-  TermDetail_ends_with?: string | null
-  TermDetail_not_ends_with?: string | null
+  key?: string | null
+  key_not?: string | null
+  key_in?: string[]
+  key_not_in?: string[]
+  key_lt?: string | null
+  key_lte?: string | null
+  key_gt?: string | null
+  key_gte?: string | null
+  key_contains?: string | null
+  key_not_contains?: string | null
+  key_starts_with?: string | null
+  key_not_starts_with?: string | null
+  key_ends_with?: string | null
+  key_not_ends_with?: string | null
   amount?: number | null
   amount_not?: number | null
   amount_in?: number[]
@@ -10570,44 +11030,20 @@ export interface ProductItemScalarWhereInput {
   amount_lte?: number | null
   amount_gt?: number | null
   amount_gte?: number | null
-  isPublished?: boolean | null
-  isPublished_not?: boolean | null
-  createdAt?: string | null
-  createdAt_not?: string | null
-  createdAt_in?: string[]
-  createdAt_not_in?: string[]
-  createdAt_lt?: string | null
-  createdAt_lte?: string | null
-  createdAt_gt?: string | null
-  createdAt_gte?: string | null
-  updatedAt?: string | null
-  updatedAt_not?: string | null
-  updatedAt_in?: string[]
-  updatedAt_not_in?: string[]
-  updatedAt_lt?: string | null
-  updatedAt_lte?: string | null
-  updatedAt_gt?: string | null
-  updatedAt_gte?: string | null
-  image?: string | null
-  image_not?: string | null
-  image_in?: string[]
-  image_not_in?: string[]
-  image_lt?: string | null
-  image_lte?: string | null
-  image_gt?: string | null
-  image_gte?: string | null
-  image_contains?: string | null
-  image_not_contains?: string | null
-  image_starts_with?: string | null
-  image_not_starts_with?: string | null
-  image_ends_with?: string | null
-  image_not_ends_with?: string | null
-  AND?: ProductItemScalarWhereInput[]
-  OR?: ProductItemScalarWhereInput[]
-  NOT?: ProductItemScalarWhereInput[]
+  realPrice?: number | null
+  realPrice_not?: number | null
+  realPrice_in?: number[]
+  realPrice_not_in?: number[]
+  realPrice_lt?: number | null
+  realPrice_lte?: number | null
+  realPrice_gt?: number | null
+  realPrice_gte?: number | null
+  AND?: QuotationItemScalarWhereInput[]
+  OR?: QuotationItemScalarWhereInput[]
+  NOT?: QuotationItemScalarWhereInput[]
 }
-export type ProductItemScalarWhereInputInputObject =
-  | Extract<keyof ProductItemScalarWhereInput, string>
+export type QuotationItemScalarWhereInputInputObject =
+  | Extract<keyof QuotationItemScalarWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -10622,118 +11058,20 @@ export type ProductItemScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'price_not', alias?: string  } 
-  | { name: 'price_in', alias?: string  } 
-  | { name: 'price_not_in', alias?: string  } 
-  | { name: 'price_lt', alias?: string  } 
-  | { name: 'price_lte', alias?: string  } 
-  | { name: 'price_gt', alias?: string  } 
-  | { name: 'price_gte', alias?: string  } 
-  | { name: 'price_contains', alias?: string  } 
-  | { name: 'price_not_contains', alias?: string  } 
-  | { name: 'price_starts_with', alias?: string  } 
-  | { name: 'price_not_starts_with', alias?: string  } 
-  | { name: 'price_ends_with', alias?: string  } 
-  | { name: 'price_not_ends_with', alias?: string  } 
-  | { name: 'salePrice', alias?: string  } 
-  | { name: 'salePrice_not', alias?: string  } 
-  | { name: 'salePrice_in', alias?: string  } 
-  | { name: 'salePrice_not_in', alias?: string  } 
-  | { name: 'salePrice_lt', alias?: string  } 
-  | { name: 'salePrice_lte', alias?: string  } 
-  | { name: 'salePrice_gt', alias?: string  } 
-  | { name: 'salePrice_gte', alias?: string  } 
-  | { name: 'salePrice_contains', alias?: string  } 
-  | { name: 'salePrice_not_contains', alias?: string  } 
-  | { name: 'salePrice_starts_with', alias?: string  } 
-  | { name: 'salePrice_not_starts_with', alias?: string  } 
-  | { name: 'salePrice_ends_with', alias?: string  } 
-  | { name: 'salePrice_not_ends_with', alias?: string  } 
-  | { name: 'brand', alias?: string  } 
-  | { name: 'brand_not', alias?: string  } 
-  | { name: 'brand_in', alias?: string  } 
-  | { name: 'brand_not_in', alias?: string  } 
-  | { name: 'brand_lt', alias?: string  } 
-  | { name: 'brand_lte', alias?: string  } 
-  | { name: 'brand_gt', alias?: string  } 
-  | { name: 'brand_gte', alias?: string  } 
-  | { name: 'brand_contains', alias?: string  } 
-  | { name: 'brand_not_contains', alias?: string  } 
-  | { name: 'brand_starts_with', alias?: string  } 
-  | { name: 'brand_not_starts_with', alias?: string  } 
-  | { name: 'brand_ends_with', alias?: string  } 
-  | { name: 'brand_not_ends_with', alias?: string  } 
-  | { name: 'unitType', alias?: string  } 
-  | { name: 'unitType_not', alias?: string  } 
-  | { name: 'unitType_in', alias?: string  } 
-  | { name: 'unitType_not_in', alias?: string  } 
-  | { name: 'unitType_lt', alias?: string  } 
-  | { name: 'unitType_lte', alias?: string  } 
-  | { name: 'unitType_gt', alias?: string  } 
-  | { name: 'unitType_gte', alias?: string  } 
-  | { name: 'unitType_contains', alias?: string  } 
-  | { name: 'unitType_not_contains', alias?: string  } 
-  | { name: 'unitType_starts_with', alias?: string  } 
-  | { name: 'unitType_not_starts_with', alias?: string  } 
-  | { name: 'unitType_ends_with', alias?: string  } 
-  | { name: 'unitType_not_ends_with', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'description_not', alias?: string  } 
-  | { name: 'description_in', alias?: string  } 
-  | { name: 'description_not_in', alias?: string  } 
-  | { name: 'description_lt', alias?: string  } 
-  | { name: 'description_lte', alias?: string  } 
-  | { name: 'description_gt', alias?: string  } 
-  | { name: 'description_gte', alias?: string  } 
-  | { name: 'description_contains', alias?: string  } 
-  | { name: 'description_not_contains', alias?: string  } 
-  | { name: 'description_starts_with', alias?: string  } 
-  | { name: 'description_not_starts_with', alias?: string  } 
-  | { name: 'description_ends_with', alias?: string  } 
-  | { name: 'description_not_ends_with', alias?: string  } 
-  | { name: 'MenuDetail', alias?: string  } 
-  | { name: 'MenuDetail_not', alias?: string  } 
-  | { name: 'MenuDetail_in', alias?: string  } 
-  | { name: 'MenuDetail_not_in', alias?: string  } 
-  | { name: 'MenuDetail_lt', alias?: string  } 
-  | { name: 'MenuDetail_lte', alias?: string  } 
-  | { name: 'MenuDetail_gt', alias?: string  } 
-  | { name: 'MenuDetail_gte', alias?: string  } 
-  | { name: 'MenuDetail_contains', alias?: string  } 
-  | { name: 'MenuDetail_not_contains', alias?: string  } 
-  | { name: 'MenuDetail_starts_with', alias?: string  } 
-  | { name: 'MenuDetail_not_starts_with', alias?: string  } 
-  | { name: 'MenuDetail_ends_with', alias?: string  } 
-  | { name: 'MenuDetail_not_ends_with', alias?: string  } 
-  | { name: 'TermDetail', alias?: string  } 
-  | { name: 'TermDetail_not', alias?: string  } 
-  | { name: 'TermDetail_in', alias?: string  } 
-  | { name: 'TermDetail_not_in', alias?: string  } 
-  | { name: 'TermDetail_lt', alias?: string  } 
-  | { name: 'TermDetail_lte', alias?: string  } 
-  | { name: 'TermDetail_gt', alias?: string  } 
-  | { name: 'TermDetail_gte', alias?: string  } 
-  | { name: 'TermDetail_contains', alias?: string  } 
-  | { name: 'TermDetail_not_contains', alias?: string  } 
-  | { name: 'TermDetail_starts_with', alias?: string  } 
-  | { name: 'TermDetail_not_starts_with', alias?: string  } 
-  | { name: 'TermDetail_ends_with', alias?: string  } 
-  | { name: 'TermDetail_not_ends_with', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  | { name: 'key_not', alias?: string  } 
+  | { name: 'key_in', alias?: string  } 
+  | { name: 'key_not_in', alias?: string  } 
+  | { name: 'key_lt', alias?: string  } 
+  | { name: 'key_lte', alias?: string  } 
+  | { name: 'key_gt', alias?: string  } 
+  | { name: 'key_gte', alias?: string  } 
+  | { name: 'key_contains', alias?: string  } 
+  | { name: 'key_not_contains', alias?: string  } 
+  | { name: 'key_starts_with', alias?: string  } 
+  | { name: 'key_not_starts_with', alias?: string  } 
+  | { name: 'key_ends_with', alias?: string  } 
+  | { name: 'key_not_ends_with', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'amount_not', alias?: string  } 
   | { name: 'amount_in', alias?: string  } 
@@ -10742,100 +11080,53 @@ export type ProductItemScalarWhereInputInputObject =
   | { name: 'amount_lte', alias?: string  } 
   | { name: 'amount_gt', alias?: string  } 
   | { name: 'amount_gte', alias?: string  } 
-  | { name: 'isPublished', alias?: string  } 
-  | { name: 'isPublished_not', alias?: string  } 
-  | { name: 'createdAt', alias?: string  } 
-  | { name: 'createdAt_not', alias?: string  } 
-  | { name: 'createdAt_in', alias?: string  } 
-  | { name: 'createdAt_not_in', alias?: string  } 
-  | { name: 'createdAt_lt', alias?: string  } 
-  | { name: 'createdAt_lte', alias?: string  } 
-  | { name: 'createdAt_gt', alias?: string  } 
-  | { name: 'createdAt_gte', alias?: string  } 
-  | { name: 'updatedAt', alias?: string  } 
-  | { name: 'updatedAt_not', alias?: string  } 
-  | { name: 'updatedAt_in', alias?: string  } 
-  | { name: 'updatedAt_not_in', alias?: string  } 
-  | { name: 'updatedAt_lt', alias?: string  } 
-  | { name: 'updatedAt_lte', alias?: string  } 
-  | { name: 'updatedAt_gt', alias?: string  } 
-  | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'image', alias?: string  } 
-  | { name: 'image_not', alias?: string  } 
-  | { name: 'image_in', alias?: string  } 
-  | { name: 'image_not_in', alias?: string  } 
-  | { name: 'image_lt', alias?: string  } 
-  | { name: 'image_lte', alias?: string  } 
-  | { name: 'image_gt', alias?: string  } 
-  | { name: 'image_gte', alias?: string  } 
-  | { name: 'image_contains', alias?: string  } 
-  | { name: 'image_not_contains', alias?: string  } 
-  | { name: 'image_starts_with', alias?: string  } 
-  | { name: 'image_not_starts_with', alias?: string  } 
-  | { name: 'image_ends_with', alias?: string  } 
-  | { name: 'image_not_ends_with', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
+  | { name: 'realPrice_not', alias?: string  } 
+  | { name: 'realPrice_in', alias?: string  } 
+  | { name: 'realPrice_not_in', alias?: string  } 
+  | { name: 'realPrice_lt', alias?: string  } 
+  | { name: 'realPrice_lte', alias?: string  } 
+  | { name: 'realPrice_gt', alias?: string  } 
+  | { name: 'realPrice_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface ProductItemUpdateManyWithWhereNestedInput {
-  where?: ProductItemScalarWhereInput
-  data?: ProductItemUpdateManyDataInput
+export interface QuotationItemUpdateManyWithWhereNestedInput {
+  where?: QuotationItemScalarWhereInput
+  data?: QuotationItemUpdateManyDataInput
 }
-export type ProductItemUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof ProductItemUpdateManyWithWhereNestedInput, string>
+export type QuotationItemUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof QuotationItemUpdateManyWithWhereNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface ProductItemUpdateManyDataInput {
-  name?: string | null
-  price?: string | null
-  salePrice?: string | null
-  brand?: string | null
-  unitType?: string | null
-  description?: string | null
-  MenuDetail?: string | null
-  TermDetail?: string | null
+export interface QuotationItemUpdateManyDataInput {
+  key?: string | null
   amount?: number | null
-  isPublished?: boolean | null
-  image?: string | null
+  realPrice?: number | null
 }
-export type ProductItemUpdateManyDataInputInputObject =
-  | Extract<keyof ProductItemUpdateManyDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'salePrice', alias?: string  } 
-  | { name: 'brand', alias?: string  } 
-  | { name: 'unitType', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'MenuDetail', alias?: string  } 
-  | { name: 'TermDetail', alias?: string  } 
+export type QuotationItemUpdateManyDataInputInputObject =
+  | Extract<keyof QuotationItemUpdateManyDataInput, string>
+  | { name: 'key', alias?: string  } 
   | { name: 'amount', alias?: string  } 
-  | { name: 'isPublished', alias?: string  } 
-  | { name: 'image', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
   
-export interface ProductItemUpsertWithWhereUniqueWithoutQuotationInput {
-  where?: ProductItemWhereUniqueInput
-  update?: ProductItemUpdateWithoutQuotationDataInput
-  create?: ProductItemCreateWithoutQuotationInput
-}
-export type ProductItemUpsertWithWhereUniqueWithoutQuotationInputInputObject =
-  | Extract<keyof ProductItemUpsertWithWhereUniqueWithoutQuotationInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface SalesmanUpdateOneRequiredWithoutQuotationsInput {
+export interface SalesmanUpdateOneWithoutQuotationsInput {
   create?: SalesmanCreateWithoutQuotationsInput | null
   update?: SalesmanUpdateWithoutQuotationsDataInput | null
   upsert?: SalesmanUpsertWithoutQuotationsInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
   connect?: SalesmanWhereUniqueInput | null
 }
-export type SalesmanUpdateOneRequiredWithoutQuotationsInputInputObject =
-  | Extract<keyof SalesmanUpdateOneRequiredWithoutQuotationsInput, string>
+export type SalesmanUpdateOneWithoutQuotationsInputInputObject =
+  | Extract<keyof SalesmanUpdateOneWithoutQuotationsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
 export interface SalesmanUpdateWithoutQuotationsDataInput {
@@ -11215,8 +11506,8 @@ export type QuotationUpdateOneRequiredInputInputObject =
   
 export interface QuotationUpdateDataInput {
   docId?: string | null
-  productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
+  quotationItem?: QuotationItemUpdateManyWithoutQuotationInput | null
+  salesman?: SalesmanUpdateOneWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
@@ -11224,7 +11515,7 @@ export interface QuotationUpdateDataInput {
 export type QuotationUpdateDataInputInputObject =
   | Extract<keyof QuotationUpdateDataInput, string>
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
@@ -11358,7 +11649,7 @@ export type QuotationUpdateWithWhereUniqueWithoutSalesmanInputInputObject =
   
 export interface QuotationUpdateWithoutSalesmanDataInput {
   docId?: string | null
-  productItems?: ProductItemUpdateManyWithoutQuotationInput | null
+  quotationItem?: QuotationItemUpdateManyWithoutQuotationInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
@@ -11366,7 +11657,7 @@ export interface QuotationUpdateWithoutSalesmanDataInput {
 export type QuotationUpdateWithoutSalesmanDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutSalesmanDataInput, string>
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -11576,15 +11867,15 @@ export type QuotationUpdateOneRequiredWithoutShippingInputInputObject =
   
 export interface QuotationUpdateWithoutShippingDataInput {
   docId?: string | null
-  productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
+  quotationItem?: QuotationItemUpdateManyWithoutQuotationInput | null
+  salesman?: SalesmanUpdateOneWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
 }
 export type QuotationUpdateWithoutShippingDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutShippingDataInput, string>
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -11877,15 +12168,15 @@ export type QuotationUpdateOneRequiredWithoutPaymentInputInputObject =
   
 export interface QuotationUpdateWithoutPaymentDataInput {
   docId?: string | null
-  productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
+  quotationItem?: QuotationItemUpdateManyWithoutQuotationInput | null
+  salesman?: SalesmanUpdateOneWithoutQuotationsInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
 }
 export type QuotationUpdateWithoutPaymentDataInputInputObject =
   | Extract<keyof QuotationUpdateWithoutPaymentDataInput, string>
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
@@ -12678,16 +12969,16 @@ export type ShoppingCartUpsertNestedInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface QuotationUpdateOneWithoutProductItemsInput {
-  create?: QuotationCreateWithoutProductItemsInput | null
-  update?: QuotationUpdateWithoutProductItemsDataInput | null
-  upsert?: QuotationUpsertWithoutProductItemsInput | null
+export interface QuotationUpdateOneInput {
+  create?: QuotationCreateInput | null
+  update?: QuotationUpdateDataInput | null
+  upsert?: QuotationUpsertNestedInput | null
   delete?: boolean | null
   disconnect?: boolean | null
   connect?: QuotationWhereUniqueInput | null
 }
-export type QuotationUpdateOneWithoutProductItemsInputInputObject =
-  | Extract<keyof QuotationUpdateOneWithoutProductItemsInput, string>
+export type QuotationUpdateOneInputInputObject =
+  | Extract<keyof QuotationUpdateOneInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
@@ -12695,29 +12986,427 @@ export type QuotationUpdateOneWithoutProductItemsInputInputObject =
   | { name: 'disconnect', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface QuotationUpdateWithoutProductItemsDataInput {
-  docId?: string | null
-  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
-  payment?: PaymentUpdateOneWithoutQuotationInput | null
-  shipping?: ShippingUpdateOneWithoutQuotationInput | null
-  customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
+export interface ProductItemUpdateManyInput {
+  create?: ProductItemCreateInput[]
+  update?: ProductItemUpdateWithWhereUniqueNestedInput[]
+  upsert?: ProductItemUpsertWithWhereUniqueNestedInput[]
+  delete?: ProductItemWhereUniqueInput[]
+  connect?: ProductItemWhereUniqueInput[]
+  set?: ProductItemWhereUniqueInput[]
+  disconnect?: ProductItemWhereUniqueInput[]
+  deleteMany?: ProductItemScalarWhereInput[]
+  updateMany?: ProductItemUpdateManyWithWhereNestedInput[]
 }
-export type QuotationUpdateWithoutProductItemsDataInputInputObject =
-  | Extract<keyof QuotationUpdateWithoutProductItemsDataInput, string>
-  | { name: 'docId', alias?: string  } 
-  | { name: 'salesman', alias?: string  } 
-  | { name: 'payment', alias?: string  } 
-  | { name: 'shipping', alias?: string  } 
-  | { name: 'customer', alias?: string  } 
+export type ProductItemUpdateManyInputInputObject =
+  | Extract<keyof ProductItemUpdateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
   
-export interface QuotationUpsertWithoutProductItemsInput {
-  update?: QuotationUpdateWithoutProductItemsDataInput
-  create?: QuotationCreateWithoutProductItemsInput
+export interface ProductItemUpdateWithWhereUniqueNestedInput {
+  where?: ProductItemWhereUniqueInput
+  data?: ProductItemUpdateDataInput
 }
-export type QuotationUpsertWithoutProductItemsInputInputObject =
-  | Extract<keyof QuotationUpsertWithoutProductItemsInput, string>
+export type ProductItemUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof ProductItemUpdateWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface ProductItemUpsertWithWhereUniqueNestedInput {
+  where?: ProductItemWhereUniqueInput
+  update?: ProductItemUpdateDataInput
+  create?: ProductItemCreateInput
+}
+export type ProductItemUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof ProductItemUpsertWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
+  
+export interface ProductItemScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  price?: string | null
+  price_not?: string | null
+  price_in?: string[]
+  price_not_in?: string[]
+  price_lt?: string | null
+  price_lte?: string | null
+  price_gt?: string | null
+  price_gte?: string | null
+  price_contains?: string | null
+  price_not_contains?: string | null
+  price_starts_with?: string | null
+  price_not_starts_with?: string | null
+  price_ends_with?: string | null
+  price_not_ends_with?: string | null
+  salePrice?: string | null
+  salePrice_not?: string | null
+  salePrice_in?: string[]
+  salePrice_not_in?: string[]
+  salePrice_lt?: string | null
+  salePrice_lte?: string | null
+  salePrice_gt?: string | null
+  salePrice_gte?: string | null
+  salePrice_contains?: string | null
+  salePrice_not_contains?: string | null
+  salePrice_starts_with?: string | null
+  salePrice_not_starts_with?: string | null
+  salePrice_ends_with?: string | null
+  salePrice_not_ends_with?: string | null
+  brand?: string | null
+  brand_not?: string | null
+  brand_in?: string[]
+  brand_not_in?: string[]
+  brand_lt?: string | null
+  brand_lte?: string | null
+  brand_gt?: string | null
+  brand_gte?: string | null
+  brand_contains?: string | null
+  brand_not_contains?: string | null
+  brand_starts_with?: string | null
+  brand_not_starts_with?: string | null
+  brand_ends_with?: string | null
+  brand_not_ends_with?: string | null
+  unitType?: string | null
+  unitType_not?: string | null
+  unitType_in?: string[]
+  unitType_not_in?: string[]
+  unitType_lt?: string | null
+  unitType_lte?: string | null
+  unitType_gt?: string | null
+  unitType_gte?: string | null
+  unitType_contains?: string | null
+  unitType_not_contains?: string | null
+  unitType_starts_with?: string | null
+  unitType_not_starts_with?: string | null
+  unitType_ends_with?: string | null
+  unitType_not_ends_with?: string | null
+  description?: string | null
+  description_not?: string | null
+  description_in?: string[]
+  description_not_in?: string[]
+  description_lt?: string | null
+  description_lte?: string | null
+  description_gt?: string | null
+  description_gte?: string | null
+  description_contains?: string | null
+  description_not_contains?: string | null
+  description_starts_with?: string | null
+  description_not_starts_with?: string | null
+  description_ends_with?: string | null
+  description_not_ends_with?: string | null
+  MenuDetail?: string | null
+  MenuDetail_not?: string | null
+  MenuDetail_in?: string[]
+  MenuDetail_not_in?: string[]
+  MenuDetail_lt?: string | null
+  MenuDetail_lte?: string | null
+  MenuDetail_gt?: string | null
+  MenuDetail_gte?: string | null
+  MenuDetail_contains?: string | null
+  MenuDetail_not_contains?: string | null
+  MenuDetail_starts_with?: string | null
+  MenuDetail_not_starts_with?: string | null
+  MenuDetail_ends_with?: string | null
+  MenuDetail_not_ends_with?: string | null
+  TermDetail?: string | null
+  TermDetail_not?: string | null
+  TermDetail_in?: string[]
+  TermDetail_not_in?: string[]
+  TermDetail_lt?: string | null
+  TermDetail_lte?: string | null
+  TermDetail_gt?: string | null
+  TermDetail_gte?: string | null
+  TermDetail_contains?: string | null
+  TermDetail_not_contains?: string | null
+  TermDetail_starts_with?: string | null
+  TermDetail_not_starts_with?: string | null
+  TermDetail_ends_with?: string | null
+  TermDetail_not_ends_with?: string | null
+  amount?: number | null
+  amount_not?: number | null
+  amount_in?: number[]
+  amount_not_in?: number[]
+  amount_lt?: number | null
+  amount_lte?: number | null
+  amount_gt?: number | null
+  amount_gte?: number | null
+  isPublished?: boolean | null
+  isPublished_not?: boolean | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  image?: string | null
+  image_not?: string | null
+  image_in?: string[]
+  image_not_in?: string[]
+  image_lt?: string | null
+  image_lte?: string | null
+  image_gt?: string | null
+  image_gte?: string | null
+  image_contains?: string | null
+  image_not_contains?: string | null
+  image_starts_with?: string | null
+  image_not_starts_with?: string | null
+  image_ends_with?: string | null
+  image_not_ends_with?: string | null
+  AND?: ProductItemScalarWhereInput[]
+  OR?: ProductItemScalarWhereInput[]
+  NOT?: ProductItemScalarWhereInput[]
+}
+export type ProductItemScalarWhereInputInputObject =
+  | Extract<keyof ProductItemScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'price', alias?: string  } 
+  | { name: 'price_not', alias?: string  } 
+  | { name: 'price_in', alias?: string  } 
+  | { name: 'price_not_in', alias?: string  } 
+  | { name: 'price_lt', alias?: string  } 
+  | { name: 'price_lte', alias?: string  } 
+  | { name: 'price_gt', alias?: string  } 
+  | { name: 'price_gte', alias?: string  } 
+  | { name: 'price_contains', alias?: string  } 
+  | { name: 'price_not_contains', alias?: string  } 
+  | { name: 'price_starts_with', alias?: string  } 
+  | { name: 'price_not_starts_with', alias?: string  } 
+  | { name: 'price_ends_with', alias?: string  } 
+  | { name: 'price_not_ends_with', alias?: string  } 
+  | { name: 'salePrice', alias?: string  } 
+  | { name: 'salePrice_not', alias?: string  } 
+  | { name: 'salePrice_in', alias?: string  } 
+  | { name: 'salePrice_not_in', alias?: string  } 
+  | { name: 'salePrice_lt', alias?: string  } 
+  | { name: 'salePrice_lte', alias?: string  } 
+  | { name: 'salePrice_gt', alias?: string  } 
+  | { name: 'salePrice_gte', alias?: string  } 
+  | { name: 'salePrice_contains', alias?: string  } 
+  | { name: 'salePrice_not_contains', alias?: string  } 
+  | { name: 'salePrice_starts_with', alias?: string  } 
+  | { name: 'salePrice_not_starts_with', alias?: string  } 
+  | { name: 'salePrice_ends_with', alias?: string  } 
+  | { name: 'salePrice_not_ends_with', alias?: string  } 
+  | { name: 'brand', alias?: string  } 
+  | { name: 'brand_not', alias?: string  } 
+  | { name: 'brand_in', alias?: string  } 
+  | { name: 'brand_not_in', alias?: string  } 
+  | { name: 'brand_lt', alias?: string  } 
+  | { name: 'brand_lte', alias?: string  } 
+  | { name: 'brand_gt', alias?: string  } 
+  | { name: 'brand_gte', alias?: string  } 
+  | { name: 'brand_contains', alias?: string  } 
+  | { name: 'brand_not_contains', alias?: string  } 
+  | { name: 'brand_starts_with', alias?: string  } 
+  | { name: 'brand_not_starts_with', alias?: string  } 
+  | { name: 'brand_ends_with', alias?: string  } 
+  | { name: 'brand_not_ends_with', alias?: string  } 
+  | { name: 'unitType', alias?: string  } 
+  | { name: 'unitType_not', alias?: string  } 
+  | { name: 'unitType_in', alias?: string  } 
+  | { name: 'unitType_not_in', alias?: string  } 
+  | { name: 'unitType_lt', alias?: string  } 
+  | { name: 'unitType_lte', alias?: string  } 
+  | { name: 'unitType_gt', alias?: string  } 
+  | { name: 'unitType_gte', alias?: string  } 
+  | { name: 'unitType_contains', alias?: string  } 
+  | { name: 'unitType_not_contains', alias?: string  } 
+  | { name: 'unitType_starts_with', alias?: string  } 
+  | { name: 'unitType_not_starts_with', alias?: string  } 
+  | { name: 'unitType_ends_with', alias?: string  } 
+  | { name: 'unitType_not_ends_with', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'description_not', alias?: string  } 
+  | { name: 'description_in', alias?: string  } 
+  | { name: 'description_not_in', alias?: string  } 
+  | { name: 'description_lt', alias?: string  } 
+  | { name: 'description_lte', alias?: string  } 
+  | { name: 'description_gt', alias?: string  } 
+  | { name: 'description_gte', alias?: string  } 
+  | { name: 'description_contains', alias?: string  } 
+  | { name: 'description_not_contains', alias?: string  } 
+  | { name: 'description_starts_with', alias?: string  } 
+  | { name: 'description_not_starts_with', alias?: string  } 
+  | { name: 'description_ends_with', alias?: string  } 
+  | { name: 'description_not_ends_with', alias?: string  } 
+  | { name: 'MenuDetail', alias?: string  } 
+  | { name: 'MenuDetail_not', alias?: string  } 
+  | { name: 'MenuDetail_in', alias?: string  } 
+  | { name: 'MenuDetail_not_in', alias?: string  } 
+  | { name: 'MenuDetail_lt', alias?: string  } 
+  | { name: 'MenuDetail_lte', alias?: string  } 
+  | { name: 'MenuDetail_gt', alias?: string  } 
+  | { name: 'MenuDetail_gte', alias?: string  } 
+  | { name: 'MenuDetail_contains', alias?: string  } 
+  | { name: 'MenuDetail_not_contains', alias?: string  } 
+  | { name: 'MenuDetail_starts_with', alias?: string  } 
+  | { name: 'MenuDetail_not_starts_with', alias?: string  } 
+  | { name: 'MenuDetail_ends_with', alias?: string  } 
+  | { name: 'MenuDetail_not_ends_with', alias?: string  } 
+  | { name: 'TermDetail', alias?: string  } 
+  | { name: 'TermDetail_not', alias?: string  } 
+  | { name: 'TermDetail_in', alias?: string  } 
+  | { name: 'TermDetail_not_in', alias?: string  } 
+  | { name: 'TermDetail_lt', alias?: string  } 
+  | { name: 'TermDetail_lte', alias?: string  } 
+  | { name: 'TermDetail_gt', alias?: string  } 
+  | { name: 'TermDetail_gte', alias?: string  } 
+  | { name: 'TermDetail_contains', alias?: string  } 
+  | { name: 'TermDetail_not_contains', alias?: string  } 
+  | { name: 'TermDetail_starts_with', alias?: string  } 
+  | { name: 'TermDetail_not_starts_with', alias?: string  } 
+  | { name: 'TermDetail_ends_with', alias?: string  } 
+  | { name: 'TermDetail_not_ends_with', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'amount_not', alias?: string  } 
+  | { name: 'amount_in', alias?: string  } 
+  | { name: 'amount_not_in', alias?: string  } 
+  | { name: 'amount_lt', alias?: string  } 
+  | { name: 'amount_lte', alias?: string  } 
+  | { name: 'amount_gt', alias?: string  } 
+  | { name: 'amount_gte', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'isPublished_not', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'image', alias?: string  } 
+  | { name: 'image_not', alias?: string  } 
+  | { name: 'image_in', alias?: string  } 
+  | { name: 'image_not_in', alias?: string  } 
+  | { name: 'image_lt', alias?: string  } 
+  | { name: 'image_lte', alias?: string  } 
+  | { name: 'image_gt', alias?: string  } 
+  | { name: 'image_gte', alias?: string  } 
+  | { name: 'image_contains', alias?: string  } 
+  | { name: 'image_not_contains', alias?: string  } 
+  | { name: 'image_starts_with', alias?: string  } 
+  | { name: 'image_not_starts_with', alias?: string  } 
+  | { name: 'image_ends_with', alias?: string  } 
+  | { name: 'image_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface ProductItemUpdateManyWithWhereNestedInput {
+  where?: ProductItemScalarWhereInput
+  data?: ProductItemUpdateManyDataInput
+}
+export type ProductItemUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof ProductItemUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface ProductItemUpdateManyDataInput {
+  name?: string | null
+  price?: string | null
+  salePrice?: string | null
+  brand?: string | null
+  unitType?: string | null
+  description?: string | null
+  MenuDetail?: string | null
+  TermDetail?: string | null
+  amount?: number | null
+  isPublished?: boolean | null
+  image?: string | null
+}
+export type ProductItemUpdateManyDataInputInputObject =
+  | Extract<keyof ProductItemUpdateManyDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'price', alias?: string  } 
+  | { name: 'salePrice', alias?: string  } 
+  | { name: 'brand', alias?: string  } 
+  | { name: 'unitType', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'MenuDetail', alias?: string  } 
+  | { name: 'TermDetail', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'image', alias?: string  } 
   
 export interface ProductItemUpsertWithWhereUniqueWithoutCategoryInput {
   where?: ProductItemWhereUniqueInput
@@ -13138,7 +13827,7 @@ export interface ProductItemUpdateInput {
   isPublished?: boolean | null
   category?: CategoryUpdateOneRequiredWithoutProductItemInput | null
   shoppingCart?: ShoppingCartUpdateOneInput | null
-  quotation?: QuotationUpdateOneWithoutProductItemsInput | null
+  quotation?: QuotationUpdateOneInput | null
   image?: string | null
   relatedProduct?: ProductItemUpdateManyInput | null
 }
@@ -13297,10 +13986,116 @@ export type ShoppingCartUpdateManyMutationInputInputObject =
   | Extract<keyof ShoppingCartUpdateManyMutationInput, string>
   | { name: 'total_cost', alias?: string  } 
   
+export interface QuotationItemCreateInput {
+  id?: string | null
+  key?: string
+  product?: ProductItemCreateOneInput
+  amount?: number
+  realPrice?: number
+  quotation?: QuotationCreateOneWithoutQuotationItemInput
+}
+export type QuotationItemCreateInputInputObject =
+  | Extract<keyof QuotationItemCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  | { name: 'product', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
+  | { name: 'quotation', alias?: string  } 
+  
+export interface QuotationCreateOneWithoutQuotationItemInput {
+  create?: QuotationCreateWithoutQuotationItemInput | null
+  connect?: QuotationWhereUniqueInput | null
+}
+export type QuotationCreateOneWithoutQuotationItemInputInputObject =
+  | Extract<keyof QuotationCreateOneWithoutQuotationItemInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface QuotationCreateWithoutQuotationItemInput {
+  id?: string | null
+  docId?: string | null
+  salesman?: SalesmanCreateOneWithoutQuotationsInput | null
+  payment?: PaymentCreateOneWithoutQuotationInput | null
+  shipping?: ShippingCreateOneWithoutQuotationInput | null
+  customer?: UserCreateOneWithoutQuotationsInput
+}
+export type QuotationCreateWithoutQuotationItemInputInputObject =
+  | Extract<keyof QuotationCreateWithoutQuotationItemInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'docId', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
+  | { name: 'payment', alias?: string  } 
+  | { name: 'shipping', alias?: string  } 
+  | { name: 'customer', alias?: string  } 
+  
+export interface QuotationItemUpdateInput {
+  key?: string | null
+  product?: ProductItemUpdateOneRequiredInput | null
+  amount?: number | null
+  realPrice?: number | null
+  quotation?: QuotationUpdateOneRequiredWithoutQuotationItemInput | null
+}
+export type QuotationItemUpdateInputInputObject =
+  | Extract<keyof QuotationItemUpdateInput, string>
+  | { name: 'key', alias?: string  } 
+  | { name: 'product', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
+  | { name: 'quotation', alias?: string  } 
+  
+export interface QuotationUpdateOneRequiredWithoutQuotationItemInput {
+  create?: QuotationCreateWithoutQuotationItemInput | null
+  update?: QuotationUpdateWithoutQuotationItemDataInput | null
+  upsert?: QuotationUpsertWithoutQuotationItemInput | null
+  connect?: QuotationWhereUniqueInput | null
+}
+export type QuotationUpdateOneRequiredWithoutQuotationItemInputInputObject =
+  | Extract<keyof QuotationUpdateOneRequiredWithoutQuotationItemInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface QuotationUpdateWithoutQuotationItemDataInput {
+  docId?: string | null
+  salesman?: SalesmanUpdateOneWithoutQuotationsInput | null
+  payment?: PaymentUpdateOneWithoutQuotationInput | null
+  shipping?: ShippingUpdateOneWithoutQuotationInput | null
+  customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
+}
+export type QuotationUpdateWithoutQuotationItemDataInputInputObject =
+  | Extract<keyof QuotationUpdateWithoutQuotationItemDataInput, string>
+  | { name: 'docId', alias?: string  } 
+  | { name: 'salesman', alias?: string  } 
+  | { name: 'payment', alias?: string  } 
+  | { name: 'shipping', alias?: string  } 
+  | { name: 'customer', alias?: string  } 
+  
+export interface QuotationUpsertWithoutQuotationItemInput {
+  update?: QuotationUpdateWithoutQuotationItemDataInput
+  create?: QuotationCreateWithoutQuotationItemInput
+}
+export type QuotationUpsertWithoutQuotationItemInputInputObject =
+  | Extract<keyof QuotationUpsertWithoutQuotationItemInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface QuotationItemUpdateManyMutationInput {
+  key?: string | null
+  amount?: number | null
+  realPrice?: number | null
+}
+export type QuotationItemUpdateManyMutationInputInputObject =
+  | Extract<keyof QuotationItemUpdateManyMutationInput, string>
+  | { name: 'key', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'realPrice', alias?: string  } 
+  
 export interface QuotationUpdateInput {
   docId?: string | null
-  productItems?: ProductItemUpdateManyWithoutQuotationInput | null
-  salesman?: SalesmanUpdateOneRequiredWithoutQuotationsInput | null
+  quotationItem?: QuotationItemUpdateManyWithoutQuotationInput | null
+  salesman?: SalesmanUpdateOneWithoutQuotationsInput | null
   payment?: PaymentUpdateOneWithoutQuotationInput | null
   shipping?: ShippingUpdateOneWithoutQuotationInput | null
   customer?: UserUpdateOneRequiredWithoutQuotationsInput | null
@@ -13308,7 +14103,7 @@ export interface QuotationUpdateInput {
 export type QuotationUpdateInputInputObject =
   | Extract<keyof QuotationUpdateInput, string>
   | { name: 'docId', alias?: string  } 
-  | { name: 'productItems', alias?: string  } 
+  | { name: 'quotationItem', alias?: string  } 
   | { name: 'salesman', alias?: string  } 
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
@@ -13531,6 +14326,27 @@ export type ShoppingCartSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface QuotationItemSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: QuotationItemWhereInput | null
+  AND?: QuotationItemSubscriptionWhereInput[]
+  OR?: QuotationItemSubscriptionWhereInput[]
+  NOT?: QuotationItemSubscriptionWhereInput[]
+}
+export type QuotationItemSubscriptionWhereInputInputObject =
+  | Extract<keyof QuotationItemSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface QuotationSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -13594,6 +14410,20 @@ export type ProductItemOrderByInputValues =
   | 'updatedAt_DESC'
   | 'image_ASC'
   | 'image_DESC'
+  
+export type QuotationItemOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'key_ASC'
+  | 'key_DESC'
+  | 'amount_ASC'
+  | 'amount_DESC'
+  | 'realPrice_ASC'
+  | 'realPrice_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
   
 export type PaymentOrderByInputValues =
   | 'id_ASC'

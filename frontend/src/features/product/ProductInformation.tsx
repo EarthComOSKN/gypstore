@@ -6,6 +6,7 @@ import { GET_ME } from '../navigation/gql'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { ADD_PRODUCT_TO_CART } from './gql'
 import { FullPageLoading } from '../../component/Loading'
+import { useRouter } from 'next/router'
 
 const Container = styled.div`
   font-size: 16px;
@@ -33,6 +34,7 @@ export const ProductInformation = (props: Props) => {
   const [amount, setAmount] = useState(1)
   const { data, loading } = useQuery(GET_ME)
   const me = data?.me as User
+  const router = useRouter()
   const [addProductToCard] = useMutation(ADD_PRODUCT_TO_CART)
   if (loading) return <FullPageLoading />
   const {
@@ -46,6 +48,10 @@ export const ProductInformation = (props: Props) => {
   const shid = me?.shoppingCart?.id
 
   const addToCart = async () => {
+    if (!me) {
+      router.push('/signin')
+      return
+    }
     setLoading(true)
     try {
       await addProductToCard({
