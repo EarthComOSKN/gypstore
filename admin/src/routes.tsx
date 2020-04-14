@@ -10,10 +10,12 @@ import {
   CUSTOMERS,
   COUPONS,
   STUFF_MEMBERS,
-  SITE_SETTINGS
+  SITE_SETTINGS,
+  QUOTATIONS
 } from "./settings/constants";
 import AuthProvider, { AuthContext } from "./context/auth";
 import { InLineLoader } from "./components/InlineLoader/InlineLoader";
+import Quotations from "./containers/Quotations/Quotations";
 const Products = lazy(() => import("./containers/Products/Products"));
 const AdminLayout = lazy(() => import("./containers/Layout/Layout"));
 const Dashboard = lazy(() => import("./containers/Dashboard/Dashboard"));
@@ -97,6 +99,13 @@ const Routes = () => {
             <AdminLayout>
               <Suspense fallback={<InLineLoader />}>
                 <Customers />
+              </Suspense>
+            </AdminLayout>
+          </PrivateRoute>
+          <PrivateRoute path={QUOTATIONS}>
+            <AdminLayout>
+              <Suspense fallback={<InLineLoader />}>
+                <Quotations />
               </Suspense>
             </AdminLayout>
           </PrivateRoute>

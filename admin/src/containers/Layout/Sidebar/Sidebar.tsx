@@ -15,7 +15,8 @@ import {
   ORDERS,
   CUSTOMERS,
   COUPONS,
-  SETTINGS
+  SETTINGS,
+  QUOTATIONS
 } from "../../../settings/constants";
 import { AuthContext } from "../../../context/auth";
 import {
@@ -42,12 +43,12 @@ const sidebarMenus = [
     exact: false,
     icon: <ProductIcon />
   },
-  // {
-  //   name: "Category",
-  //   path: CATEGORY,
-  //   exact: false,
-  //   icon: <SidebarCategoryIcon />
-  // },
+  {
+    name: "Quotations",
+    path: QUOTATIONS,
+    exact: false,
+    icon: <SidebarCategoryIcon />
+  },
   // {
   //   name: "Orders",
   //   path: ORDERS,
