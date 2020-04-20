@@ -146,7 +146,7 @@ export default function Customers() {
             }}
           >
             <Col md={3}>
-              <Heading>Customers</Heading>
+              <Heading>สมาชิก</Heading>
             </Col>
 
             <Col md={9}>
@@ -154,23 +154,23 @@ export default function Customers() {
                 <Col md={9}>
                   <Input
                     value={search}
-                    placeholder="Ex: Search By Name"
+                    placeholder="ค้นหาด้วยชื่อ"
                     onChange={handleSearch}
                     clearable
                   />
                 </Col>
 
-                <Col md={3}>
+                {/* <Col md={3}>
                   <Select
                     options={sortByOptions}
                     labelKey="label"
                     valueKey="value"
-                    placeholder="Order Amount"
+                    placeholder="เรียงลำดับ"
                     value={stock}
                     searchable={false}
                     onChange={handleSort}
                   />
-                </Col>
+                </Col> */}
               </Row>
             </Col>
           </Header>
@@ -179,14 +179,14 @@ export default function Customers() {
             <TableWrapper>
               <StyledTable $gridTemplateColumns="minmax(50px, 50px) minmax(70px, 70px) minmax(200px, auto) minmax(150px, auto) minmax(50px, max-content) minmax(150px, auto) minmax(150px, auto) minmax(50px, max-content) minmax(50px, max-content)">
                 <StyledHeadCell>ID</StyledHeadCell>
-                <StyledHeadCell>Image</StyledHeadCell>
-                <StyledHeadCell>Name</StyledHeadCell>
-                <StyledHeadCell>Contacts</StyledHeadCell>
-                <StyledHeadCell>Total Order</StyledHeadCell>
-                <StyledHeadCell>Total Amount</StyledHeadCell>
-                <StyledHeadCell>Joining Date</StyledHeadCell>
-                <StyledHeadCell>Status</StyledHeadCell>
-                <StyledHeadCell>Action</StyledHeadCell>
+                <StyledHeadCell>รูป</StyledHeadCell>
+                <StyledHeadCell>ชื่อ</StyledHeadCell>
+                <StyledHeadCell>เบอร์ติดต่อ</StyledHeadCell>
+                <StyledHeadCell>ออเดอร์ทั้งหมด</StyledHeadCell>
+                <StyledHeadCell>ราคารวม</StyledHeadCell>
+                <StyledHeadCell>สมัครวันที่</StyledHeadCell>
+                <StyledHeadCell>สถานะ</StyledHeadCell>
+                <StyledHeadCell>ปรับแก้</StyledHeadCell>
 
                 {data ? (
                   data.users.length ? (

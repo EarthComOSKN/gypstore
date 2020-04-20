@@ -38,13 +38,13 @@ const sidebarMenus = [
   //   icon: <DashboardIcon />
   // },
   {
-    name: "Products",
+    name: "สินค้า",
     path: PRODUCTS,
     exact: false,
     icon: <ProductIcon />
   },
   {
-    name: "Quotations",
+    name: "ใบเสนอราคา",
     path: QUOTATIONS,
     exact: false,
     icon: <SidebarCategoryIcon />
@@ -56,7 +56,7 @@ const sidebarMenus = [
   //   icon: <OrderIcon />
   // },
   {
-    name: "Customers",
+    name: "สมาชิก",
     path: CUSTOMERS,
     exact: false,
     icon: <CustomerIcon />
@@ -68,7 +68,7 @@ const sidebarMenus = [
   //   icon: <CouponIcon />
   // },
   {
-    name: "Settings",
+    name: "ตั้งค่า",
     path: SETTINGS,
     exact: false,
     icon: <SettingIcon />
@@ -110,7 +110,7 @@ export default withRouter(function Sidebar({
         <Svg>
           <LogoutIcon />
         </Svg>
-        Logout
+        ออกจากระบบ
       </LogoutBtn>
     </SidebarWrapper>
   );

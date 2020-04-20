@@ -150,7 +150,7 @@ const AddProduct: React.FC<Props> = props => {
   return (
     <>
       <DrawerTitleWrapper>
-        <DrawerTitle>Add Product</DrawerTitle>
+        <DrawerTitle>เพิ่มสินค้า</DrawerTitle>
       </DrawerTitleWrapper>
 
       <Form onSubmit={handleSubmit(onSubmit)} style={{ height: "100%" }}>
@@ -169,7 +169,7 @@ const AddProduct: React.FC<Props> = props => {
         >
           <Row>
             <Col lg={4}>
-              <FieldDetails>Upload your Product image here</FieldDetails>
+              <FieldDetails>อัพโหลดรูปสินค้า</FieldDetails>
             </Col>
             <Col lg={8}>
               <DrawerBox
@@ -196,14 +196,14 @@ const AddProduct: React.FC<Props> = props => {
           <Row>
             <Col lg={4}>
               <FieldDetails>
-                Add your Product description and necessary information from here
+                เพิ่มชื่อสินค้า รายละเอียด และข้อมูลต่างๆให้ครบถ้วน
               </FieldDetails>
             </Col>
 
             <Col lg={8}>
               <DrawerBox>
                 <FormFields>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>ชื่อสินค้า</FormLabel>
                   <Input
                     inputRef={register({ required: true, maxLength: 20 })}
                     name="name"
@@ -211,7 +211,7 @@ const AddProduct: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>คำอธิบาย</FormLabel>
                   <Textarea
                     value={description}
                     onChange={handleDescriptionChange}
@@ -219,7 +219,7 @@ const AddProduct: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Price (Baht)</FormLabel>
+                  <FormLabel>ราคา (บาท)</FormLabel>
                   <Input
                     type="number"
                     inputRef={register({ required: true })}
@@ -228,12 +228,12 @@ const AddProduct: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Sale Price (Baht)</FormLabel>
+                  <FormLabel>ราคาที่ลดแล้ว (บาท)</FormLabel>
                   <Input type="number" inputRef={register} name="salePrice" />
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Product Quantity (Unit)</FormLabel>
+                  <FormLabel>จำนวน</FormLabel>
                   <Input
                     type="number"
                     inputRef={register({ required: true })}
@@ -242,17 +242,17 @@ const AddProduct: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Unit</FormLabel>
+                  <FormLabel>หน่วยสินค้า</FormLabel>
                   <Input type="text" inputRef={register} name="unitType" />
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Categories</FormLabel>
+                  <FormLabel>หมวดหมู่สินค้า</FormLabel>
                   <Select
                     options={options}
                     labelKey="name"
                     valueKey="value"
-                    placeholder="Product Tag"
+                    placeholder="หมวดหมู่สินค้า"
                     value={tag}
                     onChange={handleMultiChange}
                     overrides={{
@@ -308,7 +308,7 @@ const AddProduct: React.FC<Props> = props => {
               }
             }}
           >
-            Cancel
+            ยกเลิก
           </Button>
 
           <Button
@@ -325,7 +325,7 @@ const AddProduct: React.FC<Props> = props => {
               }
             }}
           >
-            Create Product
+            เพิ่มสินค้า
           </Button>
         </ButtonGroup>
       </Form>

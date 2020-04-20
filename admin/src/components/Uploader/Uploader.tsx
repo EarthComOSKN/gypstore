@@ -108,7 +108,7 @@ function Uploader({ onChange, imageURL }: any) {
         <input {...getInputProps()} />
         <UploadIcon />
         <Text>
-          <TextHighlighted>Drag/Upload</TextHighlighted> your image here.
+          <TextHighlighted>ลาก/เลือก</TextHighlighted> รูปสินค้าลงที่นี่
         </Text>
       </Container>
       {thumbs && <ThumbsContainer>{thumbs}</ThumbsContainer>}

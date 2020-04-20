@@ -88,7 +88,7 @@ const StuffMemberForm: React.FC<Props> = props => {
   return (
     <>
       <DrawerTitleWrapper>
-        <DrawerTitle>Add Staff Member</DrawerTitle>
+        <DrawerTitle>เพิ่มผู้ดูแลระบบ</DrawerTitle>
       </DrawerTitleWrapper>
 
       <Form onSubmit={handleSubmit(onSubmit)} style={{ height: "100%" }}>
@@ -108,14 +108,14 @@ const StuffMemberForm: React.FC<Props> = props => {
           <Row>
             <Col lg={4}>
               <FieldDetails>
-                Add staff name, description and necessary information from here
+                กรอกรายละเอียดของผู้ดูแลระบบใหม่ให้ครบถ้วน
               </FieldDetails>
             </Col>
 
             <Col lg={8}>
               <DrawerBox>
                 <FormFields>
-                  <FormLabel>First Name</FormLabel>
+                  <FormLabel>ชื่อจริง</FormLabel>
                   <Input
                     inputRef={register({ required: true, maxLength: 20 })}
                     name="first_name"
@@ -123,7 +123,7 @@ const StuffMemberForm: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Last Name</FormLabel>
+                  <FormLabel>นามสกุล</FormLabel>
                   <Input
                     inputRef={register({ required: true, maxLength: 20 })}
                     name="last_name"
@@ -131,7 +131,7 @@ const StuffMemberForm: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Contact No.</FormLabel>
+                  <FormLabel>เบอร์ติดต่อ</FormLabel>
                   <PhoneInput
                     country={country}
                     onCountryChange={({ option }) => {
@@ -146,7 +146,7 @@ const StuffMemberForm: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>อีเมลล์</FormLabel>
                   <Input
                     type="email"
                     inputRef={register({ required: true })}
@@ -206,7 +206,7 @@ const StuffMemberForm: React.FC<Props> = props => {
               }
             }}
           >
-            Cancel
+            ยกเลิก
           </Button>
 
           <Button
@@ -223,7 +223,7 @@ const StuffMemberForm: React.FC<Props> = props => {
               }
             }}
           >
-            Add Staff
+            เพิ่มผู้ดูแลระบบ
           </Button>
         </ButtonGroup>
       </Form>

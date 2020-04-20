@@ -56,16 +56,16 @@ export default function Settings() {
         <Col md={6}>
           <SettingsCard
             icon={<Members />}
-            title="Staff Members"
-            subtitle="Manage your employees and their permission"
+            title="ผู้ดูแลระบบ"
+            subtitle="แn้ไขการเข้าถึงของผู้ดูแลระบบ"
             onClick={() => history.push(STUFF_MEMBERS)}
           />
         </Col>
         <Col md={6}>
           <SettingsCard
             icon={<OrderIcon width="56px" height="56px" />}
-            title="Add Staff Members"
-            subtitle="Add your staff members from here"
+            title="เพิ่มผู้ดูแลระบบ"
+            subtitle="เพิ่มผู้สมาชิกเป็นผู้ดูแลระบบ"
             onClick={openStaffForm}
           />
         </Col>
@@ -75,8 +75,8 @@ export default function Settings() {
         <Col md={6}>
           <SettingsCard
             icon={<ProductIcon width="56px" height="56px" />}
-            title="Add Products"
-            subtitle="Add products from here"
+            title="เพิ่มสินค้า"
+            subtitle="เพิ่มรายการสินค้าใหม่"
             onClick={openProductForm}
           />
         </Col>
@@ -84,8 +84,8 @@ export default function Settings() {
         <Col md={6}>
           <SettingsCard
             icon={<SidebarCategoryIcon width="56px" height="56px" />}
-            title="Add Categories"
-            subtitle="Add product categories from here"
+            title="เพิ่มหมวดหมู่สินค้า"
+            subtitle="เพิ่มหมวดหมู่สินค้าใหม่"
             onClick={openCategoryForm}
           />
         </Col>

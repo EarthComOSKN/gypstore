@@ -102,7 +102,7 @@ const Topbar = ({ refs }: any) => {
       </DrawerWrapper>
 
       <TopbarRightSide>
-        <Button onClick={openDrawer}>Add Products</Button>
+        <Button onClick={openDrawer}>เพิ่มสินค้า</Button>
 
         <Popover
           content={({ close }) => <Notification data={data} onClear={close} />}
@@ -129,10 +129,10 @@ const Topbar = ({ refs }: any) => {
           content={({ close }) => (
             <UserDropdowItem>
               <NavLink to={STUFF_MEMBERS} exact={false} onClick={close}>
-                Staff
+                ผู้ดูแลระบบ
               </NavLink>
               <NavLink to={SETTINGS} exact={false} onClick={close}>
-                Settings
+                ตั้งค่า
               </NavLink>
               <LogoutBtn
                 onClick={() => {
@@ -140,7 +140,7 @@ const Topbar = ({ refs }: any) => {
                   close();
                 }}
               >
-                Logout
+                ออกจากระบบ
               </LogoutBtn>
             </UserDropdowItem>
           )}

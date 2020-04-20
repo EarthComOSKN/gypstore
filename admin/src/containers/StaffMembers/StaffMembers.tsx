@@ -55,10 +55,10 @@ const Row = withStyle(Rows, () => ({
 }));
 
 const roleSelectOptions = [
-  { value: "admin", label: "Admin" },
-  { value: "manager", label: "Manager" },
-  { value: "member", label: "Member" },
-  { value: "delivery boy", label: "Delivery boy" }
+  { value: "admin", label: "ผู้ดูแลระบบ" },
+  { value: "manager", label: "ผู้จัดการ" },
+  { value: "member", label: "สมาชิก" },
+  { value: "delivery boy", label: "พนักงานส่งของ" }
 ];
 
 export default function StuffMembers() {
@@ -103,7 +103,7 @@ export default function StuffMembers() {
             }}
           >
             <Col md={3} xs={12}>
-              <Heading>Staff Members</Heading>
+              <Heading>ผู้ดูแลระบบ</Heading>
             </Col>
 
             <Col md={9} xs={12}>
@@ -113,7 +113,7 @@ export default function StuffMembers() {
                     options={roleSelectOptions}
                     labelKey="label"
                     valueKey="value"
-                    placeholder="Role"
+                    placeholder="บทบาท"
                     value={role}
                     searchable={false}
                     onChange={handleCategory}
@@ -123,7 +123,7 @@ export default function StuffMembers() {
                 <Col md={5} xs={12}>
                   <Input
                     value={search}
-                    placeholder="Ex: Quick Search By Name"
+                    placeholder="ค้นหาด้วยชื่อ"
                     onChange={handleSearch}
                     clearable
                   />
@@ -145,7 +145,7 @@ export default function StuffMembers() {
                       }
                     }}
                   >
-                    Add Members
+                    เพิ่มผู้ดูแลระบบ
                   </Button>
                 </Col>
               </Row>
@@ -156,11 +156,11 @@ export default function StuffMembers() {
             <TableWrapper>
               <StyledTable $gridTemplateColumns="minmax(70px, 70px) minmax(270px, max-content) minmax(270px, max-content) minmax(150px, max-content) minmax(150px, auto) minmax(150px, auto)">
                 <StyledHeadCell>ID</StyledHeadCell>
-                <StyledHeadCell>Name</StyledHeadCell>
-                <StyledHeadCell>Email</StyledHeadCell>
-                <StyledHeadCell>Contact</StyledHeadCell>
-                <StyledHeadCell>Joining Date</StyledHeadCell>
-                <StyledHeadCell>Role</StyledHeadCell>
+                <StyledHeadCell>ชื่อ</StyledHeadCell>
+                <StyledHeadCell>อีเมลล์</StyledHeadCell>
+                <StyledHeadCell>เบอร์ติดต่อ</StyledHeadCell>
+                <StyledHeadCell>วันที่เพิ่มผู้ดูแลระบบ</StyledHeadCell>
+                <StyledHeadCell>บทบาท</StyledHeadCell>
 
                 {data ? (
                   data.salesmen.length ? (

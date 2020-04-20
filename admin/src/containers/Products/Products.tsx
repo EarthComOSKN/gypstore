@@ -118,15 +118,15 @@ const GET_PRODUCTS = gql`
     }
   }
 `;
-const typeSelectOptions = [
-  { value: "grocery", label: "Grocery" },
-  { value: "women-cloths", label: "Women Cloths" },
-  { value: "bags", label: "Bags" },
-  { value: "makeup", label: "Makeup" }
-];
+// const typeSelectOptions = [
+//   { value: "xx", label: "Grocery" },
+//   { value: "women-cloths", label: "Women Cloths" },
+//   { value: "bags", label: "Bags" },
+//   { value: "makeup", label: "Makeup" }
+// ];
 const priceSelectOptions = [
-  { value: "highestToLowest", label: "Highest To Lowest" },
-  { value: "lowestToHighest", label: "Lowest To Highest" }
+  { value: "highestToLowest", label: "ราคาแพงไปถูก" },
+  { value: "lowestToHighest", label: "ราคาถูกไปแพง" }
 ];
 
 export default function Products() {
@@ -168,18 +168,18 @@ export default function Products() {
       });
     }
   }
-  function handleCategoryType({ value }) {
-    setType(value);
-    if (value.length) {
-      refetch({
-        type: value[0].value
-      });
-    } else {
-      refetch({
-        type: null
-      });
-    }
-  }
+  // function handleCategoryType({ value }) {
+  //   setType(value);
+  //   if (value.length) {
+  //     refetch({
+  //       type: value[0].value
+  //     });
+  //   } else {
+  //     refetch({
+  //       type: null
+  //     });
+  //   }
+  // }
   function handleSearch(event) {
     const value = event.currentTarget.value;
     setSearch(value);
@@ -192,22 +192,22 @@ export default function Products() {
         <Col md={12}>
           <Header style={{ marginBottom: 15 }}>
             <Col md={2} xs={12}>
-              <Heading>Products</Heading>
+              <Heading>สินค้า</Heading>
             </Col>
 
             <Col md={10} xs={12}>
               <Row>
-                <Col md={3} xs={12}>
+                {/* <Col md={3} xs={12}>
                   <Select
                     options={typeSelectOptions}
                     labelKey="label"
                     valueKey="value"
-                    placeholder="Category Type"
+                    placeholder="หมวดหมู่สินค้า"
                     value={type}
                     searchable={false}
                     onChange={handleCategoryType}
                   />
-                </Col>
+                </Col> */}
 
                 <Col md={3} xs={12}>
                   <Select
@@ -215,7 +215,7 @@ export default function Products() {
                     labelKey="label"
                     valueKey="value"
                     value={priceOrder}
-                    placeholder="Price"
+                    placeholder="ราคา"
                     searchable={false}
                     onChange={handlePriceSort}
                   />
@@ -224,7 +224,7 @@ export default function Products() {
                 <Col md={6} xs={12}>
                   <Input
                     value={search}
-                    placeholder="Ex: Search By Name"
+                    placeholder="ค้นหาด้วยชื่อ"
                     onChange={handleSearch}
                     clearable
                   />

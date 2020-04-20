@@ -21,8 +21,8 @@ const initialValues = {
 
 const getLoginValidationSchema = () => {
   return Yup.object().shape({
-    username: Yup.string().required("Username is Required!"),
-    password: Yup.string().required("Password is Required!")
+    username: Yup.string().required("กรุณาใส่ชื่อผู้ใช้!"),
+    password: Yup.string().required("กรุณาใส่รหัสผ่าน!")
   });
 };
 
@@ -54,11 +54,11 @@ export default () => {
                 {/* <LogoWrapper>
                   <LogoImage src={Logoimage} alt="pickbazar-admin" />
                 </LogoWrapper> */}
-                <FormTitle>Log in to admin</FormTitle>
+                <FormTitle>ลงชื่อเข้าใช้ผู้ดูแลระบบ</FormTitle>
               </FormFields>
 
               <FormFields>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>ชื่อผู้ใช้</FormLabel>
                 <Field
                   type="email"
                   name="username"
@@ -70,7 +70,7 @@ export default () => {
                 )}
               </FormFields>
               <FormFields>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>รหัสผ่าน</FormLabel>
                 <Field
                   type="password"
                   name="password"
@@ -97,7 +97,7 @@ export default () => {
                   }
                 }}
               >
-                Submit
+                ลงชื่อเข้าใช้
               </Button>
             </Form>
           )}

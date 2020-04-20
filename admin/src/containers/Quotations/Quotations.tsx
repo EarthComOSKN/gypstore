@@ -131,7 +131,7 @@ export default function Quotations() {
               }}
             >
               <Col md={3}>
-                <Heading>Quotations</Heading>
+                <Heading>ใบเสนอราคา</Heading>
               </Col>
 
               <Col md={9}>
@@ -139,7 +139,7 @@ export default function Quotations() {
                   <Col md={9}>
                     <Input
                       value={search}
-                      placeholder="Ex: Search By Name"
+                      placeholder="ค้นหา"
                       onChange={handleSearch}
                       clearable
                     />
@@ -150,7 +150,7 @@ export default function Quotations() {
                       options={sortByOptions}
                       labelKey="label"
                       valueKey="value"
-                      placeholder="Order Amount"
+                      placeholder="เรียงลำดับ"
                       value={stock}
                       searchable={false}
                       onChange={handleSort}
@@ -164,13 +164,13 @@ export default function Quotations() {
               <TableWrapper>
                 <StyledTable $gridTemplateColumns="minmax(50px, 50px) minmax(70px, 70px) minmax(200px, auto) minmax(150px, auto) minmax(50px, max-content) minmax(150px, auto) minmax(150px, auto) minmax(50px, max-content) ">
                   <StyledHeadCell>ID</StyledHeadCell>
-                  <StyledHeadCell>Owner</StyledHeadCell>
-                  <StyledHeadCell>Product Amount</StyledHeadCell>
-                  <StyledHeadCell>Created Date</StyledHeadCell>
-                  <StyledHeadCell>Lasted updated Date</StyledHeadCell>
-                  <StyledHeadCell>Total Price</StyledHeadCell>
-                  <StyledHeadCell>Status</StyledHeadCell>
-                  <StyledHeadCell>Action</StyledHeadCell>
+                  <StyledHeadCell>เจ้าของ</StyledHeadCell>
+                  <StyledHeadCell>จำนวนรายการสินค้า</StyledHeadCell>
+                  <StyledHeadCell>วันที่เปิดใบเสนอราคา</StyledHeadCell>
+                  <StyledHeadCell>วันที่แก้ไขล่าสุด</StyledHeadCell>
+                  <StyledHeadCell>ราคารวม</StyledHeadCell>
+                  <StyledHeadCell>สถานะ</StyledHeadCell>
+                  <StyledHeadCell>ปรับแก้</StyledHeadCell>
 
                   {data ? (
                     data.quotations.length ? (
