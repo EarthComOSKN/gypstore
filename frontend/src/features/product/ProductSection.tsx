@@ -1,53 +1,109 @@
 import styled from "@emotion/styled";
 
 const Container = styled.div`
-  height: 35rem;
+  height: 30rem;
   width: 100%;
   padding: 3rem 8rem;
   background-color: rgb(241, 241, 241);
 `;
 
 const ProductContainer = styled.div`
-  display: grid;
-  margin-bottom: 4rem;
-  background-color: black;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1px;
-  grid-template-areas:
-    "bg bg . ."
-    "bg bg . .";
-  height: 85%;
+  display: flex;
   width: 100%;
+  height: 20rem;
 `;
 
-const ProductCardWide = styled.div<{ bigcard?: Boolean }>`
-  padding: 2rem;
+const ProductBigCardWide = styled.img`
+  // padding: 2rem;
   background-color: white;
-  background-image: url("/assets/logo-without-text.png");
+  // background-image: url("/assets/logo-without-text.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 60%;
+  height: 20rem;
+  object-fit: contain;
+  // border: 1px solid gray;
+  // border-style: outset
+`;
+
+const ProductCardWideContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 20rem;
+`;
+
+
+const ProductCardWide = styled.img`
+  // padding: 2rem;
+  background-color: white;
+  // background-image: url("/assets/logo-without-text.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
-  ${props => props.bigcard && "grid-area: bg;"}
+  height: 10rem;
+  object-fit: contain;
+  // border: 1px solid gray;
+  // border-style: outset
+
 `;
 
+
+
 type Props = {
-  title: String;
+  title: string;
+  mainCategoryName: string;
+  mainImg: string;
+  firstImg: string;
+  secondImg: string;
+  thirdImg: string;
+  fourthImg: string;
 };
 
 export const ProductSection = (props: Props) => {
-  const { title = "ฝ้าเพดานหินอ่อน" } = props;
+  const { title , 
+          mainCategoryName, 
+          mainImg, 
+          firstImg, 
+          secondImg, 
+          thirdImg, 
+          fourthImg } = props;
   return (
     <Container>
       <h2>{title}</h2>
-      <ProductContainer>
-        <ProductCardWide bigcard />
-        <ProductCardWide />
-        <ProductCardWide />
-        <ProductCardWide />
-        <ProductCardWide />
-      </ProductContainer>
+      {/* <a href={`/category/${mainCategoryName}`}>
+        <ProductContainer>
+          <ProductCardWideContainer>
+            <ProductCardWide src={ firstImg } />
+            <ProductCardWide src={ secondImg } />
+          </ProductCardWideContainer>
+          <ProductBigCardWide />
+          <ProductCardWideContainer>
+            <ProductCardWide src={ thirdImg } />
+            <ProductCardWide src={ fourthImg } />
+          </ProductCardWideContainer>
+        </ProductContainer>
+      </a> */}
+
+
+
+      {/*  ----- code below for test Image only ------ */}
+      <a href={`/category/${mainCategoryName}`}>
+        <ProductContainer>
+          <ProductCardWideContainer>
+            <ProductCardWide src="/assets/51.png" />
+            <ProductCardWide src="/assets/53.png" />
+          </ProductCardWideContainer>
+          <ProductBigCardWide src="/assets/mock.png" />
+          <ProductCardWideContainer>
+            <ProductCardWide src="/assets/220.JPG" />
+            <ProductCardWide src="/assets/242.JPG" />
+          </ProductCardWideContainer>
+        </ProductContainer>
+      </a> 
+      
     </Container>
   );
 };

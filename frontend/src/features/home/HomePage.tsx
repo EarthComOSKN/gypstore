@@ -28,8 +28,20 @@ export const HomePage = () => {
       <HomeCarousel />
       <HomeCategory />
       <HeroProduct />
-      <ProductSection title="ระบบฝ้าเพดานฉาบเรียบ" />
-      <ProductSection title="ระบบผนังเบา" />
+      <ProductSection title="ระบบฝ้าเพดานฉาบเรียบ" 
+                      mainCategoryName="แผ่นยิปซัม" 
+                      mainImg="/assets/logo-without-text.png"
+                      firstImg="/assets/logo-without-text.png"
+                      secondImg="/assets/logo-without-text.png"
+                      thirdImg="/assets/logo-without-text.png"
+                      fourthImg="/assets/logo-without-text.png" />
+      <ProductSection title="ระบบดูดซับเสียง" 
+                      mainCategoryName="แผ่นยิปซัม" 
+                      mainImg="/assets/logo-without-text.png"
+                      firstImg="/assets/logo-without-text.png"
+                      secondImg="/assets/logo-without-text.png"
+                      thirdImg="/assets/logo-without-text.png"
+                      fourthImg="/assets/logo-without-text.png" />
       <PartnerCard />
       <Footer />
     </PageContainer>
