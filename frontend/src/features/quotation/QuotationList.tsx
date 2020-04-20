@@ -105,7 +105,7 @@ export const QuotationList = () => {
               บาท
             </Price>
             <Price>
-              <span style={{ color: 'orange' }}>กำลังดำเนินการ</span>{' '}
+              <span style={{ color: 'orange' }}>{q.status}</span>{' '}
             </Price>
           </CartRow>
         ))}

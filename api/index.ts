@@ -11,21 +11,22 @@ import { Me } from "./src/types/Me";
 import * as express from "express";
 import { getUserFromToken } from "./lib/jwt";
 import * as bodyParser from "body-parser";
+import { OmiseResponse } from "./src/types/Payment";
 
 const app = express();
 
 const schema = makePrismaSchema({
-  types: [Query, Mutation, User, Me],
+  types: [Query, Mutation, User, Me, OmiseResponse],
 
   prisma: {
     client: prisma,
-    datamodelInfo
+    datamodelInfo,
   },
 
   outputs: {
     schema: path.join(__dirname, "./src/generated/schema.graphql"),
-    typegen: path.join(__dirname, "./src/generated/nexus.ts")
-  }
+    typegen: path.join(__dirname, "./src/generated/nexus.ts"),
+  },
 });
 
 app.use((req: any, res, next) => {
@@ -36,7 +37,7 @@ app.use((req: any, res, next) => {
     };
     req.user = {
       id,
-      email
+      email,
     };
     next();
   } catch (error) {
@@ -58,7 +59,7 @@ const server = new ApolloServer({
   schema,
   context: ({ req }) => {
     return { ...req, prisma };
-  }
+  },
 });
 
 server.applyMiddleware({
@@ -66,8 +67,8 @@ server.applyMiddleware({
   cors: true,
   path: "/",
   bodyParserConfig: {
-    limit: "30mb"
-  }
+    limit: "30mb",
+  },
 });
 
 app.listen(4000, () =>

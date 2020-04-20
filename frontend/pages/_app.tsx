@@ -14,7 +14,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <ApolloProvider client={ApolloClient}>
-        <Head>></Head>
+        <Head>
+          <script src="https://cdn.omise.co/omise.js.gz"></script>
+        </Head>
         <Container>
           <Component {...pageProps} />
         </Container>

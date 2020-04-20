@@ -35,9 +35,10 @@ type Payment {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   customer: User! @relation(link: INLINE)
-  salesman: Salesman! @relation(link: INLINE)
+  salesman: Salesman @relation(link: INLINE)
   quotation: Quotation! @relation(link: INLINE)
-  Invoice: Invoice 
+  Invoice: Invoice
+  rawEvent: String
 
 }
 
@@ -155,6 +156,7 @@ type Quotation {
   payment: Payment 
   shipping: Shipping 
   customer: User! @relation(link: INLINE)
+  status: String @default(value: "PENDING") 
 
 }
 

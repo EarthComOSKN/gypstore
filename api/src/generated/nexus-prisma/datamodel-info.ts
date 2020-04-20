@@ -9057,6 +9057,162 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "AND",
             "description": null,
             "type": {
@@ -11377,6 +11533,162 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "InvoiceWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -14941,6 +15253,18 @@ export default {
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -15585,6 +15909,18 @@ export default {
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "rawEvent_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawEvent_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "possibleTypes": null
@@ -15695,13 +16031,9 @@ export default {
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Salesman",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "Salesman",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -15729,6 +16061,18 @@ export default {
             "type": {
               "kind": "OBJECT",
               "name": "Invoice",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -16553,6 +16897,18 @@ export default {
           },
           {
             "name": "updatedAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "status_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "status_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -23006,6 +23362,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -23375,6 +23741,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "InvoiceCreateOneWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -23971,6 +24347,16 @@ export default {
               }
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -24070,13 +24456,9 @@ export default {
             "name": "salesman",
             "description": null,
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "SalesmanCreateOneWithoutPaymentsInput",
-                "ofType": null
-              }
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanCreateOneWithoutPaymentsInput",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -24086,6 +24468,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "InvoiceCreateOneWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -24734,13 +25126,9 @@ export default {
             "name": "salesman",
             "description": null,
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "SalesmanCreateOneWithoutPaymentsInput",
-                "ofType": null
-              }
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanCreateOneWithoutPaymentsInput",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -24764,6 +25152,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "InvoiceCreateOneWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -24871,6 +25269,16 @@ export default {
                 "name": "UserCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           }
@@ -25373,6 +25781,16 @@ export default {
               }
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -25654,13 +26072,9 @@ export default {
             "name": "salesman",
             "description": null,
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "SalesmanCreateOneWithoutPaymentsInput",
-                "ofType": null
-              }
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanCreateOneWithoutPaymentsInput",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -25675,6 +26089,16 @@ export default {
                 "name": "QuotationCreateOneWithoutPaymentInput",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           }
@@ -26155,6 +26579,16 @@ export default {
                 "name": "UserCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           }
@@ -27996,6 +28430,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -29366,6 +29810,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -30515,7 +30969,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30539,6 +30993,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -30547,7 +31011,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
+        "name": "SalesmanUpdateOneWithoutPaymentsInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -30577,6 +31041,26 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "SalesmanUpsertWithoutPaymentsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "delete",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "disconnect",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -31056,6 +31540,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -31174,7 +31668,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31185,6 +31679,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "InvoiceUpdateOneWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -31712,6 +32216,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -32694,6 +33208,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -34058,7 +34582,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34069,6 +34593,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "QuotationUpdateOneRequiredWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -34181,6 +34715,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -35051,6 +35595,162 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "AND",
             "description": null,
             "type": {
@@ -35156,6 +35856,16 @@ export default {
         "inputFields": [
           {
             "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -36932,6 +37642,162 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "AND",
             "description": null,
             "type": {
@@ -37047,6 +37913,16 @@ export default {
           },
           {
             "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -41861,13 +42737,9 @@ export default {
             "name": "salesman",
             "description": null,
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "SalesmanCreateOneWithoutPaymentsInput",
-                "ofType": null
-              }
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanCreateOneWithoutPaymentsInput",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -41891,6 +42763,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "InvoiceCreateOneWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -41941,7 +42823,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneRequiredWithoutPaymentsInput",
+              "name": "SalesmanUpdateOneWithoutPaymentsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -41962,6 +42844,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "InvoiceUpdateOneWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -41989,6 +42881,16 @@ export default {
           },
           {
             "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -43509,6 +44411,16 @@ export default {
               }
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -43682,6 +44594,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -43833,6 +44755,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -43847,6 +44779,16 @@ export default {
         "inputFields": [
           {
             "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -45153,6 +46095,18 @@ export default {
                 "name": "DateTime",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -47930,6 +48884,18 @@ export default {
                 "name": "DateTime",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
