@@ -8,7 +8,6 @@ import {
   CREATE_QUOTATION,
   CREATE_QUOTATION_ITEMS,
   CLEAR_SHOPPING_CART,
-  PAYMENT,
 } from './gql'
 import { GET_ME } from '../navigation/gql'
 import { useRouter } from 'next/router'
@@ -93,18 +92,10 @@ export const ShoppingCart = () => {
   })
   const [createQuotation] = useMutation(CREATE_QUOTATION)
   const [createQuotationItem] = useMutation(CREATE_QUOTATION_ITEMS)
-  const [payment] = useMutation(PAYMENT)
+
   const [resetShoppingCart] = useMutation(CLEAR_SHOPPING_CART)
   const me = data?.me as User
-  useEffect(() => {
-    if (loading) return
-    if (!me) return
-    const { OmiseCard } = window as any
-    OmiseCard.configure({
-      publicKey: 'pkey_test_5jls5tfnoydtv5ybkrm',
-      amount: 1200,
-    })
-  }, [loading, me])
+
   const sum = useMemo(() => {
     if (loading || !me) return 0
     const shoppingCart = me.shoppingCart as ShoppingCart
@@ -207,54 +198,6 @@ export const ShoppingCart = () => {
     }
   }
 
-  const paymentProcess = async () => {
-    const hide = message.loading('เตรียมการชำระเงิน...')
-    const res = await createQuotation({
-      variables: {
-        userId: me.id,
-        status: 'PAYMENT PROCESS',
-      },
-    })
-    const data = res.data as Mutation
-    const qid = data.createQuotation.id
-    await Promise.all(
-      shoppingCartItems.map(shopItem => {
-        createQuotationItem({
-          variables: {
-            qid: qid,
-            key: `${qid}${shopItem.product.id}`,
-            pid: shopItem.product.id,
-            amount: shopItem.amount,
-            price: +shopItem.product.salePrice * shopItem.amount,
-          },
-        })
-      }),
-    )
-    hide()
-
-    const { OmiseCard } = window as any
-    OmiseCard.open({
-      amount: sum * 100,
-      currency: 'THB',
-      defaultPaymentMethod: 'credit_card',
-      onCreateTokenSuccess: async res => {
-        try {
-          const paymentResponse = await payment({
-            variables: {
-              qid,
-              token: res,
-              amount: sum * 100,
-              uid: me.id,
-            },
-          })
-          message.success('ชำระเงินสำเร็จ')
-        } catch (error) {
-          message.error('ชำระเงินไม่สำเร็จ')
-        }
-      },
-    })
-  }
-
   return (
     <Container>
       <h2>รถเข็นสินค้า ({shoppingCartItems.length})</h2>
@@ -270,11 +213,15 @@ export const ShoppingCart = () => {
         )}
         {shoppingCartItems.map(item => {
           const { product, amount } = item
-
+          console.log(product)
           return (
             <CartRow>
               <Product>
-                <ProductCardTall buyable={false} onlyImage />
+                <ProductCardTall
+                  image={product.image}
+                  buyable={false}
+                  onlyImage
+                />
                 <ProductName>
                   {product.name}
                   <DeleteIcon
@@ -317,7 +264,8 @@ export const ShoppingCart = () => {
             <StyledButton
               disabled={shoppingCartItems.length === 0}
               onClick={async () => {
-                await paymentProcess()
+                // await paymentProcess()
+                router.push('/checkout?state=' + JSON.stringify(shoppingCart))
               }}
             >
               ชำระเงิน

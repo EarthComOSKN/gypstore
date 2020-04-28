@@ -1,6 +1,6 @@
-export const ProductImage = () => {
+export const ProductImage = ({ image }) => {
   const options = {
     showStatus: false,
   }
-  return <img src="/assets/pd1.png" />
+  return <img src={image} width="100%" />
 }

@@ -22,7 +22,7 @@ export const ProductDetail = (props: Props) => {
   const { product } = props
   return (
     <Container>
-      <ProductImage />
+      <ProductImage image={product.image} />
       <ProductInformation product={product} />
       <ProductSupport />
     </Container>

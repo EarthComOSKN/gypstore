@@ -15,6 +15,7 @@ import {
 import { JWT_SECRET } from "../../const";
 import * as jwt from "jsonwebtoken";
 import S3Service from "../../s3";
+import { storageService } from "../../../storageService";
 
 export const registerConfig: NexusOutputFieldConfig<"Mutation", "register"> = {
   type: "Me",
@@ -26,16 +27,20 @@ export const registerConfig: NexusOutputFieldConfig<"Mutation", "register"> = {
       .usersConnection()
       .aggregate()
       .count();
-    const input = args.data;
+    const input: any = args.data;
     console.log(input);
     let avatarUrl;
     try {
-      // if (input.avatar) {
-      //   avatarUrl = await S3Service.uploadImage(
-      //     input.avatar.split(",")[1],
-      //     `${input.name}.png`
-      //   );
-      // }
+      if (input.avatar) {
+        const buff = Buffer.from(input.avatar.split(",")[1], "base64");
+        avatarUrl = await storageService.upload(
+          `avatar/${input.email}.png`,
+          buff,
+          {
+            contentType: "image/png",
+          }
+        );
+      }
     } catch (error) {}
 
     const inputWithRunningid = {
@@ -59,6 +64,7 @@ export const registerConfig: NexusOutputFieldConfig<"Mutation", "register"> = {
         user,
       };
     } catch (error) {
+      console.log(error);
       throw Error("Email already taken");
     }
   },

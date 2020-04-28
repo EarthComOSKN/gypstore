@@ -6,6 +6,8 @@
 export default {
   uniqueFieldsByModel: {
     User: ['id', 'email'],
+    Quotation: ['id'],
+    QuotationItem: ['id', 'key'],
     Address: ['id'],
     Payment: ['id'],
     Salesman: ['id'],
@@ -15,8 +17,8 @@ export default {
     ProductItem: ['id'],
     ShoppingCartItem: ['id', 'key'],
     ShoppingCart: ['id'],
-    QuotationItem: ['id', 'key'],
-    Quotation: ['id']
+    OrderItem: ['id', 'key'],
+    Order: ['id']
   },
   embeddedTypes: [],
   clientPath: 'src/generated/prisma-client',
@@ -236,6 +238,416 @@ export default {
               "ofType": {
                 "kind": "OBJECT",
                 "name": "UserConnection",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Quotation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotations",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "QuotationOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Quotation",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotationsConnection",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "QuotationOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QuotationConnection",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotationItem",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationItem",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotationItems",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "QuotationItemOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "QuotationItem",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotationItemsConnection",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "QuotationItemOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QuotationItemConnection",
                 "ofType": null
               }
             },
@@ -2088,7 +2500,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "args": [
               {
@@ -2099,7 +2511,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemWhereUniqueInput",
+                    "name": "OrderItemWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -2108,14 +2520,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationItem",
+              "name": "OrderItem",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "quotationItems",
+            "name": "orderItems",
             "description": null,
             "args": [
               {
@@ -2123,7 +2535,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2133,7 +2545,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "QuotationItemOrderByInput",
+                  "name": "OrderItemOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2197,7 +2609,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "QuotationItem",
+                  "name": "OrderItem",
                   "ofType": null
                 }
               }
@@ -2206,7 +2618,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotationItemsConnection",
+            "name": "orderItemsConnection",
             "description": null,
             "args": [
               {
@@ -2214,7 +2626,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2224,7 +2636,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "QuotationItemOrderByInput",
+                  "name": "OrderItemOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2285,7 +2697,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "QuotationItemConnection",
+                "name": "OrderItemConnection",
                 "ofType": null
               }
             },
@@ -2293,7 +2705,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "args": [
               {
@@ -2304,7 +2716,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationWhereUniqueInput",
+                    "name": "OrderWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -2313,14 +2725,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Quotation",
+              "name": "Order",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "args": [
               {
@@ -2328,7 +2740,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2338,7 +2750,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "QuotationOrderByInput",
+                  "name": "OrderOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2402,7 +2814,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Quotation",
+                  "name": "Order",
                   "ofType": null
                 }
               }
@@ -2411,7 +2823,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotationsConnection",
+            "name": "ordersConnection",
             "description": null,
             "args": [
               {
@@ -2419,7 +2831,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2429,7 +2841,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "QuotationOrderByInput",
+                  "name": "OrderOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2490,7 +2902,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "QuotationConnection",
+                "name": "OrderConnection",
                 "ofType": null
               }
             },
@@ -2761,6 +3173,97 @@ export default {
                 "kind": "OBJECT",
                 "name": "ShoppingCart",
                 "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "orders",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "OrderOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Order",
+                  "ofType": null
+                }
               }
             },
             "isDeprecated": false,
@@ -5499,11 +6002,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -8328,6 +8831,36 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "orders_every",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orders_some",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orders_none",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "quotations_every",
             "description": null,
             "type": {
@@ -8478,7 +9011,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationWhereInput",
+        "name": "OrderWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8795,31 +9328,31 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem_every",
+            "name": "orderItem_every",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemWhereInput",
+              "name": "OrderItemWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "quotationItem_some",
+            "name": "orderItem_some",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemWhereInput",
+              "name": "OrderItemWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "quotationItem_none",
+            "name": "orderItem_none",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemWhereInput",
+              "name": "OrderItemWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9213,6 +9746,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "AND",
             "description": null,
             "type": {
@@ -9223,7 +9766,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 }
               }
@@ -9241,7 +9784,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 }
               }
@@ -9259,7 +9802,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 }
               }
@@ -9273,7 +9816,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemWhereInput",
+        "name": "OrderItemWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -9792,11 +10335,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9812,7 +10355,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 }
               }
@@ -9830,7 +10373,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 }
               }
@@ -9848,7 +10391,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 }
               }
@@ -10743,31 +11286,31 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotations_every",
+            "name": "orders_every",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "quotations_some",
+            "name": "orders_some",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "quotations_none",
+            "name": "orders_none",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -11518,11 +12061,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -12429,11 +12972,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -14105,11 +14648,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -14162,6 +14705,1516 @@ export default {
                 "ofType": {
                   "kind": "INPUT_OBJECT",
                   "name": "ShippingWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotationItems_every",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationItemWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotationItems_some",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationItemWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotationItems_none",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationItemWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "product",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductItemWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
                   "ofType": null
                 }
               }
@@ -14569,12 +16622,12 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Quotation",
+              "name": "Order",
               "ofType": null
             },
             "isDeprecated": false,
@@ -15048,7 +17101,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "Quotation",
+        "name": "Order",
         "description": null,
         "fields": [
           {
@@ -15080,7 +17133,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "args": [
               {
@@ -15088,7 +17141,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -15098,7 +17151,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "QuotationItemOrderByInput",
+                  "name": "OrderItemOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -15162,7 +17215,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "QuotationItem",
+                  "name": "OrderItem",
                   "ofType": null
                 }
               }
@@ -15265,6 +17318,18 @@ export default {
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Quotation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -15274,7 +17339,7 @@ export default {
       },
       {
         "kind": "ENUM",
-        "name": "QuotationItemOrderByInput",
+        "name": "OrderItemOrderByInput",
         "description": null,
         "fields": null,
         "inputFields": null,
@@ -15357,7 +17422,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationItem",
+        "name": "OrderItem",
         "description": null,
         "fields": [
           {
@@ -15441,7 +17506,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "args": [],
             "type": {
@@ -15449,7 +17514,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Quotation",
+                "name": "Order",
                 "ofType": null
               }
             },
@@ -15746,7 +17811,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "args": [
               {
@@ -15754,7 +17819,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -15764,7 +17829,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "QuotationOrderByInput",
+                  "name": "OrderOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -15828,7 +17893,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Quotation",
+                  "name": "Order",
                   "ofType": null
                 }
               }
@@ -16039,7 +18104,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "args": [],
             "type": {
@@ -16047,7 +18112,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Quotation",
+                "name": "Order",
                 "ofType": null
               }
             },
@@ -16186,7 +18251,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "args": [],
             "type": {
@@ -16194,7 +18259,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Quotation",
+                "name": "Order",
                 "ofType": null
               }
             },
@@ -16824,6 +18889,469 @@ export default {
             "deprecationReason": null
           },
           {
+            "name": "order",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Order",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "OrderOrderByInput",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "id_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "docId_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "docId_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "status_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "status_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Quotation",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "docId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotationItems",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "QuotationItemOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "QuotationItem",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "User",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "QuotationItemOrderByInput",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "id_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "key_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "key_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "amount_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "amount_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "realPrice_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "realPrice_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationItem",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "product",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ProductItem",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "quotation",
             "description": null,
             "args": [],
@@ -16897,6 +19425,18 @@ export default {
           },
           {
             "name": "updatedAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fileUrl_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fileUrl_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -17306,6 +19846,324 @@ export default {
       {
         "kind": "OBJECT",
         "name": "AggregateUser",
+        "description": null,
+        "fields": [
+          {
+            "name": "count",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationWhereUniqueInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationConnection",
+        "description": null,
+        "fields": [
+          {
+            "name": "pageInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "edges",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "QuotationEdge",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "aggregate",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AggregateQuotation",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationEdge",
+        "description": null,
+        "fields": [
+          {
+            "name": "node",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Quotation",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "cursor",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AggregateQuotation",
+        "description": null,
+        "fields": [
+          {
+            "name": "count",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemWhereUniqueInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationItemConnection",
+        "description": null,
+        "fields": [
+          {
+            "name": "pageInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "edges",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "QuotationItemEdge",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "aggregate",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AggregateQuotationItem",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationItemEdge",
+        "description": null,
+        "fields": [
+          {
+            "name": "node",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QuotationItem",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "cursor",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AggregateQuotationItem",
         "description": null,
         "fields": [
           {
@@ -18929,7 +21787,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemWhereUniqueInput",
+        "name": "OrderItemWhereUniqueInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -18960,7 +21818,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationItemConnection",
+        "name": "OrderItemConnection",
         "description": null,
         "fields": [
           {
@@ -18991,7 +21849,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "QuotationItemEdge",
+                  "name": "OrderItemEdge",
                   "ofType": null
                 }
               }
@@ -19008,7 +21866,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "AggregateQuotationItem",
+                "name": "AggregateOrderItem",
                 "ofType": null
               }
             },
@@ -19023,7 +21881,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationItemEdge",
+        "name": "OrderItemEdge",
         "description": null,
         "fields": [
           {
@@ -19035,7 +21893,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "QuotationItem",
+                "name": "OrderItem",
                 "ofType": null
               }
             },
@@ -19066,7 +21924,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "AggregateQuotationItem",
+        "name": "AggregateOrderItem",
         "description": null,
         "fields": [
           {
@@ -19093,7 +21951,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationWhereUniqueInput",
+        "name": "OrderWhereUniqueInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -19114,7 +21972,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationConnection",
+        "name": "OrderConnection",
         "description": null,
         "fields": [
           {
@@ -19145,7 +22003,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "QuotationEdge",
+                  "name": "OrderEdge",
                   "ofType": null
                 }
               }
@@ -19162,7 +22020,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "AggregateQuotation",
+                "name": "AggregateOrder",
                 "ofType": null
               }
             },
@@ -19177,7 +22035,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationEdge",
+        "name": "OrderEdge",
         "description": null,
         "fields": [
           {
@@ -19189,7 +22047,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Quotation",
+                "name": "Order",
                 "ofType": null
               }
             },
@@ -19220,7 +22078,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "AggregateQuotation",
+        "name": "AggregateOrder",
         "description": null,
         "fields": [
           {
@@ -19486,6 +22344,458 @@ export default {
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "UserWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createQuotation",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Quotation",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateQuotation",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Quotation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateManyQuotations",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationUpdateManyMutationInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upsertQuotation",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "create",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "update",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Quotation",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteQuotation",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Quotation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteManyQuotations",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createQuotationItem",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QuotationItem",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateQuotationItem",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationItem",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateManyQuotationItems",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemUpdateManyMutationInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upsertQuotationItem",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "create",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "update",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QuotationItem",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteQuotationItem",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "QuotationItemWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationItem",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteManyQuotationItems",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -21538,7 +24848,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "createQuotationItem",
+            "name": "createOrderItem",
             "description": null,
             "args": [
               {
@@ -21549,7 +24859,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemCreateInput",
+                    "name": "OrderItemCreateInput",
                     "ofType": null
                   }
                 },
@@ -21561,7 +24871,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "QuotationItem",
+                "name": "OrderItem",
                 "ofType": null
               }
             },
@@ -21569,7 +24879,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "updateQuotationItem",
+            "name": "updateOrderItem",
             "description": null,
             "args": [
               {
@@ -21580,7 +24890,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemUpdateInput",
+                    "name": "OrderItemUpdateInput",
                     "ofType": null
                   }
                 },
@@ -21594,7 +24904,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemWhereUniqueInput",
+                    "name": "OrderItemWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -21603,14 +24913,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationItem",
+              "name": "OrderItem",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "updateManyQuotationItems",
+            "name": "updateManyOrderItems",
             "description": null,
             "args": [
               {
@@ -21621,7 +24931,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemUpdateManyMutationInput",
+                    "name": "OrderItemUpdateManyMutationInput",
                     "ofType": null
                   }
                 },
@@ -21632,7 +24942,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -21651,7 +24961,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "upsertQuotationItem",
+            "name": "upsertOrderItem",
             "description": null,
             "args": [
               {
@@ -21662,7 +24972,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemWhereUniqueInput",
+                    "name": "OrderItemWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -21676,7 +24986,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemCreateInput",
+                    "name": "OrderItemCreateInput",
                     "ofType": null
                   }
                 },
@@ -21690,7 +25000,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemUpdateInput",
+                    "name": "OrderItemUpdateInput",
                     "ofType": null
                   }
                 },
@@ -21702,7 +25012,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "QuotationItem",
+                "name": "OrderItem",
                 "ofType": null
               }
             },
@@ -21710,7 +25020,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "deleteQuotationItem",
+            "name": "deleteOrderItem",
             "description": null,
             "args": [
               {
@@ -21721,7 +25031,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationItemWhereUniqueInput",
+                    "name": "OrderItemWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -21730,14 +25040,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationItem",
+              "name": "OrderItem",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "deleteManyQuotationItems",
+            "name": "deleteManyOrderItems",
             "description": null,
             "args": [
               {
@@ -21745,7 +25055,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereInput",
+                  "name": "OrderItemWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -21764,7 +25074,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "createQuotation",
+            "name": "createOrder",
             "description": null,
             "args": [
               {
@@ -21775,7 +25085,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationCreateInput",
+                    "name": "OrderCreateInput",
                     "ofType": null
                   }
                 },
@@ -21787,7 +25097,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Quotation",
+                "name": "Order",
                 "ofType": null
               }
             },
@@ -21795,7 +25105,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "updateQuotation",
+            "name": "updateOrder",
             "description": null,
             "args": [
               {
@@ -21806,7 +25116,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationUpdateInput",
+                    "name": "OrderUpdateInput",
                     "ofType": null
                   }
                 },
@@ -21820,7 +25130,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationWhereUniqueInput",
+                    "name": "OrderWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -21829,14 +25139,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Quotation",
+              "name": "Order",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "updateManyQuotations",
+            "name": "updateManyOrders",
             "description": null,
             "args": [
               {
@@ -21847,7 +25157,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationUpdateManyMutationInput",
+                    "name": "OrderUpdateManyMutationInput",
                     "ofType": null
                   }
                 },
@@ -21858,7 +25168,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -21877,7 +25187,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "upsertQuotation",
+            "name": "upsertOrder",
             "description": null,
             "args": [
               {
@@ -21888,7 +25198,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationWhereUniqueInput",
+                    "name": "OrderWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -21902,7 +25212,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationCreateInput",
+                    "name": "OrderCreateInput",
                     "ofType": null
                   }
                 },
@@ -21916,7 +25226,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationUpdateInput",
+                    "name": "OrderUpdateInput",
                     "ofType": null
                   }
                 },
@@ -21928,7 +25238,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Quotation",
+                "name": "Order",
                 "ofType": null
               }
             },
@@ -21936,7 +25246,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "deleteQuotation",
+            "name": "deleteOrder",
             "description": null,
             "args": [
               {
@@ -21947,7 +25257,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "QuotationWhereUniqueInput",
+                    "name": "OrderWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -21956,14 +25266,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Quotation",
+              "name": "Order",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "deleteManyQuotations",
+            "name": "deleteManyOrders",
             "description": null,
             "args": [
               {
@@ -21971,7 +25281,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereInput",
+                  "name": "OrderWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -22118,6 +25428,16 @@ export default {
                 "name": "ShoppingCartCreateOneWithoutCustomerInput",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderCreateManyWithoutCustomerInput",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -22546,11 +25866,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateOneInput",
+              "name": "OrderCreateOneInput",
               "ofType": null
             },
             "defaultValue": null
@@ -22948,11 +26268,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateOneInput",
+              "name": "OrderCreateOneInput",
               "ofType": null
             },
             "defaultValue": null
@@ -23216,6 +26536,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderCreateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "quotations",
             "description": null,
             "type": {
@@ -23252,7 +26582,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateManyWithoutCustomerInput",
+        "name": "OrderCreateManyWithoutCustomerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -23267,7 +26597,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationCreateWithoutCustomerInput",
+                  "name": "OrderCreateWithoutCustomerInput",
                   "ofType": null
                 }
               }
@@ -23285,7 +26615,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereUniqueInput",
+                  "name": "OrderWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -23299,7 +26629,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateWithoutCustomerInput",
+        "name": "OrderCreateWithoutCustomerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -23324,11 +26654,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemCreateManyWithoutQuotationInput",
+              "name": "OrderItemCreateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -23338,7 +26668,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanCreateOneWithoutQuotationsInput",
+              "name": "SalesmanCreateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -23348,7 +26678,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateOneWithoutQuotationInput",
+              "name": "PaymentCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -23358,7 +26688,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingCreateOneWithoutQuotationInput",
+              "name": "ShippingCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -23372,6 +26702,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -23380,7 +26720,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemCreateManyWithoutQuotationInput",
+        "name": "OrderItemCreateManyWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -23395,7 +26735,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemCreateWithoutQuotationInput",
+                  "name": "OrderItemCreateWithoutOrderInput",
                   "ofType": null
                 }
               }
@@ -23413,7 +26753,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemWhereUniqueInput",
+                  "name": "OrderItemWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -23427,7 +26767,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemCreateWithoutQuotationInput",
+        "name": "OrderItemCreateWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -23504,7 +26844,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalesmanCreateOneWithoutQuotationsInput",
+        "name": "SalesmanCreateOneWithoutOrdersInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -23513,7 +26853,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanCreateWithoutQuotationsInput",
+              "name": "SalesmanCreateWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -23535,7 +26875,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalesmanCreateWithoutQuotationsInput",
+        "name": "SalesmanCreateWithoutOrdersInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -23722,14 +27062,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneWithoutPaymentInput",
+                "name": "OrderCreateOneWithoutPaymentInput",
                 "ofType": null
               }
             },
@@ -23918,6 +27258,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderCreateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "quotations",
             "description": null,
             "type": {
@@ -23934,6 +27284,238 @@ export default {
               "kind": "INPUT_OBJECT",
               "name": "AddressCreateManyWithoutCustomerInput",
               "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationCreateManyWithoutCustomerInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationCreateWithoutCustomerInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationCreateWithoutCustomerInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotationItems",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationItemCreateManyWithoutQuotationInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemCreateManyWithoutQuotationInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemCreateWithoutQuotationInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemCreateWithoutQuotationInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "product",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductItemCreateOneInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
             },
             "defaultValue": null
           }
@@ -24164,14 +27746,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneInput",
+                "name": "OrderCreateOneInput",
                 "ofType": null
               }
             },
@@ -24239,7 +27821,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateOneInput",
+        "name": "OrderCreateOneInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -24248,7 +27830,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateInput",
+              "name": "OrderCreateInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24258,7 +27840,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24270,7 +27852,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateInput",
+        "name": "OrderCreateInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -24295,11 +27877,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemCreateManyWithoutQuotationInput",
+              "name": "OrderItemCreateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24309,7 +27891,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanCreateOneWithoutQuotationsInput",
+              "name": "SalesmanCreateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24319,7 +27901,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateOneWithoutQuotationInput",
+              "name": "PaymentCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24329,7 +27911,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingCreateOneWithoutQuotationInput",
+              "name": "ShippingCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24342,7 +27924,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserCreateOneWithoutQuotationsInput",
+                "name": "UserCreateOneWithoutOrdersInput",
                 "ofType": null
               }
             },
@@ -24357,6 +27939,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -24365,7 +27957,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentCreateOneWithoutQuotationInput",
+        "name": "PaymentCreateOneWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -24374,7 +27966,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateWithoutQuotationInput",
+              "name": "PaymentCreateWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24396,7 +27988,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentCreateWithoutQuotationInput",
+        "name": "PaymentCreateWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -24587,11 +28179,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateManyWithoutSalesmanInput",
+              "name": "OrderCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -24707,14 +28299,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneInput",
+                "name": "OrderCreateOneInput",
                 "ofType": null
               }
             },
@@ -25007,6 +28599,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderCreateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "quotations",
             "description": null,
             "type": {
@@ -25133,14 +28735,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneWithoutPaymentInput",
+                "name": "OrderCreateOneWithoutPaymentInput",
                 "ofType": null
               }
             },
@@ -25173,7 +28775,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateOneWithoutPaymentInput",
+        "name": "OrderCreateOneWithoutPaymentInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -25182,7 +28784,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateWithoutPaymentInput",
+              "name": "OrderCreateWithoutPaymentInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25192,7 +28794,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25204,7 +28806,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateWithoutPaymentInput",
+        "name": "OrderCreateWithoutPaymentInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -25229,11 +28831,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemCreateManyWithoutQuotationInput",
+              "name": "OrderItemCreateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25243,7 +28845,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanCreateOneWithoutQuotationsInput",
+              "name": "SalesmanCreateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25253,7 +28855,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingCreateOneWithoutQuotationInput",
+              "name": "ShippingCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25266,7 +28868,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserCreateOneWithoutQuotationsInput",
+                "name": "UserCreateOneWithoutOrdersInput",
                 "ofType": null
               }
             },
@@ -25281,6 +28883,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -25289,7 +28901,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ShippingCreateOneWithoutQuotationInput",
+        "name": "ShippingCreateOneWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -25298,7 +28910,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingCreateWithoutQuotationInput",
+              "name": "ShippingCreateWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25320,7 +28932,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ShippingCreateWithoutQuotationInput",
+        "name": "ShippingCreateWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -25499,14 +29111,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneInput",
+                "name": "OrderCreateOneInput",
                 "ofType": null
               }
             },
@@ -25651,11 +29263,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateManyWithoutSalesmanInput",
+              "name": "OrderCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25667,7 +29279,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateManyWithoutSalesmanInput",
+        "name": "OrderCreateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -25682,7 +29294,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationCreateWithoutSalesmanInput",
+                  "name": "OrderCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -25700,7 +29312,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereUniqueInput",
+                  "name": "OrderWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -25714,7 +29326,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateWithoutSalesmanInput",
+        "name": "OrderCreateWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -25739,11 +29351,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemCreateManyWithoutQuotationInput",
+              "name": "OrderItemCreateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25753,7 +29365,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateOneWithoutQuotationInput",
+              "name": "PaymentCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25763,7 +29375,305 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingCreateOneWithoutQuotationInput",
+              "name": "ShippingCreateOneWithoutOrderInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "UserCreateOneWithoutOrdersInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserCreateOneWithoutOrdersInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserCreateWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserCreateWithoutOrdersInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "password",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "avatar",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "shoppingCart",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "ShoppingCartCreateOneWithoutCustomerInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotations",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "payments",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "PaymentCreateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "addresses",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AddressCreateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationCreateOneInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationCreateInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotationItems",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationItemCreateManyWithoutQuotationInput",
               "ofType": null
             },
             "defaultValue": null
@@ -25779,6 +29689,16 @@ export default {
                 "name": "UserCreateOneWithoutQuotationsInput",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -25955,6 +29875,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderCreateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "payments",
             "description": null,
             "type": {
@@ -26079,14 +30009,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneWithoutPaymentInput",
+                "name": "OrderCreateOneWithoutPaymentInput",
                 "ofType": null
               }
             },
@@ -26301,14 +30231,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneInput",
+                "name": "OrderCreateOneInput",
                 "ofType": null
               }
             },
@@ -26463,14 +30393,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneWithoutShippingInput",
+                "name": "OrderCreateOneWithoutShippingInput",
                 "ofType": null
               }
             },
@@ -26483,7 +30413,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateOneWithoutShippingInput",
+        "name": "OrderCreateOneWithoutShippingInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -26492,7 +30422,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateWithoutShippingInput",
+              "name": "OrderCreateWithoutShippingInput",
               "ofType": null
             },
             "defaultValue": null
@@ -26502,7 +30432,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -26514,7 +30444,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateWithoutShippingInput",
+        "name": "OrderCreateWithoutShippingInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -26539,11 +30469,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemCreateManyWithoutQuotationInput",
+              "name": "OrderItemCreateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -26553,7 +30483,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanCreateOneWithoutQuotationsInput",
+              "name": "SalesmanCreateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -26563,7 +30493,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateOneWithoutQuotationInput",
+              "name": "PaymentCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -26576,7 +30506,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserCreateOneWithoutQuotationsInput",
+                "name": "UserCreateOneWithoutOrdersInput",
                 "ofType": null
               }
             },
@@ -26588,6 +30518,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateOneInput",
               "ofType": null
             },
             "defaultValue": null
@@ -26736,6 +30676,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "ShoppingCartUpdateOneRequiredWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderUpdateManyWithoutCustomerInput",
               "ofType": null
             },
             "defaultValue": null
@@ -27288,11 +31238,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneInput",
+              "name": "OrderUpdateOneInput",
               "ofType": null
             },
             "defaultValue": null
@@ -27845,11 +31795,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneInput",
+              "name": "OrderUpdateOneInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28129,6 +32079,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "quotations",
             "description": null,
             "type": {
@@ -28144,6 +32104,1861 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "PaymentUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "addresses",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AddressUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderUpdateManyWithoutCustomerInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderCreateWithoutCustomerInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "delete",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "set",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "disconnect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderUpdateWithWhereUniqueWithoutCustomerInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderUpsertWithWhereUniqueWithoutCustomerInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "deleteMany",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updateMany",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderUpdateManyWithWhereNestedInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderUpdateWithWhereUniqueWithoutCustomerInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderWhereUniqueInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "data",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderUpdateWithoutCustomerDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderUpdateWithoutCustomerDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orderItem",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderItemUpdateManyWithoutOrderInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "salesman",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanUpdateOneWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "payment",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "PaymentUpdateOneWithoutOrderInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "shipping",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ShippingUpdateOneWithoutOrderInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderItemUpdateManyWithoutOrderInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemCreateWithoutOrderInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "delete",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "set",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "disconnect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemUpdateWithWhereUniqueWithoutOrderInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemUpsertWithWhereUniqueWithoutOrderInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "deleteMany",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updateMany",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemUpdateManyWithWhereNestedInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderItemUpdateWithWhereUniqueWithoutOrderInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderItemWhereUniqueInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "data",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderItemUpdateWithoutOrderDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderItemUpdateWithoutOrderDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "product",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductItemUpdateOneRequiredInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderItemUpsertWithWhereUniqueWithoutOrderInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderItemWhereUniqueInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderItemUpdateWithoutOrderDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderItemCreateWithoutOrderInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderItemScalarWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "OrderItemScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderItemUpdateManyWithWhereNestedInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderItemScalarWhereInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "data",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderItemUpdateManyDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderItemUpdateManyDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SalesmanUpdateOneWithoutOrdersInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanCreateWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanUpdateWithoutOrdersDataInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanUpsertWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "delete",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "disconnect",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SalesmanUpdateWithoutOrdersDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "payments",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "PaymentUpdateManyWithoutSalesmanInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "invoices",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "InvoiceUpdateManyWithoutSalesmanInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "PaymentUpdateManyWithoutSalesmanInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentCreateWithoutSalesmanInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "delete",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "set",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "disconnect",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentWhereUniqueInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentUpdateWithWhereUniqueWithoutSalesmanInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentUpsertWithWhereUniqueWithoutSalesmanInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "deleteMany",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updateMany",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PaymentUpdateManyWithWhereNestedInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "PaymentUpdateWithWhereUniqueWithoutSalesmanInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "PaymentWhereUniqueInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "data",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "PaymentUpdateWithoutSalesmanDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "PaymentUpdateWithoutSalesmanDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpdateOneRequiredWithoutPaymentsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "order",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderUpdateOneRequiredWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "Invoice",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "InvoiceUpdateOneWithoutPaymentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "rawEvent",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserUpdateOneRequiredWithoutPaymentsInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserCreateWithoutPaymentsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpdateWithoutPaymentsDataInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpsertWithoutPaymentsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserUpdateWithoutPaymentsDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "password",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "avatar",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "shoppingCart",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ShoppingCartUpdateOneRequiredWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotations",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateManyWithoutCustomerInput",
               "ofType": null
             },
             "defaultValue": null
@@ -28392,7 +34207,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "quotationItems",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -28402,31 +34217,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "salesman",
+            "name": "fileUrl",
             "description": null,
             "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneWithoutQuotationsInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "payment",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateOneWithoutQuotationInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "shipping",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ShippingUpdateOneWithoutQuotationInput",
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -29413,312 +35208,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalesmanUpdateOneWithoutQuotationsInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "create",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "SalesmanCreateWithoutQuotationsInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "update",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateWithoutQuotationsDataInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "upsert",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpsertWithoutQuotationsInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "delete",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "disconnect",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "connect",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "SalesmanWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "SalesmanUpdateWithoutQuotationsDataInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "name",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "email",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "phone",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "payments",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateManyWithoutSalesmanInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "invoices",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "InvoiceUpdateManyWithoutSalesmanInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateManyWithoutSalesmanInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "create",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentCreateWithoutSalesmanInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "delete",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "connect",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "set",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "disconnect",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "update",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentUpdateWithWhereUniqueWithoutSalesmanInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "upsert",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentUpsertWithWhereUniqueWithoutSalesmanInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "deleteMany",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentScalarWhereInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateMany",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "PaymentUpdateManyWithWhereNestedInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateWithWhereUniqueWithoutSalesmanInput",
+        "name": "QuotationUpsertWithWhereUniqueWithoutCustomerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -29730,7 +35220,941 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PaymentWhereUniqueInput",
+                "name": "QuotationWhereUniqueInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "QuotationUpdateWithoutCustomerDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "QuotationCreateWithoutCustomerInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationScalarWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "createdAt_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedAt_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationScalarWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationUpdateManyWithWhereNestedInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "QuotationScalarWhereInput",
                 "ofType": null
               }
             },
@@ -29744,7 +36168,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PaymentUpdateWithoutSalesmanDataInput",
+                "name": "QuotationUpdateManyDataInput",
                 "ofType": null
               }
             },
@@ -29757,7 +36181,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateWithoutSalesmanDataInput",
+        "name": "QuotationUpdateManyDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -29772,7 +36196,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "amount",
+            "name": "fileUrl",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -29782,213 +36206,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "customer",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneRequiredWithoutPaymentsInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "quotation",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredWithoutPaymentInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "Invoice",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "InvoiceUpdateOneWithoutPaymentInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "rawEvent",
+            "name": "status",
             "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "UserUpdateOneRequiredWithoutPaymentsInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "create",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "UserCreateWithoutPaymentsInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "update",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "UserUpdateWithoutPaymentsDataInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "upsert",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "UserUpsertWithoutPaymentsInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "connect",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "UserWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "UserUpdateWithoutPaymentsDataInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "runningId",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "name",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "email",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "password",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "phone",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "avatar",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "activated",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "shoppingCart",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ShoppingCartUpdateOneRequiredWithoutCustomerInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "quotations",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateManyWithoutCustomerInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "addresses",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "AddressUpdateManyWithoutCustomerInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30510,11 +36732,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredInput",
+              "name": "OrderUpdateOneRequiredInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30687,6 +36909,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "ShoppingCartUpdateOneRequiredWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderUpdateManyWithoutCustomerInput",
               "ofType": null
             },
             "defaultValue": null
@@ -30975,11 +37207,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredWithoutPaymentInput",
+              "name": "OrderUpdateOneRequiredWithoutPaymentInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31127,11 +37359,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateManyWithoutSalesmanInput",
+              "name": "OrderUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31390,11 +37622,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredInput",
+              "name": "OrderUpdateOneRequiredInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31426,7 +37658,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateOneRequiredInput",
+        "name": "OrderUpdateOneRequiredInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -31435,7 +37667,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateInput",
+              "name": "OrderCreateInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31445,7 +37677,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateDataInput",
+              "name": "OrderUpdateDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31455,7 +37687,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpsertNestedInput",
+              "name": "OrderUpsertNestedInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31465,7 +37697,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31477,7 +37709,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateDataInput",
+        "name": "OrderUpdateDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -31492,11 +37724,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemUpdateManyWithoutQuotationInput",
+              "name": "OrderItemUpdateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31506,7 +37738,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31516,7 +37748,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateOneWithoutQuotationInput",
+              "name": "PaymentUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31526,7 +37758,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingUpdateOneWithoutQuotationInput",
+              "name": "ShippingUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31536,7 +37768,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "name": "UserUpdateOneRequiredWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31550,6 +37782,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -31558,7 +37800,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateOneWithoutQuotationInput",
+        "name": "PaymentUpdateOneWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -31567,7 +37809,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateWithoutQuotationInput",
+              "name": "PaymentCreateWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31577,7 +37819,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateWithoutQuotationDataInput",
+              "name": "PaymentUpdateWithoutOrderDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31587,7 +37829,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpsertWithoutQuotationInput",
+              "name": "PaymentUpsertWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31629,7 +37871,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpdateWithoutQuotationDataInput",
+        "name": "PaymentUpdateWithoutOrderDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -31806,11 +38048,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredInput",
+              "name": "OrderUpdateOneRequiredInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31938,11 +38180,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateManyWithoutSalesmanInput",
+              "name": "OrderUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -31954,7 +38196,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateManyWithoutSalesmanInput",
+        "name": "OrderUpdateManyWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -31969,7 +38211,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationCreateWithoutSalesmanInput",
+                  "name": "OrderCreateWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -31987,7 +38229,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereUniqueInput",
+                  "name": "OrderWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -32005,7 +38247,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereUniqueInput",
+                  "name": "OrderWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -32023,7 +38265,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereUniqueInput",
+                  "name": "OrderWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -32041,7 +38283,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationWhereUniqueInput",
+                  "name": "OrderWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -32059,7 +38301,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationUpdateWithWhereUniqueWithoutSalesmanInput",
+                  "name": "OrderUpdateWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -32077,7 +38319,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationUpsertWithWhereUniqueWithoutSalesmanInput",
+                  "name": "OrderUpsertWithWhereUniqueWithoutSalesmanInput",
                   "ofType": null
                 }
               }
@@ -32095,7 +38337,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationScalarWhereInput",
+                  "name": "OrderScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -32113,7 +38355,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationUpdateManyWithWhereNestedInput",
+                  "name": "OrderUpdateManyWithWhereNestedInput",
                   "ofType": null
                 }
               }
@@ -32127,7 +38369,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateWithWhereUniqueWithoutSalesmanInput",
+        "name": "OrderUpdateWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -32139,7 +38381,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationWhereUniqueInput",
+                "name": "OrderWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -32153,7 +38395,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutSalesmanDataInput",
+                "name": "OrderUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -32166,7 +38408,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateWithoutSalesmanDataInput",
+        "name": "OrderUpdateWithoutSalesmanDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -32181,11 +38423,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemUpdateManyWithoutQuotationInput",
+              "name": "OrderItemUpdateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32195,7 +38437,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateOneWithoutQuotationInput",
+              "name": "PaymentUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32205,7 +38447,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingUpdateOneWithoutQuotationInput",
+              "name": "ShippingUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32215,7 +38457,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "name": "UserUpdateOneRequiredWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32229,6 +38471,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -32237,7 +38489,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ShippingUpdateOneWithoutQuotationInput",
+        "name": "ShippingUpdateOneWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -32246,7 +38498,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingCreateWithoutQuotationInput",
+              "name": "ShippingCreateWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32256,7 +38508,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingUpdateWithoutQuotationDataInput",
+              "name": "ShippingUpdateWithoutOrderDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32266,7 +38518,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingUpsertWithoutQuotationInput",
+              "name": "ShippingUpsertWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32308,7 +38560,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ShippingUpdateWithoutQuotationDataInput",
+        "name": "ShippingUpdateWithoutOrderDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -32455,11 +38707,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredInput",
+              "name": "OrderUpdateOneRequiredInput",
               "ofType": null
             },
             "defaultValue": null
@@ -32764,6 +39016,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "ShoppingCartUpdateOneRequiredWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderUpdateManyWithoutCustomerInput",
               "ofType": null
             },
             "defaultValue": null
@@ -33091,11 +39353,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredWithoutShippingInput",
+              "name": "OrderUpdateOneRequiredWithoutShippingInput",
               "ofType": null
             },
             "defaultValue": null
@@ -33107,7 +39369,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateOneRequiredWithoutShippingInput",
+        "name": "OrderUpdateOneRequiredWithoutShippingInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -33116,7 +39378,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateWithoutShippingInput",
+              "name": "OrderCreateWithoutShippingInput",
               "ofType": null
             },
             "defaultValue": null
@@ -33126,7 +39388,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateWithoutShippingDataInput",
+              "name": "OrderUpdateWithoutShippingDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -33136,7 +39398,380 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpsertWithoutShippingInput",
+              "name": "OrderUpsertWithoutShippingInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderUpdateWithoutShippingDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "orderItem",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderItemUpdateManyWithoutOrderInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "salesman",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SalesmanUpdateOneWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "payment",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "PaymentUpdateOneWithoutOrderInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpdateOneRequiredWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserUpdateOneRequiredWithoutOrdersInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserCreateWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpdateWithoutOrdersDataInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpsertWithoutOrdersInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserUpdateWithoutOrdersDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "runningId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "password",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "avatar",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "activated",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "shoppingCart",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ShoppingCartUpdateOneRequiredWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotations",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "payments",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "PaymentUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "addresses",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AddressUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserUpsertWithoutOrdersInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "UserUpdateWithoutOrdersDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "UserCreateWithoutOrdersInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationUpdateOneInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateDataInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpsertNestedInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "delete",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "disconnect",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -33158,7 +39793,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateWithoutShippingDataInput",
+        "name": "QuotationUpdateDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -33173,31 +39808,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "quotationItems",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "QuotationItemUpdateManyWithoutQuotationInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "salesman",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneWithoutQuotationsInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "payment",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateOneWithoutQuotationInput",
               "ofType": null
             },
             "defaultValue": null
@@ -33208,6 +39823,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -33375,6 +40000,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "orders",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "OrderUpdateManyWithoutCustomerInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "payments",
             "description": null,
             "type": {
@@ -33440,7 +40075,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpsertWithoutShippingInput",
+        "name": "QuotationUpsertNestedInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -33452,7 +40087,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutShippingDataInput",
+                "name": "QuotationUpdateDataInput",
                 "ofType": null
               }
             },
@@ -33466,7 +40101,46 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateWithoutShippingInput",
+                "name": "QuotationCreateInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "OrderUpsertWithoutShippingInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderUpdateWithoutShippingDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "OrderCreateWithoutShippingInput",
                 "ofType": null
               }
             },
@@ -34588,11 +41262,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredWithoutPaymentInput",
+              "name": "OrderUpdateOneRequiredWithoutPaymentInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34614,7 +41288,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateOneRequiredWithoutPaymentInput",
+        "name": "OrderUpdateOneRequiredWithoutPaymentInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -34623,7 +41297,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateWithoutPaymentInput",
+              "name": "OrderCreateWithoutPaymentInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34633,7 +41307,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateWithoutPaymentDataInput",
+              "name": "OrderUpdateWithoutPaymentDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34643,7 +41317,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpsertWithoutPaymentInput",
+              "name": "OrderUpsertWithoutPaymentInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34653,7 +41327,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34665,7 +41339,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateWithoutPaymentDataInput",
+        "name": "OrderUpdateWithoutPaymentDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -34680,11 +41354,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemUpdateManyWithoutQuotationInput",
+              "name": "OrderItemUpdateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34694,7 +41368,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34704,7 +41378,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingUpdateOneWithoutQuotationInput",
+              "name": "ShippingUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34714,7 +41388,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "name": "UserUpdateOneRequiredWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -34728,6 +41402,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -34736,7 +41420,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpsertWithoutPaymentInput",
+        "name": "OrderUpsertWithoutPaymentInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -34748,7 +41432,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutPaymentDataInput",
+                "name": "OrderUpdateWithoutPaymentDataInput",
                 "ofType": null
               }
             },
@@ -34762,7 +41446,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateWithoutPaymentInput",
+                "name": "OrderCreateWithoutPaymentInput",
                 "ofType": null
               }
             },
@@ -34994,7 +41678,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ShippingUpsertWithoutQuotationInput",
+        "name": "ShippingUpsertWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -35006,7 +41690,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "ShippingUpdateWithoutQuotationDataInput",
+                "name": "ShippingUpdateWithoutOrderDataInput",
                 "ofType": null
               }
             },
@@ -35020,7 +41704,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "ShippingCreateWithoutQuotationInput",
+                "name": "ShippingCreateWithoutOrderInput",
                 "ofType": null
               }
             },
@@ -35033,7 +41717,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpsertWithWhereUniqueWithoutSalesmanInput",
+        "name": "OrderUpsertWithWhereUniqueWithoutSalesmanInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -35045,7 +41729,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationWhereUniqueInput",
+                "name": "OrderWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -35059,7 +41743,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutSalesmanDataInput",
+                "name": "OrderUpdateWithoutSalesmanDataInput",
                 "ofType": null
               }
             },
@@ -35073,7 +41757,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateWithoutSalesmanInput",
+                "name": "OrderCreateWithoutSalesmanInput",
                 "ofType": null
               }
             },
@@ -35086,7 +41770,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationScalarWhereInput",
+        "name": "OrderScalarWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -35761,7 +42445,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationScalarWhereInput",
+                  "name": "OrderScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -35779,7 +42463,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationScalarWhereInput",
+                  "name": "OrderScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -35797,7 +42481,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationScalarWhereInput",
+                  "name": "OrderScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -35811,7 +42495,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateManyWithWhereNestedInput",
+        "name": "OrderUpdateManyWithWhereNestedInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -35823,7 +42507,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationScalarWhereInput",
+                "name": "OrderScalarWhereInput",
                 "ofType": null
               }
             },
@@ -35837,7 +42521,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateManyDataInput",
+                "name": "OrderUpdateManyDataInput",
                 "ofType": null
               }
             },
@@ -35850,7 +42534,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateManyDataInput",
+        "name": "OrderUpdateManyDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -35959,7 +42643,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PaymentUpsertWithoutQuotationInput",
+        "name": "PaymentUpsertWithoutOrderInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -35971,7 +42655,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PaymentUpdateWithoutQuotationDataInput",
+                "name": "PaymentUpdateWithoutOrderDataInput",
                 "ofType": null
               }
             },
@@ -35985,7 +42669,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PaymentCreateWithoutQuotationInput",
+                "name": "PaymentCreateWithoutOrderInput",
                 "ofType": null
               }
             },
@@ -35998,7 +42682,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpsertNestedInput",
+        "name": "OrderUpsertNestedInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -36010,7 +42694,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateDataInput",
+                "name": "OrderUpdateDataInput",
                 "ofType": null
               }
             },
@@ -36024,7 +42708,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateInput",
+                "name": "OrderCreateInput",
                 "ofType": null
               }
             },
@@ -38970,7 +45654,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SalesmanUpsertWithoutQuotationsInput",
+        "name": "SalesmanUpsertWithoutOrdersInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -38982,7 +45666,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalesmanUpdateWithoutQuotationsDataInput",
+                "name": "SalesmanUpdateWithoutOrdersDataInput",
                 "ofType": null
               }
             },
@@ -38996,7 +45680,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SalesmanCreateWithoutQuotationsInput",
+                "name": "SalesmanCreateWithoutOrdersInput",
                 "ofType": null
               }
             },
@@ -39009,7 +45693,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpsertWithWhereUniqueWithoutCustomerInput",
+        "name": "OrderUpsertWithWhereUniqueWithoutCustomerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -39021,7 +45705,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationWhereUniqueInput",
+                "name": "OrderWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -39035,7 +45719,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutCustomerDataInput",
+                "name": "OrderUpdateWithoutCustomerDataInput",
                 "ofType": null
               }
             },
@@ -39049,7 +45733,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateWithoutCustomerInput",
+                "name": "OrderCreateWithoutCustomerInput",
                 "ofType": null
               }
             },
@@ -39140,7 +45824,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateOneInput",
+        "name": "OrderUpdateOneInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -39149,7 +45833,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateInput",
+              "name": "OrderCreateInput",
               "ofType": null
             },
             "defaultValue": null
@@ -39159,7 +45843,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateDataInput",
+              "name": "OrderUpdateDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -39169,7 +45853,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpsertNestedInput",
+              "name": "OrderUpsertNestedInput",
               "ofType": null
             },
             "defaultValue": null
@@ -39199,7 +45883,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -42502,6 +49186,538 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "QuotationUpdateInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotationItems",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationItemUpdateManyWithoutQuotationInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationUpdateManyMutationInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemCreateInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "product",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductItemCreateOneInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "QuotationCreateOneWithoutQuotationItemsInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationCreateOneWithoutQuotationItemsInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateWithoutQuotationItemsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationCreateWithoutQuotationItemsInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "UserCreateOneWithoutQuotationsInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemUpdateInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "product",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductItemUpdateOneRequiredInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneRequiredWithoutQuotationItemsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationUpdateOneRequiredWithoutQuotationItemsInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateWithoutQuotationItemsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateWithoutQuotationItemsDataInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpsertWithoutQuotationItemsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationUpdateWithoutQuotationItemsDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "docId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationUpsertWithoutQuotationItemsInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "QuotationUpdateWithoutQuotationItemsDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "QuotationCreateWithoutQuotationItemsInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemUpdateManyMutationInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "AddressCreateInput",
         "description": null,
         "fields": null,
@@ -42744,14 +49960,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneWithoutPaymentInput",
+                "name": "OrderCreateOneWithoutPaymentInput",
                 "ofType": null
               }
             },
@@ -42829,11 +50045,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredWithoutPaymentInput",
+              "name": "OrderUpdateOneRequiredWithoutPaymentInput",
               "ofType": null
             },
             "defaultValue": null
@@ -42983,11 +50199,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateManyWithoutSalesmanInput",
+              "name": "OrderCreateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -43054,11 +50270,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotations",
+            "name": "orders",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateManyWithoutSalesmanInput",
+              "name": "OrderUpdateManyWithoutSalesmanInput",
               "ofType": null
             },
             "defaultValue": null
@@ -43146,11 +50362,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredInput",
+              "name": "OrderUpdateOneRequiredInput",
               "ofType": null
             },
             "defaultValue": null
@@ -43308,14 +50524,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneWithoutShippingInput",
+                "name": "OrderCreateOneWithoutShippingInput",
                 "ofType": null
               }
             },
@@ -43383,11 +50599,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredWithoutShippingInput",
+              "name": "OrderUpdateOneRequiredWithoutShippingInput",
               "ofType": null
             },
             "defaultValue": null
@@ -43627,11 +50843,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneInput",
+              "name": "OrderUpdateOneInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44222,7 +51438,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemCreateInput",
+        "name": "OrderItemCreateInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44293,14 +51509,14 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateOneWithoutQuotationItemInput",
+                "name": "OrderCreateOneWithoutOrderItemInput",
                 "ofType": null
               }
             },
@@ -44313,7 +51529,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateOneWithoutQuotationItemInput",
+        "name": "OrderCreateOneWithoutOrderItemInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44322,7 +51538,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateWithoutQuotationItemInput",
+              "name": "OrderCreateWithoutOrderItemInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44332,7 +51548,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44344,7 +51560,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationCreateWithoutQuotationItemInput",
+        "name": "OrderCreateWithoutOrderItemInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44373,7 +51589,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanCreateOneWithoutQuotationsInput",
+              "name": "SalesmanCreateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44383,7 +51599,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentCreateOneWithoutQuotationInput",
+              "name": "PaymentCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44393,7 +51609,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingCreateOneWithoutQuotationInput",
+              "name": "ShippingCreateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44406,7 +51622,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserCreateOneWithoutQuotationsInput",
+                "name": "UserCreateOneWithoutOrdersInput",
                 "ofType": null
               }
             },
@@ -44421,6 +51637,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationCreateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -44429,7 +51655,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemUpdateInput",
+        "name": "OrderItemUpdateInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44474,11 +51700,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateOneRequiredWithoutQuotationItemInput",
+              "name": "OrderUpdateOneRequiredWithoutOrderItemInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44490,7 +51716,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateOneRequiredWithoutQuotationItemInput",
+        "name": "OrderUpdateOneRequiredWithoutOrderItemInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44499,7 +51725,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationCreateWithoutQuotationItemInput",
+              "name": "OrderCreateWithoutOrderItemInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44509,7 +51735,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpdateWithoutQuotationItemDataInput",
+              "name": "OrderUpdateWithoutOrderItemDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44519,7 +51745,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationUpsertWithoutQuotationItemInput",
+              "name": "OrderUpsertWithoutOrderItemInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44529,7 +51755,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereUniqueInput",
+              "name": "OrderWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44541,7 +51767,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateWithoutQuotationItemDataInput",
+        "name": "OrderUpdateWithoutOrderItemDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44560,7 +51786,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44570,7 +51796,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateOneWithoutQuotationInput",
+              "name": "PaymentUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44580,7 +51806,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingUpdateOneWithoutQuotationInput",
+              "name": "ShippingUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44590,7 +51816,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "name": "UserUpdateOneRequiredWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44604,6 +51830,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -44612,7 +51848,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpsertWithoutQuotationItemInput",
+        "name": "OrderUpsertWithoutOrderItemInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44624,7 +51860,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationUpdateWithoutQuotationItemDataInput",
+                "name": "OrderUpdateWithoutOrderItemDataInput",
                 "ofType": null
               }
             },
@@ -44638,7 +51874,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "QuotationCreateWithoutQuotationItemInput",
+                "name": "OrderCreateWithoutOrderItemInput",
                 "ofType": null
               }
             },
@@ -44651,7 +51887,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemUpdateManyMutationInput",
+        "name": "OrderItemUpdateManyMutationInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44692,7 +51928,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateInput",
+        "name": "OrderUpdateInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44707,11 +51943,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemUpdateManyWithoutQuotationInput",
+              "name": "OrderItemUpdateManyWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44721,7 +51957,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "SalesmanUpdateOneWithoutQuotationsInput",
+              "name": "SalesmanUpdateOneWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44731,7 +51967,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "PaymentUpdateOneWithoutQuotationInput",
+              "name": "PaymentUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44741,7 +51977,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ShippingUpdateOneWithoutQuotationInput",
+              "name": "ShippingUpdateOneWithoutOrderInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44751,7 +51987,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneRequiredWithoutQuotationsInput",
+              "name": "UserUpdateOneRequiredWithoutOrdersInput",
               "ofType": null
             },
             "defaultValue": null
@@ -44765,6 +52001,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationUpdateOneInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -44773,7 +52019,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationUpdateManyMutationInput",
+        "name": "OrderUpdateManyMutationInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -44825,6 +52071,52 @@ export default {
             "type": {
               "kind": "OBJECT",
               "name": "UserSubscriptionPayload",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotation",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationSubscriptionWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationSubscriptionPayload",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "quotationItem",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemSubscriptionWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationItemSubscriptionPayload",
               "ofType": null
             },
             "isDeprecated": false,
@@ -45038,7 +52330,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "quotationItem",
+            "name": "orderItem",
             "description": null,
             "args": [
               {
@@ -45046,7 +52338,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemSubscriptionWhereInput",
+                  "name": "OrderItemSubscriptionWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -45054,14 +52346,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationItemSubscriptionPayload",
+              "name": "OrderItemSubscriptionPayload",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "quotation",
+            "name": "order",
             "description": null,
             "args": [
               {
@@ -45069,7 +52361,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationSubscriptionWhereInput",
+                  "name": "OrderSubscriptionWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -45077,7 +52369,7 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationSubscriptionPayload",
+              "name": "OrderSubscriptionPayload",
               "ofType": null
             },
             "isDeprecated": false,
@@ -45491,6 +52783,596 @@ export default {
               "ofType": {
                 "kind": "SCALAR",
                 "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationSubscriptionWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "mutation_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "MutationType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains_every",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains_some",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "node",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationSubscriptionPayload",
+        "description": null,
+        "fields": [
+          {
+            "name": "mutation",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "MutationType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "node",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Quotation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedFields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "previousValues",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationPreviousValues",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationPreviousValues",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "docId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fileUrl",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "status",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QuotationItemSubscriptionWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "mutation_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "MutationType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains_every",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains_some",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "node",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "QuotationItemWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "QuotationItemSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationItemSubscriptionPayload",
+        "description": null,
+        "fields": [
+          {
+            "name": "mutation",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "MutationType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "node",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationItem",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedFields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "previousValues",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "QuotationItemPreviousValues",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "QuotationItemPreviousValues",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "realPrice",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -48330,7 +56212,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationItemSubscriptionWhereInput",
+        "name": "OrderItemSubscriptionWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -48403,7 +56285,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationItemWhereInput",
+              "name": "OrderItemWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -48419,7 +56301,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemSubscriptionWhereInput",
+                  "name": "OrderItemSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -48437,7 +56319,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemSubscriptionWhereInput",
+                  "name": "OrderItemSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -48455,7 +56337,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationItemSubscriptionWhereInput",
+                  "name": "OrderItemSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -48469,7 +56351,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationItemSubscriptionPayload",
+        "name": "OrderItemSubscriptionPayload",
         "description": null,
         "fields": [
           {
@@ -48494,7 +56376,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationItem",
+              "name": "OrderItem",
               "ofType": null
             },
             "isDeprecated": false,
@@ -48526,7 +56408,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationItemPreviousValues",
+              "name": "OrderItemPreviousValues",
               "ofType": null
             },
             "isDeprecated": false,
@@ -48540,7 +56422,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationItemPreviousValues",
+        "name": "OrderItemPreviousValues",
         "description": null,
         "fields": [
           {
@@ -48615,7 +56497,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "QuotationSubscriptionWhereInput",
+        "name": "OrderSubscriptionWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -48688,7 +56570,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "QuotationWhereInput",
+              "name": "OrderWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -48704,7 +56586,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationSubscriptionWhereInput",
+                  "name": "OrderSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -48722,7 +56604,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationSubscriptionWhereInput",
+                  "name": "OrderSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -48740,7 +56622,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "QuotationSubscriptionWhereInput",
+                  "name": "OrderSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -48754,7 +56636,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationSubscriptionPayload",
+        "name": "OrderSubscriptionPayload",
         "description": null,
         "fields": [
           {
@@ -48779,7 +56661,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Quotation",
+              "name": "Order",
               "ofType": null
             },
             "isDeprecated": false,
@@ -48811,7 +56693,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "QuotationPreviousValues",
+              "name": "OrderPreviousValues",
               "ofType": null
             },
             "isDeprecated": false,
@@ -48825,7 +56707,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "QuotationPreviousValues",
+        "name": "OrderPreviousValues",
         "description": null,
         "fields": [
           {

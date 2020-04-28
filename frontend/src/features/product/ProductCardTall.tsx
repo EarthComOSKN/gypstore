@@ -67,6 +67,7 @@ type Props = {
   isHotProduct?: boolean
   buyable?: boolean
   onlyImage?: boolean
+  image?: string
 }
 
 export const ProductCardTall = (props: Props) => {
@@ -74,6 +75,7 @@ export const ProductCardTall = (props: Props) => {
     isHotProduct,
     buyable = true,
     onlyImage = false,
+    image = '/assets/logo-without-text.png',
     ...restProps
   } = props
   return (
@@ -83,7 +85,7 @@ export const ProductCardTall = (props: Props) => {
           hoverable
           cover={
             <ProductImageContainer>
-              <img alt="example" src="/assets/logo-without-text.png" />
+              <img alt="example" src={image} />
             </ProductImageContainer>
           }
         >

@@ -59,7 +59,7 @@ export const ProductList = (props: Props) => {
               <Card
                 hoverable
                 style={{ width: 270, margin: '0.5rem' }}
-                cover={<CoverImg alt="example" src="/assets/pd1.png" />}
+                cover={<CoverImg alt="example" src={p.image} />}
               >
                 <h4>{p.name}</h4>
                 <h5>{p.description}</h5>

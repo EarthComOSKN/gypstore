@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { GET_QUOTATIONS } from './gql'
 import { FullPageLoading } from '../../component/Loading'
 import { GET_ME } from '../navigation/gql'
+import { useRouter } from 'next/router'
 
 const Container = styled.div`
   background-color: white;
@@ -29,7 +30,7 @@ const CartTable = styled.div`
 
 const CartRow = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1.5rem;
   background-color: white;
 `
@@ -67,6 +68,7 @@ const StyledButton = styled(Button)`
 export const QuotationList = () => {
   const { data: meData, loading: meLoading } = useQuery(GET_ME)
   console.log(meData)
+  const router = useRouter()
   const { data, loading, error } = useQuery(GET_QUOTATIONS, {
     variables: {
       uid: meData?.me.id,
@@ -86,6 +88,7 @@ export const QuotationList = () => {
           <h4>วันที่ออกใบเสนอราคา</h4>
           <h4>ราคารวม</h4>
           <h4>สถานะ</h4>
+          <h4>ดำเนินการ</h4>
         </CartRow>
         {quotations.map((q, idx) => (
           <CartRow>
@@ -96,16 +99,28 @@ export const QuotationList = () => {
                 <DeleteIcon onClick={() => {}} type="delete" />
               </QuotationName>
             </Quotation>
-            <Price>{q.quotationItem.length} รายการ</Price>
+            <Price>{q.quotationItems.length} รายการ</Price>
             <Amount>-</Amount>
             <Price>
-              {q.quotationItem
+              {q.quotationItems
                 .reduce((pre, cur) => pre + cur.realPrice, 0)
                 .toLocaleString()}{' '}
               บาท
             </Price>
             <Price>
               <span style={{ color: 'orange' }}>{q.status}</span>{' '}
+            </Price>
+            <Price>
+              <StyledButton
+                onClick={() => {
+                  const state = {
+                    productItems: q.quotationItems,
+                  }
+                  router.push('/checkout?state=' + JSON.stringify(state))
+                }}
+              >
+                ชำระเงิน
+              </StyledButton>
             </Price>
           </CartRow>
         ))}

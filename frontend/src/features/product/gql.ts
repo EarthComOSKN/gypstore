@@ -10,6 +10,7 @@ export const GET_PRODUCT = gql`
       unitType
       description
       MenuDetail
+      image
     }
   }
 `
@@ -22,6 +23,7 @@ export const GET_PRODUCT_DETAIL = gql`
       price
       brand
       unitType
+      image
       description
       amount
       MenuDetail

@@ -71,8 +71,10 @@ function SignUp(props) {
   }
 
   const createUser = async ({ nickname, email, password, phone }) => {
+    const hide = message.loading('กำลังสมัคร...')
     try {
       setLoading(true)
+
       const res = await register({
         variables: {
           name: nickname,
@@ -86,8 +88,10 @@ function SignUp(props) {
       const { token } = res?.data?.register
       localStorage.setItem('userToken', token)
       router.push('/')
+      hide()
       message.success('Register Completed')
     } catch (error) {
+      hide()
       message.error(`${error}`)
     } finally {
       setLoading(false)

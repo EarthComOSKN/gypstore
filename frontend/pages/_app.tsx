@@ -10,6 +10,15 @@ class MyApp extends App {
     super(props)
   }
 
+  componentDidMount() {
+    const { OmiseCard } = window as any
+    console.log('omise', OmiseCard)
+    if (!OmiseCard) return
+    OmiseCard.configure({
+      publicKey: 'pkey_test_5jls5tfnoydtv5ybkrm',
+    })
+  }
+
   render() {
     const { Component, pageProps } = this.props
     return (

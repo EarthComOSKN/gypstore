@@ -32,6 +32,7 @@ export const CREATE_QUOTATION_ITEMS = gql`
       key
       product {
         name
+        image
       }
       amount
       realPrice
@@ -42,22 +43,6 @@ export const CLEAR_SHOPPING_CART = gql`
   mutation($sid: ID!) {
     deleteManyShoppingCartItems(where: { ShoppingCart: { id: $sid } }) {
       count
-    }
-  }
-`
-
-export const PAYMENT = gql`
-  mutation($qid: ID!, $token: String!, $amount: Int, $uid: ID!) {
-    paymentViaOmise(
-      quotationId: $qid
-      token: $token
-      amount: $amount
-      userId: $uid
-    ) {
-      id
-      docId
-      amount
-      createdAt
     }
   }
 `

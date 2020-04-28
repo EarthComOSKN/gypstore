@@ -5,10 +5,13 @@ export const GET_QUOTATIONS = gql`
     quotations(where: { customer: { id: $uid } }, orderBy: createdAt_DESC) {
       id
       status
-      quotationItem {
+      quotationItems {
         id
         product {
           id
+          name
+          salePrice
+          unitType
         }
         amount
         realPrice

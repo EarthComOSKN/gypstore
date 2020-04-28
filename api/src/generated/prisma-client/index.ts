@@ -19,6 +19,8 @@ export interface Exists {
   address: (where?: AddressWhereInput) => Promise<boolean>;
   category: (where?: CategoryWhereInput) => Promise<boolean>;
   invoice: (where?: InvoiceWhereInput) => Promise<boolean>;
+  order: (where?: OrderWhereInput) => Promise<boolean>;
+  orderItem: (where?: OrderItemWhereInput) => Promise<boolean>;
   payment: (where?: PaymentWhereInput) => Promise<boolean>;
   productItem: (where?: ProductItemWhereInput) => Promise<boolean>;
   quotation: (where?: QuotationWhereInput) => Promise<boolean>;
@@ -106,6 +108,44 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => InvoiceConnectionPromise;
+  order: (where: OrderWhereUniqueInput) => OrderNullablePromise;
+  orders: (args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Order>;
+  ordersConnection: (args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => OrderConnectionPromise;
+  orderItem: (where: OrderItemWhereUniqueInput) => OrderItemNullablePromise;
+  orderItems: (args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<OrderItem>;
+  orderItemsConnection: (args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => OrderItemConnectionPromise;
   payment: (where: PaymentWhereUniqueInput) => PaymentNullablePromise;
   payments: (args?: {
     where?: PaymentWhereInput;
@@ -339,6 +379,38 @@ export interface Prisma {
   }) => InvoicePromise;
   deleteInvoice: (where: InvoiceWhereUniqueInput) => InvoicePromise;
   deleteManyInvoices: (where?: InvoiceWhereInput) => BatchPayloadPromise;
+  createOrder: (data: OrderCreateInput) => OrderPromise;
+  updateOrder: (args: {
+    data: OrderUpdateInput;
+    where: OrderWhereUniqueInput;
+  }) => OrderPromise;
+  updateManyOrders: (args: {
+    data: OrderUpdateManyMutationInput;
+    where?: OrderWhereInput;
+  }) => BatchPayloadPromise;
+  upsertOrder: (args: {
+    where: OrderWhereUniqueInput;
+    create: OrderCreateInput;
+    update: OrderUpdateInput;
+  }) => OrderPromise;
+  deleteOrder: (where: OrderWhereUniqueInput) => OrderPromise;
+  deleteManyOrders: (where?: OrderWhereInput) => BatchPayloadPromise;
+  createOrderItem: (data: OrderItemCreateInput) => OrderItemPromise;
+  updateOrderItem: (args: {
+    data: OrderItemUpdateInput;
+    where: OrderItemWhereUniqueInput;
+  }) => OrderItemPromise;
+  updateManyOrderItems: (args: {
+    data: OrderItemUpdateManyMutationInput;
+    where?: OrderItemWhereInput;
+  }) => BatchPayloadPromise;
+  upsertOrderItem: (args: {
+    where: OrderItemWhereUniqueInput;
+    create: OrderItemCreateInput;
+    update: OrderItemUpdateInput;
+  }) => OrderItemPromise;
+  deleteOrderItem: (where: OrderItemWhereUniqueInput) => OrderItemPromise;
+  deleteManyOrderItems: (where?: OrderItemWhereInput) => BatchPayloadPromise;
   createPayment: (data: PaymentCreateInput) => PaymentPromise;
   updatePayment: (args: {
     data: PaymentUpdateInput;
@@ -517,6 +589,12 @@ export interface Subscription {
   invoice: (
     where?: InvoiceSubscriptionWhereInput
   ) => InvoiceSubscriptionPayloadSubscription;
+  order: (
+    where?: OrderSubscriptionWhereInput
+  ) => OrderSubscriptionPayloadSubscription;
+  orderItem: (
+    where?: OrderItemSubscriptionWhereInput
+  ) => OrderItemSubscriptionPayloadSubscription;
   payment: (
     where?: PaymentSubscriptionWhereInput
   ) => PaymentSubscriptionPayloadSubscription;
@@ -592,7 +670,7 @@ export type ProductItemOrderByInput =
   | "image_ASC"
   | "image_DESC";
 
-export type QuotationItemOrderByInput =
+export type OrderItemOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "key_ASC"
@@ -628,6 +706,28 @@ export type InvoiceOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
+export type OrderOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "docId_ASC"
+  | "docId_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "status_ASC"
+  | "status_DESC";
+
+export type QuotationItemOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "key_ASC"
+  | "key_DESC"
+  | "amount_ASC"
+  | "amount_DESC"
+  | "realPrice_ASC"
+  | "realPrice_DESC";
+
 export type QuotationOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -637,6 +737,8 @@ export type QuotationOrderByInput =
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC"
+  | "fileUrl_ASC"
+  | "fileUrl_DESC"
   | "status_ASC"
   | "status_DESC";
 
@@ -929,7 +1031,7 @@ export interface ProductItemWhereInput {
   updatedAt_gte?: Maybe<DateTimeInput>;
   category?: Maybe<CategoryWhereInput>;
   shoppingCart?: Maybe<ShoppingCartWhereInput>;
-  quotation?: Maybe<QuotationWhereInput>;
+  order?: Maybe<OrderWhereInput>;
   image?: Maybe<String>;
   image_not?: Maybe<String>;
   image_in?: Maybe<String[] | String>;
@@ -1180,6 +1282,9 @@ export interface UserWhereInput {
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
   shoppingCart?: Maybe<ShoppingCartWhereInput>;
+  orders_every?: Maybe<OrderWhereInput>;
+  orders_some?: Maybe<OrderWhereInput>;
+  orders_none?: Maybe<OrderWhereInput>;
   quotations_every?: Maybe<QuotationWhereInput>;
   quotations_some?: Maybe<QuotationWhereInput>;
   quotations_none?: Maybe<QuotationWhereInput>;
@@ -1194,7 +1299,7 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
-export interface QuotationWhereInput {
+export interface OrderWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1223,9 +1328,9 @@ export interface QuotationWhereInput {
   docId_not_starts_with?: Maybe<String>;
   docId_ends_with?: Maybe<String>;
   docId_not_ends_with?: Maybe<String>;
-  quotationItem_every?: Maybe<QuotationItemWhereInput>;
-  quotationItem_some?: Maybe<QuotationItemWhereInput>;
-  quotationItem_none?: Maybe<QuotationItemWhereInput>;
+  orderItem_every?: Maybe<OrderItemWhereInput>;
+  orderItem_some?: Maybe<OrderItemWhereInput>;
+  orderItem_none?: Maybe<OrderItemWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1260,12 +1365,13 @@ export interface QuotationWhereInput {
   status_not_starts_with?: Maybe<String>;
   status_ends_with?: Maybe<String>;
   status_not_ends_with?: Maybe<String>;
-  AND?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
-  OR?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
-  NOT?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
+  quotation?: Maybe<QuotationWhereInput>;
+  AND?: Maybe<OrderWhereInput[] | OrderWhereInput>;
+  OR?: Maybe<OrderWhereInput[] | OrderWhereInput>;
+  NOT?: Maybe<OrderWhereInput[] | OrderWhereInput>;
 }
 
-export interface QuotationItemWhereInput {
+export interface OrderItemWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1311,10 +1417,10 @@ export interface QuotationItemWhereInput {
   realPrice_lte?: Maybe<Float>;
   realPrice_gt?: Maybe<Float>;
   realPrice_gte?: Maybe<Float>;
-  quotation?: Maybe<QuotationWhereInput>;
-  AND?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
-  OR?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
-  NOT?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
+  order?: Maybe<OrderWhereInput>;
+  AND?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
+  OR?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
+  NOT?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
 }
 
 export interface SalesmanWhereInput {
@@ -1396,9 +1502,9 @@ export interface SalesmanWhereInput {
   invoices_every?: Maybe<InvoiceWhereInput>;
   invoices_some?: Maybe<InvoiceWhereInput>;
   invoices_none?: Maybe<InvoiceWhereInput>;
-  quotations_every?: Maybe<QuotationWhereInput>;
-  quotations_some?: Maybe<QuotationWhereInput>;
-  quotations_none?: Maybe<QuotationWhereInput>;
+  orders_every?: Maybe<OrderWhereInput>;
+  orders_some?: Maybe<OrderWhereInput>;
+  orders_none?: Maybe<OrderWhereInput>;
   AND?: Maybe<SalesmanWhereInput[] | SalesmanWhereInput>;
   OR?: Maybe<SalesmanWhereInput[] | SalesmanWhereInput>;
   NOT?: Maybe<SalesmanWhereInput[] | SalesmanWhereInput>;
@@ -1465,7 +1571,7 @@ export interface PaymentWhereInput {
   updatedAt_gte?: Maybe<DateTimeInput>;
   customer?: Maybe<UserWhereInput>;
   salesman?: Maybe<SalesmanWhereInput>;
-  quotation?: Maybe<QuotationWhereInput>;
+  order?: Maybe<OrderWhereInput>;
   Invoice?: Maybe<InvoiceWhereInput>;
   rawEvent?: Maybe<String>;
   rawEvent_not?: Maybe<String>;
@@ -1546,7 +1652,7 @@ export interface InvoiceWhereInput {
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
   user?: Maybe<UserWhereInput>;
-  quotation?: Maybe<QuotationWhereInput>;
+  order?: Maybe<OrderWhereInput>;
   salesman?: Maybe<SalesmanWhereInput>;
   address?: Maybe<AddressWhereInput>;
   payment?: Maybe<PaymentWhereInput>;
@@ -1695,10 +1801,144 @@ export interface ShippingWhereInput {
   updatedAt_gte?: Maybe<DateTimeInput>;
   invoce?: Maybe<InvoiceWhereInput>;
   address?: Maybe<AddressWhereInput>;
-  quotation?: Maybe<QuotationWhereInput>;
+  order?: Maybe<OrderWhereInput>;
   AND?: Maybe<ShippingWhereInput[] | ShippingWhereInput>;
   OR?: Maybe<ShippingWhereInput[] | ShippingWhereInput>;
   NOT?: Maybe<ShippingWhereInput[] | ShippingWhereInput>;
+}
+
+export interface QuotationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  docId?: Maybe<String>;
+  docId_not?: Maybe<String>;
+  docId_in?: Maybe<String[] | String>;
+  docId_not_in?: Maybe<String[] | String>;
+  docId_lt?: Maybe<String>;
+  docId_lte?: Maybe<String>;
+  docId_gt?: Maybe<String>;
+  docId_gte?: Maybe<String>;
+  docId_contains?: Maybe<String>;
+  docId_not_contains?: Maybe<String>;
+  docId_starts_with?: Maybe<String>;
+  docId_not_starts_with?: Maybe<String>;
+  docId_ends_with?: Maybe<String>;
+  docId_not_ends_with?: Maybe<String>;
+  quotationItems_every?: Maybe<QuotationItemWhereInput>;
+  quotationItems_some?: Maybe<QuotationItemWhereInput>;
+  quotationItems_none?: Maybe<QuotationItemWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  customer?: Maybe<UserWhereInput>;
+  fileUrl?: Maybe<String>;
+  fileUrl_not?: Maybe<String>;
+  fileUrl_in?: Maybe<String[] | String>;
+  fileUrl_not_in?: Maybe<String[] | String>;
+  fileUrl_lt?: Maybe<String>;
+  fileUrl_lte?: Maybe<String>;
+  fileUrl_gt?: Maybe<String>;
+  fileUrl_gte?: Maybe<String>;
+  fileUrl_contains?: Maybe<String>;
+  fileUrl_not_contains?: Maybe<String>;
+  fileUrl_starts_with?: Maybe<String>;
+  fileUrl_not_starts_with?: Maybe<String>;
+  fileUrl_ends_with?: Maybe<String>;
+  fileUrl_not_ends_with?: Maybe<String>;
+  status?: Maybe<String>;
+  status_not?: Maybe<String>;
+  status_in?: Maybe<String[] | String>;
+  status_not_in?: Maybe<String[] | String>;
+  status_lt?: Maybe<String>;
+  status_lte?: Maybe<String>;
+  status_gt?: Maybe<String>;
+  status_gte?: Maybe<String>;
+  status_contains?: Maybe<String>;
+  status_not_contains?: Maybe<String>;
+  status_starts_with?: Maybe<String>;
+  status_not_starts_with?: Maybe<String>;
+  status_ends_with?: Maybe<String>;
+  status_not_ends_with?: Maybe<String>;
+  AND?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
+  OR?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
+  NOT?: Maybe<QuotationWhereInput[] | QuotationWhereInput>;
+}
+
+export interface QuotationItemWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  product?: Maybe<ProductItemWhereInput>;
+  amount?: Maybe<Int>;
+  amount_not?: Maybe<Int>;
+  amount_in?: Maybe<Int[] | Int>;
+  amount_not_in?: Maybe<Int[] | Int>;
+  amount_lt?: Maybe<Int>;
+  amount_lte?: Maybe<Int>;
+  amount_gt?: Maybe<Int>;
+  amount_gte?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+  realPrice_not?: Maybe<Float>;
+  realPrice_in?: Maybe<Float[] | Float>;
+  realPrice_not_in?: Maybe<Float[] | Float>;
+  realPrice_lt?: Maybe<Float>;
+  realPrice_lte?: Maybe<Float>;
+  realPrice_gt?: Maybe<Float>;
+  realPrice_gte?: Maybe<Float>;
+  quotation?: Maybe<QuotationWhereInput>;
+  AND?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
+  OR?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
+  NOT?: Maybe<QuotationItemWhereInput[] | QuotationItemWhereInput>;
 }
 
 export type CategoryWhereUniqueInput = AtLeastOne<{
@@ -1707,6 +1947,15 @@ export type CategoryWhereUniqueInput = AtLeastOne<{
 
 export type InvoiceWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+}>;
+
+export type OrderWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type OrderItemWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  key?: Maybe<String>;
 }>;
 
 export type PaymentWhereUniqueInput = AtLeastOne<{
@@ -1773,6 +2022,7 @@ export interface UserCreateWithoutAddressesInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
+  orders?: Maybe<OrderCreateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
 }
@@ -1824,7 +2074,7 @@ export interface ProductItemCreateInput {
   isPublished?: Maybe<Boolean>;
   category: CategoryCreateOneWithoutProductItemInput;
   shoppingCart?: Maybe<ShoppingCartCreateOneInput>;
-  quotation?: Maybe<QuotationCreateOneInput>;
+  order?: Maybe<OrderCreateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemCreateManyInput>;
 }
@@ -1873,7 +2123,7 @@ export interface ProductItemCreateWithoutCategoryInput {
   amount: Int;
   isPublished?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartCreateOneInput>;
-  quotation?: Maybe<QuotationCreateOneInput>;
+  order?: Maybe<OrderCreateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemCreateManyInput>;
 }
@@ -1905,39 +2155,38 @@ export interface UserCreateWithoutShoppingCartInput {
   phone: String;
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
+  orders?: Maybe<OrderCreateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
 }
 
-export interface QuotationCreateManyWithoutCustomerInput {
+export interface OrderCreateManyWithoutCustomerInput {
   create?: Maybe<
-    QuotationCreateWithoutCustomerInput[] | QuotationCreateWithoutCustomerInput
+    OrderCreateWithoutCustomerInput[] | OrderCreateWithoutCustomerInput
   >;
-  connect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
+  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
 }
 
-export interface QuotationCreateWithoutCustomerInput {
+export interface OrderCreateWithoutCustomerInput {
   id?: Maybe<ID_Input>;
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
+  orderItem?: Maybe<OrderItemCreateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentCreateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
   status?: Maybe<String>;
+  quotation?: Maybe<QuotationCreateOneInput>;
 }
 
-export interface QuotationItemCreateManyWithoutQuotationInput {
+export interface OrderItemCreateManyWithoutOrderInput {
   create?: Maybe<
-    | QuotationItemCreateWithoutQuotationInput[]
-    | QuotationItemCreateWithoutQuotationInput
+    OrderItemCreateWithoutOrderInput[] | OrderItemCreateWithoutOrderInput
   >;
-  connect?: Maybe<
-    QuotationItemWhereUniqueInput[] | QuotationItemWhereUniqueInput
-  >;
+  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
 }
 
-export interface QuotationItemCreateWithoutQuotationInput {
+export interface OrderItemCreateWithoutOrderInput {
   id?: Maybe<ID_Input>;
   key: String;
   product: ProductItemCreateOneInput;
@@ -1945,12 +2194,12 @@ export interface QuotationItemCreateWithoutQuotationInput {
   realPrice: Float;
 }
 
-export interface SalesmanCreateOneWithoutQuotationsInput {
-  create?: Maybe<SalesmanCreateWithoutQuotationsInput>;
+export interface SalesmanCreateOneWithoutOrdersInput {
+  create?: Maybe<SalesmanCreateWithoutOrdersInput>;
   connect?: Maybe<SalesmanWhereUniqueInput>;
 }
 
-export interface SalesmanCreateWithoutQuotationsInput {
+export interface SalesmanCreateWithoutOrdersInput {
   id?: Maybe<ID_Input>;
   name: String;
   email: String;
@@ -1971,7 +2220,7 @@ export interface PaymentCreateWithoutSalesmanInput {
   docId: String;
   amount: String;
   customer: UserCreateOneWithoutPaymentsInput;
-  quotation: QuotationCreateOneWithoutPaymentInput;
+  order: OrderCreateOneWithoutPaymentInput;
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>;
   rawEvent?: Maybe<String>;
 }
@@ -1992,8 +2241,42 @@ export interface UserCreateWithoutPaymentsInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
+  orders?: Maybe<OrderCreateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
+}
+
+export interface QuotationCreateManyWithoutCustomerInput {
+  create?: Maybe<
+    QuotationCreateWithoutCustomerInput[] | QuotationCreateWithoutCustomerInput
+  >;
+  connect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
+}
+
+export interface QuotationCreateWithoutCustomerInput {
+  id?: Maybe<ID_Input>;
+  docId?: Maybe<String>;
+  quotationItems?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
+  fileUrl?: Maybe<String>;
+  status?: Maybe<String>;
+}
+
+export interface QuotationItemCreateManyWithoutQuotationInput {
+  create?: Maybe<
+    | QuotationItemCreateWithoutQuotationInput[]
+    | QuotationItemCreateWithoutQuotationInput
+  >;
+  connect?: Maybe<
+    QuotationItemWhereUniqueInput[] | QuotationItemWhereUniqueInput
+  >;
+}
+
+export interface QuotationItemCreateWithoutQuotationInput {
+  id?: Maybe<ID_Input>;
+  key: String;
+  product: ProductItemCreateOneInput;
+  amount: Int;
+  realPrice: Float;
 }
 
 export interface AddressCreateManyWithoutCustomerInput {
@@ -2023,7 +2306,7 @@ export interface InvoiceCreateWithoutAddressInput {
   docId: String;
   creditTerm: String;
   user: UserCreateOneInput;
-  quotation: QuotationCreateOneInput;
+  order: OrderCreateOneInput;
   salesman: SalesmanCreateOneWithoutInvoicesInput;
   payment?: Maybe<PaymentCreateOneWithoutInvoiceInput>;
 }
@@ -2044,6 +2327,7 @@ export interface UserCreateInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
+  orders?: Maybe<OrderCreateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
@@ -2061,7 +2345,7 @@ export interface PaymentCreateWithoutCustomerInput {
   docId: String;
   amount: String;
   salesman?: Maybe<SalesmanCreateOneWithoutPaymentsInput>;
-  quotation: QuotationCreateOneWithoutPaymentInput;
+  order: OrderCreateOneWithoutPaymentInput;
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>;
   rawEvent?: Maybe<String>;
 }
@@ -2077,7 +2361,7 @@ export interface SalesmanCreateWithoutPaymentsInput {
   email: String;
   phone: String;
   invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>;
-  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>;
+  orders?: Maybe<OrderCreateManyWithoutSalesmanInput>;
 }
 
 export interface InvoiceCreateManyWithoutSalesmanInput {
@@ -2092,33 +2376,34 @@ export interface InvoiceCreateWithoutSalesmanInput {
   docId: String;
   creditTerm: String;
   user: UserCreateOneInput;
-  quotation: QuotationCreateOneInput;
+  order: OrderCreateOneInput;
   address?: Maybe<AddressCreateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentCreateOneWithoutInvoiceInput>;
 }
 
-export interface QuotationCreateOneInput {
-  create?: Maybe<QuotationCreateInput>;
-  connect?: Maybe<QuotationWhereUniqueInput>;
+export interface OrderCreateOneInput {
+  create?: Maybe<OrderCreateInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
 }
 
-export interface QuotationCreateInput {
+export interface OrderCreateInput {
   id?: Maybe<ID_Input>;
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
-  customer: UserCreateOneWithoutQuotationsInput;
+  orderItem?: Maybe<OrderItemCreateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentCreateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
+  customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  quotation?: Maybe<QuotationCreateOneInput>;
 }
 
-export interface PaymentCreateOneWithoutQuotationInput {
-  create?: Maybe<PaymentCreateWithoutQuotationInput>;
+export interface PaymentCreateOneWithoutOrderInput {
+  create?: Maybe<PaymentCreateWithoutOrderInput>;
   connect?: Maybe<PaymentWhereUniqueInput>;
 }
 
-export interface PaymentCreateWithoutQuotationInput {
+export interface PaymentCreateWithoutOrderInput {
   id?: Maybe<ID_Input>;
   docId: String;
   amount: String;
@@ -2138,7 +2423,7 @@ export interface InvoiceCreateWithoutPaymentInput {
   docId: String;
   creditTerm: String;
   user: UserCreateOneInput;
-  quotation: QuotationCreateOneInput;
+  order: OrderCreateOneInput;
   salesman: SalesmanCreateOneWithoutInvoicesInput;
   address?: Maybe<AddressCreateOneWithoutInvoicesInput>;
 }
@@ -2154,32 +2439,33 @@ export interface SalesmanCreateWithoutInvoicesInput {
   email: String;
   phone: String;
   payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>;
-  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>;
+  orders?: Maybe<OrderCreateManyWithoutSalesmanInput>;
 }
 
-export interface QuotationCreateManyWithoutSalesmanInput {
+export interface OrderCreateManyWithoutSalesmanInput {
   create?: Maybe<
-    QuotationCreateWithoutSalesmanInput[] | QuotationCreateWithoutSalesmanInput
+    OrderCreateWithoutSalesmanInput[] | OrderCreateWithoutSalesmanInput
   >;
-  connect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
+  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
 }
 
-export interface QuotationCreateWithoutSalesmanInput {
+export interface OrderCreateWithoutSalesmanInput {
   id?: Maybe<ID_Input>;
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
-  payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
-  customer: UserCreateOneWithoutQuotationsInput;
+  orderItem?: Maybe<OrderItemCreateManyWithoutOrderInput>;
+  payment?: Maybe<PaymentCreateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
+  customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  quotation?: Maybe<QuotationCreateOneInput>;
 }
 
-export interface ShippingCreateOneWithoutQuotationInput {
-  create?: Maybe<ShippingCreateWithoutQuotationInput>;
+export interface ShippingCreateOneWithoutOrderInput {
+  create?: Maybe<ShippingCreateWithoutOrderInput>;
   connect?: Maybe<ShippingWhereUniqueInput>;
 }
 
-export interface ShippingCreateWithoutQuotationInput {
+export interface ShippingCreateWithoutOrderInput {
   id?: Maybe<ID_Input>;
   docId: String;
   dueDate: DateTimeInput;
@@ -2198,7 +2484,7 @@ export interface InvoiceCreateInput {
   docId: String;
   creditTerm: String;
   user: UserCreateOneInput;
-  quotation: QuotationCreateOneInput;
+  order: OrderCreateOneInput;
   salesman: SalesmanCreateOneWithoutInvoicesInput;
   address?: Maybe<AddressCreateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentCreateOneWithoutInvoiceInput>;
@@ -2230,21 +2516,57 @@ export interface ShippingCreateWithoutAddressInput {
   dueDate: DateTimeInput;
   status: String;
   invoce: InvoiceCreateOneInput;
-  quotation: QuotationCreateOneWithoutShippingInput;
+  order: OrderCreateOneWithoutShippingInput;
 }
 
-export interface QuotationCreateOneWithoutShippingInput {
-  create?: Maybe<QuotationCreateWithoutShippingInput>;
+export interface OrderCreateOneWithoutShippingInput {
+  create?: Maybe<OrderCreateWithoutShippingInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
+}
+
+export interface OrderCreateWithoutShippingInput {
+  id?: Maybe<ID_Input>;
+  docId?: Maybe<String>;
+  orderItem?: Maybe<OrderItemCreateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentCreateOneWithoutOrderInput>;
+  customer: UserCreateOneWithoutOrdersInput;
+  status?: Maybe<String>;
+  quotation?: Maybe<QuotationCreateOneInput>;
+}
+
+export interface UserCreateOneWithoutOrdersInput {
+  create?: Maybe<UserCreateWithoutOrdersInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutOrdersInput {
+  id?: Maybe<ID_Input>;
+  runningId?: Maybe<Int>;
+  type?: Maybe<String>;
+  name: String;
+  email: String;
+  password: String;
+  phone: String;
+  avatar?: Maybe<String>;
+  activated?: Maybe<Boolean>;
+  shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
+  quotations?: Maybe<QuotationCreateManyWithoutCustomerInput>;
+  payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
+  addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
+}
+
+export interface QuotationCreateOneInput {
+  create?: Maybe<QuotationCreateInput>;
   connect?: Maybe<QuotationWhereUniqueInput>;
 }
 
-export interface QuotationCreateWithoutShippingInput {
+export interface QuotationCreateInput {
   id?: Maybe<ID_Input>;
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
+  quotationItems?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
+  fileUrl?: Maybe<String>;
   status?: Maybe<String>;
 }
 
@@ -2264,6 +2586,7 @@ export interface UserCreateWithoutQuotationsInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart: ShoppingCartCreateOneWithoutCustomerInput;
+  orders?: Maybe<OrderCreateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentCreateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressCreateManyWithoutCustomerInput>;
 }
@@ -2279,23 +2602,24 @@ export interface PaymentCreateWithoutInvoiceInput {
   amount: String;
   customer: UserCreateOneWithoutPaymentsInput;
   salesman?: Maybe<SalesmanCreateOneWithoutPaymentsInput>;
-  quotation: QuotationCreateOneWithoutPaymentInput;
+  order: OrderCreateOneWithoutPaymentInput;
   rawEvent?: Maybe<String>;
 }
 
-export interface QuotationCreateOneWithoutPaymentInput {
-  create?: Maybe<QuotationCreateWithoutPaymentInput>;
-  connect?: Maybe<QuotationWhereUniqueInput>;
+export interface OrderCreateOneWithoutPaymentInput {
+  create?: Maybe<OrderCreateWithoutPaymentInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
 }
 
-export interface QuotationCreateWithoutPaymentInput {
+export interface OrderCreateWithoutPaymentInput {
   id?: Maybe<ID_Input>;
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemCreateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
-  shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
-  customer: UserCreateOneWithoutQuotationsInput;
+  orderItem?: Maybe<OrderItemCreateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanCreateOneWithoutOrdersInput>;
+  shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
+  customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  quotation?: Maybe<QuotationCreateOneInput>;
 }
 
 export interface AddressCreateOneWithoutShippingInput {
@@ -2341,6 +2665,7 @@ export interface UserUpdateWithoutAddressesDataInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
+  orders?: Maybe<OrderUpdateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
 }
@@ -2422,7 +2747,7 @@ export interface ProductItemUpdateDataInput {
   isPublished?: Maybe<Boolean>;
   category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>;
-  quotation?: Maybe<QuotationUpdateOneInput>;
+  order?: Maybe<OrderUpdateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemUpdateManyInput>;
 }
@@ -2499,7 +2824,7 @@ export interface ProductItemUpdateWithoutCategoryDataInput {
   amount?: Maybe<Int>;
   isPublished?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>;
-  quotation?: Maybe<QuotationUpdateOneInput>;
+  order?: Maybe<OrderUpdateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemUpdateManyInput>;
 }
@@ -2535,8 +2860,224 @@ export interface UserUpdateWithoutShoppingCartDataInput {
   phone?: Maybe<String>;
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
+  orders?: Maybe<OrderUpdateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
+  addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
+}
+
+export interface OrderUpdateManyWithoutCustomerInput {
+  create?: Maybe<
+    OrderCreateWithoutCustomerInput[] | OrderCreateWithoutCustomerInput
+  >;
+  delete?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  set?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  disconnect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  update?: Maybe<
+    | OrderUpdateWithWhereUniqueWithoutCustomerInput[]
+    | OrderUpdateWithWhereUniqueWithoutCustomerInput
+  >;
+  upsert?: Maybe<
+    | OrderUpsertWithWhereUniqueWithoutCustomerInput[]
+    | OrderUpsertWithWhereUniqueWithoutCustomerInput
+  >;
+  deleteMany?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
+  updateMany?: Maybe<
+    OrderUpdateManyWithWhereNestedInput[] | OrderUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface OrderUpdateWithWhereUniqueWithoutCustomerInput {
+  where: OrderWhereUniqueInput;
+  data: OrderUpdateWithoutCustomerDataInput;
+}
+
+export interface OrderUpdateWithoutCustomerDataInput {
+  docId?: Maybe<String>;
+  orderItem?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
+  status?: Maybe<String>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
+}
+
+export interface OrderItemUpdateManyWithoutOrderInput {
+  create?: Maybe<
+    OrderItemCreateWithoutOrderInput[] | OrderItemCreateWithoutOrderInput
+  >;
+  delete?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  set?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  disconnect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  update?: Maybe<
+    | OrderItemUpdateWithWhereUniqueWithoutOrderInput[]
+    | OrderItemUpdateWithWhereUniqueWithoutOrderInput
+  >;
+  upsert?: Maybe<
+    | OrderItemUpsertWithWhereUniqueWithoutOrderInput[]
+    | OrderItemUpsertWithWhereUniqueWithoutOrderInput
+  >;
+  deleteMany?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+  updateMany?: Maybe<
+    | OrderItemUpdateManyWithWhereNestedInput[]
+    | OrderItemUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface OrderItemUpdateWithWhereUniqueWithoutOrderInput {
+  where: OrderItemWhereUniqueInput;
+  data: OrderItemUpdateWithoutOrderDataInput;
+}
+
+export interface OrderItemUpdateWithoutOrderDataInput {
+  key?: Maybe<String>;
+  product?: Maybe<ProductItemUpdateOneRequiredInput>;
+  amount?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+}
+
+export interface OrderItemUpsertWithWhereUniqueWithoutOrderInput {
+  where: OrderItemWhereUniqueInput;
+  update: OrderItemUpdateWithoutOrderDataInput;
+  create: OrderItemCreateWithoutOrderInput;
+}
+
+export interface OrderItemScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  amount?: Maybe<Int>;
+  amount_not?: Maybe<Int>;
+  amount_in?: Maybe<Int[] | Int>;
+  amount_not_in?: Maybe<Int[] | Int>;
+  amount_lt?: Maybe<Int>;
+  amount_lte?: Maybe<Int>;
+  amount_gt?: Maybe<Int>;
+  amount_gte?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+  realPrice_not?: Maybe<Float>;
+  realPrice_in?: Maybe<Float[] | Float>;
+  realPrice_not_in?: Maybe<Float[] | Float>;
+  realPrice_lt?: Maybe<Float>;
+  realPrice_lte?: Maybe<Float>;
+  realPrice_gt?: Maybe<Float>;
+  realPrice_gte?: Maybe<Float>;
+  AND?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+  OR?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+  NOT?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+}
+
+export interface OrderItemUpdateManyWithWhereNestedInput {
+  where: OrderItemScalarWhereInput;
+  data: OrderItemUpdateManyDataInput;
+}
+
+export interface OrderItemUpdateManyDataInput {
+  key?: Maybe<String>;
+  amount?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+}
+
+export interface SalesmanUpdateOneWithoutOrdersInput {
+  create?: Maybe<SalesmanCreateWithoutOrdersInput>;
+  update?: Maybe<SalesmanUpdateWithoutOrdersDataInput>;
+  upsert?: Maybe<SalesmanUpsertWithoutOrdersInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<SalesmanWhereUniqueInput>;
+}
+
+export interface SalesmanUpdateWithoutOrdersDataInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>;
+  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>;
+}
+
+export interface PaymentUpdateManyWithoutSalesmanInput {
+  create?: Maybe<
+    PaymentCreateWithoutSalesmanInput[] | PaymentCreateWithoutSalesmanInput
+  >;
+  delete?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
+  connect?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
+  set?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
+  disconnect?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
+  update?: Maybe<
+    | PaymentUpdateWithWhereUniqueWithoutSalesmanInput[]
+    | PaymentUpdateWithWhereUniqueWithoutSalesmanInput
+  >;
+  upsert?: Maybe<
+    | PaymentUpsertWithWhereUniqueWithoutSalesmanInput[]
+    | PaymentUpsertWithWhereUniqueWithoutSalesmanInput
+  >;
+  deleteMany?: Maybe<PaymentScalarWhereInput[] | PaymentScalarWhereInput>;
+  updateMany?: Maybe<
+    | PaymentUpdateManyWithWhereNestedInput[]
+    | PaymentUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PaymentUpdateWithWhereUniqueWithoutSalesmanInput {
+  where: PaymentWhereUniqueInput;
+  data: PaymentUpdateWithoutSalesmanDataInput;
+}
+
+export interface PaymentUpdateWithoutSalesmanDataInput {
+  docId?: Maybe<String>;
+  amount?: Maybe<String>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
+  order?: Maybe<OrderUpdateOneRequiredWithoutPaymentInput>;
+  Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>;
+  rawEvent?: Maybe<String>;
+}
+
+export interface UserUpdateOneRequiredWithoutPaymentsInput {
+  create?: Maybe<UserCreateWithoutPaymentsInput>;
+  update?: Maybe<UserUpdateWithoutPaymentsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutPaymentsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutPaymentsDataInput {
+  runningId?: Maybe<Int>;
+  type?: Maybe<String>;
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  phone?: Maybe<String>;
+  avatar?: Maybe<String>;
+  activated?: Maybe<Boolean>;
+  shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
+  orders?: Maybe<OrderUpdateManyWithoutCustomerInput>;
+  quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
 }
 
@@ -2570,10 +3111,8 @@ export interface QuotationUpdateWithWhereUniqueWithoutCustomerInput {
 
 export interface QuotationUpdateWithoutCustomerDataInput {
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
+  quotationItems?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
+  fileUrl?: Maybe<String>;
   status?: Maybe<String>;
 }
 
@@ -2688,79 +3227,99 @@ export interface QuotationItemUpdateManyDataInput {
   realPrice?: Maybe<Float>;
 }
 
-export interface SalesmanUpdateOneWithoutQuotationsInput {
-  create?: Maybe<SalesmanCreateWithoutQuotationsInput>;
-  update?: Maybe<SalesmanUpdateWithoutQuotationsDataInput>;
-  upsert?: Maybe<SalesmanUpsertWithoutQuotationsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<SalesmanWhereUniqueInput>;
+export interface QuotationUpsertWithWhereUniqueWithoutCustomerInput {
+  where: QuotationWhereUniqueInput;
+  update: QuotationUpdateWithoutCustomerDataInput;
+  create: QuotationCreateWithoutCustomerInput;
 }
 
-export interface SalesmanUpdateWithoutQuotationsDataInput {
-  name?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>;
-  invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>;
-}
-
-export interface PaymentUpdateManyWithoutSalesmanInput {
-  create?: Maybe<
-    PaymentCreateWithoutSalesmanInput[] | PaymentCreateWithoutSalesmanInput
-  >;
-  delete?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
-  connect?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
-  set?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
-  disconnect?: Maybe<PaymentWhereUniqueInput[] | PaymentWhereUniqueInput>;
-  update?: Maybe<
-    | PaymentUpdateWithWhereUniqueWithoutSalesmanInput[]
-    | PaymentUpdateWithWhereUniqueWithoutSalesmanInput
-  >;
-  upsert?: Maybe<
-    | PaymentUpsertWithWhereUniqueWithoutSalesmanInput[]
-    | PaymentUpsertWithWhereUniqueWithoutSalesmanInput
-  >;
-  deleteMany?: Maybe<PaymentScalarWhereInput[] | PaymentScalarWhereInput>;
-  updateMany?: Maybe<
-    | PaymentUpdateManyWithWhereNestedInput[]
-    | PaymentUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface PaymentUpdateWithWhereUniqueWithoutSalesmanInput {
-  where: PaymentWhereUniqueInput;
-  data: PaymentUpdateWithoutSalesmanDataInput;
-}
-
-export interface PaymentUpdateWithoutSalesmanDataInput {
+export interface QuotationScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
   docId?: Maybe<String>;
-  amount?: Maybe<String>;
-  customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>;
-  Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>;
-  rawEvent?: Maybe<String>;
+  docId_not?: Maybe<String>;
+  docId_in?: Maybe<String[] | String>;
+  docId_not_in?: Maybe<String[] | String>;
+  docId_lt?: Maybe<String>;
+  docId_lte?: Maybe<String>;
+  docId_gt?: Maybe<String>;
+  docId_gte?: Maybe<String>;
+  docId_contains?: Maybe<String>;
+  docId_not_contains?: Maybe<String>;
+  docId_starts_with?: Maybe<String>;
+  docId_not_starts_with?: Maybe<String>;
+  docId_ends_with?: Maybe<String>;
+  docId_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  fileUrl?: Maybe<String>;
+  fileUrl_not?: Maybe<String>;
+  fileUrl_in?: Maybe<String[] | String>;
+  fileUrl_not_in?: Maybe<String[] | String>;
+  fileUrl_lt?: Maybe<String>;
+  fileUrl_lte?: Maybe<String>;
+  fileUrl_gt?: Maybe<String>;
+  fileUrl_gte?: Maybe<String>;
+  fileUrl_contains?: Maybe<String>;
+  fileUrl_not_contains?: Maybe<String>;
+  fileUrl_starts_with?: Maybe<String>;
+  fileUrl_not_starts_with?: Maybe<String>;
+  fileUrl_ends_with?: Maybe<String>;
+  fileUrl_not_ends_with?: Maybe<String>;
+  status?: Maybe<String>;
+  status_not?: Maybe<String>;
+  status_in?: Maybe<String[] | String>;
+  status_not_in?: Maybe<String[] | String>;
+  status_lt?: Maybe<String>;
+  status_lte?: Maybe<String>;
+  status_gt?: Maybe<String>;
+  status_gte?: Maybe<String>;
+  status_contains?: Maybe<String>;
+  status_not_contains?: Maybe<String>;
+  status_starts_with?: Maybe<String>;
+  status_not_starts_with?: Maybe<String>;
+  status_ends_with?: Maybe<String>;
+  status_not_ends_with?: Maybe<String>;
+  AND?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
+  OR?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
+  NOT?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
 }
 
-export interface UserUpdateOneRequiredWithoutPaymentsInput {
-  create?: Maybe<UserCreateWithoutPaymentsInput>;
-  update?: Maybe<UserUpdateWithoutPaymentsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutPaymentsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface QuotationUpdateManyWithWhereNestedInput {
+  where: QuotationScalarWhereInput;
+  data: QuotationUpdateManyDataInput;
 }
 
-export interface UserUpdateWithoutPaymentsDataInput {
-  runningId?: Maybe<Int>;
-  type?: Maybe<String>;
-  name?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  phone?: Maybe<String>;
-  avatar?: Maybe<String>;
-  activated?: Maybe<Boolean>;
-  shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
-  quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
-  addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
+export interface QuotationUpdateManyDataInput {
+  docId?: Maybe<String>;
+  fileUrl?: Maybe<String>;
+  status?: Maybe<String>;
 }
 
 export interface AddressUpdateManyWithoutCustomerInput {
@@ -2830,7 +3389,7 @@ export interface InvoiceUpdateWithoutAddressDataInput {
   docId?: Maybe<String>;
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredInput>;
+  order?: Maybe<OrderUpdateOneRequiredInput>;
   salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>;
 }
@@ -2852,6 +3411,7 @@ export interface UserUpdateDataInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
+  orders?: Maybe<OrderUpdateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
@@ -2889,7 +3449,7 @@ export interface PaymentUpdateWithoutCustomerDataInput {
   docId?: Maybe<String>;
   amount?: Maybe<String>;
   salesman?: Maybe<SalesmanUpdateOneWithoutPaymentsInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>;
+  order?: Maybe<OrderUpdateOneRequiredWithoutPaymentInput>;
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>;
   rawEvent?: Maybe<String>;
 }
@@ -2908,7 +3468,7 @@ export interface SalesmanUpdateWithoutPaymentsDataInput {
   email?: Maybe<String>;
   phone?: Maybe<String>;
   invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>;
-  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>;
+  orders?: Maybe<OrderUpdateManyWithoutSalesmanInput>;
 }
 
 export interface InvoiceUpdateManyWithoutSalesmanInput {
@@ -2943,38 +3503,39 @@ export interface InvoiceUpdateWithoutSalesmanDataInput {
   docId?: Maybe<String>;
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredInput>;
+  order?: Maybe<OrderUpdateOneRequiredInput>;
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>;
 }
 
-export interface QuotationUpdateOneRequiredInput {
-  create?: Maybe<QuotationCreateInput>;
-  update?: Maybe<QuotationUpdateDataInput>;
-  upsert?: Maybe<QuotationUpsertNestedInput>;
-  connect?: Maybe<QuotationWhereUniqueInput>;
+export interface OrderUpdateOneRequiredInput {
+  create?: Maybe<OrderCreateInput>;
+  update?: Maybe<OrderUpdateDataInput>;
+  upsert?: Maybe<OrderUpsertNestedInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
 }
 
-export interface QuotationUpdateDataInput {
+export interface OrderUpdateDataInput {
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
-  customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+  orderItem?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
-export interface PaymentUpdateOneWithoutQuotationInput {
-  create?: Maybe<PaymentCreateWithoutQuotationInput>;
-  update?: Maybe<PaymentUpdateWithoutQuotationDataInput>;
-  upsert?: Maybe<PaymentUpsertWithoutQuotationInput>;
+export interface PaymentUpdateOneWithoutOrderInput {
+  create?: Maybe<PaymentCreateWithoutOrderInput>;
+  update?: Maybe<PaymentUpdateWithoutOrderDataInput>;
+  upsert?: Maybe<PaymentUpsertWithoutOrderInput>;
   delete?: Maybe<Boolean>;
   disconnect?: Maybe<Boolean>;
   connect?: Maybe<PaymentWhereUniqueInput>;
 }
 
-export interface PaymentUpdateWithoutQuotationDataInput {
+export interface PaymentUpdateWithoutOrderDataInput {
   docId?: Maybe<String>;
   amount?: Maybe<String>;
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
@@ -2996,7 +3557,7 @@ export interface InvoiceUpdateWithoutPaymentDataInput {
   docId?: Maybe<String>;
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredInput>;
+  order?: Maybe<OrderUpdateOneRequiredInput>;
   salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>;
 }
@@ -3013,56 +3574,56 @@ export interface SalesmanUpdateWithoutInvoicesDataInput {
   email?: Maybe<String>;
   phone?: Maybe<String>;
   payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>;
-  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>;
+  orders?: Maybe<OrderUpdateManyWithoutSalesmanInput>;
 }
 
-export interface QuotationUpdateManyWithoutSalesmanInput {
+export interface OrderUpdateManyWithoutSalesmanInput {
   create?: Maybe<
-    QuotationCreateWithoutSalesmanInput[] | QuotationCreateWithoutSalesmanInput
+    OrderCreateWithoutSalesmanInput[] | OrderCreateWithoutSalesmanInput
   >;
-  delete?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
-  connect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
-  set?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
-  disconnect?: Maybe<QuotationWhereUniqueInput[] | QuotationWhereUniqueInput>;
+  delete?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  set?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  disconnect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
   update?: Maybe<
-    | QuotationUpdateWithWhereUniqueWithoutSalesmanInput[]
-    | QuotationUpdateWithWhereUniqueWithoutSalesmanInput
+    | OrderUpdateWithWhereUniqueWithoutSalesmanInput[]
+    | OrderUpdateWithWhereUniqueWithoutSalesmanInput
   >;
   upsert?: Maybe<
-    | QuotationUpsertWithWhereUniqueWithoutSalesmanInput[]
-    | QuotationUpsertWithWhereUniqueWithoutSalesmanInput
+    | OrderUpsertWithWhereUniqueWithoutSalesmanInput[]
+    | OrderUpsertWithWhereUniqueWithoutSalesmanInput
   >;
-  deleteMany?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
+  deleteMany?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
   updateMany?: Maybe<
-    | QuotationUpdateManyWithWhereNestedInput[]
-    | QuotationUpdateManyWithWhereNestedInput
+    OrderUpdateManyWithWhereNestedInput[] | OrderUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface QuotationUpdateWithWhereUniqueWithoutSalesmanInput {
-  where: QuotationWhereUniqueInput;
-  data: QuotationUpdateWithoutSalesmanDataInput;
+export interface OrderUpdateWithWhereUniqueWithoutSalesmanInput {
+  where: OrderWhereUniqueInput;
+  data: OrderUpdateWithoutSalesmanDataInput;
 }
 
-export interface QuotationUpdateWithoutSalesmanDataInput {
+export interface OrderUpdateWithoutSalesmanDataInput {
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
-  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
-  customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+  orderItem?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
-export interface ShippingUpdateOneWithoutQuotationInput {
-  create?: Maybe<ShippingCreateWithoutQuotationInput>;
-  update?: Maybe<ShippingUpdateWithoutQuotationDataInput>;
-  upsert?: Maybe<ShippingUpsertWithoutQuotationInput>;
+export interface ShippingUpdateOneWithoutOrderInput {
+  create?: Maybe<ShippingCreateWithoutOrderInput>;
+  update?: Maybe<ShippingUpdateWithoutOrderDataInput>;
+  upsert?: Maybe<ShippingUpsertWithoutOrderInput>;
   delete?: Maybe<Boolean>;
   disconnect?: Maybe<Boolean>;
   connect?: Maybe<ShippingWhereUniqueInput>;
 }
 
-export interface ShippingUpdateWithoutQuotationDataInput {
+export interface ShippingUpdateWithoutOrderDataInput {
   docId?: Maybe<String>;
   dueDate?: Maybe<DateTimeInput>;
   status?: Maybe<String>;
@@ -3081,7 +3642,7 @@ export interface InvoiceUpdateDataInput {
   docId?: Maybe<String>;
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredInput>;
+  order?: Maybe<OrderUpdateOneRequiredInput>;
   salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>;
@@ -3136,22 +3697,67 @@ export interface ShippingUpdateWithoutAddressDataInput {
   dueDate?: Maybe<DateTimeInput>;
   status?: Maybe<String>;
   invoce?: Maybe<InvoiceUpdateOneRequiredInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredWithoutShippingInput>;
+  order?: Maybe<OrderUpdateOneRequiredWithoutShippingInput>;
 }
 
-export interface QuotationUpdateOneRequiredWithoutShippingInput {
-  create?: Maybe<QuotationCreateWithoutShippingInput>;
-  update?: Maybe<QuotationUpdateWithoutShippingDataInput>;
-  upsert?: Maybe<QuotationUpsertWithoutShippingInput>;
+export interface OrderUpdateOneRequiredWithoutShippingInput {
+  create?: Maybe<OrderCreateWithoutShippingInput>;
+  update?: Maybe<OrderUpdateWithoutShippingDataInput>;
+  upsert?: Maybe<OrderUpsertWithoutShippingInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
+}
+
+export interface OrderUpdateWithoutShippingDataInput {
+  docId?: Maybe<String>;
+  orderItem?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
+  status?: Maybe<String>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
+}
+
+export interface UserUpdateOneRequiredWithoutOrdersInput {
+  create?: Maybe<UserCreateWithoutOrdersInput>;
+  update?: Maybe<UserUpdateWithoutOrdersDataInput>;
+  upsert?: Maybe<UserUpsertWithoutOrdersInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutOrdersDataInput {
+  runningId?: Maybe<Int>;
+  type?: Maybe<String>;
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  phone?: Maybe<String>;
+  avatar?: Maybe<String>;
+  activated?: Maybe<Boolean>;
+  shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
+  quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
+  payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
+  addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
+}
+
+export interface UserUpsertWithoutOrdersInput {
+  update: UserUpdateWithoutOrdersDataInput;
+  create: UserCreateWithoutOrdersInput;
+}
+
+export interface QuotationUpdateOneInput {
+  create?: Maybe<QuotationCreateInput>;
+  update?: Maybe<QuotationUpdateDataInput>;
+  upsert?: Maybe<QuotationUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
   connect?: Maybe<QuotationWhereUniqueInput>;
 }
 
-export interface QuotationUpdateWithoutShippingDataInput {
+export interface QuotationUpdateDataInput {
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
+  quotationItems?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+  fileUrl?: Maybe<String>;
   status?: Maybe<String>;
 }
 
@@ -3172,6 +3778,7 @@ export interface UserUpdateWithoutQuotationsDataInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
+  orders?: Maybe<OrderUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
 }
@@ -3181,9 +3788,14 @@ export interface UserUpsertWithoutQuotationsInput {
   create: UserCreateWithoutQuotationsInput;
 }
 
-export interface QuotationUpsertWithoutShippingInput {
-  update: QuotationUpdateWithoutShippingDataInput;
-  create: QuotationCreateWithoutShippingInput;
+export interface QuotationUpsertNestedInput {
+  update: QuotationUpdateDataInput;
+  create: QuotationCreateInput;
+}
+
+export interface OrderUpsertWithoutShippingInput {
+  update: OrderUpdateWithoutShippingDataInput;
+  create: OrderCreateWithoutShippingInput;
 }
 
 export interface ShippingUpsertWithWhereUniqueWithoutAddressInput {
@@ -3294,29 +3906,30 @@ export interface PaymentUpdateWithoutInvoiceDataInput {
   amount?: Maybe<String>;
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
   salesman?: Maybe<SalesmanUpdateOneWithoutPaymentsInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>;
+  order?: Maybe<OrderUpdateOneRequiredWithoutPaymentInput>;
   rawEvent?: Maybe<String>;
 }
 
-export interface QuotationUpdateOneRequiredWithoutPaymentInput {
-  create?: Maybe<QuotationCreateWithoutPaymentInput>;
-  update?: Maybe<QuotationUpdateWithoutPaymentDataInput>;
-  upsert?: Maybe<QuotationUpsertWithoutPaymentInput>;
-  connect?: Maybe<QuotationWhereUniqueInput>;
+export interface OrderUpdateOneRequiredWithoutPaymentInput {
+  create?: Maybe<OrderCreateWithoutPaymentInput>;
+  update?: Maybe<OrderUpdateWithoutPaymentDataInput>;
+  upsert?: Maybe<OrderUpsertWithoutPaymentInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
 }
 
-export interface QuotationUpdateWithoutPaymentDataInput {
+export interface OrderUpdateWithoutPaymentDataInput {
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
-  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
-  customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+  orderItem?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutOrdersInput>;
+  shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
-export interface QuotationUpsertWithoutPaymentInput {
-  update: QuotationUpdateWithoutPaymentDataInput;
-  create: QuotationCreateWithoutPaymentInput;
+export interface OrderUpsertWithoutPaymentInput {
+  update: OrderUpdateWithoutPaymentDataInput;
+  create: OrderCreateWithoutPaymentInput;
 }
 
 export interface PaymentUpsertWithoutInvoiceInput {
@@ -3348,18 +3961,18 @@ export interface AddressUpsertWithoutShippingInput {
   create: AddressCreateWithoutShippingInput;
 }
 
-export interface ShippingUpsertWithoutQuotationInput {
-  update: ShippingUpdateWithoutQuotationDataInput;
-  create: ShippingCreateWithoutQuotationInput;
+export interface ShippingUpsertWithoutOrderInput {
+  update: ShippingUpdateWithoutOrderDataInput;
+  create: ShippingCreateWithoutOrderInput;
 }
 
-export interface QuotationUpsertWithWhereUniqueWithoutSalesmanInput {
-  where: QuotationWhereUniqueInput;
-  update: QuotationUpdateWithoutSalesmanDataInput;
-  create: QuotationCreateWithoutSalesmanInput;
+export interface OrderUpsertWithWhereUniqueWithoutSalesmanInput {
+  where: OrderWhereUniqueInput;
+  update: OrderUpdateWithoutSalesmanDataInput;
+  create: OrderCreateWithoutSalesmanInput;
 }
 
-export interface QuotationScalarWhereInput {
+export interface OrderScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -3418,17 +4031,17 @@ export interface QuotationScalarWhereInput {
   status_not_starts_with?: Maybe<String>;
   status_ends_with?: Maybe<String>;
   status_not_ends_with?: Maybe<String>;
-  AND?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
-  OR?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
-  NOT?: Maybe<QuotationScalarWhereInput[] | QuotationScalarWhereInput>;
+  AND?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
+  OR?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
+  NOT?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
 }
 
-export interface QuotationUpdateManyWithWhereNestedInput {
-  where: QuotationScalarWhereInput;
-  data: QuotationUpdateManyDataInput;
+export interface OrderUpdateManyWithWhereNestedInput {
+  where: OrderScalarWhereInput;
+  data: OrderUpdateManyDataInput;
 }
 
-export interface QuotationUpdateManyDataInput {
+export interface OrderUpdateManyDataInput {
   docId?: Maybe<String>;
   status?: Maybe<String>;
 }
@@ -3443,14 +4056,14 @@ export interface InvoiceUpsertWithoutPaymentInput {
   create: InvoiceCreateWithoutPaymentInput;
 }
 
-export interface PaymentUpsertWithoutQuotationInput {
-  update: PaymentUpdateWithoutQuotationDataInput;
-  create: PaymentCreateWithoutQuotationInput;
+export interface PaymentUpsertWithoutOrderInput {
+  update: PaymentUpdateWithoutOrderDataInput;
+  create: PaymentCreateWithoutOrderInput;
 }
 
-export interface QuotationUpsertNestedInput {
-  update: QuotationUpdateDataInput;
-  create: QuotationCreateInput;
+export interface OrderUpsertNestedInput {
+  update: OrderUpdateDataInput;
+  create: OrderCreateInput;
 }
 
 export interface InvoiceUpsertWithWhereUniqueWithoutSalesmanInput {
@@ -3735,15 +4348,15 @@ export interface PaymentUpsertWithWhereUniqueWithoutSalesmanInput {
   create: PaymentCreateWithoutSalesmanInput;
 }
 
-export interface SalesmanUpsertWithoutQuotationsInput {
-  update: SalesmanUpdateWithoutQuotationsDataInput;
-  create: SalesmanCreateWithoutQuotationsInput;
+export interface SalesmanUpsertWithoutOrdersInput {
+  update: SalesmanUpdateWithoutOrdersDataInput;
+  create: SalesmanCreateWithoutOrdersInput;
 }
 
-export interface QuotationUpsertWithWhereUniqueWithoutCustomerInput {
-  where: QuotationWhereUniqueInput;
-  update: QuotationUpdateWithoutCustomerDataInput;
-  create: QuotationCreateWithoutCustomerInput;
+export interface OrderUpsertWithWhereUniqueWithoutCustomerInput {
+  where: OrderWhereUniqueInput;
+  update: OrderUpdateWithoutCustomerDataInput;
+  create: OrderCreateWithoutCustomerInput;
 }
 
 export interface UserUpsertWithoutShoppingCartInput {
@@ -3756,13 +4369,13 @@ export interface ShoppingCartUpsertNestedInput {
   create: ShoppingCartCreateInput;
 }
 
-export interface QuotationUpdateOneInput {
-  create?: Maybe<QuotationCreateInput>;
-  update?: Maybe<QuotationUpdateDataInput>;
-  upsert?: Maybe<QuotationUpsertNestedInput>;
+export interface OrderUpdateOneInput {
+  create?: Maybe<OrderCreateInput>;
+  update?: Maybe<OrderUpdateDataInput>;
+  upsert?: Maybe<OrderUpsertNestedInput>;
   delete?: Maybe<Boolean>;
   disconnect?: Maybe<Boolean>;
-  connect?: Maybe<QuotationWhereUniqueInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
 }
 
 export interface ProductItemUpdateManyInput {
@@ -4106,7 +4719,7 @@ export interface InvoiceUpdateInput {
   docId?: Maybe<String>;
   creditTerm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredInput>;
+  order?: Maybe<OrderUpdateOneRequiredInput>;
   salesman?: Maybe<SalesmanUpdateOneRequiredWithoutInvoicesInput>;
   address?: Maybe<AddressUpdateOneWithoutInvoicesInput>;
   payment?: Maybe<PaymentUpdateOneWithoutInvoiceInput>;
@@ -4117,13 +4730,90 @@ export interface InvoiceUpdateManyMutationInput {
   creditTerm?: Maybe<String>;
 }
 
+export interface OrderUpdateInput {
+  docId?: Maybe<String>;
+  orderItem?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
+  status?: Maybe<String>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
+}
+
+export interface OrderUpdateManyMutationInput {
+  docId?: Maybe<String>;
+  status?: Maybe<String>;
+}
+
+export interface OrderItemCreateInput {
+  id?: Maybe<ID_Input>;
+  key: String;
+  product: ProductItemCreateOneInput;
+  amount: Int;
+  realPrice: Float;
+  order: OrderCreateOneWithoutOrderItemInput;
+}
+
+export interface OrderCreateOneWithoutOrderItemInput {
+  create?: Maybe<OrderCreateWithoutOrderItemInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
+}
+
+export interface OrderCreateWithoutOrderItemInput {
+  id?: Maybe<ID_Input>;
+  docId?: Maybe<String>;
+  salesman?: Maybe<SalesmanCreateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentCreateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
+  customer: UserCreateOneWithoutOrdersInput;
+  status?: Maybe<String>;
+  quotation?: Maybe<QuotationCreateOneInput>;
+}
+
+export interface OrderItemUpdateInput {
+  key?: Maybe<String>;
+  product?: Maybe<ProductItemUpdateOneRequiredInput>;
+  amount?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+  order?: Maybe<OrderUpdateOneRequiredWithoutOrderItemInput>;
+}
+
+export interface OrderUpdateOneRequiredWithoutOrderItemInput {
+  create?: Maybe<OrderCreateWithoutOrderItemInput>;
+  update?: Maybe<OrderUpdateWithoutOrderItemDataInput>;
+  upsert?: Maybe<OrderUpsertWithoutOrderItemInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
+}
+
+export interface OrderUpdateWithoutOrderItemDataInput {
+  docId?: Maybe<String>;
+  salesman?: Maybe<SalesmanUpdateOneWithoutOrdersInput>;
+  payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
+  shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
+  customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
+  status?: Maybe<String>;
+  quotation?: Maybe<QuotationUpdateOneInput>;
+}
+
+export interface OrderUpsertWithoutOrderItemInput {
+  update: OrderUpdateWithoutOrderItemDataInput;
+  create: OrderCreateWithoutOrderItemInput;
+}
+
+export interface OrderItemUpdateManyMutationInput {
+  key?: Maybe<String>;
+  amount?: Maybe<Int>;
+  realPrice?: Maybe<Float>;
+}
+
 export interface PaymentCreateInput {
   id?: Maybe<ID_Input>;
   docId: String;
   amount: String;
   customer: UserCreateOneWithoutPaymentsInput;
   salesman?: Maybe<SalesmanCreateOneWithoutPaymentsInput>;
-  quotation: QuotationCreateOneWithoutPaymentInput;
+  order: OrderCreateOneWithoutPaymentInput;
   Invoice?: Maybe<InvoiceCreateOneWithoutPaymentInput>;
   rawEvent?: Maybe<String>;
 }
@@ -4133,7 +4823,7 @@ export interface PaymentUpdateInput {
   amount?: Maybe<String>;
   customer?: Maybe<UserUpdateOneRequiredWithoutPaymentsInput>;
   salesman?: Maybe<SalesmanUpdateOneWithoutPaymentsInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredWithoutPaymentInput>;
+  order?: Maybe<OrderUpdateOneRequiredWithoutPaymentInput>;
   Invoice?: Maybe<InvoiceUpdateOneWithoutPaymentInput>;
   rawEvent?: Maybe<String>;
 }
@@ -4157,7 +4847,7 @@ export interface ProductItemUpdateInput {
   isPublished?: Maybe<Boolean>;
   category?: Maybe<CategoryUpdateOneRequiredWithoutProductItemInput>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneInput>;
-  quotation?: Maybe<QuotationUpdateOneInput>;
+  order?: Maybe<OrderUpdateOneInput>;
   image?: Maybe<String>;
   relatedProduct?: Maybe<ProductItemUpdateManyInput>;
 }
@@ -4178,16 +4868,15 @@ export interface ProductItemUpdateManyMutationInput {
 
 export interface QuotationUpdateInput {
   docId?: Maybe<String>;
-  quotationItem?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
-  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
+  quotationItems?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+  fileUrl?: Maybe<String>;
   status?: Maybe<String>;
 }
 
 export interface QuotationUpdateManyMutationInput {
   docId?: Maybe<String>;
+  fileUrl?: Maybe<String>;
   status?: Maybe<String>;
 }
 
@@ -4197,21 +4886,19 @@ export interface QuotationItemCreateInput {
   product: ProductItemCreateOneInput;
   amount: Int;
   realPrice: Float;
-  quotation: QuotationCreateOneWithoutQuotationItemInput;
+  quotation: QuotationCreateOneWithoutQuotationItemsInput;
 }
 
-export interface QuotationCreateOneWithoutQuotationItemInput {
-  create?: Maybe<QuotationCreateWithoutQuotationItemInput>;
+export interface QuotationCreateOneWithoutQuotationItemsInput {
+  create?: Maybe<QuotationCreateWithoutQuotationItemsInput>;
   connect?: Maybe<QuotationWhereUniqueInput>;
 }
 
-export interface QuotationCreateWithoutQuotationItemInput {
+export interface QuotationCreateWithoutQuotationItemsInput {
   id?: Maybe<ID_Input>;
   docId?: Maybe<String>;
-  salesman?: Maybe<SalesmanCreateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentCreateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingCreateOneWithoutQuotationInput>;
   customer: UserCreateOneWithoutQuotationsInput;
+  fileUrl?: Maybe<String>;
   status?: Maybe<String>;
 }
 
@@ -4220,28 +4907,26 @@ export interface QuotationItemUpdateInput {
   product?: Maybe<ProductItemUpdateOneRequiredInput>;
   amount?: Maybe<Int>;
   realPrice?: Maybe<Float>;
-  quotation?: Maybe<QuotationUpdateOneRequiredWithoutQuotationItemInput>;
+  quotation?: Maybe<QuotationUpdateOneRequiredWithoutQuotationItemsInput>;
 }
 
-export interface QuotationUpdateOneRequiredWithoutQuotationItemInput {
-  create?: Maybe<QuotationCreateWithoutQuotationItemInput>;
-  update?: Maybe<QuotationUpdateWithoutQuotationItemDataInput>;
-  upsert?: Maybe<QuotationUpsertWithoutQuotationItemInput>;
+export interface QuotationUpdateOneRequiredWithoutQuotationItemsInput {
+  create?: Maybe<QuotationCreateWithoutQuotationItemsInput>;
+  update?: Maybe<QuotationUpdateWithoutQuotationItemsDataInput>;
+  upsert?: Maybe<QuotationUpsertWithoutQuotationItemsInput>;
   connect?: Maybe<QuotationWhereUniqueInput>;
 }
 
-export interface QuotationUpdateWithoutQuotationItemDataInput {
+export interface QuotationUpdateWithoutQuotationItemsDataInput {
   docId?: Maybe<String>;
-  salesman?: Maybe<SalesmanUpdateOneWithoutQuotationsInput>;
-  payment?: Maybe<PaymentUpdateOneWithoutQuotationInput>;
-  shipping?: Maybe<ShippingUpdateOneWithoutQuotationInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>;
+  fileUrl?: Maybe<String>;
   status?: Maybe<String>;
 }
 
-export interface QuotationUpsertWithoutQuotationItemInput {
-  update: QuotationUpdateWithoutQuotationItemDataInput;
-  create: QuotationCreateWithoutQuotationItemInput;
+export interface QuotationUpsertWithoutQuotationItemsInput {
+  update: QuotationUpdateWithoutQuotationItemsDataInput;
+  create: QuotationCreateWithoutQuotationItemsInput;
 }
 
 export interface QuotationItemUpdateManyMutationInput {
@@ -4257,7 +4942,7 @@ export interface SalesmanCreateInput {
   phone: String;
   payments?: Maybe<PaymentCreateManyWithoutSalesmanInput>;
   invoices?: Maybe<InvoiceCreateManyWithoutSalesmanInput>;
-  quotations?: Maybe<QuotationCreateManyWithoutSalesmanInput>;
+  orders?: Maybe<OrderCreateManyWithoutSalesmanInput>;
 }
 
 export interface SalesmanUpdateInput {
@@ -4266,7 +4951,7 @@ export interface SalesmanUpdateInput {
   phone?: Maybe<String>;
   payments?: Maybe<PaymentUpdateManyWithoutSalesmanInput>;
   invoices?: Maybe<InvoiceUpdateManyWithoutSalesmanInput>;
-  quotations?: Maybe<QuotationUpdateManyWithoutSalesmanInput>;
+  orders?: Maybe<OrderUpdateManyWithoutSalesmanInput>;
 }
 
 export interface SalesmanUpdateManyMutationInput {
@@ -4282,7 +4967,7 @@ export interface ShippingCreateInput {
   status: String;
   invoce: InvoiceCreateOneInput;
   address: AddressCreateOneWithoutShippingInput;
-  quotation: QuotationCreateOneWithoutShippingInput;
+  order: OrderCreateOneWithoutShippingInput;
 }
 
 export interface ShippingUpdateInput {
@@ -4291,7 +4976,7 @@ export interface ShippingUpdateInput {
   status?: Maybe<String>;
   invoce?: Maybe<InvoiceUpdateOneRequiredInput>;
   address?: Maybe<AddressUpdateOneRequiredWithoutShippingInput>;
-  quotation?: Maybe<QuotationUpdateOneRequiredWithoutShippingInput>;
+  order?: Maybe<OrderUpdateOneRequiredWithoutShippingInput>;
 }
 
 export interface ShippingUpdateManyMutationInput {
@@ -4370,6 +5055,7 @@ export interface UserUpdateInput {
   avatar?: Maybe<String>;
   activated?: Maybe<Boolean>;
   shoppingCart?: Maybe<ShoppingCartUpdateOneRequiredWithoutCustomerInput>;
+  orders?: Maybe<OrderUpdateManyWithoutCustomerInput>;
   quotations?: Maybe<QuotationUpdateManyWithoutCustomerInput>;
   payments?: Maybe<PaymentUpdateManyWithoutCustomerInput>;
   addresses?: Maybe<AddressUpdateManyWithoutCustomerInput>;
@@ -4421,6 +5107,34 @@ export interface InvoiceSubscriptionWhereInput {
   AND?: Maybe<InvoiceSubscriptionWhereInput[] | InvoiceSubscriptionWhereInput>;
   OR?: Maybe<InvoiceSubscriptionWhereInput[] | InvoiceSubscriptionWhereInput>;
   NOT?: Maybe<InvoiceSubscriptionWhereInput[] | InvoiceSubscriptionWhereInput>;
+}
+
+export interface OrderSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<OrderWhereInput>;
+  AND?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
+  OR?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
+  NOT?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
+}
+
+export interface OrderItemSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<OrderItemWhereInput>;
+  AND?: Maybe<
+    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
+  >;
 }
 
 export interface PaymentSubscriptionWhereInput {
@@ -4687,6 +5401,15 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   shoppingCart: <T = ShoppingCartPromise>() => T;
+  orders: <T = FragmentableArray<Order>>(args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   quotations: <T = FragmentableArray<Quotation>>(args?: {
     where?: QuotationWhereInput;
     orderBy?: QuotationOrderByInput;
@@ -4731,6 +5454,15 @@ export interface UserSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   shoppingCart: <T = ShoppingCartSubscription>() => T;
+  orders: <T = Promise<AsyncIterator<OrderSubscription>>>(args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   quotations: <T = Promise<AsyncIterator<QuotationSubscription>>>(args?: {
     where?: QuotationWhereInput;
     orderBy?: QuotationOrderByInput;
@@ -4775,6 +5507,15 @@ export interface UserNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   shoppingCart: <T = ShoppingCartPromise>() => T;
+  orders: <T = FragmentableArray<Order>>(args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   quotations: <T = FragmentableArray<Quotation>>(args?: {
     where?: QuotationWhereInput;
     orderBy?: QuotationOrderByInput;
@@ -4939,7 +5680,7 @@ export interface ProductItemPromise extends Promise<ProductItem>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
   category: <T = CategoryPromise>() => T;
   shoppingCart: <T = ShoppingCartPromise>() => T;
-  quotation: <T = QuotationPromise>() => T;
+  order: <T = OrderPromise>() => T;
   image: () => Promise<String>;
   relatedProduct: <T = FragmentableArray<ProductItem>>(args?: {
     where?: ProductItemWhereInput;
@@ -4970,7 +5711,7 @@ export interface ProductItemSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   category: <T = CategorySubscription>() => T;
   shoppingCart: <T = ShoppingCartSubscription>() => T;
-  quotation: <T = QuotationSubscription>() => T;
+  order: <T = OrderSubscription>() => T;
   image: () => Promise<AsyncIterator<String>>;
   relatedProduct: <T = Promise<AsyncIterator<ProductItemSubscription>>>(args?: {
     where?: ProductItemWhereInput;
@@ -5001,7 +5742,7 @@ export interface ProductItemNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
   category: <T = CategoryPromise>() => T;
   shoppingCart: <T = ShoppingCartPromise>() => T;
-  quotation: <T = QuotationPromise>() => T;
+  order: <T = OrderPromise>() => T;
   image: () => Promise<String>;
   relatedProduct: <T = FragmentableArray<ProductItem>>(args?: {
     where?: ProductItemWhereInput;
@@ -5076,7 +5817,7 @@ export interface CategoryNullablePromise
   category: <T = CategoryPromise>() => T;
 }
 
-export interface Quotation {
+export interface Order {
   id: ID_Output;
   docId?: String;
   createdAt: DateTimeOutput;
@@ -5084,12 +5825,12 @@ export interface Quotation {
   status?: String;
 }
 
-export interface QuotationPromise extends Promise<Quotation>, Fragmentable {
+export interface OrderPromise extends Promise<Order>, Fragmentable {
   id: () => Promise<ID_Output>;
   docId: () => Promise<String>;
-  quotationItem: <T = FragmentableArray<QuotationItem>>(args?: {
-    where?: QuotationItemWhereInput;
-    orderBy?: QuotationItemOrderByInput;
+  orderItem: <T = FragmentableArray<OrderItem>>(args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -5103,18 +5844,17 @@ export interface QuotationPromise extends Promise<Quotation>, Fragmentable {
   shipping: <T = ShippingPromise>() => T;
   customer: <T = UserPromise>() => T;
   status: () => Promise<String>;
+  quotation: <T = QuotationPromise>() => T;
 }
 
-export interface QuotationSubscription
-  extends Promise<AsyncIterator<Quotation>>,
+export interface OrderSubscription
+  extends Promise<AsyncIterator<Order>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   docId: () => Promise<AsyncIterator<String>>;
-  quotationItem: <
-    T = Promise<AsyncIterator<QuotationItemSubscription>>
-  >(args?: {
-    where?: QuotationItemWhereInput;
-    orderBy?: QuotationItemOrderByInput;
+  orderItem: <T = Promise<AsyncIterator<OrderItemSubscription>>>(args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -5128,16 +5868,17 @@ export interface QuotationSubscription
   shipping: <T = ShippingSubscription>() => T;
   customer: <T = UserSubscription>() => T;
   status: () => Promise<AsyncIterator<String>>;
+  quotation: <T = QuotationSubscription>() => T;
 }
 
-export interface QuotationNullablePromise
-  extends Promise<Quotation | null>,
+export interface OrderNullablePromise
+  extends Promise<Order | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   docId: () => Promise<String>;
-  quotationItem: <T = FragmentableArray<QuotationItem>>(args?: {
-    where?: QuotationItemWhereInput;
-    orderBy?: QuotationItemOrderByInput;
+  orderItem: <T = FragmentableArray<OrderItem>>(args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -5150,6 +5891,390 @@ export interface QuotationNullablePromise
   payment: <T = PaymentPromise>() => T;
   shipping: <T = ShippingPromise>() => T;
   customer: <T = UserPromise>() => T;
+  status: () => Promise<String>;
+  quotation: <T = QuotationPromise>() => T;
+}
+
+export interface OrderItem {
+  id: ID_Output;
+  key: String;
+  amount: Int;
+  realPrice: Float;
+}
+
+export interface OrderItemPromise extends Promise<OrderItem>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  product: <T = ProductItemPromise>() => T;
+  amount: () => Promise<Int>;
+  realPrice: () => Promise<Float>;
+  order: <T = OrderPromise>() => T;
+}
+
+export interface OrderItemSubscription
+  extends Promise<AsyncIterator<OrderItem>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  key: () => Promise<AsyncIterator<String>>;
+  product: <T = ProductItemSubscription>() => T;
+  amount: () => Promise<AsyncIterator<Int>>;
+  realPrice: () => Promise<AsyncIterator<Float>>;
+  order: <T = OrderSubscription>() => T;
+}
+
+export interface OrderItemNullablePromise
+  extends Promise<OrderItem | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  product: <T = ProductItemPromise>() => T;
+  amount: () => Promise<Int>;
+  realPrice: () => Promise<Float>;
+  order: <T = OrderPromise>() => T;
+}
+
+export interface Salesman {
+  id: ID_Output;
+  name: String;
+  email: String;
+  phone: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface SalesmanPromise extends Promise<Salesman>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  payments: <T = FragmentableArray<Payment>>(args?: {
+    where?: PaymentWhereInput;
+    orderBy?: PaymentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  invoices: <T = FragmentableArray<Invoice>>(args?: {
+    where?: InvoiceWhereInput;
+    orderBy?: InvoiceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  orders: <T = FragmentableArray<Order>>(args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface SalesmanSubscription
+  extends Promise<AsyncIterator<Salesman>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  payments: <T = Promise<AsyncIterator<PaymentSubscription>>>(args?: {
+    where?: PaymentWhereInput;
+    orderBy?: PaymentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  invoices: <T = Promise<AsyncIterator<InvoiceSubscription>>>(args?: {
+    where?: InvoiceWhereInput;
+    orderBy?: InvoiceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  orders: <T = Promise<AsyncIterator<OrderSubscription>>>(args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface SalesmanNullablePromise
+  extends Promise<Salesman | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  payments: <T = FragmentableArray<Payment>>(args?: {
+    where?: PaymentWhereInput;
+    orderBy?: PaymentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  invoices: <T = FragmentableArray<Invoice>>(args?: {
+    where?: InvoiceWhereInput;
+    orderBy?: InvoiceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  orders: <T = FragmentableArray<Order>>(args?: {
+    where?: OrderWhereInput;
+    orderBy?: OrderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface Payment {
+  id: ID_Output;
+  docId: String;
+  amount: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  rawEvent?: String;
+}
+
+export interface PaymentPromise extends Promise<Payment>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  amount: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  customer: <T = UserPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
+  order: <T = OrderPromise>() => T;
+  Invoice: <T = InvoicePromise>() => T;
+  rawEvent: () => Promise<String>;
+}
+
+export interface PaymentSubscription
+  extends Promise<AsyncIterator<Payment>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  docId: () => Promise<AsyncIterator<String>>;
+  amount: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  customer: <T = UserSubscription>() => T;
+  salesman: <T = SalesmanSubscription>() => T;
+  order: <T = OrderSubscription>() => T;
+  Invoice: <T = InvoiceSubscription>() => T;
+  rawEvent: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaymentNullablePromise
+  extends Promise<Payment | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  amount: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  customer: <T = UserPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
+  order: <T = OrderPromise>() => T;
+  Invoice: <T = InvoicePromise>() => T;
+  rawEvent: () => Promise<String>;
+}
+
+export interface Invoice {
+  id: ID_Output;
+  docId: String;
+  creditTerm: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface InvoicePromise extends Promise<Invoice>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  creditTerm: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  user: <T = UserPromise>() => T;
+  order: <T = OrderPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
+  address: <T = AddressPromise>() => T;
+  payment: <T = PaymentPromise>() => T;
+}
+
+export interface InvoiceSubscription
+  extends Promise<AsyncIterator<Invoice>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  docId: () => Promise<AsyncIterator<String>>;
+  creditTerm: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  user: <T = UserSubscription>() => T;
+  order: <T = OrderSubscription>() => T;
+  salesman: <T = SalesmanSubscription>() => T;
+  address: <T = AddressSubscription>() => T;
+  payment: <T = PaymentSubscription>() => T;
+}
+
+export interface InvoiceNullablePromise
+  extends Promise<Invoice | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  creditTerm: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  user: <T = UserPromise>() => T;
+  order: <T = OrderPromise>() => T;
+  salesman: <T = SalesmanPromise>() => T;
+  address: <T = AddressPromise>() => T;
+  payment: <T = PaymentPromise>() => T;
+}
+
+export interface Shipping {
+  id: ID_Output;
+  docId: String;
+  dueDate: DateTimeOutput;
+  status: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface ShippingPromise extends Promise<Shipping>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  dueDate: () => Promise<DateTimeOutput>;
+  status: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  invoce: <T = InvoicePromise>() => T;
+  address: <T = AddressPromise>() => T;
+  order: <T = OrderPromise>() => T;
+}
+
+export interface ShippingSubscription
+  extends Promise<AsyncIterator<Shipping>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  docId: () => Promise<AsyncIterator<String>>;
+  dueDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  status: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  invoce: <T = InvoiceSubscription>() => T;
+  address: <T = AddressSubscription>() => T;
+  order: <T = OrderSubscription>() => T;
+}
+
+export interface ShippingNullablePromise
+  extends Promise<Shipping | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  dueDate: () => Promise<DateTimeOutput>;
+  status: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  invoce: <T = InvoicePromise>() => T;
+  address: <T = AddressPromise>() => T;
+  order: <T = OrderPromise>() => T;
+}
+
+export interface Quotation {
+  id: ID_Output;
+  docId?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  fileUrl?: String;
+  status?: String;
+}
+
+export interface QuotationPromise extends Promise<Quotation>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  quotationItems: <T = FragmentableArray<QuotationItem>>(args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  customer: <T = UserPromise>() => T;
+  fileUrl: () => Promise<String>;
+  status: () => Promise<String>;
+}
+
+export interface QuotationSubscription
+  extends Promise<AsyncIterator<Quotation>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  docId: () => Promise<AsyncIterator<String>>;
+  quotationItems: <
+    T = Promise<AsyncIterator<QuotationItemSubscription>>
+  >(args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  customer: <T = UserSubscription>() => T;
+  fileUrl: () => Promise<AsyncIterator<String>>;
+  status: () => Promise<AsyncIterator<String>>;
+}
+
+export interface QuotationNullablePromise
+  extends Promise<Quotation | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  quotationItems: <T = FragmentableArray<QuotationItem>>(args?: {
+    where?: QuotationItemWhereInput;
+    orderBy?: QuotationItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  customer: <T = UserPromise>() => T;
+  fileUrl: () => Promise<String>;
   status: () => Promise<String>;
 }
 
@@ -5190,279 +6315,6 @@ export interface QuotationItemNullablePromise
   product: <T = ProductItemPromise>() => T;
   amount: () => Promise<Int>;
   realPrice: () => Promise<Float>;
-  quotation: <T = QuotationPromise>() => T;
-}
-
-export interface Salesman {
-  id: ID_Output;
-  name: String;
-  email: String;
-  phone: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface SalesmanPromise extends Promise<Salesman>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  payments: <T = FragmentableArray<Payment>>(args?: {
-    where?: PaymentWhereInput;
-    orderBy?: PaymentOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  invoices: <T = FragmentableArray<Invoice>>(args?: {
-    where?: InvoiceWhereInput;
-    orderBy?: InvoiceOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  quotations: <T = FragmentableArray<Quotation>>(args?: {
-    where?: QuotationWhereInput;
-    orderBy?: QuotationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface SalesmanSubscription
-  extends Promise<AsyncIterator<Salesman>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  payments: <T = Promise<AsyncIterator<PaymentSubscription>>>(args?: {
-    where?: PaymentWhereInput;
-    orderBy?: PaymentOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  invoices: <T = Promise<AsyncIterator<InvoiceSubscription>>>(args?: {
-    where?: InvoiceWhereInput;
-    orderBy?: InvoiceOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  quotations: <T = Promise<AsyncIterator<QuotationSubscription>>>(args?: {
-    where?: QuotationWhereInput;
-    orderBy?: QuotationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface SalesmanNullablePromise
-  extends Promise<Salesman | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  payments: <T = FragmentableArray<Payment>>(args?: {
-    where?: PaymentWhereInput;
-    orderBy?: PaymentOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  invoices: <T = FragmentableArray<Invoice>>(args?: {
-    where?: InvoiceWhereInput;
-    orderBy?: InvoiceOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  quotations: <T = FragmentableArray<Quotation>>(args?: {
-    where?: QuotationWhereInput;
-    orderBy?: QuotationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface Payment {
-  id: ID_Output;
-  docId: String;
-  amount: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  rawEvent?: String;
-}
-
-export interface PaymentPromise extends Promise<Payment>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  docId: () => Promise<String>;
-  amount: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  customer: <T = UserPromise>() => T;
-  salesman: <T = SalesmanPromise>() => T;
-  quotation: <T = QuotationPromise>() => T;
-  Invoice: <T = InvoicePromise>() => T;
-  rawEvent: () => Promise<String>;
-}
-
-export interface PaymentSubscription
-  extends Promise<AsyncIterator<Payment>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  docId: () => Promise<AsyncIterator<String>>;
-  amount: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  customer: <T = UserSubscription>() => T;
-  salesman: <T = SalesmanSubscription>() => T;
-  quotation: <T = QuotationSubscription>() => T;
-  Invoice: <T = InvoiceSubscription>() => T;
-  rawEvent: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PaymentNullablePromise
-  extends Promise<Payment | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  docId: () => Promise<String>;
-  amount: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  customer: <T = UserPromise>() => T;
-  salesman: <T = SalesmanPromise>() => T;
-  quotation: <T = QuotationPromise>() => T;
-  Invoice: <T = InvoicePromise>() => T;
-  rawEvent: () => Promise<String>;
-}
-
-export interface Invoice {
-  id: ID_Output;
-  docId: String;
-  creditTerm: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface InvoicePromise extends Promise<Invoice>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  docId: () => Promise<String>;
-  creditTerm: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  user: <T = UserPromise>() => T;
-  quotation: <T = QuotationPromise>() => T;
-  salesman: <T = SalesmanPromise>() => T;
-  address: <T = AddressPromise>() => T;
-  payment: <T = PaymentPromise>() => T;
-}
-
-export interface InvoiceSubscription
-  extends Promise<AsyncIterator<Invoice>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  docId: () => Promise<AsyncIterator<String>>;
-  creditTerm: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  user: <T = UserSubscription>() => T;
-  quotation: <T = QuotationSubscription>() => T;
-  salesman: <T = SalesmanSubscription>() => T;
-  address: <T = AddressSubscription>() => T;
-  payment: <T = PaymentSubscription>() => T;
-}
-
-export interface InvoiceNullablePromise
-  extends Promise<Invoice | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  docId: () => Promise<String>;
-  creditTerm: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  user: <T = UserPromise>() => T;
-  quotation: <T = QuotationPromise>() => T;
-  salesman: <T = SalesmanPromise>() => T;
-  address: <T = AddressPromise>() => T;
-  payment: <T = PaymentPromise>() => T;
-}
-
-export interface Shipping {
-  id: ID_Output;
-  docId: String;
-  dueDate: DateTimeOutput;
-  status: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface ShippingPromise extends Promise<Shipping>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  docId: () => Promise<String>;
-  dueDate: () => Promise<DateTimeOutput>;
-  status: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  invoce: <T = InvoicePromise>() => T;
-  address: <T = AddressPromise>() => T;
-  quotation: <T = QuotationPromise>() => T;
-}
-
-export interface ShippingSubscription
-  extends Promise<AsyncIterator<Shipping>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  docId: () => Promise<AsyncIterator<String>>;
-  dueDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  status: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  invoce: <T = InvoiceSubscription>() => T;
-  address: <T = AddressSubscription>() => T;
-  quotation: <T = QuotationSubscription>() => T;
-}
-
-export interface ShippingNullablePromise
-  extends Promise<Shipping | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  docId: () => Promise<String>;
-  dueDate: () => Promise<DateTimeOutput>;
-  status: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  invoce: <T = InvoicePromise>() => T;
-  address: <T = AddressPromise>() => T;
   quotation: <T = QuotationPromise>() => T;
 }
 
@@ -5649,6 +6501,116 @@ export interface AggregateInvoicePromise
 
 export interface AggregateInvoiceSubscription
   extends Promise<AsyncIterator<AggregateInvoice>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface OrderConnection {
+  pageInfo: PageInfo;
+  edges: OrderEdge[];
+}
+
+export interface OrderConnectionPromise
+  extends Promise<OrderConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<OrderEdge>>() => T;
+  aggregate: <T = AggregateOrderPromise>() => T;
+}
+
+export interface OrderConnectionSubscription
+  extends Promise<AsyncIterator<OrderConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<OrderEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateOrderSubscription>() => T;
+}
+
+export interface OrderEdge {
+  node: Order;
+  cursor: String;
+}
+
+export interface OrderEdgePromise extends Promise<OrderEdge>, Fragmentable {
+  node: <T = OrderPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface OrderEdgeSubscription
+  extends Promise<AsyncIterator<OrderEdge>>,
+    Fragmentable {
+  node: <T = OrderSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateOrder {
+  count: Int;
+}
+
+export interface AggregateOrderPromise
+  extends Promise<AggregateOrder>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateOrderSubscription
+  extends Promise<AsyncIterator<AggregateOrder>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface OrderItemConnection {
+  pageInfo: PageInfo;
+  edges: OrderItemEdge[];
+}
+
+export interface OrderItemConnectionPromise
+  extends Promise<OrderItemConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<OrderItemEdge>>() => T;
+  aggregate: <T = AggregateOrderItemPromise>() => T;
+}
+
+export interface OrderItemConnectionSubscription
+  extends Promise<AsyncIterator<OrderItemConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<OrderItemEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateOrderItemSubscription>() => T;
+}
+
+export interface OrderItemEdge {
+  node: OrderItem;
+  cursor: String;
+}
+
+export interface OrderItemEdgePromise
+  extends Promise<OrderItemEdge>,
+    Fragmentable {
+  node: <T = OrderItemPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface OrderItemEdgeSubscription
+  extends Promise<AsyncIterator<OrderItemEdge>>,
+    Fragmentable {
+  node: <T = OrderItemSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateOrderItem {
+  count: Int;
+}
+
+export interface AggregateOrderItemPromise
+  extends Promise<AggregateOrderItem>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateOrderItemSubscription
+  extends Promise<AsyncIterator<AggregateOrderItem>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -6325,6 +7287,109 @@ export interface InvoicePreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface OrderSubscriptionPayload {
+  mutation: MutationType;
+  node: Order;
+  updatedFields: String[];
+  previousValues: OrderPreviousValues;
+}
+
+export interface OrderSubscriptionPayloadPromise
+  extends Promise<OrderSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = OrderPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = OrderPreviousValuesPromise>() => T;
+}
+
+export interface OrderSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<OrderSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = OrderSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = OrderPreviousValuesSubscription>() => T;
+}
+
+export interface OrderPreviousValues {
+  id: ID_Output;
+  docId?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  status?: String;
+}
+
+export interface OrderPreviousValuesPromise
+  extends Promise<OrderPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  docId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  status: () => Promise<String>;
+}
+
+export interface OrderPreviousValuesSubscription
+  extends Promise<AsyncIterator<OrderPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  docId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  status: () => Promise<AsyncIterator<String>>;
+}
+
+export interface OrderItemSubscriptionPayload {
+  mutation: MutationType;
+  node: OrderItem;
+  updatedFields: String[];
+  previousValues: OrderItemPreviousValues;
+}
+
+export interface OrderItemSubscriptionPayloadPromise
+  extends Promise<OrderItemSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = OrderItemPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = OrderItemPreviousValuesPromise>() => T;
+}
+
+export interface OrderItemSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<OrderItemSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = OrderItemSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = OrderItemPreviousValuesSubscription>() => T;
+}
+
+export interface OrderItemPreviousValues {
+  id: ID_Output;
+  key: String;
+  amount: Int;
+  realPrice: Float;
+}
+
+export interface OrderItemPreviousValuesPromise
+  extends Promise<OrderItemPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  amount: () => Promise<Int>;
+  realPrice: () => Promise<Float>;
+}
+
+export interface OrderItemPreviousValuesSubscription
+  extends Promise<AsyncIterator<OrderItemPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  key: () => Promise<AsyncIterator<String>>;
+  amount: () => Promise<AsyncIterator<Int>>;
+  realPrice: () => Promise<AsyncIterator<Float>>;
+}
+
 export interface PaymentSubscriptionPayload {
   mutation: MutationType;
   node: Payment;
@@ -6491,6 +7556,7 @@ export interface QuotationPreviousValues {
   docId?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  fileUrl?: String;
   status?: String;
 }
 
@@ -6501,6 +7567,7 @@ export interface QuotationPreviousValuesPromise
   docId: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  fileUrl: () => Promise<String>;
   status: () => Promise<String>;
 }
 
@@ -6511,6 +7578,7 @@ export interface QuotationPreviousValuesSubscription
   docId: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  fileUrl: () => Promise<AsyncIterator<String>>;
   status: () => Promise<AsyncIterator<String>>;
 }
 
@@ -6892,6 +7960,14 @@ export const models: Model[] = [
     embedded: false
   },
   {
+    name: "Quotation",
+    embedded: false
+  },
+  {
+    name: "QuotationItem",
+    embedded: false
+  },
+  {
     name: "Address",
     embedded: false
   },
@@ -6928,11 +8004,11 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "QuotationItem",
+    name: "OrderItem",
     embedded: false
   },
   {
-    name: "Quotation",
+    name: "Order",
     embedded: false
   }
 ];

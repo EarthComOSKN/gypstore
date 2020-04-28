@@ -48,7 +48,7 @@ app.use((req: any, res, next) => {
     throw error;
   }
 });
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.post("/upload-image", (req, res) => {
   console.log(req.body);
 
@@ -67,9 +67,11 @@ server.applyMiddleware({
   cors: true,
   path: "/",
   bodyParserConfig: {
-    limit: "30mb",
+    limit: "100mb",
   },
 });
+// app.use(bodyParser.json({ limit: "100mb" }));
+// app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 app.listen(4000, () =>
   console.log("Server is running on http://localhost:4000")

@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly --http-parser=legacy index.ts",
     "start": "node ./dist/index.js",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "test:db": "ts-node-dev test-storage.ts"
   },
   "dependencies": {
     "@google-cloud/storage": "^4.7.0",
-    "@prisma/photon": "2.0.0-preview019",
     "@types/bcrypt": "^3.0.0",
     "@types/jsonwebtoken": "^8.3.7",
     "apollo-errors": "^1.9.0",

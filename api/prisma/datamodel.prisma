@@ -11,10 +11,33 @@ type User {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   shoppingCart: ShoppingCart!
+  orders: [Order!]
   quotations: [Quotation!]
   payments: [Payment!]
   addresses: [Address]
 }
+
+type Quotation {
+  id: ID! @id
+  docId: String
+  quotationItems: [QuotationItem]
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  customer: User! @relation(link: INLINE)
+  fileUrl: String
+  status: String @default(value: "PENDING") 
+}
+
+
+type QuotationItem {
+  id: ID! @id
+  key: String! @unique
+  product: ProductItem!
+  amount: Int!
+  realPrice: Float!
+  quotation: Quotation!
+}
+
 
 type Address {
   id: ID! @id
@@ -36,7 +59,7 @@ type Payment {
   updatedAt: DateTime! @updatedAt
   customer: User! @relation(link: INLINE)
   salesman: Salesman @relation(link: INLINE)
-  quotation: Quotation! @relation(link: INLINE)
+  order: Order! @relation(link: INLINE)
   Invoice: Invoice
   rawEvent: String
 
@@ -51,7 +74,7 @@ type Salesman {
   updatedAt: DateTime! @updatedAt
   payments: [Payment]
   invoices: [Invoice]
-  quotations: [Quotation]
+  orders: [Order]
 
 }
 
@@ -63,7 +86,7 @@ type Invoice {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   user: User! @relation(link: INLINE)
-  quotation: Quotation! @relation(link: INLINE)
+  order: Order! @relation(link: INLINE)
   salesman: Salesman! @relation(link: INLINE)
   address: Address @relation(link: INLINE)
   payment: Payment @relation(link: INLINE)
@@ -80,7 +103,7 @@ type Shipping {
   updatedAt: DateTime! @updatedAt
   invoce: Invoice! @relation(link: INLINE)
   address: Address! @relation(link: INLINE)
-  quotation: Quotation! @relation(link: INLINE)
+  order: Order! @relation(link: INLINE)
 
 }
 
@@ -112,7 +135,7 @@ type ProductItem {
   updatedAt: DateTime! @updatedAt
   category: Category! @relation(link: INLINE)
   shoppingCart: ShoppingCart @relation(link: INLINE)
-  quotation: Quotation @relation(link: INLINE)
+  order: Order @relation(link: INLINE)
   image: String
   relatedProduct: [ProductItem] @relation(Link: INLINE)
 
@@ -137,19 +160,19 @@ type ShoppingCart {
 }
 
 
-type QuotationItem {
+type OrderItem {
   id: ID! @id
   key: String! @unique
   product: ProductItem!
   amount: Int!
   realPrice: Float!
-  quotation: Quotation!
+  order: Order!
 }
 
-type Quotation {
+type Order {
   id: ID! @id
   docId: String
-  quotationItem: [QuotationItem]
+  orderItem: [OrderItem]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   salesman: Salesman @relation(link: INLINE)
@@ -157,6 +180,7 @@ type Quotation {
   shipping: Shipping 
   customer: User! @relation(link: INLINE)
   status: String @default(value: "PENDING") 
+  quotation: Quotation
 
 }
 

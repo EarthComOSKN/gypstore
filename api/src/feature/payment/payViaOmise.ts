@@ -24,7 +24,7 @@ export const paymentConfig: NexusOutputFieldConfig<
 > = {
   type: "Payment",
   args: {
-    quotationId: idArg(),
+    orderId: idArg(),
     token: stringArg(),
     amount: intArg(),
     userId: idArg(),
@@ -32,8 +32,8 @@ export const paymentConfig: NexusOutputFieldConfig<
   nullable: true,
   resolve: async (_, args, ctx) => {
     const prisma: Prisma = ctx.prisma;
-    const quotation = await prisma.quotation({ id: args.quotationId });
-    console.log(quotation);
+    const order = await prisma.order({ id: args.orderId });
+    console.log(order);
     console.log(args.token);
 
     try {
@@ -44,7 +44,7 @@ export const paymentConfig: NexusOutputFieldConfig<
       });
 
       const payment = await prisma.createPayment({
-        docId: "PAYMENT001",
+        docId: "PAYMENT",
         amount: "" + args.amount,
         rawEvent: JSON.stringify(omiseRes) || "",
         customer: {
@@ -52,15 +52,15 @@ export const paymentConfig: NexusOutputFieldConfig<
             id: args.userId,
           },
         },
-        quotation: {
+        order: {
           connect: {
-            id: args.quotationId,
+            id: args.orderId,
           },
         },
       });
-      await prisma.updateQuotation({
+      await prisma.updateOrder({
         where: {
-          id: args.quotationId,
+          id: args.orderId,
         },
         data: {
           status: "PAID",

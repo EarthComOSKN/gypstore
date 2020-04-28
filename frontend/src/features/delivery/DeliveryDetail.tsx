@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
-import { Menu } from 'antd';
-
+import { Menu } from 'antd'
+import moment from 'moment'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
-`;
+`
 
 const Title = styled.div`
   border-left-style: solid;
@@ -14,7 +14,7 @@ const Title = styled.div`
   margin: 3rem 7rem 0rem 7rem;
   padding: 0rem 1rem;
   font-size: 1.5rem;
-`;
+`
 
 const Row = styled.div`
   display: flex;
@@ -31,11 +31,11 @@ const Row = styled.div`
     }
   }
 
-  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected  {
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
     color: black;
     background-color: #ffc887;
   }
-`;
+`
 
 const Detail = styled.div`
   display: flex;
@@ -47,33 +47,35 @@ const Detail = styled.div`
     border-bottom-style: solid;
     border-color: #ff8e0a;
   }
-`;
+`
 
-const { SubMenu } = Menu;
+const { SubMenu } = Menu
 
-export function DeliveryDetail() {
-  const [img, setImg] = useState("/assets/delivery1.jpg");
+type Props = {
+  orders: Order[]
+}
+
+export function DeliveryDetail(props: Props) {
+  const { orders } = props
+
+  const [img, setImg] = useState('/assets/delivery1.jpg')
 
   return (
     <Container>
       <Title>สถานะการจัดส่ง</Title>
       <Row>
-        <Menu style={{ width: 200 }}>
-          <Menu.Item onClick={() => setImg("/assets/delivery1.jpg")} >
-            <span>ออเดอร์วันที่ 12/02/63</span>
-          </Menu.Item>
-          <Menu.Item onClick={() => setImg("/assets/delivery2.jpg")} >
-            <span>ออเดอร์วันที่ 23/01/63</span>
-          </Menu.Item>
-          <Menu.Item onClick={() => setImg("/assets/delivery3.jpg")} >
-            <span>ออเดอร์วันที่ 02/10/62</span>
-          </Menu.Item>
-          <Menu.Item onClick={() => setImg("/assets/delivery4.jpg")} >
-            <span>ออเดอร์วันที่ 11/07/62</span>
-          </Menu.Item>
-          <Menu.Item onClick={() => setImg("/assets/delivery4.jpg")} >
-            <span>ออเดอร์วันที่ 01/01/61</span>
-          </Menu.Item>
+        <Menu style={{ width: 300 }}>
+          {orders.map((order, idx) => (
+            <Menu.Item
+              key={idx}
+              onClick={() => setImg('/assets/delivery1.jpg')}
+            >
+              <span>
+                ออเดอร์วันที่{' '}
+                {moment(order.createdAt).format('DD/MM/YYYY HH:mm')}
+              </span>
+            </Menu.Item>
+          ))}
         </Menu>
         <img src={img} alt="สถานะการจัดส่ง" />
         {/* <Detail>
@@ -97,5 +99,4 @@ export function DeliveryDetail() {
       </Row>
     </Container>
   )
-  
 }
