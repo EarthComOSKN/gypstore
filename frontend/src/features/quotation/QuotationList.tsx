@@ -65,6 +65,16 @@ const StyledButton = styled(Button)`
   }
 `
 
+const getStatusColor = status => {
+  if (status === 'PENDING') return 'orange'
+  if (status === 'COMPLETED') return 'green'
+  if (status === 'CANCELED') return 'red'
+}
+const statusEngToThai = status => {
+  if (status === 'PENDING') return 'กำลังดำเนินการ'
+  if (status === 'COMPLETED') return 'สำเร็จ'
+  if (status === 'CANCELED') return 'ยกเลิก'
+}
 export const QuotationList = () => {
   const { data: meData, loading: meLoading } = useQuery(GET_ME)
   console.log(meData)
@@ -108,10 +118,13 @@ export const QuotationList = () => {
               บาท
             </Price>
             <Price>
-              <span style={{ color: 'orange' }}>{q.status}</span>{' '}
+              <span style={{ color: getStatusColor(q.status) }}>
+                {statusEngToThai(q.status)}
+              </span>{' '}
             </Price>
             <Price>
               <StyledButton
+                disabled={q.status !== 'COMPLETED'}
                 onClick={() => {
                   const state = {
                     productItems: q.quotationItems,

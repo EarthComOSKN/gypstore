@@ -11,11 +11,12 @@ import {
   COUPONS,
   STUFF_MEMBERS,
   SITE_SETTINGS,
-  QUOTATIONS
+  QUOTATIONS,
 } from "./settings/constants";
 import AuthProvider, { AuthContext } from "./context/auth";
 import { InLineLoader } from "./components/InlineLoader/InlineLoader";
 import Quotations from "./containers/Quotations/Quotations";
+import OrderV2 from "./containers/OrderV2/OrderV2";
 const Products = lazy(() => import("./containers/Products/Products"));
 const AdminLayout = lazy(() => import("./containers/Layout/Layout"));
 const Dashboard = lazy(() => import("./containers/Dashboard/Dashboard"));
@@ -53,7 +54,7 @@ function PrivateRoute({ children, ...rest }) {
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              state: { from: location },
             }}
           />
         )
@@ -91,7 +92,7 @@ const Routes = () => {
           <PrivateRoute path={ORDERS}>
             <AdminLayout>
               <Suspense fallback={<InLineLoader />}>
-                <Orders />
+                <OrderV2 />
               </Suspense>
             </AdminLayout>
           </PrivateRoute>

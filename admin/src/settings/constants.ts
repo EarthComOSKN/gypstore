@@ -4,9 +4,10 @@ export const DASHBOARD = "/";
 export const PRODUCTS = "/products";
 export const CATEGORY = "/category";
 export const QUOTATIONS = "/quotations";
+
 export const LOGIN = "/login";
 export const LOGOUT = "/logout";
-export const ORDERS = "/orders";
+export const ORDERS = "/ordersV2";
 export const CUSTOMERS = "/customers";
 export const COUPONS = "/coupons";
 export const SETTINGS = "/settings";

@@ -6,7 +6,7 @@ import {
   NavLink,
   MenuWrapper,
   Svg,
-  LogoutBtn
+  LogoutBtn,
 } from "./Sidebar.style";
 import {
   DASHBOARD,
@@ -16,7 +16,7 @@ import {
   CUSTOMERS,
   COUPONS,
   SETTINGS,
-  QUOTATIONS
+  QUOTATIONS,
 } from "../../../settings/constants";
 import { AuthContext } from "../../../context/auth";
 import {
@@ -27,7 +27,7 @@ import {
   CustomerIcon,
   CouponIcon,
   SettingIcon,
-  LogoutIcon
+  LogoutIcon,
 } from "../../../components/AllSvgIcon";
 
 const sidebarMenus = [
@@ -41,13 +41,19 @@ const sidebarMenus = [
     name: "สินค้า",
     path: PRODUCTS,
     exact: false,
-    icon: <ProductIcon />
+    icon: <ProductIcon />,
   },
   {
     name: "ใบเสนอราคา",
     path: QUOTATIONS,
     exact: false,
-    icon: <SidebarCategoryIcon />
+    icon: <SidebarCategoryIcon />,
+  },
+  {
+    name: "คำสั่งซื้อ",
+    path: ORDERS,
+    exact: false,
+    icon: <SidebarCategoryIcon />,
   },
   // {
   //   name: "Orders",
@@ -59,7 +65,7 @@ const sidebarMenus = [
     name: "สมาชิก",
     path: CUSTOMERS,
     exact: false,
-    icon: <CustomerIcon />
+    icon: <CustomerIcon />,
   },
   // {
   //   name: "Coupons",
@@ -71,14 +77,14 @@ const sidebarMenus = [
     name: "ตั้งค่า",
     path: SETTINGS,
     exact: false,
-    icon: <SettingIcon />
-  }
+    icon: <SettingIcon />,
+  },
 ];
 
 export default withRouter(function Sidebar({
   refs,
   style,
-  onMenuItemClick
+  onMenuItemClick,
 }: any) {
   const { isAuthenticated, signout } = useContext(AuthContext);
   return (
@@ -92,7 +98,7 @@ export default withRouter(function Sidebar({
             activeStyle={{
               color: "#FF8E0A",
               backgroundColor: "#f7f7f7",
-              borderRadius: "50px 0 0 50px"
+              borderRadius: "50px 0 0 50px",
             }}
             onClick={onMenuItemClick}
           >
