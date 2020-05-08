@@ -7,11 +7,13 @@
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly --http-parser=legacy index.ts",
     "start": "node ./dist/index.js",
     "tsc": "tsc",
-    "test:db": "ts-node-dev test-storage.ts"
+    "test:db": "ts-node-dev test-storage.ts",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@google-cloud/storage": "^4.7.0",
     "@types/bcrypt": "^3.0.0",
+    "@types/jest": "^25.2.1",
     "@types/jsonwebtoken": "^8.3.7",
     "apollo-errors": "^1.9.0",
     "apollo-server": "^2.9.16",
@@ -28,5 +30,12 @@
     "ts-node-dev": "^1.0.0-pre.44",
     "tsc": "^1.20150623.0",
     "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
+    "babel-jest": "^25.5.1",
+    "jest": "^25.5.4"
   }
 }

@@ -696,6 +696,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     salesman?: NexusGenInputs['SalesmanCreateOneWithoutOrdersInput'] | null; // SalesmanCreateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutOrderInput'] | null; // ShippingCreateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderCreateManyWithoutCustomerInput: { // input type
@@ -730,6 +731,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     salesman?: NexusGenInputs['SalesmanCreateOneWithoutOrdersInput'] | null; // SalesmanCreateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutOrderInput'] | null; // ShippingCreateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderCreateWithoutOrderItemInput: { // input type
@@ -740,6 +742,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     salesman?: NexusGenInputs['SalesmanCreateOneWithoutOrdersInput'] | null; // SalesmanCreateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutOrderInput'] | null; // ShippingCreateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderCreateWithoutPaymentInput: { // input type
@@ -750,6 +753,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     salesman?: NexusGenInputs['SalesmanCreateOneWithoutOrdersInput'] | null; // SalesmanCreateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutOrderInput'] | null; // ShippingCreateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderCreateWithoutSalesmanInput: { // input type
@@ -760,6 +764,7 @@ export interface NexusGenInputs {
     payment?: NexusGenInputs['PaymentCreateOneWithoutOrderInput'] | null; // PaymentCreateOneWithoutOrderInput
     quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     shipping?: NexusGenInputs['ShippingCreateOneWithoutOrderInput'] | null; // ShippingCreateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderCreateWithoutShippingInput: { // input type
@@ -770,6 +775,7 @@ export interface NexusGenInputs {
     payment?: NexusGenInputs['PaymentCreateOneWithoutOrderInput'] | null; // PaymentCreateOneWithoutOrderInput
     quotation?: NexusGenInputs['QuotationCreateOneInput'] | null; // QuotationCreateOneInput
     salesman?: NexusGenInputs['SalesmanCreateOneWithoutOrdersInput'] | null; // SalesmanCreateOneWithoutOrdersInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderItemCreateInput: { // input type
@@ -982,6 +988,20 @@ export interface NexusGenInputs {
     id_starts_with?: string | null; // ID
     NOT?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
     OR?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
+    shippingStatus?: string | null; // String
+    shippingStatus_contains?: string | null; // String
+    shippingStatus_ends_with?: string | null; // String
+    shippingStatus_gt?: string | null; // String
+    shippingStatus_gte?: string | null; // String
+    shippingStatus_in?: string[] | null; // [String!]
+    shippingStatus_lt?: string | null; // String
+    shippingStatus_lte?: string | null; // String
+    shippingStatus_not?: string | null; // String
+    shippingStatus_not_contains?: string | null; // String
+    shippingStatus_not_ends_with?: string | null; // String
+    shippingStatus_not_in?: string[] | null; // [String!]
+    shippingStatus_not_starts_with?: string | null; // String
+    shippingStatus_starts_with?: string | null; // String
     status?: string | null; // String
     status_contains?: string | null; // String
     status_ends_with?: string | null; // String
@@ -1013,6 +1033,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     salesman?: NexusGenInputs['SalesmanUpdateOneWithoutOrdersInput'] | null; // SalesmanUpdateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutOrderInput'] | null; // ShippingUpdateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateInput: { // input type
@@ -1023,14 +1044,17 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     salesman?: NexusGenInputs['SalesmanUpdateOneWithoutOrdersInput'] | null; // SalesmanUpdateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutOrderInput'] | null; // ShippingUpdateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateManyDataInput: { // input type
     docId?: string | null; // String
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateManyMutationInput: { // input type
     docId?: string | null; // String
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateManyWithWhereNestedInput: { // input type
@@ -1106,6 +1130,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     salesman?: NexusGenInputs['SalesmanUpdateOneWithoutOrdersInput'] | null; // SalesmanUpdateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutOrderInput'] | null; // ShippingUpdateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateWithoutOrderItemDataInput: { // input type
@@ -1115,6 +1140,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     salesman?: NexusGenInputs['SalesmanUpdateOneWithoutOrdersInput'] | null; // SalesmanUpdateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutOrderInput'] | null; // ShippingUpdateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateWithoutPaymentDataInput: { // input type
@@ -1124,6 +1150,7 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     salesman?: NexusGenInputs['SalesmanUpdateOneWithoutOrdersInput'] | null; // SalesmanUpdateOneWithoutOrdersInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutOrderInput'] | null; // ShippingUpdateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateWithoutSalesmanDataInput: { // input type
@@ -1133,6 +1160,7 @@ export interface NexusGenInputs {
     payment?: NexusGenInputs['PaymentUpdateOneWithoutOrderInput'] | null; // PaymentUpdateOneWithoutOrderInput
     quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     shipping?: NexusGenInputs['ShippingUpdateOneWithoutOrderInput'] | null; // ShippingUpdateOneWithoutOrderInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpdateWithoutShippingDataInput: { // input type
@@ -1142,6 +1170,7 @@ export interface NexusGenInputs {
     payment?: NexusGenInputs['PaymentUpdateOneWithoutOrderInput'] | null; // PaymentUpdateOneWithoutOrderInput
     quotation?: NexusGenInputs['QuotationUpdateOneInput'] | null; // QuotationUpdateOneInput
     salesman?: NexusGenInputs['SalesmanUpdateOneWithoutOrdersInput'] | null; // SalesmanUpdateOneWithoutOrdersInput
+    shippingStatus?: string | null; // String
     status?: string | null; // String
   }
   OrderUpsertNestedInput: { // input type
@@ -1218,6 +1247,20 @@ export interface NexusGenInputs {
     quotation?: NexusGenInputs['QuotationWhereInput'] | null; // QuotationWhereInput
     salesman?: NexusGenInputs['SalesmanWhereInput'] | null; // SalesmanWhereInput
     shipping?: NexusGenInputs['ShippingWhereInput'] | null; // ShippingWhereInput
+    shippingStatus?: string | null; // String
+    shippingStatus_contains?: string | null; // String
+    shippingStatus_ends_with?: string | null; // String
+    shippingStatus_gt?: string | null; // String
+    shippingStatus_gte?: string | null; // String
+    shippingStatus_in?: string[] | null; // [String!]
+    shippingStatus_lt?: string | null; // String
+    shippingStatus_lte?: string | null; // String
+    shippingStatus_not?: string | null; // String
+    shippingStatus_not_contains?: string | null; // String
+    shippingStatus_not_ends_with?: string | null; // String
+    shippingStatus_not_in?: string[] | null; // [String!]
+    shippingStatus_not_starts_with?: string | null; // String
+    shippingStatus_starts_with?: string | null; // String
     status?: string | null; // String
     status_contains?: string | null; // String
     status_ends_with?: string | null; // String
@@ -3731,7 +3774,7 @@ export interface NexusGenEnums {
   CategoryOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   InvoiceOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "creditTerm_ASC" | "creditTerm_DESC" | "docId_ASC" | "docId_DESC" | "id_ASC" | "id_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   OrderItemOrderByInput: "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "realPrice_ASC" | "realPrice_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  OrderOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "docId_ASC" | "docId_DESC" | "id_ASC" | "id_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  OrderOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "docId_ASC" | "docId_DESC" | "id_ASC" | "id_DESC" | "shippingStatus_ASC" | "shippingStatus_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   PaymentOrderByInput: "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "docId_ASC" | "docId_DESC" | "id_ASC" | "id_DESC" | "rawEvent_ASC" | "rawEvent_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   ProductItemOrderByInput: "amount_ASC" | "amount_DESC" | "brand_ASC" | "brand_DESC" | "createdAt_ASC" | "createdAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "isPublished_ASC" | "isPublished_DESC" | "MenuDetail_ASC" | "MenuDetail_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "salePrice_ASC" | "salePrice_DESC" | "TermDetail_ASC" | "TermDetail_DESC" | "unitType_ASC" | "unitType_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   QuotationItemOrderByInput: "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "realPrice_ASC" | "realPrice_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
@@ -3845,6 +3888,7 @@ export interface NexusGenRootTypes {
     createdAt: any; // DateTime!
     docId?: string | null; // String
     id: string; // ID!
+    shippingStatus?: string | null; // String
     status?: string | null; // String
     updatedAt: any; // DateTime!
   }
@@ -4579,6 +4623,7 @@ export interface NexusGenFieldTypes {
     quotation: NexusGenRootTypes['Quotation'] | null; // Quotation
     salesman: NexusGenRootTypes['Salesman'] | null; // Salesman
     shipping: NexusGenRootTypes['Shipping'] | null; // Shipping
+    shippingStatus: string | null; // String
     status: string | null; // String
     updatedAt: any; // DateTime!
   }

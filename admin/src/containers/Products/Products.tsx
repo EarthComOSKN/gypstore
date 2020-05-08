@@ -4,7 +4,7 @@ import { Button } from "baseui/button";
 import {
   Grid,
   Row as Rows,
-  Col as Column
+  Col as Column,
 } from "../../components/FlexBox/FlexBox";
 import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
@@ -28,8 +28,8 @@ export const ProductsRow = styled("div", ({ $theme }) => ({
   "@media only screen and (max-width: 767px)": {
     marginLeft: "-7.5px",
     marginRight: "-7.5px",
-    marginTop: "15px"
-  }
+    marginTop: "15px",
+  },
 }));
 
 export const Col = styled(Column, () => ({
@@ -37,32 +37,32 @@ export const Col = styled(Column, () => ({
     marginBottom: "20px",
 
     ":last-child": {
-      marginBottom: 0
-    }
-  }
+      marginBottom: 0,
+    },
+  },
 }));
 
 const Row = styled(Rows, () => ({
   "@media only screen and (min-width: 768px) and (max-width: 991px)": {
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 }));
 
 export const ProductCardWrapper = styled("div", () => ({
-  height: "100%"
+  height: "100%",
 }));
 
 export const LoaderWrapper = styled("div", () => ({
   width: "100%",
   height: "100vh",
   display: "flex",
-  flexWrap: "wrap"
+  flexWrap: "wrap",
 }));
 
 export const LoaderItem = styled("div", () => ({
   width: "25%",
   padding: "0 15px",
-  marginBottom: "30px"
+  marginBottom: "30px",
 }));
 
 // const GET_PRODUCTS = gql`
@@ -112,6 +112,7 @@ const GET_PRODUCTS = gql`
       isPublished
       createdAt
       updatedAt
+      image
       category {
         name
       }
@@ -126,7 +127,7 @@ const GET_PRODUCTS = gql`
 // ];
 const priceSelectOptions = [
   { value: "highestToLowest", label: "ราคาแพงไปถูก" },
-  { value: "lowestToHighest", label: "ราคาถูกไปแพง" }
+  { value: "lowestToHighest", label: "ราคาถูกไปแพง" },
 ];
 
 export default function Products() {
@@ -160,11 +161,11 @@ export default function Products() {
     setPriceOrder(value);
     if (value.length) {
       refetch({
-        sortByPrice: value[0].value
+        sortByPrice: value[0].value,
       });
     } else {
       refetch({
-        sortByPrice: null
+        sortByPrice: null,
       });
     }
   }
@@ -249,7 +250,10 @@ export default function Products() {
                       <ProductCard
                         title={item.name}
                         weight={item.unitType}
-                        image=""
+                        image={
+                          item.image ||
+                          "https://via.placeholder.com/400x400?text=NoImage"
+                        }
                         currency={CURRENCY}
                         price={item.price}
                         salePrice={item.salePrice}

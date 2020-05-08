@@ -6,7 +6,7 @@ import { GET_QUOTATIONS } from './gql'
 import { FullPageLoading } from '../../component/Loading'
 import { GET_ME } from '../navigation/gql'
 import { useRouter } from 'next/router'
-
+import moment from 'moment'
 const Container = styled.div`
   background-color: white;
   width: 90%;
@@ -30,7 +30,7 @@ const CartTable = styled.div`
 
 const CartRow = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1.5rem;
   background-color: white;
 `
@@ -63,6 +63,12 @@ const StyledButton = styled(Button)`
     color: black;
     border-color: black;
   }
+`
+const NoItems = styled.div`
+  display: flex;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
 `
 
 const getStatusColor = status => {
@@ -98,19 +104,22 @@ export const QuotationList = () => {
           <h4>วันที่ออกใบเสนอราคา</h4>
           <h4>ราคารวม</h4>
           <h4>สถานะ</h4>
+          <h4>เอกสาร</h4>
           <h4>ดำเนินการ</h4>
         </CartRow>
+        {quotations.length === 0 && <NoItems>ไม่มีรายการในขณะนี้</NoItems>}
         {quotations.map((q, idx) => (
           <CartRow>
             <Quotation>
               <ProductCardTall buyable={false} onlyImage />
-              <QuotationName>
-                ใบเสนอราคาเลขที่ {idx + 1}{' '}
-                <DeleteIcon onClick={() => {}} type="delete" />
-              </QuotationName>
+              <QuotationName>ใบเสนอราคาเลขที่ {idx + 1} </QuotationName>
             </Quotation>
             <Price>{q.quotationItems.length} รายการ</Price>
-            <Amount>-</Amount>
+            <Amount>
+              {moment(q.createdAt)
+                .locale('th')
+                .format('DD/MM/YYYY HH:mm')}
+            </Amount>
             <Price>
               {q.quotationItems
                 .reduce((pre, cur) => pre + cur.realPrice, 0)
@@ -121,6 +130,9 @@ export const QuotationList = () => {
               <span style={{ color: getStatusColor(q.status) }}>
                 {statusEngToThai(q.status)}
               </span>{' '}
+            </Price>
+            <Price>
+              {q.fileUrl ? <a href={q.fileUrl}>ดาวโหลด</a> : 'ยังไม่มีเอกสาร'}
             </Price>
             <Price>
               <StyledButton

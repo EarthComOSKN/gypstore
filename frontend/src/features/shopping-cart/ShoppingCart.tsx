@@ -218,7 +218,11 @@ export const ShoppingCart = () => {
             <CartRow>
               <Product>
                 <ProductCardTall
-                  image={product.image}
+                  style={{ width: 100, height: 100 }}
+                  image={
+                    product.image ||
+                    'https://storage.cloud.google.com/gypstore-storage/productImages/4.jpg'
+                  }
                   buyable={false}
                   onlyImage
                 />

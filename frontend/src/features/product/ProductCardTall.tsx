@@ -85,7 +85,7 @@ export const ProductCardTall = (props: Props) => {
           hoverable
           cover={
             <ProductImageContainer>
-              <img alt="example" src={image} />
+              <img alt="example" src={image} width="auto" height="150" />
             </ProductImageContainer>
           }
         >

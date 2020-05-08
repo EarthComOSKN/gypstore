@@ -20,8 +20,9 @@ import {
   DrawerTitleWrapper,
   DrawerTitle,
   FieldDetails,
-  ButtonGroup
+  ButtonGroup,
 } from "../DrawerItems/DrawerItems.style";
+import { message } from "antd";
 
 const options = [
   { value: "แผ่นยิปซัม", name: "แผ่นยิปซัม", id: "1" },
@@ -29,19 +30,19 @@ const options = [
   {
     value: "โครงฝ้าเพดานและผนังยิปซัม",
     name: "โครงฝ้าเพดานและผนังยิปซัม",
-    id: "1"
+    id: "1",
   },
   { value: "ฉนวนกันความร้อน", name: "ฉนวนกันความร้อน", id: "1" },
   {
     value: "โครงและแผ่นฝ้าเพดานทีบาร์",
     name: "โครงและแผ่นฝ้าเพดานทีบาร์",
-    id: "1"
+    id: "1",
   },
   { value: "ปูนฉาบยิปซัม", name: "ปูนฉาบยิปซัม", id: "1" },
   { value: "ช่องเซอร์วิสสำเร็จรูป", name: "ช่องเซอร์วิสสำเร็จรูป", id: "1" },
   { value: "สเตปสำเร็จรูป", name: "สเตปสำเร็จรูป", id: "1" },
   { value: "อุปกรณ์เสริม", name: "อุปกรณ์เสริม", id: "1" },
-  { value: "เครื่องมือช่าง", name: "เครื่องมือช่าง", id: "1" }
+  { value: "เครื่องมือช่าง", name: "เครื่องมือช่าง", id: "1" },
 ];
 const GET_PRODUCTS = gql`
   query getProducts(
@@ -80,10 +81,10 @@ const CREATE_PRODUCT = gql`
 `;
 type Props = any;
 
-const AddProduct: React.FC<Props> = props => {
+const AddProduct: React.FC<Props> = (props) => {
   const dispatch = useDrawerDispatch();
   const closeDrawer = useCallback(() => dispatch({ type: "CLOSE_DRAWER" }), [
-    dispatch
+    dispatch,
   ]);
   const { register, handleSubmit, setValue } = useForm();
   const [type, setType] = useState([]);
@@ -94,7 +95,7 @@ const AddProduct: React.FC<Props> = props => {
     register({ name: "description" });
   }, [register]);
 
-  const handleDescriptionChange = e => {
+  const handleDescriptionChange = (e) => {
     const value = e.target.value;
     setValue("description", value);
     setDescription(value);
@@ -109,40 +110,35 @@ const AddProduct: React.FC<Props> = props => {
     setValue("type", value);
     setType(value);
   };
-  const handleUploader = files => {
+  const handleUploader = (files) => {
     // setValue("image", files[0].path);
   };
-  const onSubmit = _data => {
+  const onSubmit = async (_data) => {
     console.log(_data);
-    // const newProduct = {
-    //   id: uuidv4(),
-    //   name: data.name,
-    //   type: data.type[0].value,
-    //   description: data.description,
-    //   image: data.image && data.image.length !== 0 ? data.image : "",
-    //   price: Number(data.price),
-    //   unit: data.unit,
-    //   salePrice: Number(data.salePrice),
-    //   discountInPercent: Number(data.discountInPercent),
-    //   quantity: Number(data.quantity),
-    //   slug: data.name,
-    //   creation_date: new Date()
-    // };
-    // console.log(newProduct, "newProduct data");
+    const hide = message.loading("กำลังสร้างสินค้า");
+    try {
+      await createProduct({
+        variables: {
+          data: {
+            ..._data,
+            amount: Number(_data.amount),
+            MenuDetail: "สินค้าพร้อมจำหน่าย",
+            TermDetail:
+              "ลูกค้าสามารถชำระด้วยเงินสดหรือบัตรเครดิต, ลูกค้าสามารถรับสินค้าเองได้หน้าโรงงาน",
+            brand: "-",
+            image:
+              "https://storage.cloud.google.com/gypstore-storage/productImages/69.jpg",
+            category: { connect: { id: "ck98oapndmrkz09235pdxjns8" } },
+          },
+        },
+      });
+      message.success("เพิ่มสิน้คาสำเร็จ");
+    } catch (error) {
+      message.error("เกิดข้อผิดพลาด");
+    } finally {
+      hide();
+    }
 
-    createProduct({
-      variables: {
-        data: {
-          ..._data,
-          amount: Number(_data.amount),
-          MenuDetail: "สินค้าพร้อมจำหน่าย",
-          TermDetail:
-            "ลูกค้าสามารถชำระด้วยเงินสดหรือบัตรเครดิต, ลูกค้าสามารถรับสินค้าเองได้หน้าโรงงาน",
-          brand: "-",
-          category: { connect: { id: "ck7b9ytvz000z0753q75otp1i" } }
-        }
-      }
-    });
     closeDrawer();
     window.location.reload();
   };
@@ -156,10 +152,10 @@ const AddProduct: React.FC<Props> = props => {
       <Form onSubmit={handleSubmit(onSubmit)} style={{ height: "100%" }}>
         <Scrollbars
           autoHide
-          renderView={props => (
+          renderView={(props) => (
             <div {...props} style={{ ...props.style, overflowX: "hidden" }} />
           )}
-          renderTrackHorizontal={props => (
+          renderTrackHorizontal={(props) => (
             <div
               {...props}
               style={{ display: "none" }}
@@ -183,9 +179,9 @@ const AddProduct: React.FC<Props> = props => {
                       backgroundColor: "#ffffff",
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "center"
-                    }
-                  }
+                      justifyContent: "center",
+                    },
+                  },
                 }}
               >
                 <Uploader onChange={handleUploader} />
@@ -260,27 +256,27 @@ const AddProduct: React.FC<Props> = props => {
                         style: ({ $theme }) => {
                           return {
                             ...$theme.typography.fontBold14,
-                            color: $theme.colors.textNormal
+                            color: $theme.colors.textNormal,
                           };
-                        }
+                        },
                       },
                       DropdownListItem: {
                         style: ({ $theme }) => {
                           return {
                             ...$theme.typography.fontBold14,
-                            color: $theme.colors.textNormal
+                            color: $theme.colors.textNormal,
                           };
-                        }
+                        },
                       },
                       Popover: {
                         props: {
                           overrides: {
                             Body: {
-                              style: { zIndex: 5 }
-                            }
-                          }
-                        }
-                      }
+                              style: { zIndex: 5 },
+                            },
+                          },
+                        },
+                      },
                     }}
                     multi
                   />
@@ -303,9 +299,9 @@ const AddProduct: React.FC<Props> = props => {
                   borderBottomRightRadius: "3px",
                   borderBottomLeftRadius: "3px",
                   marginRight: "15px",
-                  color: $theme.colors.red400
-                })
-              }
+                  color: $theme.colors.red400,
+                }),
+              },
             }}
           >
             ยกเลิก
@@ -320,9 +316,9 @@ const AddProduct: React.FC<Props> = props => {
                   borderTopLeftRadius: "3px",
                   borderTopRightRadius: "3px",
                   borderBottomRightRadius: "3px",
-                  borderBottomLeftRadius: "3px"
-                })
-              }
+                  borderBottomLeftRadius: "3px",
+                }),
+              },
             }}
           >
             เพิ่มสินค้า

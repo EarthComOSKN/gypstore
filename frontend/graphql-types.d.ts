@@ -1552,6 +1552,7 @@ type Order = {
   shipping?: Maybe<Shipping>
   customer: User
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<Quotation>
 }
 
@@ -1581,6 +1582,7 @@ type OrderCreateInput = {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>
   customer: UserCreateOneWithoutOrdersInput
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationCreateOneInput>
 }
 
@@ -1622,6 +1624,7 @@ type OrderCreateWithoutCustomerInput = {
   payment?: Maybe<PaymentCreateOneWithoutOrderInput>
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationCreateOneInput>
 }
 
@@ -1633,6 +1636,7 @@ type OrderCreateWithoutOrderItemInput = {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>
   customer: UserCreateOneWithoutOrdersInput
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationCreateOneInput>
 }
 
@@ -1644,6 +1648,7 @@ type OrderCreateWithoutPaymentInput = {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>
   customer: UserCreateOneWithoutOrdersInput
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationCreateOneInput>
 }
 
@@ -1655,6 +1660,7 @@ type OrderCreateWithoutSalesmanInput = {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>
   customer: UserCreateOneWithoutOrdersInput
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationCreateOneInput>
 }
 
@@ -1666,6 +1672,7 @@ type OrderCreateWithoutShippingInput = {
   payment?: Maybe<PaymentCreateOneWithoutOrderInput>
   customer: UserCreateOneWithoutOrdersInput
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationCreateOneInput>
 }
 
@@ -1931,6 +1938,8 @@ enum OrderOrderByInput {
   UpdatedAtDesc = 'updatedAt_DESC',
   StatusAsc = 'status_ASC',
   StatusDesc = 'status_DESC',
+  ShippingStatusAsc = 'shippingStatus_ASC',
+  ShippingStatusDesc = 'shippingStatus_DESC',
 }
 
 type OrderPreviousValues = {
@@ -1940,6 +1949,7 @@ type OrderPreviousValues = {
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
 }
 
 type OrderScalarWhereInput = {
@@ -2001,6 +2011,20 @@ type OrderScalarWhereInput = {
   status_not_starts_with?: Maybe<Scalars['String']>
   status_ends_with?: Maybe<Scalars['String']>
   status_not_ends_with?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
+  shippingStatus_not?: Maybe<Scalars['String']>
+  shippingStatus_in?: Maybe<Array<Scalars['String']>>
+  shippingStatus_not_in?: Maybe<Array<Scalars['String']>>
+  shippingStatus_lt?: Maybe<Scalars['String']>
+  shippingStatus_lte?: Maybe<Scalars['String']>
+  shippingStatus_gt?: Maybe<Scalars['String']>
+  shippingStatus_gte?: Maybe<Scalars['String']>
+  shippingStatus_contains?: Maybe<Scalars['String']>
+  shippingStatus_not_contains?: Maybe<Scalars['String']>
+  shippingStatus_starts_with?: Maybe<Scalars['String']>
+  shippingStatus_not_starts_with?: Maybe<Scalars['String']>
+  shippingStatus_ends_with?: Maybe<Scalars['String']>
+  shippingStatus_not_ends_with?: Maybe<Scalars['String']>
   AND?: Maybe<Array<OrderScalarWhereInput>>
   OR?: Maybe<Array<OrderScalarWhereInput>>
   NOT?: Maybe<Array<OrderScalarWhereInput>>
@@ -2033,6 +2057,7 @@ type OrderUpdateDataInput = {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationUpdateOneInput>
 }
 
@@ -2044,17 +2069,20 @@ type OrderUpdateInput = {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationUpdateOneInput>
 }
 
 type OrderUpdateManyDataInput = {
   docId?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
 }
 
 type OrderUpdateManyMutationInput = {
   docId?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
 }
 
 type OrderUpdateManyWithoutCustomerInput = {
@@ -2130,6 +2158,7 @@ type OrderUpdateWithoutCustomerDataInput = {
   payment?: Maybe<PaymentUpdateOneWithoutOrderInput>
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationUpdateOneInput>
 }
 
@@ -2140,6 +2169,7 @@ type OrderUpdateWithoutOrderItemDataInput = {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationUpdateOneInput>
 }
 
@@ -2150,6 +2180,7 @@ type OrderUpdateWithoutPaymentDataInput = {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationUpdateOneInput>
 }
 
@@ -2160,6 +2191,7 @@ type OrderUpdateWithoutSalesmanDataInput = {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationUpdateOneInput>
 }
 
@@ -2170,6 +2202,7 @@ type OrderUpdateWithoutShippingDataInput = {
   payment?: Maybe<PaymentUpdateOneWithoutOrderInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>
   status?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationUpdateOneInput>
 }
 
@@ -2281,6 +2314,20 @@ type OrderWhereInput = {
   status_not_starts_with?: Maybe<Scalars['String']>
   status_ends_with?: Maybe<Scalars['String']>
   status_not_ends_with?: Maybe<Scalars['String']>
+  shippingStatus?: Maybe<Scalars['String']>
+  shippingStatus_not?: Maybe<Scalars['String']>
+  shippingStatus_in?: Maybe<Array<Scalars['String']>>
+  shippingStatus_not_in?: Maybe<Array<Scalars['String']>>
+  shippingStatus_lt?: Maybe<Scalars['String']>
+  shippingStatus_lte?: Maybe<Scalars['String']>
+  shippingStatus_gt?: Maybe<Scalars['String']>
+  shippingStatus_gte?: Maybe<Scalars['String']>
+  shippingStatus_contains?: Maybe<Scalars['String']>
+  shippingStatus_not_contains?: Maybe<Scalars['String']>
+  shippingStatus_starts_with?: Maybe<Scalars['String']>
+  shippingStatus_not_starts_with?: Maybe<Scalars['String']>
+  shippingStatus_ends_with?: Maybe<Scalars['String']>
+  shippingStatus_not_ends_with?: Maybe<Scalars['String']>
   quotation?: Maybe<QuotationWhereInput>
   AND?: Maybe<Array<OrderWhereInput>>
   OR?: Maybe<Array<OrderWhereInput>>
@@ -3800,6 +3847,7 @@ type Quotation = {
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
   customer: User
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -3825,6 +3873,7 @@ type QuotationCreateInput = {
   docId?: Maybe<Scalars['String']>
   quotationItems?: Maybe<QuotationItemCreateManyWithoutQuotationInput>
   customer: UserCreateOneWithoutQuotationsInput
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -3847,6 +3896,7 @@ type QuotationCreateWithoutCustomerInput = {
   id?: Maybe<Scalars['ID']>
   docId?: Maybe<Scalars['String']>
   quotationItems?: Maybe<QuotationItemCreateManyWithoutQuotationInput>
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -3854,6 +3904,7 @@ type QuotationCreateWithoutQuotationItemsInput = {
   id?: Maybe<Scalars['ID']>
   docId?: Maybe<Scalars['String']>
   customer: UserCreateOneWithoutQuotationsInput
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -4117,6 +4168,8 @@ enum QuotationOrderByInput {
   CreatedAtDesc = 'createdAt_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC',
+  FileUrlAsc = 'fileUrl_ASC',
+  FileUrlDesc = 'fileUrl_DESC',
   StatusAsc = 'status_ASC',
   StatusDesc = 'status_DESC',
 }
@@ -4127,6 +4180,7 @@ type QuotationPreviousValues = {
   docId?: Maybe<Scalars['String']>
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -4175,6 +4229,20 @@ type QuotationScalarWhereInput = {
   updatedAt_lte?: Maybe<Scalars['DateTime']>
   updatedAt_gt?: Maybe<Scalars['DateTime']>
   updatedAt_gte?: Maybe<Scalars['DateTime']>
+  fileUrl?: Maybe<Scalars['String']>
+  fileUrl_not?: Maybe<Scalars['String']>
+  fileUrl_in?: Maybe<Array<Scalars['String']>>
+  fileUrl_not_in?: Maybe<Array<Scalars['String']>>
+  fileUrl_lt?: Maybe<Scalars['String']>
+  fileUrl_lte?: Maybe<Scalars['String']>
+  fileUrl_gt?: Maybe<Scalars['String']>
+  fileUrl_gte?: Maybe<Scalars['String']>
+  fileUrl_contains?: Maybe<Scalars['String']>
+  fileUrl_not_contains?: Maybe<Scalars['String']>
+  fileUrl_starts_with?: Maybe<Scalars['String']>
+  fileUrl_not_starts_with?: Maybe<Scalars['String']>
+  fileUrl_ends_with?: Maybe<Scalars['String']>
+  fileUrl_not_ends_with?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
   status_not?: Maybe<Scalars['String']>
   status_in?: Maybe<Array<Scalars['String']>>
@@ -4217,6 +4285,7 @@ type QuotationUpdateDataInput = {
   docId?: Maybe<Scalars['String']>
   quotationItems?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -4224,16 +4293,19 @@ type QuotationUpdateInput = {
   docId?: Maybe<Scalars['String']>
   quotationItems?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
 type QuotationUpdateManyDataInput = {
   docId?: Maybe<Scalars['String']>
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
 type QuotationUpdateManyMutationInput = {
   docId?: Maybe<Scalars['String']>
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -4273,12 +4345,14 @@ type QuotationUpdateOneRequiredWithoutQuotationItemsInput = {
 type QuotationUpdateWithoutCustomerDataInput = {
   docId?: Maybe<Scalars['String']>
   quotationItems?: Maybe<QuotationItemUpdateManyWithoutQuotationInput>
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
 type QuotationUpdateWithoutQuotationItemsDataInput = {
   docId?: Maybe<Scalars['String']>
   customer?: Maybe<UserUpdateOneRequiredWithoutQuotationsInput>
+  fileUrl?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
 }
 
@@ -4352,6 +4426,20 @@ type QuotationWhereInput = {
   updatedAt_gt?: Maybe<Scalars['DateTime']>
   updatedAt_gte?: Maybe<Scalars['DateTime']>
   customer?: Maybe<UserWhereInput>
+  fileUrl?: Maybe<Scalars['String']>
+  fileUrl_not?: Maybe<Scalars['String']>
+  fileUrl_in?: Maybe<Array<Scalars['String']>>
+  fileUrl_not_in?: Maybe<Array<Scalars['String']>>
+  fileUrl_lt?: Maybe<Scalars['String']>
+  fileUrl_lte?: Maybe<Scalars['String']>
+  fileUrl_gt?: Maybe<Scalars['String']>
+  fileUrl_gte?: Maybe<Scalars['String']>
+  fileUrl_contains?: Maybe<Scalars['String']>
+  fileUrl_not_contains?: Maybe<Scalars['String']>
+  fileUrl_starts_with?: Maybe<Scalars['String']>
+  fileUrl_not_starts_with?: Maybe<Scalars['String']>
+  fileUrl_ends_with?: Maybe<Scalars['String']>
+  fileUrl_not_ends_with?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
   status_not?: Maybe<Scalars['String']>
   status_in?: Maybe<Array<Scalars['String']>>

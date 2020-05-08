@@ -716,7 +716,9 @@ export type OrderOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC"
   | "status_ASC"
-  | "status_DESC";
+  | "status_DESC"
+  | "shippingStatus_ASC"
+  | "shippingStatus_DESC";
 
 export type QuotationItemOrderByInput =
   | "id_ASC"
@@ -1365,6 +1367,20 @@ export interface OrderWhereInput {
   status_not_starts_with?: Maybe<String>;
   status_ends_with?: Maybe<String>;
   status_not_ends_with?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
+  shippingStatus_not?: Maybe<String>;
+  shippingStatus_in?: Maybe<String[] | String>;
+  shippingStatus_not_in?: Maybe<String[] | String>;
+  shippingStatus_lt?: Maybe<String>;
+  shippingStatus_lte?: Maybe<String>;
+  shippingStatus_gt?: Maybe<String>;
+  shippingStatus_gte?: Maybe<String>;
+  shippingStatus_contains?: Maybe<String>;
+  shippingStatus_not_contains?: Maybe<String>;
+  shippingStatus_starts_with?: Maybe<String>;
+  shippingStatus_not_starts_with?: Maybe<String>;
+  shippingStatus_ends_with?: Maybe<String>;
+  shippingStatus_not_ends_with?: Maybe<String>;
   quotation?: Maybe<QuotationWhereInput>;
   AND?: Maybe<OrderWhereInput[] | OrderWhereInput>;
   OR?: Maybe<OrderWhereInput[] | OrderWhereInput>;
@@ -2176,6 +2192,7 @@ export interface OrderCreateWithoutCustomerInput {
   payment?: Maybe<PaymentCreateOneWithoutOrderInput>;
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationCreateOneInput>;
 }
 
@@ -2395,6 +2412,7 @@ export interface OrderCreateInput {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
   customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationCreateOneInput>;
 }
 
@@ -2457,6 +2475,7 @@ export interface OrderCreateWithoutSalesmanInput {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
   customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationCreateOneInput>;
 }
 
@@ -2532,6 +2551,7 @@ export interface OrderCreateWithoutShippingInput {
   payment?: Maybe<PaymentCreateOneWithoutOrderInput>;
   customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationCreateOneInput>;
 }
 
@@ -2619,6 +2639,7 @@ export interface OrderCreateWithoutPaymentInput {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
   customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationCreateOneInput>;
 }
 
@@ -2900,6 +2921,7 @@ export interface OrderUpdateWithoutCustomerDataInput {
   payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
@@ -3523,6 +3545,7 @@ export interface OrderUpdateDataInput {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
@@ -3611,6 +3634,7 @@ export interface OrderUpdateWithoutSalesmanDataInput {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
@@ -3714,6 +3738,7 @@ export interface OrderUpdateWithoutShippingDataInput {
   payment?: Maybe<PaymentUpdateOneWithoutOrderInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
@@ -3924,6 +3949,7 @@ export interface OrderUpdateWithoutPaymentDataInput {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
@@ -4031,6 +4057,20 @@ export interface OrderScalarWhereInput {
   status_not_starts_with?: Maybe<String>;
   status_ends_with?: Maybe<String>;
   status_not_ends_with?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
+  shippingStatus_not?: Maybe<String>;
+  shippingStatus_in?: Maybe<String[] | String>;
+  shippingStatus_not_in?: Maybe<String[] | String>;
+  shippingStatus_lt?: Maybe<String>;
+  shippingStatus_lte?: Maybe<String>;
+  shippingStatus_gt?: Maybe<String>;
+  shippingStatus_gte?: Maybe<String>;
+  shippingStatus_contains?: Maybe<String>;
+  shippingStatus_not_contains?: Maybe<String>;
+  shippingStatus_starts_with?: Maybe<String>;
+  shippingStatus_not_starts_with?: Maybe<String>;
+  shippingStatus_ends_with?: Maybe<String>;
+  shippingStatus_not_ends_with?: Maybe<String>;
   AND?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
   OR?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
   NOT?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
@@ -4044,6 +4084,7 @@ export interface OrderUpdateManyWithWhereNestedInput {
 export interface OrderUpdateManyDataInput {
   docId?: Maybe<String>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
 }
 
 export interface SalesmanUpsertWithoutInvoicesInput {
@@ -4738,12 +4779,14 @@ export interface OrderUpdateInput {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
 export interface OrderUpdateManyMutationInput {
   docId?: Maybe<String>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
 }
 
 export interface OrderItemCreateInput {
@@ -4768,6 +4811,7 @@ export interface OrderCreateWithoutOrderItemInput {
   shipping?: Maybe<ShippingCreateOneWithoutOrderInput>;
   customer: UserCreateOneWithoutOrdersInput;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationCreateOneInput>;
 }
 
@@ -4793,6 +4837,7 @@ export interface OrderUpdateWithoutOrderItemDataInput {
   shipping?: Maybe<ShippingUpdateOneWithoutOrderInput>;
   customer?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   status?: Maybe<String>;
+  shippingStatus?: Maybe<String>;
   quotation?: Maybe<QuotationUpdateOneInput>;
 }
 
@@ -5823,6 +5868,7 @@ export interface Order {
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   status?: String;
+  shippingStatus?: String;
 }
 
 export interface OrderPromise extends Promise<Order>, Fragmentable {
@@ -5844,6 +5890,7 @@ export interface OrderPromise extends Promise<Order>, Fragmentable {
   shipping: <T = ShippingPromise>() => T;
   customer: <T = UserPromise>() => T;
   status: () => Promise<String>;
+  shippingStatus: () => Promise<String>;
   quotation: <T = QuotationPromise>() => T;
 }
 
@@ -5868,6 +5915,7 @@ export interface OrderSubscription
   shipping: <T = ShippingSubscription>() => T;
   customer: <T = UserSubscription>() => T;
   status: () => Promise<AsyncIterator<String>>;
+  shippingStatus: () => Promise<AsyncIterator<String>>;
   quotation: <T = QuotationSubscription>() => T;
 }
 
@@ -5892,6 +5940,7 @@ export interface OrderNullablePromise
   shipping: <T = ShippingPromise>() => T;
   customer: <T = UserPromise>() => T;
   status: () => Promise<String>;
+  shippingStatus: () => Promise<String>;
   quotation: <T = QuotationPromise>() => T;
 }
 
@@ -7318,6 +7367,7 @@ export interface OrderPreviousValues {
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   status?: String;
+  shippingStatus?: String;
 }
 
 export interface OrderPreviousValuesPromise
@@ -7328,6 +7378,7 @@ export interface OrderPreviousValuesPromise
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   status: () => Promise<String>;
+  shippingStatus: () => Promise<String>;
 }
 
 export interface OrderPreviousValuesSubscription
@@ -7338,6 +7389,7 @@ export interface OrderPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   status: () => Promise<AsyncIterator<String>>;
+  shippingStatus: () => Promise<AsyncIterator<String>>;
 }
 
 export interface OrderItemSubscriptionPayload {

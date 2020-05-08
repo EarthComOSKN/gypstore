@@ -89,7 +89,7 @@ function SignUp(props) {
       localStorage.setItem('userToken', token)
       router.push('/')
       hide()
-      message.success('Register Completed')
+      message.success('สมัคร สมาชิกสำเร็ต')
     } catch (error) {
       hide()
       message.error(`${error}`)

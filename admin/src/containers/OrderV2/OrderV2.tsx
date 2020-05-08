@@ -9,6 +9,7 @@ import {
   Dropdown,
   Menu,
   List,
+  Divider,
 } from "antd";
 import { styled, withStyle } from "baseui";
 import {
@@ -52,6 +53,12 @@ const engToThai = (text) => {
   if (text === "PAYMENT PROCESS") return "รอชำระเงิน";
   if (text === "PAID") return "ชำระเงินแล้ว";
 };
+const engToThai2 = (text) => {
+  if (text === "RECEIVE_ORDER") return "ได้รับออเดอร์";
+  if (text === "S2") return "เตรียมสินค้า";
+  if (text === "S3") return "กำลังจัดส่ง";
+  if (text === "S4") return "จัดส่งสินค้าเรียบร้อย";
+};
 
 const statusToColor = (text) => {
   if (text === "PENDING") return "orange";
@@ -84,6 +91,15 @@ const GET_ORDERS = gql`
       updatedAt
 
       status
+      shippingStatus
+    }
+  }
+`;
+
+const UPDATE_SHIPPING = gql`
+  mutation($oid: ID!, $status: String!) {
+    updateOrder(where: { id: $oid }, data: { shippingStatus: $status }) {
+      id
     }
   }
 `;
@@ -155,16 +171,16 @@ export default function OrderV2() {
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [updateStatus] = useMutation(UPDATE_STATUS);
   const [updateFile] = useMutation(UPDATE_FILE);
+  const [updateShipping] = useMutation(UPDATE_SHIPPING);
 
   if (error) {
     return <div>Error! {error.message}</div>;
   }
   const handleUpdate = async (id, status) => {
-    const hide = message.loading("updateing");
-    const res = await updateStatus({
+    const hide = message.loading("กำลังโหลด...");
+    const res = await updateShipping({
       variables: {
-        qid: id,
-
+        oid: id,
         status,
       },
     });
@@ -172,7 +188,7 @@ export default function OrderV2() {
     window.location.reload();
   };
   const handleUpload = async (id, fileUrl) => {
-    const hide = message.loading("updateing");
+    const hide = message.loading("กำลังโหลด...");
     const res = await updateFile({
       variables: {
         qid: id,
@@ -256,15 +272,20 @@ export default function OrderV2() {
           renderItem={(q) => {
             const product = q.product;
             return (
-              <List.Item>
-                <Row>
-                  <Col>{product.brand}</Col>
-                  <Col>{product.name}</Col>
-                  <Col> ราคา {product.salePrice}</Col>
-                  <Col>{product.unitType}</Col>
-                  <Col>{q.amount} ชิ้น</Col>
-                </Row>
-              </List.Item>
+              <>
+                <List.Item>
+                  <Row style={{ width: "100%" }}>
+                    <Col lg={2}>{product.brand}</Col>
+                    <Col lg={4}>{product.name}</Col>
+                    <Col lg={3}>
+                      ราคา {product.salePrice}/{product.unitType}
+                    </Col>
+                    <Col lg={3}>
+                      จำนวน {q.amount} {product.unitType}
+                    </Col>
+                  </Row>
+                </List.Item>
+              </>
             );
           }}
         />
@@ -310,7 +331,7 @@ export default function OrderV2() {
 
             <Wrapper style={{ boxShadow: "0 0 5px rgba(0, 0 , 0, 0.05)" }}>
               <TableWrapper>
-                <StyledTable $gridTemplateColumns="minmax(50px, 50px) minmax(70px, 70px) minmax(200px, auto) minmax(150px, auto) minmax(50px, max-content) minmax(100px, auto) minmax(100px, auto) ">
+                <StyledTable $gridTemplateColumns="minmax(50px, 50px) minmax(70px, 70px) minmax(200px, auto) minmax(150px, auto) minmax(50px, max-content) minmax(100px, auto) minmax(100px, auto) minmax(100px, auto) ">
                   <StyledHeadCell>ID</StyledHeadCell>
                   <StyledHeadCell>เจ้าของ</StyledHeadCell>
                   <StyledHeadCell>จำนวนรายการสินค้า</StyledHeadCell>
@@ -318,6 +339,7 @@ export default function OrderV2() {
                   <StyledHeadCell>วันที่แก้ไขล่าสุด</StyledHeadCell>
                   <StyledHeadCell>ราคารวม</StyledHeadCell>
                   <StyledHeadCell>สถานะ</StyledHeadCell>
+                  <StyledHeadCell>การจัดส่ง</StyledHeadCell>
 
                   {data ? (
                     data.orders.length ? (
@@ -360,6 +382,56 @@ export default function OrderV2() {
                                 >
                                   {engToThai(row[5])}
                                 </a>
+                              </StyledBodyCell>
+                              <StyledBodyCell>
+                                <Dropdown.Button
+                                  overlay={
+                                    <Menu>
+                                      <Menu.Item
+                                        style={{ color: "orange" }}
+                                        onClick={() =>
+                                          handleUpdate(row[1], "RECEIVE_ORDER")
+                                        }
+                                      >
+                                        ได้รับออเดอร์
+                                      </Menu.Item>
+                                      <Menu.Divider />
+                                      <Menu.Item
+                                        style={{ color: "orange" }}
+                                        onClick={() =>
+                                          handleUpdate(row[1], "S2")
+                                        }
+                                      >
+                                        เตรียมสินค้า
+                                      </Menu.Item>
+                                      <Menu.Divider />
+                                      <Menu.Item
+                                        style={{ color: "green" }}
+                                        onClick={() =>
+                                          handleUpdate(row[1], "S3")
+                                        }
+                                      >
+                                        กำลังจัดส่ง
+                                      </Menu.Item>
+                                      <Menu.Divider />
+                                      <Menu.Item
+                                        style={{ color: "green" }}
+                                        onClick={() =>
+                                          handleUpdate(row[1], "S4")
+                                        }
+                                      >
+                                        จัดส่งสินค้าเรียบร้อย
+                                      </Menu.Item>
+                                    </Menu>
+                                  }
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    {engToThai2(row[6])}
+                                  </a>
+                                </Dropdown.Button>
                               </StyledBodyCell>
                             </React.Fragment>
                           );

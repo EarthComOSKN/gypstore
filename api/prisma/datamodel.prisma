@@ -179,7 +179,8 @@ type Order {
   payment: Payment 
   shipping: Shipping 
   customer: User! @relation(link: INLINE)
-  status: String @default(value: "PENDING") 
+  status: String @default(value: "PENDING")
+  shippingStatus: String @default(value: "RECEIVE_ORDER")
   quotation: Quotation
 
 }

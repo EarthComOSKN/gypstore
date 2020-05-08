@@ -1094,6 +1094,7 @@ type Order {
   shipping: Shipping
   customer: User!
   status: String
+  shippingStatus: String
   quotation: Quotation
 }
 
@@ -1112,6 +1113,7 @@ input OrderCreateInput {
   shipping: ShippingCreateOneWithoutOrderInput
   customer: UserCreateOneWithoutOrdersInput!
   status: String
+  shippingStatus: String
   quotation: QuotationCreateOneInput
 }
 
@@ -1153,6 +1155,7 @@ input OrderCreateWithoutCustomerInput {
   payment: PaymentCreateOneWithoutOrderInput
   shipping: ShippingCreateOneWithoutOrderInput
   status: String
+  shippingStatus: String
   quotation: QuotationCreateOneInput
 }
 
@@ -1164,6 +1167,7 @@ input OrderCreateWithoutOrderItemInput {
   shipping: ShippingCreateOneWithoutOrderInput
   customer: UserCreateOneWithoutOrdersInput!
   status: String
+  shippingStatus: String
   quotation: QuotationCreateOneInput
 }
 
@@ -1175,6 +1179,7 @@ input OrderCreateWithoutPaymentInput {
   shipping: ShippingCreateOneWithoutOrderInput
   customer: UserCreateOneWithoutOrdersInput!
   status: String
+  shippingStatus: String
   quotation: QuotationCreateOneInput
 }
 
@@ -1186,6 +1191,7 @@ input OrderCreateWithoutSalesmanInput {
   shipping: ShippingCreateOneWithoutOrderInput
   customer: UserCreateOneWithoutOrdersInput!
   status: String
+  shippingStatus: String
   quotation: QuotationCreateOneInput
 }
 
@@ -1197,6 +1203,7 @@ input OrderCreateWithoutShippingInput {
   payment: PaymentCreateOneWithoutOrderInput
   customer: UserCreateOneWithoutOrdersInput!
   status: String
+  shippingStatus: String
   quotation: QuotationCreateOneInput
 }
 
@@ -1456,6 +1463,8 @@ enum OrderOrderByInput {
   updatedAt_DESC
   status_ASC
   status_DESC
+  shippingStatus_ASC
+  shippingStatus_DESC
 }
 
 type OrderPreviousValues {
@@ -1464,6 +1473,7 @@ type OrderPreviousValues {
   createdAt: DateTime!
   updatedAt: DateTime!
   status: String
+  shippingStatus: String
 }
 
 input OrderScalarWhereInput {
@@ -1525,6 +1535,20 @@ input OrderScalarWhereInput {
   status_not_starts_with: String
   status_ends_with: String
   status_not_ends_with: String
+  shippingStatus: String
+  shippingStatus_not: String
+  shippingStatus_in: [String!]
+  shippingStatus_not_in: [String!]
+  shippingStatus_lt: String
+  shippingStatus_lte: String
+  shippingStatus_gt: String
+  shippingStatus_gte: String
+  shippingStatus_contains: String
+  shippingStatus_not_contains: String
+  shippingStatus_starts_with: String
+  shippingStatus_not_starts_with: String
+  shippingStatus_ends_with: String
+  shippingStatus_not_ends_with: String
   AND: [OrderScalarWhereInput!]
   OR: [OrderScalarWhereInput!]
   NOT: [OrderScalarWhereInput!]
@@ -1556,6 +1580,7 @@ input OrderUpdateDataInput {
   shipping: ShippingUpdateOneWithoutOrderInput
   customer: UserUpdateOneRequiredWithoutOrdersInput
   status: String
+  shippingStatus: String
   quotation: QuotationUpdateOneInput
 }
 
@@ -1567,17 +1592,20 @@ input OrderUpdateInput {
   shipping: ShippingUpdateOneWithoutOrderInput
   customer: UserUpdateOneRequiredWithoutOrdersInput
   status: String
+  shippingStatus: String
   quotation: QuotationUpdateOneInput
 }
 
 input OrderUpdateManyDataInput {
   docId: String
   status: String
+  shippingStatus: String
 }
 
 input OrderUpdateManyMutationInput {
   docId: String
   status: String
+  shippingStatus: String
 }
 
 input OrderUpdateManyWithoutCustomerInput {
@@ -1653,6 +1681,7 @@ input OrderUpdateWithoutCustomerDataInput {
   payment: PaymentUpdateOneWithoutOrderInput
   shipping: ShippingUpdateOneWithoutOrderInput
   status: String
+  shippingStatus: String
   quotation: QuotationUpdateOneInput
 }
 
@@ -1663,6 +1692,7 @@ input OrderUpdateWithoutOrderItemDataInput {
   shipping: ShippingUpdateOneWithoutOrderInput
   customer: UserUpdateOneRequiredWithoutOrdersInput
   status: String
+  shippingStatus: String
   quotation: QuotationUpdateOneInput
 }
 
@@ -1673,6 +1703,7 @@ input OrderUpdateWithoutPaymentDataInput {
   shipping: ShippingUpdateOneWithoutOrderInput
   customer: UserUpdateOneRequiredWithoutOrdersInput
   status: String
+  shippingStatus: String
   quotation: QuotationUpdateOneInput
 }
 
@@ -1683,6 +1714,7 @@ input OrderUpdateWithoutSalesmanDataInput {
   shipping: ShippingUpdateOneWithoutOrderInput
   customer: UserUpdateOneRequiredWithoutOrdersInput
   status: String
+  shippingStatus: String
   quotation: QuotationUpdateOneInput
 }
 
@@ -1693,6 +1725,7 @@ input OrderUpdateWithoutShippingDataInput {
   payment: PaymentUpdateOneWithoutOrderInput
   customer: UserUpdateOneRequiredWithoutOrdersInput
   status: String
+  shippingStatus: String
   quotation: QuotationUpdateOneInput
 }
 
@@ -1804,6 +1837,20 @@ input OrderWhereInput {
   status_not_starts_with: String
   status_ends_with: String
   status_not_ends_with: String
+  shippingStatus: String
+  shippingStatus_not: String
+  shippingStatus_in: [String!]
+  shippingStatus_not_in: [String!]
+  shippingStatus_lt: String
+  shippingStatus_lte: String
+  shippingStatus_gt: String
+  shippingStatus_gte: String
+  shippingStatus_contains: String
+  shippingStatus_not_contains: String
+  shippingStatus_starts_with: String
+  shippingStatus_not_starts_with: String
+  shippingStatus_ends_with: String
+  shippingStatus_not_ends_with: String
   quotation: QuotationWhereInput
   AND: [OrderWhereInput!]
   OR: [OrderWhereInput!]

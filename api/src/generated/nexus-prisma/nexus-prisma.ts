@@ -2171,6 +2171,7 @@ type OrderObject =
   | { name: 'shipping', args?: [] | false, alias?: string  } 
   | { name: 'customer', args?: [] | false, alias?: string  } 
   | { name: 'status', args?: [] | false, alias?: string  } 
+  | { name: 'shippingStatus', args?: [] | false, alias?: string  } 
   | { name: 'quotation', args?: [] | false, alias?: string  } 
 
 type OrderFields =
@@ -2184,6 +2185,7 @@ type OrderFields =
   | 'shipping'
   | 'customer'
   | 'status'
+  | 'shippingStatus'
   | 'quotation'
 
 
@@ -2296,6 +2298,14 @@ export interface OrderFieldDetails {
     ) => Promise<prisma.User> | prisma.User
   }
   status: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  shippingStatus: {
     type: 'String'
     args: {}
     description: string
@@ -8808,6 +8818,7 @@ type OrderPreviousValuesObject =
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'status', args?: [] | false, alias?: string  } 
+  | { name: 'shippingStatus', args?: [] | false, alias?: string  } 
 
 type OrderPreviousValuesFields =
   | 'id'
@@ -8815,6 +8826,7 @@ type OrderPreviousValuesFields =
   | 'createdAt'
   | 'updatedAt'
   | 'status'
+  | 'shippingStatus'
 
 
 
@@ -8854,6 +8866,14 @@ export interface OrderPreviousValuesFieldDetails {
     resolve: undefined
   }
   status: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  shippingStatus: {
     type: 'String'
     args: {}
     description: string
@@ -9869,6 +9889,20 @@ export interface OrderWhereInput {
   status_not_starts_with?: string | null
   status_ends_with?: string | null
   status_not_ends_with?: string | null
+  shippingStatus?: string | null
+  shippingStatus_not?: string | null
+  shippingStatus_in?: string[]
+  shippingStatus_not_in?: string[]
+  shippingStatus_lt?: string | null
+  shippingStatus_lte?: string | null
+  shippingStatus_gt?: string | null
+  shippingStatus_gte?: string | null
+  shippingStatus_contains?: string | null
+  shippingStatus_not_contains?: string | null
+  shippingStatus_starts_with?: string | null
+  shippingStatus_not_starts_with?: string | null
+  shippingStatus_ends_with?: string | null
+  shippingStatus_not_ends_with?: string | null
   quotation?: QuotationWhereInput | null
   AND?: OrderWhereInput[]
   OR?: OrderWhereInput[]
@@ -9941,6 +9975,20 @@ export type OrderWhereInputInputObject =
   | { name: 'status_not_starts_with', alias?: string  } 
   | { name: 'status_ends_with', alias?: string  } 
   | { name: 'status_not_ends_with', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
+  | { name: 'shippingStatus_not', alias?: string  } 
+  | { name: 'shippingStatus_in', alias?: string  } 
+  | { name: 'shippingStatus_not_in', alias?: string  } 
+  | { name: 'shippingStatus_lt', alias?: string  } 
+  | { name: 'shippingStatus_lte', alias?: string  } 
+  | { name: 'shippingStatus_gt', alias?: string  } 
+  | { name: 'shippingStatus_gte', alias?: string  } 
+  | { name: 'shippingStatus_contains', alias?: string  } 
+  | { name: 'shippingStatus_not_contains', alias?: string  } 
+  | { name: 'shippingStatus_starts_with', alias?: string  } 
+  | { name: 'shippingStatus_not_starts_with', alias?: string  } 
+  | { name: 'shippingStatus_ends_with', alias?: string  } 
+  | { name: 'shippingStatus_not_ends_with', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
@@ -11461,6 +11509,7 @@ export interface OrderCreateWithoutCustomerInput {
   payment?: PaymentCreateOneWithoutOrderInput | null
   shipping?: ShippingCreateOneWithoutOrderInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationCreateOneInput | null
 }
 export type OrderCreateWithoutCustomerInputInputObject =
@@ -11472,6 +11521,7 @@ export type OrderCreateWithoutCustomerInputInputObject =
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface OrderItemCreateManyWithoutOrderInput {
@@ -11719,6 +11769,7 @@ export interface OrderCreateInput {
   shipping?: ShippingCreateOneWithoutOrderInput | null
   customer?: UserCreateOneWithoutOrdersInput
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationCreateOneInput | null
 }
 export type OrderCreateInputInputObject =
@@ -11731,6 +11782,7 @@ export type OrderCreateInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface PaymentCreateOneWithoutOrderInput {
@@ -11924,6 +11976,7 @@ export interface OrderCreateWithoutPaymentInput {
   shipping?: ShippingCreateOneWithoutOrderInput | null
   customer?: UserCreateOneWithoutOrdersInput
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationCreateOneInput | null
 }
 export type OrderCreateWithoutPaymentInputInputObject =
@@ -11935,6 +11988,7 @@ export type OrderCreateWithoutPaymentInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface ShippingCreateOneWithoutOrderInput {
@@ -12036,6 +12090,7 @@ export interface OrderCreateWithoutSalesmanInput {
   shipping?: ShippingCreateOneWithoutOrderInput | null
   customer?: UserCreateOneWithoutOrdersInput
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationCreateOneInput | null
 }
 export type OrderCreateWithoutSalesmanInputInputObject =
@@ -12047,6 +12102,7 @@ export type OrderCreateWithoutSalesmanInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface UserCreateOneWithoutOrdersInput {
@@ -12278,6 +12334,7 @@ export interface OrderCreateWithoutShippingInput {
   payment?: PaymentCreateOneWithoutOrderInput | null
   customer?: UserCreateOneWithoutOrdersInput
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationCreateOneInput | null
 }
 export type OrderCreateWithoutShippingInputInputObject =
@@ -12289,6 +12346,7 @@ export type OrderCreateWithoutShippingInputInputObject =
   | { name: 'payment', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface ProductItemCreateManyInput {
@@ -12668,6 +12726,7 @@ export interface OrderUpdateWithoutCustomerDataInput {
   payment?: PaymentUpdateOneWithoutOrderInput | null
   shipping?: ShippingUpdateOneWithoutOrderInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationUpdateOneInput | null
 }
 export type OrderUpdateWithoutCustomerDataInputInputObject =
@@ -12678,6 +12737,7 @@ export type OrderUpdateWithoutCustomerDataInputInputObject =
   | { name: 'payment', alias?: string  } 
   | { name: 'shipping', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface OrderItemUpdateManyWithoutOrderInput {
@@ -13673,6 +13733,7 @@ export interface OrderUpdateDataInput {
   shipping?: ShippingUpdateOneWithoutOrderInput | null
   customer?: UserUpdateOneRequiredWithoutOrdersInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationUpdateOneInput | null
 }
 export type OrderUpdateDataInputInputObject =
@@ -13684,6 +13745,7 @@ export type OrderUpdateDataInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface PaymentUpdateOneWithoutOrderInput {
@@ -13821,6 +13883,7 @@ export interface OrderUpdateWithoutSalesmanDataInput {
   shipping?: ShippingUpdateOneWithoutOrderInput | null
   customer?: UserUpdateOneRequiredWithoutOrdersInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationUpdateOneInput | null
 }
 export type OrderUpdateWithoutSalesmanDataInputInputObject =
@@ -13831,6 +13894,7 @@ export type OrderUpdateWithoutSalesmanDataInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface ShippingUpdateOneWithoutOrderInput {
@@ -14045,6 +14109,7 @@ export interface OrderUpdateWithoutShippingDataInput {
   payment?: PaymentUpdateOneWithoutOrderInput | null
   customer?: UserUpdateOneRequiredWithoutOrdersInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationUpdateOneInput | null
 }
 export type OrderUpdateWithoutShippingDataInputInputObject =
@@ -14055,6 +14120,7 @@ export type OrderUpdateWithoutShippingDataInputInputObject =
   | { name: 'payment', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface UserUpdateOneRequiredWithoutOrdersInput {
@@ -14446,6 +14512,7 @@ export interface OrderUpdateWithoutPaymentDataInput {
   shipping?: ShippingUpdateOneWithoutOrderInput | null
   customer?: UserUpdateOneRequiredWithoutOrdersInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationUpdateOneInput | null
 }
 export type OrderUpdateWithoutPaymentDataInputInputObject =
@@ -14456,6 +14523,7 @@ export type OrderUpdateWithoutPaymentDataInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface OrderUpsertWithoutPaymentInput {
@@ -14599,6 +14667,20 @@ export interface OrderScalarWhereInput {
   status_not_starts_with?: string | null
   status_ends_with?: string | null
   status_not_ends_with?: string | null
+  shippingStatus?: string | null
+  shippingStatus_not?: string | null
+  shippingStatus_in?: string[]
+  shippingStatus_not_in?: string[]
+  shippingStatus_lt?: string | null
+  shippingStatus_lte?: string | null
+  shippingStatus_gt?: string | null
+  shippingStatus_gte?: string | null
+  shippingStatus_contains?: string | null
+  shippingStatus_not_contains?: string | null
+  shippingStatus_starts_with?: string | null
+  shippingStatus_not_starts_with?: string | null
+  shippingStatus_ends_with?: string | null
+  shippingStatus_not_ends_with?: string | null
   AND?: OrderScalarWhereInput[]
   OR?: OrderScalarWhereInput[]
   NOT?: OrderScalarWhereInput[]
@@ -14663,6 +14745,20 @@ export type OrderScalarWhereInputInputObject =
   | { name: 'status_not_starts_with', alias?: string  } 
   | { name: 'status_ends_with', alias?: string  } 
   | { name: 'status_not_ends_with', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
+  | { name: 'shippingStatus_not', alias?: string  } 
+  | { name: 'shippingStatus_in', alias?: string  } 
+  | { name: 'shippingStatus_not_in', alias?: string  } 
+  | { name: 'shippingStatus_lt', alias?: string  } 
+  | { name: 'shippingStatus_lte', alias?: string  } 
+  | { name: 'shippingStatus_gt', alias?: string  } 
+  | { name: 'shippingStatus_gte', alias?: string  } 
+  | { name: 'shippingStatus_contains', alias?: string  } 
+  | { name: 'shippingStatus_not_contains', alias?: string  } 
+  | { name: 'shippingStatus_starts_with', alias?: string  } 
+  | { name: 'shippingStatus_not_starts_with', alias?: string  } 
+  | { name: 'shippingStatus_ends_with', alias?: string  } 
+  | { name: 'shippingStatus_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -14679,11 +14775,13 @@ export type OrderUpdateManyWithWhereNestedInputInputObject =
 export interface OrderUpdateManyDataInput {
   docId?: string | null
   status?: string | null
+  shippingStatus?: string | null
 }
 export type OrderUpdateManyDataInputInputObject =
   | Extract<keyof OrderUpdateManyDataInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   
 export interface SalesmanUpsertWithoutInvoicesInput {
   update?: SalesmanUpdateWithoutInvoicesDataInput
@@ -16491,6 +16589,7 @@ export interface OrderCreateWithoutOrderItemInput {
   shipping?: ShippingCreateOneWithoutOrderInput | null
   customer?: UserCreateOneWithoutOrdersInput
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationCreateOneInput | null
 }
 export type OrderCreateWithoutOrderItemInputInputObject =
@@ -16502,6 +16601,7 @@ export type OrderCreateWithoutOrderItemInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface OrderItemUpdateInput {
@@ -16539,6 +16639,7 @@ export interface OrderUpdateWithoutOrderItemDataInput {
   shipping?: ShippingUpdateOneWithoutOrderInput | null
   customer?: UserUpdateOneRequiredWithoutOrdersInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationUpdateOneInput | null
 }
 export type OrderUpdateWithoutOrderItemDataInputInputObject =
@@ -16549,6 +16650,7 @@ export type OrderUpdateWithoutOrderItemDataInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface OrderUpsertWithoutOrderItemInput {
@@ -16579,6 +16681,7 @@ export interface OrderUpdateInput {
   shipping?: ShippingUpdateOneWithoutOrderInput | null
   customer?: UserUpdateOneRequiredWithoutOrdersInput | null
   status?: string | null
+  shippingStatus?: string | null
   quotation?: QuotationUpdateOneInput | null
 }
 export type OrderUpdateInputInputObject =
@@ -16590,16 +16693,19 @@ export type OrderUpdateInputInputObject =
   | { name: 'shipping', alias?: string  } 
   | { name: 'customer', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   | { name: 'quotation', alias?: string  } 
   
 export interface OrderUpdateManyMutationInput {
   docId?: string | null
   status?: string | null
+  shippingStatus?: string | null
 }
 export type OrderUpdateManyMutationInputInputObject =
   | Extract<keyof OrderUpdateManyMutationInput, string>
   | { name: 'docId', alias?: string  } 
   | { name: 'status', alias?: string  } 
+  | { name: 'shippingStatus', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -17003,6 +17109,8 @@ export type OrderOrderByInputValues =
   | 'updatedAt_DESC'
   | 'status_ASC'
   | 'status_DESC'
+  | 'shippingStatus_ASC'
+  | 'shippingStatus_DESC'
   
 export type QuotationItemOrderByInputValues =
   | 'id_ASC'

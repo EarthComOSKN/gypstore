@@ -24,10 +24,10 @@ export const HeroProduct = () => {
     <Container>
       <h2>สินค้าขายดีที่สุด</h2>
       <ProductList>
-        <StyledProductCardTall />
-        <StyledProductCardTall />
-        <StyledProductCardTall />
-        <StyledProductCardTall />
+        <StyledProductCardTall image="https://storage.cloud.google.com/gypstore-storage/productImages/242.jpg" />
+        <StyledProductCardTall image="https://storage.cloud.google.com/gypstore-storage/productImages/220.jpg" />
+        <StyledProductCardTall image="https://storage.cloud.google.com/gypstore-storage/productImages/145.jpg" />
+        <StyledProductCardTall image="https://storage.cloud.google.com/gypstore-storage/productImages/246.jpg" />
       </ProductList>
     </Container>
   )

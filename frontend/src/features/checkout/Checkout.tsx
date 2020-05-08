@@ -237,7 +237,10 @@ export const Checkout = props => {
                       buyable={false}
                       onlyImage
                       style={{ width: 100, height: 100 }}
-                      image={product.image}
+                      image={
+                        product.image ||
+                        'https://storage.cloud.google.com/gypstore-storage/productImages/4.jpg'
+                      }
                     />
                     <ProductName>{product.name}</ProductName>
                   </Product>

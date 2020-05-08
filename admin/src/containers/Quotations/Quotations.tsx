@@ -156,7 +156,7 @@ export default function Quotations() {
     return <div>Error! {error.message}</div>;
   }
   const handleUpdate = async (id, status) => {
-    const hide = message.loading("updateing");
+    const hide = message.loading("กำลังโหลด...");
     const res = await updateStatus({
       variables: {
         qid: id,
@@ -168,7 +168,7 @@ export default function Quotations() {
     window.location.reload();
   };
   const handleUpload = async (id, fileUrl) => {
-    const hide = message.loading("updateing");
+    const hide = message.loading("กำลังโหลด...");
     const res = await updateFile({
       variables: {
         qid: id,
@@ -265,12 +265,15 @@ export default function Quotations() {
             const product = q.product;
             return (
               <List.Item>
-                <Row>
-                  <Col>{product.brand}</Col>
-                  <Col>{product.name}</Col>
-                  <Col> ราคา {product.salePrice}</Col>
-                  <Col>{product.unitType}</Col>
-                  <Col>{q.amount} ชิ้น</Col>
+                <Row style={{ width: "100%" }}>
+                  <Col lg={2}>{product.brand}</Col>
+                  <Col lg={4}>{product.name}</Col>
+                  <Col lg={3}>
+                    ราคา {product.salePrice}/{product.unitType}
+                  </Col>
+                  <Col lg={3}>
+                    จำนวน {q.amount} {product.unitType}
+                  </Col>
                 </Row>
               </List.Item>
             );

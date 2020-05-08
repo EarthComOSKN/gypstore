@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import React, { useState } from 'react'
-import { Menu } from 'antd'
+import React, { useState, useEffect } from 'react'
+import { Menu, Divider } from 'antd'
 import moment from 'moment'
 const Container = styled.div`
   display: flex;
@@ -22,7 +22,8 @@ const Row = styled.div`
   img {
     width: 40%;
     height: 40%;
-    margin-left: 15rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .ant-menu-item {
@@ -55,11 +56,23 @@ type Props = {
   orders: Order[]
 }
 
+const statusToImg = s => {
+  if (s === 'RECEIVE_ORDER') return '/assets/delivery1.jpg'
+  if (s === 'S2') return '/assets/delivery2.jpg'
+  if (s === 'S3') return '/assets/delivery3.jpg'
+  if (s === 'S4') return '/assets/delivery4.jpg'
+}
+
 export function DeliveryDetail(props: Props) {
   const { orders } = props
-
+  const [selectedOrder, setSelectedOrder] = useState<Order>(null)
+  console.log('orders :>> ', orders)
+  useEffect(() => {
+    if (!orders || orders.length === 0) return
+    setSelectedOrder(orders[0])
+  }, [orders])
+  console.log('selectedOrder :>> ', selectedOrder)
   const [img, setImg] = useState('/assets/delivery1.jpg')
-
   return (
     <Container>
       <Title>สถานะการจัดส่ง</Title>
@@ -68,7 +81,10 @@ export function DeliveryDetail(props: Props) {
           {orders.map((order, idx) => (
             <Menu.Item
               key={idx}
-              onClick={() => setImg('/assets/delivery1.jpg')}
+              onClick={() => {
+                setSelectedOrder(order)
+                setImg('/assets/delivery1.jpg')
+              }}
             >
               <span>
                 ออเดอร์วันที่{' '}
@@ -77,25 +93,36 @@ export function DeliveryDetail(props: Props) {
             </Menu.Item>
           ))}
         </Menu>
-        <img src={img} alt="สถานะการจัดส่ง" />
-        {/* <Detail>
-          <p>สถานะการจัดส่ง : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>สั่งเมื่อวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>จัดส่งวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <h4>ชำระเงินโดย : โอนบัญชีธนาคาร</h4>
-          <p>สถานะการจัดส่ง : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>สั่งเมื่อวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>จัดส่งวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <h4>ชำระเงินโดย : โอนบัญชีธนาคาร</h4>
-          <p>สถานะการจัดส่ง : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>สั่งเมื่อวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>จัดส่งวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <h4>ชำระเงินโดย : โอนบัญชีธนาคาร</h4>
-          <p>สถานะการจัดส่ง : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>สั่งเมื่อวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>จัดส่งวันที่ : ได้รับออเดอร์เรียบร้อยแล้ว</p>
-          <p>ชำระเงินโดย : โอนบัญชีธนาคาร</p>
-        </Detail> */}
+        {selectedOrder && (
+          <>
+            <img
+              src={statusToImg(selectedOrder.shippingStatus)}
+              alt="สถานะการจัดส่ง"
+            />
+            <Detail>
+              <p>สถานะการจัดส่ง : ได้รับออเดอร์เรียบร้อยแล้ว</p>
+              <p>
+                สั่งเมื่อวันที่ :{' '}
+                {moment(selectedOrder.createdAt).format('DD/MM/YYYY HH:mm')}
+              </p>
+              <p>จัดส่งวันที่ : -</p>
+              <p>ชำระเงินโดย : บัตรเครดิต</p>
+              <h4>รายการสินค้า</h4>
+              {selectedOrder.orderItem.map(p => (
+                <p>
+                  - {p.product.name}{' '}
+                  <span style={{ color: 'orange' }}>
+                    ราคา {p.product.salePrice}
+                  </span>{' '}
+                  x{' '}
+                  <span style={{ color: 'green' }}>
+                    {p.amount} {p.product.unitType}
+                  </span>
+                </p>
+              ))}
+            </Detail>
+          </>
+        )}
       </Row>
     </Container>
   )
