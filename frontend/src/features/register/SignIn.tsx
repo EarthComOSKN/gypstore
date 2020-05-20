@@ -63,7 +63,7 @@ const SignIn = props => {
           message.success('เข้าสู่ระบบสำเร็จ')
           router.push('/')
         } catch (error) {
-          message.error(`${error}`)
+          message.error(`อีเมล หรือ รหัสผ่านผิด`)
         }
       }
     })
@@ -105,7 +105,7 @@ const SignIn = props => {
             <a href="">คุณลืมรหัสผ่านใช่ไหม?</a>
           </LoginForgot>
           <LoginButton>
-            <Button type="primary" htmlType="submit">
+            <Button id="submit" type="primary" htmlType="submit">
               เข้าสู่ระบบ
             </Button>
           </LoginButton>

@@ -92,7 +92,7 @@ function SignUp(props) {
       message.success('สมัคร สมาชิกสำเร็ต')
     } catch (error) {
       hide()
-      message.error(`${error}`)
+      message.error(`เกิดข้อผิดพลาดระหว่างการสมัคร`)
     } finally {
       setLoading(false)
     }
@@ -213,6 +213,7 @@ function SignUp(props) {
         </Form.Item>
         <Form.Item>
           <Button
+            id="submit"
             disabled={loading}
             type="primary"
             htmlType="submit"
