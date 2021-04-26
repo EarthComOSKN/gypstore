@@ -12,7 +12,7 @@ module.exports = withCSS({
       ...config.plugins,
 
       // Read the .env file
-      new Dotenv({ systemvars: true }),
+      // new Dotenv({ systemvars: true }),
     ]
 
     config.resolve.modules.push(path.resolve('./'))

@@ -7,6 +7,7 @@ import { ProductRelated } from './ProductRelated'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_PRODUCT_DETAIL } from './gql'
+import { FullPageLoading } from '../../component/Loading'
 
 const Container = styled.div`
   padding: 3rem 0rem;
@@ -26,7 +27,7 @@ export const ProductDetailPage = () => {
     skip: !productId,
   })
   if (!router) return null
-  if (loading) return <div>Loading...</div>
+  if (loading) return <FullPageLoading />
   if (!data) return null
   const product = data?.productItem as ProductItem
 

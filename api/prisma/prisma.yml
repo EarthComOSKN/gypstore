@@ -1,5 +1,6 @@
-endpoint: http://13.229.249.128:4466/
+# endpoint: http://13.229.249.128:4466/
 # endpoint: http://localhost:4466/
+endpoint: https://eu1.prisma.sh/mrearth25-5430b1/gypstore-prisma/dev
 
 datamodel: datamodel.prisma
 

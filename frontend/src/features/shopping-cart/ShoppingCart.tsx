@@ -1,11 +1,19 @@
 import styled from '@emotion/styled'
 import { ProductCardTall } from '../product/ProductCardTall'
 import { AmountInput } from '../../component/AmountInput'
-import { Button, message, Icon, Modal } from 'antd'
+import { Button, message, Icon, Modal, Spin } from 'antd'
 import { useQuery, useMutation } from '@apollo/react-hooks'
-import { DELETE_ITEM } from './gql'
+import {
+  DELETE_ITEM,
+  CREATE_QUOTATION,
+  CREATE_QUOTATION_ITEMS,
+  CLEAR_SHOPPING_CART,
+  PAYMENT,
+} from './gql'
 import { GET_ME } from '../navigation/gql'
 import { useRouter } from 'next/router'
+import { FullPageLoading } from '../../component/Loading'
+import { useEffect, useMemo } from 'react'
 const { confirm } = Modal
 
 const Container = styled.div`
@@ -31,7 +39,7 @@ const CartRow = styled.div`
 const CartSumRow = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   background-color: white;
 `
 const Product = styled.div`
@@ -60,6 +68,12 @@ const DeleteIcon = styled(Icon)`
   margin-left: 1rem;
   font-size: 1.25rem;
 `
+const NoItems = styled.div`
+  display: flex;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
+`
 
 export const ShoppingCart = () => {
   const { data, loading, error } = useQuery(GET_ME)
@@ -77,12 +91,34 @@ export const ShoppingCart = () => {
       // cache.writeData(newUser)
     },
   })
-  if (loading) return <div>Lodaing...</div>
-  if (!data) {
+  const [createQuotation] = useMutation(CREATE_QUOTATION)
+  const [createQuotationItem] = useMutation(CREATE_QUOTATION_ITEMS)
+  const [payment] = useMutation(PAYMENT)
+  const [resetShoppingCart] = useMutation(CLEAR_SHOPPING_CART)
+  const me = data?.me as User
+  useEffect(() => {
+    if (loading) return
+    if (!me) return
+    const { OmiseCard } = window as any
+    OmiseCard.configure({
+      publicKey: 'pkey_test_5jls5tfnoydtv5ybkrm',
+      amount: 1200,
+    })
+  }, [loading, me])
+  const sum = useMemo(() => {
+    if (loading || !me) return 0
+    const shoppingCart = me.shoppingCart as ShoppingCart
+    const shoppingCartItems = shoppingCart.productItems
+    return shoppingCartItems.reduce(
+      (prv, cur) => prv + cur.amount * +cur.product.salePrice,
+      0,
+    )
+  }, [me])
+  if (loading) return <FullPageLoading />
+  if (!me) {
     router.push('/signin')
     return null
   }
-  const me = data.me as User
   const shoppingCart = me.shoppingCart as ShoppingCart
   const shoppingCartItems = shoppingCart.productItems
 
@@ -102,6 +138,66 @@ export const ShoppingCart = () => {
     })
   }
 
+  const clearShoppingCart = async () => {
+    const hide = message.loading('กำลังล้าง ตะกร้าสินค้า')
+    resetShoppingCart({
+      variables: {
+        sid: shoppingCart.id,
+      },
+    })
+      .then(res => {
+        hide()
+        message.success('ล้างตะกร้าสำเร็จ')
+        window.location.reload()
+      })
+      .catch(err => {
+        hide()
+        message.error('เกิดข้อผิดพลาด')
+      })
+  }
+
+  const requestQuotation = async () => {
+    const hide = message.loading('กำลังยื่นขอ ใบเสนอราคา')
+    try {
+      const res = await createQuotation({
+        variables: {
+          userId: me.id,
+          status: 'PENDING',
+        },
+      })
+      const data = res.data as Mutation
+      const qid = data.createQuotation.id
+      await Promise.all(
+        shoppingCartItems.map(shopItem => {
+          createQuotationItem({
+            variables: {
+              qid: qid,
+              key: `${qid}${shopItem.product.id}`,
+              pid: shopItem.product.id,
+              amount: shopItem.amount,
+              price: +shopItem.product.salePrice * shopItem.amount,
+            },
+          })
+        }),
+      )
+      hide()
+      message.success('ยื่นขอสำเร็จ')
+    } catch (error) {
+      hide()
+      message.error('เกิดข้อผิดพลาด')
+    }
+    Modal.confirm({
+      title: 'ต้องการล้างตะกร้าสินค้าหรือไม่?',
+
+      onOk() {
+        clearShoppingCart()
+      },
+      onCancel() {
+        console.log('Cancel')
+      },
+    })
+  }
+
   const deleteItem = async (key: string) => {
     try {
       await deleteProductItem({ variables: { key } })
@@ -109,6 +205,54 @@ export const ShoppingCart = () => {
     } catch (error) {
       message.error('error has occur')
     }
+  }
+
+  const paymentProcess = async () => {
+    const hide = message.loading('เตรียมการชำระเงิน...')
+    const res = await createQuotation({
+      variables: {
+        userId: me.id,
+        status: 'PAYMENT PROCESS',
+      },
+    })
+    const data = res.data as Mutation
+    const qid = data.createQuotation.id
+    await Promise.all(
+      shoppingCartItems.map(shopItem => {
+        createQuotationItem({
+          variables: {
+            qid: qid,
+            key: `${qid}${shopItem.product.id}`,
+            pid: shopItem.product.id,
+            amount: shopItem.amount,
+            price: +shopItem.product.salePrice * shopItem.amount,
+          },
+        })
+      }),
+    )
+    hide()
+
+    const { OmiseCard } = window as any
+    OmiseCard.open({
+      amount: sum * 100,
+      currency: 'THB',
+      defaultPaymentMethod: 'credit_card',
+      onCreateTokenSuccess: async res => {
+        try {
+          const paymentResponse = await payment({
+            variables: {
+              qid,
+              token: res,
+              amount: sum * 100,
+              uid: me.id,
+            },
+          })
+          message.success('ชำระเงินสำเร็จ')
+        } catch (error) {
+          message.error('ชำระเงินไม่สำเร็จ')
+        }
+      },
+    })
   }
 
   return (
@@ -121,8 +265,12 @@ export const ShoppingCart = () => {
           <h4>ปริมาณ</h4>
           <h4>ราคารวม</h4>
         </CartRow>
+        {shoppingCartItems.length === 0 && (
+          <NoItems>ไม่มีรายการในขณะนี้</NoItems>
+        )}
         {shoppingCartItems.map(item => {
           const { product, amount } = item
+
           return (
             <CartRow>
               <Product>
@@ -154,20 +302,26 @@ export const ShoppingCart = () => {
         })}
         <div>
           <CartSumRow>
-            <h2>ราคารวม ({shoppingCartItems.length} รายการ)</h2>
-            <h2>
-              {shoppingCartItems
-                .reduce(
-                  (prv, cur) => prv + cur.amount * +cur.product.salePrice,
-                  0,
-                )
-                .toLocaleString()}{' '}
-              บาท
-            </h2>
+            <h3>vat 7%</h3>
+            <h3>{(sum * 0.07).toLocaleString()} บาท</h3>
           </CartSumRow>
           <CartSumRow>
-            <StyledButton>พิมพ์ใบเสนอราคา</StyledButton>
-            <StyledButton>ถัดไป</StyledButton>
+            <h2>ราคารวม ({shoppingCartItems.length} รายการ)</h2>
+            <h3>{sum.toLocaleString()} บาท</h3>
+          </CartSumRow>
+          <CartSumRow>
+            <StyledButton onClick={() => requestQuotation()}>
+              ขอใบเสนอราคา
+            </StyledButton>
+            <div></div>
+            <StyledButton
+              disabled={shoppingCartItems.length === 0}
+              onClick={async () => {
+                await paymentProcess()
+              }}
+            >
+              ชำระเงิน
+            </StyledButton>
           </CartSumRow>
         </div>
       </CartTable>

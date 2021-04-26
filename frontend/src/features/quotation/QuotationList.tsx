@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 import { ProductCardTall } from '../product/ProductCardTall'
-import { Button } from 'antd'
+import { Button, Icon } from 'antd'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_QUOTATIONS } from './gql'
+import { FullPageLoading } from '../../component/Loading'
+import { GET_ME } from '../navigation/gql'
 
 const Container = styled.div`
   background-color: white;
@@ -8,7 +12,14 @@ const Container = styled.div`
   margin: 2rem auto;
   padding: 2rem;
 `
-
+const DeleteIcon = styled(Icon)`
+  cursor: pointer;
+  & svg {
+    fill: red;
+  }
+  margin-left: 1rem;
+  font-size: 1.25rem;
+`
 const CartTable = styled.div`
   display: grid;
   grid-template-rows: 1fr;
@@ -18,7 +29,7 @@ const CartTable = styled.div`
 
 const CartRow = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
   grid-gap: 1.5rem;
   background-color: white;
 `
@@ -54,25 +65,48 @@ const StyledButton = styled(Button)`
 `
 
 export const QuotationList = () => {
+  const { data: meData, loading: meLoading } = useQuery(GET_ME)
+  console.log(meData)
+  const { data, loading, error } = useQuery(GET_QUOTATIONS, {
+    variables: {
+      uid: meData?.me.id,
+    },
+    skip: !meData,
+  })
+  if (meLoading || loading) return <FullPageLoading />
+  const quotationRes = data as Query
+  const quotations = quotationRes.quotations || []
   return (
     <Container>
-      <h2>ใบเสนอราคา (1 รายการ)</h2>
+      <h2>ใบเสนอราคา ({quotations.length} รายการ)</h2>
       <CartTable>
         <CartRow>
           <h4>ใบเสนอราคา</h4>
           <h4>สินค้า</h4>
           <h4>วันที่ออกใบเสนอราคา</h4>
           <h4>ราคารวม</h4>
+          <h4>สถานะ</h4>
         </CartRow>
-        {[1].map(e => (
+        {quotations.map((q, idx) => (
           <CartRow>
             <Quotation>
               <ProductCardTall buyable={false} onlyImage />
-              <QuotationName>ใบเสนอราคาเลขที่ {e}</QuotationName>
+              <QuotationName>
+                ใบเสนอราคาเลขที่ {idx + 1}{' '}
+                <DeleteIcon onClick={() => {}} type="delete" />
+              </QuotationName>
             </Quotation>
-            <Price>3 รายการ</Price>
-            <Amount>12/02/2562</Amount>
-            <Price>13,000 บาท</Price>
+            <Price>{q.quotationItem.length} รายการ</Price>
+            <Amount>-</Amount>
+            <Price>
+              {q.quotationItem
+                .reduce((pre, cur) => pre + cur.realPrice, 0)
+                .toLocaleString()}{' '}
+              บาท
+            </Price>
+            <Price>
+              <span style={{ color: 'orange' }}>{q.status}</span>{' '}
+            </Price>
           </CartRow>
         ))}
         <div>

@@ -31,7 +31,9 @@ export const AmountInput = (props: Props) => {
   const { onChange, amount, ...restProps } = props
   return (
     <Container {...restProps}>
-      <ChangeButton onClick={() => onChange(amount - 1)}>-</ChangeButton>
+      <ChangeButton onClick={() => amount > 1 && onChange(amount - 1)}>
+        -
+      </ChangeButton>
       <ChangeButton>{amount}</ChangeButton>
       <ChangeButton onClick={() => onChange(amount + 1)}>+</ChangeButton>
     </Container>

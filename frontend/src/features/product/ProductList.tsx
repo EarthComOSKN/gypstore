@@ -3,6 +3,7 @@ import { GET_PRODUCT } from './gql'
 import styled from '@emotion/styled'
 import { Card } from 'antd'
 import _ from 'lodash'
+import { FullPageLoading } from '../../component/Loading'
 
 const { Meta } = Card
 
@@ -17,6 +18,8 @@ const ProductContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `
 
 const CoverImg = styled.img`
@@ -36,10 +39,11 @@ type Props = {
 
 export const ProductList = (props: Props) => {
   const { category = '' } = props
-  const { data, loading } = useQuery(GET_PRODUCT, {
+  const { data, loading, error } = useQuery(GET_PRODUCT, {
     variables: { pName: category },
   })
-  if (loading) return <div>'Loading...'</div>
+  if (loading) return <FullPageLoading />
+  if (error) return <div>Error</div>
   const productItems = data.productItems as ProductItem[]
   console.log(data)
   return (
@@ -60,7 +64,7 @@ export const ProductList = (props: Props) => {
                 <h4>{p.name}</h4>
                 <h5>{p.description}</h5>
                 <p>
-                  {p.price} / {p.unitType}
+                  ราคา {p.price} ฿ / {p.unitType}
                 </p>
               </Card>
             </a>

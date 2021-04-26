@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { gql } from 'apollo-boost';\nexport const DELETE_ITEM = gql`\n  mutation($key: String!) {\n    deleteShoppingCartItem(where: { key: $key }) {\n      id\n    }\n  }\n`;","map":null,"metadata":{},"sourceType":"module"}

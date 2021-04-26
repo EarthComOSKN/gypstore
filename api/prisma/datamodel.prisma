@@ -6,6 +6,7 @@ type User {
   email: String! @unique
   password: String!
   phone: String!
+  avatar: String
   activated: Boolean! @default(value: true) 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
@@ -34,9 +35,10 @@ type Payment {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   customer: User! @relation(link: INLINE)
-  salesman: Salesman! @relation(link: INLINE)
+  salesman: Salesman @relation(link: INLINE)
   quotation: Quotation! @relation(link: INLINE)
-  Invoice: Invoice 
+  Invoice: Invoice
+  rawEvent: String
 
 }
 
@@ -135,16 +137,26 @@ type ShoppingCart {
 }
 
 
+type QuotationItem {
+  id: ID! @id
+  key: String! @unique
+  product: ProductItem!
+  amount: Int!
+  realPrice: Float!
+  quotation: Quotation!
+}
+
 type Quotation {
   id: ID! @id
-  docId: String!
-  productItems: [ProductItem!]
+  docId: String
+  quotationItem: [QuotationItem]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  salesman: Salesman! @relation(link: INLINE)
+  salesman: Salesman @relation(link: INLINE)
   payment: Payment 
   shipping: Shipping 
   customer: User! @relation(link: INLINE)
+  status: String @default(value: "PENDING") 
 
 }
 

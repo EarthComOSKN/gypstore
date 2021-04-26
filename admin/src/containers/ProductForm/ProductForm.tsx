@@ -13,6 +13,7 @@ import Input from "../../components/Input/Input";
 import { Textarea } from "../../components/Textarea/Textarea";
 import Select from "../../components/Select/Select";
 import { FormFields, FormLabel } from "../../components/FormFields/FormFields";
+import { useHistory } from "react-router-dom";
 
 import {
   Form,
@@ -23,23 +24,24 @@ import {
 } from "../DrawerItems/DrawerItems.style";
 
 const options = [
-  { value: "Fruits & Vegetables", name: "Fruits & Vegetables", id: "1" },
-  { value: "Meat & Fish", name: "Meat & Fish", id: "2" },
-  { value: "Purse", name: "Purse", id: "3" },
-  { value: "Hand bags", name: "Hand bags", id: "4" },
-  { value: "Shoulder bags", name: "Shoulder bags", id: "5" },
-  { value: "Wallet", name: "Wallet", id: "6" },
-  { value: "Laptop bags", name: "Laptop bags", id: "7" },
-  { value: "Women Dress", name: "Women Dress", id: "8" },
-  { value: "Outer Wear", name: "Outer Wear", id: "9" },
-  { value: "Pants", name: "Pants", id: "10" }
-];
-
-const typeOptions = [
-  { value: "grocery", name: "Grocery", id: "1" },
-  { value: "women-cloths", name: "Women Cloths", id: "2" },
-  { value: "bags", name: "Bags", id: "3" },
-  { value: "makeup", name: "Makeup", id: "4" }
+  { value: "แผ่นยิปซัม", name: "แผ่นยิปซัม", id: "1" },
+  { value: "แผ่นดูดซับเสียง", name: "แผ่นดูดซับเสียง", id: "1" },
+  {
+    value: "โครงฝ้าเพดานและผนังยิปซัม",
+    name: "โครงฝ้าเพดานและผนังยิปซัม",
+    id: "1"
+  },
+  { value: "ฉนวนกันความร้อน", name: "ฉนวนกันความร้อน", id: "1" },
+  {
+    value: "โครงและแผ่นฝ้าเพดานทีบาร์",
+    name: "โครงและแผ่นฝ้าเพดานทีบาร์",
+    id: "1"
+  },
+  { value: "ปูนฉาบยิปซัม", name: "ปูนฉาบยิปซัม", id: "1" },
+  { value: "ช่องเซอร์วิสสำเร็จรูป", name: "ช่องเซอร์วิสสำเร็จรูป", id: "1" },
+  { value: "สเตปสำเร็จรูป", name: "สเตปสำเร็จรูป", id: "1" },
+  { value: "อุปกรณ์เสริม", name: "อุปกรณ์เสริม", id: "1" },
+  { value: "เครื่องมือช่าง", name: "เครื่องมือช่าง", id: "1" }
 ];
 const GET_PRODUCTS = gql`
   query getProducts(
@@ -70,21 +72,9 @@ const GET_PRODUCTS = gql`
   }
 `;
 const CREATE_PRODUCT = gql`
-  mutation createProduct($product: AddProductInput!) {
-    createProduct(product: $product) {
+  mutation createProductItem($data: ProductItemCreateInput!) {
+    createProductItem(data: $data) {
       id
-      name
-      image
-      slug
-      type
-      price
-      unit
-      description
-      salePrice
-      discountInPercent
-      # per_unit
-      quantity
-      # creation_date
     }
   }
 `;
@@ -101,9 +91,6 @@ const AddProduct: React.FC<Props> = props => {
   const [description, setDescription] = useState("");
 
   React.useEffect(() => {
-    register({ name: "type" });
-    register({ name: "categories" });
-    register({ name: "image", required: true });
     register({ name: "description" });
   }, [register]);
 
@@ -113,27 +100,8 @@ const AddProduct: React.FC<Props> = props => {
     setDescription(value);
   };
 
-  const [createProduct] = useMutation(CREATE_PRODUCT, {
-    update(cache, { data: { createProduct } }) {
-      const { products } = cache.readQuery({
-        query: GET_PRODUCTS
-      });
-
-      cache.writeQuery({
-        query: GET_PRODUCTS,
-        data: {
-          products: {
-            __typename: products.__typename,
-            items: [createProduct, ...products.items],
-            hasMore: true,
-            totalCount: products.items.length + 1
-          }
-        }
-      });
-    }
-  });
+  const [createProduct] = useMutation(CREATE_PRODUCT);
   const handleMultiChange = ({ value }) => {
-    setValue("categories", value);
     setTag(value);
   };
 
@@ -142,28 +110,41 @@ const AddProduct: React.FC<Props> = props => {
     setType(value);
   };
   const handleUploader = files => {
-    setValue("image", files[0].path);
+    // setValue("image", files[0].path);
   };
-  const onSubmit = data => {
-    const newProduct = {
-      id: uuidv4(),
-      name: data.name,
-      type: data.type[0].value,
-      description: data.description,
-      image: data.image && data.image.length !== 0 ? data.image : "",
-      price: Number(data.price),
-      unit: data.unit,
-      salePrice: Number(data.salePrice),
-      discountInPercent: Number(data.discountInPercent),
-      quantity: Number(data.quantity),
-      slug: data.name,
-      creation_date: new Date()
-    };
-    console.log(newProduct, "newProduct data");
+  const onSubmit = _data => {
+    console.log(_data);
+    // const newProduct = {
+    //   id: uuidv4(),
+    //   name: data.name,
+    //   type: data.type[0].value,
+    //   description: data.description,
+    //   image: data.image && data.image.length !== 0 ? data.image : "",
+    //   price: Number(data.price),
+    //   unit: data.unit,
+    //   salePrice: Number(data.salePrice),
+    //   discountInPercent: Number(data.discountInPercent),
+    //   quantity: Number(data.quantity),
+    //   slug: data.name,
+    //   creation_date: new Date()
+    // };
+    // console.log(newProduct, "newProduct data");
+
     createProduct({
-      variables: { product: newProduct }
+      variables: {
+        data: {
+          ..._data,
+          amount: Number(_data.amount),
+          MenuDetail: "สินค้าพร้อมจำหน่าย",
+          TermDetail:
+            "ลูกค้าสามารถชำระด้วยเงินสดหรือบัตรเครดิต, ลูกค้าสามารถรับสินค้าเองได้หน้าโรงงาน",
+          brand: "-",
+          category: { connect: { id: "ck7b9ytvz000z0753q75otp1i" } }
+        }
+      }
     });
     closeDrawer();
+    window.location.reload();
   };
 
   return (
@@ -238,12 +219,7 @@ const AddProduct: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Unit</FormLabel>
-                  <Input type="text" inputRef={register} name="unit" />
-                </FormFields>
-
-                <FormFields>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>Price (Baht)</FormLabel>
                   <Input
                     type="number"
                     inputRef={register({ required: true })}
@@ -252,84 +228,22 @@ const AddProduct: React.FC<Props> = props => {
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Sale Price</FormLabel>
+                  <FormLabel>Sale Price (Baht)</FormLabel>
                   <Input type="number" inputRef={register} name="salePrice" />
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Discount In Percent</FormLabel>
-                  <Input
-                    type="number"
-                    inputRef={register}
-                    name="discountInPercent"
-                  />
-                </FormFields>
-
-                <FormFields>
-                  <FormLabel>Product Quantity</FormLabel>
+                  <FormLabel>Product Quantity (Unit)</FormLabel>
                   <Input
                     type="number"
                     inputRef={register({ required: true })}
-                    name="quantity"
+                    name="amount"
                   />
                 </FormFields>
 
                 <FormFields>
-                  <FormLabel>Type</FormLabel>
-                  <Select
-                    options={typeOptions}
-                    labelKey="name"
-                    valueKey="value"
-                    placeholder="Product Type"
-                    value={type}
-                    searchable={false}
-                    onChange={handleTypeChange}
-                    overrides={{
-                      Placeholder: {
-                        style: ({ $theme }) => {
-                          return {
-                            ...$theme.typography.fontBold14,
-                            color: $theme.colors.textNormal
-                          };
-                        }
-                      },
-                      DropdownListItem: {
-                        style: ({ $theme }) => {
-                          return {
-                            ...$theme.typography.fontBold14,
-                            color: $theme.colors.textNormal
-                          };
-                        }
-                      },
-                      OptionContent: {
-                        style: ({ $theme, $selected }) => {
-                          return {
-                            ...$theme.typography.fontBold14,
-                            color: $selected
-                              ? $theme.colors.textDark
-                              : $theme.colors.textNormal
-                          };
-                        }
-                      },
-                      SingleValue: {
-                        style: ({ $theme }) => {
-                          return {
-                            ...$theme.typography.fontBold14,
-                            color: $theme.colors.textNormal
-                          };
-                        }
-                      },
-                      Popover: {
-                        props: {
-                          overrides: {
-                            Body: {
-                              style: { zIndex: 5 }
-                            }
-                          }
-                        }
-                      }
-                    }}
-                  />
+                  <FormLabel>Unit</FormLabel>
+                  <Input type="text" inputRef={register} name="unitType" />
                 </FormFields>
 
                 <FormFields>

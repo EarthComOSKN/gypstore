@@ -40,4 +40,16 @@ jspm_packages
 
 .env
 
+.next
+.now
+
+dist
 frontend/.next
+frontend/.next/build-manifest.json
+frontend/.next/server/pages-manifest.json
+frontend/.next/server/static/development/pages/_app.js.map
+frontend/.next/static/chunks/styles.js
+frontend/.next/static/chunks/styles.js.map
+frontend/.next/static/development/pages/_app.js.map
+frontend/.next/static/runtime/webpack.js
+frontend/.next/static/runtime/webpack.js.map

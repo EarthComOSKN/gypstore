@@ -108,8 +108,8 @@ export default function Customers() {
         status
       }
     });
-    if (status) message.success(`${status ? "ban" : "activate"} userId ${id}`);
-    else message.error(`${status ? "ban" : "activate"} userId ${id}`);
+    if (status) message.success(`${!status ? "ban" : "activate"} userId ${id}`);
+    else message.error(`${!status ? "ban" : "activate"} userId ${id}`);
   };
 
   if (error) {
@@ -200,7 +200,7 @@ export default function Customers() {
                             <StyledBodyCell>
                               <ImageWrapper>
                                 <Image
-                                  src="https://www.tenforums.com/geek/gars/images/2/types/thumb__ser.png"
+                                  src="https://www.computerhope.com/jargon/g/guest-user.jpg"
                                   alt="pic"
                                 />
                               </ImageWrapper>
